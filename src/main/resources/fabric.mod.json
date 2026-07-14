@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "gallifrey",
+	"version": "${version}",
+	"name": "Gallifrey",
+	"description": "A Doctor Who Mod tha brings the planet of the timelords to life",
+	"authors": [
+		"TimeloedMod"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/gallifrey/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.timelordmod.gallifrey.GallifreyMod"
+		],
+		"client": [
+			"com.timelordmod.gallifrey.GallifreyModClient"
+		],
+		"fabric-datagen": [
+			"com.timelordmod.gallifrey.GallifreyModDataGenerator"
+		]
+	},
+	"mixins": [
+		"gallifrey.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
