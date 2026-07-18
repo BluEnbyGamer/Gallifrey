@@ -1,10 +1,9 @@
 package com.timelordmod.gallifrey.mixin.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.timelordmod.gallifrey.GallifreyMod;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import org.intellij.lang.annotations.Identifier;
+import net.minecraft.client.gui.LogoDrawer;
+import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,74 +13,82 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.time.LocalDate;
 import java.time.Month;
 
-@Mixin(value = LogoDrawerMixin.class, priority = 200000)
+@Mixin(value = LogoDrawer.class, priority = 10001)
 public class LogoDrawerMixin {
 
-    private static final Identifier GALL_STANDARD = new Identifier("gallifrey", "textures/title/gall_standard");
-    private static final Identifier GALL_XMAS = new Identifier("gallifrey", "textures/title/gall_xmas");
-    private static final Identifier GALL_DWDAY = new Identifier("gallifery", "textures/title/gall_dwday");
-    private static final Identifier GALL_MODDAY = new Identifier("gallifery", "textures/title/gall_modday");
-    private static final Identifier GALL_PRIDE = new Identifier("gallifery", "textures/title/gall_pride");
-    private static final Identifier GALL_BLUESDAY = new Identifier("gallifery", "textures/title/gall_bluesday");
+    private static final Identifier GALL_STANDARD =
+            new Identifier("gallifrey", "textures/gui/title/gall_standard.png");
 
-    @Inject(method = "draw*", at = @At("HEAD"), cancellable = false)
-    private void gallifrey$drawCustomLogo(DrawContext context, int screenWidth, float alpha, CallbackInfo ci) {
-        MinecraftClient client = MinecraftClient.getInstance();
+    private static final Identifier GALL_XMAS =
+            new Identifier("gallifrey", "textures/gui/title/gall_xmas.png");
 
-        Identifier logo;
-        if (isChristmas()) {
-            logo = GALL_XMAS;
-        } else if (isbluesday()) {
-            logo = GALL_BLUESDAY;
-        } else if (isdwday()) {
-            logo = GALL_DWDAY;
-        } else if (ismodday()) {
-            logo = GALL_MODDAY;
-        } else if (ispride()) {
-            logo = GALL_PRIDE;
-        } else {
-            logo = GALL_STANDARD;
-        }
+    private static final Identifier GALL_DWDAY =
+            new Identifier("gallifrey", "textures/gui/title/gall_dwday.png");
 
-        int logoWidth = 1024;
-        int logoHeight = 172;
+    private static final Identifier GALL_MODDAY =
+            new Identifier("gallifrey", "textures/gui/title/gall_modday.png");
 
-        int centerX = (screenWidth - logoWidth) / 2;
-        int logoY = 12; // Adjust vertical position
+    private static final Identifier GALL_PRIDE =
+            new Identifier("gallifrey", "textures/gui/title/gall_pride.png");
+
+    private static final Identifier GALL_BLUESDAY =
+            new Identifier("gallifrey", "textures/gui/title/gall_bluesday.png");
+
+
+    @Inject(method = "draw", at = @At("HEAD"), cancellable = true)
+    private void gallifrey$replaceLogo(DrawContext context, int screenWidth, float alpha, CallbackInfo ci) {
+
+        Identifier logo = getLogo();
+
+        int logoWidth = 400;
+        int logoHeight = 90;
+
+        int x = (screenWidth - logoWidth) / 2;
+        int y = 12;
 
         RenderSystem.enableBlend();
-        context.drawTexture(logo, centerX, logoY, 0.0f, 0.0f, logoWidth, logoHeight, logoWidth, logoHeight);
+        RenderSystem.defaultBlendFunc();
 
-        ci.cancel(); // prevent other logo logic
+        context.drawTexture(
+                logo,
+                x,
+                y,
+                0,
+                0,
+                logoWidth,
+                logoHeight,
+                logoWidth,
+                logoHeight
+        );
+
+        ci.cancel();
     }
 
-    @Unique
-    private boolean isChristmas() {
-        LocalDate date = LocalDate.now();
-        return date.getMonth() == Month.DECEMBER;
-    }
 
     @Unique
-    private boolean isbluesday() {
+    private Identifier getLogo() {
         LocalDate date = LocalDate.now();
-        return date.getMonth() == Month.OCTOBER && date.getDayOfMonth() == 15;
-    }
 
-    @Unique
-    private boolean isdwday() {
-        LocalDate date = LocalDate.now();
-        return date.getMonth() == Month.NOVEMBER && date.getDayOfMonth() == 23;
-    }
+        if (date.getMonth() == Month.DECEMBER) {
+            return GALL_XMAS;
+        }
 
-    @Unique
-    private boolean ismodday() {
-        LocalDate date = LocalDate.now();
-        return date.getMonth() == Month.AUGUST && date.getDayOfMonth() == 15;
-    }
+        if (date.getMonth() == Month.OCTOBER && date.getDayOfMonth() == 15) {
+            return GALL_BLUESDAY;
+        }
 
-    @Unique
-    private boolean ispride() {
-        LocalDate date = LocalDate.now();
-        return date.getMonth() == Month.JUNE;
+        if (date.getMonth() == Month.NOVEMBER && date.getDayOfMonth() == 23) {
+            return GALL_DWDAY;
+        }
+
+        if (date.getMonth() == Month.AUGUST && date.getDayOfMonth() == 15) {
+            return GALL_MODDAY;
+        }
+
+        if (date.getMonth() == Month.JUNE) {
+            return GALL_PRIDE;
+        }
+
+        return GALL_STANDARD;
     }
 }
