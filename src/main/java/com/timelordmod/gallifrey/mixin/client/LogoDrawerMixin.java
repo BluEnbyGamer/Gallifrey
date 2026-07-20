@@ -44,7 +44,7 @@ public class LogoDrawerMixin {
         int logoHeight = 40;
 
         int x = (screenWidth - logoWidth) / 2;
-        int y = 10;
+        int y = 12;
 
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
