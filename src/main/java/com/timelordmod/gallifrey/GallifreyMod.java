@@ -1,5 +1,8 @@
 package com.timelordmod.gallifrey;
 
+import com.timelordmod.gallifrey.block.GallifreyModBlocks;
+import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
+import com.timelordmod.gallifrey.item.GallifreyModItems;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -11,7 +14,12 @@ public class GallifreyMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("[Gallifrey] Initialising core systems...!");
+
+		GallifreyModItems.register();
+		GallifreyModBlocks.register();
+		GallifreyCreativeTab.register();
+
 	}
 
 	public static Identifier id(String path) {
