@@ -19,10 +19,7 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyModItems.register();
 		GallifreyModBlocks.register();
 		GallifreyCreativeTab.register();
-
 	}
 
-	public static Identifier id(String path) {
-		return new Identifier(MOD_ID, path);
-	}
+	public static Identifier id(String path) { return new Identifier(MOD_ID, path);}
 }

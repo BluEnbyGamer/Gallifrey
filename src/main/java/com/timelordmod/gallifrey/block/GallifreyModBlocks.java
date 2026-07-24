@@ -13,9 +13,23 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 
+
+/**
+ * All the blocks for the mod get registered here.
+ *
+ * Adding a new one? do this:
+ *  1. Make the block class
+ *  2. Register it below
+ *  3. Block model json in assets/regeneration/models/block/
+ *  4. Texture in assets/regeneration/textures/block/
+ *  5. Item model json in assets/regeneration/models/item/
+ *  6. Add it to the creative tab
+ */
+
+
 public class GallifreyModBlocks {
-   public static final Block GALLIFREY_GRASS_BLOCK = registerBlock("gallifrey_grass_block",
-           new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
+    public static final Block GALLIFREY_GRASS_BLOCK = registerBlock("gallifrey_grass_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
 
     public static final Block GALLIFREY_GRASS = registerBlock("gallifrey_grass",
             new Block(FabricBlockSettings.copyOf(Blocks.GRASS)));
@@ -23,7 +37,11 @@ public class GallifreyModBlocks {
     public static final Block GALLIFREY_FERN = registerBlock("gallifrey_fern",
             new Block(FabricBlockSettings.copyOf(Blocks.FERN)));
 
+    public static final Block GALLIFREY_SAP = registerBlock("gallifrey_sapling",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
+    public static final Block GALLIFREY_LEAVES = registerBlock("gallifrey_leaves",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
 
     private static Block registerBlock(String name, Block block) {

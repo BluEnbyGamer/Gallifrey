@@ -20,6 +20,8 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModBlocks.GALLIFREY_GRASS_BLOCK);
                 entries.add(GallifreyModBlocks.GALLIFREY_GRASS);
                 entries.add(GallifreyModBlocks.GALLIFREY_FERN);
+                entries.add(GallifreyModBlocks.GALLIFREY_SAP);
+                entries.add(GallifreyModBlocks.GALLIFREY_LEAVES);
 
             })
             .build();
