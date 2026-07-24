@@ -16,8 +16,10 @@ public class GallifreyCreativeTab {
             .displayName(Text.translatable("itemGroup.gallifrey.main"))
             .entries((context, entries) -> {
                 // Add every mod item here
-                    entries.add(GallifreyModItems.WHITE_POINT_STAR);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR);
                 entries.add(GallifreyModBlocks.GALLIFREY_GRASS_BLOCK);
+                entries.add(GallifreyModBlocks.GALLIFREY_GRASS);
+                entries.add(GallifreyModBlocks.GALLIFREY_FERN);
 
             })
             .build();
