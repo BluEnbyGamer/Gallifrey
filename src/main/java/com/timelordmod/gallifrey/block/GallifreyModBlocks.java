@@ -15,14 +15,8 @@ import java.util.List;
 
 public class GallifreyModBlocks {
    public static final Block GALLIFREY_GRASS_BLOCK = registerBlock("gallifrey_grass_block",
-           new TieredMiningBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).requiresTool(),
-                   List.of(),
-                   List.of("minecraft:wooden_shovel"),
-                   List.of("minecraft:stone_shovel"),
-                   List.of("minecraft:gold_shovel"),
-                   List.of("minecraft:iron_shovel"),
-                   List.of("minecraft:diamond_shovel"),
-                   List.of("minecraft:netherite_shovel")));
+           new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
+
 
 
 

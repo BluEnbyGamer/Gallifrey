@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "regeneration:item/white_point_star"
+    "layer0": "gallifrey:item/white_point_star"
   }
 }

@@ -12,12 +12,15 @@ import net.minecraft.text.Text;
 
 public class GallifreyCreativeTab {
     public static final ItemGroup TAB = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(GallifreyMod.GALLIFREY_GRASS_BLOCK))
+            .icon(() -> new ItemStack(GallifreyModBlocks.GALLIFREY_GRASS_BLOCK))
             .displayName(Text.translatable("itemGroup.gallifrey.main"))
             .entries((context, entries) -> {
-                entries.add(GallifreyModItems.WHITE_POINT_STAR);
+                // Add every mod item here
+                    entries.add(GallifreyModItems.WHITE_POINT_STAR);
                 entries.add(GallifreyModBlocks.GALLIFREY_GRASS_BLOCK);
-            },
+
+            })
+            .build();
 
 
     public static void register() {

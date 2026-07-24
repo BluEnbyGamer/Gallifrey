@@ -1,12 +1,12 @@
 {
-  "parent": "minecraft:block/cube",
+  "parent": "minecraft:block/cube_all",
   "textures": {
     "particle": "<block/galifrey_gallifrey_grass_block_top>",
-    "down": "gallifrey/gallifrey_grass__block_bottom",
+    "down": "gallifrey/gallifrey_grass_block_bottom",
     "up": "gallifrey/galifrey_gallifrey_grass_block_top",
-    "north": "gallifrey/gallifrey_grass__block_sides",
-    "south": "gallifrey/gallifrey_grass__block_sides",
-    "east": "gallifrey/gallifrey_grass__block_sides",
-    "west": "gallifrey/gallifrey_grass__block_sides"
+    "north": "gallifrey/gallifrey_grass_block_sides",
+    "south": "gallifrey/gallifrey_grass_block_sides",
+    "east": "gallifrey/gallifrey_grass_block_sides",
+    "west": "gallifrey/gallifrey_grass_block_sides"
   }
 }

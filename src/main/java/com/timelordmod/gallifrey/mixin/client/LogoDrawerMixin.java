@@ -26,13 +26,20 @@ public class LogoDrawerMixin {
             new Identifier("gallifrey", "textures/gui/title/gall_dwday.png");
 
     private static final Identifier GALL_MODDAY =
-            new Identifier("gallifrey", "textures/gui/title/gall_modday.png");
+            new Identifier("gallifrey", "textures/gui/title/gall_modsday.png");
 
     private static final Identifier GALL_PRIDE =
             new Identifier("gallifrey", "textures/gui/title/gall_pride.png");
 
     private static final Identifier GALL_BLUESDAY =
             new Identifier("gallifrey", "textures/gui/title/gall_bluesday.png");
+
+    private static final Identifier GALL_HALLOWEEN =
+            new Identifier("gallifrey", "textures/gui/title/gall_halloween.png");
+
+    private static final Identifier GALL_LIGHTSDAY =
+            new Identifier("gallifrey", "textures/gui/title/gall_lightsday.png");
+
 
 
     @Inject(method = "draw", at = @At("HEAD"), cancellable = true)
@@ -41,10 +48,10 @@ public class LogoDrawerMixin {
         Identifier logo = getLogo();
 
         int logoWidth = 380;
-        int logoHeight = 40;
+        int logoHeight = 45;
 
         int x = (screenWidth - logoWidth) / 2;
-        int y = 20;
+        int y = 15;
 
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
@@ -73,8 +80,16 @@ public class LogoDrawerMixin {
             return GALL_XMAS;
         }
 
+        if (date.getMonth() == Month.OCTOBER && date.getDayOfMonth() == 31) {
+            return GALL_HALLOWEEN;
+        }
+
         if (date.getMonth() == Month.OCTOBER && date.getDayOfMonth() == 15) {
             return GALL_BLUESDAY;
+        }
+
+        if (date.getMonth() == Month.OCTOBER && date.getDayOfMonth() == 16) {
+            return GALL_LIGHTSDAY;
         }
 
         if (date.getMonth() == Month.NOVEMBER && date.getDayOfMonth() == 23) {
