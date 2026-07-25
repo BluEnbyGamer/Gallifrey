@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "regeneration:item/gallifrey_fern"
+    "layer0": "gallifrey:item/gallifrey_fern"
   }
 }
