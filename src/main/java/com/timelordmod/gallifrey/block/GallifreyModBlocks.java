@@ -37,10 +37,10 @@ public class GallifreyModBlocks {
     public static final Block GALLIFREY_FERN = registerBlock("gallifrey_fern",
             new Block(FabricBlockSettings.copyOf(Blocks.FERN)));
 
-    public static final Block GALLIFREY_SAP = registerBlock("gallifrey_sapling",
+    public static final Block ULANDA_SAP = registerBlock("ulanda_sapling",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
-    public static final Block GALLIFREY_LEAVES = registerBlock("gallifrey_leaves",
+    public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
 
