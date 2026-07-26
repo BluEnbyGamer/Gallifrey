@@ -1,8 +1,12 @@
 {
   //Items go here
-
+  "item.gallifrey.white_point_star": "Temp Item",
   //Blocks go here
-
+  "block.gallifrey.gallifrey_grass_block": "Gallifreyan Grass Block",
+  "block.gallifrey.gallifrey_grass": "Gallifreyan Grass",
+  "block.gallifrey.gallifrey_fern": "Gallifreyan Fern",
+  "block.gallifrey.gallifrey_sapling": "Gallifreyan Sapling",
+  "block.gallifrey.gallifrey_leaves": "Gallifreyan Leaves",
   //advancements go here
 
   //misc shit goes here
