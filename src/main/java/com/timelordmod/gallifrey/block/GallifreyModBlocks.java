@@ -43,6 +43,9 @@ public class GallifreyModBlocks {
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
+    public static final Block ULANDA_HANGING_LEAVES = registerBlock("ulanda_hanging_leaves",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockitem(name, block);

@@ -17,11 +17,12 @@ public class GallifreyCreativeTab {
             .entries((context, entries) -> {
                 // Add every mod item here
                 entries.add(GallifreyModItems.WHITE_POINT_STAR);
-                entries.add(GallifreyModBlocks.GALLIFREY_GRASS_BLOCK);
+
                 entries.add(GallifreyModBlocks.GALLIFREY_GRASS);
                 entries.add(GallifreyModBlocks.GALLIFREY_FERN);
                 entries.add(GallifreyModBlocks.ULANDA_SAP);
                 entries.add(GallifreyModBlocks.ULANDA_LEAVES);
+                entries.add(GallifreyModBlocks.ULANDA_HANGING_LEAVES);
 
             })
             .build();
@@ -34,5 +35,5 @@ public class GallifreyCreativeTab {
                 TAB
         );
         GallifreyMod.LOGGER.debug("[Gallifrey] Creative tab registered.");
-    }
+    }entries.add(GallifreyModBlocks.GALLIFREY_GRASS_BLOCK);
 }
