@@ -12,7 +12,7 @@ public class GallifreyModClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.GALLIFREY_FERN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.GALLIFREY_GRASS, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.ULANDA_SAP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.ULANDA_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.ULANDA_LEAVES, RenderLayer.getCutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.ULANDA_HANGING_LEAVES, RenderLayer.getCutoutMipped());
     }

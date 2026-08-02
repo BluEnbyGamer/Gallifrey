@@ -11,8 +11,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import java.util.List;
-
 
 /**
  * All the blocks for the mod get registered here.
@@ -37,7 +35,7 @@ public class GallifreyModBlocks {
     public static final Block GALLIFREY_FERN = registerBlock("gallifrey_fern",
             new Block(FabricBlockSettings.copyOf(Blocks.FERN)));
 
-    public static final Block ULANDA_SAP = registerBlock("ulanda_sapling",
+    public static final Block ULANDA_SAPLING = registerBlock("ulanda_sapling",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
@@ -45,6 +43,9 @@ public class GallifreyModBlocks {
 
     public static final Block ULANDA_HANGING_LEAVES = registerBlock("ulanda_hanging_leaves",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
+
+    public static final Block ULANDA_WOOD = registerBlock("ulanda_wood",
+            new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
 
 
     private static Block registerBlock(String name, Block block) {
