@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -45,7 +46,16 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
     public static final Block ULANDA_WOOD = registerBlock("ulanda_wood",
-            new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block ULANDA_LOG = registerBlock("ulanda_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+
+    public static final Block   STRIP_ULANDA_LOG = registerBlock("stripped_ulanda_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+
+    public static final Block STRIP_ULANDA_WOOD = registerBlock("stripped_ulanda_wood",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
 
 
     private static Block registerBlock(String name, Block block) {
