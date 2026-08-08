@@ -3,6 +3,7 @@ package com.timelordmod.gallifrey.block;
 import com.timelordmod.gallifrey.GallifreyMod;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
@@ -10,6 +11,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 
@@ -43,7 +45,7 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
     public static final Block ULANDA_HANGING_LEAVES = registerBlock("ulanda_hanging_leaves",
-            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
+            new Block(FabricBlockSettings.copyOf(Blocks.FERN).sounds(BlockSoundGroup.CHERRY_LEAVES).nonOpaque()));
 
     public static final Block ULANDA_WOOD = registerBlock("ulanda_wood",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
@@ -57,6 +59,10 @@ public class GallifreyModBlocks {
     public static final Block STRIP_ULANDA_WOOD = registerBlock("stripped_ulanda_wood",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
 
+    public static final Block ULANDA_PLANKS = registerBlock("ulanda_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+
 
     private static Block registerBlock(String name, Block block) {
         registerBlockitem(name, block);
@@ -69,5 +75,37 @@ public class GallifreyModBlocks {
 
     public static void register(){
         GallifreyMod.LOGGER.info("Registering ModBlocks for" + GallifreyMod.MOD_ID );
+        registerFlammable();
+    }
+
+    private static void registerFlammable() {
+        FlammableBlockRegistry flammable = FlammableBlockRegistry.getDefaultInstance();
+        //Ulanda wood set
+        flammable.add(ULANDA_LOG, 5, 5);
+        flammable.add(STRIP_ULANDA_LOG, 5, 5);
+        flammable.add(ULANDA_WOOD, 5, 5);
+        flammable.add(STRIP_ULANDA_WOOD, 5, 5);
+        flammable.add(ULANDA_PLANKS, 5, 20);
+        flammable.add(ULANDA_LEAVES, 30, 60);
+        flammable.add(ULANDA_HANGING_LEAVES, 30, 60);
+
+        //Treeborg wood set
+
+
+        //Ash wood set
+
+
+        //Maple wood set
+
+
+        //Willow wood set
+
+
+        //Moon-pine wood set
+
+
+        //Misc flammables
+        flammable.add(GALLIFREY_FERN, 30, 60);
+        flammable.add(GALLIFREY_GRASS, 30, 60);
     }
 }

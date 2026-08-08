@@ -23,10 +23,11 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModBlocks.ULANDA_LEAVES);
                 entries.add(GallifreyModBlocks.ULANDA_HANGING_LEAVES);
                 entries.add(GallifreyModBlocks.ULANDA_SAPLING);
-                entries.add(GallifreyModBlocks.ULANDA_WOOD);
                 entries.add(GallifreyModBlocks.ULANDA_LOG);
-                entries.add(GallifreyModBlocks.STRIP_ULANDA_WOOD);
+                entries.add(GallifreyModBlocks.ULANDA_WOOD);
                 entries.add(GallifreyModBlocks.STRIP_ULANDA_LOG);
+                entries.add(GallifreyModBlocks.STRIP_ULANDA_WOOD);
+                entries.add(GallifreyModBlocks.ULANDA_PLANKS);
 
             })
             .build();
