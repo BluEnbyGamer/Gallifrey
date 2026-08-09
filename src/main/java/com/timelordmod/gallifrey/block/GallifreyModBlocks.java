@@ -48,7 +48,7 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.FERN).sounds(BlockSoundGroup.CHERRY_LEAVES).nonOpaque()));
 
     public static final Block ULANDA_WOOD = registerBlock("ulanda_wood",
-            new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
 
     public static final Block ULANDA_LOG = registerBlock("ulanda_log",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
@@ -57,7 +57,7 @@ public class GallifreyModBlocks {
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
 
     public static final Block STRIP_ULANDA_WOOD = registerBlock("stripped_ulanda_wood",
-            new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
 
     public static final Block ULANDA_PLANKS = registerBlock("ulanda_planks",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
