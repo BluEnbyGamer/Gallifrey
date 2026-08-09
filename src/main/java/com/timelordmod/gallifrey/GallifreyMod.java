@@ -45,6 +45,13 @@ public class GallifreyMod implements ModInitializer {
 		//Moon-pine wood set
 
 
+
+
+
+		// Custom Dimension Stuff
+
+
+
 		LOGGER.info("[Gallifrey] Core systems ready.");
 	}
 
