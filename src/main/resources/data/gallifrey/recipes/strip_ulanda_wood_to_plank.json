@@ -4,7 +4,7 @@
     { "item": "gallifrey:stripped_ulanda_wood" }
   ],
   "result": {
-    "item": "gallifrey::ulanda_plank",
+    "item": "gallifrey:ulanda_planks",
     "count": 4
   }
 }
