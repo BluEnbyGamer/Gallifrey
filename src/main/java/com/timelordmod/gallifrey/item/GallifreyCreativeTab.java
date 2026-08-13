@@ -4,6 +4,7 @@ package com.timelordmod.gallifrey.item;
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -16,18 +17,22 @@ public class GallifreyCreativeTab {
             .displayName(Text.translatable("itemGroup.gallifrey.main"))
             .entries((context, entries) -> {
                 // Add every mod item here
-                entries.add(GallifreyModItems.WHITE_POINT_STAR);
+
                 entries.add(GallifreyModBlocks.GALLIFREY_GRASS_BLOCK);
                 entries.add(GallifreyModBlocks.GALLIFREY_GRASS);
                 entries.add(GallifreyModBlocks.GALLIFREY_FERN);
-                entries.add(GallifreyModBlocks.ULANDA_LEAVES);
-                entries.add(GallifreyModBlocks.ULANDA_HANGING_LEAVES);
+                entries.add(Blocks.STONE);
+                entries.add(Blocks.COBBLESTONE);
+                entries.add(Blocks.DEEPSLATE);
+                entries.add(Blocks.COBBLED_DEEPSLATE);
                 entries.add(GallifreyModBlocks.ULANDA_SAPLING);
+                entries.add(GallifreyModBlocks.ULANDA_LEAVES);
                 entries.add(GallifreyModBlocks.ULANDA_LOG);
                 entries.add(GallifreyModBlocks.ULANDA_WOOD);
                 entries.add(GallifreyModBlocks.STRIP_ULANDA_LOG);
                 entries.add(GallifreyModBlocks.STRIP_ULANDA_WOOD);
                 entries.add(GallifreyModBlocks.ULANDA_PLANKS);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR);
 
             })
             .build();
