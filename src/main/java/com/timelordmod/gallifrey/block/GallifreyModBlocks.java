@@ -32,6 +32,9 @@ public class GallifreyModBlocks {
     public static final Block GALLIFREY_GRASS_BLOCK = registerBlock("gallifrey_grass_block",
             new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
 
+    public static final Block GALLIFREY_DIRT = registerBlock("gallifrey_dirt",
+            new Block(FabricBlockSettings.copyOf(Blocks.DIRT)));
+
     public static final Block GALLIFREY_GRASS = registerBlock("gallifrey_grass",
             new Block(FabricBlockSettings.copyOf(Blocks.GRASS)));
 

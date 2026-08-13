@@ -19,6 +19,7 @@ public class GallifreyCreativeTab {
                 // Add every mod item here
 
                 entries.add(GallifreyModBlocks.GALLIFREY_GRASS_BLOCK);
+                entries.add(GallifreyModBlocks.GALLIFREY_DIRT);
                 entries.add(GallifreyModBlocks.GALLIFREY_GRASS);
                 entries.add(GallifreyModBlocks.GALLIFREY_FERN);
                 entries.add(Blocks.STONE);
