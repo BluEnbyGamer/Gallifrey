@@ -13,19 +13,11 @@ import net.minecraft.text.Text;
 
 public class GallifreyCreativeTab {
     public static final ItemGroup TAB = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(GallifreyModBlocks.GALLIFREY_GRASS_BLOCK))
+            .icon(() -> new ItemStack(GallifreyModBlocks.ULANDA_SAPLING))
             .displayName(Text.translatable("itemGroup.gallifrey.main"))
             .entries((context, entries) -> {
-                // Add every mod item here
+                // Add every mod item & block here
 
-                entries.add(GallifreyModBlocks.GALLIFREY_GRASS_BLOCK);
-                entries.add(GallifreyModBlocks.GALLIFREY_DIRT);
-                entries.add(GallifreyModBlocks.GALLIFREY_GRASS);
-                entries.add(GallifreyModBlocks.GALLIFREY_FERN);
-                entries.add(Blocks.STONE);
-                entries.add(Blocks.COBBLESTONE);
-                entries.add(Blocks.DEEPSLATE);
-                entries.add(Blocks.COBBLED_DEEPSLATE);
                 entries.add(GallifreyModBlocks.ULANDA_SAPLING);
                 entries.add(GallifreyModBlocks.ULANDA_LEAVES);
                 entries.add(GallifreyModBlocks.ULANDA_LOG);
