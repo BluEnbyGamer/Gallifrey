@@ -1,12 +1,14 @@
 package com.timelordmod.gallifrey.block;
 
 import com.timelordmod.gallifrey.GallifreyMod;
+import com.timelordmod.gallifrey.world.tree.UlandaSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
+import net.minecraft.block.SaplingBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -30,7 +32,7 @@ import net.minecraft.util.Identifier;
 
 public class GallifreyModBlocks {
     public static final Block ULANDA_SAPLING = registerBlock("ulanda_sapling",
-            new Block(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new SaplingBlock(new UlandaSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
