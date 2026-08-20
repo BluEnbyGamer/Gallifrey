@@ -96,7 +96,6 @@ public class GallifreyModBlocks {
 
 
         //Misc flammables
-        flammable.add(GALLIFREY_FERN, 30, 60);
-        flammable.add(GALLIFREY_GRASS, 30, 60);
+
     }
 }
