@@ -37,9 +37,6 @@ public class GallifreyModBlocks {
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
-    public static final Block ULANDA_HANGING_LEAVES = registerBlock("ulanda_hanging_leaves",
-            new Block(FabricBlockSettings.copyOf(Blocks.FERN).sounds(BlockSoundGroup.CHERRY_LEAVES).nonOpaque()));
-
     public static final Block ULANDA_WOOD = registerBlock("ulanda_wood",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
 
@@ -80,7 +77,6 @@ public class GallifreyModBlocks {
         flammable.add(STRIP_ULANDA_WOOD, 5, 5);
         flammable.add(ULANDA_PLANKS, 5, 20);
         flammable.add(ULANDA_LEAVES, 30, 60);
-        flammable.add(ULANDA_HANGING_LEAVES, 30, 60);
 
         //Treeborg wood set
 

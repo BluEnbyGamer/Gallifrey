@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:ulanda_log",
+    "gallifrey:ulanda_wood",
+    "gallifrey:stripped_ulanda_log",
+    "gallifrey:stripped_ulanda_wood",
+    "gallifrey:ulanda_planks"
+  ]
+}
