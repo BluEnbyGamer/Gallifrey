@@ -97,7 +97,7 @@ public class GallifreyModBlocks {
         flammable.add(ULANDA_PLANKS, 5, 20);
         flammable.add(ULANDA_LEAVES, 30, 60);
 
-        //Treeborg wood set
+        //Tree-borg wood set
         //flammable.add(TREEBORRG_LOG, 5, 5);
         //flammable.add(STRIP_TREEBORRG_LOG, 5, 5);
         //flammable.add(TREEBORRG_WOOD, 5, 5);
