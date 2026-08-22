@@ -31,9 +31,8 @@ import net.minecraft.util.Identifier;
 
 
 public class GallifreyModBlocks {
-    public static final Block ULANDA_SAPLING = registerBlock("ulanda_sapling",
-            new SaplingBlock(new UlandaSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
+    //ULANDA WOOD SET BLOCK REGISTRY
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
@@ -52,6 +51,25 @@ public class GallifreyModBlocks {
     public static final Block ULANDA_PLANKS = registerBlock("ulanda_planks",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
 
+    public static final Block ULANDA_SAPLING = registerBlock("ulanda_sapling",
+            new SaplingBlock(new UlandaSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+    //TREE-BORG WOOD SET BLOCK REGISTRY
+
+
+    //ASH WOOD SET BLOCK REGISTRY
+
+
+    //MAPLE WOOD SET BLOCK REGISTRY
+
+
+    //WILLOW WOOD SET BLOCK REGISTRY
+
+
+    //MOON-PINE WOOD SET BLOCK REGISTRY
+
+
+    // MISC BLOCKS REGISTRY
 
 
     private static Block registerBlock(String name, Block block) {
@@ -71,6 +89,7 @@ public class GallifreyModBlocks {
     private static void registerFlammable() {
         FlammableBlockRegistry flammable = FlammableBlockRegistry.getDefaultInstance();
         //Ulanda wood set
+
         flammable.add(ULANDA_LOG, 5, 5);
         flammable.add(STRIP_ULANDA_LOG, 5, 5);
         flammable.add(ULANDA_WOOD, 5, 5);
@@ -79,19 +98,44 @@ public class GallifreyModBlocks {
         flammable.add(ULANDA_LEAVES, 30, 60);
 
         //Treeborg wood set
-
+        //flammable.add(TREEBORRG_LOG, 5, 5);
+        //flammable.add(STRIP_TREEBORRG_LOG, 5, 5);
+        //flammable.add(TREEBORRG_WOOD, 5, 5);
+        //flammable.add(STRIP_TREEBORRG_WOOD, 5, 5);
+        //flammable.add(TREEBORRG_PLANKS, 5, 20);
+        //flammable.add(TREEBORRG_LEAVES, 30, 60);
 
         //Ash wood set
-
+        //flammable.add(ASH_LOG, 5, 5);
+        //flammable.add(STRIP_ASH_LOG, 5, 5);
+        //flammable.add(ASH_WOOD, 5, 5);
+        //flammable.add(STRIP_ASH_WOOD, 5, 5);
+        //flammable.add(ASH_PLANKS, 5, 20);
+        //flammable.add(ASH_LEAVES, 30, 60);
 
         //Maple wood set
-
+        //flammable.add(MAPLE_LOG, 5, 5);
+        //flammable.add(STRIP_MAPLE_LOG, 5, 5);
+        //flammable.add(MAPLE_WOOD, 5, 5);
+        //flammable.add(STRIP_MAPLE_WOOD, 5, 5);
+        //flammable.add(MAPLE_PLANKS, 5, 20);
+        //flammable.add(MAPLE_LEAVES, 30, 60);
 
         //Willow wood set
-
+        //flammable.add(WILLOW_LOG, 5, 5);
+        //flammable.add(STRIP_WILLOW_LOG, 5, 5);
+        //flammable.add(WILLOW_WOOD, 5, 5);
+        //flammable.add(STRIP_WILLOW_WOOD, 5, 5);
+        //flammable.add(WILLOW_PLANKS, 5, 20);
+        //flammable.add(WILLOW_LEAVES, 30, 60);
 
         //Moon-pine wood set
-
+        //flammable.add(MOONPINE_LOG, 5, 5);
+        //flammable.add(STRIP_MOONPINE_LOG, 5, 5);
+        //flammable.add(MOONPINE_WOOD, 5, 5);
+        //flammable.add(STRIP_MOONPINE_WOOD, 5, 5);
+        //flammable.add(MOONPINE_PLANKS, 5, 20);
+        //flammable.add(MOONPINE_LEAVES, 30, 60);
 
         //Misc flammables
 
