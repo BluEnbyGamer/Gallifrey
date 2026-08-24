@@ -6,6 +6,11 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.minecraft.client.render.RenderLayer;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
+import com.timelordmod.gallifrey.item.custom.VortexManipulator;
+import com.timelordmod.gallifrey.screens.VortexManipulatorScreen;
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.minecraft.util.TypedActionResult;
+
 
 
 

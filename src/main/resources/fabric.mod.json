@@ -5,7 +5,7 @@
 	"name": "Gallifrey",
 	"description": "A Doctor Who Mod tha brings the planet of the timelords to life",
 	"authors": [
-		"TimeloedMod"
+		"TimelordMod"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -29,9 +29,10 @@
 		"gallifrey.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.19.3",
+		"fabricloader": ">=0.16.14",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
 		"fabric-api": "*"
 	}
+
 }
