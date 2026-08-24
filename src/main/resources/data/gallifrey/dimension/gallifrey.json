@@ -1,11 +1,48 @@
 {
-  "type": "minecraft:overworld",
+  "type": "gallifrey:gallifrey_type",
   "generator": {
     "type": "minecraft:noise",
     "settings": "minecraft:overworld",
     "biome_source": {
-      "type": "minecraft:fixed",
-      "biome": "gallifrey:ulanda_forest"
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "gallifrey:gallifreyan_plains",
+          "parameters": {
+            "temperature": 0.8,
+            "humidity": 0.0,
+            "continentalness": 0.0,
+            "erosion": 0.0,
+            "weirdness": 0.0,
+            "depth": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "gallifrey:gallifreyan_birch_forest",
+          "parameters": {
+            "temperature": 0.1,
+            "humidity": 0.0,
+            "continentalness": 0.0,
+            "erosion": 0.0,
+            "weirdness": 0.0,
+            "depth": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "gallifrey:gallifreyan_taiga",
+          "parameters": {
+            "temperature": 0.6,
+            "humidity": 0.0,
+            "continentalness": 0.0,
+            "erosion": 0.0,
+            "weirdness": 0.0,
+            "depth": 0.0,
+            "offset": 0.0
+          }
+        }
+      ]
     }
   }
 }

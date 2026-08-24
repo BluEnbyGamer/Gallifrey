@@ -11,30 +11,44 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.SpawnSettings;
 
 public class ModBiomes {
-    public static final RegistryKey<Biome> GALLIFREY_ULANDA_FOREST = RegistryKey.of(
-            RegistryKeys.BIOME, new Identifier(GallifreyMod.MOD_ID, "ulanda_forest"));
+
+    //declare all keys here
+    public static final RegistryKey<Biome> GALLIFREYAN_PLAINS = registerKey("gallifreyan_plains");
+    public static final RegistryKey<Biome> GALLIFREYAN_BIRCH_FOREST = registerKey("gallifreyan_birch_forest");
+    public static final RegistryKey<Biome> GALLIFREYAN_TAIGA = registerKey("gallifreyan_taiga");
+
+    private static RegistryKey<Biome> registerKey(String name) {
+        return RegistryKey.of(RegistryKeys.BIOME, new Identifier(GallifreyMod.MOD_ID, name));
+    }
 
     public static void bootstrap(Registerable<Biome> context) {
         var placedFeatures = context.getRegistryLookup(RegistryKeys.PLACED_FEATURE);
         var carvers = context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
 
+        //Register all biomes easily
+        context.register(GALLIFREYAN_PLAINS, createBiome(false, 0.8F, 0.4F, 10638337, 15105551, 14641191, 15109680));
+        context.register(GALLIFREYAN_BIRCH_FOREST, createBiome(false, 0.6F, 0.6F, 10638337, 15105551, 14641191, 15109680));
+        context.register(GALLIFREYAN_TAIGA, createBiome(false, 0.25F, 0.8F, 10638337, 15105551, 14641191, 15109680));
+    }
+
+    // Helper method to eliminate copy-pasted boilerplate
+    private static Biome createBiome(boolean precipitation, float temp, float downfall, int fog, int sky, int grass, int foliage) {
         SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
 
-        context.register(GALLIFREY_ULANDA_FOREST, new Biome.Builder()
-                .precipitation(false)
-                .temperature(2.0F)
-                .downfall(0.0F)
+        return new Biome.Builder()
+                .precipitation(precipitation)
+                .temperature(temp)
+                .downfall(downfall)
                 .effects(new BiomeEffects.Builder()
-                        .fogColor(10638337)
-                        .skyColor(15105551)
+                        .fogColor(fog)
+                        .skyColor(sky)
                         .waterColor(4159204)
                         .waterFogColor(2635560)
-                        .grassColor(14641191)
-                        .foliageColor(15109680)
+                        .grassColor(grass)
+                        .foliageColor(foliage)
                         .moodSound(BiomeMoodSound.CAVE)
                         .build())
                 .spawnSettings(spawnSettings.build())
-                .build());
-
+                .build();
     }
 }

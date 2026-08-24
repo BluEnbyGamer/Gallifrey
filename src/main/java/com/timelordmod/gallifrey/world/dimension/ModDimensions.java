@@ -25,7 +25,7 @@ public class ModDimensions {
                 OptionalLong.empty(),
                 true,
                 false,
-                true,
+                false,
                 true,
                 1.0D,
                 true,
