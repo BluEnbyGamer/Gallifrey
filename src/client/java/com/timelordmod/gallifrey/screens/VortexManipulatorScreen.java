@@ -9,7 +9,6 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.gui.widget.ToggleButtonWidget;
 
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
@@ -29,8 +28,10 @@ public class VortexManipulatorScreen extends Screen {
     private TextFieldWidget y;
     private TextFieldWidget z;
 
-    private ToggleButtonWidget surface;
+    private ButtonWidget surface;
     private ButtonWidget teleport;
+    private boolean surfaceMode = false;
+
 
     public VortexManipulatorScreen() {
         super(Text.literal("Vortex Manipulator"));
@@ -74,15 +75,18 @@ public class VortexManipulatorScreen extends Screen {
         // SURFACE MODE
         // ---------------------------------------------------------
 
-        surface = new ToggleButtonWidget(
+        surface = ButtonWidget.builder(
+                Text.literal("SURFACE: OFF"),
+                button -> {
+                    surfaceMode = !surfaceMode;
+                    button.setMessage(Text.literal(surfaceMode ? "SURFACE: ON" : "SURFACE: OFF"));
+                }
+        ).dimensions(
                 left + 45,
                 top + 145,
                 100,
-                20,
-                false
-        );
-
-        surface.setMessage(Text.literal("SURFACE"));
+                20
+        ).build();
 
         addDrawableChild(surface);
 
@@ -193,7 +197,7 @@ public class VortexManipulatorScreen extends Screen {
         payload.writeDouble(targetZ);
 
         // Surface mode
-        payload.writeBoolean(surface.isSelected());
+        payload.writeBoolean(surfaceMode);
 
         // ---------------------------------------------------------
         // SEND TO SERVER

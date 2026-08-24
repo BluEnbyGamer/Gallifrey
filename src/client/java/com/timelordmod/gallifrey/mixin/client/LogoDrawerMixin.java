@@ -42,7 +42,11 @@ public class LogoDrawerMixin {
 
 
 
-    @Inject(method = "draw", at = @At("HEAD"), cancellable = true)
+    @Inject(
+            method = "draw(Lnet/minecraft/client/gui/DrawContext;IF)V",
+            at = @At("HEAD"),
+            cancellable = true
+    )
     private void gallifrey$replaceLogo(DrawContext context, int screenWidth, float alpha, CallbackInfo ci) {
 
         Identifier logo = getLogo();
