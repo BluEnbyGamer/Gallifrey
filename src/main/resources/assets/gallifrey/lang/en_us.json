@@ -1,6 +1,8 @@
 {
   //Items go here
   "item.gallifrey.white_point_star": "Temp Item",
+  "item.gallifrey.vortex_manipulator": "Vortex Manipulator",
+
   //Blocks go here
   "block.gallifrey.gallifrey_grass_block": "Gallifreyan Grass Block",
   "block.gallifrey.gallifrey_dirt": "Gallifreyan Dirt",
@@ -13,6 +15,7 @@
   "block.gallifrey.stripped_ulanda_wood": "Stripped Ulanda Wood",
   "block.gallifrey.stripped_ulanda_log": "Stripped Ulanda Log",
   "block.gallifrey.ulanda_planks": "Ulanda Planks",
+
   //advancements go here
 
   //misc shit goes here

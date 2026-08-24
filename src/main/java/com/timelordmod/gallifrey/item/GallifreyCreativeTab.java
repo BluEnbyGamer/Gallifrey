@@ -17,6 +17,7 @@ public class GallifreyCreativeTab {
             .displayName(Text.translatable("itemGroup.gallifrey.main"))
             .entries((context, entries) -> {
                 // Add every mod item & block here
+                entries.add(GallifreyModItems.VORTEX_MANIPULATOR);
 
                 entries.add(GallifreyModBlocks.ULANDA_SAPLING);
                 entries.add(GallifreyModBlocks.ULANDA_LEAVES);
