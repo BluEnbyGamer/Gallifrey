@@ -18,6 +18,7 @@
 
 
   //misc shit goes here
+  "subtitles.gallifrey.vm_sound": "Vortex Manipulator whirrs",
   "itemGroup.gallifrey.main": "Gallifrey",
   "catagory.gallifrey.main": "Gallifrey Mod"
 }

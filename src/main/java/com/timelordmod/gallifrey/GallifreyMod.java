@@ -3,7 +3,9 @@ package com.timelordmod.gallifrey;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
+import com.timelordmod.gallifrey.networking.packets.VMPacket;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -12,9 +14,12 @@ import org.slf4j.LoggerFactory;
 public class GallifreyMod implements ModInitializer {
 	public static final String MOD_ID = "gallifrey";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	public static final Identifier VM_PACKET_ID = new Identifier(MOD_ID, "vm_packet");
 
 	@Override
 	public void onInitialize() {
+
+
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
 
 		GallifreyModItems.register();
@@ -23,7 +28,10 @@ public class GallifreyMod implements ModInitializer {
 
 
 
-
+		ServerPlayNetworking.registerGlobalReceiver(
+				new Identifier("gallifrey", "vm_packet"),
+				VMPacket::receive
+		);
 
 		// Strippable blocks registry
 		//Ulanda wood type

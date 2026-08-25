@@ -1,0 +1,8 @@
+{
+  "vm_sound": {
+    "subtitle": "subtitles.gallifrey.vm_sound",
+    "sounds": [
+      "gallifrey:vm_sound"
+    ]
+  }
+}
