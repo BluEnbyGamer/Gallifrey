@@ -1,13 +1,11 @@
 {
   //Items go here
-  "item.gallifrey.white_point_star": "Temp Item",
+  "item.gallifrey.white_point_star": "White Point Star",
   "item.gallifrey.vortex_manipulator": "Vortex Manipulator",
+  "item.gallifrey.blank_circuit": "Blank Circuit",
+  "item.gallifrey.location_circuit": "Location Circuit",
 
   //Blocks go here
-  "block.gallifrey.gallifrey_grass_block": "Gallifreyan Grass Block",
-  "block.gallifrey.gallifrey_dirt": "Gallifreyan Dirt",
-  "block.gallifrey.gallifrey_grass": "Gallifreyan Grass",
-  "block.gallifrey.gallifrey_fern": "Gallifreyan Fern",
   "block.gallifrey.ulanda_sapling": "Ulanda Sapling",
   "block.gallifrey.ulanda_leaves": "Ulanda Leaves",
   "block.gallifrey.ulanda_wood": "Ulanda Wood",
@@ -17,6 +15,7 @@
   "block.gallifrey.ulanda_planks": "Ulanda Planks",
 
   //advancements go here
+
 
   //misc shit goes here
   "itemGroup.gallifrey.main": "Gallifrey",

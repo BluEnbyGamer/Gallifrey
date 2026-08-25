@@ -1,0 +1,22 @@
+{
+  //Items go here
+  "item.gallifrey.white_point_star": "Wite Poynt Starz",
+  "item.gallifrey.vortex_manipulator": "Vorteks M'nipulatur",
+  "item.gallifrey.blank_circuit": "Blänk Sürkit",
+  "item.gallifrey.location_circuit": "Lokashun Sürkit",
+
+  //Blocks go here
+  "block.gallifrey.ulanda_sapling": "Ulanda Tree Baby",
+  "block.gallifrey.ulanda_leaves": "Ulanda Leefs",
+  "block.gallifrey.ulanda_wood": "Ulanda Bawk",
+  "block.gallifrey.ulanda_log": "Ulanda Lawg",
+  "block.gallifrey.stripped_ulanda_wood": "Naked Ulanda Bawk",
+  "block.gallifrey.stripped_ulanda_log": "Naked Ulanda Lawg",
+  "block.gallifrey.ulanda_planks": "Ulanda Bloc",
+
+  //advancements go here
+
+  //misc shit goes here
+  "itemGroup.gallifrey.main": "Gahleefray",
+  "catagory.gallifrey.main": "Gahleefray Modd"
+}

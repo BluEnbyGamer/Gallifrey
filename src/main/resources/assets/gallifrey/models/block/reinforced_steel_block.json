@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "gallifrey:block/reinforced_steel_block_topbottom",
+    "down": "gallifrey:block/reinforced_steel_block_topbottom",
+    "up": "gallifrey:block/reinforced_steel_block_topbottom",
+    "north": "gallifrey:block/reinforced_steel_block_sides",
+    "south": "gallifrey:block/reinforced_steel_block_sides",
+    "east": "gallifrey:block/reinforced_steel_block_sides",
+    "west": "gallifrey:block/reinforced_steel_block_sides"
+  }
+}

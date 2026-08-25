@@ -19,6 +19,9 @@ public class GallifreyCreativeTab {
                 // Add every mod item & block here
                 entries.add(GallifreyModItems.VORTEX_MANIPULATOR);
 
+                entries.add(GallifreyModItems.BLANK_CIRCUIT);
+                entries.add(GallifreyModItems.LOCATION_CIRCUIT);
+
                 entries.add(GallifreyModBlocks.ULANDA_SAPLING);
                 entries.add(GallifreyModBlocks.ULANDA_LEAVES);
                 entries.add(GallifreyModBlocks.ULANDA_LOG);

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "minecraft:leather"
+    },
+    "O": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "gallifrey:location_circuit"
+    },
+    "Q": {
+      "item": "gallifrey:chronon_core"
+    },
+    "D": {
+      "item": "gallifrey:dimension_circuit"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "LQD",
+    "OXO"
+  ],
+  "result": {
+    "item": "gallifrey:vortex_manipulator",
+    "count": 1
+  },
+  "show_notification": true
+}
