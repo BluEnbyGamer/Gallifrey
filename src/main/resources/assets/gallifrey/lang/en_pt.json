@@ -3,7 +3,8 @@
   "item.gallifrey.white_point_star": "Star o' the White Point",
   "item.gallifrey.vortex_manipulator": "Time-Whirl Navigatin' Compass",
   "item.gallifrey.blank_circuit": "Blank Parchment Board",
-  "item.gallifrey.location_circuit": "Treasure Parchment Board",
+  "item.gallifrey.location_circuit": "Course Parchment Board",
+  "item.gallifrey.dimension_circuit": "Realm-Chartin' Parchment Board",
   //Blocks go here
   "block.gallifrey.ulanda_sapling": "Ulanda meager shrub",
   "block.gallifrey.ulanda_leaves": "Leaves o' Ulanda",

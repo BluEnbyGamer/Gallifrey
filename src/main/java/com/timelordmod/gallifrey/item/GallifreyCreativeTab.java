@@ -21,6 +21,7 @@ public class GallifreyCreativeTab {
 
                 entries.add(GallifreyModItems.BLANK_CIRCUIT);
                 entries.add(GallifreyModItems.LOCATION_CIRCUIT);
+                entries.add(GallifreyModItems.DIMENSION_CIRCUIT);
 
                 entries.add(GallifreyModBlocks.ULANDA_SAPLING);
                 entries.add(GallifreyModBlocks.ULANDA_LEAVES);
@@ -30,6 +31,7 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModBlocks.STRIP_ULANDA_WOOD);
                 entries.add(GallifreyModBlocks.ULANDA_PLANKS);
                 entries.add(GallifreyModItems.WHITE_POINT_STAR);
+
 
             })
             .build();

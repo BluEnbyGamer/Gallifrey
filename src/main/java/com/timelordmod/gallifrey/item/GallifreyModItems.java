@@ -30,12 +30,17 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
+    public static final DimensionCircuitItem DIMENSION_CIRCUIT = new DimensionCircuitItem(
+            new FabricItemSettings()
+    );
+
     public static void register() {
         registerItem("white_point_star", WHITE_POINT_STAR);
         //registerItem("chronon_core", CHRONON_CORE);
         registerItem("vortex_manipulator", VORTEX_MANIPULATOR);
         registerItem("blank_circuit", BLANK_CIRCUIT);
         registerItem("location_circuit",LOCATION_CIRCUIT);
+        registerItem("dimension_circuit",DIMENSION_CIRCUIT);
 
         GallifreyMod.LOGGER.debug("[Gallifrey] Items registered.");
     }
