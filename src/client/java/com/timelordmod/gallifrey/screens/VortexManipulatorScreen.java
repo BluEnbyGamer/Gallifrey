@@ -14,14 +14,35 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-
 public class VortexManipulatorScreen extends Screen {
 
-    private static final int GUI_WIDTH = 300;
-    private static final int GUI_HEIGHT = 220;
+    // =============================================================
+    // GUI CONSTANTS
+    // =============================================================
+
+    private static final int GUI_WIDTH = 320;
+    private static final int GUI_HEIGHT = 230;
+
+    private static final int PANEL = 0xF0091118;
+    private static final int PANEL_LIGHT = 0xFF101D25;
+    private static final int PANEL_DARK = 0xFF080D12;
+
+    private static final int CYAN = 0xFF26E6FF;
+    private static final int CYAN_DIM = 0xFF08758C;
+    private static final int CYAN_DARK = 0xFF063D4A;
+
+    private static final int TEXT = 0xFFE7FBFF;
+    private static final int TEXT_DIM = 0xFF75AAB5;
+
+    private static final int GREEN = 0xFF38FF88;
+    private static final int RED = 0xFFFF4F6B;
 
     private int left;
     private int top;
+
+    // =============================================================
+    // WIDGETS
+    // =============================================================
 
     private TextFieldWidget dimension;
     private TextFieldWidget x;
@@ -30,15 +51,27 @@ public class VortexManipulatorScreen extends Screen {
 
     private ButtonWidget surface;
     private ButtonWidget teleport;
+
     private boolean surfaceMode = false;
 
+    // Used for subtle animation
+    private float vortexTime = 0;
+
+    // =============================================================
+    // CONSTRUCTOR
+    // =============================================================
 
     public VortexManipulatorScreen() {
         super(Text.literal("Vortex Manipulator"));
     }
 
+    // =============================================================
+    // INIT
+    // =============================================================
+
     @Override
     protected void init() {
+
         left = (width - GUI_WIDTH) / 2;
         top = (height - GUI_HEIGHT) / 2;
 
@@ -48,18 +81,18 @@ public class VortexManipulatorScreen extends Screen {
 
         dimension = new TextFieldWidget(
                 textRenderer,
-                left + 45,
-                top + 55,
-                210,
-                20,
+                left + 25,
+                top + 65,
+                270,
+                22,
                 Text.literal("Dimension")
         );
 
         dimension.setText("overworld");
         dimension.setMaxLength(100);
-        dimension.setDrawsBackground(true);
-        dimension.setEditableColor(0xFFFFFF);
-        dimension.setUneditableColor(0x777777);
+
+        dimension.setEditableColor(TEXT);
+        dimension.setUneditableColor(TEXT_DIM);
 
         addDrawableChild(dimension);
 
@@ -67,72 +100,112 @@ public class VortexManipulatorScreen extends Screen {
         // COORDINATES
         // ---------------------------------------------------------
 
-        x = createField(left + 45, top + 105, "X");
-        y = createField(left + 125, top + 105, "Y");
-        z = createField(left + 205, top + 105, "Z");
+        x = createField(
+                left + 25,
+                top + 112,
+                82,
+                "X"
+        );
+
+        y = createField(
+                left + 119,
+                top + 112,
+                82,
+                "Y"
+        );
+
+        z = createField(
+                left + 213,
+                top + 112,
+                82,
+                "Z"
+        );
 
         // ---------------------------------------------------------
         // SURFACE MODE
         // ---------------------------------------------------------
 
         surface = ButtonWidget.builder(
-                Text.literal("SURFACE: OFF"),
+                Text.literal("SURFACE  •  OFF"),
                 button -> {
+
                     surfaceMode = !surfaceMode;
-                    button.setMessage(Text.literal(surfaceMode ? "SURFACE: ON" : "SURFACE: OFF"));
+
+                    button.setMessage(
+                            Text.literal(
+                                    surfaceMode
+                                            ? "SURFACE  •  ON"
+                                            : "SURFACE  •  OFF"
+                            )
+                    );
                 }
         ).dimensions(
-                left + 45,
-                top + 145,
-                100,
-                20
+                left + 25,
+                top + 153,
+                130,
+                22
         ).build();
 
         addDrawableChild(surface);
 
         // ---------------------------------------------------------
-        // TELEPORT BUTTON
+        // STATUS
+        // ---------------------------------------------------------
+
+        // ---------------------------------------------------------
+        // TELEPORT
         // ---------------------------------------------------------
 
         teleport = ButtonWidget.builder(
                 Text.literal("ENGAGE VORTEX"),
                 button -> teleport()
         ).dimensions(
-                left + 45,
-                top + 175,
-                210,
-                25
+                left + 25,
+                top + 187,
+                270,
+                27
         ).build();
 
         addDrawableChild(teleport);
     }
 
+    // =============================================================
+    // CREATE COORDINATE FIELD
+    // =============================================================
+
     private TextFieldWidget createField(
             int x,
             int y,
+            int width,
             String name
     ) {
+
         TextFieldWidget field = new TextFieldWidget(
                 textRenderer,
                 x,
                 y,
-                65,
-                20,
+                width,
+                22,
                 Text.literal(name)
         );
 
-        field.setPlaceholder(Text.literal(name));
+        field.setPlaceholder(
+                Text.literal(name)
+        );
+
         field.setMaxLength(30);
-        field.setEditableColor(0xFFFFFF);
+
+        field.setEditableColor(TEXT);
+        field.setUneditableColor(TEXT_DIM);
 
         addDrawableChild(field);
 
         return field;
     }
 
-    // -------------------------------------------------------------
+    // =============================================================
     // TELEPORT
-    // -------------------------------------------------------------
+    // =============================================================
 
     private void teleport() {
 
@@ -144,7 +217,8 @@ public class VortexManipulatorScreen extends Screen {
         // DIMENSION
         // ---------------------------------------------------------
 
-        Identifier dimensionId = parseDimension(dimension.getText());
+        Identifier dimensionId =
+                parseDimension(dimension.getText());
 
         if (dimensionId == null) {
 
@@ -160,11 +234,20 @@ public class VortexManipulatorScreen extends Screen {
         // COORDINATES
         // ---------------------------------------------------------
 
-        Double targetX = parseCoordinate(x.getText());
-        Double targetY = parseCoordinate(y.getText());
-        Double targetZ = parseCoordinate(z.getText());
+        Double targetX =
+                parseCoordinate(x.getText());
 
-        if (targetX == null || targetY == null || targetZ == null) {
+        Double targetY =
+                parseCoordinate(y.getText());
+
+        Double targetZ =
+                parseCoordinate(z.getText());
+
+        if (
+                targetX == null ||
+                        targetY == null ||
+                        targetZ == null
+        ) {
 
             client.player.sendMessage(
                     Text.literal("INVALID COORDINATES"),
@@ -178,7 +261,8 @@ public class VortexManipulatorScreen extends Screen {
         // CREATE PACKET
         // ---------------------------------------------------------
 
-        PacketByteBuf payload = PacketByteBufs.create();
+        PacketByteBuf payload =
+                PacketByteBufs.create();
 
         /*
          * Target player mode
@@ -186,6 +270,7 @@ public class VortexManipulatorScreen extends Screen {
          * false = coordinates
          * true  = target player
          */
+
         payload.writeBoolean(false);
 
         // Dimension
@@ -200,7 +285,7 @@ public class VortexManipulatorScreen extends Screen {
         payload.writeBoolean(surfaceMode);
 
         // ---------------------------------------------------------
-        // SEND TO SERVER
+        // SEND
         // ---------------------------------------------------------
 
         ClientPlayNetworking.send(
@@ -212,27 +297,34 @@ public class VortexManipulatorScreen extends Screen {
         client.setScreen(null);
     }
 
-    // -------------------------------------------------------------
+    // =============================================================
     // COORDINATE PARSER
-    // -------------------------------------------------------------
+    // =============================================================
 
     private Double parseCoordinate(String text) {
 
-        if (text == null || text.trim().isEmpty()) {
+        if (
+                text == null ||
+                        text.trim().isEmpty()
+        ) {
             return null;
         }
 
         try {
-            return Double.parseDouble(text.trim());
+
+            return Double.parseDouble(
+                    text.trim()
+            );
 
         } catch (NumberFormatException ignored) {
+
             return null;
         }
     }
 
-    // -------------------------------------------------------------
+    // =============================================================
     // DIMENSION PARSER
-    // -------------------------------------------------------------
+    // =============================================================
 
     private Identifier parseDimension(String input) {
 
@@ -240,9 +332,8 @@ public class VortexManipulatorScreen extends Screen {
             return null;
         }
 
-        String normalized = input
-                .trim()
-                .toLowerCase();
+        String normalized =
+                input.trim().toLowerCase();
 
         if (normalized.isEmpty()) {
             return null;
@@ -273,9 +364,9 @@ public class VortexManipulatorScreen extends Screen {
         };
     }
 
-    // -------------------------------------------------------------
-    // DRAWING
-    // -------------------------------------------------------------
+    // =============================================================
+    // RENDER
+    // =============================================================
 
     @Override
     public void render(
@@ -284,6 +375,8 @@ public class VortexManipulatorScreen extends Screen {
             int mouseY,
             float delta
     ) {
+
+        vortexTime += delta;
 
         drawBackground(context);
 
@@ -294,44 +387,81 @@ public class VortexManipulatorScreen extends Screen {
                 delta
         );
 
-        drawLabels(context);
+        drawLabels(
+                context,
+                mouseX,
+                mouseY
+        );
     }
 
-    // -------------------------------------------------------------
+    // =============================================================
     // BACKGROUND
-    // -------------------------------------------------------------
+    // =============================================================
 
     private void drawBackground(
             DrawContext context
     ) {
 
-        // Outer panel
+        // ---------------------------------------------------------
+        // DARKEN WORLD
+        // ---------------------------------------------------------
+
+        context.fill(
+                0,
+                0,
+                width,
+                height,
+                0x99000000
+        );
+
+        // ---------------------------------------------------------
+        // OUTER GLOW
+        // ---------------------------------------------------------
+
+        context.fill(
+                left - 3,
+                top - 3,
+                left + GUI_WIDTH + 3,
+                top + GUI_HEIGHT + 3,
+                0x4016D9FF
+        );
+
+        // ---------------------------------------------------------
+        // MAIN PANEL
+        // ---------------------------------------------------------
+
         context.fill(
                 left,
                 top,
                 left + GUI_WIDTH,
                 top + GUI_HEIGHT,
-                0xFF080D12
+                PANEL
         );
 
-        // Cyan outer border
+        // ---------------------------------------------------------
+        // OUTER BORDER
+        // ---------------------------------------------------------
+
         drawBorder(
                 context,
                 left,
                 top,
                 GUI_WIDTH,
                 GUI_HEIGHT,
-                0xFF16D9FF
+                CYAN
         );
 
-        // Dark cyan inner border
+        // ---------------------------------------------------------
+        // INNER BORDER
+        // ---------------------------------------------------------
+
         drawBorder(
                 context,
-                left + 5,
-                top + 5,
-                GUI_WIDTH - 10,
-                GUI_HEIGHT - 10,
-                0xFF07566B
+                left + 4,
+                top + 4,
+                GUI_WIDTH - 8,
+                GUI_HEIGHT - 8,
+                CYAN_DARK
         );
 
         // ---------------------------------------------------------
@@ -342,120 +472,324 @@ public class VortexManipulatorScreen extends Screen {
                 left + 10,
                 top + 10,
                 left + GUI_WIDTH - 10,
-                top + 40,
-                0xFF101C24
+                top + 43,
+                PANEL_LIGHT
         );
+
+        // Header accent line
+
+        context.fill(
+                left + 10,
+                top + 42,
+                left + GUI_WIDTH - 10,
+                top + 43,
+                CYAN_DIM
+        );
+
+        // ---------------------------------------------------------
+        // HEADER TEXT
+        // ---------------------------------------------------------
 
         context.drawText(
                 textRenderer,
                 "VORTEX MANIPULATOR",
                 left + 20,
-                top + 20,
-                0xFF26E6FF,
+                top + 18,
+                CYAN,
                 false
         );
-
-        // Vortex symbol
-        int centerX = left + GUI_WIDTH - 35;
-        int centerY = top + 25;
 
         context.drawText(
                 textRenderer,
-                "◉",
-                centerX - 5,
-                centerY - 7,
-                0xFF26E6FF,
+                "TEMPORAL NAVIGATION SYSTEM",
+                left + 20,
+                top + 30,
+                TEXT_DIM,
                 false
         );
 
         // ---------------------------------------------------------
-        // SEPARATORS
+        // VORTEX ICON
+        // ---------------------------------------------------------
+
+        drawVortexIcon(
+                context,
+                left + GUI_WIDTH - 32,
+                top + 26
+        );
+
+        // ---------------------------------------------------------
+        // SECTION DIVIDER
         // ---------------------------------------------------------
 
         context.fill(
                 left + 20,
-                top + 45,
+                top + 51,
                 left + GUI_WIDTH - 20,
-                top + 46,
-                0xFF07566B
+                top + 52,
+                CYAN_DARK
         );
+
+        // ---------------------------------------------------------
+        // DESTINATION PANEL
+        // ---------------------------------------------------------
+
+        drawSectionBox(
+                context,
+                left + 18,
+                top + 55,
+                GUI_WIDTH - 36,
+                39
+        );
+
+        // ---------------------------------------------------------
+        // COORDINATE PANEL
+        // ---------------------------------------------------------
+
+        drawSectionBox(
+                context,
+                left + 18,
+                top + 100,
+                GUI_WIDTH - 36,
+                61
+        );
+
+        // ---------------------------------------------------------
+        // LOWER DIVIDER
+        // ---------------------------------------------------------
 
         context.fill(
                 left + 20,
-                top + 135,
+                top + 170,
                 left + GUI_WIDTH - 20,
-                top + 136,
-                0xFF07566B
+                top + 171,
+                CYAN_DARK
+        );
+
+        // ---------------------------------------------------------
+        // STATUS LIGHT
+        // ---------------------------------------------------------
+
+        int statusColor =
+                surfaceMode
+                        ? 0xFFFFC247
+                        : GREEN;
+
+        context.fill(
+                left + 183,
+                top + 155,
+                left + 188,
+                top + 160,
+                statusColor
         );
     }
 
-    // -------------------------------------------------------------
+    // =============================================================
+    // SECTION BOX
+    // =============================================================
+
+    private void drawSectionBox(
+            DrawContext context,
+            int x,
+            int y,
+            int width,
+            int height
+    ) {
+
+        context.fill(
+                x,
+                y,
+                x + width,
+                y + height,
+                PANEL_DARK
+        );
+
+        // top highlight
+        context.fill(
+                x,
+                y,
+                x + width,
+                y + 1,
+                CYAN_DARK
+        );
+
+        // bottom highlight
+        context.fill(
+                x,
+                y + height - 1,
+                x + width,
+                y + height,
+                0xFF102A33
+        );
+    }
+
+    // =============================================================
+    // VORTEX ICON
+    // =============================================================
+
+    private void drawVortexIcon(
+            DrawContext context,
+            int centerX,
+            int centerY
+    ) {
+
+        int pulse =
+                (int) (
+                        Math.sin(
+                                vortexTime * 0.08
+                        ) * 2
+                );
+
+        // Outer ring
+
+        context.drawBorder(
+                centerX - 11 - pulse,
+                centerY - 11 - pulse,
+                22 + pulse * 2,
+                22 + pulse * 2,
+                CYAN_DARK
+        );
+
+        // Inner ring
+
+        context.drawBorder(
+                centerX - 7,
+                centerY - 7,
+                14,
+                14,
+                CYAN_DIM
+        );
+
+        // Core
+
+        context.fill(
+                centerX - 3,
+                centerY - 3,
+                centerX + 4,
+                centerY + 4,
+                CYAN
+        );
+
+        // Crosshair
+
+        context.fill(
+                centerX - 14,
+                centerY,
+                centerX - 9,
+                centerY + 1,
+                CYAN_DARK
+        );
+
+        context.fill(
+                centerX + 9,
+                centerY,
+                centerX + 14,
+                centerY + 1,
+                CYAN_DARK
+        );
+    }
+
+    // =============================================================
     // LABELS
-    // -------------------------------------------------------------
+    // =============================================================
 
     private void drawLabels(
-            DrawContext context
+            DrawContext context,
+            int mouseX,
+            int mouseY
     ) {
+
+        // ---------------------------------------------------------
+        // DESTINATION
+        // ---------------------------------------------------------
 
         context.drawText(
                 textRenderer,
                 "DESTINATION",
-                left + 45,
-                top + 44,
-                0xFF7DEFFF,
+                left + 26,
+                top + 59,
+                CYAN,
                 false
         );
+
+        // ---------------------------------------------------------
+        // COORDINATES
+        // ---------------------------------------------------------
 
         context.drawText(
                 textRenderer,
                 "COORDINATES",
-                left + 45,
-                top + 94,
-                0xFF7DEFFF,
+                left + 26,
+                top + 104,
+                CYAN,
                 false
         );
 
-        context.drawText(
-                textRenderer,
+        // Coordinate labels
+
+        drawCoordinateLabel(
+                context,
                 "X",
-                left + 45,
-                top + 128,
-                0xFF26E6FF,
-                false
+                left + 25,
+                top + 145
         );
 
-        context.drawText(
-                textRenderer,
+        drawCoordinateLabel(
+                context,
                 "Y",
-                left + 125,
-                top + 128,
-                0xFF26E6FF,
-                false
+                left + 119,
+                top + 145
         );
 
-        context.drawText(
-                textRenderer,
+        drawCoordinateLabel(
+                context,
                 "Z",
-                left + 205,
-                top + 128,
-                0xFF26E6FF,
-                false
+                left + 213,
+                top + 145
         );
 
-        // Status
+        // ---------------------------------------------------------
+        // STATUS
+        // ---------------------------------------------------------
+
         context.drawText(
                 textRenderer,
-                "VORTEX ONLINE",
-                left + 165,
-                top + 150,
-                0xFF38FF88,
+                surfaceMode
+                        ? "SURFACE LOCK"
+                        : "VORTEX ONLINE",
+                left + 194,
+                top + 153,
+                surfaceMode
+                        ? 0xFFFFC247
+                        : GREEN,
                 false
         );
     }
 
-    // -------------------------------------------------------------
+    // =============================================================
+    // COORDINATE LABEL
+    // =============================================================
+
+    private void drawCoordinateLabel(
+            DrawContext context,
+            String label,
+            int x,
+            int y
+    ) {
+
+        context.drawText(
+                textRenderer,
+                label,
+                x,
+                y,
+                TEXT_DIM,
+                false
+        );
+    }
+
+    // =============================================================
     // BORDER
-    // -------------------------------------------------------------
+    // =============================================================
 
     private void drawBorder(
             DrawContext context,
@@ -467,6 +801,7 @@ public class VortexManipulatorScreen extends Screen {
     ) {
 
         // Top
+
         context.fill(
                 x,
                 y,
@@ -476,6 +811,7 @@ public class VortexManipulatorScreen extends Screen {
         );
 
         // Bottom
+
         context.fill(
                 x,
                 y + height - 1,
@@ -485,6 +821,7 @@ public class VortexManipulatorScreen extends Screen {
         );
 
         // Left
+
         context.fill(
                 x,
                 y,
@@ -494,6 +831,7 @@ public class VortexManipulatorScreen extends Screen {
         );
 
         // Right
+
         context.fill(
                 x + width - 1,
                 y,
@@ -503,13 +841,12 @@ public class VortexManipulatorScreen extends Screen {
         );
     }
 
-    // -------------------------------------------------------------
+    // =============================================================
     // GAME DOES NOT PAUSE
-    // -------------------------------------------------------------
+    // =============================================================
 
     @Override
     public boolean shouldPause() {
         return false;
     }
 }
-
