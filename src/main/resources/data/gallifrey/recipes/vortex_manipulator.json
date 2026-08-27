@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "category": "misc",
   "key": {
     "X": {
       "item": "minecraft:leather"
@@ -12,7 +12,7 @@
       "item": "gallifrey:location_circuit"
     },
     "Q": {
-      "item": "gallifrey:chronon_core"
+      "item": "gallifrey:white_point_star"
     },
     "D": {
       "item": "gallifrey:dimension_circuit"

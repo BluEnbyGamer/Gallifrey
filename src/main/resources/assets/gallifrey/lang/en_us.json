@@ -4,6 +4,7 @@
   "item.gallifrey.vortex_manipulator": "Vortex Manipulator",
   "item.gallifrey.blank_circuit": "Blank Circuit",
   "item.gallifrey.location_circuit": "Location Circuit",
+  "item.gallifrey.dimension_circuit": "Dimension Circuit",
 
   //Blocks go here
   "block.gallifrey.ulanda_sapling": "Ulanda Sapling",

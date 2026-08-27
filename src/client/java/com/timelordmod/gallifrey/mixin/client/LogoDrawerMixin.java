@@ -41,11 +41,12 @@ public class LogoDrawerMixin {
             new Identifier("gallifrey", "textures/gui/title/gall_lightsday.png");
 
 
-
+    // Include the intermediary method name 'method_48209' so production builds match it without a refMap
     @Inject(
-            method = "draw(Lnet/minecraft/client/gui/DrawContext;IF)V",
+            method = {"draw(Lnet/minecraft/client/gui/DrawContext;IF)V", "method_48209"},
             at = @At("HEAD"),
-            cancellable = true
+            cancellable = true,
+            require = 0
     )
     private void gallifrey$replaceLogo(DrawContext context, int screenWidth, float alpha, CallbackInfo ci) {
 
@@ -54,16 +55,16 @@ public class LogoDrawerMixin {
         int logoWidth = 380;
         int logoHeight = 45;
 
-        int x = (screenWidth - logoWidth) / 2;
-        int y = 15;
+        int drawX = (screenWidth - logoWidth) / 2;
+        int drawY = 15;
 
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
 
         context.drawTexture(
                 logo,
-                x,
-                y,
+                drawX,
+                drawY,
                 0,
                 0,
                 logoWidth,

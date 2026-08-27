@@ -29,7 +29,7 @@ fabricApi {
 
 /*
  * ---------------------------------------------------------
- * CLIENT / COMMON SOURCE SETS
+ * CLIENT / COMMON SOURCE SETS & MIXIN REFMAP FIX
  * ---------------------------------------------------------
  */
 
@@ -41,6 +41,10 @@ loom {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
+	}
+
+	mixin {
+		defaultRefmapName = "gallifrey-refmap.json"
 	}
 }
 
