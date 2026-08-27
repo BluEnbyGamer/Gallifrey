@@ -33,6 +33,9 @@ import net.minecraft.util.Identifier;
 public class GallifreyModBlocks {
 
     //ULANDA WOOD SET BLOCK REGISTRY
+    public static final Block REINFORCED_STEEL_BLOCK = registerBlock("reinforced_steel_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN).sounds(BlockSoundGroup.METAL)));
+
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
