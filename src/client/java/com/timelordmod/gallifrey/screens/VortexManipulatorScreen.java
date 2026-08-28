@@ -82,7 +82,7 @@ public class VortexManipulatorScreen extends Screen {
         dimension = new TextFieldWidget(
                 textRenderer,
                 left + 25,
-                top + 65,
+                top + 70,
                 270,
                 22,
                 Text.literal("Dimension")
@@ -102,21 +102,21 @@ public class VortexManipulatorScreen extends Screen {
 
         x = createField(
                 left + 25,
-                top + 112,
+                top + 115,
                 82,
                 "X"
         );
 
         y = createField(
                 left + 119,
-                top + 112,
+                top + 115,
                 82,
                 "Y"
         );
 
         z = createField(
                 left + 213,
-                top + 112,
+                top + 115,
                 82,
                 "Z"
         );
@@ -125,7 +125,11 @@ public class VortexManipulatorScreen extends Screen {
         // SURFACE MODE
         // ---------------------------------------------------------
 
-        surface = ButtonWidget.builder(
+        surface = new ThemedButtonWidget(
+                left + 25,
+                top + 163,
+                130,
+                15,
                 Text.literal("SURFACE  •  OFF"),
                 button -> {
 
@@ -139,12 +143,7 @@ public class VortexManipulatorScreen extends Screen {
                             )
                     );
                 }
-        ).dimensions(
-                left + 25,
-                top + 153,
-                130,
-                22
-        ).build();
+        );
 
         addDrawableChild(surface);
 
@@ -156,15 +155,14 @@ public class VortexManipulatorScreen extends Screen {
         // TELEPORT
         // ---------------------------------------------------------
 
-        teleport = ButtonWidget.builder(
-                Text.literal("ENGAGE VORTEX"),
-                button -> teleport()
-        ).dimensions(
+        teleport = new ThemedButtonWidget(
                 left + 25,
                 top + 187,
                 270,
-                27
-        ).build();
+                27,
+                Text.literal("ENGAGE VORTEX"),
+                button -> teleport()
+        );
 
         addDrawableChild(teleport);
     }
@@ -442,8 +440,7 @@ public class VortexManipulatorScreen extends Screen {
         // OUTER BORDER
         // ---------------------------------------------------------
 
-        drawBorder(
-                context,
+        context.drawBorder(
                 left,
                 top,
                 GUI_WIDTH,
@@ -455,8 +452,7 @@ public class VortexManipulatorScreen extends Screen {
         // INNER BORDER
         // ---------------------------------------------------------
 
-        drawBorder(
-                context,
+        context.drawBorder(
                 left + 4,
                 top + 4,
                 GUI_WIDTH - 8,
@@ -555,14 +551,23 @@ public class VortexManipulatorScreen extends Screen {
         );
 
         // ---------------------------------------------------------
+        // FIELD FRAMES
+        // ---------------------------------------------------------
+
+        drawFieldFrame(context, dimension);
+        drawFieldFrame(context, x);
+        drawFieldFrame(context, y);
+        drawFieldFrame(context, z);
+
+        // ---------------------------------------------------------
         // LOWER DIVIDER
         // ---------------------------------------------------------
 
         context.fill(
                 left + 20,
-                top + 170,
+                top + 180,
                 left + GUI_WIDTH - 20,
-                top + 171,
+                top + 182,
                 CYAN_DARK
         );
 
@@ -577,9 +582,9 @@ public class VortexManipulatorScreen extends Screen {
 
         context.fill(
                 left + 183,
-                top + 155,
+                top + 168,
                 left + 188,
-                top + 160,
+                top + 173,
                 statusColor
         );
     }
@@ -620,6 +625,24 @@ public class VortexManipulatorScreen extends Screen {
                 x + width,
                 y + height,
                 0xFF102A33
+        );
+    }
+
+    // =============================================================
+    // FIELD FRAME
+    // =============================================================
+
+    private void drawFieldFrame(
+            DrawContext context,
+            TextFieldWidget field
+    ) {
+
+        context.drawBorder(
+                field.getX() - 2,
+                field.getY() - 2,
+                field.getWidth() + 4,
+                field.getHeight() + 4,
+                CYAN_DIM
         );
     }
 
@@ -731,21 +754,21 @@ public class VortexManipulatorScreen extends Screen {
                 context,
                 "X",
                 left + 25,
-                top + 145
+                top + 140
         );
 
         drawCoordinateLabel(
                 context,
                 "Y",
                 left + 119,
-                top + 145
+                top + 140
         );
 
         drawCoordinateLabel(
                 context,
                 "Z",
                 left + 213,
-                top + 145
+                top + 140
         );
 
         // ---------------------------------------------------------
@@ -758,7 +781,7 @@ public class VortexManipulatorScreen extends Screen {
                         ? "SURFACE LOCK"
                         : "VORTEX ONLINE",
                 left + 194,
-                top + 153,
+                top + 167,
                 surfaceMode
                         ? 0xFFFFC247
                         : GREEN,
@@ -788,57 +811,86 @@ public class VortexManipulatorScreen extends Screen {
     }
 
     // =============================================================
-    // BORDER
+    // THEMED BUTTON
     // =============================================================
 
-    private void drawBorder(
-            DrawContext context,
-            int x,
-            int y,
-            int width,
-            int height,
-            int color
-    ) {
+    private class ThemedButtonWidget extends ButtonWidget {
 
-        // Top
+        public ThemedButtonWidget(
+                int x,
+                int y,
+                int width,
+                int height,
+                Text message,
+                PressAction onPress
+        ) {
+            super(
+                    x,
+                    y,
+                    width,
+                    height,
+                    message,
+                    onPress,
+                    DEFAULT_NARRATION_SUPPLIER
+            );
+        }
 
-        context.fill(
-                x,
-                y,
-                x + width,
-                y + 1,
-                color
-        );
+        @Override
+        public void renderButton(
+                DrawContext context,
+                int mouseX,
+                int mouseY,
+                float delta
+        ) {
 
-        // Bottom
+            boolean hovered =
+                    mouseX >= getX() &&
+                            mouseX < getX() + getWidth() &&
+                            mouseY >= getY() &&
+                            mouseY < getY() + getHeight();
 
-        context.fill(
-                x,
-                y + height - 1,
-                x + width,
-                y + height,
-                color
-        );
+            int fill;
+            int border;
+            int text;
 
-        // Left
+            if (!active) {
+                fill = PANEL_DARK;
+                border = CYAN_DARK;
+                text = TEXT_DIM;
+            } else if (hovered) {
+                fill = PANEL_LIGHT;
+                border = CYAN;
+                text = TEXT;
+            } else {
+                fill = PANEL_DARK;
+                border = CYAN_DIM;
+                text = CYAN;
+            }
 
-        context.fill(
-                x,
-                y,
-                x + 1,
-                y + height,
-                color
-        );
+            context.fill(
+                    getX(),
+                    getY(),
+                    getX() + getWidth(),
+                    getY() + getHeight(),
+                    fill
+            );
 
-        // Right
+            context.drawBorder(
+                    getX(),
+                    getY(),
+                    getWidth(),
+                    getHeight(),
+                    border
+            );
 
-        context.fill(
-                x + width - 1,
-                y,
-                x + width,
-                y + height,
-                color
-        );
+            context.drawCenteredTextWithShadow(
+                    textRenderer,
+                    getMessage(),
+                    getX() + getWidth() / 2,
+                    getY() + (getHeight() - 8) / 2,
+                    text
+            );
+        }
     }
 
     // =============================================================

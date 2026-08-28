@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.MinecraftServer;
@@ -32,8 +33,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class VMPacket {
     private static final Map<UUID, PendingTeleportEffect> PENDING_EFFECTS = new ConcurrentHashMap<>();
 
-    // Identifier for your custom sound file: assets/gallifrey/sounds/vm_sound.ogg
-    public static final SoundEvent VM_SOUND = SoundEvent.of(new Identifier("gallifrey", "vm_sound"));
+    // assets/gallifrey/sounds/vm_take_off.ogg
+    public static final SoundEvent VM_TAKE_OFF_SOUND = SoundEvent.of(new Identifier("gallifrey", "vm_take_off"));
+
+    // assets/gallifrey/sounds/vm_land.ogg
+    public static final SoundEvent VM_LAND_SOUND = SoundEvent.of(new Identifier("gallifrey", "vm_land"));
 
     static {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
@@ -62,15 +66,40 @@ public class VMPacket {
                         continue;
                     }
 
-                    // Play VM Sound at source position
+                    // Play take-off sound at source position
                     sourceWorld.playSound(null, pending.sourcePosition().x, pending.sourcePosition().y, pending.sourcePosition().z,
-                            VM_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                            VM_TAKE_OFF_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
 
-                    entry.setValue(pending.nextPhase(TeleportPhase.TELEPORT, 10));
+                    // Departure burst
+                    sourceWorld.spawnParticles(ParticleTypes.PORTAL,
+                            pending.sourcePosition().x, pending.sourcePosition().y + 1.0, pending.sourcePosition().z,
+                            60, 0.4, 0.8, 0.4, 0.05);
+
+                    // 19 ticks brings us to the 20-tick (1 second) mark from
+                    // when the packet was received, where the player cloaks
+                    entry.setValue(pending.nextPhase(TeleportPhase.PRE_CLOAK, 19));
                     continue;
                 }
 
-                // Phase 2: Teleporting Player
+                // Phase 2: Pre-Cloak (player stays visible here, then goes invisible)
+                if (pending.phase() == TeleportPhase.PRE_CLOAK) {
+                    if (pending.ticksRemaining() > 0) {
+                        entry.setValue(pending.tickDown());
+                        continue;
+                    }
+
+                    // 1 second after take-off: go invisible now.
+                    // Duration must outlast the remaining timeline (20 + 10 = 30 ticks)
+                    // with room to spare, or it expires before the code removes it
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 40, 0, false, false, false));
+
+                    // 20 ticks brings us to the original tick-40 teleport moment —
+                    // same overall timing as before, just with a visible head start
+                    entry.setValue(pending.nextPhase(TeleportPhase.TELEPORT, 20));
+                    continue;
+                }
+
+                // Phase 3: Teleporting Player
                 if (pending.phase() == TeleportPhase.TELEPORT) {
                     ServerWorld targetWorld = server.getWorld(pending.targetWorldKey());
                     if (targetWorld == null) {
@@ -98,7 +127,7 @@ public class VMPacket {
                     continue;
                 }
 
-                // Phase 3: Arrival & Cleanup
+                // Phase 4: Arrival & Cleanup
                 ServerWorld targetWorld = server.getWorld(pending.targetWorldKey());
                 if (targetWorld == null || player.getServerWorld() != targetWorld) {
                     player.removeStatusEffect(StatusEffects.INVISIBILITY);
@@ -111,9 +140,14 @@ public class VMPacket {
                     continue;
                 }
 
-                // Play VM Sound at arrival position
+                // Play land sound at arrival position
                 targetWorld.playSound(null, pending.targetPosition().x, pending.targetPosition().y, pending.targetPosition().z,
-                        VM_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                        VM_LAND_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
+
+                // Arrival burst
+                targetWorld.spawnParticles(ParticleTypes.REVERSE_PORTAL,
+                        pending.targetPosition().x, pending.targetPosition().y + 1.0, pending.targetPosition().z,
+                        60, 0.4, 0.8, 0.4, 0.05);
 
                 player.removeStatusEffect(StatusEffects.INVISIBILITY);
                 iterator.remove();
@@ -167,8 +201,8 @@ public class VMPacket {
             Vec3d sourcePos = player.getPos();
             BlockPos targetBlockPos = BlockPos.ofFloored(targetPos);
 
-            // Turn player invisible during sequence
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 45, 0, false, false, false));
+            // Player stays visible here — invisibility gets applied
+            // 1 second in, at the end of the PRE_CLOAK phase below
 
             PENDING_EFFECTS.put(player.getUuid(), new PendingTeleportEffect(
                     sourceWorld.getRegistryKey(),
@@ -195,6 +229,7 @@ public class VMPacket {
 
     private enum TeleportPhase {
         SOURCE_WARMUP,
+        PRE_CLOAK,
         TELEPORT,
         TARGET_ARRIVAL
     }

@@ -1,8 +1,12 @@
 {
-  "vm_sound": {
-    "subtitle": "subtitles.gallifrey.vm_sound",
+  "vm_take_off": {
     "sounds": [
-      "gallifrey:vm_sound"
+      "gallifrey:vm_take_off"
+    ]
+  },
+  "vm_land": {
+    "sounds": [
+      "gallifrey:vm_land"
     ]
   }
 }
