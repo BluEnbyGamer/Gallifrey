@@ -4,8 +4,10 @@ import com.timelordmod.gallifrey.item.GallifreyModItems;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKey;
@@ -18,6 +20,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -25,6 +28,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 
+import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
@@ -32,6 +36,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class VMPacket {
     private static final Map<UUID, PendingTeleportEffect> PENDING_EFFECTS = new ConcurrentHashMap<>();
+
+    private static final EquipmentSlot[] ARMOR_SLOTS = {
+            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET
+    };
 
     // assets/gallifrey/sounds/vm_take_off.ogg
     public static final SoundEvent VM_TAKE_OFF_SOUND = SoundEvent.of(new Identifier("gallifrey", "vm_take_off"));
@@ -57,6 +65,7 @@ public class VMPacket {
                     ServerWorld sourceWorld = server.getWorld(pending.sourceWorldKey());
                     if (sourceWorld == null) {
                         player.removeStatusEffect(StatusEffects.INVISIBILITY);
+                        restoreHiddenItems(player, pending);
                         iterator.remove();
                         continue;
                     }
@@ -93,9 +102,37 @@ public class VMPacket {
                     // with room to spare, or it expires before the code removes it
                     player.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 40, 0, false, false, false));
 
+                    // Hide the Vortex Manipulator too — vanilla invisibility doesn't
+                    // hide held items on its own, so it would otherwise float in place
+                    ItemStack mainHand = player.getMainHandStack();
+                    ItemStack offHand = player.getOffHandStack();
+                    ItemStack hiddenMainHand = ItemStack.EMPTY;
+                    ItemStack hiddenOffHand = ItemStack.EMPTY;
+
+                    if (mainHand.isOf(GallifreyModItems.VORTEX_MANIPULATOR)) {
+                        hiddenMainHand = mainHand.copy();
+                        player.setStackInHand(Hand.MAIN_HAND, ItemStack.EMPTY);
+                    }
+                    if (offHand.isOf(GallifreyModItems.VORTEX_MANIPULATOR)) {
+                        hiddenOffHand = offHand.copy();
+                        player.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);
+                    }
+
+                    // Armor too. Unlike the hands above, this isn't filtered to a specific
+                    // item — any equipped armor would float in place just the same, so
+                    // whatever's actually worn gets hidden, regardless of what it is
+                    Map<EquipmentSlot, ItemStack> hiddenArmor = new EnumMap<>(EquipmentSlot.class);
+                    for (EquipmentSlot slot : ARMOR_SLOTS) {
+                        ItemStack piece = player.getEquippedStack(slot);
+                        if (!piece.isEmpty()) {
+                            hiddenArmor.put(slot, piece.copy());
+                            player.equipStack(slot, ItemStack.EMPTY);
+                        }
+                    }
+
                     // 20 ticks brings us to the original tick-40 teleport moment —
                     // same overall timing as before, just with a visible head start
-                    entry.setValue(pending.nextPhase(TeleportPhase.TELEPORT, 20));
+                    entry.setValue(pending.cloak(hiddenMainHand, hiddenOffHand, hiddenArmor, TeleportPhase.TELEPORT, 20));
                     continue;
                 }
 
@@ -104,6 +141,7 @@ public class VMPacket {
                     ServerWorld targetWorld = server.getWorld(pending.targetWorldKey());
                     if (targetWorld == null) {
                         player.removeStatusEffect(StatusEffects.INVISIBILITY);
+                        restoreHiddenItems(player, pending);
                         iterator.remove();
                         continue;
                     }
@@ -131,6 +169,7 @@ public class VMPacket {
                 ServerWorld targetWorld = server.getWorld(pending.targetWorldKey());
                 if (targetWorld == null || player.getServerWorld() != targetWorld) {
                     player.removeStatusEffect(StatusEffects.INVISIBILITY);
+                    restoreHiddenItems(player, pending);
                     iterator.remove();
                     continue;
                 }
@@ -149,6 +188,7 @@ public class VMPacket {
                         pending.targetPosition().x, pending.targetPosition().y + 1.0, pending.targetPosition().z,
                         60, 0.4, 0.8, 0.4, 0.05);
 
+                restoreHiddenItems(player, pending);
                 player.removeStatusEffect(StatusEffects.INVISIBILITY);
                 iterator.remove();
             }
@@ -211,7 +251,10 @@ public class VMPacket {
                     targetPos,
                     new ChunkPosKey(targetBlockPos.getX() >> 4, targetBlockPos.getZ() >> 4),
                     TeleportPhase.SOURCE_WARMUP,
-                    1
+                    1,
+                    ItemStack.EMPTY,
+                    ItemStack.EMPTY,
+                    Map.of()
             ));
         });
     }
@@ -225,6 +268,20 @@ public class VMPacket {
         return false;
     }
 
+    // Puts back whichever hand(s)/armor slot(s) had gear cleared for the invisible portion
+    // of the sequence. Safe to call even if nothing was ever hidden (defaults are empty).
+    private static void restoreHiddenItems(ServerPlayerEntity player, PendingTeleportEffect pending) {
+        if (!pending.hiddenMainHand().isEmpty()) {
+            player.setStackInHand(Hand.MAIN_HAND, pending.hiddenMainHand());
+        }
+        if (!pending.hiddenOffHand().isEmpty()) {
+            player.setStackInHand(Hand.OFF_HAND, pending.hiddenOffHand());
+        }
+        for (Map.Entry<EquipmentSlot, ItemStack> hidden : pending.hiddenArmor().entrySet()) {
+            player.equipStack(hidden.getKey(), hidden.getValue());
+        }
+    }
+
     private record ChunkPosKey(int x, int z) {}
 
     private enum TeleportPhase {
@@ -236,15 +293,25 @@ public class VMPacket {
 
     private record PendingTeleportEffect(RegistryKey<World> sourceWorldKey, Vec3d sourcePosition,
                                          RegistryKey<World> targetWorldKey, Vec3d targetPosition,
-                                         ChunkPosKey targetChunkPos, TeleportPhase phase, int ticksRemaining) {
+                                         ChunkPosKey targetChunkPos, TeleportPhase phase, int ticksRemaining,
+                                         ItemStack hiddenMainHand, ItemStack hiddenOffHand,
+                                         Map<EquipmentSlot, ItemStack> hiddenArmor) {
         private PendingTeleportEffect tickDown() {
             return new PendingTeleportEffect(sourceWorldKey, sourcePosition, targetWorldKey, targetPosition,
-                    targetChunkPos, phase, ticksRemaining - 1);
+                    targetChunkPos, phase, ticksRemaining - 1, hiddenMainHand, hiddenOffHand, hiddenArmor);
         }
 
         private PendingTeleportEffect nextPhase(TeleportPhase nextPhase, int nextTicksRemaining) {
             return new PendingTeleportEffect(sourceWorldKey, sourcePosition, targetWorldKey, targetPosition,
-                    targetChunkPos, nextPhase, nextTicksRemaining);
+                    targetChunkPos, nextPhase, nextTicksRemaining, hiddenMainHand, hiddenOffHand, hiddenArmor);
+        }
+
+        // Like nextPhase, but also records which hand(s)/armor slot(s) just got cleared so they can be restored later
+        private PendingTeleportEffect cloak(ItemStack hiddenMainHand, ItemStack hiddenOffHand,
+                                            Map<EquipmentSlot, ItemStack> hiddenArmor,
+                                            TeleportPhase nextPhase, int nextTicksRemaining) {
+            return new PendingTeleportEffect(sourceWorldKey, sourcePosition, targetWorldKey, targetPosition,
+                    targetChunkPos, nextPhase, nextTicksRemaining, hiddenMainHand, hiddenOffHand, hiddenArmor);
         }
     }
 }
