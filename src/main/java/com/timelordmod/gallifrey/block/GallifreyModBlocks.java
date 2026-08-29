@@ -1,6 +1,7 @@
 package com.timelordmod.gallifrey.block;
 
 import com.timelordmod.gallifrey.GallifreyMod;
+import com.timelordmod.gallifrey.world.tree.TardisSaplingGenerator;
 import com.timelordmod.gallifrey.world.tree.UlandaSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -55,7 +56,7 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
 
     public static final Block TARDIS_SAPLING = registerBlock("tardis_sapling",
-            new SaplingBlock(new UlandaSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new SaplingBlock(new TardisSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));

@@ -2,7 +2,10 @@
 	"required": true,
 	"package": "com.timelordmod.gallifrey.mixin",
 	"compatibilityLevel": "JAVA_17",
-	"mixins": [],
+	"mixins": [
+		"TrunkPlacerTypeInvoker",
+		"FoliagePlacerTypeInvoker"
+	],
 	"client": [
 		"client.LogoDrawerMixin"
 	],

@@ -30,6 +30,20 @@ public class GallifreyModClient implements ClientModInitializer {
         );
 
         // ---------------------------------------------------------
+        // TARDIS RENDER LAYER
+        // ---------------------------------------------------------
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.TARDIS_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.TARDIS_LEAVES,
+                RenderLayer.getCutoutMipped()
+        );
+
+        // ---------------------------------------------------------
         // ULANDA RENDER LAYER
         // ---------------------------------------------------------
 
@@ -44,8 +58,8 @@ public class GallifreyModClient implements ClientModInitializer {
         );
 
         // ---------------------------------------------------------
-// VORTEX MANIPULATOR
-// ---------------------------------------------------------
+        // VORTEX MANIPULATOR
+        // ---------------------------------------------------------
 
         UseItemCallback.EVENT.register(
                 (player, world, hand) -> {

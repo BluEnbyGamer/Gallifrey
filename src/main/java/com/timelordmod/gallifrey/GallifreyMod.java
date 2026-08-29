@@ -4,6 +4,7 @@ import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
+import com.timelordmod.gallifrey.worldgen.GallifreyWorldgen;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -25,7 +26,7 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyModItems.register();
 		GallifreyModBlocks.register();
 		GallifreyCreativeTab.register();
-
+		GallifreyWorldgen.init();
 
 
 		ServerPlayNetworking.registerGlobalReceiver(
