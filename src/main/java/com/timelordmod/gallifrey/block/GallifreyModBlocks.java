@@ -36,6 +36,27 @@ public class GallifreyModBlocks {
     public static final Block REINFORCED_STEEL_BLOCK = registerBlock("reinforced_steel_block",
             new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN).sounds(BlockSoundGroup.METAL)));
 
+    public static final Block TARDIS_LEAVES = registerBlock("tardis_leaves",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
+
+    public static final Block TARDIS_WOOD = registerBlock("tardis_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block TARDIS_LOG = registerBlock("tardis_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+
+    public static final Block   STRIP_TARDIS_LOG = registerBlock("stripped_tardis_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+
+    public static final Block STRIP_TARDIS_WOOD = registerBlock("stripped_tardis_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block TARDIS_PLANKS = registerBlock("tardis_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block TARDIS_SAPLING = registerBlock("tardis_sapling",
+            new SaplingBlock(new UlandaSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 

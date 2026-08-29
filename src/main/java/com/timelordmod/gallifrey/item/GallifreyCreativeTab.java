@@ -26,6 +26,15 @@ public class GallifreyCreativeTab {
                 //MISC BLOCKS
                 entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
 
+                //TARDIS WOODSET
+                entries.add(GallifreyModBlocks.TARDIS_SAPLING);
+                entries.add(GallifreyModBlocks.TARDIS_LEAVES);
+                entries.add(GallifreyModBlocks.TARDIS_LOG);
+                entries.add(GallifreyModBlocks.TARDIS_WOOD);
+                entries.add(GallifreyModBlocks.STRIP_TARDIS_LOG);
+                entries.add(GallifreyModBlocks.STRIP_TARDIS_WOOD);
+                entries.add(GallifreyModBlocks.TARDIS_PLANKS);
+
                 //ULANDA WOODSET
                 entries.add(GallifreyModBlocks.ULANDA_SAPLING);
                 entries.add(GallifreyModBlocks.ULANDA_LEAVES);

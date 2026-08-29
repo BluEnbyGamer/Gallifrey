@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "gallifrey:block/tardis_log_top",
+    "down": "gallifrey:block/tardis_log_top",
+    "up": "gallifrey:block/tardis_log_top",
+    "north": "gallifrey:block/tardis_wood",
+    "south": "gallifrey:block/tardis_wood",
+    "east": "gallifrey:block/tardis_wood",
+    "west": "gallifrey:block/tardis_wood"
+  }
+}
