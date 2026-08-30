@@ -28,7 +28,9 @@ public class ModConfiguredFeatures {
     //public static final RegistryKey<ConfiguredFeature<?, ?>> NETHER_****_ORE_KEY = registerKey("nether_****_ore");
     //public static final RegistryKey<ConfiguredFeature<?, ?>> END_****_ORE_KEY = registerKey("end_****_ore");
 
-   public static final RegistryKey<ConfiguredFeature<?, ?>> ULANDA_KEY =registerKey("ulanda");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> TARDIS_TREE_KEY =registerKey("tardis_tree");
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> ULANDA_KEY =registerKey("ulanda");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
        // RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -73,8 +75,16 @@ public class ModConfiguredFeatures {
                 )
                         .build()
         );
-    }
 
+    register(context, TARDIS_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+            BlockStateProvider.of(GallifreyModBlocks.TARDIS_LOG),
+                new StraightTrunkPlacer(5, 4, 3),
+
+                BlockStateProvider.of(GallifreyModBlocks.TARDIS_LEAVES),
+            new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2),
+
+            new TwoLayersFeatureSize(1, 0, 2)).build());
+}
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(GallifreyMod.MOD_ID, name));
     }
