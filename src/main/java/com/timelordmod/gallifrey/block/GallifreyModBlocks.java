@@ -6,10 +6,7 @@ import com.timelordmod.gallifrey.world.tree.UlandaSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PillarBlock;
-import net.minecraft.block.SaplingBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -38,7 +35,7 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN).sounds(BlockSoundGroup.METAL)));
 
     public static final Block TARDIS_LEAVES = registerBlock("tardis_leaves",
-            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
+            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
     public static final Block TARDIS_WOOD = registerBlock("tardis_wood",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
@@ -59,7 +56,7 @@ public class GallifreyModBlocks {
             new SaplingBlock(new TardisSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
-            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
+            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
     public static final Block ULANDA_WOOD = registerBlock("ulanda_wood",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
