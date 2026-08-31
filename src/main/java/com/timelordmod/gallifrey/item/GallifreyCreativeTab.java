@@ -45,7 +45,6 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModBlocks.ULANDA_PLANKS);
 
                 //TREEOBORG_WOODSET
-                //entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
                 //entries.add(GallifreyModBlocks.ULANDA_SAPLING);
                 //entries.add(GallifreyModBlocks.ULANDA_LEAVES);
                 //entries.add(GallifreyModBlocks.ULANDA_LOG);
