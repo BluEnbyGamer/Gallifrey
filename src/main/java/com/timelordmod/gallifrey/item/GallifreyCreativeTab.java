@@ -13,7 +13,7 @@ import net.minecraft.text.Text;
 
 public class GallifreyCreativeTab {
     public static final ItemGroup TAB = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(GallifreyModBlocks.ULANDA_SAPLING))
+            .icon(() -> new ItemStack(GallifreyModBlocks.TARDIS_SAPLING))
             .displayName(Text.translatable("itemGroup.gallifrey.main"))
             .entries((context, entries) -> {
                 //ITEMS GO HERE
