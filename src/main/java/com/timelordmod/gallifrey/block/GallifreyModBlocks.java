@@ -30,9 +30,10 @@ import net.minecraft.util.Identifier;
 
 public class GallifreyModBlocks {
 
-    //ULANDA WOOD SET BLOCK REGISTRY
+    //misc blocks
     public static final Block REINFORCED_STEEL_BLOCK = registerBlock("reinforced_steel_block",
             new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN).sounds(BlockSoundGroup.METAL)));
+
 
     public static final Block TARDIS_LEAVES = registerBlock("tardis_leaves",
             new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
@@ -55,6 +56,31 @@ public class GallifreyModBlocks {
     public static final Block TARDIS_SAPLING = registerBlock("tardis_sapling",
             new SaplingBlock(new TardisSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
+    public static final Block TARDIS_STAIRS = registerBlock("tardis_stairs",
+            new StairsBlock(GallifreyModBlocks.TARDIS_PLANKS.getDefaultState() ,FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block TARDIS_SLAB = registerBlock("tardis_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block TARDIS_BUTTON = registerBlock("tardis_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK,15, true));
+
+    public static final Block TARDIS_PRESSURE_PLATE = registerBlock("tardis_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK));
+
+    public static final Block TARDIS_FENCE = registerBlock("tardis_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block TARDIS_FENCE_GATE = registerBlock("tardis_fence_gate",
+            new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), WoodType.OAK));
+
+    public static final Block TARDIS_WOOD_DOOR = registerBlock("tardis_wood_door",
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK));
+
+    public static final Block TARDIS_TRAPDOOR = registerBlock("tardis_trapdoor",
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK));
+
+    //ULANDA WOOD SET BLOCK REGISTRY
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
             new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
 
@@ -75,6 +101,31 @@ public class GallifreyModBlocks {
 
     public static final Block ULANDA_SAPLING = registerBlock("ulanda_sapling",
             new SaplingBlock(new UlandaSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+    public static final Block ULANDA_STAIRS = registerBlock("ulanda_stairs",
+            new StairsBlock(GallifreyModBlocks.ULANDA_PLANKS.getDefaultState() ,FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block ULANDA_SLAB = registerBlock("ulanda_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block ULANDA_BUTTON = registerBlock("ulanda_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK,15, true));
+
+    public static final Block ULANDA_PRESSURE_PLATE = registerBlock("ulanda_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK));
+
+    public static final Block ULANDA_FENCE = registerBlock("ulanda_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block ULANDA_FENCE_GATE = registerBlock("ulanda_fence_gate",
+            new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), WoodType.OAK));
+
+
+    public static final Block ULANDA_DOOR = registerBlock("ulanda_door",
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK));
+
+    public static final Block ULANDA_TRAPDOOR = registerBlock("ulanda_trapdoor",
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK));
 
     //TREE-BORG WOOD SET BLOCK REGISTRY
 

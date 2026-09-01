@@ -34,6 +34,14 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModBlocks.STRIP_TARDIS_LOG);
                 entries.add(GallifreyModBlocks.STRIP_TARDIS_WOOD);
                 entries.add(GallifreyModBlocks.TARDIS_PLANKS);
+                entries.add(GallifreyModBlocks.TARDIS_STAIRS);
+                entries.add(GallifreyModBlocks.TARDIS_SLAB);
+                entries.add(GallifreyModBlocks.TARDIS_FENCE);
+                entries.add(GallifreyModBlocks.TARDIS_FENCE_GATE);
+                entries.add(GallifreyModBlocks.TARDIS_WOOD_DOOR);
+                entries.add(GallifreyModBlocks.TARDIS_TRAPDOOR);
+                entries.add(GallifreyModBlocks.TARDIS_PRESSURE_PLATE);
+                entries.add(GallifreyModBlocks.TARDIS_BUTTON);
 
                 //ULANDA WOODSET
                 entries.add(GallifreyModBlocks.ULANDA_SAPLING);

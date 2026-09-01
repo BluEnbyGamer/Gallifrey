@@ -43,7 +43,7 @@ public class LogoDrawerMixin {
 
     // Include the intermediary method name 'method_48209' so production builds match it without a refMap
     @Inject(
-            method = {"draw(Lnet/minecraft/client/gui/DrawContext;IF)V", "method_48209"},
+            method = "draw(Lnet/minecraft/client/gui/DrawContext;IF)V",
             at = @At("HEAD"),
             cancellable = true,
             require = 0
