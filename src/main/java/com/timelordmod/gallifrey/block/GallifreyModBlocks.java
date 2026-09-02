@@ -75,10 +75,10 @@ public class GallifreyModBlocks {
             new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), WoodType.OAK));
 
     public static final Block TARDIS_WOOD_DOOR = registerBlock("tardis_wood_door",
-            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK));
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR), BlockSetType.OAK));
 
     public static final Block TARDIS_TRAPDOOR = registerBlock("tardis_trapdoor",
-            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK));
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), BlockSetType.OAK));
 
     //ULANDA WOOD SET BLOCK REGISTRY
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
@@ -122,10 +122,10 @@ public class GallifreyModBlocks {
 
 
     public static final Block ULANDA_DOOR = registerBlock("ulanda_door",
-            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK));
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR), BlockSetType.ACACIA));
 
     public static final Block ULANDA_TRAPDOOR = registerBlock("ulanda_trapdoor",
-            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD), BlockSetType.OAK));
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR), BlockSetType.ACACIA));
 
     //TREE-BORG WOOD SET BLOCK REGISTRY
 
