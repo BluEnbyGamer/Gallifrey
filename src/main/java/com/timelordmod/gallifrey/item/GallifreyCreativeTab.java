@@ -51,6 +51,14 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModBlocks.STRIP_ULANDA_LOG);
                 entries.add(GallifreyModBlocks.STRIP_ULANDA_WOOD);
                 entries.add(GallifreyModBlocks.ULANDA_PLANKS);
+                entries.add(GallifreyModBlocks.ULANDA_STAIRS);
+                entries.add(GallifreyModBlocks.ULANDA_SLAB);
+                entries.add(GallifreyModBlocks.ULANDA_FENCE);
+                entries.add(GallifreyModBlocks.ULANDA_FENCE_GATE);
+                entries.add(GallifreyModBlocks.ULANDA_DOOR);
+                entries.add(GallifreyModBlocks.ULANDA_TRAPDOOR);
+                entries.add(GallifreyModBlocks.ULANDA_PRESSURE_PLATE);
+                entries.add(GallifreyModBlocks.ULANDA_BUTTON);
 
                 //TREEOBORG_WOODSET
                 //entries.add(GallifreyModBlocks.ULANDA_SAPLING);

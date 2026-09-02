@@ -43,6 +43,13 @@ public class GallifreyModClient implements ClientModInitializer {
                 RenderLayer.getCutoutMipped()
         );
 
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.TARDIS_WOOD_DOOR,
+                RenderLayer.getCutoutMipped()
+        );
+
+
+
         // ---------------------------------------------------------
         // ULANDA RENDER LAYER
         // ---------------------------------------------------------
@@ -54,6 +61,16 @@ public class GallifreyModClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlock(
                 GallifreyModBlocks.ULANDA_LEAVES,
+                RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.ULANDA_DOOR,
+                RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.ULANDA_TRAPDOOR,
                 RenderLayer.getCutoutMipped()
         );
 
