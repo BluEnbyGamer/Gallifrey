@@ -7,6 +7,7 @@ import com.timelordmod.gallifrey.networking.packets.VMPacket;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +58,12 @@ public class GallifreyMod implements ModInitializer {
 
 
 		// Custom Dimension Stuff
-
+		CustomPortalBuilder.beginPortal()
+						.frameBlock(GallifreyModBlocks.REINFORCED_STEEL_BLOCK)
+						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+						.destDimID(new Identifier(GallifreyMod.MOD_ID, "gallifrey"))
+						.tintColor(230, 142, 48)
+						.registerPortal();
 
 
 		LOGGER.info("[Gallifrey] Core systems ready.");

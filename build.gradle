@@ -18,7 +18,9 @@ repositories {
 			includeGroupByRegex("software\\.bernie.*")
 			includeGroup("com.eliotlash.mclib")
 		}
+
 	}
+	maven {url = "https://maven.kyrptonaught.dev"}
 }
 
 fabricApi {
@@ -72,6 +74,8 @@ dependencies {
 	modImplementation(
 			"software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
 	)
+	modImplementation 'net.kyrptonaught:customportalapi:0.0.1-beta65-1.20'
+	include 'net.kyrptonaught:customportalapi:0.0.1-beta65-1.20'
 
 	implementation("com.eliotlash.mclib:mclib:20")
 }
