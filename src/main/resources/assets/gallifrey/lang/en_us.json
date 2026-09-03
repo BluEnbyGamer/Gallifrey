@@ -22,6 +22,8 @@
   "block.gallifrey.ulanda_trapdoor": "Ulanda Trapdoor",
   "block.gallifrey.ulanda_pressure_plate": "Ulanda Pressure Plate",
   "block.gallifrey.ulanda_button": "Ulanda Button",
+  "block.gallifrey.ulanda_standing_sign": "Ulanda Sign",
+  "block.gallifrey.ulanda_hanging_sign": "Ulanda Hanging Sign",
   "block.gallifrey.reinforced_steel_block": "Reinforced Steel Block",
   "block.gallifrey.tardis_sapling": "Tardis Sapling",
   "block.gallifrey.tardis_leaves": "Tardis Leaves",
@@ -38,6 +40,8 @@
   "block.gallifrey.tardis_trapdoor": "Tardis Trapdoor",
   "block.gallifrey.tardis_pressure_plate": "Tardis Pressure Plate",
   "block.gallifrey.tardis_button": "Tardis Button",
+  "block.gallifrey.tardis_standing_sign": "Tardis Sign",
+  "block.gallifrey.tardis_hanging_sign": "Tardis Hanging Sign",
 
   //advancements go here
 

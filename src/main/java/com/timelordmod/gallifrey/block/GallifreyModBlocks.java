@@ -1,5 +1,9 @@
 package com.timelordmod.gallifrey.block;
 
+import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.world.tree.TardisSaplingGenerator;
 import com.timelordmod.gallifrey.world.tree.UlandaSaplingGenerator;
@@ -7,6 +11,8 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.data.family.BlockFamilies;
+import net.minecraft.data.family.BlockFamily;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -80,6 +86,25 @@ public class GallifreyModBlocks {
     public static final Block TARDIS_TRAPDOOR = registerBlock("tardis_trapdoor",
             new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), BlockSetType.OAK));
 
+    public static final Identifier TARDIS_SIGN_TEXTURE = new Identifier(GallifreyMod.MOD_ID, "entity/signs/tardis");
+    public static final Identifier TARDIS_HANGING_SIGN_TEXTURE = new Identifier(GallifreyMod.MOD_ID, "entity/signs/hanging/tardis");
+    public static final Identifier TARDIS_HANGING_GUI_SIGN_TEXTURE = new Identifier(GallifreyMod.MOD_ID, "textures/gui/hanging_signs/tardis");
+
+    public static final Block STANDING_TARDIS_SIGN = Registry.register(Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "tardis_standing_sign"),
+            new TerraformSignBlock(TARDIS_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)));
+    public static final Block WALL_TARDIS_SIGN = Registry.register(Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "tardis_wall_sign"),
+            new TerraformWallSignBlock(TARDIS_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)));
+    public static final Block HANGING_TARDIS_SIGN = Registry.register(Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "tardis_hanging_sign"),
+            new TerraformHangingSignBlock(TARDIS_HANGING_SIGN_TEXTURE, TARDIS_HANGING_GUI_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN)));
+    public static final Block WALL_HANGING_TARDIS_SIGN = Registry.register(Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "tardis_wall_hanging_sign"),
+            new TerraformWallHangingSignBlock(TARDIS_HANGING_SIGN_TEXTURE, TARDIS_HANGING_GUI_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN)));
+
+    public static final BlockFamily TARDIS_FAMILY = BlockFamilies.register(GallifreyModBlocks.TARDIS_PLANKS)
+            .sign(GallifreyModBlocks.STANDING_TARDIS_SIGN, GallifreyModBlocks.WALL_TARDIS_SIGN)
+            .group("wooden").unlockCriterionName("has_planks").build();
+
+
+
     //ULANDA WOOD SET BLOCK REGISTRY
     public static final Block ULANDA_LEAVES = registerBlock("ulanda_leaves",
             new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)));
@@ -126,6 +151,23 @@ public class GallifreyModBlocks {
 
     public static final Block ULANDA_TRAPDOOR = registerBlock("ulanda_trapdoor",
             new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR), BlockSetType.ACACIA));
+
+    public static final Identifier ULANDA_SIGN_TEXTURE = new Identifier(GallifreyMod.MOD_ID, "entity/signs/ulanda");
+    public static final Identifier ULANDA_HANGING_SIGN_TEXTURE = new Identifier(GallifreyMod.MOD_ID, "entity/signs/hanging/ulanda");
+    public static final Identifier ULANDA_HANGING_GUI_SIGN_TEXTURE = new Identifier(GallifreyMod.MOD_ID, "textures/gui/hanging_signs/ulanda");
+
+    public static final Block STANDING_ULANDA_SIGN = Registry.register(Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "ulanda_standing_sign"),
+            new TerraformSignBlock(ULANDA_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.ACACIA_SIGN)));
+    public static final Block WALL_ULANDA_SIGN = Registry.register(Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "ulanda_wall_sign"),
+            new TerraformWallSignBlock(ULANDA_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.ACACIA_WALL_SIGN)));
+    public static final Block HANGING_ULANDA_SIGN = Registry.register(Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "ulanda_hanging_sign"),
+            new TerraformHangingSignBlock(ULANDA_HANGING_SIGN_TEXTURE, ULANDA_HANGING_GUI_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.ACACIA_HANGING_SIGN)));
+    public static final Block WALL_HANGING_ULANDA_SIGN = Registry.register(Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "ulanda_wall_hanging_sign"),
+            new TerraformWallHangingSignBlock(ULANDA_HANGING_SIGN_TEXTURE, ULANDA_HANGING_GUI_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.ACACIA_WALL_HANGING_SIGN)));
+
+    public static final BlockFamily ULANDA_FAMILY = BlockFamilies.register(GallifreyModBlocks.ULANDA_PLANKS)
+            .sign(GallifreyModBlocks.STANDING_ULANDA_SIGN, GallifreyModBlocks.WALL_ULANDA_SIGN)
+            .group("wooden").unlockCriterionName("has_planks").build();
 
     //TREE-BORG WOOD SET BLOCK REGISTRY
 

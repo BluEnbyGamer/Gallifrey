@@ -19,6 +19,10 @@ public class ModModelProvider extends FabricModelProvider {
         //WOOD TYPE POOLS
         BlockStateModelGenerator.BlockTexturePool ulandaPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ULANDA_PLANKS);
         BlockStateModelGenerator.BlockTexturePool tardiswoodPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TARDIS_PLANKS);
+        BlockStateModelGenerator.BlockTexturePool tardis_pool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TARDIS_PLANKS);
+        tardis_pool.family(GallifreyModBlocks.TARDIS_FAMILY);
+        BlockStateModelGenerator.BlockTexturePool ulanda_pool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ULANDA_PLANKS);
+        ulanda_pool.family(GallifreyModBlocks.ULANDA_FAMILY);
 
         //TARDIS WOOD TYPE
         blockStateModelGenerator.registerLog(GallifreyModBlocks.TARDIS_LOG).log(GallifreyModBlocks.TARDIS_LOG).wood(GallifreyModBlocks.TARDIS_WOOD);
@@ -64,5 +68,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(GallifreyModItems.HANGING_TARDIS_SIGN, Models.GENERATED);
+        itemModelGenerator.register(GallifreyModItems.HANGING_ULANDA_SIGN, Models.GENERATED);
     }
 }
