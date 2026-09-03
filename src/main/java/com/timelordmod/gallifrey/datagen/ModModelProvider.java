@@ -64,8 +64,5 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(GallifreyModItems.BLANK_CIRCUIT, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.LOCATION_CIRCUIT, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.DIMENSION_CIRCUIT, Models.GENERATED);
     }
 }
