@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
+import net.minecraft.data.client.TexturedModel;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -19,10 +20,8 @@ public class ModModelProvider extends FabricModelProvider {
         //WOOD TYPE POOLS
         BlockStateModelGenerator.BlockTexturePool ulandaPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ULANDA_PLANKS);
         BlockStateModelGenerator.BlockTexturePool tardiswoodPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TARDIS_PLANKS);
-        BlockStateModelGenerator.BlockTexturePool tardis_pool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TARDIS_PLANKS);
-        tardis_pool.family(GallifreyModBlocks.TARDIS_FAMILY);
-        BlockStateModelGenerator.BlockTexturePool ulanda_pool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ULANDA_PLANKS);
-        ulanda_pool.family(GallifreyModBlocks.ULANDA_FAMILY);
+        tardiswoodPool.family(GallifreyModBlocks.TARDIS_FAMILY);
+        ulandaPool.family(GallifreyModBlocks.ULANDA_FAMILY);
 
         //TARDIS WOOD TYPE
         blockStateModelGenerator.registerLog(GallifreyModBlocks.TARDIS_LOG).log(GallifreyModBlocks.TARDIS_LOG).wood(GallifreyModBlocks.TARDIS_WOOD);
@@ -64,6 +63,10 @@ public class ModModelProvider extends FabricModelProvider {
 
 
         // MISC BLOCKS REGISTRY
+        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.TARDIS_LEAVES, TexturedModel.LEAVES);
+        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.ULANDA_LEAVES, TexturedModel.LEAVES);
+        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.TARDIS_SAPLING, GallifreyModBlocks.POTTED_TARDIS_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.ULANDA_SAPLING, GallifreyModBlocks.POTTED_ULANDA_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override

@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "gallifrey:block/ulanda_sapling"
-  }
-}

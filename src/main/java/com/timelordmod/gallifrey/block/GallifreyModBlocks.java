@@ -62,6 +62,9 @@ public class GallifreyModBlocks {
     public static final Block TARDIS_SAPLING = registerBlock("tardis_sapling",
             new SaplingBlock(new TardisSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
 
+    public static final Block POTTED_TARDIS_SAPLING = registerBlock("potted_tardis_sapling",
+            new FlowerPotBlock(GallifreyModBlocks.TARDIS_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
+
     public static final Block TARDIS_STAIRS = registerBlock("tardis_stairs",
             new StairsBlock(GallifreyModBlocks.TARDIS_PLANKS.getDefaultState() ,FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
 
@@ -126,6 +129,9 @@ public class GallifreyModBlocks {
 
     public static final Block ULANDA_SAPLING = registerBlock("ulanda_sapling",
             new SaplingBlock(new UlandaSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+    public static final Block POTTED_ULANDA_SAPLING = registerBlock("potted_ulanda_sapling",
+            new FlowerPotBlock(GallifreyModBlocks.ULANDA_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
 
     public static final Block ULANDA_STAIRS = registerBlock("ulanda_stairs",
             new StairsBlock(GallifreyModBlocks.ULANDA_PLANKS.getDefaultState() ,FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
