@@ -27,6 +27,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.TARDIS_WOOD_DOOR, doorDrops(GallifreyModBlocks.TARDIS_WOOD_DOOR));
         addDrop(GallifreyModBlocks.TARDIS_TRAPDOOR);
         addDrop(GallifreyModBlocks.TARDIS_PRESSURE_PLATE);
+        addDrop(GallifreyModBlocks.STANDING_TARDIS_SIGN);
+        addDrop(GallifreyModBlocks.WALL_TARDIS_SIGN);
+        addDrop(GallifreyModBlocks.HANGING_TARDIS_SIGN);
+        addDrop(GallifreyModBlocks.WALL_HANGING_TARDIS_SIGN);
 
         //ULANDA WOOD SET BLOCK DROPS
         addDrop(GallifreyModBlocks.ULANDA_SAPLING);
@@ -43,6 +47,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.ULANDA_DOOR, doorDrops(GallifreyModBlocks.ULANDA_DOOR));
         addDrop(GallifreyModBlocks.ULANDA_TRAPDOOR);
         addDrop(GallifreyModBlocks.ULANDA_PRESSURE_PLATE);
+        addDrop(GallifreyModBlocks.STANDING_ULANDA_SIGN);
+        addDrop(GallifreyModBlocks.WALL_ULANDA_SIGN);
+        addDrop(GallifreyModBlocks.HANGING_ULANDA_SIGN);
+        addDrop(GallifreyModBlocks.WALL_HANGING_ULANDA_SIGN);
 
         //TREE-BORG WOOD SET BLOCK DROPS
         //addDrop(GallifreyModBlocks.ULANDA_SAPLING);

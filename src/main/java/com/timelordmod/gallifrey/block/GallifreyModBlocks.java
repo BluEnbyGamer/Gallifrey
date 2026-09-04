@@ -209,14 +209,30 @@ public class GallifreyModBlocks {
 
     private static void registerFlammable() {
         FlammableBlockRegistry flammable = FlammableBlockRegistry.getDefaultInstance();
-        //Ulanda wood set
 
+        //misc flammables
+
+
+        //tardis woood set
+        flammable.add(TARDIS_LOG, 5, 5);
+        flammable.add(STRIP_TARDIS_LOG, 5, 5);
+        flammable.add(TARDIS_WOOD, 5, 5);
+        flammable.add(STRIP_TARDIS_WOOD, 5, 5);
+        flammable.add(TARDIS_PLANKS, 5, 20);
+        flammable.add(TARDIS_LEAVES, 30, 60);
+        flammable.add(TARDIS_STAIRS, 5, 20);
+        flammable.add(TARDIS_SLAB, 5, 20);
+
+        //Ulanda wood set
         flammable.add(ULANDA_LOG, 5, 5);
         flammable.add(STRIP_ULANDA_LOG, 5, 5);
         flammable.add(ULANDA_WOOD, 5, 5);
         flammable.add(STRIP_ULANDA_WOOD, 5, 5);
         flammable.add(ULANDA_PLANKS, 5, 20);
         flammable.add(ULANDA_LEAVES, 30, 60);
+        flammable.add(ULANDA_STAIRS, 5, 20);
+        flammable.add(ULANDA_SLAB, 5, 20);
+
 
         //Tree-borg wood set
         //flammable.add(TREEBORRG_LOG, 5, 5);

@@ -28,6 +28,7 @@ public class ModBiomes {
     public static final RegistryKey<Biome> GALLIFREYAN_TAIGA = registerKey("gallifreyan_taiga");
     public static final RegistryKey<Biome> GALLIFREYAN_ULANDA_FOREST = registerKey("gallifreyan_ulanda_forest");
     public static final RegistryKey<Biome> GALLIFREYAN_TARDIS_BIOME = registerKey("gallifreyan_tardis_biome");
+    public static final RegistryKey<Biome> GALLIFREYAN_OCEAN = registerKey("gallifreyan_ocean");
 
     private static RegistryKey<Biome> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.BIOME, new Identifier(GallifreyMod.MOD_ID, name));
@@ -73,11 +74,21 @@ public class ModBiomes {
         // New: Tardis biome - placed at an extreme continentalness value in the
         // dimension's biome source (see gallifrey.json), matching real mushroom
         // fields rarity rather than approximating it with a placement chance
-        context.register(GALLIFREYAN_TARDIS_BIOME, createBiome(false, 0.5F, 0.5F, 10638337, 15105551, 15215, 15215,
+        context.register(GALLIFREYAN_TARDIS_BIOME, createBiome(false, 0.5F, 0.5F, 10638337, 15105551, 15215, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.TARDIS_PLACED_KEY);
                     DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
                     DefaultBiomeFeatures.addDefaultGrass(generationSettings);
+                }));
+
+        // New: Ocean - claims continentalness [-1.05, -0.19] (combining vanilla's deep
+        // ocean + ocean bands into one), which is what actually contains the Tardis
+        // biome to its own extreme sliver instead of winning by default with nothing
+        // else covering negative continentalness
+        context.register(GALLIFREYAN_OCEAN, createBiome(false, 0.5F, 0.5F, 10638337, 15105551, 14641191, 15109680,
+                placedFeatures, carvers, generationSettings -> {
+                    DefaultBiomeFeatures.addSeagrassOnStone(generationSettings);
+                    DefaultBiomeFeatures.addKelp(generationSettings);
                 }));
     }
 

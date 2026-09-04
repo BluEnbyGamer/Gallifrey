@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": [
+      "gallifrey:stripped_tardis_log"
+    ]
+  },
+  "result": {
+    "id": "gallifrey:stripped_tardis_wood",
+    "count": 3
+  }
+}
