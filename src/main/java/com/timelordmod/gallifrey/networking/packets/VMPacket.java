@@ -25,6 +25,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 
@@ -204,6 +205,7 @@ public class VMPacket {
         double x = !targetPlayerMode ? buf.readDouble() : 0;
         double y = !targetPlayerMode ? buf.readDouble() : 0;
         double z = !targetPlayerMode ? buf.readDouble() : 0;
+        boolean surfaceMode = !targetPlayerMode && buf.readBoolean();
 
         server.execute(() -> {
             if (!gallifrey$hasVortexManipulator(player)) {
@@ -234,7 +236,10 @@ public class VMPacket {
                     player.sendMessage(Text.literal("Unknown dimension: " + dimensionId), true);
                     return;
                 }
-                targetPos = new Vec3d(x, y, z);
+                double targetY = surfaceMode
+                        ? targetWorld.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(x), (int) Math.floor(z))
+                        : y;
+                targetPos = new Vec3d(x, targetY, z);
             }
 
             ServerWorld sourceWorld = player.getServerWorld();
