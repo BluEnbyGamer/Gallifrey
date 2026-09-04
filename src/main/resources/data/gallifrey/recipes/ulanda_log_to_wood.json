@@ -6,12 +6,12 @@
     "XX"
   ],
   "key": {
-    "X": [
-      "gallifrey:ulanda_log"
-    ]
+    "X": {
+      "item": "gallifrey:ulanda_log"
+    }
   },
   "result": {
-    "id": "gallifrey:ulanda_wood",
+    "item": "gallifrey:ulanda_wood",
     "count": 3
   }
 }

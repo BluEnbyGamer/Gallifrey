@@ -6,12 +6,12 @@
     "XX"
   ],
   "key": {
-    "X": [
-      "gallifrey:stripped_tardis_log"
-    ]
+    "X": {
+      "item": "gallifrey:stripped_tardis_log"
+    }
   },
   "result": {
-    "id": "gallifrey:stripped_tardis_wood",
+    "item": "gallifrey:stripped_tardis_wood",
     "count": 3
   }
 }

@@ -203,7 +203,7 @@ public class GallifreyModBlocks {
     }
 
     public static void register(){
-        GallifreyMod.LOGGER.info("Registering ModBlocks for" + GallifreyMod.MOD_ID );
+        GallifreyMod.LOGGER.info("Registering ModBlocks for " + GallifreyMod.MOD_ID );
         registerFlammable();
     }
 

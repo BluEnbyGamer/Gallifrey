@@ -6,12 +6,12 @@
     "XX"
   ],
   "key": {
-    "X": [
-      "gallifrey:tardis_log"
-    ]
+    "X": {
+      "item": "gallifrey:tardis_log"
+    }
   },
   "result": {
-    "id": "gallifrey:tardis_wood",
+    "item": "gallifrey:tardis_wood",
     "count": 3
   }
 }
