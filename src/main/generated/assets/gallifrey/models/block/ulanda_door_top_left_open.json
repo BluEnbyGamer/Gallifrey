@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left_open",
+  "textures": {
+    "bottom": "gallifrey:block/ulanda_door_bottom",
+    "top": "gallifrey:block/ulanda_door_top"
+  }
+}

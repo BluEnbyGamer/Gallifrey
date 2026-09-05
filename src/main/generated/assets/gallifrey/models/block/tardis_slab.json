@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "gallifrey:block/tardis_planks",
+    "side": "gallifrey:block/tardis_planks",
+    "top": "gallifrey:block/tardis_planks"
+  }
+}

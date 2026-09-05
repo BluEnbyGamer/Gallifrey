@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "gallifrey:block/tardis_log",
+    "side": "gallifrey:block/tardis_log"
+  }
+}

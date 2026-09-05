@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/ulanda_slab"
+    },
+    "type=double": {
+      "model": "gallifrey:block/ulanda_planks"
+    },
+    "type=top": {
+      "model": "gallifrey:block/ulanda_slab_top"
+    }
+  }
+}

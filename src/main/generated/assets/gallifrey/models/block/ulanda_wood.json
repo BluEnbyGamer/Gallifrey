@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "gallifrey:block/ulanda_log",
+    "side": "gallifrey:block/ulanda_log"
+  }
+}
