@@ -1,11 +1,14 @@
 package com.timelordmod.gallifrey;
 
+import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
+import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
 import com.timelordmod.gallifrey.screens.VortexManipulatorScreen;
 import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 
@@ -72,6 +75,11 @@ public class GallifreyModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(
                 GallifreyModBlocks.ULANDA_TRAPDOOR,
                 RenderLayer.getCutoutMipped()
+        );
+
+        BlockEntityRendererRegistry.register(
+                GallifreyModBlockEntities.TARDIS_EXTERIOR,
+                TardisExteriorRenderer::new
         );
 
         // ---------------------------------------------------------

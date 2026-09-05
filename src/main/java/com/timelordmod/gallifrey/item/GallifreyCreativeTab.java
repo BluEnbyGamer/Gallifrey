@@ -73,7 +73,8 @@ public class GallifreyCreativeTab {
                 //entries.add(GallifreyModBlocks.STRIP_ULANDA_WOOD);
                 //entries.add(GallifreyModBlocks.ULANDA_PLANKS);
 
-
+                //TARDIS
+                entries.add(GallifreyModBlocks.TARDIS_EXTERIOR);
             })
             .build();
 

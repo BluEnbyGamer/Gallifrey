@@ -11,6 +11,7 @@ import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 
 public class GallifreyMod implements ModInitializer {
 	public static final String MOD_ID = "gallifrey";
@@ -25,6 +26,7 @@ public class GallifreyMod implements ModInitializer {
 
 		GallifreyModItems.register();
 		GallifreyModBlocks.register();
+		GallifreyModBlockEntities.register();
 		GallifreyCreativeTab.register();
 
 
