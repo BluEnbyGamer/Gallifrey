@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "gallifrey:block/tardis_exterior"
+      "model": "builtin/entity"
     }
   }
 }

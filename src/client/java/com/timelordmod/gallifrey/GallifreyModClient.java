@@ -3,6 +3,7 @@ package com.timelordmod.gallifrey;
 import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
+import com.timelordmod.gallifrey.model.TardisModel;
 import com.timelordmod.gallifrey.screens.VortexManipulatorScreen;
 import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 
@@ -10,6 +11,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 
 import net.minecraft.client.MinecraftClient;
@@ -77,6 +79,11 @@ public class GallifreyModClient implements ClientModInitializer {
                 RenderLayer.getCutoutMipped()
         );
 
+        EntityModelLayerRegistry.registerModelLayer(
+                TardisExteriorRenderer.TARDIS_EXTERIOR_LAYER,
+                TardisModel::getTexturedModelData
+        );
+
         BlockEntityRendererRegistry.register(
                 GallifreyModBlockEntities.TARDIS_EXTERIOR,
                 TardisExteriorRenderer::new
@@ -113,5 +120,3 @@ public class GallifreyModClient implements ClientModInitializer {
 
     }
 }
-
-
