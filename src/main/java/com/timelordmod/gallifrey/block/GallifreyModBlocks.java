@@ -54,7 +54,7 @@ public class GallifreyModBlocks {
     public static final Block BASALT_ROUNDEL = registerBlock(
             "basalt_roundel",
             new RoundelBlock(
-                    FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT)
+                    FabricBlockSettings.copyOf(Blocks.COBBLESTONE)
                             .sounds(BlockSoundGroup.BASALT)
             )
     );
@@ -62,8 +62,16 @@ public class GallifreyModBlocks {
     public static final Block BONE_ROUNDEL = registerBlock(
             "bone_roundel",
             new RoundelBlock(
-                    FabricBlockSettings.copyOf(Blocks.BONE_BLOCK)
+                    FabricBlockSettings.copyOf(Blocks.COBBLESTONE)
                             .sounds(BlockSoundGroup.BONE)
+            )
+    );
+
+    public static final Block STRUCTURE_ROUNDEL = registerBlock(
+            "structure_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.COBBLESTONE)
+                            .sounds(BlockSoundGroup.STONE)
             )
     );
 
