@@ -4,6 +4,7 @@ import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.entity.ModBoats;
 import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
+import com.timelordmod.gallifrey.item.RoundelsCreativeTab;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -29,6 +30,7 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyModBlocks.register();
 		GallifreyModBlockEntities.register();
 		GallifreyCreativeTab.register();
+		RoundelsCreativeTab.register();
 		ModBoats.registerBoats();
 
 

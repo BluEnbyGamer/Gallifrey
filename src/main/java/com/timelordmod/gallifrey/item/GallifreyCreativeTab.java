@@ -14,7 +14,7 @@ import net.minecraft.text.Text;
 public class GallifreyCreativeTab {
     public static final ItemGroup TAB = FabricItemGroup.builder()
             .icon(() -> new ItemStack(GallifreyModBlocks.TARDIS_SAPLING))
-            .displayName(Text.translatable("itemGroup.gallifrey.main"))
+            .displayName(Text.translatable("itemGroup.gallifrey.gallifrey"))
             .entries((context, entries) -> {
                 //ITEMS GO HERE
                 entries.add(GallifreyModItems.VORTEX_MANIPULATOR);
@@ -86,9 +86,9 @@ public class GallifreyCreativeTab {
     public static void register() {
         Registry.register(
                 Registries.ITEM_GROUP,
-                GallifreyMod.id("main"),
+                GallifreyMod.id("gallifrey"),
                 TAB
         );
-        GallifreyMod.LOGGER.debug("[Gallifrey] Creative tab registered.");
+        GallifreyMod.LOGGER.debug("[Gallifrey] Gallifrey Creative tab registered.");
     }
 }

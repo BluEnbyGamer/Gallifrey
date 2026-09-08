@@ -5,6 +5,7 @@ import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.timelordmod.gallifrey.GallifreyMod;
+import com.timelordmod.gallifrey.block.entity.RoundelBlock;
 import com.timelordmod.gallifrey.world.tree.TardisSaplingGenerator;
 import com.timelordmod.gallifrey.world.tree.UlandaSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -46,6 +47,25 @@ public class GallifreyModBlocks {
             )
     );
 
+    // ============================================================
+    // ROUNDELS
+    // ============================================================
+
+    public static final Block BASALT_ROUNDEL = registerBlock(
+            "basalt_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.POLISHED_BASALT)
+                            .sounds(BlockSoundGroup.BASALT)
+            )
+    );
+
+    public static final Block BONE_ROUNDEL = registerBlock(
+            "bone_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BONE_BLOCK)
+                            .sounds(BlockSoundGroup.BONE)
+            )
+    );
 
     // ============================================================
     // TARDIS WOOD SET
