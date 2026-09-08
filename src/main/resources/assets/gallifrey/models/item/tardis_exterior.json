@@ -1,3 +1,6 @@
 {
-  "parent": "gallifrey:block/tardis_exterior"
+  "parent": "gallifrey:block/tardis_exterior",
+  "textures": {
+    "layer0": "gallifrey:item/tardis.png"
+  }
 }

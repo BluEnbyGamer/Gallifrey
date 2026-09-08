@@ -73,5 +73,11 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(GallifreyModItems.HANGING_TARDIS_SIGN, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.HANGING_ULANDA_SIGN, Models.GENERATED);
+
+        itemModelGenerator.register(GallifreyModItems.TARDIS_BOAT, Models.GENERATED);
+        itemModelGenerator.register(GallifreyModItems.TARDIS_CHEST_BOAT, Models.GENERATED);
+
+        itemModelGenerator.register(GallifreyModItems.ULANDA_BOAT, Models.GENERATED);
+        itemModelGenerator.register(GallifreyModItems.ULANDA_CHEST_BOAT, Models.GENERATED);
     }
 }

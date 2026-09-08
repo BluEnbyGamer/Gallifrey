@@ -44,6 +44,8 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModBlocks.TARDIS_BUTTON);
                 entries.add(GallifreyModItems.TARDIS_SIGN);
                 entries.add(GallifreyModItems.HANGING_TARDIS_SIGN);
+                entries.add(GallifreyModItems.TARDIS_BOAT);
+                entries.add(GallifreyModItems.TARDIS_CHEST_BOAT);
 
                 //ULANDA WOODSET
                 entries.add(GallifreyModBlocks.ULANDA_SAPLING);
@@ -63,6 +65,8 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModBlocks.ULANDA_BUTTON);
                 entries.add(GallifreyModItems.ULANDA_SIGN);
                 entries.add(GallifreyModItems.HANGING_ULANDA_SIGN);
+                entries.add(GallifreyModItems.ULANDA_BOAT);
+                entries.add(GallifreyModItems.ULANDA_CHEST_BOAT);
 
                 //TREEOBORG_WOODSET
                 //entries.add(GallifreyModBlocks.ULANDA_SAPLING);

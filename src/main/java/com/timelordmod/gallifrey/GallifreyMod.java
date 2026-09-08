@@ -1,6 +1,7 @@
 package com.timelordmod.gallifrey;
 
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
+import com.timelordmod.gallifrey.entity.ModBoats;
 import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
@@ -28,6 +29,7 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyModBlocks.register();
 		GallifreyModBlockEntities.register();
 		GallifreyCreativeTab.register();
+		ModBoats.registerBoats();
 
 
 

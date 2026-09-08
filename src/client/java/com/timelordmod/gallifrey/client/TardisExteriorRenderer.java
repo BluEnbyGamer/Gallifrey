@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.client;
 
+import com.timelordmod.gallifrey.block.TardisExteriorBlock;
 import com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity;
 import com.timelordmod.gallifrey.model.TardisModel;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -8,6 +9,7 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.RotationAxis;
 
 public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExteriorBlockEntity> {
 
@@ -36,6 +38,10 @@ public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExterio
     ) {
         matrices.push();
         matrices.translate(0.5, 1.5, 0.5);
+
+        int rotation = blockEntity.getCachedState().get(TardisExteriorBlock.ROTATION);
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotation * 45.0F));
+
         matrices.scale(-1.0F, -1.0F, 1.0F);
 
         model.render(

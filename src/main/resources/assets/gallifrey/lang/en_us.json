@@ -5,6 +5,10 @@
   "item.gallifrey.blank_circuit": "Blank Circuit",
   "item.gallifrey.location_circuit": "Location Circuit",
   "item.gallifrey.dimension_circuit": "Dimension Circuit",
+  "item.gallifrey.tardis_boat": "Tardis Boat",
+  "item.gallifrey.tardis_chest_boat": "Tardis Boat with Chest",
+  "item.gallifrey.ulanda_boat": "Ulanda Boat",
+  "item.gallifrey.ulanda_chest_boat": "Ulanda Boat with Chest",
 
   //Blocks go here
   "block.gallifrey.ulanda_sapling": "Ulanda Sapling",

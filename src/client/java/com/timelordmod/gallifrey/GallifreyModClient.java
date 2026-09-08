@@ -16,7 +16,11 @@ import net.fabricmc.fabric.api.event.player.UseItemCallback;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.model.BoatEntityModel;
+import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 
@@ -53,6 +57,16 @@ public class GallifreyModClient implements ClientModInitializer {
                 RenderLayer.getCutoutMipped()
         );
 
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(new Identifier("gallifrey", "boat/tardis_boat"), "main"),
+                BoatEntityModel::getTexturedModelData
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(new Identifier("gallifrey", "chest_boat/tardis_boat"), "main"),
+                ChestBoatEntityModel::getTexturedModelData
+        );
+
 
 
         // ---------------------------------------------------------
@@ -87,6 +101,16 @@ public class GallifreyModClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(
                 GallifreyModBlockEntities.TARDIS_EXTERIOR,
                 TardisExteriorRenderer::new
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(new Identifier("gallifrey", "boat/ulanda_boat"), "main"),
+                BoatEntityModel::getTexturedModelData
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(new Identifier("gallifrey", "chest_boat/ulanda_boat"), "main"),
+                ChestBoatEntityModel::getTexturedModelData
         );
 
         // ---------------------------------------------------------
