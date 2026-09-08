@@ -11,6 +11,10 @@ Explore Gallifrey, home of the Time Lords, and use the Vortex Manipulator inspir
 Adds Gallifrey-inspired content to Minecraft.
 Explore the homeworld of the Time Lords.
 
+📦 Roundels
+
+Adds a selection of decorative roundels.
+
 ⌚ Vortex Manipulator
 
 Adds a Vortex Manipulator inspired by Doctor Who.
@@ -33,6 +37,7 @@ Download and install GeckoLib for Minecraft 1.20.1.
 Download the latest version of Gallifrey.
 Place the .jar files into your Minecraft mods folder.
 Launch Minecraft using your Fabric installation.
+
 🌌 About
 
 Gallifrey is a fan-made Minecraft mod inspired by the Doctor Who universe.
