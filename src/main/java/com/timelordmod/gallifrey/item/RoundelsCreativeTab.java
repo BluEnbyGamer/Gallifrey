@@ -18,6 +18,7 @@ public class RoundelsCreativeTab {
                 entries.add(GallifreyModBlocks.BASALT_ROUNDEL);
                 entries.add(GallifreyModBlocks.BONE_ROUNDEL);
                 entries.add(GallifreyModBlocks.STRUCTURE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LODESTONE_ROUNDEL);
 
             })
             .build();

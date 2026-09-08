@@ -75,6 +75,14 @@ public class GallifreyModBlocks {
             )
     );
 
+    public static final Block LODESTONE_ROUNDEL = registerBlock(
+            "lodestone_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.COBBLESTONE)
+                            .sounds(BlockSoundGroup.STONE)
+            )
+    );
+
     // ============================================================
     // TARDIS WOOD SET
     // ============================================================
