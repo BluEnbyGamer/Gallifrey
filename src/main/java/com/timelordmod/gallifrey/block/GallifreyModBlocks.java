@@ -83,6 +83,14 @@ public class GallifreyModBlocks {
             )
     );
 
+    public static final Block QUARTZ_ROUNDEL = registerBlock(
+            "quartz_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
+            )
+    );
+
+
     // ============================================================
     // TARDIS WOOD SET
     // ============================================================

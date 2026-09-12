@@ -11,7 +11,7 @@ import net.minecraft.text.Text;
 
 public class RoundelsCreativeTab {
     public static final ItemGroup TAB = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(GallifreyModBlocks.BONE_ROUNDEL))
+            .icon(() -> new ItemStack(GallifreyModBlocks.STRUCTURE_ROUNDEL))
             .displayName(Text.translatable("itemGroup.gallifrey.roundels"))
             .entries((context, entries) -> {
                 //ROUNDELS GO HERE
@@ -19,6 +19,7 @@ public class RoundelsCreativeTab {
                 entries.add(GallifreyModBlocks.BONE_ROUNDEL);
                 entries.add(GallifreyModBlocks.STRUCTURE_ROUNDEL);
                 entries.add(GallifreyModBlocks.LODESTONE_ROUNDEL);
+                entries.add(GallifreyModBlocks.QUARTZ_ROUNDEL);
 
             })
             .build();
