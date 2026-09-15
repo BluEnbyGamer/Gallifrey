@@ -509,6 +509,215 @@ public class GallifreyModBlocks {
                     .unlockCriterionName("has_planks")
                     .build();
 
+    // ============================================================
+    // TREEBORG WOOD SET
+    // ============================================================
+
+    public static final Block TREEBORG_LEAVES = registerBlock(
+            "treeborg_leaves",
+            new LeavesBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)
+            )
+    );
+
+    public static final Block TREEBORG_WOOD = registerBlock(
+            "treeborg_wood",
+            new PillarBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block TREEBORG_LOG = registerBlock(
+            "treeborg_log",
+            new PillarBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_LOG)
+            )
+    );
+
+    public static final Block STRIP_TREEBORG_LOG = registerBlock(
+            "stripped_treeborg_log",
+            new PillarBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_LOG)
+            )
+    );
+
+    public static final Block STRIP_TREEBORG_WOOD = registerBlock(
+            "stripped_treeborg_wood",
+            new PillarBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block TREEBORG_PLANKS = registerBlock(
+            "treeborg_planks",
+            new Block(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block TREEBORG_SAPLING = registerBlock(
+            "treeborg_sapling",
+            new SaplingBlock(
+                    new TardisSaplingGenerator(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)
+            )
+    );
+
+    public static final Block POTTED_TREEBORG_SAPLING = registerBlock(
+            "potted_treeborg_sapling",
+            new FlowerPotBlock(
+                    GallifreyModBlocks.TARDIS_SAPLING,
+                    FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)
+            )
+    );
+
+    public static final Block TREEBORG_STAIRS = registerBlock(
+            "treeborg_stairs",
+            new StairsBlock(
+                    GallifreyModBlocks.TARDIS_PLANKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block TREEBORG_SLAB = registerBlock(
+            "treeborg_slab",
+            new SlabBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block TREEBORG_BUTTON = registerBlock(
+            "treeborg_button",
+            new ButtonBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
+                    BlockSetType.OAK,
+                    15,
+                    true
+            )
+    );
+
+    public static final Block TREEBORG_PRESSURE_PLATE = registerBlock(
+            "treeborg_pressure_plate",
+            new PressurePlateBlock(
+                    PressurePlateBlock.ActivationRule.EVERYTHING,
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
+                    BlockSetType.OAK
+            )
+    );
+
+    public static final Block TREEBORG_FENCE = registerBlock(
+            "treeborg_fence",
+            new FenceBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block TREEBORG_FENCE_GATE = registerBlock(
+            "treeborg_fence_gate",
+            new FenceGateBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
+                    WoodType.OAK
+            )
+    );
+
+    public static final Block TREEBORG_DOOR = registerBlock(
+            "treeborg_door",
+            new DoorBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_DOOR),
+                    BlockSetType.OAK
+            )
+    );
+
+    public static final Block TREEBORG_TRAPDOOR = registerBlock(
+            "treeborg_trapdoor",
+            new TrapdoorBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_PLANKS),
+                    BlockSetType.OAK
+            )
+    );
+
+
+    // ============================================================
+    // TREEBORG SIGNS
+    // ============================================================
+
+    public static final Identifier TREEBORG_SIGN_TEXTURE =
+            new Identifier(GallifreyMod.MOD_ID, "entity/signs/treeborg");
+
+    public static final Identifier TREEBORG_HANGING_SIGN_TEXTURE =
+            new Identifier(GallifreyMod.MOD_ID, "entity/signs/hanging/treeborg");
+
+    public static final Identifier TREEBORG_HANGING_GUI_SIGN_TEXTURE =
+            new Identifier(
+                    GallifreyMod.MOD_ID,
+                    "textures/gui/hanging_signs/treeborg"
+            );
+
+    public static final Block STANDING_TREEBORG_SIGN =
+            Registry.register(
+                    Registries.BLOCK,
+                    new Identifier(
+                            GallifreyMod.MOD_ID,
+                            "treeborg_standing_sign"
+                    ),
+                    new TerraformSignBlock(
+                            TREEBORG_SIGN_TEXTURE,
+                            FabricBlockSettings.copyOf(Blocks.OAK_SIGN)
+                    )
+            );
+
+    public static final Block WALL_TREEBORG_SIGN =
+            Registry.register(
+                    Registries.BLOCK,
+                    new Identifier(
+                            GallifreyMod.MOD_ID,
+                            "treeborg_wall_sign"
+                    ),
+                    new TerraformWallSignBlock(
+                            TREEBORG_SIGN_TEXTURE,
+                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)
+                    )
+            );
+
+    public static final Block HANGING_TREEBORG_SIGN =
+            Registry.register(
+                    Registries.BLOCK,
+                    new Identifier(
+                            GallifreyMod.MOD_ID,
+                            "treeborg_hanging_sign"
+                    ),
+                    new TerraformHangingSignBlock(
+                            TREEBORG_HANGING_SIGN_TEXTURE,
+                            TREEBORG_HANGING_GUI_SIGN_TEXTURE,
+                            FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN)
+                    )
+            );
+
+    public static final Block WALL_HANGING_TREEBORG_SIGN =
+            Registry.register(
+                    Registries.BLOCK,
+                    new Identifier(
+                            GallifreyMod.MOD_ID,
+                            "treeborg_wall_hanging_sign"
+                    ),
+                    new TerraformWallHangingSignBlock(
+                            TREEBORG_HANGING_SIGN_TEXTURE,
+                            TREEBORG_HANGING_GUI_SIGN_TEXTURE,
+                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN)
+                    )
+            );
+
+
+    public static final BlockFamily TREEBORG_FAMILY =
+            BlockFamilies.register(GallifreyModBlocks.TREEBORG_PLANKS)
+                    .sign(
+                            GallifreyModBlocks.STANDING_TREEBORG_SIGN,
+                            GallifreyModBlocks.WALL_TREEBORG_SIGN
+                    )
+                    .group("wooden")
+                    .unlockCriterionName("has_planks")
+                    .build();
+
 
     // ============================================================
     // TARDIS EXTERIOR

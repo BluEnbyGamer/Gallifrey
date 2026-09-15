@@ -38,12 +38,18 @@ public class GallifreyModClient implements ClientModInitializer {
                 new TwinSunSkyRenderer()
         );
 
+
         // ---------------------------------------------------------
         // TARDIS RENDER LAYER
         // ---------------------------------------------------------
 
         BlockRenderLayerMap.INSTANCE.putBlock(
                 GallifreyModBlocks.TARDIS_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.POTTED_TARDIS_SAPLING,
                 RenderLayer.getCutout()
         );
 
@@ -67,6 +73,16 @@ public class GallifreyModClient implements ClientModInitializer {
                 ChestBoatEntityModel::getTexturedModelData
         );
 
+        EntityModelLayerRegistry.registerModelLayer(
+                TardisExteriorRenderer.TARDIS_EXTERIOR_LAYER,
+                TardisModel::getTexturedModelData
+        );
+
+        BlockEntityRendererRegistry.register(
+                GallifreyModBlockEntities.TARDIS_EXTERIOR,
+                TardisExteriorRenderer::new
+        );
+
 
 
         // ---------------------------------------------------------
@@ -75,6 +91,11 @@ public class GallifreyModClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlock(
                 GallifreyModBlocks.ULANDA_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.POTTED_ULANDA_SAPLING,
                 RenderLayer.getCutout()
         );
 
@@ -94,22 +115,52 @@ public class GallifreyModClient implements ClientModInitializer {
         );
 
         EntityModelLayerRegistry.registerModelLayer(
-                TardisExteriorRenderer.TARDIS_EXTERIOR_LAYER,
-                TardisModel::getTexturedModelData
-        );
-
-        BlockEntityRendererRegistry.register(
-                GallifreyModBlockEntities.TARDIS_EXTERIOR,
-                TardisExteriorRenderer::new
-        );
-
-        EntityModelLayerRegistry.registerModelLayer(
                 new EntityModelLayer(new Identifier("gallifrey", "boat/ulanda_boat"), "main"),
                 BoatEntityModel::getTexturedModelData
         );
 
         EntityModelLayerRegistry.registerModelLayer(
                 new EntityModelLayer(new Identifier("gallifrey", "chest_boat/ulanda_boat"), "main"),
+                ChestBoatEntityModel::getTexturedModelData
+        );
+
+        // ---------------------------------------------------------
+        // TREEBORG RENDER LAYER
+        // ---------------------------------------------------------
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.TREEBORG_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.POTTED_TREEBORG_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.TREEBORG_LEAVES,
+                RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.TREEBORG_DOOR,
+                RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.TREEBORG_TRAPDOOR,
+                RenderLayer.getCutoutMipped()
+        );
+
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(new Identifier("gallifrey", "boat/treeborg_boat"), "main"),
+                BoatEntityModel::getTexturedModelData
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(new Identifier("gallifrey", "chest_boat/treeborg_boat"), "main"),
                 ChestBoatEntityModel::getTexturedModelData
         );
 

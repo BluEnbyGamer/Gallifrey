@@ -18,10 +18,17 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+
                 .add(GallifreyModBlocks.ULANDA_LOG)
                 .add(GallifreyModBlocks.ULANDA_WOOD)
                 .add(GallifreyModBlocks.STRIP_ULANDA_LOG)
                 .add(GallifreyModBlocks.STRIP_ULANDA_WOOD)
+
+                .add(GallifreyModBlocks.TREEBORG_LOG)
+                .add(GallifreyModBlocks.TREEBORG_WOOD)
+                .add(GallifreyModBlocks.STRIP_TREEBORG_LOG)
+                .add(GallifreyModBlocks.STRIP_TREEBORG_WOOD)
+
                 .add(GallifreyModBlocks.TARDIS_LOG)
                 .add(GallifreyModBlocks.TARDIS_WOOD)
                 .add(GallifreyModBlocks.STRIP_TARDIS_WOOD)
