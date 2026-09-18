@@ -7,6 +7,7 @@ import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.block.entity.RoundelBlock;
 import com.timelordmod.gallifrey.world.tree.TardisSaplingGenerator;
+import com.timelordmod.gallifrey.world.tree.TreeborgSaplingGenerator;
 import com.timelordmod.gallifrey.world.tree.UlandaSaplingGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -558,7 +559,7 @@ public class GallifreyModBlocks {
     public static final Block TREEBORG_SAPLING = registerBlock(
             "treeborg_sapling",
             new SaplingBlock(
-                    new TardisSaplingGenerator(),
+                    new TreeborgSaplingGenerator(),
                     FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)
             )
     );
@@ -566,7 +567,7 @@ public class GallifreyModBlocks {
     public static final Block POTTED_TREEBORG_SAPLING = registerBlock(
             "potted_treeborg_sapling",
             new FlowerPotBlock(
-                    GallifreyModBlocks.TARDIS_SAPLING,
+                    GallifreyModBlocks.TREEBORG_SAPLING,
                     FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)
             )
     );
@@ -631,8 +632,8 @@ public class GallifreyModBlocks {
     public static final Block TREEBORG_TRAPDOOR = registerBlock(
             "treeborg_trapdoor",
             new TrapdoorBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_PLANKS),
-                    BlockSetType.OAK
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_TRAPDOOR),
+                    BlockSetType.JUNGLE
             )
     );
 

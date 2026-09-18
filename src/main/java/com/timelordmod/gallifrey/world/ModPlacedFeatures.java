@@ -33,6 +33,9 @@ public class ModPlacedFeatures {
     // so a dense forest would undercut that "special, uncommon" feel
     public static final RegistryKey<PlacedFeature> TARDIS_PLACED_KEY = registerKey("tardis_placed");
 
+
+    public static final RegistryKey<PlacedFeature> TREEBORG_PLACED_KEY = registerKey("treeborg_placed");
+
     public static void boostrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
@@ -51,6 +54,15 @@ public class ModPlacedFeatures {
                         SquarePlacementModifier.of(),
                         HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES),
                         PlacedFeatures.wouldSurvive(GallifreyModBlocks.TARDIS_SAPLING),
+                        BiomePlacementModifier.of()
+                ));
+
+        register(context, TREEBORG_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.TREEBORG_KEY),
+                List.of(
+                        CountPlacementModifier.of(10),
+                        SquarePlacementModifier.of(),
+                        HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES),
+                        PlacedFeatures.wouldSurvive(GallifreyModBlocks.TREEBORG_SAPLING),
                         BiomePlacementModifier.of()
                 ));
 
