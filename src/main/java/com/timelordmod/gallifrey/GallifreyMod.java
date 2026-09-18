@@ -1,16 +1,19 @@
 package com.timelordmod.gallifrey;
 
+import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.entity.ModBoats;
 import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.item.RoundelsCreativeTab;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
+import com.timelordmod.gallifrey.world.biome.ModBiomes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.BiomeKeys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
@@ -32,6 +35,7 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyCreativeTab.register();
 		RoundelsCreativeTab.register();
 		ModBoats.registerBoats();
+		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, ModBiomes.TREEBORG_FOREST, 0.3d);
 
 
 
