@@ -22,6 +22,16 @@ repositories {
 	}
 	maven {url = "https://maven.kyrptonaught.dev"}
 
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter { includeGroup "maven.modrinth" }
+	}
+
 	maven {
 		name = 'TerraformersMC'
 		url = 'https://maven.terraformersmc.com/'
@@ -86,6 +96,9 @@ dependencies {
 
 	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:7.0.1"
 	include "com.terraformersmc.terraform-api:terraform-wood-api-v1:7.0.1"
+
+	modImplementation "maven.modrinth:biolith:NikAXMfS"
+	include( "maven.modrinth:biolith:NikAXMfS")
 }
 
 /*

@@ -29,6 +29,8 @@ public class ModBiomes {
     public static final RegistryKey<Biome> GALLIFREYAN_ULANDA_FOREST = registerKey("gallifreyan_ulanda_forest");
     public static final RegistryKey<Biome> GALLIFREYAN_TARDIS_BIOME = registerKey("gallifreyan_tardis_biome");
     public static final RegistryKey<Biome> GALLIFREYAN_OCEAN = registerKey("gallifreyan_ocean");
+    public static final RegistryKey<Biome> TREEBORG_FOREST = registerKey("treeborg_forest");
+    public static final RegistryKey<Biome> GALLIFREYAN_TREEBORG_FOREST = registerKey("gallifreyan_treeborg_forest");
 
     private static RegistryKey<Biome> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.BIOME, new Identifier(GallifreyMod.MOD_ID, name));
@@ -89,6 +91,20 @@ public class ModBiomes {
                 placedFeatures, carvers, generationSettings -> {
                     DefaultBiomeFeatures.addSeagrassOnStone(generationSettings);
                     DefaultBiomeFeatures.addKelp(generationSettings);
+                }));
+
+        context.register(GALLIFREYAN_TREEBORG_FOREST, createBiome(false, 0.5F, 0.6F, 10638337, 15105551, 14641191, 15109680,
+                placedFeatures, carvers, generationSettings -> {
+                    generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.TREEBORG_PLACED_KEY);
+                    DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
+                    DefaultBiomeFeatures.addDefaultGrass(generationSettings);
+                }));
+
+        context.register(TREEBORG_FOREST, createBiome(false, 0.5F, 0.6F, 10638337, 15105551, 5274162, 5877296,
+                placedFeatures, carvers, generationSettings -> {
+                    generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.TREEBORG_PLACED_KEY);
+                    DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
+                    DefaultBiomeFeatures.addDefaultGrass(generationSettings);
                 }));
     }
 
