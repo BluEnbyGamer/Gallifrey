@@ -9,6 +9,8 @@
   "item.gallifrey.tardis_chest_boat": "Tardis Boat with Chest",
   "item.gallifrey.ulanda_boat": "Ulanda Boat",
   "item.gallifrey.ulanda_chest_boat": "Ulanda Boat with Chest",
+  "item.gallifrey.treeborg_boat": "Treeborg Boat",
+  "item.gallifrey.treeborg_chest_boat": "Treeborg Boat with Chest",
 
   //Blocks go here
   "block.gallifrey.ulanda_sapling": "Ulanda Sapling",
@@ -50,6 +52,23 @@
   "block.gallifrey.bone_roundel": "Bone Roundel",
   "block.gallifrey.structure_roundel": "Structure Roundel",
   "block.gallifrey.lodestone_roundel": "Lodestone Roundel",
+  "block.gallifrey.treeborg_sapling": "Treeborg Sapling",
+  "block.gallifrey.treeborg_leaves": "Treeborg Leaves",
+  "block.gallifrey.treeborg_wood": "Treeborg Wood",
+  "block.gallifrey.treeborg_log": "Treeborg Log",
+  "block.gallifrey.stripped_treeborg_wood": "Stripped Treeborg Wood",
+  "block.gallifrey.stripped_treeborg_log": "Stripped Treeborg Log",
+  "block.gallifrey.treeborg_planks": "Treeborg Planks",
+  "block.gallifrey.treeborg_stairs": "Treeborg Stairs",
+  "block.gallifrey.treeborg_slab": "Treeborg Slab",
+  "block.gallifrey.treeborg_fence": "Treeborg Fence",
+  "block.gallifrey.treeborg_fence_gate": "Treeborg Fence Gate",
+  "block.gallifrey.treeborg_door": "Treeborg Door",
+  "block.gallifrey.treeborg_trapdoor": "Treeborg Trapdoor",
+  "block.gallifrey.treeborg_pressure_plate": "Treeborg Pressure Plate",
+  "block.gallifrey.treeborg_button": "Treeborg Button",
+  "block.gallifrey.treeborg_standing_sign": "Treeborg Sign",
+  "block.gallifrey.treeborg_hanging_sign": "Treeborg Hanging Sign",
 
   //advancements go here
 

@@ -92,7 +92,7 @@ public class ModConfiguredFeatures {
                 new StraightTrunkPlacer(5, 4, 3),
 
                 BlockStateProvider.of(GallifreyModBlocks.TREEBORG_LEAVES),
-                new BlobFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(2), 4),
+                new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(2), 3),
 
                 new TwoLayersFeatureSize(1, 0, 3)).build());
     }

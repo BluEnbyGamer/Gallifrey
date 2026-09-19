@@ -53,13 +53,24 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.WALL_HANGING_ULANDA_SIGN);
 
         //TREE-BORG WOOD SET BLOCK DROPS
-        //addDrop(GallifreyModBlocks.ULANDA_SAPLING);
-        //addDrop(GallifreyModBlocks.ULANDA_LEAVES, leavesDrops(GallifreyModBlocks.ULANDA_LEAVES, GallifreyModBlocks.ULANDA_SAPLING, 0.0025f));
-        //addDrop(GallifreyModBlocks.ULANDA_LOG);
-        //addDrop(GallifreyModBlocks.STRIP_ULANDA_LOG);
-        //addDrop(GallifreyModBlocks.ULANDA_WOOD);
-        //addDrop(GallifreyModBlocks.STRIP_ULANDA_WOOD);
-        //addDrop(GallifreyModBlocks.ULANDA_PLANKS);
+        addDrop(GallifreyModBlocks.TREEBORG_SAPLING);
+        addDrop(GallifreyModBlocks.TREEBORG_LEAVES, leavesDrops(GallifreyModBlocks.TREEBORG_LEAVES, GallifreyModBlocks.TREEBORG_SAPLING, 0.0025f));
+        addDrop(GallifreyModBlocks.TREEBORG_LOG);
+        addDrop(GallifreyModBlocks.STRIP_TREEBORG_LOG);
+        addDrop(GallifreyModBlocks.TREEBORG_WOOD);
+        addDrop(GallifreyModBlocks.STRIP_TREEBORG_WOOD);
+        addDrop(GallifreyModBlocks.TREEBORG_PLANKS);
+        addDrop(GallifreyModBlocks.TREEBORG_SLAB, slabDrops(GallifreyModBlocks.TREEBORG_SLAB));
+        addDrop(GallifreyModBlocks.TREEBORG_BUTTON);
+        addDrop(GallifreyModBlocks.TREEBORG_FENCE);
+        addDrop(GallifreyModBlocks.TREEBORG_FENCE_GATE);
+        addDrop(GallifreyModBlocks.TREEBORG_DOOR, doorDrops(GallifreyModBlocks.TREEBORG_DOOR));
+        addDrop(GallifreyModBlocks.TREEBORG_TRAPDOOR);
+        addDrop(GallifreyModBlocks.TREEBORG_PRESSURE_PLATE);
+        addDrop(GallifreyModBlocks.STANDING_TREEBORG_SIGN);
+        addDrop(GallifreyModBlocks.WALL_TREEBORG_SIGN);
+        addDrop(GallifreyModBlocks.HANGING_TREEBORG_SIGN);
+        addDrop(GallifreyModBlocks.WALL_HANGING_TREEBORG_SIGN);
 
         //ASH WOOD SET BLOCK DROPS
         //addDrop(GallifreyModBlocks.ULANDA_SAPLING);

@@ -17,6 +17,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(GallifreyModBlocks.TARDIS_PLANKS.asItem())
+                .add(GallifreyModBlocks.TREEBORG_PLANKS.asItem())
                 .add(GallifreyModBlocks.ULANDA_PLANKS.asItem());
 
     }

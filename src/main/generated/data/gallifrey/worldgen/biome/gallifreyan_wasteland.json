@@ -52,10 +52,10 @@
     [],
     [],
     [
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
       "minecraft:seagrass_simple",
-      "minecraft:kelp_cold"
+      "minecraft:kelp_cold",
+      "minecraft:brown_mushroom_normal",
+      "minecraft:red_mushroom_normal"
     ]
   ],
   "has_precipitation": false,

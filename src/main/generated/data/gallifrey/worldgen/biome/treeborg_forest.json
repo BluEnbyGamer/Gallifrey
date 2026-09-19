@@ -8,7 +8,7 @@
   },
   "downfall": 0.6,
   "effects": {
-    "fog_color": 10638337,
+    "fog_color": 12638463,
     "foliage_color": 5877296,
     "grass_color": 5274162,
     "mood_sound": {
@@ -17,7 +17,7 @@
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "sky_color": 15105551,
+    "sky_color": 7972607,
     "water_color": 4159204,
     "water_fog_color": 2635560
   },
@@ -52,11 +52,11 @@
     [],
     [],
     [
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
       "gallifrey:treeborg_placed",
       "minecraft:flower_default",
-      "minecraft:patch_grass_badlands"
+      "minecraft:patch_grass_badlands",
+      "minecraft:brown_mushroom_normal",
+      "minecraft:red_mushroom_normal"
     ]
   ],
   "has_precipitation": false,

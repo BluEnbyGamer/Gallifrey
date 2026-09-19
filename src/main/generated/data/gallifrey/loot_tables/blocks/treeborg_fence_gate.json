@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "gallifrey:treeborg_sign"
+          "name": "gallifrey:treeborg_fence_gate"
         }
       ],
       "rolls": 1.0

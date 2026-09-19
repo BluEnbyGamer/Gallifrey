@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "gallifrey:treeborg_sign"
+          "name": "gallifrey:treeborg_pressure_plate"
         }
       ],
       "rolls": 1.0
