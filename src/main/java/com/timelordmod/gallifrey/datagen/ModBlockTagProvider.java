@@ -46,10 +46,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(GallifreyModBlocks.TARDIS_FENCE)
+                .add(GallifreyModBlocks.TREEBORG_FENCE)
                 .add(GallifreyModBlocks.ULANDA_FENCE);
+
 
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
                 .add(GallifreyModBlocks.TARDIS_FENCE_GATE)
+                .add(GallifreyModBlocks.TREEBORG_FENCE_GATE)
                 .add(GallifreyModBlocks.ULANDA_FENCE_GATE);
 
         //getOrCreateTagBuilder(BlockTags.WALLS)
