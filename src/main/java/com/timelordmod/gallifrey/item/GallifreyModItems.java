@@ -12,6 +12,7 @@ import net.minecraft.item.SignItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 
 public class GallifreyModItems {
 
@@ -63,6 +64,13 @@ public class GallifreyModItems {
     public static final Item HANGING_TREEBORG_SIGN = registerItem("treeborg_hanging_sign",
             new HangingSignItem(GallifreyModBlocks.HANGING_TREEBORG_SIGN, GallifreyModBlocks.WALL_HANGING_TREEBORG_SIGN, new FabricItemSettings().maxCount(16)));
 
+    public static final SonicScrewdriver SONIC_SCREWDRIVER =
+            new SonicScrewdriver(
+                    new FabricItemSettings()
+                            .maxCount(1)
+                            .maxDamage(100)
+            );
+
 
 
 
@@ -74,6 +82,8 @@ public class GallifreyModItems {
         registerItem("blank_circuit", BLANK_CIRCUIT);
         registerItem("location_circuit",LOCATION_CIRCUIT);
         registerItem("dimension_circuit",DIMENSION_CIRCUIT);
+
+        registerItem("sonic_screwdriver", SONIC_SCREWDRIVER);
 
         GallifreyMod.LOGGER.debug("[Gallifrey] Items registered.");
     }
