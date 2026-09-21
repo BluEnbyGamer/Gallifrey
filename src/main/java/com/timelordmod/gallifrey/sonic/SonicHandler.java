@@ -32,13 +32,12 @@ import net.minecraft.util.math.BlockPos;
 
 import net.minecraft.world.World;
 
-
 public class SonicHandler {
 
 
-    // =========================================================
-    // USE SONIC
-    // =========================================================
+// =========================================================
+// USE SONIC
+// =========================================================
 
     public static void use(
             PlayerEntity player,
@@ -47,32 +46,22 @@ public class SonicHandler {
             SonicMode mode
     ) {
 
-        /*
-         * The Sonic is already checked for:
-         *
-         * - ON/OFF
-         * - Power
-         *
-         * by SonicScrewdriver.
-         *
-         * This class only performs the actual Sonic function.
-         */
+        // Different sound depending on what the Sonic is doing.
+        if (mode == SonicMode.SCAN) {
 
-        playSonicSound(
-                player,
-                world
-        );
+            playScanSound(player, world);
 
-
-        switch (mode) {
-
-            case SCAN -> scan(
+            scan(
                     player,
                     world,
                     target
             );
 
-            case ACTIVATE -> activate(
+        } else {
+
+            playActivateSound(player, world);
+
+            activate(
                     player,
                     world,
                     target
@@ -81,15 +70,28 @@ public class SonicHandler {
     }
 
 
-    // =========================================================
-    // SONIC SOUND
-    // =========================================================
+// =========================================================
+// SCAN SOUND
+// =========================================================
 
-    private static void playSonicSound(
+    private static void playScanSound(
             PlayerEntity player,
             World world
     ) {
 
+        // Electronic sounding pulse.
+        world.playSound(
+                null,
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                SoundEvents.BLOCK_SCULK_SENSOR_CLICKING,
+                SoundCategory.PLAYERS,
+                0.8F,
+                1.8F
+        );
+
+        // High-pitched sonic tone.
         world.playSound(
                 null,
                 player.getX(),
@@ -97,15 +99,50 @@ public class SonicHandler {
                 player.getZ(),
                 SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME,
                 SoundCategory.PLAYERS,
-                1.0F,
-                1.5F
+                0.7F,
+                2.0F
         );
     }
 
 
-    // =========================================================
-    // SCAN
-    // =========================================================
+// =========================================================
+// ACTIVATE SOUND
+// =========================================================
+
+    private static void playActivateSound(
+            PlayerEntity player,
+            World world
+    ) {
+
+        // Lower electronic pulse.
+        world.playSound(
+                null,
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                SoundEvents.BLOCK_SCULK_SENSOR_CLICKING,
+                SoundCategory.PLAYERS,
+                1.0F,
+                1.2F
+        );
+
+        // Sharp high-frequency tone.
+        world.playSound(
+                null,
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME,
+                SoundCategory.PLAYERS,
+                0.8F,
+                1.6F
+        );
+    }
+
+
+// =========================================================
+// SCAN
+// =========================================================
 
     private static void scan(
             PlayerEntity player,
@@ -238,9 +275,9 @@ public class SonicHandler {
     }
 
 
-    // =========================================================
-    // ACTIVATE
-    // =========================================================
+// =========================================================
+// ACTIVATE
+// =========================================================
 
     private static void activate(
             PlayerEntity player,
@@ -502,9 +539,9 @@ public class SonicHandler {
     }
 
 
-    // =========================================================
-    // TNT
-    // =========================================================
+// =========================================================
+// TNT
+// =========================================================
 
     private static void igniteTnt(
             World world,
@@ -538,4 +575,5 @@ public class SonicHandler {
                 1.0F
         );
     }
+
 }

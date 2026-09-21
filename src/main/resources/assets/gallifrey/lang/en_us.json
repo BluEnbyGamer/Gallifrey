@@ -78,5 +78,8 @@
   "subtitles.gallifrey.vm_sound": "Vortex Manipulator whirrs",
   "itemGroup.gallifrey.gallifrey": "Gallifrey",
   "itemGroup.gallifrey.roundels": "Roundels",
-  "catagory.gallifrey.main": "Gallifrey Mod"
+  "catagory.gallifrey.main": "Gallifrey Mod",
+
+  // SONIC SHITE
+  "item.gallifrey.sonic_screwdriver": "Sonic Screwdriver"
 }
