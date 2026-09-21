@@ -1,7 +1,6 @@
 package com.timelordmod.gallifrey.sonic;
 
 public enum SonicMode {
-
     SCAN("Scan"),
     ACTIVATE("Activate");
 

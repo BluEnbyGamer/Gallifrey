@@ -28,7 +28,6 @@ public class SonicScrewdriver extends Item {
     public static final int MAX_POWER = 100;
 
     private static final String POWER_KEY = "SonicPower";
-    private static final String ON_KEY = "SonicOn";
     private static final String MODE_KEY = "SonicMode";
 
     public SonicScrewdriver(Settings settings) {
@@ -54,11 +53,6 @@ public class SonicScrewdriver extends Item {
                 POWER_KEY,
                 power
         );
-
-        // If power reaches zero, the Sonic must turn off.
-        if (power <= 0) {
-            setOn(stack, false);
-        }
     }
 
     public static void consumePower(ItemStack stack) {
@@ -66,7 +60,6 @@ public class SonicScrewdriver extends Item {
         int power = getPower(stack);
 
         if (power <= 0) {
-            setOn(stack, false);
             return;
         }
 
@@ -77,42 +70,23 @@ public class SonicScrewdriver extends Item {
     }
 
     // =========================================================
-    // ON / OFF
+    // MODEL STATE
     // =========================================================
 
+    /*
+     * The Sonic does NOT have a manually controlled ON/OFF state.
+     *
+     * The model is considered:
+     *
+     * ON  = has power
+     * OFF = power is zero
+     *
+     * This means the Sonic automatically appears "off"
+     * when its power runs out.
+     */
+
     public static boolean isOn(ItemStack stack) {
-        return stack
-                .getOrCreateNbt()
-                .getBoolean(ON_KEY);
-    }
-
-    public static void setOn(
-            ItemStack stack,
-            boolean on
-    ) {
-
-        // Never allow the Sonic to be ON with zero power.
-        if (getPower(stack) <= 0) {
-            on = false;
-        }
-
-        stack.getOrCreateNbt().putBoolean(
-                ON_KEY,
-                on
-        );
-    }
-
-    public static void toggle(ItemStack stack) {
-
-        if (getPower(stack) <= 0) {
-            setOn(stack, false);
-            return;
-        }
-
-        setOn(
-                stack,
-                !isOn(stack)
-        );
+        return getPower(stack) > 0;
     }
 
     // =========================================================
@@ -188,10 +162,9 @@ public class SonicScrewdriver extends Item {
         );
 
         /*
-         * Newly-created Sonic Screwdrivers receive:
+         * Newly-created Sonic Screwdrivers start with:
          *
          * Power = 100
-         * State = OFF
          * Mode = SCAN
          */
 
@@ -201,27 +174,14 @@ public class SonicScrewdriver extends Item {
                     stack,
                     MAX_POWER
             );
+        }
 
-            setOn(
-                    stack,
-                    false
-            );
+        if (!stack.getOrCreateNbt().contains(MODE_KEY)) {
 
             setMode(
                     stack,
                     SonicMode.SCAN
             );
-        }
-
-        /*
-         * Safety check.
-         *
-         * If somehow the item has zero power while ON,
-         * force it OFF.
-         */
-
-        if (getPower(stack) <= 0) {
-            setOn(stack, false);
         }
     }
 
@@ -406,73 +366,22 @@ public class SonicScrewdriver extends Item {
 
         // =====================================================
         // SNEAK + RIGHT CLICK
-        // Toggle Sonic ON/OFF
+        // CHANGE MODE
         // =====================================================
 
         if (player.isSneaking()) {
 
             if (!world.isClient) {
 
-                if (getPower(stack) <= 0) {
+                toggleMode(stack);
 
-                    setOn(
-                            stack,
-                            false
-                    );
-
-                    player.sendMessage(
-                            Text.literal(
-                                    "§cSONIC: Power depleted."
-                            ),
-                            true
-                    );
-
-                } else {
-
-                    toggle(stack);
-
-                    if (isOn(stack)) {
-
-                        player.sendMessage(
-                                Text.literal(
-                                        "§bSONIC: §aONLINE §7("
-                                                + getPower(stack)
-                                                + "%)"
-                                ),
-                                true
-                        );
-
-                    } else {
-
-                        player.sendMessage(
-                                Text.literal(
-                                        "§bSONIC: §cOFFLINE §7("
-                                                + getPower(stack)
-                                                + "%)"
-                                ),
-                                true
-                        );
-                    }
-                }
-            }
-
-            return TypedActionResult.success(
-                    stack,
-                    world.isClient
-            );
-        }
-
-        // =====================================================
-        // SONIC OFF
-        // =====================================================
-
-        if (!isOn(stack)) {
-
-            if (!world.isClient) {
+                SonicMode mode =
+                        getMode(stack);
 
                 player.sendMessage(
                         Text.literal(
-                                "§7SONIC: Offline."
+                                "§bSONIC MODE: §e"
+                                        + mode.getDisplayName()
                         ),
                         true
                 );
@@ -489,11 +398,6 @@ public class SonicScrewdriver extends Item {
         // =====================================================
 
         if (getPower(stack) <= 0) {
-
-            setOn(
-                    stack,
-                    false
-            );
 
             if (!world.isClient) {
 
@@ -530,7 +434,7 @@ public class SonicScrewdriver extends Item {
                     mode
             );
 
-            // One use consumes exactly one power.
+            // Every Sonic use consumes one power.
             consumePower(stack);
 
             player.sendMessage(
@@ -539,15 +443,6 @@ public class SonicScrewdriver extends Item {
                                     + getPower(stack)
                                     + "§7/§f"
                                     + MAX_POWER
-                    ),
-                    true
-            );
-
-            // Tell the player what mode is currently selected.
-            player.sendMessage(
-                    Text.literal(
-                            "§7Mode: §e"
-                                    + mode.getDisplayName()
                     ),
                     true
             );

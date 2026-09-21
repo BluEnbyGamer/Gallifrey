@@ -1,6 +1,6 @@
 
 {
-"parent": "item/sonic_items/sonic_screwdriver",
+"parent": "item/sonic_items/sonic_screwdriver_off",
 "overrides": [
 {
 "predicate": {
