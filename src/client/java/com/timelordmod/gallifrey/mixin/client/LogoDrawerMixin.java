@@ -40,6 +40,8 @@ public class LogoDrawerMixin {
     private static final Identifier GALL_LIGHTSDAY =
             new Identifier("gallifrey", "textures/gui/title/gall_lightsday.png");
 
+    private static final Identifier GALL_DEOSDAY =
+            new Identifier("gallifrey", "textures/gui/title/gall_deosday.png");
 
     // Include the intermediary method name 'method_48209' so production builds match it without a refMap
     @Inject(
@@ -91,6 +93,10 @@ public class LogoDrawerMixin {
 
         if (date.getMonth() == Month.OCTOBER && date.getDayOfMonth() == 15) {
             return GALL_BLUESDAY;
+        }
+
+        if (date.getMonth() == Month.JUNE && date.getDayOfMonth() == 10) {
+            return GALL_DEOSDAY;
         }
 
         if (date.getMonth() == Month.OCTOBER && date.getDayOfMonth() == 16) {
