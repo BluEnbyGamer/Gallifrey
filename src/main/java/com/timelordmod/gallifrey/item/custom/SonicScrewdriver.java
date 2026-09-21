@@ -2,6 +2,7 @@ package com.timelordmod.gallifrey.item.custom;
 
 import com.timelordmod.gallifrey.sonic.SonicHandler;
 import com.timelordmod.gallifrey.sonic.SonicMode;
+import com.timelordmod.gallifrey.sonic.SonicModes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -110,12 +111,14 @@ public class SonicScrewdriver extends Item {
         double entityDistance = SONIC_RANGE * SONIC_RANGE;
 
         if (blockHit.getType() != HitResult.Type.MISS) {
+
             blockDistance = player
                     .getCameraPosVec(1.0F)
                     .squaredDistanceTo(blockHit.getPos());
         }
 
         if (entityHit != null) {
+
             entityDistance = player
                     .getCameraPosVec(1.0F)
                     .squaredDistanceTo(entityHit.getEntity().getPos());
@@ -137,15 +140,39 @@ public class SonicScrewdriver extends Item {
 
         ItemStack stack = player.getStackInHand(hand);
 
+        /*
+         * Sneak + right-click cycles Sonic modes.
+         */
+        if (player.isSneaking()) {
+
+            if (!world.isClient) {
+
+                SonicModes.nextMode(
+                        stack,
+                        player
+                );
+            }
+
+            return TypedActionResult.success(
+                    stack,
+                    world.isClient
+            );
+        }
+
+        /*
+         * Normal right-click activates the current mode.
+         */
         if (!world.isClient) {
 
             HitResult target = getSonicTarget(player);
+
+            SonicMode mode = SonicModes.getMode(stack);
 
             SonicHandler.use(
                     player,
                     world,
                     target,
-                    SonicMode.SCAN
+                    mode
             );
         }
 

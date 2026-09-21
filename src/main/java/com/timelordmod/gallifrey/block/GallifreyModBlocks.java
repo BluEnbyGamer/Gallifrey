@@ -5,6 +5,7 @@ import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.timelordmod.gallifrey.GallifreyMod;
+import com.timelordmod.gallifrey.block.custom.SonicSignalBlock;
 import com.timelordmod.gallifrey.block.entity.RoundelBlock;
 import com.timelordmod.gallifrey.world.tree.TardisSaplingGenerator;
 import com.timelordmod.gallifrey.world.tree.TreeborgSaplingGenerator;
@@ -90,6 +91,24 @@ public class GallifreyModBlocks {
                     FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
             )
     );
+
+
+        // ============================================================
+        // SONIC SCREWDRIVER
+        // ============================================================
+
+        public static final Block SONIC_SIGNAL = registerBlock(
+                "sonic_signal",
+                new SonicSignalBlock(
+                        FabricBlockSettings.create()
+                                .strength(-1.0f, 3600000.0f)
+                                .nonOpaque()
+                                .noCollision()
+                                .dropsNothing()
+                                .luminance(state -> 0)
+                )
+        );
+
 
 
     // ============================================================
