@@ -1,13 +1,11 @@
-
 {
-"parent": "item/sonic_items/sonic_screwdriver_off",
-"overrides": [
-{
-"predicate": {
-"gallifrey:sonic_on": 1.0
-},
-"model": "gallifrey:item/sonic_items/sonic_screwdriver_on"
+  "parent": "gallifrey:item/sonic_items/sonic_screwdriver_off",
+  "overrides": [
+    {
+      "predicate": {
+        "gallifrey:sonic_on": 1
+      },
+      "model": "gallifrey:item/sonic_items/sonic_screwdriver_on"
+    }
+  ]
 }
-]
-}
-
