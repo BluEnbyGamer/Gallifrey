@@ -35,6 +35,11 @@ import net.minecraft.world.World;
 
 public class SonicHandler {
 
+
+    // =========================================================
+    // USE SONIC
+    // =========================================================
+
     public static void use(
             PlayerEntity player,
             World world,
@@ -42,7 +47,22 @@ public class SonicHandler {
             SonicMode mode
     ) {
 
-        playSonicSound(player, world);
+        /*
+         * The Sonic is already checked for:
+         *
+         * - ON/OFF
+         * - Power
+         *
+         * by SonicScrewdriver.
+         *
+         * This class only performs the actual Sonic function.
+         */
+
+        playSonicSound(
+                player,
+                world
+        );
+
 
         switch (mode) {
 

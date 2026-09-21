@@ -23,11 +23,25 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
+import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
+import com.timelordmod.gallifrey.item.GallifreyModItems;
 
 public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+
+        // ---------------------------------------------------------
+        // SONIC SCREWDRIVER
+        // ---------------------------------------------------------
+
+        ModelPredicateProviderRegistry.register(
+                GallifreyModItems.SONIC_SCREWDRIVER,
+                new Identifier("gallifrey", "sonic_on"),
+                (stack, world, entity, seed) ->
+                        SonicScrewdriver.isOn(stack) ? 1.0F : 0.0F
+        );
 
         // ---------------------------------------------------------
         // DIMENSION SKY
