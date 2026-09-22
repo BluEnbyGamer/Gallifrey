@@ -16,18 +16,30 @@ public class SonicWorkshopScreen extends Screen {
     private static final int GUI_WIDTH = 420;
     private static final int GUI_HEIGHT = 270;
 
-    private static final int PANEL = 0xF0091118;
-    private static final int PANEL_LIGHT = 0xFF101D25;
-    private static final int PANEL_DARK = 0xFF080D12;
+    /*
+     * ============================================================
+     * DOCTOR WHO / TARDIS COLOUR PALETTE
+     * ============================================================
+     */
 
-    private static final int CYAN = 0xFF26E6FF;
-    private static final int CYAN_DIM = 0xFF08758C;
-    private static final int CYAN_DARK = 0xFF063D4A;
+    // Main TARDIS / panel colours
+    private static final int PANEL       = 0xF007141C;
+    private static final int PANEL_LIGHT = 0xFF102D38;
+    private static final int PANEL_DARK  = 0xFF091D27;
 
-    private static final int TEXT = 0xFFE7FBFF;
-    private static final int TEXT_DIM = 0xFF75AAB5;
+    // TARDIS blues
+    private static final int BLUE      = 0xFF35C5E8;
+    private static final int BLUE_DIM  = 0xFF168AAD;
+    private static final int BLUE_DARK = 0xFF0A4F66;
 
-    private static final int GREEN = 0xFF38FF88;
+    // Text
+    private static final int TEXT     = 0xFFE8F1ED;
+    private static final int TEXT_DIM = 0xFF7599A3;
+
+    // Time Lord / brass accent
+    private static final int GOLD        = 0xFFD6A84F;
+    private static final int GOLD_BRIGHT = 0xFFF2D27A;
+    private static final int GOLD_DARK   = 0xFF735725;
 
     private int left;
     private int top;
@@ -56,11 +68,8 @@ public class SonicWorkshopScreen extends Screen {
     @Override
     protected void init() {
 
-        left =
-                (width - GUI_WIDTH) / 2;
-
-        top =
-                (height - GUI_HEIGHT) / 2;
+        left = (width - GUI_WIDTH) / 2;
+        top = (height - GUI_HEIGHT) / 2;
 
         createCasingButtons();
     }
@@ -70,16 +79,30 @@ public class SonicWorkshopScreen extends Screen {
         SonicCasing[] casings =
                 SonicCasing.values();
 
-        int columns = 5;
+        /*
+         * ========================================================
+         * 4-COLUMN BUTTON GRID
+         * ========================================================
+         */
 
-        int buttonWidth = 72;
-        int buttonHeight = 28;
+        int columns = 4;
 
-        int spacingX = 8;
-        int spacingY = 8;
+        int buttonWidth = 90;
+        int buttonHeight = 30;
+
+        int spacingX = 6;
+        int spacingY = 7;
+
+        int gridWidth =
+                columns * buttonWidth
+                        + (columns - 1) * spacingX;
+
+        int panelWidth =
+                GUI_WIDTH - 36;
 
         int startX =
-                left + 25;
+                left + 18
+                        + (panelWidth - gridWidth) / 2;
 
         int startY =
                 top + 108;
@@ -166,25 +189,45 @@ public class SonicWorkshopScreen extends Screen {
             int border;
             int textColor;
 
+            /*
+             * ====================================================
+             * SELECTED
+             *
+             * Gold = active / currently equipped casing
+             * ====================================================
+             */
             if (selected) {
 
-                fill = CYAN_DARK;
-                border = CYAN;
-                textColor = TEXT;
+                fill = GOLD_DARK;
+                border = GOLD_BRIGHT;
+                textColor = GOLD_BRIGHT;
 
+                /*
+                 * ====================================================
+                 * HOVER
+                 *
+                 * Bright TARDIS blue
+                 * ====================================================
+                 */
             } else if (hovered) {
 
                 fill = PANEL_LIGHT;
-                border = CYAN;
+                border = BLUE;
                 textColor = TEXT;
 
+                /*
+                 * ====================================================
+                 * NORMAL
+                 * ====================================================
+                 */
             } else {
 
                 fill = PANEL_DARK;
-                border = CYAN_DIM;
-                textColor = CYAN;
+                border = BLUE_DIM;
+                textColor = BLUE;
             }
 
+            // Button background
             context.fill(
                     getX(),
                     getY(),
@@ -193,6 +236,7 @@ public class SonicWorkshopScreen extends Screen {
                     fill
             );
 
+            // Button border
             context.drawBorder(
                     getX(),
                     getY(),
@@ -201,11 +245,12 @@ public class SonicWorkshopScreen extends Screen {
                     border
             );
 
+            // Button text
             context.drawCenteredTextWithShadow(
                     textRenderer,
                     getMessage(),
                     getX() + getWidth() / 2,
-                    getY() + 10,
+                    getY() + 11,
                     textColor
             );
         }
@@ -228,9 +273,12 @@ public class SonicWorkshopScreen extends Screen {
                 casing
         );
 
+        /*
+         * Gold/cyan message to match the new UI.
+         */
         client.player.sendMessage(
                 Text.literal(
-                        "§bCASING: §f"
+                        "§6CASING: §f"
                                 + casing.getDisplayName()
                 ),
                 true
@@ -261,6 +309,12 @@ public class SonicWorkshopScreen extends Screen {
             DrawContext context
     ) {
 
+        /*
+         * ========================================================
+         * WORLD BACKGROUND
+         * ========================================================
+         */
+
         context.fill(
                 0,
                 0,
@@ -269,13 +323,25 @@ public class SonicWorkshopScreen extends Screen {
                 0x99000000
         );
 
+        /*
+         * ========================================================
+         * OUTER TARDIS BLUE GLOW
+         * ========================================================
+         */
+
         context.fill(
                 left - 3,
                 top - 3,
                 left + GUI_WIDTH + 3,
                 top + GUI_HEIGHT + 3,
-                0x4016D9FF
+                0x30168AAD
         );
+
+        /*
+         * ========================================================
+         * MAIN PANEL
+         * ========================================================
+         */
 
         context.fill(
                 left,
@@ -285,21 +351,39 @@ public class SonicWorkshopScreen extends Screen {
                 PANEL
         );
 
+        /*
+         * ========================================================
+         * MAIN BORDER
+         * ========================================================
+         */
+
         context.drawBorder(
                 left,
                 top,
                 GUI_WIDTH,
                 GUI_HEIGHT,
-                CYAN
+                BLUE
         );
+
+        /*
+         * ========================================================
+         * INNER BORDER
+         * ========================================================
+         */
 
         context.drawBorder(
                 left + 4,
                 top + 4,
                 GUI_WIDTH - 8,
                 GUI_HEIGHT - 8,
-                CYAN_DARK
+                BLUE_DARK
         );
+
+        /*
+         * ========================================================
+         * HEADER
+         * ========================================================
+         */
 
         context.fill(
                 left + 10,
@@ -314,8 +398,14 @@ public class SonicWorkshopScreen extends Screen {
                 top + 46,
                 left + GUI_WIDTH - 10,
                 top + 47,
-                CYAN_DIM
+                BLUE_DIM
         );
+
+        /*
+         * ========================================================
+         * SONIC INFORMATION
+         * ========================================================
+         */
 
         drawSectionBox(
                 context,
@@ -325,6 +415,12 @@ public class SonicWorkshopScreen extends Screen {
                 43
         );
 
+        /*
+         * ========================================================
+         * CASING GRID
+         * ========================================================
+         */
+
         drawSectionBox(
                 context,
                 left + 18,
@@ -333,12 +429,18 @@ public class SonicWorkshopScreen extends Screen {
                 151
         );
 
+        /*
+         * ========================================================
+         * BOTTOM ACCENT
+         * ========================================================
+         */
+
         context.fill(
                 left + 18,
                 top + 255,
                 left + GUI_WIDTH - 18,
                 top + 256,
-                CYAN_DARK
+                BLUE_DARK
         );
     }
 
@@ -358,20 +460,22 @@ public class SonicWorkshopScreen extends Screen {
                 PANEL_DARK
         );
 
+        // Top blue accent
         context.fill(
                 x,
                 y,
                 x + width,
                 y + 1,
-                CYAN_DARK
+                BLUE_DARK
         );
 
+        // Bottom subtle blue accent
         context.fill(
                 x,
                 y + height - 1,
                 x + width,
                 y + height,
-                0xFF102A33
+                0xFF102D38
         );
     }
 
@@ -379,12 +483,18 @@ public class SonicWorkshopScreen extends Screen {
             DrawContext context
     ) {
 
+        /*
+         * ========================================================
+         * HEADER
+         * ========================================================
+         */
+
         context.drawText(
                 textRenderer,
                 "SONIC WORKSHOP",
                 left + 20,
                 top + 17,
-                CYAN,
+                GOLD_BRIGHT,
                 false
         );
 
@@ -397,14 +507,26 @@ public class SonicWorkshopScreen extends Screen {
                 false
         );
 
+        /*
+         * ========================================================
+         * SONIC INFORMATION
+         * ========================================================
+         */
+
         context.drawText(
                 textRenderer,
                 "SONIC SCREWDRIVER",
                 left + 27,
                 top + 63,
-                CYAN,
+                BLUE,
                 false
         );
+
+        /*
+         * ========================================================
+         * SELECT CASING
+         * ========================================================
+         */
 
         context.drawText(
                 textRenderer,
@@ -415,24 +537,57 @@ public class SonicWorkshopScreen extends Screen {
                 false
         );
 
+        /*
+         * ========================================================
+         * CURRENT CASING
+         *
+         * Right aligned so longer casing names don't collide
+         * with SELECT CASING.
+         * ========================================================
+         */
+
+        String currentLabel =
+                "CURRENT:";
+
+        String currentValue =
+                selectedCasing.getDisplayName();
+
+        int rightEdge =
+                left + GUI_WIDTH - 27;
+
+        int valueWidth =
+                textRenderer.getWidth(currentValue);
+
+        int labelWidth =
+                textRenderer.getWidth(currentLabel);
+
+        int gap = 6;
+
+        int valueX =
+                rightEdge - valueWidth;
+
+        int labelX =
+                valueX - gap - labelWidth;
+
+        // CURRENT:
         context.drawText(
                 textRenderer,
-                "CURRENT:",
-                left + 27,
-                top + 239,
+                currentLabel,
+                labelX,
+                top + 78,
                 TEXT_DIM,
                 false
         );
 
+        // Third Doctor / Fourth Doctor / etc.
         context.drawText(
                 textRenderer,
-                selectedCasing.getDisplayName(),
-                left + 85,
-                top + 239,
-                GREEN,
+                currentValue,
+                valueX,
+                top + 78,
+                GOLD_BRIGHT,
                 false
         );
-
     }
 
     @Override
@@ -440,3 +595,4 @@ public class SonicWorkshopScreen extends Screen {
         return false;
     }
 }
+
