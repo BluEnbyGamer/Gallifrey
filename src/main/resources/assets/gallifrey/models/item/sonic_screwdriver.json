@@ -59,7 +59,7 @@
       "predicate": {
         "gallifrey:sonic_casing": 1.0
       },
-      "model": "gallifrey:item/sonic_items/sonic_alastor_staff"
+      "model": "gallifrey:item/sonic_items/sonic_deos_portal_gun"
     },
     {
       "predicate": {
@@ -89,7 +89,7 @@
       "predicate": {
         "gallifrey:sonic_casing": 1.5
       },
-      "model": "gallifrey:item/sonic_items/sonic_deos_portal_gun"
+      "model": "gallifrey:item/sonic_items/sonic_alastor_staff"
     }
   ]
 }
