@@ -141,15 +141,44 @@ public class SonicScrewdriver extends Item {
     }
 
     // =========================================================
+    // CHANGE CASING
+    // =========================================================
+
+    public static void changeCasing(
+            ItemStack stack
+    ) {
+
+        SonicCasing currentCasing =
+                getCasing(stack);
+
+        SonicCasing[] casings =
+                SonicCasing.values();
+
+        int currentIndex = 0;
+
+        for (int i = 0; i < casings.length; i++) {
+
+            if (casings[i] == currentCasing) {
+
+                currentIndex = i;
+                break;
+            }
+        }
+
+        int nextIndex =
+                (currentIndex + 1)
+                        % casings.length;
+
+        setCasing(
+                stack,
+                casings[nextIndex]
+        );
+    }
+
+    // =========================================================
     // ACTIVE STATE
     // =========================================================
 
-    /*
-     * The Sonic is ON whenever it has power.
-     *
-     * Power > 0 = ON
-     * Power = 0 = OFF
-     */
     public static boolean isOn(
             ItemStack stack
     ) {
@@ -436,10 +465,6 @@ public class SonicScrewdriver extends Item {
         double entityDistance =
                 SONIC_RANGE * SONIC_RANGE;
 
-        // -----------------------------------------------------
-        // BLOCK DISTANCE
-        // -----------------------------------------------------
-
         if (
                 blockHit.getType()
                         != HitResult.Type.MISS
@@ -453,10 +478,6 @@ public class SonicScrewdriver extends Item {
                             );
         }
 
-        // -----------------------------------------------------
-        // ENTITY DISTANCE
-        // -----------------------------------------------------
-
         if (entityHit != null) {
 
             entityDistance =
@@ -468,10 +489,6 @@ public class SonicScrewdriver extends Item {
                                             .getPos()
                             );
         }
-
-        // -----------------------------------------------------
-        // CLOSEST TARGET
-        // -----------------------------------------------------
 
         if (
                 entityHit != null
@@ -570,10 +587,6 @@ public class SonicScrewdriver extends Item {
             SonicCasing casing =
                     getCasing(stack);
 
-            // -------------------------------------------------
-            // SONIC HANDLER
-            // -------------------------------------------------
-
             SonicHandler.use(
                     player,
                     world,
@@ -581,15 +594,7 @@ public class SonicScrewdriver extends Item {
                     mode
             );
 
-            // -------------------------------------------------
-            // CONSUME POWER
-            // -------------------------------------------------
-
             consumePower(stack);
-
-            // -------------------------------------------------
-            // STATUS
-            // -------------------------------------------------
 
             player.sendMessage(
                     Text.literal(

@@ -10,7 +10,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -27,53 +26,6 @@ public class SonicWorkshopBlock extends Block
     }
 
     // =========================================================
-    // BREAK / DROP STORED SONIC
-    // =========================================================
-
-    @Override
-    public void onStateReplaced(
-            BlockState state,
-            World world,
-            BlockPos pos,
-            BlockState newState,
-            boolean moved
-    ) {
-
-        // Only run when the block is actually being replaced.
-        if (!state.isOf(newState.getBlock())) {
-
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-
-            if (blockEntity instanceof SonicWorkshopBlockEntity workshop) {
-
-                ItemStack sonic = workshop.getSonic();
-
-                // Drop the Sonic if one is inside.
-                if (!sonic.isEmpty()) {
-
-                    ItemEntity itemEntity = new ItemEntity(
-                            world,
-                            pos.getX() + 0.5,
-                            pos.getY() + 0.5,
-                            pos.getZ() + 0.5,
-                            sonic.copy()
-                    );
-
-                    world.spawnEntity(itemEntity);
-                }
-            }
-        }
-
-        super.onStateReplaced(
-                state,
-                world,
-                pos,
-                newState,
-                moved
-        );
-    }
-
-    // =========================================================
     // BLOCK ENTITY
     // =========================================================
 
@@ -82,7 +34,6 @@ public class SonicWorkshopBlock extends Block
             BlockPos pos,
             BlockState state
     ) {
-
         return new SonicWorkshopBlockEntity(
                 pos,
                 state
@@ -99,7 +50,6 @@ public class SonicWorkshopBlock extends Block
             BlockState state,
             BlockEntityType<T> type
     ) {
-
         if (type == GallifreyModBlockEntities.SONIC_WORKSHOP_BLOCK_ENTITY) {
 
             return (world1, pos, state1, blockEntity) ->
@@ -128,92 +78,47 @@ public class SonicWorkshopBlock extends Block
             BlockHitResult hit
     ) {
 
-        // Client handles the interaction visually.
+        ItemStack heldStack = player.getStackInHand(hand);
+
+        // -----------------------------------------------------
+        // Client
+        // -----------------------------------------------------
+
         if (world.isClient) {
-            return ActionResult.SUCCESS;
+            return heldStack.getItem() instanceof SonicScrewdriver
+                    ? ActionResult.SUCCESS
+                    : ActionResult.PASS;
         }
 
-        BlockEntity blockEntity =
-                world.getBlockEntity(pos);
+        // -----------------------------------------------------
+        // Must be holding a Sonic
+        // -----------------------------------------------------
 
-        if (!(blockEntity instanceof SonicWorkshopBlockEntity workshop)) {
+        if (!(heldStack.getItem() instanceof SonicScrewdriver)) {
             return ActionResult.PASS;
         }
 
-        ItemStack heldStack =
-                player.getStackInHand(hand);
+        // -----------------------------------------------------
+        // Recharge Sonic to full
+        // -----------------------------------------------------
 
-        // =====================================================
-        // TAKE SONIC OUT
-        // =====================================================
+        SonicScrewdriver.recharge(
+                heldStack,
+                SonicScrewdriver.MAX_POWER
+        );
 
-        if (heldStack.isEmpty()) {
+        // -----------------------------------------------------
+        // Change casing
+        // -----------------------------------------------------
 
-            ItemStack sonic =
-                    workshop.getSonic();
+        SonicScrewdriver.changeCasing(heldStack);
 
-            if (sonic.isEmpty()) {
-                return ActionResult.PASS;
-            }
+        // -----------------------------------------------------
+        // Tell the client the item changed
+        // -----------------------------------------------------
 
-            player.setStackInHand(
-                    hand,
-                    sonic
-            );
+        player.setStackInHand(hand, heldStack);
 
-            workshop.setSonic(
-                    ItemStack.EMPTY
-            );
-
-            world.updateListeners(
-                    pos,
-                    state,
-                    state,
-                    3
-            );
-
-            return ActionResult.SUCCESS;
-        }
-
-        // =====================================================
-        // PUT SONIC IN
-        // =====================================================
-
-        if (heldStack.getItem()
-                instanceof SonicScrewdriver) {
-
-            // Workshop already contains a Sonic.
-            if (!workshop.getSonic().isEmpty()) {
-                return ActionResult.PASS;
-            }
-
-            // Copy the Sonic so the workshop owns its own stack.
-            ItemStack sonic =
-                    heldStack.copy();
-
-            // Only put one Sonic into the workshop.
-            sonic.setCount(1);
-
-            workshop.setSonic(
-                    sonic
-            );
-
-            // Remove one Sonic from the player's hand.
-            heldStack.decrement(1);
-
-            world.updateListeners(
-                    pos,
-                    state,
-                    state,
-                    3
-            );
-
-            return ActionResult.SUCCESS;
-        }
-
-        return ActionResult.PASS;
+        return ActionResult.SUCCESS;
     }
 }
-
-
-
