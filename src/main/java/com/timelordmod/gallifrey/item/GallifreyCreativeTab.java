@@ -23,7 +23,7 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModItems.LOCATION_CIRCUIT);
                 entries.add(GallifreyModItems.DIMENSION_CIRCUIT);
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
-                //entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
+                entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
 
                 //MISC BLOCKS
                 entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
