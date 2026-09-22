@@ -1,6 +1,5 @@
 package com.timelordmod.gallifrey.item.custom;
 
-import com.timelordmod.gallifrey.GallifreySounds;
 import com.timelordmod.gallifrey.sonic.SonicCasing;
 import com.timelordmod.gallifrey.sonic.SonicHandler;
 import com.timelordmod.gallifrey.sonic.SonicMode;
@@ -9,7 +8,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -37,15 +35,14 @@ public class SonicScrewdriver extends Item {
     private static final String POWER_KEY = "SonicPower";
     private static final String MODE_KEY = "SonicMode";
     private static final String CASING_KEY = "SonicCasing";
+    private static final String ACTIVE_TICKS_KEY = "SonicActiveTicks";
 
     /*
-     * Number of ticks the Sonic remains visually powered
-     * after being used.
-     *
      * 20 ticks = 1 second.
-     * 10 ticks = 0.5 seconds.
+     *
+     * This controls how long the Sonic stays visually powered
+     * after being used.
      */
-    private static final String ACTIVE_TICKS_KEY = "SonicActiveTicks";
     private static final int SONIC_ACTIVE_DURATION = 10;
 
     // =========================================================
@@ -104,7 +101,7 @@ public class SonicScrewdriver extends Item {
         );
 
         /*
-         * If power has reached zero,
+         * If the Sonic runs out of power,
          * immediately turn the visual state off.
          */
         if (getPower(stack) <= 0) {
@@ -116,16 +113,22 @@ public class SonicScrewdriver extends Item {
         }
     }
 
-    public static void recharge(ItemStack stack, int amount) {
+    public static void recharge(
+            ItemStack stack,
+            int amount
+    ) {
+
         int power = getPower(stack);
 
         if (power >= MAX_POWER) {
             return;
         }
 
-        setPower(stack, power + amount);
+        setPower(
+                stack,
+                power + amount
+        );
     }
-
 
     // =========================================================
     // CASING
@@ -159,15 +162,9 @@ public class SonicScrewdriver extends Item {
     }
 
     // =========================================================
-    // ACTIVE / POWERED MODEL STATE
+    // ACTIVE STATE
     // =========================================================
 
-    /*
-     * The Sonic is visually ON only when:
-     *
-     * 1. It has power.
-     * 2. Active ticks are greater than zero.
-     */
     public static boolean isOn(
             ItemStack stack
     ) {
@@ -194,13 +191,13 @@ public class SonicScrewdriver extends Item {
                 .getOrCreateNbt()
                 .putInt(
                         ACTIVE_TICKS_KEY,
-                        Math.max(0, ticks)
+                        Math.max(
+                                0,
+                                ticks
+                        )
                 );
     }
 
-    /*
-     * Turn the Sonic's powered model ON.
-     */
     private static void activateSonic(
             ItemStack stack
     ) {
@@ -229,7 +226,6 @@ public class SonicScrewdriver extends Item {
                         .getInt(MODE_KEY);
 
         if (mode == 1) {
-
             return SonicMode.ACTIVATE;
         }
 
@@ -278,7 +274,7 @@ public class SonicScrewdriver extends Item {
     }
 
     // =========================================================
-    // INITIAL DATA + ACTIVE TIMER
+    // INVENTORY TICK
     // =========================================================
 
     @Override
@@ -371,13 +367,7 @@ public class SonicScrewdriver extends Item {
 
         if (activeTicks > 0) {
 
-            /*
-             * No power means the Sonic must immediately
-             * switch to the OFF model.
-             */
-            if (
-                    getPower(stack) <= 0
-            ) {
+            if (getPower(stack) <= 0) {
 
                 setActiveTicks(
                         stack,
@@ -492,9 +482,7 @@ public class SonicScrewdriver extends Item {
                             end
                     );
 
-            if (
-                    hit.isPresent()
-            ) {
+            if (hit.isPresent()) {
 
                 double distance =
                         start.squaredDistanceTo(
@@ -515,10 +503,7 @@ public class SonicScrewdriver extends Item {
             }
         }
 
-        if (
-                closestEntity == null
-        ) {
-
+        if (closestEntity == null) {
             return null;
         }
 
@@ -568,9 +553,7 @@ public class SonicScrewdriver extends Item {
         // ENTITY DISTANCE
         // -----------------------------------------------------
 
-        if (
-                entityHit != null
-        ) {
+        if (entityHit != null) {
 
             entityDistance =
                     player
@@ -617,13 +600,9 @@ public class SonicScrewdriver extends Item {
         // CHANGE MODE
         // =====================================================
 
-        if (
-                player.isSneaking()
-        ) {
+        if (player.isSneaking()) {
 
-            if (
-                    !world.isClient
-            ) {
+            if (!world.isClient) {
 
                 toggleMode(stack);
 
@@ -654,22 +633,14 @@ public class SonicScrewdriver extends Item {
         // NO POWER
         // =====================================================
 
-        if (
-                getPower(stack) <= 0
-        ) {
+        if (getPower(stack) <= 0) {
 
-            /*
-             * Make absolutely sure the powered model
-             * cannot remain ON when power is empty.
-             */
             setActiveTicks(
                     stack,
                     0
             );
 
-            if (
-                    !world.isClient
-            ) {
+            if (!world.isClient) {
 
                 player.sendMessage(
                         Text.literal(
@@ -686,24 +657,16 @@ public class SonicScrewdriver extends Item {
         }
 
         // =====================================================
-        // USE SONIC
+        // ACTIVATE SONIC
         // =====================================================
 
-        /*
-         * Activate the visual model immediately.
-         *
-         * This is outside the server-only section so that
-         * the client can immediately see the ON state.
-         */
         activateSonic(stack);
 
         // =====================================================
         // SERVER ACTION
         // =====================================================
 
-        if (
-                !world.isClient
-        ) {
+        if (!world.isClient) {
 
             HitResult target =
                     getSonicTarget(player);
@@ -713,21 +676,6 @@ public class SonicScrewdriver extends Item {
 
             SonicCasing casing =
                     getCasing(stack);
-
-            // -------------------------------------------------
-            // SONIC SOUND
-            // -------------------------------------------------
-
-            world.playSound(
-                    null,
-                    player.getX(),
-                    player.getY(),
-                    player.getZ(),
-                    GallifreySounds.SONIC,
-                    SoundCategory.PLAYERS,
-                    1.0F,
-                    1.0F
-            );
 
             // -------------------------------------------------
             // SONIC HANDLER
@@ -769,4 +717,3 @@ public class SonicScrewdriver extends Item {
         );
     }
 }
-

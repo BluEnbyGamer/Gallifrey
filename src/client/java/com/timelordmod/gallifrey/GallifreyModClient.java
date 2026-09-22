@@ -4,6 +4,8 @@ import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.block.custom.SonicWorkshopBlock;
 import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
+import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
+import com.timelordmod.gallifrey.client.sound.SonicSoundManager;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
@@ -15,6 +17,7 @@ import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -32,12 +35,50 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 
-import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
-
 public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+
+        // =========================================================
+        // SONIC SOUND
+        // =========================================================
+
+        ClientTickEvents.END_CLIENT_TICK.register(
+                client -> {
+
+                    if (client.player == null) {
+                        SonicSoundManager.stop();
+                        return;
+                    }
+
+                    ItemStack mainHand =
+                            client.player.getMainHandStack();
+
+                    ItemStack offHand =
+                            client.player.getOffHandStack();
+
+                    boolean sonicOn =
+                            SonicScrewdriver.isOn(mainHand)
+                                    ||
+                                    SonicScrewdriver.isOn(offHand);
+
+                    if (sonicOn) {
+
+                        if (!SonicSoundManager.isPlaying()) {
+
+                            SonicSoundManager.start(
+                                    client.player
+                            );
+                        }
+
+                    } else {
+
+                        SonicSoundManager.stop();
+                    }
+                }
+        );
+
 
         // =========================================================
         // SONIC SCREWDRIVER - CASING MODEL
@@ -45,13 +86,16 @@ public class GallifreyModClient implements ClientModInitializer {
 
         ModelPredicateProviderRegistry.register(
                 GallifreyModItems.SONIC_SCREWDRIVER,
-                new Identifier("gallifrey", "sonic_casing"),
+                new Identifier(
+                        "gallifrey",
+                        "sonic_casing"
+                ),
                 (stack, world, entity, seed) -> {
 
                     SonicCasing casing =
                             SonicScrewdriver.getCasing(stack);
 
-                    float value = switch (casing) {
+                    return switch (casing) {
 
                         case THIRD_DOCTOR -> 0.0F;
                         case FOURTH_DOCTOR -> 1.0F;
@@ -70,19 +114,9 @@ public class GallifreyModClient implements ClientModInitializer {
                         case BLUNT_SONIC -> 14.0F;
                         case DEOS_PORTAL_GUN -> 15.0F;
                     };
-
-                    // TEMPORARY DIAGNOSTIC - remove once the casing
-                    // bug is confirmed fixed.
-                    System.out.println(
-                            "[SONIC DEBUG] casing="
-                                    + casing
-                                    + " -> predicate value="
-                                    + value
-                    );
-
-                    return value;
                 }
         );
+
 
         // =========================================================
         // SONIC SCREWDRIVER - ON/OFF MODEL
@@ -90,7 +124,10 @@ public class GallifreyModClient implements ClientModInitializer {
 
         ModelPredicateProviderRegistry.register(
                 GallifreyModItems.SONIC_SCREWDRIVER,
-                new Identifier("gallifrey", "sonic_on"),
+                new Identifier(
+                        "gallifrey",
+                        "sonic_on"
+                ),
                 (stack, world, entity, seed) ->
                         SonicScrewdriver.isOn(stack)
                                 ? 1.0F
@@ -101,24 +138,14 @@ public class GallifreyModClient implements ClientModInitializer {
         // =========================================================
         // SONIC WORKSHOP
         // =========================================================
-        //
-        // The Workshop is a BLOCK.
-        //
-        // Therefore we use UseBlockCallback rather than
-        // UseItemCallback.
-        //
-        // The GUI is client-side, so this code belongs here.
-        //
 
         UseBlockCallback.EVENT.register(
                 (player, world, hand, hitResult) -> {
 
-                    // Only handle the client side.
                     if (!world.isClient) {
                         return ActionResult.PASS;
                     }
 
-                    // Must be holding the Sonic Screwdriver.
                     ItemStack stack =
                             player.getStackInHand(hand);
 
@@ -128,19 +155,19 @@ public class GallifreyModClient implements ClientModInitializer {
                         return ActionResult.PASS;
                     }
 
-                    // Check that the block clicked is the
-                    // Sonic Workshop.
                     if (!(world.getBlockState(
                             hitResult.getBlockPos()
-                    ).getBlock() instanceof SonicWorkshopBlock)) {
+                    ).getBlock()
+                            instanceof SonicWorkshopBlock)) {
 
                         return ActionResult.PASS;
                     }
 
-                    // Open the Workshop GUI.
-                    MinecraftClient.getInstance().setScreen(
-                            new SonicWorkshopScreen(hand)
-                    );
+                    MinecraftClient
+                            .getInstance()
+                            .setScreen(
+                                    new SonicWorkshopScreen(hand)
+                            );
 
                     return ActionResult.SUCCESS;
                 }
