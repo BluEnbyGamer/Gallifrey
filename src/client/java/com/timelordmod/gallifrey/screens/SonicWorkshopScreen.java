@@ -408,19 +408,10 @@ public class SonicWorkshopScreen extends Screen {
 
         context.drawText(
                 textRenderer,
-                "INSERT SONIC",
+                "SELECT CASING",
                 left + 27,
                 top + 78,
                 TEXT_DIM,
-                false
-        );
-
-        context.drawText(
-                textRenderer,
-                "SELECT CASING",
-                left + 27,
-                top + 108,
-                CYAN,
                 false
         );
 
@@ -442,14 +433,6 @@ public class SonicWorkshopScreen extends Screen {
                 false
         );
 
-        context.drawText(
-                textRenderer,
-                "WORKSHOP ONLINE",
-                left + 27,
-                top + 260,
-                GREEN,
-                false
-        );
     }
 
     @Override
