@@ -53,7 +53,7 @@ public class GallifreyMod implements ModInitializer {
 		);
 
 
-		// Strippable blocks registry
+		// Strippable blocks registry.
 
 		//Tardis wood type
 		StrippableBlockRegistry.register(GallifreyModBlocks.TARDIS_LOG, GallifreyModBlocks.STRIP_TARDIS_LOG);
