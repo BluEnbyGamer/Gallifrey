@@ -1,95 +1,95 @@
 {
-  "parent": "gallifrey:item/sonic_items/sonic_third_doctor_off",
+  "parent": "gallifrey:item/sonic_items/sonic_third_doctor",
   "overrides": [
     {
       "predicate": {
         "gallifrey:sonic_casing": 1.0
       },
-      "model": "gallifrey:item/sonic_items/sonic_deos_portal_gun"
+      "model": "gallifrey:item/sonic_items/sonic_fourth_doctor"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.93333334
-      },
-      "model": "gallifrey:item/sonic_items/sonic_blunt"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.86666667
-      },
-      "model": "gallifrey:item/sonic_items/sonic_gamblers"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.8
-      },
-      "model": "gallifrey:item/sonic_items/sonic_missys_umbrella"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.73333335
-      },
-      "model": "gallifrey:item/sonic_items/sonic_deos_hammer"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.66666669
-      },
-      "model": "gallifrey:item/sonic_items/sonic_alastor_staff"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.6
-      },
-      "model": "gallifrey:item/sonic_items/sonic_valvue_gun"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.53333336
-      },
-      "model": "gallifrey:item/sonic_items/sonic_ricks_portal_gun"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.46666667
-      },
-      "model": "gallifrey:item/sonic_items/sonic_blue"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.4
-      },
-      "model": "gallifrey:item/sonic_items/sonic_eleventh_cane"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.33333334
-      },
-      "model": "gallifrey:item/sonic_items/sonic_war_master"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.26666668
-      },
-      "model": "gallifrey:item/sonic_items/sonic_war_doctor"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.2
-      },
-      "model": "gallifrey:item/sonic_items/sonic_eighth_doctor"
-    },
-    {
-      "predicate": {
-        "gallifrey:sonic_casing": 0.13333334
+        "gallifrey:sonic_casing": 2.0
       },
       "model": "gallifrey:item/sonic_items/sonic_fifth_doctor"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.06666667
+        "gallifrey:sonic_casing": 3.0
       },
-      "model": "gallifrey:item/sonic_items/sonic_fourth_doctor"
+      "model": "gallifrey:item/sonic_items/sonic_eighth_doctor"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 4.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_war_doctor"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 5.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_war_master"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 6.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_eleventh_cane"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 7.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_blue"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 8.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_ricks_portal_gun"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 9.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_valvue_gun"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 10.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_alastor_staff"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 11.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_deos_hammer"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 12.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_missys_umbrella"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 13.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_gamblers"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 14.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_blunt"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 15.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_deos_portal_gun"
     }
   ]
 }
