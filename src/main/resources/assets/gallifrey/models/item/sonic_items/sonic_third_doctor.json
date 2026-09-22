@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gallifrey:item/sonic_items/sonic_third_doctor_off"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "gallifrey:sonic_on": 1.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_third_doctor_on"
+    }
+  ]
+}
