@@ -81,5 +81,6 @@
   "catagory.gallifrey.main": "Gallifrey Mod",
 
   // SONIC SHITE
-  "item.gallifrey.sonic_screwdriver": "Sonic Screwdriver"
+  "item.gallifrey.sonic_screwdriver": "Sonic Screwdriver",
+  "block.gallifrey.sonic_workshop": "Sonic Workshop"
 }

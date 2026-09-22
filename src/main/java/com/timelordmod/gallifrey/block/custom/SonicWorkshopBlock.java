@@ -10,6 +10,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -25,9 +26,56 @@ public class SonicWorkshopBlock extends Block
         super(settings);
     }
 
-// =========================================================
-// BLOCK ENTITY
-// =========================================================
+    // =========================================================
+    // BREAK / DROP STORED SONIC
+    // =========================================================
+
+    @Override
+    public void onStateReplaced(
+            BlockState state,
+            World world,
+            BlockPos pos,
+            BlockState newState,
+            boolean moved
+    ) {
+
+        // Only run when the block is actually being replaced.
+        if (!state.isOf(newState.getBlock())) {
+
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+
+            if (blockEntity instanceof SonicWorkshopBlockEntity workshop) {
+
+                ItemStack sonic = workshop.getSonic();
+
+                // Drop the Sonic if one is inside.
+                if (!sonic.isEmpty()) {
+
+                    ItemEntity itemEntity = new ItemEntity(
+                            world,
+                            pos.getX() + 0.5,
+                            pos.getY() + 0.5,
+                            pos.getZ() + 0.5,
+                            sonic.copy()
+                    );
+
+                    world.spawnEntity(itemEntity);
+                }
+            }
+        }
+
+        super.onStateReplaced(
+                state,
+                world,
+                pos,
+                newState,
+                moved
+        );
+    }
+
+    // =========================================================
+    // BLOCK ENTITY
+    // =========================================================
 
     @Override
     public BlockEntity createBlockEntity(
@@ -41,9 +89,9 @@ public class SonicWorkshopBlock extends Block
         );
     }
 
-// =========================================================
-// TICKER
-// =========================================================
+    // =========================================================
+    // TICKER
+    // =========================================================
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(
@@ -66,9 +114,9 @@ public class SonicWorkshopBlock extends Block
         return null;
     }
 
-// =========================================================
-// RIGHT CLICK
-// =========================================================
+    // =========================================================
+    // RIGHT CLICK
+    // =========================================================
 
     @Override
     public ActionResult onUse(
@@ -98,17 +146,6 @@ public class SonicWorkshopBlock extends Block
         // =====================================================
         // TAKE SONIC OUT
         // =====================================================
-
-        /*
-         * IMPORTANT:
-         *
-         * This happens FIRST.
-         *
-         * Therefore you can take the Sonic out at ANY
-         * charge level.
-         *
-         * It does NOT have to be fully charged.
-         */
 
         if (heldStack.isEmpty()) {
 
@@ -150,14 +187,11 @@ public class SonicWorkshopBlock extends Block
                 return ActionResult.PASS;
             }
 
-            /*
-             * Make a copy so the workshop owns its own
-             * ItemStack.
-             */
+            // Copy the Sonic so the workshop owns its own stack.
             ItemStack sonic =
                     heldStack.copy();
 
-            // Only put ONE Sonic into the workshop.
+            // Only put one Sonic into the workshop.
             sonic.setCount(1);
 
             workshop.setSonic(
@@ -179,10 +213,7 @@ public class SonicWorkshopBlock extends Block
 
         return ActionResult.PASS;
     }
-
-
 }
-
 
 
 
