@@ -1,8 +1,8 @@
 {
 	"texture_size": [32, 32],
 	"textures": {
-		"3": "gallifrey:item/sonic_items/sonic_screwdriver_off",
-		"particle": "gallifrey:item/sonic_items/sonic_screwdriver_off"
+		"3": "gallifrey:item/sonic_items/sonic_blue_on",
+		"particle": "gallifrey:item/sonic_items/sonic_blue_on"
 	},
 	"elements": [
 		{

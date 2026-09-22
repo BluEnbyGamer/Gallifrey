@@ -22,6 +22,8 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import com.timelordmod.gallifrey.block.custom.SonicWorkshopBlock;
+
 
 
 /**
@@ -108,6 +110,17 @@ public class GallifreyModBlocks {
                                 .luminance(state -> 0)
                 )
         );
+
+
+    public static final Block SONIC_WORKSHOP = registerBlock(
+            "sonic_workshop",
+            new SonicWorkshopBlock(
+                    FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                            .strength(3.0f)
+                            .sounds(BlockSoundGroup.METAL)
+            )
+    );
+
 
 
 

@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.item.custom;
 
+import com.timelordmod.gallifrey.sonic.SonicCasing;
 import com.timelordmod.gallifrey.sonic.SonicHandler;
 import com.timelordmod.gallifrey.sonic.SonicMode;
 
@@ -23,12 +24,21 @@ import java.util.Optional;
 
 public class SonicScrewdriver extends Item {
 
+    // =========================================================
+    // CONSTANTS
+    // =========================================================
+
     private static final double SONIC_RANGE = 16.0D;
 
     public static final int MAX_POWER = 100;
 
     private static final String POWER_KEY = "SonicPower";
     private static final String MODE_KEY = "SonicMode";
+    private static final String CASING_KEY = "SonicCasing";
+
+    // =========================================================
+    // CONSTRUCTOR
+    // =========================================================
 
     public SonicScrewdriver(Settings settings) {
         super(settings);
@@ -39,23 +49,33 @@ public class SonicScrewdriver extends Item {
     // =========================================================
 
     public static int getPower(ItemStack stack) {
-        return stack.getOrCreateNbt().getInt(POWER_KEY);
+
+        return stack
+                .getOrCreateNbt()
+                .getInt(POWER_KEY);
     }
 
-    public static void setPower(ItemStack stack, int power) {
+    public static void setPower(
+            ItemStack stack,
+            int power
+    ) {
 
         power = Math.max(
                 0,
                 Math.min(MAX_POWER, power)
         );
 
-        stack.getOrCreateNbt().putInt(
-                POWER_KEY,
-                power
-        );
+        stack
+                .getOrCreateNbt()
+                .putInt(
+                        POWER_KEY,
+                        power
+                );
     }
 
-    public static void consumePower(ItemStack stack) {
+    public static void consumePower(
+            ItemStack stack
+    ) {
 
         int power = getPower(stack);
 
@@ -70,22 +90,47 @@ public class SonicScrewdriver extends Item {
     }
 
     // =========================================================
+    // CASING
+    // =========================================================
+
+    public static SonicCasing getCasing(
+            ItemStack stack
+    ) {
+
+        String casingId =
+                stack
+                        .getOrCreateNbt()
+                        .getString(CASING_KEY);
+
+        return SonicCasing.fromId(casingId);
+    }
+
+    public static void setCasing(
+            ItemStack stack,
+            SonicCasing casing
+    ) {
+
+        stack
+                .getOrCreateNbt()
+                .putString(
+                        CASING_KEY,
+                        casing.getId()
+                );
+    }
+
+    // =========================================================
     // MODEL STATE
     // =========================================================
 
     /*
-     * The Sonic does NOT have a manually controlled ON/OFF state.
-     *
-     * The model is considered:
-     *
-     * ON  = has power
-     * OFF = power is zero
-     *
-     * This means the Sonic automatically appears "off"
-     * when its power runs out.
+     * ON  = Sonic has power
+     * OFF = Sonic has no power
      */
 
-    public static boolean isOn(ItemStack stack) {
+    public static boolean isOn(
+            ItemStack stack
+    ) {
+
         return getPower(stack) > 0;
     }
 
@@ -93,13 +138,17 @@ public class SonicScrewdriver extends Item {
     // MODE
     // =========================================================
 
-    public static SonicMode getMode(ItemStack stack) {
+    public static SonicMode getMode(
+            ItemStack stack
+    ) {
 
-        int mode = stack
-                .getOrCreateNbt()
-                .getInt(MODE_KEY);
+        int mode =
+                stack
+                        .getOrCreateNbt()
+                        .getInt(MODE_KEY);
 
         if (mode == 1) {
+
             return SonicMode.ACTIVATE;
         }
 
@@ -116,15 +165,22 @@ public class SonicScrewdriver extends Item {
                         ? 1
                         : 0;
 
-        stack.getOrCreateNbt().putInt(
-                MODE_KEY,
-                value
-        );
+        stack
+                .getOrCreateNbt()
+                .putInt(
+                        MODE_KEY,
+                        value
+                );
     }
 
-    public static void toggleMode(ItemStack stack) {
+    public static void toggleMode(
+            ItemStack stack
+    ) {
 
-        if (getMode(stack) == SonicMode.SCAN) {
+        if (
+                getMode(stack)
+                        == SonicMode.SCAN
+        ) {
 
             setMode(
                     stack,
@@ -161,14 +217,15 @@ public class SonicScrewdriver extends Item {
                 selected
         );
 
-        /*
-         * Newly-created Sonic Screwdrivers start with:
-         *
-         * Power = 100
-         * Mode = SCAN
-         */
+        // -----------------------------------------------------
+        // POWER
+        // -----------------------------------------------------
 
-        if (!stack.getOrCreateNbt().contains(POWER_KEY)) {
+        if (
+                !stack
+                        .getOrCreateNbt()
+                        .contains(POWER_KEY)
+        ) {
 
             setPower(
                     stack,
@@ -176,17 +233,41 @@ public class SonicScrewdriver extends Item {
             );
         }
 
-        if (!stack.getOrCreateNbt().contains(MODE_KEY)) {
+        // -----------------------------------------------------
+        // MODE
+        // -----------------------------------------------------
+
+        if (
+                !stack
+                        .getOrCreateNbt()
+                        .contains(MODE_KEY)
+        ) {
 
             setMode(
                     stack,
                     SonicMode.SCAN
             );
         }
+
+        // -----------------------------------------------------
+        // CASING
+        // -----------------------------------------------------
+
+        if (
+                !stack
+                        .getOrCreateNbt()
+                        .contains(CASING_KEY)
+        ) {
+
+            setCasing(
+                    stack,
+                    SonicCasing.THIRD_DOCTOR
+            );
+        }
     }
 
     // =========================================================
-    // TARGETING
+    // BLOCK TARGET
     // =========================================================
 
     private static BlockHitResult getBlockTarget(
@@ -206,16 +287,22 @@ public class SonicScrewdriver extends Item {
                         )
                 );
 
-        return player.getWorld().raycast(
-                new RaycastContext(
-                        start,
-                        end,
-                        RaycastContext.ShapeType.OUTLINE,
-                        RaycastContext.FluidHandling.NONE,
-                        player
-                )
-        );
+        return player
+                .getWorld()
+                .raycast(
+                        new RaycastContext(
+                                start,
+                                end,
+                                RaycastContext.ShapeType.OUTLINE,
+                                RaycastContext.FluidHandling.NONE,
+                                player
+                        )
+                );
     }
+
+    // =========================================================
+    // ENTITY TARGET
+    // =========================================================
 
     private static EntityHitResult getEntityTarget(
             PlayerEntity player
@@ -261,7 +348,10 @@ public class SonicScrewdriver extends Item {
         double closestDistance =
                 SONIC_RANGE * SONIC_RANGE;
 
-        for (Entity entity : entities) {
+        for (
+                Entity entity :
+                entities
+        ) {
 
             Box box =
                     entity
@@ -274,22 +364,33 @@ public class SonicScrewdriver extends Item {
                             end
                     );
 
-            if (hit.isPresent()) {
+            if (
+                    hit.isPresent()
+            ) {
 
                 double distance =
                         start.squaredDistanceTo(
                                 hit.get()
                         );
 
-                if (distance < closestDistance) {
+                if (
+                        distance
+                                < closestDistance
+                ) {
 
-                    closestDistance = distance;
-                    closestEntity = entity;
+                    closestDistance =
+                            distance;
+
+                    closestEntity =
+                            entity;
                 }
             }
         }
 
-        if (closestEntity == null) {
+        if (
+                closestEntity == null
+        ) {
+
             return null;
         }
 
@@ -297,6 +398,10 @@ public class SonicScrewdriver extends Item {
                 closestEntity
         );
     }
+
+    // =========================================================
+    // SONIC TARGET
+    // =========================================================
 
     private static HitResult getSonicTarget(
             PlayerEntity player
@@ -314,6 +419,10 @@ public class SonicScrewdriver extends Item {
         double entityDistance =
                 SONIC_RANGE * SONIC_RANGE;
 
+        // -----------------------------------------------------
+        // BLOCK DISTANCE
+        // -----------------------------------------------------
+
         if (
                 blockHit.getType()
                         != HitResult.Type.MISS
@@ -327,7 +436,13 @@ public class SonicScrewdriver extends Item {
                             );
         }
 
-        if (entityHit != null) {
+        // -----------------------------------------------------
+        // ENTITY DISTANCE
+        // -----------------------------------------------------
+
+        if (
+                entityHit != null
+        ) {
 
             entityDistance =
                     player
@@ -339,9 +454,14 @@ public class SonicScrewdriver extends Item {
                             );
         }
 
+        // -----------------------------------------------------
+        // CLOSEST TARGET
+        // -----------------------------------------------------
+
         if (
                 entityHit != null
-                        && entityDistance < blockDistance
+                        && entityDistance
+                        < blockDistance
         ) {
 
             return entityHit;
@@ -369,19 +489,28 @@ public class SonicScrewdriver extends Item {
         // CHANGE MODE
         // =====================================================
 
-        if (player.isSneaking()) {
+        if (
+                player.isSneaking()
+        ) {
 
-            if (!world.isClient) {
+            if (
+                    !world.isClient
+            ) {
 
                 toggleMode(stack);
 
                 SonicMode mode =
                         getMode(stack);
 
+                SonicCasing casing =
+                        getCasing(stack);
+
                 player.sendMessage(
                         Text.literal(
                                 "§bSONIC MODE: §e"
                                         + mode.getDisplayName()
+                                        + " §7| §bCASING: §e"
+                                        + casing.getDisplayName()
                         ),
                         true
                 );
@@ -397,9 +526,13 @@ public class SonicScrewdriver extends Item {
         // NO POWER
         // =====================================================
 
-        if (getPower(stack) <= 0) {
+        if (
+                getPower(stack) <= 0
+        ) {
 
-            if (!world.isClient) {
+            if (
+                    !world.isClient
+            ) {
 
                 player.sendMessage(
                         Text.literal(
@@ -419,13 +552,22 @@ public class SonicScrewdriver extends Item {
         // USE SONIC
         // =====================================================
 
-        if (!world.isClient) {
+        if (
+                !world.isClient
+        ) {
 
             HitResult target =
                     getSonicTarget(player);
 
             SonicMode mode =
                     getMode(stack);
+
+            SonicCasing casing =
+                    getCasing(stack);
+
+            // -------------------------------------------------
+            // SONIC HANDLER
+            // -------------------------------------------------
 
             SonicHandler.use(
                     player,
@@ -434,12 +576,21 @@ public class SonicScrewdriver extends Item {
                     mode
             );
 
-            // Every Sonic use consumes one power.
+            // -------------------------------------------------
+            // CONSUME POWER
+            // -------------------------------------------------
+
             consumePower(stack);
+
+            // -------------------------------------------------
+            // STATUS
+            // -------------------------------------------------
 
             player.sendMessage(
                     Text.literal(
-                            "§bSONIC POWER: §f"
+                            "§b"
+                                    + casing.getDisplayName()
+                                    + " §7| §bPOWER: §f"
                                     + getPower(stack)
                                     + "§7/§f"
                                     + MAX_POWER
@@ -454,3 +605,4 @@ public class SonicScrewdriver extends Item {
         );
     }
 }
+
