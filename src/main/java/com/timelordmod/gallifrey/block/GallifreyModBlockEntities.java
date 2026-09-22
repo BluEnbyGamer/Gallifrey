@@ -1,13 +1,19 @@
 package com.timelordmod.gallifrey.block;
 
 import com.timelordmod.gallifrey.GallifreyMod;
+import com.timelordmod.gallifrey.block.entity.SonicWorkshopBlockEntity;
 import com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity;
+
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 public class GallifreyModBlockEntities {
+
+// =========================================================
+// TARDIS EXTERIOR
+// =========================================================
 
     public static final BlockEntityType<TardisExteriorBlockEntity> TARDIS_EXTERIOR =
             Registry.register(
@@ -19,7 +25,31 @@ public class GallifreyModBlockEntities {
                     ).build()
             );
 
+// =========================================================
+// SONIC WORKSHOP
+// =========================================================
+
+    public static final BlockEntityType<SonicWorkshopBlockEntity> SONIC_WORKSHOP_BLOCK_ENTITY =
+            Registry.register(
+                    Registries.BLOCK_ENTITY_TYPE,
+                    GallifreyMod.id("sonic_workshop"),
+                    FabricBlockEntityTypeBuilder.create(
+                            SonicWorkshopBlockEntity::new,
+                            GallifreyModBlocks.SONIC_WORKSHOP
+                    ).build()
+            );
+
+// =========================================================
+// REGISTER
+// =========================================================
+
     public static void register() {
-        GallifreyMod.LOGGER.info("Registering Block Entities for " + GallifreyMod.MOD_ID);
+
+        GallifreyMod.LOGGER.info(
+                "Registering Block Entities for "
+                        + GallifreyMod.MOD_ID
+        );
     }
+
+
 }

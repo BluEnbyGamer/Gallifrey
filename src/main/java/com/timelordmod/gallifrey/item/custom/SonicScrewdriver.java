@@ -116,6 +116,17 @@ public class SonicScrewdriver extends Item {
         }
     }
 
+    public static void recharge(ItemStack stack, int amount) {
+        int power = getPower(stack);
+
+        if (power >= MAX_POWER) {
+            return;
+        }
+
+        setPower(stack, power + amount);
+    }
+
+
     // =========================================================
     // CASING
     // =========================================================
