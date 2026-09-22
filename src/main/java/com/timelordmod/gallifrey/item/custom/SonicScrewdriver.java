@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.item.custom;
 
+import com.timelordmod.gallifrey.GallifreySounds;
 import com.timelordmod.gallifrey.sonic.SonicCasing;
 import com.timelordmod.gallifrey.sonic.SonicHandler;
 import com.timelordmod.gallifrey.sonic.SonicMode;
@@ -8,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -49,16 +51,12 @@ public class SonicScrewdriver extends Item {
     // =========================================================
 
     public static int getPower(ItemStack stack) {
-
         return stack
                 .getOrCreateNbt()
                 .getInt(POWER_KEY);
     }
 
-    public static void setPower(
-            ItemStack stack,
-            int power
-    ) {
+    public static void setPower(ItemStack stack, int power) {
 
         power = Math.max(
                 0,
@@ -73,9 +71,7 @@ public class SonicScrewdriver extends Item {
                 );
     }
 
-    public static void consumePower(
-            ItemStack stack
-    ) {
+    public static void consumePower(ItemStack stack) {
 
         int power = getPower(stack);
 
@@ -93,9 +89,7 @@ public class SonicScrewdriver extends Item {
     // CASING
     // =========================================================
 
-    public static SonicCasing getCasing(
-            ItemStack stack
-    ) {
+    public static SonicCasing getCasing(ItemStack stack) {
 
         String casingId =
                 stack
@@ -127,10 +121,7 @@ public class SonicScrewdriver extends Item {
      * OFF = Sonic has no power
      */
 
-    public static boolean isOn(
-            ItemStack stack
-    ) {
-
+    public static boolean isOn(ItemStack stack) {
         return getPower(stack) > 0;
     }
 
@@ -138,9 +129,7 @@ public class SonicScrewdriver extends Item {
     // MODE
     // =========================================================
 
-    public static SonicMode getMode(
-            ItemStack stack
-    ) {
+    public static SonicMode getMode(ItemStack stack) {
 
         int mode =
                 stack
@@ -148,7 +137,6 @@ public class SonicScrewdriver extends Item {
                         .getInt(MODE_KEY);
 
         if (mode == 1) {
-
             return SonicMode.ACTIVATE;
         }
 
@@ -173,9 +161,7 @@ public class SonicScrewdriver extends Item {
                 );
     }
 
-    public static void toggleMode(
-            ItemStack stack
-    ) {
+    public static void toggleMode(ItemStack stack) {
 
         if (
                 getMode(stack)
@@ -566,6 +552,21 @@ public class SonicScrewdriver extends Item {
                     getCasing(stack);
 
             // -------------------------------------------------
+            // SONIC SOUND
+            // -------------------------------------------------
+
+            world.playSound(
+                    null,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    GallifreySounds.SONIC,
+                    SoundCategory.PLAYERS,
+                    1.0F,
+                    1.0F
+            );
+
+            // -------------------------------------------------
             // SONIC HANDLER
             // -------------------------------------------------
 
@@ -605,4 +606,3 @@ public class SonicScrewdriver extends Item {
         );
     }
 }
-

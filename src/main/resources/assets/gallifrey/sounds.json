@@ -8,5 +8,10 @@
     "sounds": [
       "gallifrey:vm_land"
     ]
+  },
+  "sonic": {
+    "sounds": [
+      "gallifrey:sonic"
+    ]
   }
 }

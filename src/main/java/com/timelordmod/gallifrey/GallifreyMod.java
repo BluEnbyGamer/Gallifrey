@@ -29,6 +29,8 @@ public class GallifreyMod implements ModInitializer {
 
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
 
+		GallifreySounds.register();
+
 		GallifreyModItems.register();
 		GallifreyModBlocks.register();
 		GallifreyModBlockEntities.register();

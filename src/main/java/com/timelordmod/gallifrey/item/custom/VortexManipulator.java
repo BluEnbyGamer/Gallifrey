@@ -1,5 +1,8 @@
 package com.timelordmod.gallifrey.item.custom;
 
+import com.timelordmod.gallifrey.GallifreySounds;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,9 +13,12 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 
 public class VortexManipulator extends Item {
+
+    private static final String IN_FLIGHT_KEY = "VMInFlight";
 
     public VortexManipulator(Settings settings) {
         super(settings
@@ -23,17 +29,115 @@ public class VortexManipulator extends Item {
         );
     }
 
+    // =========================================================
+    // USE
+    // =========================================================
+
     @Override
     public TypedActionResult<ItemStack> use(
             World world,
             PlayerEntity user,
             Hand hand
     ) {
+
+        ItemStack stack = user.getStackInHand(hand);
+
+        // -----------------------------------------------------
+        // TAKE-OFF SOUND
+        // -----------------------------------------------------
+
+        if (!world.isClient) {
+
+            world.playSound(
+                    null,
+                    user.getX(),
+                    user.getY(),
+                    user.getZ(),
+                    GallifreySounds.VM_TAKE_OFF,
+                    net.minecraft.sound.SoundCategory.PLAYERS,
+                    1.0F,
+                    1.0F
+            );
+
+            // Mark the player as being in-flight.
+            stack.getOrCreateNbt().putBoolean(
+                    IN_FLIGHT_KEY,
+                    true
+            );
+        }
+
         return TypedActionResult.success(
-                user.getStackInHand(hand),
+                stack,
                 world.isClient()
         );
     }
+
+    // =========================================================
+    // LANDING DETECTION
+    // =========================================================
+
+    @Override
+    public void inventoryTick(
+            ItemStack stack,
+            World world,
+            Entity entity,
+            int slot,
+            boolean selected
+    ) {
+
+        super.inventoryTick(
+                stack,
+                world,
+                entity,
+                slot,
+                selected
+        );
+
+        // Only run on the server.
+        if (world.isClient) {
+            return;
+        }
+
+        if (!(entity instanceof PlayerEntity player)) {
+            return;
+        }
+
+        boolean inFlight =
+                stack
+                        .getOrCreateNbt()
+                        .getBoolean(IN_FLIGHT_KEY);
+
+        if (!inFlight) {
+            return;
+        }
+
+        // -----------------------------------------------------
+        // PLAYER HAS LANDED
+        // -----------------------------------------------------
+
+        if (player.isOnGround()) {
+
+            world.playSound(
+                    null,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    GallifreySounds.VM_LAND,
+                    net.minecraft.sound.SoundCategory.PLAYERS,
+                    1.0F,
+                    1.0F
+            );
+
+            stack.getOrCreateNbt().putBoolean(
+                    IN_FLIGHT_KEY,
+                    false
+            );
+        }
+    }
+
+    // =========================================================
+    // TOOLTIP
+    // =========================================================
 
     @Override
     public void appendTooltip(
@@ -42,6 +146,7 @@ public class VortexManipulator extends Item {
             List<Text> tooltip,
             net.minecraft.client.item.TooltipContext context
     ) {
+
         tooltip.add(
                 Text.literal(
                         "A dangerous tool used for easy space travel."
@@ -68,4 +173,3 @@ public class VortexManipulator extends Item {
         );
     }
 }
-
