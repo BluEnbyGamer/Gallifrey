@@ -52,9 +52,9 @@ public enum SonicCasing {
             "Aperture Gun"
     ),
 
-    ALASTOR_STAFF(
-            "alastor_staff",
-            "Alastor's Staff"
+    DEOS_PORTAL_GUN(
+            "deos_portal_gun",
+            "D0 Gun"
     ),
 
     DEOS_HAMMER(
@@ -77,9 +77,9 @@ public enum SonicCasing {
             "Blunt"
     ),
 
-    DEOS_PORTAL_GUN(
-            "deos_portal_gun",
-                    "D0 Gun"
+    ALASTOR_STAFF(
+            "alastor_staff",
+            "Alastor's Staff"
     );
 
     private final String id;
