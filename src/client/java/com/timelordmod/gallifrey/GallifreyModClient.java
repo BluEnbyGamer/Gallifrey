@@ -31,7 +31,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.TypedActionResult;//
+import net.minecraft.util.TypedActionResult;
 
 public class GallifreyModClient implements ClientModInitializer {
 
