@@ -86,34 +86,11 @@ public class GallifreyModClient implements ClientModInitializer {
 
         ModelPredicateProviderRegistry.register(
                 GallifreyModItems.SONIC_SCREWDRIVER,
-                new Identifier(
-                        "gallifrey",
-                        "sonic_casing"
-                ),
+                new Identifier("gallifrey", "sonic_casing"),
                 (stack, world, entity, seed) -> {
+                    SonicCasing casing = SonicScrewdriver.getCasing(stack);
 
-                    SonicCasing casing =
-                            SonicScrewdriver.getCasing(stack);
-
-                    return switch (casing) {
-
-                        case THIRD_DOCTOR -> 0.0F;
-                        case FOURTH_DOCTOR -> 1.0F;
-                        case FIFTH_DOCTOR -> 2.0F;
-                        case EIGHTH_DOCTOR -> 3.0F;
-                        case WAR_DOCTOR -> 4.0F;
-                        case WAR_MASTER -> 5.0F;
-                        case ELEVENTH_CANE -> 6.0F;
-                        case BLUE_SONIC -> 7.0F;
-                        case RICKS_PORTAL_GUN -> 8.0F;
-                        case VALVUE_GUN -> 9.0F;
-                        case ALASTOR_STAFF -> 10.0F;
-                        case DEOS_HAMMER -> 11.0F;
-                        case MISSYS_UMBRELLA -> 12.0F;
-                        case GAMBLERS_SONIC -> 13.0F;
-                        case BLUNT_SONIC -> 14.0F;
-                        case DEOS_PORTAL_GUN -> 15.0F;
-                    };
+                    return casing.ordinal() / 15.0F;
                 }
         );
 
