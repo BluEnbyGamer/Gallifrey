@@ -5,6 +5,7 @@ import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -26,8 +27,10 @@ public class SonicWorkshopBlock extends Block {
             BlockHitResult hit
     ) {
 
-        // Only allow interaction when holding the Sonic.
-        if (player.getStackInHand(hand).getItem()
+        ItemStack stack =
+                player.getStackInHand(hand);
+
+        if (stack.getItem()
                 instanceof SonicScrewdriver) {
 
             return ActionResult.SUCCESS;
@@ -36,5 +39,6 @@ public class SonicWorkshopBlock extends Block {
         return ActionResult.PASS;
     }
 }
+
 
 

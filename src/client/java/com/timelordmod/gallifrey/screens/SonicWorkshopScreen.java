@@ -1,17 +1,17 @@
 package com.timelordmod.gallifrey.screens;
 
+import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
+import com.timelordmod.gallifrey.networking.SonicCasingClientNetworking;
 import com.timelordmod.gallifrey.sonic.SonicCasing;
 
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
 
 public class SonicWorkshopScreen extends Screen {
-
-    // =============================================================
-    // GUI CONSTANTS
-    // =============================================================
 
     private static final int GUI_WIDTH = 420;
     private static final int GUI_HEIGHT = 270;
@@ -28,39 +28,42 @@ public class SonicWorkshopScreen extends Screen {
     private static final int TEXT_DIM = 0xFF75AAB5;
 
     private static final int GREEN = 0xFF38FF88;
-    private static final int RED = 0xFFFF4F6B;
 
     private int left;
     private int top;
 
     private SonicCasing selectedCasing;
+    private final Hand hand;
 
-    // =============================================================
-    // CONSTRUCTOR
-    // =============================================================
-
-    public SonicWorkshopScreen() {
+    public SonicWorkshopScreen(Hand hand) {
         super(Text.literal("Sonic Workshop"));
 
-        selectedCasing = SonicCasing.BLUE_SONIC;
-    }
+        this.hand = hand;
+        this.selectedCasing = SonicCasing.THIRD_DOCTOR;
 
-    // =============================================================
-    // INIT
-    // =============================================================
+        if (client != null && client.player != null) {
+
+            ItemStack stack =
+                    client.player.getStackInHand(hand);
+
+            if (stack.getItem() instanceof SonicScrewdriver) {
+                selectedCasing =
+                        SonicScrewdriver.getCasing(stack);
+            }
+        }
+    }
 
     @Override
     protected void init() {
 
-        left = (width - GUI_WIDTH) / 2;
-        top = (height - GUI_HEIGHT) / 2;
+        left =
+                (width - GUI_WIDTH) / 2;
+
+        top =
+                (height - GUI_HEIGHT) / 2;
 
         createCasingButtons();
     }
-
-    // =============================================================
-    // CASING BUTTONS
-    // =============================================================
 
     private void createCasingButtons() {
 
@@ -114,10 +117,6 @@ public class SonicWorkshopScreen extends Screen {
         }
     }
 
-    // =============================================================
-    // CASING BUTTON
-    // =============================================================
-
     private class CasingButton extends ButtonWidget {
 
         private final SonicCasing casing;
@@ -136,19 +135,14 @@ public class SonicWorkshopScreen extends Screen {
                     width,
                     height,
                     Text.literal(casing.getDisplayName()),
-                    button -> {
 
-                        selectedCasing =
-                                casing;
+                    button ->
+                            onCasingSelected(casing),
 
-                        // Backend will be added next.
-                        onCasingSelected(casing);
-                    },
                     DEFAULT_NARRATION_SUPPLIER
             );
 
-            this.casing =
-                    casing;
+            this.casing = casing;
         }
 
         @Override
@@ -174,36 +168,21 @@ public class SonicWorkshopScreen extends Screen {
 
             if (selected) {
 
-                fill =
-                        CYAN_DARK;
-
-                border =
-                        CYAN;
-
-                textColor =
-                        TEXT;
+                fill = CYAN_DARK;
+                border = CYAN;
+                textColor = TEXT;
 
             } else if (hovered) {
 
-                fill =
-                        PANEL_LIGHT;
-
-                border =
-                        CYAN;
-
-                textColor =
-                        TEXT;
+                fill = PANEL_LIGHT;
+                border = CYAN;
+                textColor = TEXT;
 
             } else {
 
-                fill =
-                        PANEL_DARK;
-
-                border =
-                        CYAN_DIM;
-
-                textColor =
-                        CYAN;
+                fill = PANEL_DARK;
+                border = CYAN_DIM;
+                textColor = CYAN;
             }
 
             context.fill(
@@ -232,43 +211,31 @@ public class SonicWorkshopScreen extends Screen {
         }
     }
 
-    // =============================================================
-    // CASING SELECTED
-    // =============================================================
-
     private void onCasingSelected(
             SonicCasing casing
     ) {
 
         if (client == null ||
                 client.player == null) {
+
             return;
         }
 
+        selectedCasing = casing;
+
+        SonicCasingClientNetworking.sendCasingChange(
+                hand,
+                casing
+        );
+
         client.player.sendMessage(
                 Text.literal(
-                        "§bCASING SELECTED: §f"
+                        "§bCASING: §f"
                                 + casing.getDisplayName()
                 ),
                 true
         );
-
-        /*
-         * IMPORTANT:
-         *
-         * We will send a packet here next.
-         *
-         * The server will then change:
-         *
-         * SonicCasing = casing.getId()
-         *
-         * on the Sonic Screwdriver.
-         */
     }
-
-    // =============================================================
-    // RENDER
-    // =============================================================
 
     @Override
     public void render(
@@ -278,9 +245,7 @@ public class SonicWorkshopScreen extends Screen {
             float delta
     ) {
 
-        drawBackground(
-                context
-        );
+        drawBackground(context);
 
         super.render(
                 context,
@@ -289,20 +254,12 @@ public class SonicWorkshopScreen extends Screen {
                 delta
         );
 
-        drawLabels(
-                context
-        );
+        drawLabels(context);
     }
-
-    // =============================================================
-    // BACKGROUND
-    // =============================================================
 
     private void drawBackground(
             DrawContext context
     ) {
-
-        // Darken world
 
         context.fill(
                 0,
@@ -312,8 +269,6 @@ public class SonicWorkshopScreen extends Screen {
                 0x99000000
         );
 
-        // Outer glow
-
         context.fill(
                 left - 3,
                 top - 3,
@@ -321,8 +276,6 @@ public class SonicWorkshopScreen extends Screen {
                 top + GUI_HEIGHT + 3,
                 0x4016D9FF
         );
-
-        // Main panel
 
         context.fill(
                 left,
@@ -332,8 +285,6 @@ public class SonicWorkshopScreen extends Screen {
                 PANEL
         );
 
-        // Outer border
-
         context.drawBorder(
                 left,
                 top,
@@ -342,8 +293,6 @@ public class SonicWorkshopScreen extends Screen {
                 CYAN
         );
 
-        // Inner border
-
         context.drawBorder(
                 left + 4,
                 top + 4,
@@ -351,8 +300,6 @@ public class SonicWorkshopScreen extends Screen {
                 GUI_HEIGHT - 8,
                 CYAN_DARK
         );
-
-        // Header
 
         context.fill(
                 left + 10,
@@ -370,8 +317,6 @@ public class SonicWorkshopScreen extends Screen {
                 CYAN_DIM
         );
 
-        // Sonic slot panel
-
         drawSectionBox(
                 context,
                 left + 18,
@@ -379,8 +324,6 @@ public class SonicWorkshopScreen extends Screen {
                 GUI_WIDTH - 36,
                 43
         );
-
-        // Casing panel
 
         drawSectionBox(
                 context,
@@ -390,8 +333,6 @@ public class SonicWorkshopScreen extends Screen {
                 151
         );
 
-        // Bottom status
-
         context.fill(
                 left + 18,
                 top + 255,
@@ -400,10 +341,6 @@ public class SonicWorkshopScreen extends Screen {
                 CYAN_DARK
         );
     }
-
-    // =============================================================
-    // SECTION BOX
-    // =============================================================
 
     private void drawSectionBox(
             DrawContext context,
@@ -438,15 +375,9 @@ public class SonicWorkshopScreen extends Screen {
         );
     }
 
-    // =============================================================
-    // LABELS
-    // =============================================================
-
     private void drawLabels(
             DrawContext context
     ) {
-
-        // Header
 
         context.drawText(
                 textRenderer,
@@ -466,8 +397,6 @@ public class SonicWorkshopScreen extends Screen {
                 false
         );
 
-        // Sonic slot
-
         context.drawText(
                 textRenderer,
                 "SONIC SCREWDRIVER",
@@ -486,8 +415,6 @@ public class SonicWorkshopScreen extends Screen {
                 false
         );
 
-        // Casing
-
         context.drawText(
                 textRenderer,
                 "SELECT CASING",
@@ -496,8 +423,6 @@ public class SonicWorkshopScreen extends Screen {
                 CYAN,
                 false
         );
-
-        // Current casing
 
         context.drawText(
                 textRenderer,
@@ -517,8 +442,6 @@ public class SonicWorkshopScreen extends Screen {
                 false
         );
 
-        // Bottom status
-
         context.drawText(
                 textRenderer,
                 "WORKSHOP ONLINE",
@@ -528,10 +451,6 @@ public class SonicWorkshopScreen extends Screen {
                 false
         );
     }
-
-    // =============================================================
-    // GAME DOES NOT PAUSE
-    // =============================================================
 
     @Override
     public boolean shouldPause() {

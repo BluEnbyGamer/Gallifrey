@@ -17,6 +17,7 @@ import net.minecraft.world.biome.BiomeKeys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
+import com.timelordmod.gallifrey.networking.packets.SonicCasingPacket;
 
 public class GallifreyMod implements ModInitializer {
 	public static final String MOD_ID = "gallifrey";
@@ -45,6 +46,12 @@ public class GallifreyMod implements ModInitializer {
 				new Identifier("gallifrey", "vm_packet"),
 				VMPacket::receive
 		);
+
+		ServerPlayNetworking.registerGlobalReceiver(
+				new Identifier(MOD_ID, "change_sonic_casing"),
+				SonicCasingPacket::receive
+		);
+
 
 		// Strippable blocks registry
 

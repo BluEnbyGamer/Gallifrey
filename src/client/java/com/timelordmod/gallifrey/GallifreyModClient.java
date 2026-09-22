@@ -125,7 +125,7 @@ public class GallifreyModClient implements ClientModInitializer {
 
                     // Open the Workshop GUI.
                     MinecraftClient.getInstance().setScreen(
-                            new SonicWorkshopScreen()
+                            new SonicWorkshopScreen(hand)
                     );
 
                     return ActionResult.SUCCESS;
