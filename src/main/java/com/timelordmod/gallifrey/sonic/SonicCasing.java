@@ -75,6 +75,11 @@ public enum SonicCasing {
     BLUNT_SONIC(
             "blunt_sonic",
             "Blunt"
+    ),
+
+    DEOS_PORTAL_GUN(
+            "deos_portal_gun",
+                    "D0 Gun"
     );
 
     private final String id;

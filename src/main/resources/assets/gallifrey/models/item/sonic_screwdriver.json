@@ -84,6 +84,12 @@
         "gallifrey:sonic_casing": 14.0
       },
       "model": "gallifrey:item/sonic_items/sonic_blunt"
+    },
+    {
+      "predicate": {
+        "gallifrey:sonic_casing": 15.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_deos_portal_gun"
     }
   ]
 }

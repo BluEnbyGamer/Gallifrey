@@ -68,6 +68,7 @@ public class GallifreyModClient implements ClientModInitializer {
                         case MISSYS_UMBRELLA -> 12.0F;
                         case GAMBLERS_SONIC -> 13.0F;
                         case BLUNT_SONIC -> 14.0F;
+                        case DEOS_PORTAL_GUN -> 15.0F;
                     };
 
                     // TEMPORARY DIAGNOSTIC - remove once the casing

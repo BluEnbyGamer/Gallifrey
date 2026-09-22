@@ -1,0 +1,11 @@
+{
+  "parent": "gallifrey:item/sonic_items/sonic_deos_portal_gun_off",
+  "overrides": [
+    {
+      "predicate": {
+        "gallifrey:sonic_on": 1.0
+      },
+      "model": "gallifrey:item/sonic_items/sonic_deos_portal_gun_on"
+    }
+  ]
+}
