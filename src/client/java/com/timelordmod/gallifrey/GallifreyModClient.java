@@ -49,7 +49,7 @@ public class GallifreyModClient implements ClientModInitializer {
                     SonicCasing casing =
                             SonicScrewdriver.getCasing(stack);
 
-                    return switch (casing) {
+                    float value = switch (casing) {
 
                         case THIRD_DOCTOR -> 0.0F;
                         case FOURTH_DOCTOR -> 1.0F;
@@ -67,6 +67,17 @@ public class GallifreyModClient implements ClientModInitializer {
                         case GAMBLERS_SONIC -> 13.0F;
                         case BLUNT_SONIC -> 14.0F;
                     };
+
+                    // TEMPORARY DIAGNOSTIC - remove once the casing
+                    // bug is confirmed fixed.
+                    System.out.println(
+                            "[SONIC DEBUG] casing="
+                                    + casing
+                                    + " -> predicate value="
+                                    + value
+                    );
+
+                    return value;
                 }
         );
 

@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.screens;
 
+import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 import com.timelordmod.gallifrey.networking.SonicCasingClientNetworking;
 import com.timelordmod.gallifrey.sonic.SonicCasing;
@@ -143,6 +144,7 @@ public class SonicWorkshopScreen extends Screen {
     private class CasingButton extends ButtonWidget {
 
         private final SonicCasing casing;
+        private final ItemStack previewStack;
 
         public CasingButton(
                 int x,
@@ -166,6 +168,14 @@ public class SonicWorkshopScreen extends Screen {
             );
 
             this.casing = casing;
+
+            this.previewStack =
+                    new ItemStack(GallifreyModItems.SONIC_SCREWDRIVER);
+
+            SonicScrewdriver.setCasing(
+                    previewStack,
+                    casing
+            );
         }
 
         @Override
@@ -245,12 +255,19 @@ public class SonicWorkshopScreen extends Screen {
                     border
             );
 
+            // Icon preview
+            context.drawItem(
+                    previewStack,
+                    getX() + getWidth() / 2 - 8,
+                    getY() + 2
+            );
+
             // Button text
             context.drawCenteredTextWithShadow(
                     textRenderer,
                     getMessage(),
                     getX() + getWidth() / 2,
-                    getY() + 11,
+                    getY() + 21,
                     textColor
             );
         }

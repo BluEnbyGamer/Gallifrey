@@ -1,8 +1,5 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gallifrey:item/sonic_items/sonic_ricks_portal_gun_off"
-  },
+  "parent": "gallifrey:item/sonic_items/sonic_ricks_portal_gun_off",
   "overrides": [
     {
       "predicate": {
