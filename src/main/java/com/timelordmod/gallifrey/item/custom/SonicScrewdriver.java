@@ -35,15 +35,6 @@ public class SonicScrewdriver extends Item {
     private static final String POWER_KEY = "SonicPower";
     private static final String MODE_KEY = "SonicMode";
     private static final String CASING_KEY = "SonicCasing";
-    private static final String ACTIVE_TICKS_KEY = "SonicActiveTicks";
-
-    /*
-     * 20 ticks = 1 second.
-     *
-     * This controls how long the Sonic stays visually powered
-     * after being used.
-     */
-    private static final int SONIC_ACTIVE_DURATION = 10;
 
     // =========================================================
     // CONSTRUCTOR
@@ -99,18 +90,6 @@ public class SonicScrewdriver extends Item {
                 stack,
                 power - 1
         );
-
-        /*
-         * If the Sonic runs out of power,
-         * immediately turn the visual state off.
-         */
-        if (getPower(stack) <= 0) {
-
-            setActiveTicks(
-                    stack,
-                    0
-            );
-        }
     }
 
     public static void recharge(
@@ -165,51 +144,17 @@ public class SonicScrewdriver extends Item {
     // ACTIVE STATE
     // =========================================================
 
+    /*
+     * The Sonic is ON whenever it has power.
+     *
+     * Power > 0 = ON
+     * Power = 0 = OFF
+     */
     public static boolean isOn(
             ItemStack stack
     ) {
 
-        return getPower(stack) > 0
-                && getActiveTicks(stack) > 0;
-    }
-
-    private static int getActiveTicks(
-            ItemStack stack
-    ) {
-
-        return stack
-                .getOrCreateNbt()
-                .getInt(ACTIVE_TICKS_KEY);
-    }
-
-    private static void setActiveTicks(
-            ItemStack stack,
-            int ticks
-    ) {
-
-        stack
-                .getOrCreateNbt()
-                .putInt(
-                        ACTIVE_TICKS_KEY,
-                        Math.max(
-                                0,
-                                ticks
-                        )
-                );
-    }
-
-    private static void activateSonic(
-            ItemStack stack
-    ) {
-
-        if (getPower(stack) <= 0) {
-            return;
-        }
-
-        setActiveTicks(
-                stack,
-                SONIC_ACTIVE_DURATION
-        );
+        return getPower(stack) > 0;
     }
 
     // =========================================================
@@ -340,47 +285,6 @@ public class SonicScrewdriver extends Item {
                     stack,
                     SonicCasing.THIRD_DOCTOR
             );
-        }
-
-        // -----------------------------------------------------
-        // INITIAL ACTIVE TIMER
-        // -----------------------------------------------------
-
-        if (
-                !stack
-                        .getOrCreateNbt()
-                        .contains(ACTIVE_TICKS_KEY)
-        ) {
-
-            setActiveTicks(
-                    stack,
-                    0
-            );
-        }
-
-        // -----------------------------------------------------
-        // ACTIVE TIMER
-        // -----------------------------------------------------
-
-        int activeTicks =
-                getActiveTicks(stack);
-
-        if (activeTicks > 0) {
-
-            if (getPower(stack) <= 0) {
-
-                setActiveTicks(
-                        stack,
-                        0
-                );
-
-            } else {
-
-                setActiveTicks(
-                        stack,
-                        activeTicks - 1
-                );
-            }
         }
     }
 
@@ -635,11 +539,6 @@ public class SonicScrewdriver extends Item {
 
         if (getPower(stack) <= 0) {
 
-            setActiveTicks(
-                    stack,
-                    0
-            );
-
             if (!world.isClient) {
 
                 player.sendMessage(
@@ -655,12 +554,6 @@ public class SonicScrewdriver extends Item {
                     world.isClient
             );
         }
-
-        // =====================================================
-        // ACTIVATE SONIC
-        // =====================================================
-
-        activateSonic(stack);
 
         // =====================================================
         // SERVER ACTION
