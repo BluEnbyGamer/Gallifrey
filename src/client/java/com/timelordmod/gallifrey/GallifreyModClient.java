@@ -50,7 +50,7 @@ public class GallifreyModClient implements ClientModInitializer {
                     SonicCasing casing =
                             SonicScrewdriver.getCasing(stack);
 
-                    return casing.ordinal() / 15.0F;
+                    return casing.ordinal() / 10.0F;
                 }
         );
 
