@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.item.custom;
 
+import com.timelordmod.gallifrey.GallifreySounds;
 import com.timelordmod.gallifrey.sonic.SonicCasing;
 import com.timelordmod.gallifrey.sonic.SonicHandler;
 import com.timelordmod.gallifrey.sonic.SonicMode;
@@ -8,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -49,7 +51,6 @@ public class SonicScrewdriver extends Item {
     // =========================================================
 
     public static int getPower(ItemStack stack) {
-
         return stack
                 .getOrCreateNbt()
                 .getInt(POWER_KEY);
@@ -159,7 +160,6 @@ public class SonicScrewdriver extends Item {
         for (int i = 0; i < casings.length; i++) {
 
             if (casings[i] == currentCasing) {
-
                 currentIndex = i;
                 break;
             }
@@ -465,6 +465,10 @@ public class SonicScrewdriver extends Item {
         double entityDistance =
                 SONIC_RANGE * SONIC_RANGE;
 
+        // -----------------------------------------------------
+        // BLOCK DISTANCE
+        // -----------------------------------------------------
+
         if (
                 blockHit.getType()
                         != HitResult.Type.MISS
@@ -478,6 +482,10 @@ public class SonicScrewdriver extends Item {
                             );
         }
 
+        // -----------------------------------------------------
+        // ENTITY DISTANCE
+        // -----------------------------------------------------
+
         if (entityHit != null) {
 
             entityDistance =
@@ -489,6 +497,10 @@ public class SonicScrewdriver extends Item {
                                             .getPos()
                             );
         }
+
+        // -----------------------------------------------------
+        // CLOSEST TARGET
+        // -----------------------------------------------------
 
         if (
                 entityHit != null
@@ -573,19 +585,35 @@ public class SonicScrewdriver extends Item {
         }
 
         // =====================================================
-        // SERVER ACTION
+        // ACTUAL SONIC USE
         // =====================================================
 
         if (!world.isClient) {
 
+            // -------------------------------------------------
+            // GET TARGET
+            // -------------------------------------------------
+
             HitResult target =
                     getSonicTarget(player);
+
+            // -------------------------------------------------
+            // GET MODE
+            // -------------------------------------------------
 
             SonicMode mode =
                     getMode(stack);
 
+            // -------------------------------------------------
+            // GET CASING
+            // -------------------------------------------------
+
             SonicCasing casing =
                     getCasing(stack);
+
+            // -------------------------------------------------
+            // USE SONIC
+            // -------------------------------------------------
 
             SonicHandler.use(
                     player,
@@ -594,7 +622,38 @@ public class SonicScrewdriver extends Item {
                     mode
             );
 
+            // -------------------------------------------------
+            // PLAY SOUND
+            // -------------------------------------------------
+            //
+            // This plays ONLY when this method is called
+            // by the player's right-click.
+            //
+            // It is NOT connected to inventoryTick().
+            // It is NOT connected to isOn().
+            // It does NOT loop.
+            // -------------------------------------------------
+
+            world.playSound(
+                    null,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    GallifreySounds.SONIC,
+                    SoundCategory.PLAYERS,
+                    1.0F,
+                    1.0F
+            );
+
+            // -------------------------------------------------
+            // CONSUME POWER
+            // -------------------------------------------------
+
             consumePower(stack);
+
+            // -------------------------------------------------
+            // STATUS
+            // -------------------------------------------------
 
             player.sendMessage(
                     Text.literal(

@@ -5,7 +5,6 @@ import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.block.custom.SonicWorkshopBlock;
 import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
 import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
-import com.timelordmod.gallifrey.client.sound.SonicSoundManager;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
@@ -17,7 +16,6 @@ import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -41,46 +39,6 @@ public class GallifreyModClient implements ClientModInitializer {
     public void onInitializeClient() {
 
         // =========================================================
-        // SONIC SOUND
-        // =========================================================
-
-        ClientTickEvents.END_CLIENT_TICK.register(
-                client -> {
-
-                    if (client.player == null) {
-                        SonicSoundManager.stop();
-                        return;
-                    }
-
-                    ItemStack mainHand =
-                            client.player.getMainHandStack();
-
-                    ItemStack offHand =
-                            client.player.getOffHandStack();
-
-                    boolean sonicOn =
-                            SonicScrewdriver.isOn(mainHand)
-                                    ||
-                                    SonicScrewdriver.isOn(offHand);
-
-                    if (sonicOn) {
-
-                        if (!SonicSoundManager.isPlaying()) {
-
-                            SonicSoundManager.start(
-                                    client.player
-                            );
-                        }
-
-                    } else {
-
-                        SonicSoundManager.stop();
-                    }
-                }
-        );
-
-
-        // =========================================================
         // SONIC SCREWDRIVER - CASING MODEL
         // =========================================================
 
@@ -88,12 +46,13 @@ public class GallifreyModClient implements ClientModInitializer {
                 GallifreyModItems.SONIC_SCREWDRIVER,
                 new Identifier("gallifrey", "sonic_casing"),
                 (stack, world, entity, seed) -> {
-                    SonicCasing casing = SonicScrewdriver.getCasing(stack);
+
+                    SonicCasing casing =
+                            SonicScrewdriver.getCasing(stack);
 
                     return casing.ordinal() / 15.0F;
                 }
         );
-
 
         // =========================================================
         // SONIC SCREWDRIVER - ON/OFF MODEL
@@ -110,7 +69,6 @@ public class GallifreyModClient implements ClientModInitializer {
                                 ? 1.0F
                                 : 0.0F
         );
-
 
         // =========================================================
         // SONIC WORKSHOP
@@ -150,7 +108,6 @@ public class GallifreyModClient implements ClientModInitializer {
                 }
         );
 
-
         // =========================================================
         // VORTEX MANIPULATOR
         // =========================================================
@@ -185,7 +142,6 @@ public class GallifreyModClient implements ClientModInitializer {
                 }
         );
 
-
         // =========================================================
         // DIMENSION SKY
         // =========================================================
@@ -194,7 +150,6 @@ public class GallifreyModClient implements ClientModInitializer {
                 ModDimensions.GALL_LEVEL_KEY,
                 new TwinSunSkyRenderer()
         );
-
 
         // =========================================================
         // TARDIS RENDER LAYER
@@ -257,7 +212,6 @@ public class GallifreyModClient implements ClientModInitializer {
                 SonicWorkshopBlockEntityRenderer::new
         );
 
-
         // =========================================================
         // ULANDA RENDER LAYER
         // =========================================================
@@ -308,7 +262,6 @@ public class GallifreyModClient implements ClientModInitializer {
                 ),
                 ChestBoatEntityModel::getTexturedModelData
         );
-
 
         // =========================================================
         // TREEBORG RENDER LAYER
