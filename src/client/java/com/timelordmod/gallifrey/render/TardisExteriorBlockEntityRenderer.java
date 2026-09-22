@@ -47,14 +47,12 @@ public class TardisExteriorBlockEntityRenderer
     ) {
         matrices.push();
 
-        // Move model to the centre of the block
         matrices.translate(
                 0.5D,
                 1.5D,
                 0.5D
         );
 
-        // Blockbench model uses pixel coordinates
         matrices.scale(
                 1.0F / 16.0F,
                 1.0F / 16.0F,
@@ -69,7 +67,7 @@ public class TardisExteriorBlockEntityRenderer
         model.render(
                 matrices,
                 vertices,
-                LightmapTextureManager.MAX_LIGHT_COORDINATE,
+                light,
                 overlay,
                 1.0F,
                 1.0F,
