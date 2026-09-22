@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "gallifrey:item/sonic_items/sonic_ricks_portal_gun_off"
+		"1": "gallifrey:item/sonic_items/sonic_ricks_portal_gun_on"
 	},
 	"elements": [
 		{
