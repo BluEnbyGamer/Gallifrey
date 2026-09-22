@@ -32,6 +32,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 
+import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
+
 public class GallifreyModClient implements ClientModInitializer {
 
     @Override
@@ -232,6 +234,11 @@ public class GallifreyModClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(
                 GallifreyModBlockEntities.TARDIS_EXTERIOR,
                 TardisExteriorRenderer::new
+        );
+
+        BlockEntityRendererRegistry.register(
+                GallifreyModBlockEntities.SONIC_WORKSHOP_BLOCK_ENTITY,
+                SonicWorkshopBlockEntityRenderer::new
         );
 
 
