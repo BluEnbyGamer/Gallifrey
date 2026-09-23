@@ -4,6 +4,7 @@ import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.entity.ModBoats;
 import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
+import com.timelordmod.gallifrey.item.ClothingCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.item.MarsCreativeTab;
 import com.timelordmod.gallifrey.item.RoundelsCreativeTab;
@@ -39,6 +40,7 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyModBlocks.register();
 		GallifreyModBlockEntities.register();
 		GallifreyCreativeTab.register();
+		ClothingCreativeTab.register();
 		RoundelsCreativeTab.register();
 		MarsCreativeTab.register();
 		SkaroCreativeTab.register();
