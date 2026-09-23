@@ -23,6 +23,18 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModItems.LOCATION_CIRCUIT);
                 entries.add(GallifreyModItems.DIMENSION_CIRCUIT);
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
+                entries.add(GallifreyModItems.FEZ);
+                entries.add(GallifreyModItems.FANCYFEZ);
+                entries.add(GallifreyModItems.PURPLEFEZ);
+                entries.add(GallifreyModItems.GREENFEZ);
+                entries.add(GallifreyModItems.ORANGEFEZ);
+                entries.add(GallifreyModItems.BLUEFEZ);
+                entries.add(GallifreyModItems.DARKBLUEFEZ);
+                entries.add(GallifreyModItems.PINKFEZ);
+                entries.add(GallifreyModItems.GREYFEZ);
+                entries.add(GallifreyModItems.YELLOWFEZ);
+                entries.add(GallifreyModItems.TRUSTABLE_HAT);
+                entries.add(GallifreyModItems.EYESTALK);
                 entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
 
                 //TARDIS

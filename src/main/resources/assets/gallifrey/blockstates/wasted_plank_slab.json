@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/wasted_plank_slab"
+    },
+    "type=top": {
+      "model": "gallifrey:block/wasted_plank_slab_top"
+    },
+    "type=double": {
+      "model": "gallifrey:block/wasted_plank_slab_full"
+    }
+  }
+}

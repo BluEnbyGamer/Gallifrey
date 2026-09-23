@@ -110,5 +110,21 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         // MISC BLOCK DROPS
         addDrop(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
+
+        // Skaro blocks
+        addDrop(GallifreyModBlocks.EXQUISITE_CAT);
+        addDrop(GallifreyModBlocks.GOOD_HEAVENS);
+        addDrop(GallifreyModBlocks.COBBLED_KALETITE);
+        addDrop(GallifreyModBlocks.KALETITE);
+        addDrop(GallifreyModBlocks.KALETITE_BRICKS);
+        addDrop(GallifreyModBlocks.WASTED_DIRT);
+        addDrop(GallifreyModBlocks.WASTED_GRASS);
+        addDrop(GallifreyModBlocks.WASTED_LEAVES);
+        addDrop(GallifreyModBlocks.WASTED_LOG);
+        addDrop(GallifreyModBlocks.WASTED_PLANKS);
+        addDrop(GallifreyModBlocks.WASTED_PLANK_SLAB);
+        addDrop(GallifreyModBlocks.DALEKANIUM_BLOCK);
+        addDrop(GallifreyModBlocks.DALEKANIUM_ORE);
+        addDrop(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
     }
 }

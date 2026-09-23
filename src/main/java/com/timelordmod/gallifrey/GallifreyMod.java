@@ -7,6 +7,7 @@ import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.item.MarsCreativeTab;
 import com.timelordmod.gallifrey.item.RoundelsCreativeTab;
+import com.timelordmod.gallifrey.item.SkaroCreativeTab;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
 import com.timelordmod.gallifrey.world.biome.ModBiomes;
 import com.timelordmod.gallifrey.world.MarsWorldHandler;
@@ -40,6 +41,7 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyCreativeTab.register();
 		RoundelsCreativeTab.register();
 		MarsCreativeTab.register();
+		SkaroCreativeTab.register();
 		ModBoats.registerBoats();
 		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, ModBiomes.TREEBORG_FOREST, 0.3d);
 
@@ -98,6 +100,21 @@ public class GallifreyMod implements ModInitializer {
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mars"))
 						.tintColor(150, 55, 35)
+						.registerPortal();
+
+		// AWT planet ports. These use blocks/items already present in Gallifrey.
+		CustomPortalBuilder.beginPortal()
+						.frameBlock(GallifreyModBlocks.BASALT_ROUNDEL)
+						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+						.destDimID(new Identifier(GallifreyMod.MOD_ID, "skaro"))
+						.tintColor(150, 110, 45)
+						.registerPortal();
+
+		CustomPortalBuilder.beginPortal()
+						.frameBlock(GallifreyModBlocks.QUARTZ_ROUNDEL)
+						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mondas"))
+						.tintColor(130, 150, 170)
 						.registerPortal();
 
 		MarsWorldHandler.register();

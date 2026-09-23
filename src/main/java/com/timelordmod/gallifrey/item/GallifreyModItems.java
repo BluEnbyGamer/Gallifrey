@@ -13,6 +13,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
+import com.timelordmod.gallifrey.item.custom.HeadwearItem;
 
 public class GallifreyModItems {
 
@@ -64,6 +65,21 @@ public class GallifreyModItems {
     public static final Item HANGING_TREEBORG_SIGN = registerItem("treeborg_hanging_sign",
             new HangingSignItem(GallifreyModBlocks.HANGING_TREEBORG_SIGN, GallifreyModBlocks.WALL_HANGING_TREEBORG_SIGN, new FabricItemSettings().maxCount(16)));
 
+
+    // AWT clothing port: wearable without Trinkets (uses the vanilla head equipment slot).
+    public static final HeadwearItem FEZ = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem FANCYFEZ = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem PURPLEFEZ = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem GREENFEZ = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem ORANGEFEZ = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem BLUEFEZ = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem DARKBLUEFEZ = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem PINKFEZ = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem GREYFEZ = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem YELLOWFEZ = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem TRUSTABLE_HAT = new HeadwearItem(new FabricItemSettings());
+    public static final HeadwearItem EYESTALK = new HeadwearItem(new FabricItemSettings());
+
     public static final SonicScrewdriver SONIC_SCREWDRIVER =
             new SonicScrewdriver(
                     new FabricItemSettings()
@@ -84,6 +100,18 @@ public class GallifreyModItems {
         registerItem("dimension_circuit",DIMENSION_CIRCUIT);
 
         registerItem("sonic_screwdriver", SONIC_SCREWDRIVER);
+        registerItem("fez", FEZ);
+        registerItem("fancyfez", FANCYFEZ);
+        registerItem("purplefez", PURPLEFEZ);
+        registerItem("greenfez", GREENFEZ);
+        registerItem("orangefez", ORANGEFEZ);
+        registerItem("bluefez", BLUEFEZ);
+        registerItem("darkbluefez", DARKBLUEFEZ);
+        registerItem("pinkfez", PINKFEZ);
+        registerItem("greyfez", GREYFEZ);
+        registerItem("yellowfez", YELLOWFEZ);
+        registerItem("trustable_hat", TRUSTABLE_HAT);
+        registerItem("eyestalk", EYESTALK);
 
         GallifreyMod.LOGGER.debug("[Gallifrey] Items registered.");
     }

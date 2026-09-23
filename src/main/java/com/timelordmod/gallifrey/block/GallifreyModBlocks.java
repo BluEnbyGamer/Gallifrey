@@ -826,6 +826,55 @@ public class GallifreyModBlocks {
         );
     }
 
+    // ============================================================
+    // SKARO BLOCKS (ported from Adventures With TARDISes)
+    // ============================================================
+
+    public static final Block DALEKANIUM_BLOCK = registerBlock("dalekanium_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.DIAMOND_BLOCK)
+                    .sounds(BlockSoundGroup.DEEPSLATE).requiresTool().strength(1.5F, 3.0F)));
+
+    public static final Block DALEKANIUM_ORE = registerBlock("dalekanium_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.COPPER_ORE)
+                    .sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5F, 3.0F)));
+
+    public static final Block DEEPSLATE_DALEKANIUM_ORE = registerBlock("deepslate_dalekanium_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.COPPER_ORE)
+                    .sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5F, 3.0F)));
+
+    public static final Block EXQUISITE_CAT = registerBlock("exquisite_cat",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE)));
+
+    public static final Block GOOD_HEAVENS = registerBlock("good_heavens",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE)));
+
+    public static final Block COBBLED_KALETITE = registerBlock("cobbled_kaletite",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE).requiresTool()));
+
+    public static final Block KALETITE = registerBlock("kaletite",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE).requiresTool()));
+
+    public static final Block KALETITE_BRICKS = registerBlock("kaletite_bricks",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE).requiresTool()));
+
+    public static final Block WASTED_DIRT = registerBlock("wasted_dirt",
+            new GlassBlock(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(BlockSoundGroup.ROOTED_DIRT)));
+
+    public static final Block WASTED_LEAVES = registerBlock("wasted_leaves",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES)));
+
+    public static final Block WASTED_LOG = registerBlock("wasted_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).sounds(BlockSoundGroup.WOOD)));
+
+    public static final Block WASTED_PLANK_SLAB = registerBlock("wasted_plank_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).sounds(BlockSoundGroup.WOOD)));
+
+    public static final Block WASTED_PLANKS = registerBlock("wasted_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).sounds(BlockSoundGroup.WOOD)));
+
+    public static final Block WASTED_GRASS = registerBlock("wastedgrass",
+            new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.ROOTED_DIRT)));
+
     public static void register() {
         GallifreyMod.LOGGER.info(
                 "Registering ModBlocks for " + GallifreyMod.MOD_ID
@@ -871,6 +920,12 @@ public class GallifreyModBlocks {
 
         // Tree-borg wood set
         // flammable.add(TREEBORG_LOG, 5, 5);
+
+        // Skaro wasted wood set
+        flammable.add(WASTED_LOG, 5, 5);
+        flammable.add(WASTED_PLANKS, 5, 20);
+        flammable.add(WASTED_PLANK_SLAB, 5, 20);
+        flammable.add(WASTED_LEAVES, 30, 60);
 
 
         // Ash wood set

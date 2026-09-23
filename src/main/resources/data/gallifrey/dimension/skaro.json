@@ -1,0 +1,11 @@
+{
+  "type": "gallifrey:skaro_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gallifrey:skaro_waste_land"
+    },
+    "settings": "gallifrey:skaro"
+  }
+}

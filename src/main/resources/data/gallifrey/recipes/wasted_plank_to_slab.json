@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "gallifrey:wasted_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:wasted_plank_slab",
+    "count": 6
+  }
+}

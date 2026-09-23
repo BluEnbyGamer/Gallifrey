@@ -41,6 +41,32 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 //.add(ModBlocks.RAW_RUBY_BLOCK)
                 //.add(ModBlocks.RUBY_ORE);
 
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(GallifreyModBlocks.WASTED_LOG)
+                .add(GallifreyModBlocks.WASTED_PLANKS)
+                .add(GallifreyModBlocks.WASTED_PLANK_SLAB)
+                .add(GallifreyModBlocks.WASTED_LEAVES);
+
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.EXQUISITE_CAT)
+                .add(GallifreyModBlocks.GOOD_HEAVENS)
+                .add(GallifreyModBlocks.COBBLED_KALETITE)
+                .add(GallifreyModBlocks.KALETITE)
+                .add(GallifreyModBlocks.KALETITE_BRICKS)
+                .add(GallifreyModBlocks.DALEKANIUM_BLOCK)
+                .add(GallifreyModBlocks.DALEKANIUM_ORE)
+                .add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(GallifreyModBlocks.COBBLED_KALETITE)
+                .add(GallifreyModBlocks.KALETITE)
+                .add(GallifreyModBlocks.KALETITE_BRICKS)
+                .add(GallifreyModBlocks.DALEKANIUM_ORE)
+                .add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(GallifreyModBlocks.DALEKANIUM_BLOCK);
+
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
 

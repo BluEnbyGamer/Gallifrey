@@ -16,6 +16,7 @@ import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -28,7 +29,9 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
 import net.minecraft.client.render.entity.model.ChestBoatEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
@@ -37,6 +40,8 @@ public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+
+        ClientTickEvents.END_CLIENT_TICK.register(GallifreyModClient::tickMondasWeather);
 
         // =========================================================
         // SONIC SCREWDRIVER - CASING MODEL
@@ -323,5 +328,22 @@ public class GallifreyModClient implements ClientModInitializer {
                 ),
                 ChestBoatEntityModel::getTexturedModelData
         );
+    }
+
+    private static int mondasSnowTick;
+
+
+
+    private static void tickMondasWeather(MinecraftClient client) {
+        if (client.world == null || client.player == null) return;
+        ClientWorld world = client.world;
+        if (!"mondas".equals(world.getRegistryKey().getValue().getPath())) return;
+
+        if (++mondasSnowTick % 2 == 0) {
+            double x = client.player.getX() + (world.random.nextDouble() * 20.0D - 10.0D);
+            double y = client.player.getY() + 10.0D;
+            double z = client.player.getZ() + (world.random.nextDouble() * 20.0D - 10.0D);
+            world.addParticle(ParticleTypes.SNOWFLAKE, x, y, z, 0.0D, -0.3D, 0.0D);
+        }
     }
 }
