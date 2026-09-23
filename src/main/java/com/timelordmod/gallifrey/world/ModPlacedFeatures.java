@@ -22,9 +22,9 @@ import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 import java.util.List;
 
 public class ModPlacedFeatures {
-    //public static final RegistryKey<PlacedFeature> ****_ORE_PLACED_KEY = registerKey("****_ore_placed");
-    //public static final RegistryKey<PlacedFeature> NETHER_****_ORE_PLACED_KEY = registerKey("nether_****_ore_placed");
-    //public static final RegistryKey<PlacedFeature> END_****_ORE_PLACED_KEY = registerKey("end_****_ore_placed");
+    public static final RegistryKey<PlacedFeature> SONIC_CRYSTAL_ORE_PLACED_KEY = registerKey("sonic_crystal_ore_placed");
+    public static final RegistryKey<PlacedFeature> NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY = registerKey("nether_sonic_crystal_ore_placed");
+
 
     // Dense forest placement - 10 attempts per chunk, unlike a rare single-tree feature
     public static final RegistryKey<PlacedFeature> ULANDA_PLACED_KEY = registerKey("ulanda_placed");
@@ -66,15 +66,13 @@ public class ModPlacedFeatures {
                         BiomePlacementModifier.of()
                 ));
 
-        //register(context, ****_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.****_ORE_KEY),
-        //ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
-        //HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
-        //register(context, NETHER_****_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NETHER_****_ORE_KEY),
-        //ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
-        //HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
-        //register(context, END_****_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.END_RUBY_ORE_KEY),
-        //ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
-        //HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+        register(context, SONIC_CRYSTAL_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SONIC_CRYSTAL_ORE_KEY),
+        ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
+        HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+        register(context, NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NETHER_SONIC_CRYSTAL_ORE_KEY),
+        ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
+        HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
