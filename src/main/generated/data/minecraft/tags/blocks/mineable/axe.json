@@ -12,6 +12,10 @@
     "gallifrey:tardis_log",
     "gallifrey:tardis_wood",
     "gallifrey:stripped_tardis_wood",
-    "gallifrey:stripped_tardis_wood"
+    "gallifrey:stripped_tardis_wood",
+    "gallifrey:wasted_log",
+    "gallifrey:wasted_planks",
+    "gallifrey:wasted_plank_slab",
+    "gallifrey:wasted_leaves"
   ]
 }

@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "gallifrey:deepslate_dalekanium_ore"
+          "name": "gallifrey:dalekanium_ore"
         }
       ],
       "rolls": 1.0
