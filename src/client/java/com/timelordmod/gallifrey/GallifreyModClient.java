@@ -152,6 +152,16 @@ public class GallifreyModClient implements ClientModInitializer {
         );
 
         // =========================================================
+        // MARS CRYSTAL RENDER LAYER
+        // =========================================================
+        // The crystal texture contains transparent pixels.  Cutout rendering
+        // prevents those transparent pixels from appearing as black planes.
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.PISS_CRYSTAL,
+                RenderLayer.getCutout()
+        );
+
+        // =========================================================
         // TARDIS RENDER LAYER
         // =========================================================
 
