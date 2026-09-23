@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "gallifrey:block/ddwa/stone",
-    "particle": "gallifrey:block/ddwa/stone"
-  },
-  "render_type": "solid"
-}

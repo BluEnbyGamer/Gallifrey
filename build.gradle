@@ -39,30 +39,18 @@ repositories {
 }
 
 fabricApi {
-	configureDataGeneration {
-		client = true
-	}
+	configureDataGeneration()
 }
 
 /*
  * ---------------------------------------------------------
- * CLIENT / COMMON SOURCE SETS & MIXIN REFMAP FIX
+ * MIXIN REFMAP
  * ---------------------------------------------------------
  */
 
 loom {
-	splitEnvironmentSourceSets()
-
-	mods {
-		"gallifrey" {
-			sourceSet sourceSets.main
-			sourceSet sourceSets.client
-		}
-	}
-
 	mixin {
 		defaultRefmapName = "gallifrey-refmap.json"
-		add(sourceSets.client)
 	}
 }
 

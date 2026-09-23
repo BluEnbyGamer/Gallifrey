@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "gallifrey:block/ddwa/wasted_dirt",
-    "particle": "gallifrey:block/ddwa/wasted_dirt"
-  },
-  "render_type": "solid"
-}

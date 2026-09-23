@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "gallifrey:block/ddwa/kaletite_bricks",
-    "particle": "gallifrey:block/ddwa/kaletite_bricks"
-  },
-  "render_type": "solid"
-}

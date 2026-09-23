@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "gallifrey:block/ddwa/ecat",
-    "particle": "gallifrey:block/ddwa/ecat"
-  },
-  "render_type": "solid"
-}

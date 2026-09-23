@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "gallifrey:block/ddwa/fc-noj8aaamjsuj",
-    "particle": "gallifrey:block/ddwa/fc-noj8aaamjsuj"
-  },
-  "render_type": "solid"
-}
