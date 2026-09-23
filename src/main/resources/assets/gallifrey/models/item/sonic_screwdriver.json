@@ -3,91 +3,91 @@
   "overrides": [
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.1
+        "gallifrey:sonic_casing": 0.066666
       },
       "model": "gallifrey:item/sonic_items/sonic_fourth_doctor"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.2
+        "gallifrey:sonic_casing": 0.133333
       },
       "model": "gallifrey:item/sonic_items/sonic_fifth_doctor"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.3
+        "gallifrey:sonic_casing": 0.2
       },
       "model": "gallifrey:item/sonic_items/sonic_eighth_doctor"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.4
+        "gallifrey:sonic_casing": 0.266666
       },
       "model": "gallifrey:item/sonic_items/sonic_war_doctor"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.5
+        "gallifrey:sonic_casing": 0.333333
       },
       "model": "gallifrey:item/sonic_items/sonic_war_master"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.6
+        "gallifrey:sonic_casing": 0.4
       },
       "model": "gallifrey:item/sonic_items/sonic_eleventh_cane"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.7
+        "gallifrey:sonic_casing": 0.466666
       },
       "model": "gallifrey:item/sonic_items/sonic_blue"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.8
+        "gallifrey:sonic_casing": 0.533333
       },
       "model": "gallifrey:item/sonic_items/sonic_ricks_portal_gun"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 0.9
+        "gallifrey:sonic_casing": 0.6
       },
       "model": "gallifrey:item/sonic_items/sonic_valvue_gun"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 1.0
+        "gallifrey:sonic_casing": 0.666666
       },
       "model": "gallifrey:item/sonic_items/sonic_deos_portal_gun"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 1.1
+        "gallifrey:sonic_casing": 0.733333
       },
       "model": "gallifrey:item/sonic_items/sonic_deos_hammer"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 1.2
+        "gallifrey:sonic_casing": 0.8
       },
       "model": "gallifrey:item/sonic_items/sonic_missys_umbrella"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 1.3
+        "gallifrey:sonic_casing": 0.866666
       },
       "model": "gallifrey:item/sonic_items/sonic_gamblers"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 1.4
+        "gallifrey:sonic_casing": 0.933333
       },
       "model": "gallifrey:item/sonic_items/sonic_blunt"
     },
     {
       "predicate": {
-        "gallifrey:sonic_casing": 1.5
+        "gallifrey:sonic_casing": 1
       },
       "model": "gallifrey:item/sonic_items/sonic_alastor_staff"
     }
