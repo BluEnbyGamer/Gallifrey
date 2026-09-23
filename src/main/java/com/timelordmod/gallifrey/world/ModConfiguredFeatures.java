@@ -24,9 +24,9 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import java.util.List;
 
 public class ModConfiguredFeatures {
-    //public static final RegistryKey<ConfiguredFeature<?, ?>> ****_ORE_KEY = registerKey("****_ore");
-    //public static final RegistryKey<ConfiguredFeature<?, ?>> NETHER_****_ORE_KEY = registerKey("nether_****_ore");
-    //public static final RegistryKey<ConfiguredFeature<?, ?>> END_****_ORE_KEY = registerKey("end_****_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SONIC_CRYSTAL_ORE_KEY = registerKey("sonic_crystal_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> NETHER_SONIC_CRYSTAL_ORE_KEY = registerKey("nether_sonic_crystal_ore");
+
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> ULANDA_KEY =registerKey("ulanda");
 
@@ -35,24 +35,21 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> TREEBORG_KEY =registerKey("treeborg");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
-        // RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
-        // RuleTest deepslateReplacables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
-        // RuleTest netherReplacables = new TagMatchRuleTest(BlockTags.BASE_STONE_NETHER);
-        // RuleTest endReplacables = new BlockMatchRuleTest(Blocks.END_STONE);
+        RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
+        RuleTest deepslateReplacables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        RuleTest netherReplacables = new TagMatchRuleTest(BlockTags.BASE_STONE_NETHER);
 
-        // List<OreFeatureConfig.Target> overworldRubyOres =
-        // List.of(OreFeatureConfig.createTarget(stoneReplacables, ModBlocks.****_ORE.getDefaultState()),
-        // OreFeatureConfig.createTarget(deepslateReplacables, ModBlocks.DEEPSLATE_****_ORE.getDefaultState()));
 
-        // List<OreFeatureConfig.Target> nether****Ores =
-        //  List.of(OreFeatureConfig.createTarget(netherReplacables, ModBlocks.NETHER_****_ORE.getDefaultState()));
+         List<OreFeatureConfig.Target> overworldSonicOres =
+         List.of(OreFeatureConfig.createTarget(stoneReplacables, GallifreyModBlocks.SONIC_CRYSTAL_ORE.getDefaultState()),
+         OreFeatureConfig.createTarget(deepslateReplacables, GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE.getDefaultState()));
 
-        // List<OreFeatureConfig.Target> end****Ores =
-        // List.of(OreFeatureConfig.createTarget(endReplacables, ModBlocks.END_STONE_****_ORE.getDefaultState()));
+         List<OreFeatureConfig.Target> netherSonicOres =
+          List.of(OreFeatureConfig.createTarget(netherReplacables, GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE.getDefaultState()));
 
-        // register(context, ****_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworld****Ores, 12));
-        // register(context, NETHER_****_ORE_KEY, Feature.ORE, new OreFeatureConfig(nether****Ores, 12));
-        // register(context, END_****_ORE_KEY, Feature.ORE, new OreFeatureConfig(end****Ores, 12));
+         register(context, SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldSonicOres, 12));
+         register(context, NETHER_SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherSonicOres, 12));
+
         register(context,ULANDA_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(GallifreyModBlocks.ULANDA_LOG),
                         new CherryTrunkPlacer(

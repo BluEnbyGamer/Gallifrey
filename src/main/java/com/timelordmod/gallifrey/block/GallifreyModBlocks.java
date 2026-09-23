@@ -23,7 +23,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import com.timelordmod.gallifrey.block.custom.SonicWorkshopBlock;
-
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 
 /**
@@ -85,6 +85,19 @@ public class GallifreyModBlocks {
                             .sounds(BlockSoundGroup.METAL)
             )
     );
+
+    // ============================================================
+    // Ores
+    // ============================================================
+
+    public static final Block SONIC_CRYSTAL_ORE = registerBlock("sonic_crystal_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(2f), UniformIntProvider.create(2, 5)));
+
+    public static final Block DEEPSLATE_SONIC_CRYSTAL_ORE = registerBlock("deepslate_sonic_crystal_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4f), UniformIntProvider.create(2, 5)));
+
+    public static final Block NETHER_SONIC_CRYSTAL_ORE = registerBlock("nether_sonic_crystal_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.5f), UniformIntProvider.create(2, 5)));
 
     // ============================================================
     // ROUNDELS

@@ -21,6 +21,10 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
+    public static final SonicCrystalItem SONIC_CRYSTAL = new SonicCrystalItem(
+            new FabricItemSettings()
+    );
+
     //public static final ChrononCoreItem CHRONON_CORE = new ChrononCoreItem(
             //new FabricItemSettings()
     //);
@@ -98,6 +102,7 @@ public class GallifreyModItems {
         registerItem("blank_circuit", BLANK_CIRCUIT);
         registerItem("location_circuit",LOCATION_CIRCUIT);
         registerItem("dimension_circuit",DIMENSION_CIRCUIT);
+        registerItem("sonic_crystal",SONIC_CRYSTAL);
 
         registerItem("sonic_screwdriver", SONIC_SCREWDRIVER);
         registerItem("fez", FEZ);

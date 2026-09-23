@@ -22,6 +22,10 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModItems.BLANK_CIRCUIT);
                 entries.add(GallifreyModItems.LOCATION_CIRCUIT);
                 entries.add(GallifreyModItems.DIMENSION_CIRCUIT);
+                entries.add(GallifreyModBlocks.SONIC_CRYSTAL_ORE);
+                entries.add(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE);
+                entries.add(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE);
+                entries.add(GallifreyModItems.SONIC_CRYSTAL);
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
                 entries.add(GallifreyModItems.EYESTALK);
                 entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
