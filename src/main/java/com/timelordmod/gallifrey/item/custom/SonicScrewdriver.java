@@ -199,52 +199,24 @@ public class SonicScrewdriver extends Item {
                         .getOrCreateNbt()
                         .getInt(MODE_KEY);
 
-        if (mode == 1) {
-            return SonicMode.ACTIVATE;
+        SonicMode[] modes = SonicMode.values();
+        if (mode < 0 || mode >= modes.length) {
+            return SonicMode.INTERACTION;
         }
-
-        return SonicMode.SCAN;
+        return modes[mode];
     }
 
     public static void setMode(
             ItemStack stack,
             SonicMode mode
     ) {
-
-        int value =
-                mode == SonicMode.ACTIVATE
-                        ? 1
-                        : 0;
-
-        stack
-                .getOrCreateNbt()
-                .putInt(
-                        MODE_KEY,
-                        value
-                );
+        stack.getOrCreateNbt().putInt(MODE_KEY, mode.ordinal());
     }
 
-    public static void toggleMode(
-            ItemStack stack
-    ) {
-
-        if (
-                getMode(stack)
-                        == SonicMode.SCAN
-        ) {
-
-            setMode(
-                    stack,
-                    SonicMode.ACTIVATE
-            );
-
-        } else {
-
-            setMode(
-                    stack,
-                    SonicMode.SCAN
-            );
-        }
+    public static void toggleMode(ItemStack stack) {
+        SonicMode[] modes = SonicMode.values();
+        SonicMode current = getMode(stack);
+        setMode(stack, modes[(current.ordinal() + 1) % modes.length]);
     }
 
     // =========================================================
@@ -296,7 +268,7 @@ public class SonicScrewdriver extends Item {
 
             setMode(
                     stack,
-                    SonicMode.SCAN
+                    SonicMode.INTERACTION
             );
         }
 
@@ -536,6 +508,10 @@ public class SonicScrewdriver extends Item {
         if (player.isSneaking()) {
 
             if (!world.isClient) {
+                if (!isOn(stack)) {
+                    player.sendMessage(Text.literal("§7SONIC: Inactive — recharge the sonic to use it."), true);
+                    return TypedActionResult.success(stack, false);
+                }
 
                 toggleMode(stack);
 
@@ -563,7 +539,7 @@ public class SonicScrewdriver extends Item {
         }
 
         // =====================================================
-        // NO POWER
+        // NO POWER = INACTIVE
         // =====================================================
 
         if (getPower(stack) <= 0) {

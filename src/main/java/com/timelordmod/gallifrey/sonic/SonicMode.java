@@ -1,8 +1,9 @@
 package com.timelordmod.gallifrey.sonic;
 
 public enum SonicMode {
-    SCAN("Scan"),
-    ACTIVATE("Activate");
+    INTERACTION("Interaction"),
+    OVERLOAD("Overload"),
+    SCAN("Scanning");
 
     private final String displayName;
 

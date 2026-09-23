@@ -40,6 +40,41 @@ import com.timelordmod.gallifrey.block.custom.SonicWorkshopBlock;
 public class GallifreyModBlocks {
 
     // ============================================================
+    // MARS BLOCKS
+    // ============================================================
+
+    public static final Block MARS_STONE = registerBlock("mars_stone",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).strength(1.5f, 6.0f)));
+    public static final Block MARS_COBBLESTONE = registerBlock("mars_cobblestone",
+            new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE)));
+    public static final Block MARS_ANDESITE = registerBlock("mars_andesite",
+            new Block(FabricBlockSettings.copyOf(Blocks.ANDESITE)));
+    public static final Block MARS_DIORITE = registerBlock("mars_diorite",
+            new Block(FabricBlockSettings.copyOf(Blocks.DIORITE)));
+    public static final Block MARS_GRANITE = registerBlock("mars_granite",
+            new Block(FabricBlockSettings.copyOf(Blocks.GRANITE)));
+    public static final Block POLISHED_MARS_STONE = registerBlock("polished_mars_stone",
+            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE)));
+    public static final Block MARS_POLISHED_ANDESITE = registerBlock("mars_polished_andesite",
+            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE)));
+    public static final Block MARS_POLISHED_DIORITE = registerBlock("mars_polished_diorite",
+            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE)));
+    public static final Block MARS_POLISHED_GRANITE = registerBlock("mars_polished_granite",
+            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE)));
+    public static final Block MARS_STONE_BRICKS = registerBlock("mars_stone_bricks",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE_BRICKS)));
+    public static final Block MARS_STONE_BRICKS_CRACKED = registerBlock("mars_stone_bricks_cracked",
+            new Block(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS)));
+    public static final Block MARS_CHISELED_STONE_BRICKS = registerBlock("mars_chizelled_stone_bricks",
+            new Block(FabricBlockSettings.copyOf(Blocks.CHISELED_STONE_BRICKS)));
+    public static final Block MARS_IRON_ORE = registerBlock("mars_iron_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_ORE)));
+    public static final Block PISS_CRYSTAL = registerBlock("piss_crystal",
+            new AmethystClusterBlock(7, 3, FabricBlockSettings.copyOf(Blocks.AMETHYST_CLUSTER)
+                    .luminance(state -> 8)
+                    .sounds(BlockSoundGroup.AMETHYST_CLUSTER)));
+
+    // ============================================================
     // MISC BLOCKS
     // ============================================================
 

@@ -1,5 +1,4 @@
 {
-  //Items go here
   "item.gallifrey.white_point_star": "White Point Star",
   "item.gallifrey.vortex_manipulator": "Vortex Manipulator",
   "item.gallifrey.blank_circuit": "Blank Circuit",
@@ -11,8 +10,6 @@
   "item.gallifrey.ulanda_chest_boat": "Ulanda Boat with Chest",
   "item.gallifrey.treeborg_boat": "Treeborg Boat",
   "item.gallifrey.treeborg_chest_boat": "Treeborg Boat with Chest",
-
-  //Blocks go here
   "block.gallifrey.ulanda_sapling": "Ulanda Sapling",
   "block.gallifrey.ulanda_leaves": "Ulanda Leaves",
   "block.gallifrey.ulanda_wood": "Ulanda Wood",
@@ -70,17 +67,25 @@
   "block.gallifrey.treeborg_button": "Treeborg Button",
   "block.gallifrey.treeborg_standing_sign": "Treeborg Sign",
   "block.gallifrey.treeborg_hanging_sign": "Treeborg Hanging Sign",
-
-  //advancements go here
-
-
-  //misc shit goes here
   "subtitles.gallifrey.vm_sound": "Vortex Manipulator whirrs",
   "itemGroup.gallifrey.gallifrey": "Gallifrey",
   "itemGroup.gallifrey.roundels": "Roundels",
   "catagory.gallifrey.main": "Gallifrey Mod",
-
-  // SONIC SHITE
   "item.gallifrey.sonic_screwdriver": "Sonic Screwdriver",
-  "block.gallifrey.sonic_workshop": "Sonic Workshop"
+  "block.gallifrey.sonic_workshop": "Sonic Workshop",
+  "itemGroup.gallifrey.mars": "Gallifrey: Mars",
+  "block.gallifrey.mars_stone": "Mars Stone",
+  "block.gallifrey.mars_cobblestone": "Mars Cobblestone",
+  "block.gallifrey.mars_andesite": "Mars Andesite",
+  "block.gallifrey.mars_diorite": "Mars Diorite",
+  "block.gallifrey.mars_granite": "Mars Granite",
+  "block.gallifrey.polished_mars_stone": "Polished Mars Stone",
+  "block.gallifrey.mars_polished_andesite": "Polished Mars Andesite",
+  "block.gallifrey.mars_polished_diorite": "Polished Mars Diorite",
+  "block.gallifrey.mars_polished_granite": "Polished Mars Granite",
+  "block.gallifrey.mars_stone_bricks": "Mars Stone Bricks",
+  "block.gallifrey.mars_stone_bricks_cracked": "Cracked Mars Stone Bricks",
+  "block.gallifrey.mars_chizelled_stone_bricks": "Chiseled Mars Stone Bricks",
+  "block.gallifrey.mars_iron_ore": "Mars Iron Ore",
+  "block.gallifrey.piss_crystal": "Mars Crystal"
 }

@@ -5,9 +5,11 @@ import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.entity.ModBoats;
 import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
+import com.timelordmod.gallifrey.item.MarsCreativeTab;
 import com.timelordmod.gallifrey.item.RoundelsCreativeTab;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
 import com.timelordmod.gallifrey.world.biome.ModBiomes;
+import com.timelordmod.gallifrey.world.MarsWorldHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -37,6 +39,7 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyModBlockEntities.register();
 		GallifreyCreativeTab.register();
 		RoundelsCreativeTab.register();
+		MarsCreativeTab.register();
 		ModBoats.registerBoats();
 		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, ModBiomes.TREEBORG_FOREST, 0.3d);
 
@@ -89,6 +92,15 @@ public class GallifreyMod implements ModInitializer {
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "gallifrey"))
 						.tintColor(230, 142, 48)
 						.registerPortal();
+
+		CustomPortalBuilder.beginPortal()
+						.frameBlock(GallifreyModBlocks.MARS_STONE_BRICKS)
+						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mars"))
+						.tintColor(150, 55, 35)
+						.registerPortal();
+
+		MarsWorldHandler.register();
 
 
 		LOGGER.info("[Gallifrey] Core systems ready.");

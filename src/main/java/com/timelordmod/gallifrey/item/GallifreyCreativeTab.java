@@ -25,9 +25,6 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
                 entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
 
-                //MISC BLOCKS
-                entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
-
                 //TARDIS
                 entries.add(GallifreyModBlocks.TARDIS_EXTERIOR);
 
