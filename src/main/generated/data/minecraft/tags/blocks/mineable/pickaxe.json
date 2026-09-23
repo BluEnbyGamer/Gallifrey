@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:exquisite_cat",
+    "gallifrey:good_heavens",
+    "gallifrey:cobbled_kaletite",
+    "gallifrey:kaletite",
+    "gallifrey:kaletite_bricks",
+    "gallifrey:dalekanium_block",
+    "gallifrey:dalekanium_ore",
+    "gallifrey:deepslate_dalekanium_ore"
+  ]
+}

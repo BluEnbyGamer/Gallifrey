@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:cobbled_kaletite",
+    "gallifrey:kaletite",
+    "gallifrey:kaletite_bricks",
+    "gallifrey:dalekanium_ore",
+    "gallifrey:deepslate_dalekanium_ore"
+  ]
+}
