@@ -19,6 +19,7 @@ public class GallifreyCreativeTab {
                 //ITEMS GO HERE
                 entries.add(GallifreyModItems.VORTEX_MANIPULATOR);
                 entries.add(GallifreyModItems.WHITE_POINT_STAR);
+                entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
                 entries.add(GallifreyModItems.BLANK_CIRCUIT);
                 entries.add(GallifreyModItems.LOCATION_CIRCUIT);
                 entries.add(GallifreyModItems.DIMENSION_CIRCUIT);
@@ -27,7 +28,6 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE);
                 entries.add(GallifreyModItems.SONIC_CRYSTAL);
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
-                entries.add(GallifreyModItems.EYESTALK);
                 entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
 
                 //TARDIS

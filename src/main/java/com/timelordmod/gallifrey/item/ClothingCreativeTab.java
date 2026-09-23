@@ -24,6 +24,7 @@ public class ClothingCreativeTab {
                 entries.add(GallifreyModItems.GREYFEZ);
                 entries.add(GallifreyModItems.YELLOWFEZ);
                 entries.add(GallifreyModItems.TRUSTABLE_HAT);
+                entries.add(GallifreyModItems.EYESTALK);
             })
             .build();
 
