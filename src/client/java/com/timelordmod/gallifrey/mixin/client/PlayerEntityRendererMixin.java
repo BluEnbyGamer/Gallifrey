@@ -16,14 +16,10 @@ import java.util.List;
 
 @Mixin(PlayerEntityRenderer.class)
 public abstract class PlayerEntityRendererMixin {
-    /*
-     * addFeature() is declared on LivingEntityRenderer, not PlayerEntityRenderer.
-     * An @Invoker on this mixin therefore cannot resolve the method. Shadow the
-     * inherited features list instead and add the custom feature directly.
-     */
+
     @Shadow
     @Final
-    protected List<FeatureRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>>> features;
+    private List<FeatureRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>>> features;
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void gallifrey$addHeadwearFeature(CallbackInfo ci) {
