@@ -42,7 +42,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class VMPacket {
     private static final Map<UUID, PendingTeleportEffect> PENDING_EFFECTS = new ConcurrentHashMap<>();
-    private static final Map<UUID, Integer> SELF_DESTRUCTS = new ConcurrentHashMap<>();
     private static final EquipmentSlot[] ARMOR_SLOTS = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 
     public static final SoundEvent VM_TAKE_OFF_SOUND = SoundEvent.of(new Identifier("gallifrey", "vm_take_off"));
@@ -51,33 +50,7 @@ public class VMPacket {
     static {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             tickTeleport(server);
-            tickSelfDestruct(server);
         });
-    }
-
-    private static void tickSelfDestruct(MinecraftServer server) {
-        Iterator<Map.Entry<UUID, Integer>> it = SELF_DESTRUCTS.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<UUID, Integer> entry = it.next();
-            ServerPlayerEntity player = server.getPlayerManager().getPlayer(entry.getKey());
-            if (player == null || player.isRemoved()) { it.remove(); continue; }
-            int ticks = entry.getValue() - 1;
-            if (ticks > 0) {
-                entry.setValue(ticks);
-                if (ticks % 20 == 0) player.sendMessage(Text.literal("VM SELF-DESTRUCT: " + (ticks / 20) + "s"), true);
-                continue;
-            }
-            ItemStack vm = findVortexManipulator(player);
-            if (!vm.isEmpty()) {
-                ServerWorld world = player.getServerWorld();
-                world.spawnParticles(ParticleTypes.EXPLOSION_EMITTER, player.getX(), player.getY() + 1, player.getZ(), 1, 0, 0, 0, 0);
-                world.playSound(null, player.getX(), player.getY(), player.getZ(), VM_TAKE_OFF_SOUND, SoundCategory.PLAYERS, 1.2F, 0.55F);
-                vm.decrement(1);
-            }
-            player.sendMessage(Text.literal("VORTEX MANIPULATOR SELF-DESTRUCT COMPLETE"), true);
-            it.remove();
-            sendState(server, player);
-        }
     }
 
     private static void tickTeleport(MinecraftServer server) {
@@ -158,7 +131,6 @@ public class VMPacket {
             case "ADD_PLAYER" -> addPlayer(server, player, vm, buf);
             case "REMOVE_PLAYER" -> removePlayer(server, player, vm, buf);
             case "SELF_DESTRUCT" -> armSelfDestruct(player, vm);
-            case "CANCEL_SELF_DESTRUCT" -> cancelSelfDestruct(player);
             default -> player.sendMessage(Text.literal("Unknown VM command."), true);
         }
     }
@@ -256,13 +228,15 @@ public class VMPacket {
     }
 
     private static void armSelfDestruct(ServerPlayerEntity player, ItemStack vm) {
-        if (!VortexManipulatorData.isOwner(vm, player.getUuid())) { player.sendMessage(Text.literal("SELF-DESTRUCT requires the VM owner."), true); return; }
-        SELF_DESTRUCTS.put(player.getUuid(), 200);
-        player.sendMessage(Text.literal("SELF-DESTRUCT ARMED — 10 seconds. Press CANCEL to abort."), true);
-    }
-
-    private static void cancelSelfDestruct(ServerPlayerEntity player) {
-        if (SELF_DESTRUCTS.remove(player.getUuid()) != null) player.sendMessage(Text.literal("VM self-destruct cancelled."), true);
+        if (!VortexManipulatorData.isOwner(vm, player.getUuid())) {
+            player.sendMessage(Text.literal("SELF-DESTRUCT requires the VM owner."), true);
+            return;
+        }
+        ServerWorld world = player.getServerWorld();
+        world.createExplosion(null, player.getX(), player.getY(), player.getZ(), 4.0F, false, World.ExplosionSourceType.TNT);
+        vm.decrement(1);
+        player.sendMessage(Text.literal("VORTEX MANIPULATOR SELF-DESTRUCT COMPLETE"), true);
+        sendState(player.getServer(), player);
     }
 
     private static ItemStack findVortexManipulator(ServerPlayerEntity player) {
@@ -279,7 +253,7 @@ public class VMPacket {
         VortexManipulatorData.ensureOwner(vm, player);
         PacketByteBuf buf = net.fabricmc.fabric.api.networking.v1.PacketByteBufs.create();
         buf.writeBoolean(VortexManipulatorData.isOwner(vm, player.getUuid()));
-        buf.writeVarInt(SELF_DESTRUCTS.getOrDefault(player.getUuid(), 0));
+        buf.writeVarInt(0);
         NbtList locations = VortexManipulatorData.locations(vm);
         buf.writeVarInt(locations.size());
         for (int i = 0; i < locations.size(); i++) {
