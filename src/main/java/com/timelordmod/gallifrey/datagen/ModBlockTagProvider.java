@@ -31,7 +31,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
                 .add(GallifreyModBlocks.TARDIS_LOG)
                 .add(GallifreyModBlocks.TARDIS_WOOD)
-                .add(GallifreyModBlocks.STRIP_TARDIS_WOOD)
+                .add(GallifreyModBlocks.STRIP_TARDIS_LOG)
                 .add(GallifreyModBlocks.STRIP_TARDIS_WOOD)
 
                 .add(GallifreyModBlocks.ASH_LOG)
