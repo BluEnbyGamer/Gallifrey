@@ -11,7 +11,7 @@ import net.minecraft.text.Text;
 
 /** Confirmation screen shown before the Vortex Manipulator self-destructs. */
 public class VortexSelfDestructConfirmScreen extends Screen {
-    private static final int W = 500, H = 190;
+    private static final int W = 500, H = 210;
     private static final int PANEL = 0xF0091118, PANEL_LIGHT = 0xFF101D25, PANEL_DARK = 0xFF080D12;
     private static final int CYAN = 0xFF26E6FF, CYAN_DIM = 0xFF08758C, CYAN_DARK = 0xFF063D4A;
     private static final int TEXT = 0xFFE7FBFF, DIM = 0xFF75AAB5, RED = 0xFFFF4F6B;
@@ -27,8 +27,8 @@ public class VortexSelfDestructConfirmScreen extends Screen {
     @Override protected void init() {
         left = (width - W) / 2;
         top = (height - H) / 2;
-        addDrawableChild(new ThemedButton(left + 16, top + 130, 226, 30, Text.literal("YES — SELF-DESTRUCT"), b -> confirm()));
-        addDrawableChild(new ThemedButton(left + 258, top + 130, 226, 30, Text.literal("NO — GO BACK"), b -> client.setScreen(parent)));
+        addDrawableChild(new ThemedButton(left + 16, top + 150, 226, 30, Text.literal("YES — SELF-DESTRUCT"), b -> confirm()));
+        addDrawableChild(new ThemedButton(left + 258, top + 150, 226, 30, Text.literal("NO — GO BACK"), b -> client.setScreen(parent)));
     }
 
     private void confirm() {
@@ -52,10 +52,19 @@ public class VortexSelfDestructConfirmScreen extends Screen {
         context.fill(left + 8, top + 27, left + W - 8, top + 28, CYAN_DIM);
         context.drawText(textRenderer, "VORTEX MANIPULATOR", left + 16, top + 12, CYAN, false);
         context.drawCenteredTextWithShadow(textRenderer, Text.literal("SELF-DESTRUCT"), left + W / 2, top + 42, RED);
-        context.drawCenteredTextWithShadow(textRenderer, Text.literal("Are you sure you want to destroy the Vortex Manipulator?"), left + W / 2, top + 68, TEXT);
-        context.drawCenteredTextWithShadow(textRenderer, Text.literal("YES will trigger the explosion immediately."), left + W / 2, top + 91, RED);
-        context.drawCenteredTextWithShadow(textRenderer, Text.literal("NO returns you to the Vortex Manipulator."), left + W / 2, top + 112, DIM);
+        context.drawCenteredTextWithShadow(textRenderer, Text.literal("Arm the Vortex Manipulator self-destruct sequence?"), left + W / 2, top + 68, TEXT);
+        context.drawCenteredTextWithShadow(textRenderer, Text.literal("YES starts a 10-second countdown."), left + W / 2, top + 91, RED);
+        context.drawCenteredTextWithShadow(textRenderer, Text.literal("You can cancel it before detonation."), left + W / 2, top + 106, RED);
+        context.drawCenteredTextWithShadow(textRenderer, Text.literal("NO returns you to the control console."), left + W / 2, top + 123, DIM);
         super.render(context, mouseX, mouseY, delta);
+    }
+
+    private String fit(String value, int maxWidth) {
+        if (textRenderer.getWidth(value) <= maxWidth) return value;
+        String ellipsis = "…";
+        int end = value.length();
+        while (end > 0 && textRenderer.getWidth(value.substring(0, end) + ellipsis) > maxWidth) end--;
+        return end <= 0 ? ellipsis : value.substring(0, end) + ellipsis;
     }
 
     private class ThemedButton extends ButtonWidget {
@@ -66,7 +75,8 @@ public class VortexSelfDestructConfirmScreen extends Screen {
             int bg = isHovered() ? 0xFF123744 : PANEL_DARK;
             c.fill(getX(), getY(), getX() + getWidth(), getY() + getHeight(), bg);
             c.drawBorder(getX(), getY(), getWidth(), getHeight(), active ? CYAN_DIM : 0xFF30434A);
-            c.drawCenteredTextWithShadow(textRenderer, getMessage(), getX() + getWidth() / 2, getY() + getHeight() / 2 - 4, active ? TEXT : DIM);
+            Text visible = Text.literal(fit(getMessage().getString(), Math.max(12, getWidth() - 12)));
+            c.drawCenteredTextWithShadow(textRenderer, visible, getX() + getWidth() / 2, getY() + getHeight() / 2 - 4, active ? TEXT : DIM);
         }
     }
 }

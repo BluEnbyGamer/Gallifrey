@@ -42,6 +42,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class VMPacket {
     private static final Map<UUID, PendingTeleportEffect> PENDING_EFFECTS = new ConcurrentHashMap<>();
+    private static final Map<UUID, Integer> SELF_DESTRUCTS = new ConcurrentHashMap<>();
     private static final EquipmentSlot[] ARMOR_SLOTS = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 
     public static final SoundEvent VM_TAKE_OFF_SOUND = SoundEvent.of(new Identifier("gallifrey", "vm_take_off"));
@@ -54,12 +55,13 @@ public class VMPacket {
     }
 
     private static void tickTeleport(MinecraftServer server) {
+        tickSelfDestruct(server);
         Iterator<Map.Entry<UUID, PendingTeleportEffect>> iterator = PENDING_EFFECTS.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<UUID, PendingTeleportEffect> entry = iterator.next();
             PendingTeleportEffect pending = entry.getValue();
             ServerPlayerEntity player = server.getPlayerManager().getPlayer(entry.getKey());
-            if (player == null || player.isRemoved()) { iterator.remove(); continue; }
+            if (player == null || player.isRemoved()) { SELF_DESTRUCTS.remove(entry.getKey()); continue; }
 
             if (pending.phase() == TeleportPhase.SOURCE_WARMUP) {
                 ServerWorld sourceWorld = server.getWorld(pending.sourceWorldKey());
@@ -113,8 +115,37 @@ public class VMPacket {
     }
 
     public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-        String action = buf.readString(32);
-        server.execute(() -> handle(server, player, action, buf));
+        // The networking buffer is released after this callback returns. Copy it before
+        // scheduling work on the server thread, otherwise multi-field commands such as
+        // TELEPORT can fail with IllegalReferenceCountException while being decoded.
+        PacketByteBuf copy = new PacketByteBuf(buf.copy());
+        String action = copy.readString(32);
+        server.execute(() -> handle(server, player, action, copy));
+    }
+
+
+    private static void tickSelfDestruct(MinecraftServer server) {
+        for (Map.Entry<UUID, Integer> entry : SELF_DESTRUCTS.entrySet()) {
+            ServerPlayerEntity player = server.getPlayerManager().getPlayer(entry.getKey());
+            if (player == null || player.isRemoved()) { SELF_DESTRUCTS.remove(entry.getKey()); continue; }
+
+            int ticks = entry.getValue() - 1;
+            if (ticks > 0) {
+                SELF_DESTRUCTS.put(entry.getKey(), ticks);
+                if (ticks % 20 == 0) sendState(server, player);
+                continue;
+            }
+
+            ItemStack vm = findVortexManipulator(player);
+            if (!vm.isEmpty() && VortexManipulatorData.isOwner(vm, player.getUuid())) {
+                ServerWorld world = player.getServerWorld();
+                world.createExplosion(null, player.getX(), player.getY(), player.getZ(), 4.0F, false, World.ExplosionSourceType.TNT);
+                vm.decrement(1);
+                player.sendMessage(Text.literal("VORTEX MANIPULATOR SELF-DESTRUCT COMPLETE"), true);
+            }
+            SELF_DESTRUCTS.remove(entry.getKey());
+            sendState(server, player);
+        }
     }
 
     private static void handle(MinecraftServer server, ServerPlayerEntity player, String action, PacketByteBuf buf) {
@@ -131,6 +162,7 @@ public class VMPacket {
             case "ADD_PLAYER" -> addPlayer(server, player, vm, buf);
             case "REMOVE_PLAYER" -> removePlayer(server, player, vm, buf);
             case "SELF_DESTRUCT" -> armSelfDestruct(player, vm);
+            case "CANCEL_SELF_DESTRUCT" -> cancelSelfDestruct(player, vm);
             default -> player.sendMessage(Text.literal("Unknown VM command."), true);
         }
     }
@@ -167,6 +199,10 @@ public class VMPacket {
     }
 
     private static void saveLocation(ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
+        if (!VortexManipulatorData.isAuthorized(vm, player.getUuid())) {
+            player.sendMessage(Text.literal("ISOMORPHIC LOCK: you are not authorized to modify VM memory."), true);
+            return;
+        }
         String name = buf.readString(32).trim();
         if (name.isEmpty()) { player.sendMessage(Text.literal("Location name cannot be empty."), true); return; }
         if (VortexManipulatorData.locations(vm).size() >= 20 && VortexManipulatorData.findLocation(vm, name) == null) { player.sendMessage(Text.literal("VM memory full: maximum 20 saved locations."), true); return; }
@@ -176,12 +212,20 @@ public class VMPacket {
     }
 
     private static void deleteLocation(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
+        if (!VortexManipulatorData.isAuthorized(vm, player.getUuid())) {
+            player.sendMessage(Text.literal("ISOMORPHIC LOCK: you are not authorized to modify VM memory."), true);
+            return;
+        }
         String name = buf.readString(32);
         player.sendMessage(Text.literal(VortexManipulatorData.deleteLocation(vm, name) ? "Deleted VM location: " + name : "Location not found: " + name), true);
         sendState(server, player);
     }
 
     private static void goLocation(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
+        if (!VortexManipulatorData.isAuthorized(vm, player.getUuid())) {
+            player.sendMessage(Text.literal("ISOMORPHIC LOCK ACTIVE."), true);
+            return;
+        }
         String name = buf.readString(32);
         NbtCompound location = VortexManipulatorData.findLocation(vm, name);
         if (location == null) { player.sendMessage(Text.literal("Location not found: " + name), true); return; }
@@ -232,10 +276,25 @@ public class VMPacket {
             player.sendMessage(Text.literal("SELF-DESTRUCT requires the VM owner."), true);
             return;
         }
-        ServerWorld world = player.getServerWorld();
-        world.createExplosion(null, player.getX(), player.getY(), player.getZ(), 4.0F, false, World.ExplosionSourceType.TNT);
-        vm.decrement(1);
-        player.sendMessage(Text.literal("VORTEX MANIPULATOR SELF-DESTRUCT COMPLETE"), true);
+        if (SELF_DESTRUCTS.containsKey(player.getUuid())) {
+            player.sendMessage(Text.literal("SELF-DESTRUCT is already armed."), true);
+            return;
+        }
+        SELF_DESTRUCTS.put(player.getUuid(), 200);
+        player.sendMessage(Text.literal("SELF-DESTRUCT ARMED: 10 seconds. Use CANCEL to abort."), true);
+        sendState(player.getServer(), player);
+    }
+
+    private static void cancelSelfDestruct(ServerPlayerEntity player, ItemStack vm) {
+        if (!VortexManipulatorData.isOwner(vm, player.getUuid())) {
+            player.sendMessage(Text.literal("SELF-DESTRUCT requires the VM owner."), true);
+            return;
+        }
+        if (SELF_DESTRUCTS.remove(player.getUuid()) != null) {
+            player.sendMessage(Text.literal("SELF-DESTRUCT CANCELLED."), true);
+        } else {
+            player.sendMessage(Text.literal("No self-destruct sequence is armed."), true);
+        }
         sendState(player.getServer(), player);
     }
 
@@ -253,7 +312,7 @@ public class VMPacket {
         VortexManipulatorData.ensureOwner(vm, player);
         PacketByteBuf buf = net.fabricmc.fabric.api.networking.v1.PacketByteBufs.create();
         buf.writeBoolean(VortexManipulatorData.isOwner(vm, player.getUuid()));
-        buf.writeVarInt(0);
+        buf.writeVarInt(SELF_DESTRUCTS.getOrDefault(player.getUuid(), 0));
         NbtList locations = VortexManipulatorData.locations(vm);
         buf.writeVarInt(locations.size());
         for (int i = 0; i < locations.size(); i++) {
