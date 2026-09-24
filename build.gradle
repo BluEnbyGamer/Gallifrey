@@ -97,6 +97,7 @@ dependencies {
  */
 
 processResources {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
@@ -153,4 +154,9 @@ publishing {
 
 	repositories {
 	}
+}
+
+// Prevent generated data from colliding with main resources when creating the sources JAR.
+tasks.named("sourcesJar") {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

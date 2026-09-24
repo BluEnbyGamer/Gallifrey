@@ -24,6 +24,7 @@ import java.util.List;
 public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> SONIC_CRYSTAL_ORE_PLACED_KEY = registerKey("sonic_crystal_ore_placed");
     public static final RegistryKey<PlacedFeature> NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY = registerKey("nether_sonic_crystal_ore_placed");
+    public static final RegistryKey<PlacedFeature> MARS_IRON_ORE_PLACED_KEY = registerKey("mars_iron_ore_placed");
 
 
     // Dense forest placement - 10 attempts per chunk, unlike a rare single-tree feature
@@ -72,6 +73,10 @@ public class ModPlacedFeatures {
         register(context, NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NETHER_SONIC_CRYSTAL_ORE_KEY),
         ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
         HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+
+        register(context, MARS_IRON_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MARS_IRON_ORE_KEY),
+        ModOrePlacement.modifiersWithCount(8,
+        HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(80))));
 
     }
 

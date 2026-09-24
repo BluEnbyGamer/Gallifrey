@@ -26,6 +26,7 @@ import java.util.List;
 public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> SONIC_CRYSTAL_ORE_KEY = registerKey("sonic_crystal_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> NETHER_SONIC_CRYSTAL_ORE_KEY = registerKey("nether_sonic_crystal_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MARS_IRON_ORE_KEY = registerKey("mars_iron_ore");
 
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> ULANDA_KEY =registerKey("ulanda");
@@ -49,6 +50,11 @@ public class ModConfiguredFeatures {
 
          register(context, SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldSonicOres, 12));
          register(context, NETHER_SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherSonicOres, 12));
+
+         List<OreFeatureConfig.Target> marsIronOres =
+                 List.of(OreFeatureConfig.createTarget(stoneReplacables, GallifreyModBlocks.MARS_IRON_ORE.getDefaultState()),
+                         OreFeatureConfig.createTarget(deepslateReplacables, GallifreyModBlocks.MARS_IRON_ORE.getDefaultState()));
+         register(context, MARS_IRON_ORE_KEY, Feature.ORE, new OreFeatureConfig(marsIronOres, 8));
 
         register(context,ULANDA_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(GallifreyModBlocks.ULANDA_LOG),

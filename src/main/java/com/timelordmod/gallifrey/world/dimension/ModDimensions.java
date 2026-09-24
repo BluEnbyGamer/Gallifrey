@@ -8,9 +8,8 @@ import net.minecraft.world.World;
 /**
  * Registry keys for Gallifrey's runtime dimensions.
  *
- * The dimensions themselves use vanilla dimension types in their datapack JSONs.
- * This keeps them available during the server's dynamic-registry load and avoids
- * custom dimension-type ordering problems with worldgen mods such as Biolith.
+ * Registry keys used by the custom dimensions. Dimension types and generators
+ * are supplied by the datapack resources in data/gallifrey.
  */
 public final class ModDimensions {
     private ModDimensions() {}
@@ -20,4 +19,10 @@ public final class ModDimensions {
 
     public static final RegistryKey<World> GALL_LEVEL_KEY = RegistryKey.of(
             RegistryKeys.WORLD, GallifreyMod.id("gallifrey"));
+
+    public static final RegistryKey<World> SKARO_LEVEL_KEY = RegistryKey.of(
+            RegistryKeys.WORLD, GallifreyMod.id("skaro"));
+
+    public static final RegistryKey<World> MONDAS_LEVEL_KEY = RegistryKey.of(
+            RegistryKeys.WORLD, GallifreyMod.id("mondas"));
 }

@@ -1,13 +1,18 @@
 package com.timelordmod.gallifrey.networking.packets;
 
 import com.timelordmod.gallifrey.item.GallifreyModItems;
+import com.timelordmod.gallifrey.item.custom.VortexManipulatorData;
+import com.timelordmod.gallifrey.networking.ModPackets;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKey;
@@ -37,286 +42,278 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class VMPacket {
     private static final Map<UUID, PendingTeleportEffect> PENDING_EFFECTS = new ConcurrentHashMap<>();
+    private static final Map<UUID, Integer> SELF_DESTRUCTS = new ConcurrentHashMap<>();
+    private static final EquipmentSlot[] ARMOR_SLOTS = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 
-    private static final EquipmentSlot[] ARMOR_SLOTS = {
-            EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET
-    };
-
-    // assets/gallifrey/sounds/vm_take_off.ogg
     public static final SoundEvent VM_TAKE_OFF_SOUND = SoundEvent.of(new Identifier("gallifrey", "vm_take_off"));
-
-    // assets/gallifrey/sounds/vm_land.ogg
     public static final SoundEvent VM_LAND_SOUND = SoundEvent.of(new Identifier("gallifrey", "vm_land"));
 
     static {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
-            Iterator<Map.Entry<UUID, PendingTeleportEffect>> iterator = PENDING_EFFECTS.entrySet().iterator();
-            while (iterator.hasNext()) {
-                Map.Entry<UUID, PendingTeleportEffect> entry = iterator.next();
-                PendingTeleportEffect pending = entry.getValue();
-                ServerPlayerEntity player = server.getPlayerManager().getPlayer(entry.getKey());
-
-                if (player == null || player.isRemoved()) {
-                    iterator.remove();
-                    continue;
-                }
-
-                // Phase 1: Source Warmup / Plays VM Sound
-                if (pending.phase() == TeleportPhase.SOURCE_WARMUP) {
-                    ServerWorld sourceWorld = server.getWorld(pending.sourceWorldKey());
-                    if (sourceWorld == null) {
-                        player.removeStatusEffect(StatusEffects.INVISIBILITY);
-                        restoreHiddenItems(player, pending);
-                        iterator.remove();
-                        continue;
-                    }
-
-                    if (pending.ticksRemaining() > 0) {
-                        entry.setValue(pending.tickDown());
-                        continue;
-                    }
-
-                    // Play take-off sound at source position
-                    sourceWorld.playSound(null, pending.sourcePosition().x, pending.sourcePosition().y, pending.sourcePosition().z,
-                            VM_TAKE_OFF_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
-
-                    // Departure burst
-                    sourceWorld.spawnParticles(ParticleTypes.PORTAL,
-                            pending.sourcePosition().x, pending.sourcePosition().y + 1.0, pending.sourcePosition().z,
-                            60, 0.4, 0.8, 0.4, 0.05);
-
-                    // 19 ticks brings us to the 20-tick (1 second) mark from
-                    // when the packet was received, where the player cloaks
-                    entry.setValue(pending.nextPhase(TeleportPhase.PRE_CLOAK, 19));
-                    continue;
-                }
-
-                // Phase 2: Pre-Cloak (player stays visible here, then goes invisible)
-                if (pending.phase() == TeleportPhase.PRE_CLOAK) {
-                    if (pending.ticksRemaining() > 0) {
-                        entry.setValue(pending.tickDown());
-                        continue;
-                    }
-
-                    // 1 second after take-off: go invisible now.
-                    // Duration must outlast the remaining timeline (20 + 10 = 30 ticks)
-                    // with room to spare, or it expires before the code removes it
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 40, 0, false, false, false));
-
-                    // Hide the Vortex Manipulator too — vanilla invisibility doesn't
-                    // hide held items on its own, so it would otherwise float in place
-                    ItemStack mainHand = player.getMainHandStack();
-                    ItemStack offHand = player.getOffHandStack();
-                    ItemStack hiddenMainHand = ItemStack.EMPTY;
-                    ItemStack hiddenOffHand = ItemStack.EMPTY;
-
-                    if (mainHand.isOf(GallifreyModItems.VORTEX_MANIPULATOR)) {
-                        hiddenMainHand = mainHand.copy();
-                        player.setStackInHand(Hand.MAIN_HAND, ItemStack.EMPTY);
-                    }
-                    if (offHand.isOf(GallifreyModItems.VORTEX_MANIPULATOR)) {
-                        hiddenOffHand = offHand.copy();
-                        player.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);
-                    }
-
-                    // Armor too. Unlike the hands above, this isn't filtered to a specific
-                    // item — any equipped armor would float in place just the same, so
-                    // whatever's actually worn gets hidden, regardless of what it is
-                    Map<EquipmentSlot, ItemStack> hiddenArmor = new EnumMap<>(EquipmentSlot.class);
-                    for (EquipmentSlot slot : ARMOR_SLOTS) {
-                        ItemStack piece = player.getEquippedStack(slot);
-                        if (!piece.isEmpty()) {
-                            hiddenArmor.put(slot, piece.copy());
-                            player.equipStack(slot, ItemStack.EMPTY);
-                        }
-                    }
-
-                    // 20 ticks brings us to the original tick-40 teleport moment —
-                    // same overall timing as before, just with a visible head start
-                    entry.setValue(pending.cloak(hiddenMainHand, hiddenOffHand, hiddenArmor, TeleportPhase.TELEPORT, 20));
-                    continue;
-                }
-
-                // Phase 3: Teleporting Player
-                if (pending.phase() == TeleportPhase.TELEPORT) {
-                    ServerWorld targetWorld = server.getWorld(pending.targetWorldKey());
-                    if (targetWorld == null) {
-                        player.removeStatusEffect(StatusEffects.INVISIBILITY);
-                        restoreHiddenItems(player, pending);
-                        iterator.remove();
-                        continue;
-                    }
-
-                    if (pending.ticksRemaining() > 0) {
-                        entry.setValue(pending.tickDown());
-                        continue;
-                    }
-
-                    // Force load target chunk to prevent freezing in unloaded terrain
-                    ChunkPos chunkPos = new ChunkPos(pending.targetChunkPos().x(), pending.targetChunkPos().z());
-                    targetWorld.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, chunkPos, 1, player.getId());
-
-                    FabricDimensions.teleport(player, targetWorld, new TeleportTarget(
-                            pending.targetPosition(),
-                            player.getVelocity(),
-                            player.getYaw(),
-                            player.getPitch()
-                    ));
-                    entry.setValue(pending.nextPhase(TeleportPhase.TARGET_ARRIVAL, 10));
-                    continue;
-                }
-
-                // Phase 4: Arrival & Cleanup
-                ServerWorld targetWorld = server.getWorld(pending.targetWorldKey());
-                if (targetWorld == null || player.getServerWorld() != targetWorld) {
-                    player.removeStatusEffect(StatusEffects.INVISIBILITY);
-                    restoreHiddenItems(player, pending);
-                    iterator.remove();
-                    continue;
-                }
-
-                if (pending.ticksRemaining() > 0) {
-                    entry.setValue(pending.tickDown());
-                    continue;
-                }
-
-                // Play land sound at arrival position
-                targetWorld.playSound(null, pending.targetPosition().x, pending.targetPosition().y, pending.targetPosition().z,
-                        VM_LAND_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
-
-                // Arrival burst
-                targetWorld.spawnParticles(ParticleTypes.REVERSE_PORTAL,
-                        pending.targetPosition().x, pending.targetPosition().y + 1.0, pending.targetPosition().z,
-                        60, 0.4, 0.8, 0.4, 0.05);
-
-                restoreHiddenItems(player, pending);
-                player.removeStatusEffect(StatusEffects.INVISIBILITY);
-                iterator.remove();
-            }
+            tickTeleport(server);
+            tickSelfDestruct(server);
         });
     }
 
-    public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler,
-                               PacketByteBuf buf, PacketSender responseSender) {
+    private static void tickSelfDestruct(MinecraftServer server) {
+        Iterator<Map.Entry<UUID, Integer>> it = SELF_DESTRUCTS.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<UUID, Integer> entry = it.next();
+            ServerPlayerEntity player = server.getPlayerManager().getPlayer(entry.getKey());
+            if (player == null || player.isRemoved()) { it.remove(); continue; }
+            int ticks = entry.getValue() - 1;
+            if (ticks > 0) {
+                entry.setValue(ticks);
+                if (ticks % 20 == 0) player.sendMessage(Text.literal("VM SELF-DESTRUCT: " + (ticks / 20) + "s"), true);
+                continue;
+            }
+            ItemStack vm = findVortexManipulator(player);
+            if (!vm.isEmpty()) {
+                ServerWorld world = player.getServerWorld();
+                world.spawnParticles(ParticleTypes.EXPLOSION_EMITTER, player.getX(), player.getY() + 1, player.getZ(), 1, 0, 0, 0, 0);
+                world.playSound(null, player.getX(), player.getY(), player.getZ(), VM_TAKE_OFF_SOUND, SoundCategory.PLAYERS, 1.2F, 0.55F);
+                vm.decrement(1);
+            }
+            player.sendMessage(Text.literal("VORTEX MANIPULATOR SELF-DESTRUCT COMPLETE"), true);
+            it.remove();
+            sendState(server, player);
+        }
+    }
 
+    private static void tickTeleport(MinecraftServer server) {
+        Iterator<Map.Entry<UUID, PendingTeleportEffect>> iterator = PENDING_EFFECTS.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<UUID, PendingTeleportEffect> entry = iterator.next();
+            PendingTeleportEffect pending = entry.getValue();
+            ServerPlayerEntity player = server.getPlayerManager().getPlayer(entry.getKey());
+            if (player == null || player.isRemoved()) { iterator.remove(); continue; }
+
+            if (pending.phase() == TeleportPhase.SOURCE_WARMUP) {
+                ServerWorld sourceWorld = server.getWorld(pending.sourceWorldKey());
+                if (sourceWorld == null) { cleanup(player, pending); iterator.remove(); continue; }
+                if (pending.ticksRemaining() > 0) { entry.setValue(pending.tickDown()); continue; }
+                sourceWorld.playSound(null, pending.sourcePosition().x, pending.sourcePosition().y, pending.sourcePosition().z, VM_TAKE_OFF_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                sourceWorld.spawnParticles(ParticleTypes.PORTAL, pending.sourcePosition().x, pending.sourcePosition().y + 1.0, pending.sourcePosition().z, 60, 0.4, 0.8, 0.4, 0.05);
+                entry.setValue(pending.nextPhase(TeleportPhase.PRE_CLOAK, 19));
+                continue;
+            }
+            if (pending.phase() == TeleportPhase.PRE_CLOAK) {
+                if (pending.ticksRemaining() > 0) { entry.setValue(pending.tickDown()); continue; }
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 40, 0, false, false, false));
+                ItemStack mainHand = player.getMainHandStack();
+                ItemStack offHand = player.getOffHandStack();
+                ItemStack hiddenMainHand = ItemStack.EMPTY;
+                ItemStack hiddenOffHand = ItemStack.EMPTY;
+                if (mainHand.isOf(GallifreyModItems.VORTEX_MANIPULATOR)) { hiddenMainHand = mainHand.copy(); player.setStackInHand(Hand.MAIN_HAND, ItemStack.EMPTY); }
+                if (offHand.isOf(GallifreyModItems.VORTEX_MANIPULATOR)) { hiddenOffHand = offHand.copy(); player.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY); }
+                Map<EquipmentSlot, ItemStack> hiddenArmor = new EnumMap<>(EquipmentSlot.class);
+                for (EquipmentSlot slot : ARMOR_SLOTS) {
+                    ItemStack piece = player.getEquippedStack(slot);
+                    if (!piece.isEmpty()) { hiddenArmor.put(slot, piece.copy()); player.equipStack(slot, ItemStack.EMPTY); }
+                }
+                entry.setValue(pending.cloak(hiddenMainHand, hiddenOffHand, hiddenArmor, TeleportPhase.TELEPORT, 20));
+                continue;
+            }
+            if (pending.phase() == TeleportPhase.TELEPORT) {
+                ServerWorld targetWorld = server.getWorld(pending.targetWorldKey());
+                if (targetWorld == null) { cleanup(player, pending); iterator.remove(); continue; }
+                if (pending.ticksRemaining() > 0) { entry.setValue(pending.tickDown()); continue; }
+                ChunkPos chunkPos = new ChunkPos(pending.targetChunkPos().x(), pending.targetChunkPos().z());
+                targetWorld.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, chunkPos, 1, player.getId());
+                FabricDimensions.teleport(player, targetWorld, new TeleportTarget(pending.targetPosition(), player.getVelocity(), player.getYaw(), player.getPitch()));
+                entry.setValue(pending.nextPhase(TeleportPhase.TARGET_ARRIVAL, 10));
+                continue;
+            }
+            ServerWorld targetWorld = server.getWorld(pending.targetWorldKey());
+            if (targetWorld == null || player.getServerWorld() != targetWorld) { cleanup(player, pending); iterator.remove(); continue; }
+            if (pending.ticksRemaining() > 0) { entry.setValue(pending.tickDown()); continue; }
+            targetWorld.playSound(null, pending.targetPosition().x, pending.targetPosition().y, pending.targetPosition().z, VM_LAND_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
+            targetWorld.spawnParticles(ParticleTypes.REVERSE_PORTAL, pending.targetPosition().x, pending.targetPosition().y + 1.0, pending.targetPosition().z, 60, 0.4, 0.8, 0.4, 0.05);
+            cleanup(player, pending);
+            iterator.remove();
+        }
+    }
+
+    private static void cleanup(ServerPlayerEntity player, PendingTeleportEffect pending) {
+        restoreHiddenItems(player, pending);
+        player.removeStatusEffect(StatusEffects.INVISIBILITY);
+    }
+
+    public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+        String action = buf.readString(32);
+        server.execute(() -> handle(server, player, action, buf));
+    }
+
+    private static void handle(MinecraftServer server, ServerPlayerEntity player, String action, PacketByteBuf buf) {
+        ItemStack vm = findVortexManipulator(player);
+        if (vm.isEmpty()) { player.sendMessage(Text.literal("You need a Vortex Manipulator."), true); return; }
+        VortexManipulatorData.ensureOwner(vm, player);
+
+        switch (action) {
+            case "REQUEST_STATE" -> sendState(server, player);
+            case "TELEPORT" -> teleport(server, player, vm, buf);
+            case "SAVE" -> saveLocation(player, vm, buf);
+            case "DELETE" -> deleteLocation(server, player, vm, buf);
+            case "GO" -> goLocation(server, player, vm, buf);
+            case "ADD_PLAYER" -> addPlayer(server, player, vm, buf);
+            case "REMOVE_PLAYER" -> removePlayer(server, player, vm, buf);
+            case "SELF_DESTRUCT" -> armSelfDestruct(player, vm);
+            case "CANCEL_SELF_DESTRUCT" -> cancelSelfDestruct(player);
+            default -> player.sendMessage(Text.literal("Unknown VM command."), true);
+        }
+    }
+
+    private static void teleport(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
+        if (!VortexManipulatorData.isAuthorized(vm, player.getUuid())) { player.sendMessage(Text.literal("ISOMORPHIC LOCK ACTIVE."), true); return; }
+        if (PENDING_EFFECTS.containsKey(player.getUuid())) { player.sendMessage(Text.literal("Vortex Manipulator sequence already active."), true); return; }
         boolean targetPlayerMode = buf.readBoolean();
-        String targetPlayerName = targetPlayerMode ? buf.readString() : "";
+        String targetPlayerName = targetPlayerMode ? buf.readString(64) : "";
         Identifier dimensionId = !targetPlayerMode ? buf.readIdentifier() : null;
         double x = !targetPlayerMode ? buf.readDouble() : 0;
         double y = !targetPlayerMode ? buf.readDouble() : 0;
         double z = !targetPlayerMode ? buf.readDouble() : 0;
         boolean surfaceMode = !targetPlayerMode && buf.readBoolean();
-
-        server.execute(() -> {
-            if (!gallifrey$hasVortexManipulator(player)) {
-                player.sendMessage(Text.literal("You need a Vortex Manipulator."), true);
-                return;
-            }
-
-            if (PENDING_EFFECTS.containsKey(player.getUuid())) {
-                player.sendMessage(Text.literal("Vortex Manipulator sequence already active."), true);
-                return;
-            }
-
-            ServerWorld targetWorld;
-            Vec3d targetPos;
-
-            if (targetPlayerMode) {
-                ServerPlayerEntity targetPlayer = server.getPlayerManager().getPlayer(targetPlayerName);
-                if (targetPlayer == null) {
-                    player.sendMessage(Text.literal("Player not found: " + targetPlayerName), true);
-                    return;
-                }
-                targetWorld = targetPlayer.getServerWorld();
-                targetPos = targetPlayer.getPos();
-            } else {
-                RegistryKey<World> key = RegistryKey.of(RegistryKeys.WORLD, dimensionId);
-                targetWorld = server.getWorld(key);
-                if (targetWorld == null) {
-                    player.sendMessage(Text.literal("Unknown dimension: " + dimensionId), true);
-                    return;
-                }
-                double targetY = surfaceMode
-                        ? targetWorld.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(x), (int) Math.floor(z))
-                        : y;
-                targetPos = new Vec3d(x, targetY, z);
-            }
-
-            ServerWorld sourceWorld = player.getServerWorld();
-            Vec3d sourcePos = player.getPos();
-            BlockPos targetBlockPos = BlockPos.ofFloored(targetPos);
-
-            // Player stays visible here — invisibility gets applied
-            // 1 second in, at the end of the PRE_CLOAK phase below
-
-            PENDING_EFFECTS.put(player.getUuid(), new PendingTeleportEffect(
-                    sourceWorld.getRegistryKey(),
-                    sourcePos,
-                    targetWorld.getRegistryKey(),
-                    targetPos,
-                    new ChunkPosKey(targetBlockPos.getX() >> 4, targetBlockPos.getZ() >> 4),
-                    TeleportPhase.SOURCE_WARMUP,
-                    1,
-                    ItemStack.EMPTY,
-                    ItemStack.EMPTY,
-                    Map.of()
-            ));
-        });
+        ServerWorld targetWorld;
+        Vec3d targetPos;
+        if (targetPlayerMode) {
+            ServerPlayerEntity targetPlayer = server.getPlayerManager().getPlayer(targetPlayerName);
+            if (targetPlayer == null) { player.sendMessage(Text.literal("Player not found: " + targetPlayerName), true); return; }
+            targetWorld = targetPlayer.getServerWorld();
+            targetPos = targetPlayer.getPos();
+        } else {
+            RegistryKey<World> key = RegistryKey.of(RegistryKeys.WORLD, dimensionId);
+            targetWorld = server.getWorld(key);
+            if (targetWorld == null) { player.sendMessage(Text.literal("Unknown dimension: " + dimensionId), true); return; }
+            double targetY = surfaceMode ? targetWorld.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(x), (int) Math.floor(z)) : y;
+            targetPos = new Vec3d(x, targetY, z);
+        }
+        ServerWorld sourceWorld = player.getServerWorld();
+        Vec3d sourcePos = player.getPos();
+        BlockPos targetBlockPos = BlockPos.ofFloored(targetPos);
+        PENDING_EFFECTS.put(player.getUuid(), new PendingTeleportEffect(sourceWorld.getRegistryKey(), sourcePos, targetWorld.getRegistryKey(), targetPos,
+                new ChunkPosKey(targetBlockPos.getX() >> 4, targetBlockPos.getZ() >> 4), TeleportPhase.SOURCE_WARMUP, 1, ItemStack.EMPTY, ItemStack.EMPTY, Map.of()));
     }
 
-    private static boolean gallifrey$hasVortexManipulator(ServerPlayerEntity player) {
+    private static void saveLocation(ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
+        String name = buf.readString(32).trim();
+        if (name.isEmpty()) { player.sendMessage(Text.literal("Location name cannot be empty."), true); return; }
+        if (VortexManipulatorData.locations(vm).size() >= 20 && VortexManipulatorData.findLocation(vm, name) == null) { player.sendMessage(Text.literal("VM memory full: maximum 20 saved locations."), true); return; }
+        VortexManipulatorData.saveLocation(vm, name, player.getServerWorld().getRegistryKey().getValue().toString(), player.getX(), player.getY(), player.getZ());
+        player.sendMessage(Text.literal("Saved VM location: " + name), true);
+        sendState(null, player);
+    }
+
+    private static void deleteLocation(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
+        String name = buf.readString(32);
+        player.sendMessage(Text.literal(VortexManipulatorData.deleteLocation(vm, name) ? "Deleted VM location: " + name : "Location not found: " + name), true);
+        sendState(server, player);
+    }
+
+    private static void goLocation(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
+        String name = buf.readString(32);
+        NbtCompound location = VortexManipulatorData.findLocation(vm, name);
+        if (location == null) { player.sendMessage(Text.literal("Location not found: " + name), true); return; }
+        PacketByteBuf fake = net.fabricmc.fabric.api.networking.v1.PacketByteBufs.create();
+        fake.writeBoolean(false);
+        fake.writeIdentifier(Identifier.tryParse(location.getString(VortexManipulatorData.DIMENSION)));
+        fake.writeDouble(location.getDouble(VortexManipulatorData.X));
+        fake.writeDouble(location.getDouble(VortexManipulatorData.Y));
+        fake.writeDouble(location.getDouble(VortexManipulatorData.Z));
+        fake.writeBoolean(false);
+        teleport(server, player, vm, fake);
+    }
+
+    private static void addPlayer(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
+        if (!VortexManipulatorData.isOwner(vm, player.getUuid())) { player.sendMessage(Text.literal("Only the VM owner can change isomorphic users."), true); return; }
+        String name = buf.readString(64);
+        ServerPlayerEntity target = server.getPlayerManager().getPlayer(name);
+        if (target == null) { player.sendMessage(Text.literal("Player must be online: " + name), true); return; }
+        if (VortexManipulatorData.addUser(vm, target.getUuid())) player.sendMessage(Text.literal("Added " + target.getName().getString() + " to isomorphic controls."), true);
+        else player.sendMessage(Text.literal("Player is already authorized."), true);
+        sendState(server, player);
+    }
+
+    private static void removePlayer(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
+        if (!VortexManipulatorData.isOwner(vm, player.getUuid())) { player.sendMessage(Text.literal("Only the VM owner can change isomorphic users."), true); return; }
+        String name = buf.readString(64);
+        ServerPlayerEntity target = server.getPlayerManager().getPlayer(name);
+        UUID uuid = target != null ? target.getUuid() : findUuidByName(vm, name);
+        if (uuid != null && VortexManipulatorData.removeUser(vm, uuid)) player.sendMessage(Text.literal("Removed " + name + " from isomorphic controls."), true);
+        else player.sendMessage(Text.literal("Authorized player not found: " + name), true);
+        sendState(server, player);
+    }
+
+    private static UUID findUuidByName(ItemStack vm, String name) {
+        for (String id : VortexManipulatorData.userIds(vm)) {
+            try {
+                UUID uuid = UUID.fromString(id);
+                // Names are not persisted intentionally; the online-name path above is preferred.
+                // If offline, accept a UUID string as the removal key.
+                if (id.equalsIgnoreCase(name)) return uuid;
+            } catch (IllegalArgumentException ignored) {}
+        }
+        return null;
+    }
+
+    private static void armSelfDestruct(ServerPlayerEntity player, ItemStack vm) {
+        if (!VortexManipulatorData.isOwner(vm, player.getUuid())) { player.sendMessage(Text.literal("SELF-DESTRUCT requires the VM owner."), true); return; }
+        SELF_DESTRUCTS.put(player.getUuid(), 200);
+        player.sendMessage(Text.literal("SELF-DESTRUCT ARMED — 10 seconds. Press CANCEL to abort."), true);
+    }
+
+    private static void cancelSelfDestruct(ServerPlayerEntity player) {
+        if (SELF_DESTRUCTS.remove(player.getUuid()) != null) player.sendMessage(Text.literal("VM self-destruct cancelled."), true);
+    }
+
+    private static ItemStack findVortexManipulator(ServerPlayerEntity player) {
         for (int i = 0; i < player.getInventory().size(); i++) {
-            if (player.getInventory().getStack(i).isOf(GallifreyModItems.VORTEX_MANIPULATOR)) {
-                return true;
-            }
+            ItemStack stack = player.getInventory().getStack(i);
+            if (stack.isOf(GallifreyModItems.VORTEX_MANIPULATOR)) return stack;
         }
-        return false;
+        return ItemStack.EMPTY;
     }
 
-    // Puts back whichever hand(s)/armor slot(s) had gear cleared for the invisible portion
-    // of the sequence. Safe to call even if nothing was ever hidden (defaults are empty).
+    public static void sendState(MinecraftServer server, ServerPlayerEntity player) {
+        ItemStack vm = findVortexManipulator(player);
+        if (vm.isEmpty()) return;
+        VortexManipulatorData.ensureOwner(vm, player);
+        PacketByteBuf buf = net.fabricmc.fabric.api.networking.v1.PacketByteBufs.create();
+        buf.writeBoolean(VortexManipulatorData.isOwner(vm, player.getUuid()));
+        buf.writeVarInt(SELF_DESTRUCTS.getOrDefault(player.getUuid(), 0));
+        NbtList locations = VortexManipulatorData.locations(vm);
+        buf.writeVarInt(locations.size());
+        for (int i = 0; i < locations.size(); i++) {
+            NbtCompound loc = locations.getCompound(i);
+            buf.writeString(loc.getString(VortexManipulatorData.NAME), 32);
+            buf.writeString(loc.getString(VortexManipulatorData.DIMENSION), 128);
+            buf.writeDouble(loc.getDouble(VortexManipulatorData.X));
+            buf.writeDouble(loc.getDouble(VortexManipulatorData.Y));
+            buf.writeDouble(loc.getDouble(VortexManipulatorData.Z));
+        }
+        java.util.List<String> users = VortexManipulatorData.userIds(vm);
+        buf.writeVarInt(users.size());
+        for (String id : users) {
+            UUID uuid = UUID.fromString(id);
+            ServerPlayerEntity online = player.getServer().getPlayerManager().getPlayer(uuid);
+            buf.writeUuid(uuid);
+            buf.writeString(online == null ? id : online.getName().getString(), 64);
+        }
+        ServerPlayNetworking.send(player, ModPackets.VM_STATE, buf);
+    }
+
     private static void restoreHiddenItems(ServerPlayerEntity player, PendingTeleportEffect pending) {
-        if (!pending.hiddenMainHand().isEmpty()) {
-            player.setStackInHand(Hand.MAIN_HAND, pending.hiddenMainHand());
-        }
-        if (!pending.hiddenOffHand().isEmpty()) {
-            player.setStackInHand(Hand.OFF_HAND, pending.hiddenOffHand());
-        }
-        for (Map.Entry<EquipmentSlot, ItemStack> hidden : pending.hiddenArmor().entrySet()) {
-            player.equipStack(hidden.getKey(), hidden.getValue());
-        }
+        if (!pending.hiddenMainHand().isEmpty()) player.setStackInHand(Hand.MAIN_HAND, pending.hiddenMainHand());
+        if (!pending.hiddenOffHand().isEmpty()) player.setStackInHand(Hand.OFF_HAND, pending.hiddenOffHand());
+        for (Map.Entry<EquipmentSlot, ItemStack> hidden : pending.hiddenArmor().entrySet()) player.equipStack(hidden.getKey(), hidden.getValue());
     }
 
     private record ChunkPosKey(int x, int z) {}
-
-    private enum TeleportPhase {
-        SOURCE_WARMUP,
-        PRE_CLOAK,
-        TELEPORT,
-        TARGET_ARRIVAL
-    }
-
-    private record PendingTeleportEffect(RegistryKey<World> sourceWorldKey, Vec3d sourcePosition,
-                                         RegistryKey<World> targetWorldKey, Vec3d targetPosition,
-                                         ChunkPosKey targetChunkPos, TeleportPhase phase, int ticksRemaining,
-                                         ItemStack hiddenMainHand, ItemStack hiddenOffHand,
-                                         Map<EquipmentSlot, ItemStack> hiddenArmor) {
-        private PendingTeleportEffect tickDown() {
-            return new PendingTeleportEffect(sourceWorldKey, sourcePosition, targetWorldKey, targetPosition,
-                    targetChunkPos, phase, ticksRemaining - 1, hiddenMainHand, hiddenOffHand, hiddenArmor);
-        }
-
-        private PendingTeleportEffect nextPhase(TeleportPhase nextPhase, int nextTicksRemaining) {
-            return new PendingTeleportEffect(sourceWorldKey, sourcePosition, targetWorldKey, targetPosition,
-                    targetChunkPos, nextPhase, nextTicksRemaining, hiddenMainHand, hiddenOffHand, hiddenArmor);
-        }
-
-        // Like nextPhase, but also records which hand(s)/armor slot(s) just got cleared so they can be restored later
-        private PendingTeleportEffect cloak(ItemStack hiddenMainHand, ItemStack hiddenOffHand,
-                                            Map<EquipmentSlot, ItemStack> hiddenArmor,
-                                            TeleportPhase nextPhase, int nextTicksRemaining) {
-            return new PendingTeleportEffect(sourceWorldKey, sourcePosition, targetWorldKey, targetPosition,
-                    targetChunkPos, nextPhase, nextTicksRemaining, hiddenMainHand, hiddenOffHand, hiddenArmor);
-        }
+    private enum TeleportPhase { SOURCE_WARMUP, PRE_CLOAK, TELEPORT, TARGET_ARRIVAL }
+    private record PendingTeleportEffect(RegistryKey<World> sourceWorldKey, Vec3d sourcePosition, RegistryKey<World> targetWorldKey,
+                                         Vec3d targetPosition, ChunkPosKey targetChunkPos, TeleportPhase phase, int ticksRemaining,
+                                         ItemStack hiddenMainHand, ItemStack hiddenOffHand, Map<EquipmentSlot, ItemStack> hiddenArmor) {
+        private PendingTeleportEffect tickDown() { return new PendingTeleportEffect(sourceWorldKey, sourcePosition, targetWorldKey, targetPosition, targetChunkPos, phase, ticksRemaining - 1, hiddenMainHand, hiddenOffHand, hiddenArmor); }
+        private PendingTeleportEffect nextPhase(TeleportPhase next, int ticks) { return new PendingTeleportEffect(sourceWorldKey, sourcePosition, targetWorldKey, targetPosition, targetChunkPos, next, ticks, hiddenMainHand, hiddenOffHand, hiddenArmor); }
+        private PendingTeleportEffect cloak(ItemStack main, ItemStack off, Map<EquipmentSlot, ItemStack> armor, TeleportPhase next, int ticks) { return new PendingTeleportEffect(sourceWorldKey, sourcePosition, targetWorldKey, targetPosition, targetChunkPos, next, ticks, main, off, armor); }
     }
 }

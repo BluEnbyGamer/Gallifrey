@@ -42,6 +42,14 @@ public class VortexManipulator extends Item {
 
         ItemStack stack = user.getStackInHand(hand);
 
+        if (!world.isClient && user instanceof net.minecraft.server.network.ServerPlayerEntity serverPlayer) {
+            VortexManipulatorData.ensureOwner(stack, serverPlayer);
+            if (!VortexManipulatorData.isAuthorized(stack, serverPlayer.getUuid())) {
+                serverPlayer.sendMessage(Text.literal("ISOMORPHIC LOCK: this Vortex Manipulator is keyed to another Time Lord."), true);
+                return TypedActionResult.fail(stack);
+            }
+        }
+
         // -----------------------------------------------------
         // TAKE-OFF SOUND
         // -----------------------------------------------------

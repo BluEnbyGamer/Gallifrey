@@ -41,6 +41,7 @@ public class GallifreyModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
+        com.timelordmod.gallifrey.networking.ModPackets.registerS2CPackets();
         ClientTickEvents.END_CLIENT_TICK.register(GallifreyModClient::tickMondasWeather);
 
         // =========================================================
@@ -153,6 +154,11 @@ public class GallifreyModClient implements ClientModInitializer {
 
         DimensionRenderingRegistry.registerSkyRenderer(
                 ModDimensions.GALL_LEVEL_KEY,
+                new TwinSunSkyRenderer()
+        );
+
+        DimensionRenderingRegistry.registerSkyRenderer(
+                ModDimensions.SKARO_LEVEL_KEY,
                 new TwinSunSkyRenderer()
         );
 
