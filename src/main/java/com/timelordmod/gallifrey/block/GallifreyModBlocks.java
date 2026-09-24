@@ -163,7 +163,7 @@ public class GallifreyModBlocks {
     public static final Block SONIC_WORKSHOP = registerBlock(
             "sonic_workshop",
             new SonicWorkshopBlock(
-                    FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    FabricBlockSettings.copyOf(Blocks.SMOOTH_STONE_SLAB)
                             .strength(3.0f)
                             .sounds(BlockSoundGroup.METAL)
             )

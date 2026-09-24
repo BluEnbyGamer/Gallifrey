@@ -25,6 +25,8 @@
   "item.gallifrey.eyestalk": "Dalek Eye Stalk",
   "item.gallifrey.sonic_screwdriver": "Sonic Screwdriver",
   "item.gallifrey.sonic_crystal": "Sonic Crystal",
+  "item.gallifrey.ash_boat": "Ash Boat",
+  "item.gallifrey.ash_chest_boat": "Ash Boat with Chest",
 
   //blocks go here
   "block.gallifrey.ulanda_sapling": "Ulanda Sapling",
@@ -101,6 +103,24 @@
   "block.gallifrey.deepslate_sonic_crystal_ore": "Deepslate Sonic Crystal Ore",
   "block.gallifrey.nether_sonic_crystal_ore": "Nether Sonic Crystal Ore",
   "block.gallifrey.tardis_exterior": "Tardis",
+  "block.gallifrey.ash_sapling": "Ash Sapling",
+  "block.gallifrey.ash_leaves": "Ash Leaves",
+  "block.gallifrey.ash_wood": "Ash Wood",
+  "block.gallifrey.ash_log": "Ash Log",
+  "block.gallifrey.stripped_ash_wood": "Stripped Ash Wood",
+  "block.gallifrey.stripped_ash_log": "Stripped Ash Log",
+  "block.gallifrey.ash_planks": "Ash Planks",
+  "block.gallifrey.ash_stairs": "Ash Stairs",
+  "block.gallifrey.ash_slab": "Ash Slab",
+  "block.gallifrey.ash_fence": "Ash Fence",
+  "block.gallifrey.ash_fence_gate": "Ash Fence Gate",
+  "block.gallifrey.ash_door": "Ash Door",
+  "block.gallifrey.ash_trapdoor": "Ash Trapdoor",
+  "block.gallifrey.ash_pressure_plate": "Ash Pressure Plate",
+  "block.gallifrey.ash_button": "Ash Button",
+  "block.gallifrey.ash_standing_sign": "Ash Sign",
+  "block.gallifrey.ash_hanging_sign": "Ash Hanging Sign",
+  "block.gallifrey.potted_ash_sapling": "Potted Ash Sapling",
 
   //advancements go here
 
