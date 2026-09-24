@@ -1,6 +1,6 @@
 {
-  "parent": "gallifrey:block/tardis_exterior",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gallifrey:item/tardis.png"
+    "layer0": "gallifrey:item/tardis"
   }
 }
