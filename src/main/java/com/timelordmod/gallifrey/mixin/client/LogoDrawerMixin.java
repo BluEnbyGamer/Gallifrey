@@ -16,39 +16,46 @@ import java.time.Month;
 @Mixin(value = LogoDrawer.class, priority = 10001)
 public class LogoDrawerMixin {
 
+    @Unique
     private static final Identifier GALL_STANDARD =
             new Identifier("gallifrey", "textures/gui/title/gall_standard.png");
 
+    @Unique
     private static final Identifier GALL_XMAS =
             new Identifier("gallifrey", "textures/gui/title/gall_xmas.png");
 
+    @Unique
     private static final Identifier GALL_DWDAY =
             new Identifier("gallifrey", "textures/gui/title/gall_dwday.png");
 
+    @Unique
     private static final Identifier GALL_MODDAY =
             new Identifier("gallifrey", "textures/gui/title/gall_modsday.png");
 
+    @Unique
     private static final Identifier GALL_PRIDE =
             new Identifier("gallifrey", "textures/gui/title/gall_pride.png");
 
+    @Unique
     private static final Identifier GALL_BLUESDAY =
             new Identifier("gallifrey", "textures/gui/title/gall_bluesday.png");
 
+    @Unique
     private static final Identifier GALL_HALLOWEEN =
             new Identifier("gallifrey", "textures/gui/title/gall_halloween.png");
 
+    @Unique
     private static final Identifier GALL_LIGHTSDAY =
             new Identifier("gallifrey", "textures/gui/title/gall_lightsday.png");
 
+    @Unique
     private static final Identifier GALL_DEOSDAY =
             new Identifier("gallifrey", "textures/gui/title/gall_deosday.png");
 
-    // Include the intermediary method name 'method_48209' so production builds match it without a refMap
     @Inject(
             method = "draw(Lnet/minecraft/client/gui/DrawContext;IF)V",
             at = @At("HEAD"),
-            cancellable = true,
-            require = 0
+            cancellable = true
     )
     private void gallifrey$replaceLogo(DrawContext context, int screenWidth, float alpha, CallbackInfo ci) {
 

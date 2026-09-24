@@ -6,7 +6,8 @@
   "client": [
     "client.LivingEntityRendererAccessor",
     "client.PlayerEntityRendererMixin",
-    "client.MondasFogMixin"
+    "client.MondasFogMixin",
+    "client.LogoDrawerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
