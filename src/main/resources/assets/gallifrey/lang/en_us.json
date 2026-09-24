@@ -114,5 +114,19 @@
   "itemGroup.gallifrey.clothing": "Clothing",
   "itemGroup.gallifrey.roundels": "Roundels",
   "catagory.gallifrey.main": "Gallifrey Mod",
-  "block.gallifrey.deepslate_dalekanium_ore": "Deepslate Dalekanium Ore"
+  "block.gallifrey.deepslate_dalekanium_ore": "Deepslate Dalekanium Ore",
+
+  "block.gallifrey.mars_stone": "Mars Stone",
+  "block.gallifrey.mars_cobblestone": "Mars Cobblestone",
+  "block.gallifrey.mars_andesite": "Mars Andesite",
+  "block.gallifrey.mars_diorite": "Mars Diorite",
+  "block.gallifrey.mars_granite": "Mars Granite",
+  "block.gallifrey.polished_mars_stone": "Polished Mars Stone",
+  "block.gallifrey.mars_polished_andesite": "Polished Mars Andesite",
+  "block.gallifrey.mars_polished_diorite": "Polished Mars Diorite",
+  "block.gallifrey.mars_polished_granite": "Polished Mars Granite",
+  "block.gallifrey.mars_stone_bricks": "Mars Stone Bricks",
+  "block.gallifrey.mars_stone_bricks_cracked": "Cracked Mars Stone Bricks",
+  "block.gallifrey.mars_chizelled_stone_bricks": "Chiseled Mars Stone Bricks",
+  "block.gallifrey.mars_iron_ore": "Mars Iron Ore"
 }

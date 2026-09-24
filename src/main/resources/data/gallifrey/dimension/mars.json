@@ -5,7 +5,7 @@
     "settings": "gallifrey:mars",
     "biome_source": {
       "type": "minecraft:fixed",
-      "biome": "minecraft:desert"
+      "biome": "gallifrey:mars"
     }
   }
 }
