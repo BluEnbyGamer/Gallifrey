@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "gallifrey:dalekanium_block"
+    "gallifrey:dalekanium_block",
+    "gallifrey:sonic_crystal_ore",
+    "gallifrey:nether_sonic_crystal_ore",
+    "gallifrey:deepslate_sonic_crystal_ore"
   ]
 }

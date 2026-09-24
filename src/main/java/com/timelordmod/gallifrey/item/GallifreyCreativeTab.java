@@ -96,6 +96,27 @@ public class GallifreyCreativeTab {
                 entries.add(GallifreyModItems.TREEBORG_BOAT);
                 entries.add(GallifreyModItems.TREEBORG_CHEST_BOAT);
 
+                //ASH WOODSET
+                entries.add(GallifreyModBlocks.ASH_SAPLING);
+                entries.add(GallifreyModBlocks.ASH_LEAVES);
+                entries.add(GallifreyModBlocks.ASH_LOG);
+                entries.add(GallifreyModBlocks.ASH_WOOD);
+                entries.add(GallifreyModBlocks.STRIP_ASH_LOG);
+                entries.add(GallifreyModBlocks.STRIP_ASH_WOOD);
+                entries.add(GallifreyModBlocks.ASH_PLANKS);
+                entries.add(GallifreyModBlocks.ASH_STAIRS);
+                entries.add(GallifreyModBlocks.ASH_SLAB);
+                entries.add(GallifreyModBlocks.ASH_FENCE);
+                entries.add(GallifreyModBlocks.ASH_FENCE_GATE);
+                entries.add(GallifreyModBlocks.ASH_DOOR);
+                entries.add(GallifreyModBlocks.ASH_TRAPDOOR);
+                entries.add(GallifreyModBlocks.ASH_PRESSURE_PLATE);
+                entries.add(GallifreyModBlocks.ASH_BUTTON);
+                entries.add(GallifreyModItems.ASH_SIGN);
+                entries.add(GallifreyModItems.HANGING_ASH_SIGN);
+                entries.add(GallifreyModItems.ASH_BOAT);
+                entries.add(GallifreyModItems.ASH_CHEST_BOAT);
+
             })
             .build();
 

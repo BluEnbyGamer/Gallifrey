@@ -334,6 +334,57 @@ public class GallifreyModClient implements ClientModInitializer {
                 ),
                 ChestBoatEntityModel::getTexturedModelData
         );
+
+        // =========================================================
+        // ASH RENDER LAYER
+        // =========================================================
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.ASH_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.POTTED_ASH_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.ASH_LEAVES,
+                RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.ASH_DOOR,
+                RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.ASH_TRAPDOOR,
+                RenderLayer.getCutoutMipped()
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(
+                        new Identifier(
+                                "gallifrey",
+                                "boat/ash_boat"
+                        ),
+                        "main"
+                ),
+                BoatEntityModel::getTexturedModelData
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(
+                        new Identifier(
+                                "gallifrey",
+                                "chest_boat/ash_boat"
+                        ),
+                        "main"
+                ),
+                ChestBoatEntityModel::getTexturedModelData
+        );
     }
 
     private static int mondasSnowTick;

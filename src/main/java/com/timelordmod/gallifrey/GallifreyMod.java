@@ -75,7 +75,8 @@ public class GallifreyMod implements ModInitializer {
 		StrippableBlockRegistry.register(GallifreyModBlocks.TREEBORG_WOOD, GallifreyModBlocks.STRIP_TREEBORG_WOOD);
 
 		//Ash wood set
-
+		StrippableBlockRegistry.register(GallifreyModBlocks.ASH_LOG, GallifreyModBlocks.STRIP_ASH_LOG);
+		StrippableBlockRegistry.register(GallifreyModBlocks.ASH_WOOD, GallifreyModBlocks.STRIP_ASH_WOOD);
 
 		//Maple wood set
 

@@ -73,13 +73,24 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.WALL_HANGING_TREEBORG_SIGN);
 
         //ASH WOOD SET BLOCK DROPS
-        //addDrop(GallifreyModBlocks.ULANDA_SAPLING);
-        //addDrop(GallifreyModBlocks.ULANDA_LEAVES, leavesDrops(GallifreyModBlocks.ULANDA_LEAVES, GallifreyModBlocks.ULANDA_SAPLING, 0.0025f));
-        //ddDrop(GallifreyModBlocks.ULANDA_LOG);
-        //addDrop(GallifreyModBlocks.STRIP_ULANDA_LOG);
-        //addDrop(GallifreyModBlocks.ULANDA_WOOD);
-        //addDrop(GallifreyModBlocks.STRIP_ULANDA_WOOD);
-        //addDrop(GallifreyModBlocks.ULANDA_PLANKS);
+        addDrop(GallifreyModBlocks.ASH_SAPLING);
+        addDrop(GallifreyModBlocks.ASH_LEAVES, leavesDrops(GallifreyModBlocks.ASH_LEAVES, GallifreyModBlocks.ASH_SAPLING, 0.0025f));
+        addDrop(GallifreyModBlocks.ASH_LOG);
+        addDrop(GallifreyModBlocks.STRIP_ASH_LOG);
+        addDrop(GallifreyModBlocks.ASH_WOOD);
+        addDrop(GallifreyModBlocks.STRIP_ASH_WOOD);
+        addDrop(GallifreyModBlocks.ASH_PLANKS);
+        addDrop(GallifreyModBlocks.ASH_SLAB, slabDrops(GallifreyModBlocks.ASH_SLAB));
+        addDrop(GallifreyModBlocks.ASH_BUTTON);
+        addDrop(GallifreyModBlocks.ASH_FENCE);
+        addDrop(GallifreyModBlocks.ASH_FENCE_GATE);
+        addDrop(GallifreyModBlocks.ASH_DOOR, doorDrops(GallifreyModBlocks.ASH_DOOR));
+        addDrop(GallifreyModBlocks.ASH_TRAPDOOR);
+        addDrop(GallifreyModBlocks.ASH_PRESSURE_PLATE);
+        addDrop(GallifreyModBlocks.STANDING_ASH_SIGN);
+        addDrop(GallifreyModBlocks.WALL_ASH_SIGN);
+        addDrop(GallifreyModBlocks.HANGING_ASH_SIGN);
+        addDrop(GallifreyModBlocks.WALL_HANGING_ASH_SIGN);
 
         //MAPLE WOOD SET BLOCK DROPS
         //addDrop(GallifreyModBlocks.ULANDA_SAPLING);
@@ -110,6 +121,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         // MISC BLOCK DROPS
         addDrop(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
+        addDrop(GallifreyModBlocks.SONIC_CRYSTAL_ORE);
+        addDrop(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE);
+        addDrop(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE);
 
         // Skaro blocks
         addDrop(GallifreyModBlocks.EXQUISITE_CAT);
@@ -126,6 +140,5 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.DALEKANIUM_BLOCK);
         addDrop(GallifreyModBlocks.DALEKANIUM_ORE);
         addDrop(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
-
     }
 }

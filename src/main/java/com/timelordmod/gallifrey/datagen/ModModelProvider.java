@@ -21,9 +21,11 @@ public class ModModelProvider extends FabricModelProvider {
         BlockStateModelGenerator.BlockTexturePool ulandaPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ULANDA_PLANKS);
         BlockStateModelGenerator.BlockTexturePool tardiswoodPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TARDIS_PLANKS);
         BlockStateModelGenerator.BlockTexturePool treeborgPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TREEBORG_PLANKS);
+        BlockStateModelGenerator.BlockTexturePool ashPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ASH_PLANKS);
         tardiswoodPool.family(GallifreyModBlocks.TARDIS_FAMILY);
         ulandaPool.family(GallifreyModBlocks.ULANDA_FAMILY);
         treeborgPool.family(GallifreyModBlocks.TREEBORG_FAMILY);
+        ashPool.family(GallifreyModBlocks.ASH_FAMILY);
 
         //TARDIS WOOD TYPE
         blockStateModelGenerator.registerLog(GallifreyModBlocks.TARDIS_LOG).log(GallifreyModBlocks.TARDIS_LOG).wood(GallifreyModBlocks.TARDIS_WOOD);
@@ -62,7 +64,16 @@ public class ModModelProvider extends FabricModelProvider {
         treeborgPool.fenceGate(GallifreyModBlocks.TREEBORG_FENCE_GATE);
 
         //ASH WOOD TYPE
-
+        blockStateModelGenerator.registerLog(GallifreyModBlocks.ASH_LOG).log(GallifreyModBlocks.ASH_LOG).wood(GallifreyModBlocks.ASH_WOOD);
+        blockStateModelGenerator.registerLog(GallifreyModBlocks.STRIP_ASH_LOG).log(GallifreyModBlocks.STRIP_ASH_LOG).wood(GallifreyModBlocks.STRIP_ASH_WOOD);
+        blockStateModelGenerator.registerDoor(GallifreyModBlocks.ASH_DOOR);
+        blockStateModelGenerator.registerTrapdoor(GallifreyModBlocks.ASH_TRAPDOOR);
+        ashPool.stairs(GallifreyModBlocks.ASH_STAIRS);
+        ashPool.slab(GallifreyModBlocks.ASH_SLAB);
+        ashPool.button(GallifreyModBlocks.ASH_BUTTON);
+        ashPool.pressurePlate(GallifreyModBlocks.ASH_PRESSURE_PLATE);
+        ashPool.fence(GallifreyModBlocks.ASH_FENCE);
+        ashPool.fenceGate(GallifreyModBlocks.ASH_FENCE_GATE);
 
         //MAPLE WOOD TYPE
 
@@ -77,9 +88,11 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSingleton(GallifreyModBlocks.TARDIS_LEAVES, TexturedModel.LEAVES);
         blockStateModelGenerator.registerSingleton(GallifreyModBlocks.ULANDA_LEAVES, TexturedModel.LEAVES);
         blockStateModelGenerator.registerSingleton(GallifreyModBlocks.TREEBORG_LEAVES, TexturedModel.LEAVES);
+        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.ASH_LEAVES, TexturedModel.LEAVES);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.TARDIS_SAPLING, GallifreyModBlocks.POTTED_TARDIS_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.ULANDA_SAPLING, GallifreyModBlocks.POTTED_ULANDA_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.TREEBORG_SAPLING, GallifreyModBlocks.POTTED_TREEBORG_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.ASH_SAPLING, GallifreyModBlocks.POTTED_ASH_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override
@@ -87,6 +100,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(GallifreyModItems.HANGING_TARDIS_SIGN, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.HANGING_ULANDA_SIGN, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.HANGING_TREEBORG_SIGN, Models.GENERATED);
+        itemModelGenerator.register(GallifreyModItems.HANGING_ASH_SIGN, Models.GENERATED);
 
         itemModelGenerator.register(GallifreyModItems.TARDIS_BOAT, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.TARDIS_CHEST_BOAT, Models.GENERATED);
@@ -96,5 +110,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(GallifreyModItems.TREEBORG_BOAT, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.TREEBORG_CHEST_BOAT, Models.GENERATED);
+
+        itemModelGenerator.register(GallifreyModItems.ASH_BOAT, Models.GENERATED);
+        itemModelGenerator.register(GallifreyModItems.ASH_CHEST_BOAT, Models.GENERATED);
     }
 }

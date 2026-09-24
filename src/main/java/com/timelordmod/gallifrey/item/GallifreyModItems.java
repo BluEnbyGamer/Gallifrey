@@ -69,6 +69,14 @@ public class GallifreyModItems {
     public static final Item HANGING_TREEBORG_SIGN = registerItem("treeborg_hanging_sign",
             new HangingSignItem(GallifreyModBlocks.HANGING_TREEBORG_SIGN, GallifreyModBlocks.WALL_HANGING_TREEBORG_SIGN, new FabricItemSettings().maxCount(16)));
 
+    public static final Item ASH_SIGN = registerItem("ash_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), GallifreyModBlocks.STANDING_ASH_SIGN, GallifreyModBlocks.WALL_ASH_SIGN));
+    public static final Item HANGING_ASH_SIGN = registerItem("ash_hanging_sign",
+            new HangingSignItem(GallifreyModBlocks.HANGING_ASH_SIGN, GallifreyModBlocks.WALL_HANGING_ASH_SIGN, new FabricItemSettings().maxCount(16)));
+    public static final Item ASH_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.ASH_BOAT_ID, ModBoats.ASH_BOAT_KEY, false);
+    public static final Item ASH_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.ASH_CHEST_BOAT_ID, ModBoats.ASH_BOAT_KEY, true);
+
+
 
     // AWT clothing port: wearable without Trinkets (uses the vanilla head equipment slot).
     public static final HeadwearItem FEZ = new HeadwearItem(new FabricItemSettings());

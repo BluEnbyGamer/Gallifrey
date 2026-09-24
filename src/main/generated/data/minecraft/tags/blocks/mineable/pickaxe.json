@@ -8,6 +8,9 @@
     "gallifrey:kaletite_bricks",
     "gallifrey:dalekanium_block",
     "gallifrey:dalekanium_ore",
-    "gallifrey:deepslate_dalekanium_ore"
+    "gallifrey:deepslate_dalekanium_ore",
+    "gallifrey:sonic_crystal_ore",
+    "gallifrey:nether_sonic_crystal_ore",
+    "gallifrey:deepslate_sonic_crystal_ore"
   ]
 }

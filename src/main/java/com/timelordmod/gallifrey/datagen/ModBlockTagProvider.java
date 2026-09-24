@@ -32,16 +32,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(GallifreyModBlocks.TARDIS_LOG)
                 .add(GallifreyModBlocks.TARDIS_WOOD)
                 .add(GallifreyModBlocks.STRIP_TARDIS_WOOD)
-                .add(GallifreyModBlocks.STRIP_TARDIS_WOOD);
+                .add(GallifreyModBlocks.STRIP_TARDIS_WOOD)
 
-        //getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                //.add(ModBlocks.RUBY_BLOCK);
+                .add(GallifreyModBlocks.ASH_LOG)
+                .add(GallifreyModBlocks.ASH_WOOD)
+                .add(GallifreyModBlocks.STRIP_ASH_LOG)
+                .add(GallifreyModBlocks.STRIP_ASH_WOOD)
 
-        //getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
-                //.add(ModBlocks.RAW_RUBY_BLOCK)
-                //.add(ModBlocks.RUBY_ORE);
-
-        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(GallifreyModBlocks.WASTED_LOG)
                 .add(GallifreyModBlocks.WASTED_PLANKS)
                 .add(GallifreyModBlocks.WASTED_PLANK_SLAB)
@@ -55,7 +52,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(GallifreyModBlocks.KALETITE_BRICKS)
                 .add(GallifreyModBlocks.DALEKANIUM_BLOCK)
                 .add(GallifreyModBlocks.DALEKANIUM_ORE)
-                .add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
+                .add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE)
+                .add(GallifreyModBlocks.SONIC_CRYSTAL_ORE)
+                .add(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE)
+                .add(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(GallifreyModBlocks.COBBLED_KALETITE)
@@ -65,7 +65,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
-                .add(GallifreyModBlocks.DALEKANIUM_BLOCK);
+                .add(GallifreyModBlocks.DALEKANIUM_BLOCK)
+                .add(GallifreyModBlocks.SONIC_CRYSTAL_ORE)
+                .add(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE)
+                .add(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
@@ -73,12 +76,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(GallifreyModBlocks.TARDIS_FENCE)
                 .add(GallifreyModBlocks.TREEBORG_FENCE)
+                .add(GallifreyModBlocks.ASH_FENCE)
                 .add(GallifreyModBlocks.ULANDA_FENCE);
 
 
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
                 .add(GallifreyModBlocks.TARDIS_FENCE_GATE)
                 .add(GallifreyModBlocks.TREEBORG_FENCE_GATE)
+                .add(GallifreyModBlocks.ASH_FENCE_GATE)
                 .add(GallifreyModBlocks.ULANDA_FENCE_GATE);
 
         //getOrCreateTagBuilder(BlockTags.WALLS)
