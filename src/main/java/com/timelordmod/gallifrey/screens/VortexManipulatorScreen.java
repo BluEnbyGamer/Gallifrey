@@ -179,7 +179,7 @@ public class VortexManipulatorScreen extends Screen {
 
     private class ThemedButtonWidget extends ButtonWidget {
         ThemedButtonWidget(int x, int y, int w, int h, Text message, PressAction action) { super(x, y, w, h, message, action, DEFAULT_NARRATION_SUPPLIER); }
-        @Override public void renderButton(DrawContext c, int mx, int my, float delta) { int bg = isHovered() ? 0xFF123744 : PANEL_DARK; c.fill(getX(), getY(), getX()+getWidth(), getY()+getHeight(), bg); c.drawBorder(getX(), getY(), getWidth(), getHeight(), isActive() ? CYAN_DIM : 0xFF30434A); c.drawCenteredTextWithShadow(textRenderer, getMessage(), getX()+getWidth()/2, getY()+getHeight()/2-4, isActive() ? TEXT : DIM); }
+        @Override public void renderButton(DrawContext c, int mx, int my, float delta) { int bg = isHovered() ? 0xFF123744 : PANEL_DARK; c.fill(getX(), getY(), getX()+getWidth(), getY()+getHeight(), bg); c.drawBorder(getX(), getY(), getWidth(), getHeight(), active ? CYAN_DIM : 0xFF30434A); c.drawCenteredTextWithShadow(textRenderer, getMessage(), getX()+getWidth()/2, getY()+getHeight()/2-4, active ? TEXT : DIM); }
     }
 
     private record Location(String name, String dimension, double x, double y, double z) {}
