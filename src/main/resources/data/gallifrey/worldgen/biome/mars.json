@@ -1,25 +1,21 @@
 {
-  "carvers": {
-    "air": [
-      "minecraft:cave",
-      "minecraft:cave_extra_underground",
-      "minecraft:canyon"
-    ]
-  },
+  "has_precipitation": false,
+  "temperature": 2.0,
   "downfall": 0.0,
   "effects": {
     "fog_color": 8011054,
-    "foliage_color": 9124398,
-    "grass_color": 9124398,
-    "mood_sound": {
-      "block_search_extent": 8,
-      "offset": 2.0,
-      "sound": "minecraft:ambient.cave",
-      "tick_delay": 6000
-    },
     "sky_color": 10111541,
     "water_color": 8007717,
-    "water_fog_color": 5906456
+    "water_fog_color": 5906456,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    }
+  },
+  "carvers": {
+    "air": []
   },
   "features": [
     [],
@@ -29,36 +25,14 @@
     [],
     [],
     [
-      "minecraft:ore_coal_upper",
-      "minecraft:ore_coal_lower",
-      "minecraft:ore_iron_upper",
-      "minecraft:ore_iron_middle",
-      "minecraft:ore_iron_small",
-      "minecraft:ore_gold",
-      "minecraft:ore_gold_lower",
-      "minecraft:ore_redstone",
-      "minecraft:ore_redstone_lower",
-      "minecraft:ore_diamond",
-      "minecraft:ore_diamond_large",
-      "minecraft:ore_diamond_buried",
-      "minecraft:ore_lapis",
-      "minecraft:ore_lapis_buried",
-      "minecraft:ore_copper",
       "gallifrey:mars_iron_ore_placed"
     ],
     [],
     [],
     [],
-    [],
     []
   ],
-  "has_precipitation": false,
-  "spawn_costs": {},
   "spawners": {
-    "ambient": [],
-    "axolotls": [],
-    "creature": [],
-    "misc": [],
     "monster": [
       {
         "type": "minecraft:husk",
@@ -79,9 +53,13 @@
         "maxCount": 2
       }
     ],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
     "underground_water_creature": [],
+    "water_creature": [],
     "water_ambient": [],
-    "water_creature": []
+    "misc": []
   },
-  "temperature": -0.5
+  "spawn_costs": {}
 }
