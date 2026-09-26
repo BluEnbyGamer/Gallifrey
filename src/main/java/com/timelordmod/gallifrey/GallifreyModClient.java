@@ -3,6 +3,7 @@ package com.timelordmod.gallifrey;
 import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.block.custom.SonicWorkshopBlock;
+import com.timelordmod.gallifrey.client.CreativeSectionSidebar;
 import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
 import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
@@ -171,6 +172,12 @@ public class GallifreyModClient implements ClientModInitializer {
                 GallifreyModBlocks.PISS_CRYSTAL,
                 RenderLayer.getCutout()
         );
+
+        // =========================================================
+        // Creative tab sections register
+        // =========================================================
+
+        CreativeSectionSidebar.register();
 
         // =========================================================
         // TARDIS RENDER LAYER

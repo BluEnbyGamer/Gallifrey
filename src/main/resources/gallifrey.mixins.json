@@ -8,7 +8,9 @@
     "client.PlayerEntityRendererMixin",
     "client.MondasFogMixin",
     "client.MarsFogMixin",
-    "client.LogoDrawerMixin"
+    "client.LogoDrawerMixin",
+    "client.CreativeInventoryScreenAccessor",
+    "client.HandledScreenAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

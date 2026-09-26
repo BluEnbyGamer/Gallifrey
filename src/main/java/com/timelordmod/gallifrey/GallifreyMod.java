@@ -4,11 +4,7 @@ import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.entity.ModBoats;
 import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
-import com.timelordmod.gallifrey.item.ClothingCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
-import com.timelordmod.gallifrey.item.MarsCreativeTab;
-import com.timelordmod.gallifrey.item.RoundelsCreativeTab;
-import com.timelordmod.gallifrey.item.SkaroCreativeTab;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
 import com.timelordmod.gallifrey.world.biome.ModBiomes;
 import com.timelordmod.gallifrey.world.MarsWorldHandler;
@@ -40,10 +36,6 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyModBlocks.register();
 		GallifreyModBlockEntities.register();
 		GallifreyCreativeTab.register();
-		ClothingCreativeTab.register();
-		RoundelsCreativeTab.register();
-		MarsCreativeTab.register();
-		SkaroCreativeTab.register();
 		ModBoats.registerBoats();
 		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, ModBiomes.TREEBORG_FOREST, 0.3d);
 

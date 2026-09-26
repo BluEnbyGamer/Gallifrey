@@ -121,21 +121,7 @@
   "block.gallifrey.ash_standing_sign": "Ash Sign",
   "block.gallifrey.ash_hanging_sign": "Ash Hanging Sign",
   "block.gallifrey.potted_ash_sapling": "Potted Ash Sapling",
-
-  //advancements go here
-
-
-  //misc shit goes here
-  "subtitles.gallifrey.vm_sound": "Vortex Manipulator whirrs",
-  "block.gallifrey.sonic_workshop": "Sonic Workshop",
-  "itemGroup.gallifrey.mars": "Gallifrey: Mars",
-  "itemGroup.gallifrey.skaro": "Skaro",
-  "itemGroup.gallifrey.gallifrey": "Gallifrey",
-  "itemGroup.gallifrey.clothing": "Clothing",
-  "itemGroup.gallifrey.roundels": "Roundels",
-  "catagory.gallifrey.main": "Gallifrey Mod",
   "block.gallifrey.deepslate_dalekanium_ore": "Deepslate Dalekanium Ore",
-
   "block.gallifrey.mars_stone": "Mars Stone",
   "block.gallifrey.mars_cobblestone": "Mars Cobblestone",
   "block.gallifrey.mars_andesite": "Mars Andesite",
@@ -148,5 +134,20 @@
   "block.gallifrey.mars_stone_bricks": "Mars Stone Bricks",
   "block.gallifrey.mars_stone_bricks_cracked": "Cracked Mars Stone Bricks",
   "block.gallifrey.mars_chizelled_stone_bricks": "Chiseled Mars Stone Bricks",
-  "block.gallifrey.mars_iron_ore": "Mars Iron Ore"
+  "block.gallifrey.mars_iron_ore": "Mars Iron Ore",
+  "block.gallifrey.sonic_workshop": "Sonic Workshop",
+
+  //advancements go here
+
+
+  //misc shit goes here
+  "subtitles.gallifrey.vm_sound": "Vortex Manipulator whirrs",
+  "itemGroup.gallifrey.gallifrey": "Gallifrey",
+  "creative_section.gallifrey.wood_types": "Wood Types",
+  "creative_section.gallifrey.tools": "Tools",
+  "creative_section.gallifrey.roundels": "Roundels",
+  "creative_section.gallifrey.clothing": "Clothing",
+  "creative_section.gallifrey.mars": "Mars",
+  "creative_section.gallifrey.skaro": "Skaro",
+  "catagory.gallifrey.main": "Gallifrey Mod"
 }
