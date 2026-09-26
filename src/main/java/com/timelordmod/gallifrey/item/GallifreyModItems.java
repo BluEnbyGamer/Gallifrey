@@ -33,6 +33,11 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
+    public static final TreeborgPasteItem TREEBORG_PASTE = new TreeborgPasteItem(
+            new FabricItemSettings()
+    );
+
+
     public static final BlankCircuitItem BLANK_CIRCUIT = new BlankCircuitItem(
             new FabricItemSettings()
     );
@@ -107,6 +112,7 @@ public class GallifreyModItems {
         registerItem("white_point_star", WHITE_POINT_STAR);
         //registerItem("chronon_core", CHRONON_CORE);
         registerItem("vortex_manipulator", VORTEX_MANIPULATOR);
+        registerItem("treeborg_paste", TREEBORG_PASTE);
         registerItem("blank_circuit", BLANK_CIRCUIT);
         registerItem("location_circuit",LOCATION_CIRCUIT);
         registerItem("dimension_circuit",DIMENSION_CIRCUIT);

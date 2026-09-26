@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=south,level=0": {
+      "model": "gallifrey:block/tapper_level_0"
+    },
+    "facing=south,level=1": {
+      "model": "gallifrey:block/tapper_level_1"
+    },
+    "facing=south,level=2": {
+      "model": "gallifrey:block/tapper_level_2"
+    },
+    "facing=south,level=3": {
+      "model": "gallifrey:block/tapper_level_3"
+    },
+    "facing=west,level=0": {
+      "model": "gallifrey:block/tapper_level_0",
+      "y": 90
+    },
+    "facing=west,level=1": {
+      "model": "gallifrey:block/tapper_level_1",
+      "y": 90
+    },
+    "facing=west,level=2": {
+      "model": "gallifrey:block/tapper_level_2",
+      "y": 90
+    },
+    "facing=west,level=3": {
+      "model": "gallifrey:block/tapper_level_3",
+      "y": 90
+    },
+    "facing=north,level=0": {
+      "model": "gallifrey:block/tapper_level_0",
+      "y": 180
+    },
+    "facing=north,level=1": {
+      "model": "gallifrey:block/tapper_level_1",
+      "y": 180
+    },
+    "facing=north,level=2": {
+      "model": "gallifrey:block/tapper_level_2",
+      "y": 180
+    },
+    "facing=north,level=3": {
+      "model": "gallifrey:block/tapper_level_3",
+      "y": 180
+    },
+    "facing=east,level=0": {
+      "model": "gallifrey:block/tapper_level_0",
+      "y": 270
+    },
+    "facing=east,level=1": {
+      "model": "gallifrey:block/tapper_level_1",
+      "y": 270
+    },
+    "facing=east,level=2": {
+      "model": "gallifrey:block/tapper_level_2",
+      "y": 270
+    },
+    "facing=east,level=3": {
+      "model": "gallifrey:block/tapper_level_3",
+      "y": 270
+    }
+  }
+}

@@ -6,6 +6,7 @@ import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.block.custom.SonicSignalBlock;
+import com.timelordmod.gallifrey.block.custom.TapperBlock;
 import com.timelordmod.gallifrey.block.entity.RoundelBlock;
 import com.timelordmod.gallifrey.world.tree.TardisSaplingGenerator;
 import com.timelordmod.gallifrey.world.tree.TreeborgSaplingGenerator;
@@ -83,6 +84,16 @@ public class GallifreyModBlocks {
             new Block(
                     FabricBlockSettings.copyOf(Blocks.OBSIDIAN)
                             .sounds(BlockSoundGroup.METAL)
+            )
+    );
+
+    public static final Block TREE_TAPPER = registerBlock(
+            "tapper",
+            new TapperBlock(
+                    FabricBlockSettings.create()
+                            .strength(1.0f)
+                            .sounds(BlockSoundGroup.LANTERN)
+                            .nonOpaque()
             )
     );
 
