@@ -4,6 +4,7 @@ import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.entity.ModBoats;
+import com.timelordmod.gallifrey.item.custom.GeoHeadwearItem;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.HangingSignItem;
@@ -14,6 +15,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 import com.timelordmod.gallifrey.item.custom.HeadwearItem;
+import net.minecraft.item.ArmorMaterials;
 
 public class GallifreyModItems {
 
@@ -48,6 +50,13 @@ public class GallifreyModItems {
 
     public static final DimensionCircuitItem DIMENSION_CIRCUIT = new DimensionCircuitItem(
             new FabricItemSettings()
+    );
+
+    public static final GeoHeadwearItem OMEGA_HELMET = new GeoHeadwearItem(
+            "omega_helmet",
+            1.15F,
+            ArmorMaterials.NETHERITE,
+            new FabricItemSettings().fireproof()
     );
 
     public static final Item TARDIS_SIGN = registerItem("tardis_sign",
@@ -97,6 +106,7 @@ public class GallifreyModItems {
     public static final HeadwearItem TRUSTABLE_HAT = new HeadwearItem(new FabricItemSettings());
     public static final HeadwearItem EYESTALK = new HeadwearItem(new FabricItemSettings());
 
+
     public static final SonicScrewdriver SONIC_SCREWDRIVER =
             new SonicScrewdriver(
                     new FabricItemSettings()
@@ -131,6 +141,7 @@ public class GallifreyModItems {
         registerItem("yellowfez", YELLOWFEZ);
         registerItem("trustable_hat", TRUSTABLE_HAT);
         registerItem("eyestalk", EYESTALK);
+        registerItem("omega_helmet", OMEGA_HELMET);
 
         GallifreyMod.LOGGER.debug("[Gallifrey] Items registered.");
     }

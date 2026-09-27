@@ -164,6 +164,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.YELLOWFEZ);
                 entries.add(GallifreyModItems.TRUSTABLE_HAT);
                 entries.add(GallifreyModItems.EYESTALK);
+                entries.add(GallifreyModItems.OMEGA_HELMET);
             }
     );
 
