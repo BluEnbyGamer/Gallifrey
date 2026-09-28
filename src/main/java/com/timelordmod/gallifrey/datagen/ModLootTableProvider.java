@@ -101,15 +101,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         //addDrop(GallifreyModBlocks.STRIP_ULANDA_WOOD);
         //addDrop(GallifreyModBlocks.ULANDA_PLANKS);
 
-        //WILLOW WOOD SET BLOCK DROPS
-        //addDrop(GallifreyModBlocks.ULANDA_SAPLING);
-        //addDrop(GallifreyModBlocks.ULANDA_LEAVES, leavesDrops(GallifreyModBlocks.ULANDA_LEAVES, GallifreyModBlocks.ULANDA_SAPLING, 0.0025f));
-        //addDrop(GallifreyModBlocks.ULANDA_LOG);
-        //addDrop(GallifreyModBlocks.STRIP_ULANDA_LOG);
-        //addDrop(GallifreyModBlocks.ULANDA_WOOD);
-        //addDrop(GallifreyModBlocks.STRIP_ULANDA_WOOD);
-        //addDrop(GallifreyModBlocks.ULANDA_PLANKS);
-
         //MOON-PINE WOOD SET BLOCK DROPS
         //addDrop(GallifreyModBlocks.ULANDA_SAPLING);
         //addDrop(GallifreyModBlocks.ULANDA_LEAVES, leavesDrops(GallifreyModBlocks.ULANDA_LEAVES, GallifreyModBlocks.ULANDA_SAPLING, 0.0025f));
@@ -124,6 +115,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.SONIC_CRYSTAL_ORE);
         addDrop(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE);
         addDrop(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE);
+        addDrop(GallifreyModBlocks.WHITE_POINT_ORE);
+        addDrop(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE);
+        addDrop(GallifreyModBlocks.NETHER_WHITE_POINT_ORE);
 
         // Skaro blocks
         addDrop(GallifreyModBlocks.EXQUISITE_CAT);

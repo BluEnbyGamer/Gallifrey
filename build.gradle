@@ -38,6 +38,14 @@ repositories {
 	}
 }
 
+loom {
+	runs {
+		client {
+			programArgs '--username', 'TimelordDev'
+		}
+	}
+}
+
 fabricApi {
 	configureDataGeneration()
 }

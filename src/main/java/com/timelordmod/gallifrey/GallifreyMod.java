@@ -99,14 +99,14 @@ public class GallifreyMod implements ModInitializer {
 
 		// AWT planet ports. These use blocks/items already present in Gallifrey.
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.BASALT_ROUNDEL)
+						.frameBlock(GallifreyModBlocks.DALEKANIUM_BLOCK)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "skaro"))
 						.tintColor(150, 110, 45)
 						.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.QUARTZ_ROUNDEL)
+						.frameBlock(GallifreyModBlocks.STEEL_BLOCK)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mondas"))
 						.tintColor(130, 150, 170)
