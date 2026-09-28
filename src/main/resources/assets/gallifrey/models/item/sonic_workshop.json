@@ -1,4 +1,3 @@
 {
-  "parent": "minecraft:block/smooth_stone_slab"
+  "parent": "minecraft:builtin/entity"
 }
-

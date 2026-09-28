@@ -21,7 +21,6 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 
 import net.minecraft.client.MinecraftClient;
@@ -75,44 +74,6 @@ public class GallifreyModClient implements ClientModInitializer {
                         SonicScrewdriver.isOn(stack)
                                 ? 1.0F
                                 : 0.0F
-        );
-
-        // =========================================================
-        // SONIC WORKSHOP
-        // =========================================================
-
-        UseBlockCallback.EVENT.register(
-                (player, world, hand, hitResult) -> {
-
-                    if (!world.isClient) {
-                        return ActionResult.PASS;
-                    }
-
-                    ItemStack stack =
-                            player.getStackInHand(hand);
-
-                    if (!(stack.getItem()
-                            instanceof SonicScrewdriver)) {
-
-                        return ActionResult.PASS;
-                    }
-
-                    if (!(world.getBlockState(
-                            hitResult.getBlockPos()
-                    ).getBlock()
-                            instanceof SonicWorkshopBlock)) {
-
-                        return ActionResult.PASS;
-                    }
-
-                    MinecraftClient
-                            .getInstance()
-                            .setScreen(
-                                    new SonicWorkshopScreen(hand)
-                            );
-
-                    return ActionResult.SUCCESS;
-                }
         );
 
         // =========================================================
@@ -238,11 +199,6 @@ public class GallifreyModClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(
                 GallifreyModBlockEntities.SONIC_WORKSHOP_BLOCK_ENTITY,
                 SonicWorkshopBlockEntityRenderer::new
-        );
-
-        BlockRenderLayerMap.INSTANCE.putBlock(
-                GallifreyModBlocks.TREE_TAPPER,
-                RenderLayer.getCutout()
         );
 
         // =========================================================

@@ -47,7 +47,7 @@ public class GallifreyMod implements ModInitializer {
 		);
 
 		ServerPlayNetworking.registerGlobalReceiver(
-				new Identifier(MOD_ID, "change_sonic_casing"),
+				new Identifier(MOD_ID, "change_sonic_workshop_casing"),
 				SonicCasingPacket::receive
 		);
 

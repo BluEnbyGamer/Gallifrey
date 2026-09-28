@@ -8,10 +8,10 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
-public final class SonicCasingClientNetworking {
-    public static final Identifier CHANGE_CASING = new Identifier(GallifreyMod.MOD_ID, "change_sonic_workshop_casing");
+public final class SonicWorkshopClientNetworking {
+    public static final Identifier CHANGE_CASING = GallifreyMod.id("sonic_workshop_casing");
 
-    private SonicCasingClientNetworking() {}
+    private SonicWorkshopClientNetworking() {}
 
     public static void sendCasingChange(BlockPos pos, SonicCasing casing) {
         PacketByteBuf buf = PacketByteBufs.create();

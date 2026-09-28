@@ -54,10 +54,10 @@ public class TapperBlock extends Block {
     private static final int MAX_TRUNK_HEIGHT = 16;
     private static int LEAF_RADIUS = 2;
 
-    private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(3, 0, 0, 13, 14, 12);
-    private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(3, 0, 4, 13, 14, 16);
-    private static final VoxelShape SHAPE_EAST  = Block.createCuboidShape(0, 0, 3, 12, 14, 13);
-    private static final VoxelShape SHAPE_WEST  = Block.createCuboidShape(4, 0, 3, 16, 14, 13);
+    private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(5, 2, 0, 11, 10, 9);
+    private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(5, 2, 0, 11, 10, 9);
+    private static final VoxelShape SHAPE_EAST = Block.createCuboidShape(0, 2, 5, 9, 10, 11);
+    private static final VoxelShape SHAPE_WEST = Block.createCuboidShape(7, 2, 5, 16, 10, 11);
 
     public TapperBlock(Settings settings) {
         super(settings);

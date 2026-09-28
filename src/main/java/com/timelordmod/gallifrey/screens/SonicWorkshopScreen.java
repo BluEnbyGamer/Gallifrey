@@ -10,7 +10,8 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import com.timelordmod.gallifrey.block.entity.SonicWorkshopBlockEntity;
 
 public class SonicWorkshopScreen extends Screen {
 
@@ -46,23 +47,17 @@ public class SonicWorkshopScreen extends Screen {
     private int top;
 
     private SonicCasing selectedCasing;
-    private final Hand hand;
+    private final BlockPos pos;
 
-    public SonicWorkshopScreen(Hand hand) {
+    public SonicWorkshopScreen(BlockPos pos) {
         super(Text.literal("Sonic Workshop"));
-
-        this.hand = hand;
+        this.pos = pos;
         this.selectedCasing = SonicCasing.THIRD_DOCTOR;
 
-        if (client != null && client.player != null) {
-
-            ItemStack stack =
-                    client.player.getStackInHand(hand);
-
-            if (stack.getItem() instanceof SonicScrewdriver) {
-                selectedCasing =
-                        SonicScrewdriver.getCasing(stack);
-            }
+        if (client != null && client.world != null
+                && client.world.getBlockEntity(pos) instanceof SonicWorkshopBlockEntity workshop
+                && workshop.hasSonic()) {
+            selectedCasing = SonicScrewdriver.getCasing(workshop.getSonic());
         }
     }
 
@@ -286,7 +281,7 @@ public class SonicWorkshopScreen extends Screen {
         selectedCasing = casing;
 
         SonicCasingClientNetworking.sendCasingChange(
-                hand,
+                pos,
                 casing
         );
 
@@ -514,6 +509,16 @@ public class SonicWorkshopScreen extends Screen {
                 GOLD_BRIGHT,
                 false
         );
+
+        if (client != null && client.world != null
+                && client.world.getBlockEntity(pos) instanceof SonicWorkshopBlockEntity workshop
+                && workshop.hasSonic()) {
+            context.drawItem(workshop.getSonic(), left + 28, top + 63);
+            context.drawText(textRenderer, "INSTALLED SONIC", left + 54, top + 64, TEXT, false);
+            context.drawText(textRenderer, "Casing: " + SonicScrewdriver.getCasing(workshop.getSonic()).getDisplayName(), left + 54, top + 79, GOLD_BRIGHT, false);
+        } else {
+            context.drawText(textRenderer, "NO SONIC INSTALLED", left + 28, top + 70, TEXT_DIM, false);
+        }
 
         context.drawText(
                 textRenderer,

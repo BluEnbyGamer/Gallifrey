@@ -1,5 +1,7 @@
 package com.timelordmod.gallifrey.block;
 
+import com.timelordmod.gallifrey.item.custom.SonicWorkshopItem;
+
 import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
@@ -106,7 +108,7 @@ public class GallifreyModBlocks {
             new TapperBlock(
                     FabricBlockSettings.create()
                             .strength(1.0f)
-                            .sounds(BlockSoundGroup.WOOD)
+                            .sounds(BlockSoundGroup.LANTERN)
                             .nonOpaque()
             )
     );
@@ -201,7 +203,8 @@ public class GallifreyModBlocks {
                     FabricBlockSettings.copyOf(Blocks.SMOOTH_STONE_SLAB)
                             .strength(3.0f)
                             .sounds(BlockSoundGroup.METAL)
-            )
+            ),
+            true
     );
 
 
@@ -1064,7 +1067,11 @@ public class GallifreyModBlocks {
     // ============================================================
 
     private static Block registerBlock(String name, Block block) {
-        registerBlockItem(name, block);
+        return registerBlock(name, block, false);
+    }
+
+    private static Block registerBlock(String name, Block block, boolean sonicWorkshopItem) {
+        registerBlockItem(name, block, sonicWorkshopItem);
 
         return Registry.register(
                 Registries.BLOCK,
@@ -1074,13 +1081,18 @@ public class GallifreyModBlocks {
     }
 
     private static Item registerBlockItem(String name, Block block) {
+        return registerBlockItem(name, block, false);
+    }
+
+    private static Item registerBlockItem(String name, Block block, boolean sonicWorkshopItem) {
+        Item item = sonicWorkshopItem
+                ? new SonicWorkshopItem(block, new FabricItemSettings())
+                : new BlockItem(block, new FabricItemSettings());
+
         return Registry.register(
                 Registries.ITEM,
                 new Identifier(GallifreyMod.MOD_ID, name),
-                new BlockItem(
-                        block,
-                        new FabricItemSettings()
-                )
+                item
         );
     }
 

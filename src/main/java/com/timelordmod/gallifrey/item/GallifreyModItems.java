@@ -39,15 +39,11 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
-    public static final DalekIngotItem DALEKANIUM_INGOT = new DalekIngotItem(
+    public static final SteelIngotItem steel_ingot = new SteelIngotItem(
             new FabricItemSettings()
     );
 
-    public static final SteelIngotItem STEEL_INGOT = new SteelIngotItem(
-            new FabricItemSettings()
-    );
-
-    public static final RawSteelItem RAW_STEEL = new RawSteelItem(
+    public static final RawSteelItem raw_steel = new RawSteelItem(
             new FabricItemSettings()
     );
 
@@ -138,9 +134,8 @@ public class GallifreyModItems {
         registerItem("location_circuit",LOCATION_CIRCUIT);
         registerItem("dimension_circuit",DIMENSION_CIRCUIT);
         registerItem("sonic_crystal",SONIC_CRYSTAL);
-        registerItem("steel_ingot", STEEL_INGOT);
-        registerItem("raw_steel", RAW_STEEL);
-        registerItem("dalekanium_ingot", DALEKANIUM_INGOT);
+        registerItem("steel_ingot", steel_ingot);
+        registerItem("raw_steel", raw_steel);
 
         registerItem("sonic_screwdriver", SONIC_SCREWDRIVER);
         registerItem("fez", FEZ);
