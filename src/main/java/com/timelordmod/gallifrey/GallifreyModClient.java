@@ -240,6 +240,11 @@ public class GallifreyModClient implements ClientModInitializer {
                 SonicWorkshopBlockEntityRenderer::new
         );
 
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.TREE_TAPPER,
+                RenderLayer.getCutout()
+        );
+
         // =========================================================
         // ULANDA RENDER LAYER
         // =========================================================

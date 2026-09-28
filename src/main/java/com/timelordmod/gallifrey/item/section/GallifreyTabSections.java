@@ -127,11 +127,12 @@ public final class GallifreyTabSections {
 
                 // Sonics
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
-                entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
-                entries.add(GallifreyModItems.SONIC_CRYSTAL);
                 entries.add(GallifreyModBlocks.SONIC_CRYSTAL_ORE);
                 entries.add(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE);
                 entries.add(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE);
+                entries.add(GallifreyModItems.SONIC_CRYSTAL);
+                entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
+
 
                 // TARDIS
                 entries.add(GallifreyModBlocks.TARDIS_EXTERIOR);
@@ -207,9 +208,11 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.KALETITE_BRICKS);
                 entries.add(GallifreyModBlocks.EXQUISITE_CAT);
                 entries.add(GallifreyModBlocks.GOOD_HEAVENS);
-                entries.add(GallifreyModBlocks.DALEKANIUM_BLOCK);
                 entries.add(GallifreyModBlocks.DALEKANIUM_ORE);
                 entries.add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
+                entries.add(GallifreyModItems.DALEKANIUM_INGOT);
+                entries.add(GallifreyModBlocks.DALEKANIUM_BLOCK);
+
             }
     );
 

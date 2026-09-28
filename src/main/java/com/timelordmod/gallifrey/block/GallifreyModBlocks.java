@@ -106,7 +106,7 @@ public class GallifreyModBlocks {
             new TapperBlock(
                     FabricBlockSettings.create()
                             .strength(1.0f)
-                            .sounds(BlockSoundGroup.LANTERN)
+                            .sounds(BlockSoundGroup.WOOD)
                             .nonOpaque()
             )
     );
