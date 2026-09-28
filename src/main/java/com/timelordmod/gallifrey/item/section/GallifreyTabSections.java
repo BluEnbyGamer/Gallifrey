@@ -107,12 +107,15 @@ public final class GallifreyTabSections {
             }
     );
 
-    public static final CreativeSection TOOLS = CreativeSection.of(
-            "tools",
+    public static final CreativeSection MISC = CreativeSection.of(
+            "misc",
             () -> new ItemStack(GallifreyModItems.SONIC_SCREWDRIVER),
             entries -> {
                 // Vortex Manipulator and its parts
                 entries.add(GallifreyModItems.VORTEX_MANIPULATOR);
+                entries.add(GallifreyModBlocks.WHITE_POINT_ORE);
+                entries.add(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE);
+                entries.add(GallifreyModBlocks.NETHER_WHITE_POINT_ORE);
                 entries.add(GallifreyModItems.WHITE_POINT_STAR);
                 entries.add(GallifreyModItems.BLANK_CIRCUIT);
                 entries.add(GallifreyModItems.LOCATION_CIRCUIT);
@@ -213,7 +216,7 @@ public final class GallifreyTabSections {
     /** Sidebar order. */
     public static final List<CreativeSection> ALL = List.of(
             WOOD_TYPES,
-            TOOLS,
+            MISC,
             ROUNDELS,
             CLOTHING,
             MARS,

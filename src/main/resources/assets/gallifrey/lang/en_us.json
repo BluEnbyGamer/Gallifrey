@@ -28,6 +28,7 @@
   "item.gallifrey.ash_boat": "Ash Boat",
   "item.gallifrey.ash_chest_boat": "Ash Boat with Chest",
   "item.gallifrey.omega_helmet": "Omega Helmet",
+  "item.gallifrey.treeborg_paste": "Treeborg Paste",
 
   //blocks go here
   "block.gallifrey.ulanda_sapling": "Ulanda Sapling",
@@ -137,6 +138,10 @@
   "block.gallifrey.mars_chizelled_stone_bricks": "Chiseled Mars Stone Bricks",
   "block.gallifrey.mars_iron_ore": "Mars Iron Ore",
   "block.gallifrey.sonic_workshop": "Sonic Workshop",
+  "block.gallifrey.tapper": "Tree Tapper",
+  "block.gallifrey.white_point_ore": "White Point Ore",
+  "block.gallifrey.deepslate_white_point_ore": "Deepslate White Point Ore",
+  "block.gallifrey.nether_white_point_ore": "Nether White Point Ore",
 
   //advancements go here
 
@@ -145,7 +150,7 @@
   "subtitles.gallifrey.vm_sound": "Vortex Manipulator whirrs",
   "itemGroup.gallifrey.gallifrey": "Gallifrey",
   "creative_section.gallifrey.wood_types": "Wood Types",
-  "creative_section.gallifrey.tools": "Tools",
+  "creative_section.gallifrey.misc": "Miscellaneous",
   "creative_section.gallifrey.roundels": "Roundels",
   "creative_section.gallifrey.clothing": "Clothing",
   "creative_section.gallifrey.mars": "Mars",
