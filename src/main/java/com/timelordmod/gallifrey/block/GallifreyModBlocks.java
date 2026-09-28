@@ -203,6 +203,7 @@ public class GallifreyModBlocks {
                     FabricBlockSettings.copyOf(Blocks.SMOOTH_STONE_SLAB)
                             .strength(3.0f)
                             .sounds(BlockSoundGroup.METAL)
+                            .nonOpaque()
             ),
             true
     );
