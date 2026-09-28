@@ -53,12 +53,16 @@ public class SonicWorkshopScreen extends Screen {
         super(Text.literal("Sonic Workshop"));
         this.pos = pos;
         this.selectedCasing = SonicCasing.THIRD_DOCTOR;
+    }
 
+    /** The workshop at pos, if it still exists and still holds a Sonic; otherwise null. */
+    private SonicWorkshopBlockEntity workshop() {
         if (client != null && client.world != null
                 && client.world.getBlockEntity(pos) instanceof SonicWorkshopBlockEntity workshop
                 && workshop.hasSonic()) {
-            selectedCasing = SonicScrewdriver.getCasing(workshop.getSonic());
+            return workshop;
         }
+        return null;
     }
 
     @Override
@@ -66,6 +70,12 @@ public class SonicWorkshopScreen extends Screen {
 
         left = (width - GUI_WIDTH) / 2;
         top = (height - GUI_HEIGHT) / 2;
+
+        // `client` is only set once the screen is shown, so read the installed casing here.
+        SonicWorkshopBlockEntity workshop = workshop();
+        if (workshop != null) {
+            selectedCasing = SonicScrewdriver.getCasing(workshop.getSonic());
+        }
 
         createCasingButtons();
     }
@@ -510,14 +520,10 @@ public class SonicWorkshopScreen extends Screen {
                 false
         );
 
-        if (client != null && client.world != null
-                && client.world.getBlockEntity(pos) instanceof SonicWorkshopBlockEntity workshop
-                && workshop.hasSonic()) {
-            context.drawItem(workshop.getSonic(), left + 28, top + 63);
-            context.drawText(textRenderer, "INSTALLED SONIC", left + 54, top + 64, TEXT, false);
-            context.drawText(textRenderer, "Casing: " + SonicScrewdriver.getCasing(workshop.getSonic()).getDisplayName(), left + 54, top + 79, GOLD_BRIGHT, false);
-        } else {
-            context.drawText(textRenderer, "NO SONIC INSTALLED", left + 28, top + 70, TEXT_DIM, false);
+        // Installed Sonic icon at the left of the info box; the labels below sit to its right.
+        SonicWorkshopBlockEntity workshop = workshop();
+        if (workshop != null) {
+            context.drawItem(workshop.getSonic(), left + 26, top + 67);
         }
 
         context.drawText(
@@ -538,8 +544,8 @@ public class SonicWorkshopScreen extends Screen {
         context.drawText(
                 textRenderer,
                 "SONIC SCREWDRIVER",
-                left + 27,
-                top + 63,
+                left + 48,
+                top + 64,
                 BLUE,
                 false
         );
@@ -553,8 +559,8 @@ public class SonicWorkshopScreen extends Screen {
         context.drawText(
                 textRenderer,
                 "SELECT CASING",
-                left + 27,
-                top + 78,
+                left + 48,
+                top + 79,
                 TEXT_DIM,
                 false
         );
@@ -610,6 +616,14 @@ public class SonicWorkshopScreen extends Screen {
                 GOLD_BRIGHT,
                 false
         );
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (workshop() == null) {
+            close();
+        }
     }
 
     @Override

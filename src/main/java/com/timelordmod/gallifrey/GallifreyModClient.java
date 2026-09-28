@@ -41,7 +41,7 @@ public class GallifreyModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
-        com.timelordmod.gallifrey.networking.ModPackets.registerS2CPackets();
+        com.timelordmod.gallifrey.client.ModClientPackets.register();;
         ClientTickEvents.END_CLIENT_TICK.register(GallifreyModClient::tickMondasWeather);
 
         // =========================================================
@@ -140,6 +140,10 @@ public class GallifreyModClient implements ClientModInitializer {
 
         CreativeSectionSidebar.register();
 
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.TREE_TAPPER,
+                RenderLayer.getCutout()
+        );
         // =========================================================
         // TARDIS RENDER LAYER
         // =========================================================

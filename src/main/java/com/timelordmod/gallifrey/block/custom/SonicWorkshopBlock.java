@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -24,6 +25,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
@@ -31,6 +34,9 @@ import com.timelordmod.gallifrey.networking.ModPackets;
 
 public class SonicWorkshopBlock extends Block implements BlockEntityProvider {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+
+    /** The Geo model is a full 16x16 footprint but only 9 pixels tall. */
+    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 9, 16);
 
     public SonicWorkshopBlock(Settings settings) {
         super(settings);
@@ -57,6 +63,16 @@ public class SonicWorkshopBlock extends Block implements BlockEntityProvider {
     @Override
     public BlockState mirror(BlockState state, net.minecraft.util.BlockMirror mirror) {
         return state.rotate(mirror.getRotation(state.get(FACING)));
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
     }
 
     @Override
@@ -87,11 +103,7 @@ public class SonicWorkshopBlock extends Block implements BlockEntityProvider {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(
             World world, BlockState state, BlockEntityType<T> type) {
-        if (type == GallifreyModBlockEntities.SONIC_WORKSHOP_BLOCK_ENTITY) {
-            return (world1, pos, state1, blockEntity) ->
-                    SonicWorkshopBlockEntity.tick(world1, pos, state1,
-                            (SonicWorkshopBlockEntity) blockEntity);
-        }
+        // The workshop has no per-tick logic, so don't tick it at all.
         return null;
     }
 

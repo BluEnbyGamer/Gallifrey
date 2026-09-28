@@ -1,3 +1,6 @@
 {
-  "parent": "gallifrey:block/tapper_level_0"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gallifrey:item/tapper"
+  }
 }
