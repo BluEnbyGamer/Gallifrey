@@ -79,6 +79,20 @@ public class GallifreyModBlocks {
     // MISC BLOCKS
     // ============================================================
 
+    public static final Block RAW_STEEL_BLOCK = registerBlock(
+            "raw_steel_block",
+            new Block(
+                    FabricBlockSettings.copyOf(Blocks.RAW_IRON_BLOCK)
+            )
+    );
+
+    public static final Block STEEL_BLOCK = registerBlock(
+            "steel_block",
+            new Block(
+                    FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+            )
+    );
+
     public static final Block REINFORCED_STEEL_BLOCK = registerBlock(
             "reinforced_steel_block",
             new Block(
@@ -109,6 +123,16 @@ public class GallifreyModBlocks {
 
     public static final Block NETHER_SONIC_CRYSTAL_ORE = registerBlock("nether_sonic_crystal_ore",
             new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.5f), UniformIntProvider.create(2, 5)));
+
+    public static final Block WHITE_POINT_ORE = registerBlock("white_point_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(2f), UniformIntProvider.create(2, 5)));
+
+    public static final Block DEEPSLATE_WHITE_POINT_ORE = registerBlock("deepslate_white_point_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4f), UniformIntProvider.create(2, 5)));
+
+    public static final Block NETHER_WHITE_POINT_ORE = registerBlock("nether_white_point_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.5f), UniformIntProvider.create(2, 5)));
+
 
     // ============================================================
     // ROUNDELS

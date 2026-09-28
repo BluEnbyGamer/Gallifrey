@@ -24,6 +24,8 @@ import java.util.List;
 public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> SONIC_CRYSTAL_ORE_PLACED_KEY = registerKey("sonic_crystal_ore_placed");
     public static final RegistryKey<PlacedFeature> NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY = registerKey("nether_sonic_crystal_ore_placed");
+    public static final RegistryKey<PlacedFeature> WHITE_POINT_ORE_PLACED_KEY = registerKey("white_point_ore_placed");
+    public static final RegistryKey<PlacedFeature> NETHER_WHITE_POINT_ORE_PLACED_KEY = registerKey("nether_white_point_ore_placed");
     public static final RegistryKey<PlacedFeature> MARS_IRON_ORE_PLACED_KEY = registerKey("mars_iron_ore_placed");
 
 
@@ -68,11 +70,19 @@ public class ModPlacedFeatures {
                 ));
 
         register(context, SONIC_CRYSTAL_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SONIC_CRYSTAL_ORE_KEY),
-        ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
-        HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+                 ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
+                    HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
         register(context, NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NETHER_SONIC_CRYSTAL_ORE_KEY),
-        ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
-        HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+                ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
+                    HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+
+        register(context, WHITE_POINT_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WHITE_POINT_ORE_KEY),
+                ModOrePlacement.modifiersWithCount(4, // Veins per Chunk
+                        HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+        register(context, NETHER_WHITE_POINT_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NETHER_WHITE_POINT_ORE_KEY),
+                ModOrePlacement.modifiersWithCount(6, // Veins per Chunk
+                        HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+
 
         register(context, MARS_IRON_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MARS_IRON_ORE_KEY),
         ModOrePlacement.modifiersWithCount(8,

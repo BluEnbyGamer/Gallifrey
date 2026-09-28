@@ -39,6 +39,13 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
+    public static final SteelIngotItem steel_ingot = new SteelIngotItem(
+            new FabricItemSettings()
+    );
+
+    public static final RawSteelItem raw_steel = new RawSteelItem(
+            new FabricItemSettings()
+    );
 
     public static final BlankCircuitItem BLANK_CIRCUIT = new BlankCircuitItem(
             new FabricItemSettings()
@@ -127,6 +134,8 @@ public class GallifreyModItems {
         registerItem("location_circuit",LOCATION_CIRCUIT);
         registerItem("dimension_circuit",DIMENSION_CIRCUIT);
         registerItem("sonic_crystal",SONIC_CRYSTAL);
+        registerItem("steel_ingot", steel_ingot);
+        registerItem("raw_steel", raw_steel);
 
         registerItem("sonic_screwdriver", SONIC_SCREWDRIVER);
         registerItem("fez", FEZ);

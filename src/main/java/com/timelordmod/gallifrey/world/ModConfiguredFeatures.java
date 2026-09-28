@@ -26,6 +26,8 @@ import java.util.List;
 public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> SONIC_CRYSTAL_ORE_KEY = registerKey("sonic_crystal_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> NETHER_SONIC_CRYSTAL_ORE_KEY = registerKey("nether_sonic_crystal_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WHITE_POINT_ORE_KEY = registerKey("white_point_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> NETHER_WHITE_POINT_ORE_KEY = registerKey("nether_white_point_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MARS_IRON_ORE_KEY = registerKey("mars_iron_ore");
 
 
@@ -39,22 +41,35 @@ public class ModConfiguredFeatures {
         RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplacables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
         RuleTest netherReplacables = new TagMatchRuleTest(BlockTags.BASE_STONE_NETHER);
+        RuleTest marsReplacables = new BlockMatchRuleTest(GallifreyModBlocks.MARS_STONE);
 
+        // --- Sonic Crystal ---
+        List<OreFeatureConfig.Target> overworldSonicCrystalOres = List.of(
+                OreFeatureConfig.createTarget(stoneReplacables, GallifreyModBlocks.SONIC_CRYSTAL_ORE.getDefaultState()),
+                OreFeatureConfig.createTarget(deepslateReplacables, GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE.getDefaultState()));
 
-         List<OreFeatureConfig.Target> overworldSonicOres =
-         List.of(OreFeatureConfig.createTarget(stoneReplacables, GallifreyModBlocks.SONIC_CRYSTAL_ORE.getDefaultState()),
-         OreFeatureConfig.createTarget(deepslateReplacables, GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE.getDefaultState()));
+        List<OreFeatureConfig.Target> netherSonicCrystalOres = List.of(
+                OreFeatureConfig.createTarget(netherReplacables, GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE.getDefaultState()));
 
-         List<OreFeatureConfig.Target> netherSonicOres =
-          List.of(OreFeatureConfig.createTarget(netherReplacables, GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE.getDefaultState()));
+        register(context, SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldSonicCrystalOres, 12));
+        register(context, NETHER_SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherSonicCrystalOres, 12));
 
-         register(context, SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldSonicOres, 12));
-         register(context, NETHER_SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherSonicOres, 12));
+        // --- White Point ---
+        List<OreFeatureConfig.Target> overworldWhitePointOres = List.of(
+                OreFeatureConfig.createTarget(stoneReplacables, GallifreyModBlocks.WHITE_POINT_ORE.getDefaultState()),
+                OreFeatureConfig.createTarget(deepslateReplacables, GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE.getDefaultState()));
 
-         List<OreFeatureConfig.Target> marsIronOres =
-                 List.of(OreFeatureConfig.createTarget(stoneReplacables, GallifreyModBlocks.MARS_IRON_ORE.getDefaultState()),
-                         OreFeatureConfig.createTarget(deepslateReplacables, GallifreyModBlocks.MARS_IRON_ORE.getDefaultState()));
-         register(context, MARS_IRON_ORE_KEY, Feature.ORE, new OreFeatureConfig(marsIronOres, 8));
+        List<OreFeatureConfig.Target> netherWhitePointOres = List.of(
+                OreFeatureConfig.createTarget(netherReplacables, GallifreyModBlocks.NETHER_WHITE_POINT_ORE.getDefaultState()));
+
+        register(context, WHITE_POINT_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldWhitePointOres, 12));
+        register(context, NETHER_WHITE_POINT_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherWhitePointOres, 12));
+
+        // --- Mars Iron ---
+        List<OreFeatureConfig.Target> marsIronOres = List.of(
+                OreFeatureConfig.createTarget(marsReplacables, GallifreyModBlocks.MARS_IRON_ORE.getDefaultState()));
+
+        register(context, MARS_IRON_ORE_KEY, Feature.ORE, new OreFeatureConfig(marsIronOres, 8));
 
         register(context,ULANDA_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(GallifreyModBlocks.ULANDA_LOG),
