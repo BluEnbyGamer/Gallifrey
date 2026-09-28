@@ -78,9 +78,6 @@ public class ModModelProvider extends FabricModelProvider {
         //MAPLE WOOD TYPE
 
 
-        //WILLOW WOOD TYPE
-
-
         //MOON-PINE WOOD TYPE
 
 
