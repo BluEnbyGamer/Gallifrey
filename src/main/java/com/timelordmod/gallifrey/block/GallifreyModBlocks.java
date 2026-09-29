@@ -10,6 +10,7 @@ import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.block.custom.SonicSignalBlock;
 import com.timelordmod.gallifrey.block.custom.TapperBlock;
 import com.timelordmod.gallifrey.block.entity.RoundelBlock;
+import com.timelordmod.gallifrey.world.tree.AshSaplingGenerator;
 import com.timelordmod.gallifrey.world.tree.TardisSaplingGenerator;
 import com.timelordmod.gallifrey.world.tree.TreeborgSaplingGenerator;
 import com.timelordmod.gallifrey.world.tree.UlandaSaplingGenerator;
@@ -887,7 +888,7 @@ public class GallifreyModBlocks {
     public static final Block ASH_SAPLING = registerBlock(
             "ash_sapling",
             new SaplingBlock(
-                    new TreeborgSaplingGenerator(),
+                    new AshSaplingGenerator(),
                     FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)
             )
     );

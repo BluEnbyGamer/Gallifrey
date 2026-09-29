@@ -29,15 +29,10 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> MARS_IRON_ORE_PLACED_KEY = registerKey("mars_iron_ore_placed");
 
 
-    // Dense forest placement - 10 attempts per chunk, unlike a rare single-tree feature
     public static final RegistryKey<PlacedFeature> ULANDA_PLACED_KEY = registerKey("ulanda_placed");
-
-    // Sparser than Ulanda - this tree lives in a biome that's already rare by design,
-    // so a dense forest would undercut that "special, uncommon" feel
     public static final RegistryKey<PlacedFeature> TARDIS_PLACED_KEY = registerKey("tardis_placed");
-
-
     public static final RegistryKey<PlacedFeature> TREEBORG_PLACED_KEY = registerKey("treeborg_placed");
+    public static final RegistryKey<PlacedFeature> ASH_PLACED_KEY = registerKey("ash_placed");
 
     public static void boostrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -66,6 +61,15 @@ public class ModPlacedFeatures {
                         SquarePlacementModifier.of(),
                         HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES),
                         PlacedFeatures.wouldSurvive(GallifreyModBlocks.TREEBORG_SAPLING),
+                        BiomePlacementModifier.of()
+                ));
+
+        register(context, ASH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.TREEBORG_KEY),
+                List.of(
+                        CountPlacementModifier.of(4),
+                        SquarePlacementModifier.of(),
+                        HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES),
+                        PlacedFeatures.wouldSurvive(GallifreyModBlocks.ASH_SAPLING),
                         BiomePlacementModifier.of()
                 ));
 

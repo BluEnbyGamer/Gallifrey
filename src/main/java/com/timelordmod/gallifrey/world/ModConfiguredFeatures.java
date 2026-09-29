@@ -34,7 +34,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> ULANDA_KEY =registerKey("ulanda");
     public static final RegistryKey<ConfiguredFeature<?, ?>> TARDIS_TREE_KEY =registerKey("tardis_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> TREEBORG_KEY =registerKey("treeborg");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> ASH_KEY =registerKey("ash");;
+    public static final RegistryKey<ConfiguredFeature<?, ?>> ASH_KEY =registerKey("ash");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -80,9 +80,29 @@ public class ModConfiguredFeatures {
                                 UniformIntProvider.create(-1,1)
                         ),
                         BlockStateProvider.of(GallifreyModBlocks.ULANDA_LEAVES),
+                new CherryFoliagePlacer(
+                        ConstantIntProvider.create(4),
+                        ConstantIntProvider.create(1),
+                        UniformIntProvider.create(4, 5),
+                        0.25F,
+                        0.5F,
+                        0.16666667F,
+                        0.33333334F
+                ),
+
+                        new TwoLayersFeatureSize(1, 0, 1)
+                )
+                        .build()
+        );
+
+        register(context, TARDIS_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.TARDIS_LOG),
+                new StraightTrunkPlacer(5, 4, 3),
+
+                BlockStateProvider.of(GallifreyModBlocks.TARDIS_LEAVES),
                         new CherryFoliagePlacer(
                                 ConstantIntProvider.create(4),
-                                ConstantIntProvider.create(2),
+                                ConstantIntProvider.create(1),
                                 UniformIntProvider.create(4, 5),
                                 0.25F,
                                 0.5F,
@@ -109,15 +129,15 @@ public class ModConfiguredFeatures {
                         new StraightTrunkPlacer(5, 4, 3),
 
                         BlockStateProvider.of(GallifreyModBlocks.ASH_LEAVES),
-                        new CherryFoliagePlacer(
-                                ConstantIntProvider.create(4),
-                                ConstantIntProvider.create(2),
-                                UniformIntProvider.create(4, 5),
-                                0.25F,
-                                0.5F,
-                                0.16666667F,
-                                0.33333334F
-                        ),
+                new CherryFoliagePlacer(
+                        ConstantIntProvider.create(3),
+                        ConstantIntProvider.create(1),
+                        UniformIntProvider.create(4, 5),
+                        0.25F,
+                        0.5F,
+                        0.16666667F,
+                        0.33333334F
+                ),
 
                         new TwoLayersFeatureSize(1, 0, 1)
                 )

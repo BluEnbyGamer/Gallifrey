@@ -9,10 +9,20 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:blob_foliage_placer",
-      "height": 2,
+      "type": "minecraft:cherry_foliage_placer",
+      "corner_hole_chance": 0.25,
+      "hanging_leaves_chance": 0.16666667,
+      "hanging_leaves_extension_chance": 0.33333334,
+      "height": {
+        "type": "minecraft:uniform",
+        "value": {
+          "max_inclusive": 5,
+          "min_inclusive": 4
+        }
+      },
       "offset": 1,
-      "radius": 2
+      "radius": 4,
+      "wide_bottom_layer_hole_chance": 0.25
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -31,7 +41,7 @@
       "type": "minecraft:two_layers_feature_size",
       "limit": 1,
       "lower_size": 0,
-      "upper_size": 2
+      "upper_size": 1
     },
     "trunk_placer": {
       "type": "minecraft:straight_trunk_placer",

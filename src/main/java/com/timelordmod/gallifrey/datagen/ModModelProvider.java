@@ -68,9 +68,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerLog(GallifreyModBlocks.STRIP_ASH_LOG).log(GallifreyModBlocks.STRIP_ASH_LOG).wood(GallifreyModBlocks.STRIP_ASH_WOOD);
         blockStateModelGenerator.registerDoor(GallifreyModBlocks.ASH_DOOR);
         blockStateModelGenerator.registerTrapdoor(GallifreyModBlocks.ASH_TRAPDOOR);
-        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.ULANDA_LEAVES, TexturedModel.LEAVES);
-        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.TREEBORG_LEAVES, TexturedModel.LEAVES);
-        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.ASH_LEAVES, TexturedModel.LEAVES);
         ashPool.stairs(GallifreyModBlocks.ASH_STAIRS);
         ashPool.slab(GallifreyModBlocks.ASH_SLAB);
         ashPool.button(GallifreyModBlocks.ASH_BUTTON);
