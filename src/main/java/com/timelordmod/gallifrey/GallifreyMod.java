@@ -73,9 +73,6 @@ public class GallifreyMod implements ModInitializer {
 		//Maple wood set
 
 
-		//Willow wood set
-
-
 		//Moon-pine wood set
 
 
