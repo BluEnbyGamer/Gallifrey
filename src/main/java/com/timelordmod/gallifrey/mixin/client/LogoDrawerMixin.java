@@ -29,6 +29,10 @@ public class LogoDrawerMixin {
             new Identifier("gallifrey", "textures/gui/title/gall_dwday.png");
 
     @Unique
+    private static final Identifier GALL_REGENDAY =
+            new Identifier("gallifrey", "textures/gui/title/gall_regenday.png");
+
+    @Unique
     private static final Identifier GALL_MODDAY =
             new Identifier("gallifrey", "textures/gui/title/gall_modsday.png");
 
@@ -116,6 +120,10 @@ public class LogoDrawerMixin {
 
         if (date.getMonth() == Month.AUGUST && date.getDayOfMonth() == 15) {
             return GALL_MODDAY;
+        }
+
+        if (date.getMonth() == Month.JULY && date.getDayOfMonth() == 4) {
+            return GALL_REGENDAY;
         }
 
         if (date.getMonth() == Month.JUNE) {
