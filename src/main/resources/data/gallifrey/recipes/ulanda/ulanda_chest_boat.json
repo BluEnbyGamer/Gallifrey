@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "chest_boat",
+  "ingredients": [
+    {
+      "item": "minecraft:chest"
+    },
+    {
+      "item": "gallifrey:ulanda_boat"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:ulanda_chest_boat",
+    "count": 1
+  }
+}

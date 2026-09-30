@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:treeborg_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:treeborg_stairs",
+    "count": 4
+  }
+}

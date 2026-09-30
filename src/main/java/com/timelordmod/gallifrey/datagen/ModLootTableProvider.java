@@ -20,6 +20,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.TARDIS_WOOD);
         addDrop(GallifreyModBlocks.STRIP_TARDIS_WOOD);
         addDrop(GallifreyModBlocks.TARDIS_PLANKS);
+        addDrop(GallifreyModBlocks.TARDIS_STAIRS);
+        addPottedPlantDrops(GallifreyModBlocks.POTTED_TARDIS_SAPLING);
         addDrop(GallifreyModBlocks.TARDIS_SLAB, slabDrops(GallifreyModBlocks.TARDIS_SLAB));
         addDrop(GallifreyModBlocks.TARDIS_BUTTON);
         addDrop(GallifreyModBlocks.TARDIS_FENCE);
@@ -28,9 +30,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.TARDIS_TRAPDOOR);
         addDrop(GallifreyModBlocks.TARDIS_PRESSURE_PLATE);
         addDrop(GallifreyModBlocks.STANDING_TARDIS_SIGN);
-        addDrop(GallifreyModBlocks.WALL_TARDIS_SIGN);
         addDrop(GallifreyModBlocks.HANGING_TARDIS_SIGN);
-        addDrop(GallifreyModBlocks.WALL_HANGING_TARDIS_SIGN);
 
         //ULANDA WOOD SET BLOCK DROPS
         addDrop(GallifreyModBlocks.ULANDA_SAPLING);
@@ -40,6 +40,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.ULANDA_WOOD);
         addDrop(GallifreyModBlocks.STRIP_ULANDA_WOOD);
         addDrop(GallifreyModBlocks.ULANDA_PLANKS);
+        addDrop(GallifreyModBlocks.ULANDA_STAIRS);
+        addPottedPlantDrops(GallifreyModBlocks.POTTED_ULANDA_SAPLING);
         addDrop(GallifreyModBlocks.ULANDA_SLAB, slabDrops(GallifreyModBlocks.ULANDA_SLAB));
         addDrop(GallifreyModBlocks.ULANDA_BUTTON);
         addDrop(GallifreyModBlocks.ULANDA_FENCE);
@@ -48,9 +50,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.ULANDA_TRAPDOOR);
         addDrop(GallifreyModBlocks.ULANDA_PRESSURE_PLATE);
         addDrop(GallifreyModBlocks.STANDING_ULANDA_SIGN);
-        addDrop(GallifreyModBlocks.WALL_ULANDA_SIGN);
         addDrop(GallifreyModBlocks.HANGING_ULANDA_SIGN);
-        addDrop(GallifreyModBlocks.WALL_HANGING_ULANDA_SIGN);
 
         //TREE-BORG WOOD SET BLOCK DROPS
         addDrop(GallifreyModBlocks.TREEBORG_SAPLING);
@@ -60,6 +60,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.TREEBORG_WOOD);
         addDrop(GallifreyModBlocks.STRIP_TREEBORG_WOOD);
         addDrop(GallifreyModBlocks.TREEBORG_PLANKS);
+        addDrop(GallifreyModBlocks.TREEBORG_STAIRS);
+        addPottedPlantDrops(GallifreyModBlocks.POTTED_TREEBORG_SAPLING);
         addDrop(GallifreyModBlocks.TREEBORG_SLAB, slabDrops(GallifreyModBlocks.TREEBORG_SLAB));
         addDrop(GallifreyModBlocks.TREEBORG_BUTTON);
         addDrop(GallifreyModBlocks.TREEBORG_FENCE);
@@ -68,9 +70,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.TREEBORG_TRAPDOOR);
         addDrop(GallifreyModBlocks.TREEBORG_PRESSURE_PLATE);
         addDrop(GallifreyModBlocks.STANDING_TREEBORG_SIGN);
-        addDrop(GallifreyModBlocks.WALL_TREEBORG_SIGN);
         addDrop(GallifreyModBlocks.HANGING_TREEBORG_SIGN);
-        addDrop(GallifreyModBlocks.WALL_HANGING_TREEBORG_SIGN);
 
         //ASH WOOD SET BLOCK DROPS
         addDrop(GallifreyModBlocks.ASH_SAPLING);
@@ -80,6 +80,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.ASH_WOOD);
         addDrop(GallifreyModBlocks.STRIP_ASH_WOOD);
         addDrop(GallifreyModBlocks.ASH_PLANKS);
+        addDrop(GallifreyModBlocks.ASH_STAIRS);
+        addPottedPlantDrops(GallifreyModBlocks.POTTED_ASH_SAPLING);
         addDrop(GallifreyModBlocks.ASH_SLAB, slabDrops(GallifreyModBlocks.ASH_SLAB));
         addDrop(GallifreyModBlocks.ASH_BUTTON);
         addDrop(GallifreyModBlocks.ASH_FENCE);
@@ -88,9 +90,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.ASH_TRAPDOOR);
         addDrop(GallifreyModBlocks.ASH_PRESSURE_PLATE);
         addDrop(GallifreyModBlocks.STANDING_ASH_SIGN);
-        addDrop(GallifreyModBlocks.WALL_ASH_SIGN);
         addDrop(GallifreyModBlocks.HANGING_ASH_SIGN);
-        addDrop(GallifreyModBlocks.WALL_HANGING_ASH_SIGN);
 
         //MAPLE WOOD SET BLOCK DROPS
         //addDrop(GallifreyModBlocks.ULANDA_SAPLING);
@@ -112,6 +112,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         // MISC BLOCK DROPS
         addDrop(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
+        addDrop(GallifreyModBlocks.TREE_TAPPER);
         addDrop(GallifreyModBlocks.SONIC_CRYSTAL_ORE);
         addDrop(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE);
         addDrop(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE);

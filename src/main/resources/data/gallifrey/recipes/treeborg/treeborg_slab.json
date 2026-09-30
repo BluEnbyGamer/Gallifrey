@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:treeborg_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:treeborg_slab",
+    "count": 6
+  }
+}

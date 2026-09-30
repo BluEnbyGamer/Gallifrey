@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RGR",
+    "GPG",
+    "RGR"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "G": {
+      "item": "minecraft:gold_nugget"
+    },
+    "P": {
+      "item": "gallifrey:treeborg_paste"
+    }
+  },
+  "result": {
+    "item": "gallifrey:blank_circuit",
+    "count": 1
+  },
+  "show_notification": true
+}

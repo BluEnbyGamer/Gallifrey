@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:stripped_treeborg_log"
+    }
+  },
+  "result": {
+    "item": "gallifrey:stripped_treeborg_wood",
+    "count": 3
+  }
+}

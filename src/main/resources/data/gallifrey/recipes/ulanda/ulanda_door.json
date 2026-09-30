@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_door",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:ulanda_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:ulanda_door",
+    "count": 3
+  }
+}

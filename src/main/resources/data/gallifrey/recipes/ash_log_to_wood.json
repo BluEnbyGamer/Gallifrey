@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:ash_log"
+    }
+  },
+  "result": {
+    "item": "gallifrey:ash_wood",
+    "count": 3
+  }
+}

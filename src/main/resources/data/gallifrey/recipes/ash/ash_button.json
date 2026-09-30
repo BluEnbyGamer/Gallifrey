@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "gallifrey:ash_planks"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:ash_button",
+    "count": 1
+  }
+}

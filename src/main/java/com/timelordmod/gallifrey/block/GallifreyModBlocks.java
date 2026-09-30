@@ -378,7 +378,7 @@ public class GallifreyModBlocks {
                     ),
                     new TerraformWallSignBlock(
                             TARDIS_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)
+                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).dropsLike(STANDING_TARDIS_SIGN)
                     )
             );
 
@@ -406,7 +406,7 @@ public class GallifreyModBlocks {
                     new TerraformWallHangingSignBlock(
                             TARDIS_HANGING_SIGN_TEXTURE,
                             TARDIS_HANGING_GUI_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN)
+                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(HANGING_TARDIS_SIGN)
                     )
             );
 
@@ -588,7 +588,7 @@ public class GallifreyModBlocks {
                     ),
                     new TerraformWallSignBlock(
                             ULANDA_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.ACACIA_WALL_SIGN)
+                            FabricBlockSettings.copyOf(Blocks.ACACIA_WALL_SIGN).dropsLike(STANDING_ULANDA_SIGN)
                     )
             );
 
@@ -616,7 +616,7 @@ public class GallifreyModBlocks {
                     new TerraformWallHangingSignBlock(
                             ULANDA_HANGING_SIGN_TEXTURE,
                             ULANDA_HANGING_GUI_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.ACACIA_WALL_HANGING_SIGN)
+                            FabricBlockSettings.copyOf(Blocks.ACACIA_WALL_HANGING_SIGN).dropsLike(HANGING_ULANDA_SIGN)
                     )
             );
 
@@ -796,7 +796,7 @@ public class GallifreyModBlocks {
                     ),
                     new TerraformWallSignBlock(
                             TREEBORG_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)
+                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).dropsLike(STANDING_TREEBORG_SIGN)
                     )
             );
 
@@ -824,7 +824,7 @@ public class GallifreyModBlocks {
                     new TerraformWallHangingSignBlock(
                             TREEBORG_HANGING_SIGN_TEXTURE,
                             TREEBORG_HANGING_GUI_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN)
+                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(HANGING_TREEBORG_SIGN)
                     )
             );
 
@@ -1005,7 +1005,7 @@ public class GallifreyModBlocks {
                     ),
                     new TerraformWallSignBlock(
                             ASH_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN)
+                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).dropsLike(STANDING_ASH_SIGN)
                     )
             );
 
@@ -1033,7 +1033,7 @@ public class GallifreyModBlocks {
                     new TerraformWallHangingSignBlock(
                             ASH_HANGING_SIGN_TEXTURE,
                             ASH_HANGING_GUI_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN)
+                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(HANGING_ASH_SIGN)
                     )
             );
 

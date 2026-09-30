@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "gallifrey:tardis_planks"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:tardis_button",
+    "count": 1
+  }
+}

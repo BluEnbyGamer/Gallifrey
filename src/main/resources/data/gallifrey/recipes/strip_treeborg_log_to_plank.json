@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "gallifrey:stripped_treeborg_log"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:treeborg_planks",
+    "count": 4
+  }
+}
