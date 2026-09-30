@@ -23,6 +23,10 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
+    public static final SiliconeItem SILICONE = new SiliconeItem(
+            new FabricItemSettings()
+    );
+
     public static final SonicCrystalItem SONIC_CRYSTAL = new SonicCrystalItem(
             new FabricItemSettings()
     );
@@ -48,6 +52,10 @@ public class GallifreyModItems {
     );
 
     public static final LocationCircuitItem LOCATION_CIRCUIT = new LocationCircuitItem(
+            new FabricItemSettings()
+    );
+
+    public static final InterfaceCircuitItem INTERFACE_CIRCUIT = new InterfaceCircuitItem(
             new FabricItemSettings()
     );
 
@@ -94,7 +102,6 @@ public class GallifreyModItems {
     public static final Item ASH_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.ASH_CHEST_BOAT_ID, ModBoats.ASH_BOAT_KEY, true);
 
     // FOOD ITEMS
-
     public static final Item MAPLE_SYRUP = registerItem("maple_syrup", new Item(new FabricItemSettings().food(GallifreyFoodComponents.MAPLE_SYRUP)));
     public static final Item TREEBORG_PASTE = registerItem("treeborg_paste", new Item(new FabricItemSettings().food(GallifreyFoodComponents.TREEBORG_PASTE)));
 
@@ -128,9 +135,11 @@ public class GallifreyModItems {
 
     public static void register() {
         registerItem("white_point_star", WHITE_POINT_STAR);
+        registerItem("silicone", SILICONE);
         registerItem("vortex_manipulator", VORTEX_MANIPULATOR);
         registerItem("blank_circuit", BLANK_CIRCUIT);
         registerItem("location_circuit",LOCATION_CIRCUIT);
+        registerItem("interface_circuit", INTERFACE_CIRCUIT);
         registerItem("dimension_circuit",DIMENSION_CIRCUIT);
         registerItem("sonic_crystal",SONIC_CRYSTAL);
         registerItem("steel_ingot", STEEL_INGOT);

@@ -103,10 +103,14 @@ public class SonicWorkshopBlock extends Block implements BlockEntityProvider {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(
             World world, BlockState state, BlockEntityType<T> type) {
-        // The workshop has no per-tick logic, so don't tick it at all.
-        return null;
+        // Server only: charges an installed Sonic. The client never ticks it.
+        if (world.isClient || type != GallifreyModBlockEntities.SONIC_WORKSHOP_BLOCK_ENTITY) {
+            return null;
+        }
+        return (BlockEntityTicker<T>) (BlockEntityTicker<SonicWorkshopBlockEntity>) SonicWorkshopBlockEntity::tick;
     }
 
     /*

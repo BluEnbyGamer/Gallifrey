@@ -286,9 +286,10 @@
 			"translation": [0, 6, -6.75],
 			"scale": [0.38, 0.38, 0.38]
 		},
-		"fixed": {
-			"rotation": [0, -180, 0],
-			"translation": [0, 0, -1]
+			"fixed": {
+				"rotation": [-180, 0, -180],
+				"translation": [0, -0.93, 0],
+				"scale": [0.93, 0.93, 0.93]
 		}
 	},
 	"groups": [

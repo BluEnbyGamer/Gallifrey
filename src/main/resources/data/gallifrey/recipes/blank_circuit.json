@@ -1,14 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "GGN",
+    "G#N",
     "SCN",
-    "GGN"
+    "G#N"
   ],
   "key": {
     "G": {
       "item": "gallifrey:treeborg_paste"
     },
+    "#": {
+        "item": "gallifrey:silicon"
+      },
     "C": {
       "item": "minecraft:comparator"
     },

@@ -11,6 +11,9 @@
     "L": {
       "item": "gallifrey:location_circuit"
     },
+    "#": {
+      "item": "gallifrey:interface_circuit"
+    },
     "Q": {
       "item": "gallifrey:white_point_star"
     },
@@ -21,7 +24,7 @@
   "pattern": [
     "XXX",
     "LQD",
-    "OXO"
+    "O#O"
   ],
   "result": {
     "item": "gallifrey:vortex_manipulator",

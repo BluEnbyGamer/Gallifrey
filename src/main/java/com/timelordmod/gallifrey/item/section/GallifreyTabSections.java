@@ -119,10 +119,12 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.WHITE_POINT_STAR);
                 entries.add(GallifreyModItems.BLANK_CIRCUIT);
                 entries.add(GallifreyModItems.LOCATION_CIRCUIT);
+                entries.add(GallifreyModItems.INTERFACE_CIRCUIT);
                 entries.add(GallifreyModItems.DIMENSION_CIRCUIT);
 
                 // Tapping
                 entries.add(GallifreyModBlocks.TREE_TAPPER);
+                entries.add(GallifreyModItems.SILICONE);
                 entries.add(GallifreyModItems.TREEBORG_PASTE);
                 entries.add(GallifreyModItems.MAPLE_SYRUP);
 

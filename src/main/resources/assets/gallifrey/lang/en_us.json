@@ -29,6 +29,11 @@
   "item.gallifrey.ash_chest_boat": "Ash Boat with Chest",
   "item.gallifrey.omega_helmet": "Omega Helmet",
   "item.gallifrey.treeborg_paste": "Treeborg Paste",
+  "item.gallifrey.steel_ingot": "Steel Ingot",
+  "item.gallifrey.raw_steel": "Raw Steel",
+  "item.gallifrey.dalekanium_ingot": "Dalekanium Ingot",
+  "item.gallifrey.maple_syrup": "Maple Syrup",
+  "item.gallifrey.silicone": "Silicone",
 
   //blocks go here
   "block.gallifrey.ulanda_sapling": "Ulanda Sapling",
@@ -140,11 +145,14 @@
   "block.gallifrey.sonic_workshop": "Sonic Workshop",
   "block.gallifrey.tapper": "Tree Tapper",
   "block.gallifrey.sonic_workshop.needs_sonic": "Insert a Sonic Screwdriver",
-  "block.gallifrey.tapper.filling": "Filling... %s/%s",
+  "block.gallifrey.tapper.filling": "Filling...",
   "block.gallifrey.tapper.not_a_tree": "This tapper isn't on a living tree",
   "block.gallifrey.white_point_ore": "White Point Ore",
   "block.gallifrey.deepslate_white_point_ore": "Deepslate White Point Ore",
   "block.gallifrey.nether_white_point_ore": "Nether White Point Ore",
+  "block.gallifrey.raw_steel_block": "Block of Raw Steel",
+  "block.gallifrey.steel_block": "Block of Steel",
+  "block.gallifrey.piss_crystal": "Mars Crystal",
 
   //advancements go here
 

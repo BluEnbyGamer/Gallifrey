@@ -52,7 +52,7 @@ public class TapperBlock extends Block {
     private static final int FILL_CHANCE = 6;
 
     private static final int MAX_TRUNK_HEIGHT = 16;
-    private static int LEAF_RADIUS = 2;
+    private static final int LEAF_RADIUS = 2;
 
     private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(3, 0, 0, 13, 14, 12);
     private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(3, 0, 4, 13, 14, 16);
@@ -73,12 +73,14 @@ public class TapperBlock extends Block {
     @Nullable
     private static Block leavesFor(BlockState log) {
         if (log.isOf(GallifreyModBlocks.TREEBORG_LOG)) return GallifreyModBlocks.TREEBORG_LEAVES;
+        if (log.isOf(Blocks.OAK_LOG)) return Blocks.OAK_LEAVES;
         return null;
     }
 
     @Nullable
     private static Item productFor(BlockState log) {
         if (log.isOf(GallifreyModBlocks.TREEBORG_LOG)) return GallifreyModItems.TREEBORG_PASTE;
+        if (log.isOf(Blocks.OAK_LOG)) return GallifreyModItems.SILICONE;
         return null;
     }
 

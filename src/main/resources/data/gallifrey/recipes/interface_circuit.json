@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NON",
+    "QBS",
+    "NON"
+  ],
+    "key": {
+      "S": {
+        "item": "minecraft:glass_pane"
+      },
+    "N": {
+      "item": "gallifrey:steel_ingot"
+    },
+    "O": {
+      "item": "minecraft:redstone"
+    },
+    "B": {
+      "item": "regeneration:blank_circuit"
+    },
+  "Q": {
+    "item": "minecraft:writable_book"
+    }
+  },
+  "result": {
+    "item": "gallifrey:interface_circuit",
+    "count": 1
+  }
+}

@@ -88,9 +88,9 @@ public class SonicWorkshopBlockEntityRenderer extends GeoBlockRenderer<SonicWork
         sonicMatrices.peek().getNormalMatrix().set(this.socketNormal);
 
         // Lie the Sonic along the 53-degree sloped holder and shrink it to socket size.
-        sonicMatrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(53.0F));
+        sonicMatrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(54.0F));
         sonicMatrices.translate(0.0D, -0.02D, 0.0D);
-        sonicMatrices.scale(0.24F, 0.24F, 0.24F);
+        sonicMatrices.scale(0.50F, 0.50F, 0.50F);
 
         MinecraftClient.getInstance().getItemRenderer().renderItem(
                 sonic,

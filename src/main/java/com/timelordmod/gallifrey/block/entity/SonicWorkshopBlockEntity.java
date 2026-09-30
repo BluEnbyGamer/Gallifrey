@@ -21,6 +21,11 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class SonicWorkshopBlockEntity extends BlockEntity implements GeoBlockEntity {
     private static final String SONIC_KEY = "InstalledSonic";
 
+    /** Charge the installed Sonic every this many ticks (20 ticks = 1 second). */
+    private static final int CHARGE_INTERVAL = 20;
+    /** Power added each time. 2 per second = empty to full (100) in 50 seconds. */
+    private static final int CHARGE_AMOUNT = 2;
+
     private ItemStack sonic = ItemStack.EMPTY;
     private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
 
@@ -136,7 +141,23 @@ public class SonicWorkshopBlockEntity extends BlockEntity implements GeoBlockEnt
         return BlockEntityUpdateS2CPacket.create(this);
     }
 
+    /**
+     * Server tick: slowly recharges the installed Sonic.
+     * Cheap when there's nothing to do - it returns straight away unless a Sonic is
+     * installed, it's a charge tick, and the Sonic isn't already full. It only syncs
+     * to clients when the power actually changes (at most once a second).
+     */
     public static void tick(World world, BlockPos pos, BlockState state, SonicWorkshopBlockEntity blockEntity) {
-        // The Sonic is persistent data; no per-tick logic is required.
+        if (world.isClient || !blockEntity.hasSonic()) {
+            return;
+        }
+        if (world.getTime() % CHARGE_INTERVAL != 0) {
+            return;
+        }
+        if (SonicScrewdriver.getPower(blockEntity.sonic) >= SonicScrewdriver.MAX_POWER) {
+            return;
+        }
+        SonicScrewdriver.recharge(blockEntity.sonic, CHARGE_AMOUNT);
+        blockEntity.sync();
     }
 }
