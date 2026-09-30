@@ -1,25 +1,26 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "pattern": [
-    "RGR",
-    "GPG",
-    "RGR"
+    "GGN",
+    "SCN",
+    "GGN"
   ],
   "key": {
-    "R": {
-      "item": "minecraft:redstone"
-    },
     "G": {
-      "item": "minecraft:gold_nugget"
-    },
-    "P": {
       "item": "gallifrey:treeborg_paste"
+    },
+    "C": {
+      "item": "minecraft:comparator"
+    },
+    "S": {
+      "item": "gallifrey:steel_ingot"
+    },
+    "N": {
+      "item": "minecraft:gold_nugget"
     }
   },
   "result": {
     "item": "gallifrey:blank_circuit",
     "count": 1
-  },
-  "show_notification": true
+  }
 }

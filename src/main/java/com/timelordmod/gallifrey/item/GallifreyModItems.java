@@ -27,23 +27,19 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
-    //public static final ChrononCoreItem CHRONON_CORE = new ChrononCoreItem(
-            //new FabricItemSettings()
-    //);
-
     public static final VortexManipulator VORTEX_MANIPULATOR = new VortexManipulator(
             new FabricItemSettings()
     );
 
-    public static final TreeborgPasteItem TREEBORG_PASTE = new TreeborgPasteItem(
+    public static final SteelIngotItem DALEKANIUM_INGOT = new SteelIngotItem(
             new FabricItemSettings()
     );
 
-    public static final SteelIngotItem steel_ingot = new SteelIngotItem(
+    public static final SteelIngotItem STEEL_INGOT = new SteelIngotItem(
             new FabricItemSettings()
     );
 
-    public static final RawSteelItem raw_steel = new RawSteelItem(
+    public static final RawSteelItem RAW_STEEL = new RawSteelItem(
             new FabricItemSettings()
     );
 
@@ -97,6 +93,11 @@ public class GallifreyModItems {
     public static final Item ASH_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.ASH_BOAT_ID, ModBoats.ASH_BOAT_KEY, false);
     public static final Item ASH_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.ASH_CHEST_BOAT_ID, ModBoats.ASH_BOAT_KEY, true);
 
+    // FOOD ITEMS
+
+    public static final Item MAPLE_SYRUP = registerItem("maple_syrup", new Item(new FabricItemSettings().food(GallifreyFoodComponents.MAPLE_SYRUP)));
+    public static final Item TREEBORG_PASTE = registerItem("treeborg_paste", new Item(new FabricItemSettings().food(GallifreyFoodComponents.TREEBORG_PASTE)));
+
 
 
     // AWT clothing port: wearable without Trinkets (uses the vanilla head equipment slot).
@@ -127,15 +128,14 @@ public class GallifreyModItems {
 
     public static void register() {
         registerItem("white_point_star", WHITE_POINT_STAR);
-        //registerItem("chronon_core", CHRONON_CORE);
         registerItem("vortex_manipulator", VORTEX_MANIPULATOR);
-        registerItem("treeborg_paste", TREEBORG_PASTE);
         registerItem("blank_circuit", BLANK_CIRCUIT);
         registerItem("location_circuit",LOCATION_CIRCUIT);
         registerItem("dimension_circuit",DIMENSION_CIRCUIT);
         registerItem("sonic_crystal",SONIC_CRYSTAL);
-        registerItem("steel_ingot", steel_ingot);
-        registerItem("raw_steel", raw_steel);
+        registerItem("steel_ingot", STEEL_INGOT);
+        registerItem("raw_steel", RAW_STEEL);
+        registerItem("dalekanium_ingot", DALEKANIUM_INGOT);
 
         registerItem("sonic_screwdriver", SONIC_SCREWDRIVER);
         registerItem("fez", FEZ);

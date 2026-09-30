@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "gallifrey:raw_steel"
+    }
+  },
+  "result": {
+    "item": "gallifrey:raw_steel_block",
+    "count": 1
+  }
+}

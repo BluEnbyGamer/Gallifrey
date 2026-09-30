@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "gallifrey:raw_steel"
+  },
+  "result": "gallifrey:steel_ingot",
+  "cookingtime": 200,
+  "experience": 0.5
+}

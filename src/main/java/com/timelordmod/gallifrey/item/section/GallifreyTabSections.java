@@ -124,6 +124,7 @@ public final class GallifreyTabSections {
                 // Tapping
                 entries.add(GallifreyModBlocks.TREE_TAPPER);
                 entries.add(GallifreyModItems.TREEBORG_PASTE);
+                entries.add(GallifreyModItems.MAPLE_SYRUP);
 
                 // Sonics
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
@@ -135,6 +136,10 @@ public final class GallifreyTabSections {
 
                 // TARDIS
                 entries.add(GallifreyModBlocks.TARDIS_EXTERIOR);
+                entries.add(GallifreyModItems.RAW_STEEL);
+                entries.add(GallifreyModItems.STEEL_INGOT);
+                entries.add(GallifreyModBlocks.RAW_STEEL_BLOCK);
+                entries.add(GallifreyModBlocks.STEEL_BLOCK);
                 entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
             }
     );
@@ -210,6 +215,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.DALEKANIUM_BLOCK);
                 entries.add(GallifreyModBlocks.DALEKANIUM_ORE);
                 entries.add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
+                entries.add(GallifreyModItems.DALEKANIUM_INGOT);
             }
     );
 
