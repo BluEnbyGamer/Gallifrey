@@ -64,7 +64,7 @@ public class ModPlacedFeatures {
                         BiomePlacementModifier.of()
                 ));
 
-        register(context, ASH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.TREEBORG_KEY),
+        register(context, ASH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ASH_KEY),
                 List.of(
                         CountPlacementModifier.of(4),
                         SquarePlacementModifier.of(),

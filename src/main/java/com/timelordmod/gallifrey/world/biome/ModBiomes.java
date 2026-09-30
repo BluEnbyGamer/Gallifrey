@@ -31,6 +31,7 @@ public class ModBiomes {
     public static final RegistryKey<Biome> GALLIFREYAN_WASTELAND = registerKey("gallifreyan_wasteland");
     public static final RegistryKey<Biome> TREEBORG_FOREST = registerKey("treeborg_forest");
     public static final RegistryKey<Biome> GALLIFREYAN_TREEBORG_FOREST = registerKey("gallifreyan_treeborg_forest");
+    public static final RegistryKey<Biome> GALLIFREYAN_ASH_FOREST = registerKey("gallifreyan_ash_forest");
 
     private static RegistryKey<Biome> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.BIOME, new Identifier(GallifreyMod.MOD_ID, name));
@@ -96,6 +97,14 @@ public class ModBiomes {
         context.register(GALLIFREYAN_TREEBORG_FOREST, createBiome(false, 0.5F, 0.6F, 10638337, 15105551, 14641191, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.TREEBORG_PLACED_KEY);
+                    DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
+                    DefaultBiomeFeatures.addDefaultGrass(generationSettings);
+                }));
+
+        // Ash Forest - Gallifrey's ash trees, a bit sparser than the Treeborg forest
+        context.register(GALLIFREYAN_ASH_FOREST, createBiome(false, 0.5F, 0.6F, 10638337, 15105551, 14641191, 15109680,
+                placedFeatures, carvers, generationSettings -> {
+                    generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.ASH_PLACED_KEY);
                     DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
                     DefaultBiomeFeatures.addDefaultGrass(generationSettings);
                 }));

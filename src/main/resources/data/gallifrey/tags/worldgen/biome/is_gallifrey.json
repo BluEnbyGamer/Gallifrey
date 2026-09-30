@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:gallifreyan_plains",
+    "gallifrey:gallifreyan_birch_forest",
+    "gallifrey:gallifreyan_taiga",
+    "gallifrey:gallifreyan_ulanda_forest",
+    "gallifrey:gallifreyan_treeborg_forest",
+    "gallifrey:gallifreyan_ash_forest",
+    "gallifrey:gallifreyan_tardis_biome",
+    "gallifrey:gallifreyan_wasteland"
+  ]
+}

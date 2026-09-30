@@ -155,5 +155,15 @@
   "creative_section.gallifrey.clothing": "Clothing",
   "creative_section.gallifrey.mars": "Mars",
   "creative_section.gallifrey.skaro": "Skaro",
-  "catagory.gallifrey.main": "Gallifrey Mod"
+  "catagory.gallifrey.main": "Gallifrey Mod",
+
+  "biome.gallifrey.gallifreyan_plains": "Gallifreyan Plains",
+  "biome.gallifrey.gallifreyan_birch_forest": "Gallifreyan Birch Forest",
+  "biome.gallifrey.gallifreyan_taiga": "Gallifreyan Taiga",
+  "biome.gallifrey.gallifreyan_ulanda_forest": "Gallifreyan Ulanda Forest",
+  "biome.gallifrey.gallifreyan_treeborg_forest": "Gallifreyan Treeborg Forest",
+  "biome.gallifrey.gallifreyan_ash_forest": "Gallifreyan Ash Forest",
+  "biome.gallifrey.gallifreyan_tardis_biome": "Gallifreyan TARDIS Biome",
+  "biome.gallifrey.gallifreyan_wasteland": "Gallifreyan Wasteland",
+  "biome.gallifrey.treeborg_forest": "Treeborg Forest"
 }
