@@ -24,10 +24,12 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import com.timelordmod.gallifrey.networking.ModPackets;
@@ -107,46 +109,21 @@ public class SonicWorkshopBlock extends Block implements BlockEntityProvider {
         return null;
     }
 
-    /**
-     * World-space socket region for the supplied model when FACING=NORTH.
-     * The model's top-level panel bone is rotated 90 degrees around Y, so the
-     * visible gold holder ends up around x=.7-.9, z=.3-.7 in block space.
-     * GeoBlockRenderer then applies the block FACING rotation automatically.
+    /*
+     * INTERACTION
+     * ===========
+     * The whole workshop acts as the Sonic port - no aiming at the gold holder:
+     *   - Empty workshop + holding a Sonic   -> insert it
+     *   - Sonic installed, sneak + empty hand -> take it back out
+     *   - Sonic installed, otherwise          -> open the workshop GUI
+     *
+     * (The old version only accepted clicks on the front face, but the holder is on
+     * the top of the model, so clicking it hit the top face and was ignored. The
+     * Sonic never went in, and the GUI - which needs an installed Sonic - never opened.)
+     *
+     * Sneaking with an empty hand still reaches onUse (vanilla only skips the block
+     * when you sneak while holding something), so sneak-to-remove works.
      */
-    public static boolean isSonicPort(BlockState state, BlockHitResult hit) {
-        /*
-         * The Geo model's sonic_holder bone is around the upper/front portion
-         * of the panel.  Do the hit test in block-local coordinates and make
-         * the interaction area deliberately generous so the player can use
-         * the visible gold socket without pixel-perfect aiming.
-         *
-         * The old implementation tested the wrong side of the model after the
-         * block-facing rotation, which is why the Sonic could not be inserted.
-         */
-        Direction facing = state.get(FACING);
-        if (hit.getSide() != facing) {
-            return false;
-        }
-
-        Vec3d p = hit.getPos();
-        double x = p.x - Math.floor(p.x);
-        double y = p.y - Math.floor(p.y);
-        double z = p.z - Math.floor(p.z);
-
-        // Tangential coordinate across the workshop face.  The socket is on
-        // the upper-right portion of the player's view of the panel.
-        double across;
-        switch (facing) {
-            case EAST, WEST -> across = z;
-            default -> across = x;
-        }
-
-        // Upper half of the visible gold holder.  Keep this separate from the
-        // lower panel so clicking the panel still opens the GUI.
-        return across >= 0.45D && across <= 0.95D
-                && y >= 0.28D && y <= 0.72D;
-    }
-
     @Override
     public ActionResult onUse(
             BlockState state,
@@ -156,68 +133,52 @@ public class SonicWorkshopBlock extends Block implements BlockEntityProvider {
             Hand hand,
             BlockHitResult hit) {
 
-        BlockEntity be = world.getBlockEntity(pos);
-        if (!(be instanceof SonicWorkshopBlockEntity workshop)) {
+        if (!(world.getBlockEntity(pos) instanceof SonicWorkshopBlockEntity workshop)) {
             return ActionResult.PASS;
         }
 
-        if (isSonicPort(state, hit)) {
-            if (world.isClient) {
-                // Claim the socket on the client so a held Sonic's normal
-                // right-click action cannot run. The actual insert/remove is
-                // performed by the server when the interaction packet arrives.
-                return ActionResult.SUCCESS;
-            }
+        ItemStack held = player.getStackInHand(hand);
 
-            ItemStack held = player.getStackInHand(hand);
+        // Only the main hand drives the workshop, so one click never fires twice.
+        if (hand != Hand.MAIN_HAND) {
+            return ActionResult.PASS;
+        }
 
-            if (workshop.getSonic().isEmpty()) {
-                if (!(held.getItem() instanceof SonicScrewdriver)) {
-                    return ActionResult.SUCCESS;
-                }
-
-                ItemStack inserted = held.copy();
-                inserted.setCount(1);
-                workshop.setSonic(inserted);
-
-                if (!player.getAbilities().creativeMode) {
-                    held.decrement(1);
-                }
-
-                return ActionResult.SUCCESS;
-            }
-
-            // An empty hand removes the installed Sonic from the socket.
-            if (held.isEmpty()) {
-                ItemStack removed = workshop.removeSonic();
-                if (!removed.isEmpty()) {
-                    if (!player.giveItemStack(removed)) {
-                        player.dropItem(removed, false);
-                    }
-                }
-                return ActionResult.SUCCESS;
-            }
-
-            // The socket has claimed this click even when it cannot perform
-            // an operation with the currently held item.
+        // Client: claim the click so a held Sonic's own right-click doesn't run.
+        // The server does the real work and syncs the result back.
+        if (world.isClient) {
             return ActionResult.SUCCESS;
         }
 
-        // Only the installed Sonic may open the workshop.  Ask the server to
-        // open the client screen so this is deterministic and cannot depend on
-        // client-side BlockEntity synchronization timing.
-        if (!world.isClient && workshop.hasSonic() && player instanceof ServerPlayerEntity serverPlayer) {
-            net.minecraft.network.PacketByteBuf buf = PacketByteBufs.create();
-            buf.writeBlockPos(pos);
-            ServerPlayNetworking.send(
-                    serverPlayer,
-                    ModPackets.OPEN_SONIC_WORKSHOP,
-                    buf
-            );
+        if (!workshop.hasSonic()) {
+            if (held.getItem() instanceof SonicScrewdriver) {
+                ItemStack inserted = held.copy();
+                inserted.setCount(1);
+                workshop.setSonic(inserted);
+                if (!player.getAbilities().creativeMode) {
+                    held.decrement(1);
+                }
+                world.playSound(null, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 0.6F, 1.4F);
+            } else {
+                player.sendMessage(Text.translatable("block.gallifrey.sonic_workshop.needs_sonic"), true);
+            }
+            return ActionResult.CONSUME;
         }
 
-        // Claim the click.  A held Sonic therefore cannot use its own
-        // right-click action against the workshop.
-        return ActionResult.SUCCESS;
+        if (player.isSneaking() && held.isEmpty()) {
+            ItemStack removed = workshop.removeSonic();
+            if (!removed.isEmpty()) {
+                player.setStackInHand(hand, removed);
+                world.playSound(null, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 0.6F, 1.4F);
+            }
+            return ActionResult.CONSUME;
+        }
+
+        if (player instanceof ServerPlayerEntity serverPlayer) {
+            net.minecraft.network.PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeBlockPos(pos);
+            ServerPlayNetworking.send(serverPlayer, ModPackets.OPEN_SONIC_WORKSHOP, buf);
+        }
+        return ActionResult.CONSUME;
     }
 }

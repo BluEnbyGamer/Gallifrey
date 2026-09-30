@@ -98,17 +98,21 @@ public class SonicWorkshopBlockEntity extends BlockEntity implements GeoBlockEnt
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
+        // Always write the key, even with no Sonic (as an empty compound).
+        // If this NBT ends up completely empty, Minecraft skips sending the
+        // update packet, so the client never learns the Sonic was removed and
+        // keeps rendering it. readNbt turns the empty compound back into EMPTY.
+        NbtCompound sonicNbt = new NbtCompound();
         if (!sonic.isEmpty()) {
-            NbtCompound sonicNbt = new NbtCompound();
             sonic.writeNbt(sonicNbt);
-            nbt.put(SONIC_KEY, sonicNbt);
         }
+        nbt.put(SONIC_KEY, sonicNbt);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        if (nbt.contains(SONIC_KEY)) {
+        if (nbt.contains(SONIC_KEY) && !nbt.getCompound(SONIC_KEY).isEmpty()) {
             sonic = ItemStack.fromNbt(nbt.getCompound(SONIC_KEY));
             if (!(sonic.getItem() instanceof SonicScrewdriver)) {
                 sonic = ItemStack.EMPTY;

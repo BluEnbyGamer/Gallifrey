@@ -48,6 +48,8 @@ public class SonicWorkshopScreen extends Screen {
 
     private SonicCasing selectedCasing;
     private final BlockPos pos;
+    /** True once the client has seen the installed Sonic (see tick()). */
+    private boolean sawSonic;
 
     public SonicWorkshopScreen(BlockPos pos) {
         super(Text.literal("Sonic Workshop"));
@@ -74,6 +76,7 @@ public class SonicWorkshopScreen extends Screen {
         // `client` is only set once the screen is shown, so read the installed casing here.
         SonicWorkshopBlockEntity workshop = workshop();
         if (workshop != null) {
+            sawSonic = true;
             selectedCasing = SonicScrewdriver.getCasing(workshop.getSonic());
         }
 
@@ -621,7 +624,18 @@ public class SonicWorkshopScreen extends Screen {
     @Override
     public void tick() {
         super.tick();
-        if (workshop() == null) {
+        // Close if the workshop block is gone, or its Sonic was taken out while open.
+        // Don't close just because the client hasn't received the Sonic yet: the
+        // server only opens this screen when a Sonic IS installed, and the block
+        // data can arrive a tick or two after the open packet.
+        boolean blockGone = client == null || client.world == null
+                || !(client.world.getBlockEntity(pos) instanceof SonicWorkshopBlockEntity);
+        SonicWorkshopBlockEntity workshop = workshop();
+        if (workshop != null && !sawSonic) {
+            sawSonic = true;
+            selectedCasing = SonicScrewdriver.getCasing(workshop.getSonic());
+        }
+        if (blockGone || (sawSonic && workshop == null)) {
             close();
         }
     }
