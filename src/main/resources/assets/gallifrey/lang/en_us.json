@@ -38,6 +38,8 @@
   "item.gallifrey.music_disk_a.desc": "Karyu - DW_XIV",
   "item.gallifrey.music_disk_b": "Gallifrey Music Disc",
   "item.gallifrey.music_disk_b.desc": "Murray Gold  - This Is Gallifrey: Our Childhood. Our Home",
+  "item.gallifrey.maple_boat": "Maple Boat",
+  "item.gallifrey.maple_chest_boat": "Maple Boat with Chest",
 
   //blocks go here
   "block.gallifrey.ulanda_sapling": "Ulanda Sapling",
@@ -157,6 +159,24 @@
   "block.gallifrey.raw_steel_block": "Block of Raw Steel",
   "block.gallifrey.steel_block": "Block of Steel",
   "block.gallifrey.piss_crystal": "Mars Crystal",
+  "block.gallifrey.maple_sapling": "Maple Sapling",
+  "block.gallifrey.maple_leaves": "Maple Leaves",
+  "block.gallifrey.maple_wood": "Maple Wood",
+  "block.gallifrey.maple_log": "Maple Log",
+  "block.gallifrey.stripped_maple_wood": "Stripped Maple Wood",
+  "block.gallifrey.stripped_maple_log": "Stripped Maple Log",
+  "block.gallifrey.maple_planks": "Maple Planks",
+  "block.gallifrey.maple_stairs": "Maple Stairs",
+  "block.gallifrey.maple_slab": "Maple Slab",
+  "block.gallifrey.maple_fence": "Maple Fence",
+  "block.gallifrey.maple_fence_gate": "Maple Fence Gate",
+  "block.gallifrey.maple_door": "Maple Door",
+  "block.gallifrey.maple_trapdoor": "Maple Trapdoor",
+  "block.gallifrey.maple_pressure_plate": "Maple Pressure Plate",
+  "block.gallifrey.maple_button": "Maple Button",
+  "block.gallifrey.maple_standing_sign": "Maple Sign",
+  "block.gallifrey.maple_hanging_sign": "Maple Hanging Sign",
+  "block.gallifrey.potted_maple_sapling": "Potted Maple Sapling",
 
   //advancements go here
 

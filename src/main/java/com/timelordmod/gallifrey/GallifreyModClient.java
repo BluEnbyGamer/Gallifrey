@@ -359,7 +359,7 @@ public class GallifreyModClient implements ClientModInitializer {
         );
 
         // =========================================================
-        // ASH RENDER LAYER
+        // MAPLE RENDER LAYER
         // =========================================================
 
         BlockRenderLayerMap.INSTANCE.putBlock(

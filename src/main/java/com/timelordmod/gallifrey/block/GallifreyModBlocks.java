@@ -1046,7 +1046,7 @@ public class GallifreyModBlocks {
                     .build();
 
     // ============================================================
-    // ULANDA WOOD SET
+    // MAPLE WOOD SET
     // ============================================================
 
     public static final Block MAPLE_LEAVES = registerBlock(
@@ -1174,7 +1174,7 @@ public class GallifreyModBlocks {
 
 
     // ============================================================
-    // ULANDA SIGNS
+    // MAPLE SIGNS
     // ============================================================
 
     public static final Identifier MAPLE_SIGN_TEXTURE =

@@ -93,13 +93,24 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.HANGING_ASH_SIGN);
 
         //MAPLE WOOD SET BLOCK DROPS
-        //addDrop(GallifreyModBlocks.ULANDA_SAPLING);
-        //addDrop(GallifreyModBlocks.ULANDA_LEAVES, leavesDrops(GallifreyModBlocks.ULANDA_LEAVES, GallifreyModBlocks.ULANDA_SAPLING, 0.0025f));
-        //addDrop(GallifreyModBlocks.ULANDA_LOG);
-        //addDrop(GallifreyModBlocks.STRIP_ULANDA_LOG);
-        //addDrop(GallifreyModBlocks.ULANDA_WOOD);
-        //addDrop(GallifreyModBlocks.STRIP_ULANDA_WOOD);
-        //addDrop(GallifreyModBlocks.ULANDA_PLANKS);
+        addDrop(GallifreyModBlocks.MAPLE_SAPLING);
+        addDrop(GallifreyModBlocks.MAPLE_LEAVES, leavesDrops(GallifreyModBlocks.MAPLE_LEAVES, GallifreyModBlocks.MAPLE_SAPLING, 0.0025f));
+        addDrop(GallifreyModBlocks.MAPLE_LOG);
+        addDrop(GallifreyModBlocks.STRIP_MAPLE_LOG);
+        addDrop(GallifreyModBlocks.MAPLE_WOOD);
+        addDrop(GallifreyModBlocks.STRIP_MAPLE_WOOD);
+        addDrop(GallifreyModBlocks.MAPLE_PLANKS);
+        addDrop(GallifreyModBlocks.MAPLE_STAIRS);
+        addPottedPlantDrops(GallifreyModBlocks.POTTED_MAPLE_SAPLING);
+        addDrop(GallifreyModBlocks.MAPLE_SLAB, slabDrops(GallifreyModBlocks.MAPLE_SLAB));
+        addDrop(GallifreyModBlocks.MAPLE_BUTTON);
+        addDrop(GallifreyModBlocks.MAPLE_FENCE);
+        addDrop(GallifreyModBlocks.MAPLE_FENCE_GATE);
+        addDrop(GallifreyModBlocks.MAPLE_DOOR, doorDrops(GallifreyModBlocks.MAPLE_DOOR));
+        addDrop(GallifreyModBlocks.MAPLE_TRAPDOOR);
+        addDrop(GallifreyModBlocks.MAPLE_PRESSURE_PLATE);
+        addDrop(GallifreyModBlocks.STANDING_MAPLE_SIGN);
+        addDrop(GallifreyModBlocks.HANGING_MAPLE_SIGN);
 
         //MOON-PINE WOOD SET BLOCK DROPS
         //addDrop(GallifreyModBlocks.ULANDA_SAPLING);

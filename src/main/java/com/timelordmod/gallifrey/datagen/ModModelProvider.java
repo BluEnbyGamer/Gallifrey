@@ -27,6 +27,7 @@ public class ModModelProvider extends FabricModelProvider {
         ulandaPool.family(GallifreyModBlocks.ULANDA_FAMILY);
         treeborgPool.family(GallifreyModBlocks.TREEBORG_FAMILY);
         ashPool.family(GallifreyModBlocks.ASH_FAMILY);
+        maplePool.family(GallifreyModBlocks.MAPLE_FAMILY);
 
         //TARDIS WOOD TYPE
         blockStateModelGenerator.registerLog(GallifreyModBlocks.TARDIS_LOG).log(GallifreyModBlocks.TARDIS_LOG).wood(GallifreyModBlocks.TARDIS_WOOD);
