@@ -88,7 +88,7 @@ public class TapperBlock extends Block {
     }
 
     // ------------------------------------------------------------------
-    // Placement: only on the side of a tappable log
+    // Placement: only on the side of a tappable log -
     // ------------------------------------------------------------------
 
     private static BlockPos attachedPos(BlockState state, BlockPos pos) {
