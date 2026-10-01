@@ -34,6 +34,10 @@
   "item.gallifrey.dalekanium_ingot": "Dalekanium Ingot",
   "item.gallifrey.maple_syrup": "Maple Syrup",
   "item.gallifrey.silicone": "Silicone",
+  "item.gallifrey.music_disk_a": "DW_XIV Music Disc",
+  "item.gallifrey.music_disk_a.desc": "Karyu - DW_XIV",
+  "item.gallifrey.music_disk_b": "Gallifrey Music Disc",
+  "item.gallifrey.music_disk_b.desc": "Murray Gold  - This Is Gallifrey: Our Childhood. Our Home",
 
   //blocks go here
   "block.gallifrey.ulanda_sapling": "Ulanda Sapling",

@@ -33,6 +33,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> TARDIS_PLACED_KEY = registerKey("tardis_placed");
     public static final RegistryKey<PlacedFeature> TREEBORG_PLACED_KEY = registerKey("treeborg_placed");
     public static final RegistryKey<PlacedFeature> ASH_PLACED_KEY = registerKey("ash_placed");
+    public static final RegistryKey<PlacedFeature> MAPLE_PLACED_KEY = registerKey("maple_placed");
 
     public static void boostrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -72,6 +73,16 @@ public class ModPlacedFeatures {
                         PlacedFeatures.wouldSurvive(GallifreyModBlocks.ASH_SAPLING),
                         BiomePlacementModifier.of()
                 ));
+
+        register(context, MAPLE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MAPLE_KEY),
+                List.of(
+                        CountPlacementModifier.of(6),
+                        SquarePlacementModifier.of(),
+                        HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES),
+                        PlacedFeatures.wouldSurvive(GallifreyModBlocks.MAPLE_SAPLING),
+                        BiomePlacementModifier.of()
+                ));
+
 
         register(context, SONIC_CRYSTAL_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SONIC_CRYSTAL_ORE_KEY),
                  ModOrePlacement.modifiersWithCount(12, // Veins per Chunk

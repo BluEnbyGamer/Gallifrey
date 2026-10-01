@@ -11,6 +11,9 @@ public class GallifreySounds {
     public static final SoundEvent VM_LAND = registerSound("vm_land");
     public static final SoundEvent SONIC = registerSound("sonic");
 
+    public static final SoundEvent DWXIV = registerSound("dw_xiv_music");
+    public static final SoundEvent GALLIFREY = registerSound("gallifrey_music");
+
     private static SoundEvent registerSound(String name) {
         Identifier id = new Identifier(GallifreyMod.MOD_ID, name);
         return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(id));

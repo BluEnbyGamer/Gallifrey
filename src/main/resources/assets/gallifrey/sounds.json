@@ -13,5 +13,23 @@
     "sounds": [
       "gallifrey:sonic"
     ]
+  },
+  "dw_xiv_music": {
+    "sounds": [
+      {
+        "name": "gallifrey:dw_xiv_music",
+        "stream": true,
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "gallifrey_music": {
+    "sounds": [
+      {
+        "name": "gallifrey:gallifrey_music",
+        "stream": true,
+        "attenuation_distance": 8
+      }
+    ]
   }
 }

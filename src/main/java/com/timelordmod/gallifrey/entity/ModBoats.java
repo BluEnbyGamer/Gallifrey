@@ -22,11 +22,15 @@ public class ModBoats {
     public static final Identifier ASH_BOAT_ID = new Identifier(GallifreyMod.MOD_ID, "ash_boat");
     public static final Identifier ASH_CHEST_BOAT_ID = new Identifier(GallifreyMod.MOD_ID, "ash_chest_boat");
 
+    public static final Identifier MAPLE_BOAT_ID = new Identifier(GallifreyMod.MOD_ID, "maple_boat");
+    public static final Identifier MAPLE_CHEST_BOAT_ID = new Identifier(GallifreyMod.MOD_ID, "maple_chest_boat");
+
 
     public static final RegistryKey<TerraformBoatType> TARDIS_BOAT_KEY = TerraformBoatTypeRegistry.createKey(TARDIS_BOAT_ID);
     public static final RegistryKey<TerraformBoatType> ULANDA_BOAT_KEY = TerraformBoatTypeRegistry.createKey(ULANDA_BOAT_ID);
     public static final RegistryKey<TerraformBoatType> TREEBORG_BOAT_KEY = TerraformBoatTypeRegistry.createKey(TREEBORG_BOAT_ID);
     public static final RegistryKey<TerraformBoatType> ASH_BOAT_KEY = TerraformBoatTypeRegistry.createKey(ASH_BOAT_ID);
+    public static final RegistryKey<TerraformBoatType> MAPLE_BOAT_KEY = TerraformBoatTypeRegistry.createKey(MAPLE_BOAT_ID);
 
 
     public static void registerBoats() {
@@ -54,10 +58,17 @@ public class ModBoats {
                 .planks(GallifreyModBlocks.ASH_PLANKS.asItem())
                 .build();
 
+        TerraformBoatType mapleBoat = new TerraformBoatType.Builder()
+                .item(GallifreyModItems.MAPLE_BOAT)
+                .chestItem(GallifreyModItems.MAPLE_CHEST_BOAT)
+                .planks(GallifreyModBlocks.MAPLE_PLANKS.asItem())
+                .build();
+
 
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, ULANDA_BOAT_KEY, ulandaBoat);
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, TARDIS_BOAT_KEY, tardisBoat);
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, TREEBORG_BOAT_KEY, treeborgBoat);
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, ASH_BOAT_KEY, ashBoat);
+        Registry.register(TerraformBoatTypeRegistry.INSTANCE, MAPLE_BOAT_KEY, mapleBoat);
     }
 }

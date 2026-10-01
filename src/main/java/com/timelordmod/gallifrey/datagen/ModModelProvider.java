@@ -22,6 +22,7 @@ public class ModModelProvider extends FabricModelProvider {
         BlockStateModelGenerator.BlockTexturePool tardiswoodPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TARDIS_PLANKS);
         BlockStateModelGenerator.BlockTexturePool treeborgPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TREEBORG_PLANKS);
         BlockStateModelGenerator.BlockTexturePool ashPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ASH_PLANKS);
+        BlockStateModelGenerator.BlockTexturePool maplePool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.MAPLE_PLANKS);
         tardiswoodPool.family(GallifreyModBlocks.TARDIS_FAMILY);
         ulandaPool.family(GallifreyModBlocks.ULANDA_FAMILY);
         treeborgPool.family(GallifreyModBlocks.TREEBORG_FAMILY);
@@ -76,6 +77,16 @@ public class ModModelProvider extends FabricModelProvider {
         ashPool.fenceGate(GallifreyModBlocks.ASH_FENCE_GATE);
 
         //MAPLE WOOD TYPE
+        blockStateModelGenerator.registerLog(GallifreyModBlocks.MAPLE_LOG).log(GallifreyModBlocks.MAPLE_LOG).wood(GallifreyModBlocks.MAPLE_WOOD);
+        blockStateModelGenerator.registerLog(GallifreyModBlocks.STRIP_MAPLE_LOG).log(GallifreyModBlocks.STRIP_MAPLE_LOG).wood(GallifreyModBlocks.STRIP_MAPLE_WOOD);
+        blockStateModelGenerator.registerDoor(GallifreyModBlocks.MAPLE_DOOR);
+        blockStateModelGenerator.registerTrapdoor(GallifreyModBlocks.MAPLE_TRAPDOOR);
+        maplePool.stairs(GallifreyModBlocks.MAPLE_STAIRS);
+        maplePool.slab(GallifreyModBlocks.MAPLE_SLAB);
+        maplePool.button(GallifreyModBlocks.MAPLE_BUTTON);
+        maplePool.pressurePlate(GallifreyModBlocks.MAPLE_PRESSURE_PLATE);
+        maplePool.fence(GallifreyModBlocks.MAPLE_FENCE);
+        maplePool.fenceGate(GallifreyModBlocks.MAPLE_FENCE_GATE);
 
 
         //MOON-PINE WOOD TYPE
@@ -86,10 +97,12 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSingleton(GallifreyModBlocks.ULANDA_LEAVES, TexturedModel.LEAVES);
         blockStateModelGenerator.registerSingleton(GallifreyModBlocks.TREEBORG_LEAVES, TexturedModel.LEAVES);
         blockStateModelGenerator.registerSingleton(GallifreyModBlocks.ASH_LEAVES, TexturedModel.LEAVES);
+        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.MAPLE_LEAVES, TexturedModel.LEAVES);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.TARDIS_SAPLING, GallifreyModBlocks.POTTED_TARDIS_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.ULANDA_SAPLING, GallifreyModBlocks.POTTED_ULANDA_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.TREEBORG_SAPLING, GallifreyModBlocks.POTTED_TREEBORG_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.ASH_SAPLING, GallifreyModBlocks.POTTED_ASH_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.MAPLE_SAPLING, GallifreyModBlocks.POTTED_MAPLE_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override
@@ -98,6 +111,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(GallifreyModItems.HANGING_ULANDA_SIGN, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.HANGING_TREEBORG_SIGN, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.HANGING_ASH_SIGN, Models.GENERATED);
+        itemModelGenerator.register(GallifreyModItems.HANGING_MAPLE_SIGN, Models.GENERATED);
 
         itemModelGenerator.register(GallifreyModItems.TARDIS_BOAT, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.TARDIS_CHEST_BOAT, Models.GENERATED);
@@ -110,5 +124,11 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(GallifreyModItems.ASH_BOAT, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.ASH_CHEST_BOAT, Models.GENERATED);
+
+        itemModelGenerator.register(GallifreyModItems.MAPLE_BOAT, Models.GENERATED);
+        itemModelGenerator.register(GallifreyModItems.MAPLE_CHEST_BOAT, Models.GENERATED);
+
+        itemModelGenerator.register(GallifreyModItems.DW_XIV_MUSIC_DISC, Models.GENERATED);
+        itemModelGenerator.register(GallifreyModItems.GALLIFREY_MUSIC_DISC, Models.GENERATED);
     }
 }

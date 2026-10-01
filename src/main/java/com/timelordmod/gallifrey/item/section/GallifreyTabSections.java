@@ -104,6 +104,27 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.HANGING_ASH_SIGN);
                 entries.add(GallifreyModItems.ASH_BOAT);
                 entries.add(GallifreyModItems.ASH_CHEST_BOAT);
+
+                // Maple wood set
+                entries.add(GallifreyModBlocks.MAPLE_SAPLING);
+                entries.add(GallifreyModBlocks.MAPLE_LEAVES);
+                entries.add(GallifreyModBlocks.MAPLE_LOG);
+                entries.add(GallifreyModBlocks.MAPLE_WOOD);
+                entries.add(GallifreyModBlocks.STRIP_MAPLE_LOG);
+                entries.add(GallifreyModBlocks.STRIP_MAPLE_WOOD);
+                entries.add(GallifreyModBlocks.MAPLE_PLANKS);
+                entries.add(GallifreyModBlocks.MAPLE_STAIRS);
+                entries.add(GallifreyModBlocks.MAPLE_SLAB);
+                entries.add(GallifreyModBlocks.MAPLE_FENCE);
+                entries.add(GallifreyModBlocks.MAPLE_FENCE_GATE);
+                entries.add(GallifreyModBlocks.MAPLE_DOOR);
+                entries.add(GallifreyModBlocks.MAPLE_TRAPDOOR);
+                entries.add(GallifreyModBlocks.MAPLE_PRESSURE_PLATE);
+                entries.add(GallifreyModBlocks.MAPLE_BUTTON);
+                entries.add(GallifreyModItems.MAPLE_SIGN);
+                entries.add(GallifreyModItems.HANGING_MAPLE_SIGN);
+                entries.add(GallifreyModItems.MAPLE_BOAT);
+                entries.add(GallifreyModItems.MAPLE_CHEST_BOAT);
             }
     );
 
@@ -121,6 +142,8 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.LOCATION_CIRCUIT);
                 entries.add(GallifreyModItems.INTERFACE_CIRCUIT);
                 entries.add(GallifreyModItems.DIMENSION_CIRCUIT);
+                entries.add(GallifreyModItems.DW_XIV_MUSIC_DISC);
+                entries.add(GallifreyModItems.GALLIFREY_MUSIC_DISC);
 
                 // Tapping
                 entries.add(GallifreyModBlocks.TREE_TAPPER);

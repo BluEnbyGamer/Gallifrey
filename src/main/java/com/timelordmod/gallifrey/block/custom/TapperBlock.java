@@ -74,6 +74,8 @@ public class TapperBlock extends Block {
     private static Block leavesFor(BlockState log) {
         if (log.isOf(GallifreyModBlocks.TREEBORG_LOG)) return GallifreyModBlocks.TREEBORG_LEAVES;
         if (log.isOf(Blocks.OAK_LOG)) return Blocks.OAK_LEAVES;
+        if (log.isOf(GallifreyModBlocks.MAPLE_LOG)) return GallifreyModBlocks.MAPLE_LEAVES;
+
         return null;
     }
 
@@ -81,6 +83,7 @@ public class TapperBlock extends Block {
     private static Item productFor(BlockState log) {
         if (log.isOf(GallifreyModBlocks.TREEBORG_LOG)) return GallifreyModItems.TREEBORG_PASTE;
         if (log.isOf(Blocks.OAK_LOG)) return GallifreyModItems.SILICONE;
+        if (log.isOf(GallifreyModBlocks.MAPLE_LOG)) return GallifreyModItems.MAPLE_SYRUP;
         return null;
     }
 

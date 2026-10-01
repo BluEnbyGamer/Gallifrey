@@ -2,20 +2,18 @@ package com.timelordmod.gallifrey.item;
 
 import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import com.timelordmod.gallifrey.GallifreyMod;
+import com.timelordmod.gallifrey.GallifreySounds;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.entity.ModBoats;
 import com.timelordmod.gallifrey.item.custom.GeoHeadwearItem;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.item.HangingSignItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.SignItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 import com.timelordmod.gallifrey.item.custom.HeadwearItem;
-import net.minecraft.item.ArmorMaterials;
 
 public class GallifreyModItems {
 
@@ -101,9 +99,22 @@ public class GallifreyModItems {
     public static final Item ASH_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.ASH_BOAT_ID, ModBoats.ASH_BOAT_KEY, false);
     public static final Item ASH_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.ASH_CHEST_BOAT_ID, ModBoats.ASH_BOAT_KEY, true);
 
+    public static final Item MAPLE_SIGN = registerItem("maple_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), GallifreyModBlocks.STANDING_MAPLE_SIGN, GallifreyModBlocks.WALL_MAPLE_SIGN));
+    public static final Item HANGING_MAPLE_SIGN = registerItem("maple_hanging_sign",
+            new HangingSignItem(GallifreyModBlocks.HANGING_MAPLE_SIGN, GallifreyModBlocks.WALL_HANGING_MAPLE_SIGN, new FabricItemSettings().maxCount(16)));
+    public static final Item MAPLE_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MAPLE_BOAT_ID, ModBoats.MAPLE_BOAT_KEY, false);
+    public static final Item MAPLE_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MAPLE_CHEST_BOAT_ID, ModBoats.MAPLE_BOAT_KEY, true);
+
     // FOOD ITEMS
     public static final Item MAPLE_SYRUP = registerItem("maple_syrup", new Item(new FabricItemSettings().food(GallifreyFoodComponents.MAPLE_SYRUP)));
     public static final Item TREEBORG_PASTE = registerItem("treeborg_paste", new Item(new FabricItemSettings().food(GallifreyFoodComponents.TREEBORG_PASTE)));
+
+    //music disks
+    public static final Item DW_XIV_MUSIC_DISC = registerItem("music_disk_a",
+            new MusicDiscItem(7, GallifreySounds.DWXIV, new FabricItemSettings().maxCount(1), 151));
+    public static final Item GALLIFREY_MUSIC_DISC = registerItem("music_disk_b",
+            new MusicDiscItem(7, GallifreySounds.GALLIFREY, new FabricItemSettings().maxCount(1), 198));
 
 
 
