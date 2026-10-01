@@ -38,6 +38,13 @@ public class HatFeatureRenderer extends FeatureRenderer<AbstractClientPlayerEnti
         }
         matrices.multiply(RotationAxis.NEGATIVE_Z.rotationDegrees(180.0F));
 
+        // Keep the Trustable Hat on the same compact headwear scale as the
+        // Fezzes/Eye Stalk. Its original item model is taller, so rendering it
+        // at full item scale makes an oversized second-looking silhouette.
+        if (stack.isOf(GallifreyModItems.TRUSTABLE_HAT)) {
+            matrices.scale(0.75F, 0.75F, 0.75F);
+        }
+
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         itemRenderer.renderItem(player, stack, ModelTransformationMode.NONE, false, matrices,
                 vertexConsumers, player.getWorld(), light, OverlayTexture.DEFAULT_UV, 0);
