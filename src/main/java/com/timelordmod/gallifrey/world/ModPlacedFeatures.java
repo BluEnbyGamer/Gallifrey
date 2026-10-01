@@ -27,6 +27,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> WHITE_POINT_ORE_PLACED_KEY = registerKey("white_point_ore_placed");
     public static final RegistryKey<PlacedFeature> NETHER_WHITE_POINT_ORE_PLACED_KEY = registerKey("nether_white_point_ore_placed");
     public static final RegistryKey<PlacedFeature> MARS_IRON_ORE_PLACED_KEY = registerKey("mars_iron_ore_placed");
+    public static final RegistryKey<PlacedFeature> MARS_PISS_CRYSTAL_PLACED_KEY = registerKey("mars_piss_crystal_placed");
 
 
     public static final RegistryKey<PlacedFeature> ULANDA_PLACED_KEY = registerKey("ulanda_placed");
@@ -102,6 +103,10 @@ public class ModPlacedFeatures {
         register(context, MARS_IRON_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MARS_IRON_ORE_KEY),
         ModOrePlacement.modifiersWithCount(8,
         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(80))));
+
+        register(context, MARS_PISS_CRYSTAL_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MARS_PISS_CRYSTAL_KEY),
+        ModOrePlacement.modifiersWithCount(5,
+        HeightRangePlacementModifier.uniform(YOffset.fixed(-48), YOffset.fixed(48))));
 
     }
 

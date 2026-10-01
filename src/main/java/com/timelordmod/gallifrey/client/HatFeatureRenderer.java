@@ -39,7 +39,7 @@ public class HatFeatureRenderer extends FeatureRenderer<AbstractClientPlayerEnti
         matrices.multiply(RotationAxis.NEGATIVE_Z.rotationDegrees(180.0F));
 
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-        itemRenderer.renderItem(player, stack, ModelTransformationMode.HEAD, false, matrices,
+        itemRenderer.renderItem(player, stack, ModelTransformationMode.NONE, false, matrices,
                 vertexConsumers, player.getWorld(), light, OverlayTexture.DEFAULT_UV, 0);
         matrices.pop();
     }

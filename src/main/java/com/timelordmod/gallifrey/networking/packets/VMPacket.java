@@ -161,6 +161,7 @@ public class VMPacket {
             case "GO" -> goLocation(server, player, vm, buf);
             case "ADD_PLAYER" -> addPlayer(server, player, vm, buf);
             case "REMOVE_PLAYER" -> removePlayer(server, player, vm, buf);
+            case "SET_INBOUND_TELEPORTS" -> setInboundTeleports(server, player, vm, buf);
             case "SELF_DESTRUCT" -> armSelfDestruct(player, vm);
             case "CANCEL_SELF_DESTRUCT" -> cancelSelfDestruct(player, vm);
             default -> player.sendMessage(Text.literal("Unknown VM command."), true);
@@ -182,6 +183,16 @@ public class VMPacket {
         if (targetPlayerMode) {
             ServerPlayerEntity targetPlayer = server.getPlayerManager().getPlayer(targetPlayerName);
             if (targetPlayer == null) { player.sendMessage(Text.literal("Player not found: " + targetPlayerName), true); return; }
+            if (!targetPlayer.getUuid().equals(player.getUuid())) {
+                ItemStack targetVm = findVortexManipulator(targetPlayer);
+                if (!targetVm.isEmpty()) {
+                    VortexManipulatorData.ensureOwner(targetVm, targetPlayer);
+                    if (VortexManipulatorData.blocksInboundTeleports(targetVm)) {
+                        player.sendMessage(Text.literal("That player has disabled incoming Vortex Manipulator teleports."), true);
+                        return;
+                    }
+                }
+            }
             targetWorld = targetPlayer.getServerWorld();
             targetPos = targetPlayer.getPos();
         } else {
@@ -249,6 +260,19 @@ public class VMPacket {
         sendState(server, player);
     }
 
+    private static void setInboundTeleports(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
+        if (!VortexManipulatorData.isOwner(vm, player.getUuid())) {
+            player.sendMessage(Text.literal("Only the VM owner can change inbound teleport protection."), true);
+            return;
+        }
+        boolean blocked = buf.readBoolean();
+        VortexManipulatorData.setBlocksInboundTeleports(vm, blocked);
+        player.sendMessage(Text.literal(blocked
+                ? "Incoming Vortex Manipulator teleports BLOCKED."
+                : "Incoming Vortex Manipulator teleports ALLOWED."), true);
+        sendState(server, player);
+    }
+
     private static void removePlayer(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
         if (!VortexManipulatorData.isOwner(vm, player.getUuid())) { player.sendMessage(Text.literal("Only the VM owner can change isomorphic users."), true); return; }
         String name = buf.readString(64);
@@ -313,6 +337,7 @@ public class VMPacket {
         PacketByteBuf buf = net.fabricmc.fabric.api.networking.v1.PacketByteBufs.create();
         buf.writeBoolean(VortexManipulatorData.isOwner(vm, player.getUuid()));
         buf.writeVarInt(SELF_DESTRUCTS.getOrDefault(player.getUuid(), 0));
+        buf.writeBoolean(VortexManipulatorData.blocksInboundTeleports(vm));
         NbtList locations = VortexManipulatorData.locations(vm);
         buf.writeVarInt(locations.size());
         for (int i = 0; i < locations.size(); i++) {

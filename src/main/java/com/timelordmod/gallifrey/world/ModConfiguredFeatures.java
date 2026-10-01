@@ -29,6 +29,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> WHITE_POINT_ORE_KEY = registerKey("white_point_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> NETHER_WHITE_POINT_ORE_KEY = registerKey("nether_white_point_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MARS_IRON_ORE_KEY = registerKey("mars_iron_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MARS_PISS_CRYSTAL_KEY = registerKey("mars_piss_crystal");
 
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> ULANDA_KEY =registerKey("ulanda");
@@ -70,6 +71,10 @@ public class ModConfiguredFeatures {
                 OreFeatureConfig.createTarget(marsReplacables, GallifreyModBlocks.MARS_IRON_ORE.getDefaultState()));
 
         register(context, MARS_IRON_ORE_KEY, Feature.ORE, new OreFeatureConfig(marsIronOres, 8));
+
+        List<OreFeatureConfig.Target> marsPissCrystalTargets = List.of(
+                OreFeatureConfig.createTarget(marsReplacables, GallifreyModBlocks.PISS_CRYSTAL.getDefaultState()));
+        register(context, MARS_PISS_CRYSTAL_KEY, Feature.ORE, new OreFeatureConfig(marsPissCrystalTargets, 4));
 
         register(context,ULANDA_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(GallifreyModBlocks.ULANDA_LOG),

@@ -16,6 +16,7 @@ public final class VortexManipulatorData {
     public static final String OWNER = "VMOwner";
     public static final String USERS = "VMUsers";
     public static final String LOCATIONS = "VMLocations";
+    public static final String BLOCK_INBOUND_TELEPORTS = "VMBlockInboundTeleports";
     public static final String NAME = "Name";
     public static final String DIMENSION = "Dimension";
     public static final String X = "X";
@@ -69,6 +70,14 @@ public final class VortexManipulatorData {
             }
         }
         return false;
+    }
+
+    public static boolean blocksInboundTeleports(ItemStack stack) {
+        return nbt(stack).getBoolean(BLOCK_INBOUND_TELEPORTS);
+    }
+
+    public static void setBlocksInboundTeleports(ItemStack stack, boolean blocked) {
+        nbt(stack).putBoolean(BLOCK_INBOUND_TELEPORTS, blocked);
     }
 
     public static List<String> userIds(ItemStack stack) {

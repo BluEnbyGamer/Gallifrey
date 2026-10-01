@@ -29,6 +29,7 @@ public class VortexManipulatorScreen extends Screen {
     private boolean owner;
     private int selfDestructTicks;
     private boolean surfaceMode;
+    private boolean blockInboundTeleports;
     private ButtonWidget selfDestructStatus;
 
     private TextFieldWidget dimension, x, y, z, targetPlayer, locationName, accessPlayer;
@@ -127,7 +128,7 @@ public class VortexManipulatorScreen extends Screen {
         drawHintText = owner ? "You are the VM owner. Only online players can be added by name." :
                 "ISOMORPHIC LOCK: only the VM owner can change authorized users.";
 
-        for (int i = 0; i < Math.min(6, USERS.size()); i++) {
+        for (int i = 0; i < Math.min(5, USERS.size()); i++) {
             AccessUser user = USERS.get(i);
             int yy = top + 120 + i * 27;
             String name = user.name().equals(user.uuid().toString()) ? user.uuid().toString() : user.name();
@@ -136,8 +137,12 @@ public class VortexManipulatorScreen extends Screen {
             remove.active = owner;
             addDrawableChild(remove);
         }
-        String ownerText = owner ? "OWNER: YOU" : "OWNER: ISOMORPHIC LOCKED";
-        addDrawableChild(btn(left + 18, top + 252, 464, 22, ownerText, b -> {}));
+        String protectionText = blockInboundTeleports
+                ? "INBOUND PLAYER TELEPORTS: BLOCKED"
+                : "INBOUND PLAYER TELEPORTS: ALLOWED";
+        ButtonWidget protection = btn(left + 18, top + 252, 464, 22, protectionText, b -> toggleInboundTeleports());
+        protection.active = owner;
+        addDrawableChild(protection);
     }
 
     private TextFieldWidget field(int x, int y, int w, String placeholder) {
@@ -176,6 +181,7 @@ public class VortexManipulatorScreen extends Screen {
         int sd = buf.readVarInt();
         List<Location> newLocations = new ArrayList<>();
         List<AccessUser> newUsers = new ArrayList<>();
+        boolean newBlockInboundTeleports = buf.readBoolean();
         int lc = buf.readVarInt();
         for (int i = 0; i < lc; i++) {
             newLocations.add(new Location(buf.readString(32), buf.readString(128), buf.readDouble(), buf.readDouble(), buf.readDouble()));
@@ -186,7 +192,7 @@ public class VortexManipulatorScreen extends Screen {
         }
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.currentScreen instanceof VortexManipulatorScreen screen) {
-            boolean dataChanged = screen.owner != newOwner || !LOCATIONS.equals(newLocations) || !USERS.equals(newUsers);
+            boolean dataChanged = screen.owner != newOwner || screen.blockInboundTeleports != newBlockInboundTeleports || !LOCATIONS.equals(newLocations) || !USERS.equals(newUsers);
             int oldSd = screen.selfDestructTicks;
             LOCATIONS.clear();
             LOCATIONS.addAll(newLocations);
@@ -194,6 +200,7 @@ public class VortexManipulatorScreen extends Screen {
             USERS.addAll(newUsers);
             screen.owner = newOwner;
             screen.selfDestructTicks = sd;
+            screen.blockInboundTeleports = newBlockInboundTeleports;
 
             if (dataChanged || ((oldSd == 0) != (sd == 0))) {
                 screen.rebuild();
@@ -249,6 +256,15 @@ public class VortexManipulatorScreen extends Screen {
     }
 
     private void removePlayer(String name) { sendString("REMOVE_PLAYER", name); }
+
+    private void toggleInboundTeleports() {
+        if (!owner) return;
+        PacketByteBuf p = PacketByteBufs.create();
+        p.writeString("SET_INBOUND_TELEPORTS");
+        p.writeBoolean(!blockInboundTeleports);
+        ClientPlayNetworking.send(ModPackets.VM_PACKET, p);
+    }
+
 
     private void openSelfDestructConfirmation() {
         client.setScreen(new VortexSelfDestructConfirmScreen(this));
