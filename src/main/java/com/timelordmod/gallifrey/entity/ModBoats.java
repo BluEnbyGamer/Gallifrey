@@ -26,6 +26,7 @@ public class ModBoats {
     public static final Identifier MAPLE_CHEST_BOAT_ID = new Identifier(GallifreyMod.MOD_ID, "maple_chest_boat");
 
 
+
     public static final RegistryKey<TerraformBoatType> TARDIS_BOAT_KEY = TerraformBoatTypeRegistry.createKey(TARDIS_BOAT_ID);
     public static final RegistryKey<TerraformBoatType> ULANDA_BOAT_KEY = TerraformBoatTypeRegistry.createKey(ULANDA_BOAT_ID);
     public static final RegistryKey<TerraformBoatType> TREEBORG_BOAT_KEY = TerraformBoatTypeRegistry.createKey(TREEBORG_BOAT_ID);

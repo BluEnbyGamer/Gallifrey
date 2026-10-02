@@ -133,6 +133,12 @@ public class GallifreyModBlocks {
     public static final Block NETHER_WHITE_POINT_ORE = registerBlock("nether_white_point_ore",
             new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.5f), UniformIntProvider.create(2, 5)));
 
+    public static final Block PREHISTORIC_ORE = registerBlock("prehistoric_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(1.5f), UniformIntProvider.create(2, 5)));
+
+    public static final Block DEEPSLATE_PREHISTORIC_ORE = registerBlock("deepslate_prehistoric_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(1.5f), UniformIntProvider.create(2, 5)));
+
 
     // ============================================================
     // ROUNDELS
@@ -1253,6 +1259,328 @@ public class GallifreyModBlocks {
                     .unlockCriterionName("has_planks")
                     .build();
 
+    // ============================================================
+    // WASTED WOOD SET
+    // ============================================================
+
+    public static final Block WASTED_LEAVES = registerBlock(
+            "wasted_leaves",
+            new LeavesBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)
+            )
+    );
+
+    public static final Block WASTED_WOOD = registerBlock(
+            "wasted_wood",
+            new PillarBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block WASTED_LOG = registerBlock(
+            "wasted_log",
+            new PillarBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_LOG)
+            )
+    );
+
+    public static final Block STRIP_WASTED_LOG = registerBlock(
+            "stripped_wasted_log",
+            new PillarBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_LOG)
+            )
+    );
+
+    public static final Block STRIP_WASTED_WOOD = registerBlock(
+            "stripped_wasted_wood",
+            new PillarBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block WASTED_PLANKS = registerBlock(
+            "wasted_planks",
+            new Block(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block WASTED_SAPLING = registerBlock(
+            "wasted_sapling",
+            new SaplingBlock(
+                    new MapleSaplingGenerator(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)
+            )
+    );
+
+    public static final Block POTTED_WASTED_SAPLING = registerBlock(
+            "potted_wasted_sapling",
+            new FlowerPotBlock(
+                    GallifreyModBlocks.WASTED_SAPLING,
+                    FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)
+            )
+    );
+
+    public static final Block WASTED_STAIRS = registerBlock(
+            "wasted_stairs",
+            new StairsBlock(
+                    GallifreyModBlocks.MAPLE_PLANKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block WASTED_SLAB = registerBlock(
+            "wasted_slab",
+            new SlabBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block WASTED_BUTTON = registerBlock(
+            "wasted_button",
+            new ButtonBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
+                    BlockSetType.OAK,
+                    15,
+                    true
+            )
+    );
+
+    public static final Block WASTED_PRESSURE_PLATE = registerBlock(
+            "wasted_pressure_plate",
+            new PressurePlateBlock(
+                    PressurePlateBlock.ActivationRule.EVERYTHING,
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
+                    BlockSetType.OAK
+            )
+    );
+
+    public static final Block WASTED_FENCE = registerBlock(
+            "wasted_fence",
+            new FenceBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block WASTED_FENCE_GATE = registerBlock(
+            "wasted_fence_gate",
+            new FenceGateBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
+                    WoodType.OAK
+            )
+    );
+
+    public static final Block WASTED_DOOR = registerBlock(
+            "wasted_door",
+            new DoorBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_DOOR),
+                    BlockSetType.OAK
+            )
+    );
+
+    public static final Block WASTED_TRAPDOOR = registerBlock(
+            "wasted_trapdoor",
+            new TrapdoorBlock(
+                    FabricBlockSettings.copyOf(Blocks.DARK_OAK_TRAPDOOR),
+                    BlockSetType.ACACIA
+            )
+    );
+
+
+    // ============================================================
+    // WASTED SIGNS
+    // ============================================================
+
+    public static final Identifier WASTED_SIGN_TEXTURE =
+            new Identifier(GallifreyMod.MOD_ID, "entity/signs/wasted");
+
+    public static final Identifier WASTED_HANGING_SIGN_TEXTURE =
+            new Identifier(GallifreyMod.MOD_ID, "entity/signs/hanging/wasted");
+
+    public static final Identifier WASTED_HANGING_GUI_SIGN_TEXTURE =
+            new Identifier(
+                    GallifreyMod.MOD_ID,
+                    "textures/gui/hanging_signs/wasted"
+            );
+
+    public static final Block STANDING_WASTED_SIGN =
+            Registry.register(
+                    Registries.BLOCK,
+                    new Identifier(
+                            GallifreyMod.MOD_ID,
+                            "wasted_standing_sign"
+                    ),
+                    new TerraformSignBlock(
+                            WASTED_SIGN_TEXTURE,
+                            FabricBlockSettings.copyOf(Blocks.OAK_SIGN)
+                    )
+            );
+
+    public static final Block WALL_WASTED_SIGN =
+            Registry.register(
+                    Registries.BLOCK,
+                    new Identifier(
+                            GallifreyMod.MOD_ID,
+                            "wasted_wall_sign"
+                    ),
+                    new TerraformWallSignBlock(
+                            WASTED_SIGN_TEXTURE,
+                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).dropsLike(STANDING_MAPLE_SIGN)
+                    )
+            );
+
+    public static final Block HANGING_WASTED_SIGN =
+            Registry.register(
+                    Registries.BLOCK,
+                    new Identifier(
+                            GallifreyMod.MOD_ID,
+                            "wasted_hanging_sign"
+                    ),
+                    new TerraformHangingSignBlock(
+                            WASTED_HANGING_SIGN_TEXTURE,
+                            WASTED_HANGING_GUI_SIGN_TEXTURE,
+                            FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN)
+                    )
+            );
+
+    public static final Block WALL_HANGING_WASTED_SIGN =
+            Registry.register(
+                    Registries.BLOCK,
+                    new Identifier(
+                            GallifreyMod.MOD_ID,
+                            "wasted_wall_hanging_sign"
+                    ),
+                    new TerraformWallHangingSignBlock(
+                            WASTED_HANGING_SIGN_TEXTURE,
+                            WASTED_HANGING_GUI_SIGN_TEXTURE,
+                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(HANGING_MAPLE_SIGN)
+                    )
+            );
+
+    public static final BlockFamily WASTED_FAMILY =
+            BlockFamilies.register(GallifreyModBlocks.WASTED_PLANKS)
+                    .sign(
+                            GallifreyModBlocks.STANDING_WASTED_SIGN,
+                            GallifreyModBlocks.WALL_WASTED_SIGN
+                    )
+                    .group("wooden")
+                    .unlockCriterionName("has_planks")
+                    .build();
+
+    // ============================================================
+    // PREHISTORIC WOOD SET
+    // ============================================================
+
+    public static final Block PREHISTORIC_LEAVES = registerBlock(
+            "prehistoric_leaves",
+            new LeavesBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)
+            )
+    );
+
+    public static final Block PREHISTORIC_WOOD = registerBlock(
+            "prehistoric_wood",
+            new PillarBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block PREHISTORIC_LOG = registerBlock(
+            "prehistoric_log",
+            new PillarBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_LOG)
+            )
+    );
+
+    public static final Block PREHISTORIC_PLANKS = registerBlock(
+            "prehistoric_planks",
+            new Block(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block PREHISTORIC_SAPLING = registerBlock(
+            "prehistoric_sapling",
+            new SaplingBlock(
+                    new MapleSaplingGenerator(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)
+            )
+    );
+
+    public static final Block POTTED_PREHISTORIC_SAPLING = registerBlock(
+            "potted_prehistoric_sapling",
+            new FlowerPotBlock(
+                    GallifreyModBlocks.WASTED_SAPLING,
+                    FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)
+            )
+    );
+
+    public static final Block PREHISTORIC_STAIRS = registerBlock(
+            "prehistoric_stairs",
+            new StairsBlock(
+                    GallifreyModBlocks.MAPLE_PLANKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block PREHISTORIC_SLAB = registerBlock(
+            "prehistoric_slab",
+            new SlabBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block PREHISTORIC_BUTTON = registerBlock(
+            "prehistoric_button",
+            new ButtonBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
+                    BlockSetType.OAK,
+                    15,
+                    true
+            )
+    );
+
+    public static final Block PREHISTORIC_PRESSURE_PLATE = registerBlock(
+            "prehistoric_pressure_plate",
+            new PressurePlateBlock(
+                    PressurePlateBlock.ActivationRule.EVERYTHING,
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
+                    BlockSetType.OAK
+            )
+    );
+
+    public static final Block PREHISTORIC_FENCE = registerBlock(
+            "prehistoric_fence",
+            new FenceBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+            )
+    );
+
+    public static final Block PREHISTORIC_FENCE_GATE = registerBlock(
+            "prehistoric_fence_gate",
+            new FenceGateBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
+                    WoodType.OAK
+            )
+    );
+
+    public static final Block PREHISTORIC_DOOR = registerBlock(
+            "prehistoric_door",
+            new DoorBlock(
+                    FabricBlockSettings.copyOf(Blocks.OAK_DOOR),
+                    BlockSetType.OAK
+            )
+    );
+
+    public static final Block PREHISTORIC_TRAPDOOR = registerBlock(
+            "prehistoric_trapdoor",
+            new TrapdoorBlock(
+                    FabricBlockSettings.copyOf(Blocks.DARK_OAK_TRAPDOOR),
+                    BlockSetType.ACACIA
+            )
+    );
+
+
 
     // ============================================================
     // TARDIS EXTERIOR
@@ -1336,18 +1664,6 @@ public class GallifreyModBlocks {
     public static final Block WASTED_DIRT = registerBlock("wasted_dirt",
             new GlassBlock(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(BlockSoundGroup.ROOTED_DIRT)));
 
-    public static final Block WASTED_LEAVES = registerBlock("wasted_leaves",
-            new Block(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).sounds(BlockSoundGroup.AZALEA_LEAVES)));
-
-    public static final Block WASTED_LOG = registerBlock("wasted_log",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).sounds(BlockSoundGroup.WOOD)));
-
-    public static final Block WASTED_PLANK_SLAB = registerBlock("wasted_plank_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).sounds(BlockSoundGroup.WOOD)));
-
-    public static final Block WASTED_PLANKS = registerBlock("wasted_planks",
-            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).sounds(BlockSoundGroup.WOOD)));
-
     public static final Block WASTED_GRASS = registerBlock("wastedgrass",
             new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.ROOTED_DIRT)));
 
@@ -1382,7 +1698,6 @@ public class GallifreyModBlocks {
         flammable.add(TARDIS_FENCE, 5, 20);
         flammable.add(TARDIS_FENCE_GATE, 5, 20);
 
-
         // Ulanda wood set
         flammable.add(ULANDA_LOG, 5, 5);
         flammable.add(STRIP_ULANDA_LOG, 5, 5);
@@ -1394,7 +1709,6 @@ public class GallifreyModBlocks {
         flammable.add(ULANDA_SLAB, 5, 20);
         flammable.add(ULANDA_FENCE, 5, 20);
         flammable.add(ULANDA_FENCE_GATE, 5, 20);
-
 
         // Tree-borg wood set
         flammable.add(TREEBORG_LOG, 5, 5);
@@ -1408,13 +1722,17 @@ public class GallifreyModBlocks {
         flammable.add(TREEBORG_FENCE, 5, 20);
         flammable.add(TREEBORG_FENCE_GATE, 5, 20);
 
-
         // Skaro wasted wood set
         flammable.add(WASTED_LOG, 5, 5);
+        flammable.add(STRIP_WASTED_LOG, 5, 5);
+        flammable.add(WASTED_WOOD, 5, 5);
+        flammable.add(STRIP_WASTED_WOOD, 5, 5);
         flammable.add(WASTED_PLANKS, 5, 20);
-        flammable.add(WASTED_PLANK_SLAB, 5, 20);
         flammable.add(WASTED_LEAVES, 30, 60);
-
+        flammable.add(WASTED_STAIRS, 5, 20);
+        flammable.add(WASTED_SLAB, 5, 20);
+        flammable.add(WASTED_FENCE, 5, 20);
+        flammable.add(WASTED_FENCE_GATE, 5, 20);
 
         // Ash wood set
         flammable.add(ASH_LOG, 5, 5);
@@ -1428,14 +1746,17 @@ public class GallifreyModBlocks {
         flammable.add(ASH_FENCE, 5, 20);
         flammable.add(ASH_FENCE_GATE, 5, 20);
 
-
         // Maple wood set
-        // flammable.add(MAPLE_LOG, 5, 5);
-
-
-        // Willow wood set
-        // flammable.add(WILLOW_LOG, 5, 5);
-
+        flammable.add(MAPLE_LOG, 5, 5);
+        flammable.add(STRIP_MAPLE_LOG, 5, 5);
+        flammable.add(MAPLE_WOOD, 5, 5);
+        flammable.add(STRIP_MAPLE_WOOD, 5, 5);
+        flammable.add(MAPLE_PLANKS, 5, 20);
+        flammable.add(MAPLE_LEAVES, 30, 60);
+        flammable.add(MAPLE_STAIRS, 5, 20);
+        flammable.add(MAPLE_SLAB, 5, 20);
+        flammable.add(MAPLE_FENCE, 5, 20);
+        flammable.add(MAPLE_FENCE_GATE, 5, 20);
 
         // Moon-pine wood set
         // flammable.add(MOONPINE_LOG, 5, 5);

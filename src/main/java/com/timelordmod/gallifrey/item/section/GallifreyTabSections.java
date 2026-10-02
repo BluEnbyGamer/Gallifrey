@@ -231,7 +231,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.WASTED_LOG);
                 entries.add(GallifreyModBlocks.WASTED_LEAVES);
                 entries.add(GallifreyModBlocks.WASTED_PLANKS);
-                entries.add(GallifreyModBlocks.WASTED_PLANK_SLAB);
+                entries.add(GallifreyModBlocks.WASTED_SLAB);
                 entries.add(GallifreyModBlocks.KALETITE);
                 entries.add(GallifreyModBlocks.COBBLED_KALETITE);
                 entries.add(GallifreyModBlocks.KALETITE_BRICKS);

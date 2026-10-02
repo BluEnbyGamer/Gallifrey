@@ -158,7 +158,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.WASTED_LEAVES);
         addDrop(GallifreyModBlocks.WASTED_LOG);
         addDrop(GallifreyModBlocks.WASTED_PLANKS);
-        addDrop(GallifreyModBlocks.WASTED_PLANK_SLAB, slabDrops(GallifreyModBlocks.WASTED_PLANK_SLAB));
+        addDrop(GallifreyModBlocks.WASTED_SLAB, slabDrops(GallifreyModBlocks.WASTED_SLAB));
         addDrop(GallifreyModBlocks.DALEKANIUM_BLOCK);
         addDrop(GallifreyModBlocks.DALEKANIUM_ORE, oreDrops(GallifreyModBlocks.DALEKANIUM_ORE, GallifreyModItems.DALEKANIUM_INGOT));
         addDrop(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE, GallifreyModItems.DALEKANIUM_INGOT));

@@ -34,7 +34,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.KALETITE_BRICKS, GallifreyModBlocks.WASTED_DIRT,
                         GallifreyModBlocks.WASTED_GRASS, GallifreyModBlocks.WASTED_LEAVES,
                         GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.WASTED_PLANKS,
-                        GallifreyModBlocks.WASTED_PLANK_SLAB);
+                        GallifreyModBlocks.WASTED_SLAB);
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(GallifreyModBlocks.MARS_STONE, GallifreyModBlocks.MARS_COBBLESTONE,

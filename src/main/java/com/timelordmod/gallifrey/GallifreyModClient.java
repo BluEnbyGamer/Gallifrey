@@ -423,41 +423,24 @@ public class GallifreyModClient implements ClientModInitializer {
                 RenderLayer.getCutoutMipped()
         );
 
-        EntityModelLayerRegistry.registerModelLayer(
-                new EntityModelLayer(
-                        new Identifier("gallifrey", "boat/wasted_boat"),
-                        "main"
-                ),
-                BoatEntityModel::getTexturedModelData
-        );
-
-        EntityModelLayerRegistry.registerModelLayer(
-                new EntityModelLayer(
-                        new Identifier("gallifrey", "chest_boat/wasted_boat"),
-                        "main"
-                ),
-                ChestBoatEntityModel::getTexturedModelData
-        );
-
-        EntityModelLayerRegistry.registerModelLayer(
-                new EntityModelLayer(new Identifier("gallifrey", "boat/prehistoric_boat"), "main"),
-                BoatEntityModel::getTexturedModelData
-        );
-        EntityModelLayerRegistry.registerModelLayer(
-                new EntityModelLayer(new Identifier("gallifrey", "chest_boat/prehistoric_boat"), "main"),
-                ChestBoatEntityModel::getTexturedModelData
-        );
-
         // =========================================================
         // PREHISTORIC RENDER LAYER
         // =========================================================
 
-        BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.PREHISTORIC_SAPLING, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.POTTED_PREHISTORIC_SAPLING, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.PREHISTORIC_LEAVES, RenderLayer.getCutoutMipped());
-        BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.PREHISTORIC_VINE, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.PREHISTORIC_DOOR, RenderLayer.getCutoutMipped());
-        BlockRenderLayerMap.INSTANCE.putBlock(GallifreyModBlocks.PREHISTORIC_TRAPDOOR, RenderLayer.getCutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.PREHISTORIC_LEAVES,
+                RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+        GallifreyModBlocks.PREHISTORIC_DOOR,
+        RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+        GallifreyModBlocks.PREHISTORIC_TRAPDOOR,
+        RenderLayer.getCutoutMipped()
+        );
     }
 
 
