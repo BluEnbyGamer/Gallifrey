@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "gallifrey:reinforced_steel_block"
+    "gallifrey:reinforced_steel_block",
+    "gallifrey:white_point_ore",
+    "gallifrey:deepslate_white_point_ore",
+    "gallifrey:nether_white_point_ore"
   ]
 }

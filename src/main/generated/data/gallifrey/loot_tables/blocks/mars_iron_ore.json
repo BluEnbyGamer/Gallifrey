@@ -12,7 +12,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "gallifrey:good_heavens"
+          "name": "minecraft:raw_iron"
         }
       ]
     }

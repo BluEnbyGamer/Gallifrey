@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "SCS",
+    "DID"
+  ],
+  "key": {
+    "P": {
+      "item": "gallifrey:polished_mars_stone"
+    },
+    "S": {
+      "item": "gallifrey:sonic_crystal"
+    },
+    "C": {
+      "item": "gallifrey:blank_circuit"
+    },
+    "D": {
+      "item": "gallifrey:dalekanium_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "gallifrey:sonic_workshop",
+    "count": 1
+  }
+}

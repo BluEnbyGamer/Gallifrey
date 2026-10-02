@@ -1,6 +1,7 @@
 package com.timelordmod.gallifrey.datagen;
 
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
+import com.timelordmod.gallifrey.item.GallifreyModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 
@@ -121,15 +122,30 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         //addDrop(GallifreyModBlocks.STRIP_ULANDA_WOOD);
         //addDrop(GallifreyModBlocks.ULANDA_PLANKS);
 
+        // MARS BLOCK DROPS
+        addDrop(GallifreyModBlocks.MARS_STONE);
+        addDrop(GallifreyModBlocks.MARS_COBBLESTONE);
+        addDrop(GallifreyModBlocks.MARS_ANDESITE);
+        addDrop(GallifreyModBlocks.MARS_DIORITE);
+        addDrop(GallifreyModBlocks.MARS_GRANITE);
+        addDrop(GallifreyModBlocks.POLISHED_MARS_STONE);
+        addDrop(GallifreyModBlocks.MARS_POLISHED_ANDESITE);
+        addDrop(GallifreyModBlocks.MARS_POLISHED_DIORITE);
+        addDrop(GallifreyModBlocks.MARS_POLISHED_GRANITE);
+        addDrop(GallifreyModBlocks.MARS_STONE_BRICKS);
+        addDrop(GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED);
+        addDrop(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS);
+        addDrop(GallifreyModBlocks.MARS_IRON_ORE, oreDrops(GallifreyModBlocks.MARS_IRON_ORE, net.minecraft.item.Items.RAW_IRON));
+
         // MISC BLOCK DROPS
         addDrop(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
         addDrop(GallifreyModBlocks.TREE_TAPPER);
-        addDrop(GallifreyModBlocks.SONIC_CRYSTAL_ORE);
-        addDrop(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE);
-        addDrop(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE);
-        addDrop(GallifreyModBlocks.WHITE_POINT_ORE);
-        addDrop(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE);
-        addDrop(GallifreyModBlocks.NETHER_WHITE_POINT_ORE);
+        addDrop(GallifreyModBlocks.SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
+        addDrop(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
+        addDrop(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
+        addDrop(GallifreyModBlocks.WHITE_POINT_ORE, oreDrops(GallifreyModBlocks.WHITE_POINT_ORE, GallifreyModItems.WHITE_POINT_STAR));
+        addDrop(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE, GallifreyModItems.WHITE_POINT_STAR));
+        addDrop(GallifreyModBlocks.NETHER_WHITE_POINT_ORE, oreDrops(GallifreyModBlocks.NETHER_WHITE_POINT_ORE, GallifreyModItems.WHITE_POINT_STAR));
 
         // Skaro blocks
         addDrop(GallifreyModBlocks.EXQUISITE_CAT);
@@ -144,7 +160,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.WASTED_PLANKS);
         addDrop(GallifreyModBlocks.WASTED_PLANK_SLAB, slabDrops(GallifreyModBlocks.WASTED_PLANK_SLAB));
         addDrop(GallifreyModBlocks.DALEKANIUM_BLOCK);
-        addDrop(GallifreyModBlocks.DALEKANIUM_ORE);
-        addDrop(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
+        addDrop(GallifreyModBlocks.DALEKANIUM_ORE, oreDrops(GallifreyModBlocks.DALEKANIUM_ORE, GallifreyModItems.DALEKANIUM_INGOT));
+        addDrop(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE, GallifreyModItems.DALEKANIUM_INGOT));
     }
 }

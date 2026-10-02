@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MM",
+    "MM"
+  ],
+  "key": {
+    "M": {
+      "item": "gallifrey:mars_stone"
+    }
+  },
+  "result": {
+    "item": "gallifrey:mars_stone_bricks",
+    "count": 4
+  }
+}

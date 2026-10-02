@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " W ",
+    "DSD",
+    " I "
+  ],
+  "key": {
+    "W": {
+      "item": "gallifrey:white_point_star"
+    },
+    "D": {
+      "item": "gallifrey:dalekanium_ingot"
+    },
+    "S": {
+      "item": "gallifrey:sonic_crystal"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "gallifrey:sonic_screwdriver",
+    "count": 1
+  }
+}

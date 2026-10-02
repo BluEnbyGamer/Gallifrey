@@ -2,6 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
+      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "conditions": [
         {
@@ -11,10 +12,9 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "gallifrey:nether_white_point_ore"
+          "name": "gallifrey:white_point_star"
         }
-      ],
-      "rolls": 1.0
+      ]
     }
   ]
 }
