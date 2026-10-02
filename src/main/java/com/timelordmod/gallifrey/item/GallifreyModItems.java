@@ -106,6 +106,14 @@ public class GallifreyModItems {
     public static final Item MAPLE_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MAPLE_BOAT_ID, ModBoats.MAPLE_BOAT_KEY, false);
     public static final Item MAPLE_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MAPLE_CHEST_BOAT_ID, ModBoats.MAPLE_BOAT_KEY, true);
 
+    public static final Item WASTED_SIGN = registerItem("wasted_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), GallifreyModBlocks.STANDING_WASTED_SIGN, GallifreyModBlocks.WALL_WASTED_SIGN));
+    public static final Item HANGING_WASTED_SIGN = registerItem("wasted_hanging_sign",
+            new HangingSignItem(GallifreyModBlocks.HANGING_WASTED_SIGN, GallifreyModBlocks.WALL_HANGING_WASTED_SIGN, new FabricItemSettings().maxCount(16)));
+
+    public static final Item WASTED_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WASTED_BOAT_ID, ModBoats.WASTED_BOAT_KEY, false);
+    public static final Item WASTED_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WASTED_CHEST_BOAT_ID, ModBoats.WASTED_BOAT_KEY, true);
+
     // FOOD ITEMS
     public static final Item MAPLE_SYRUP = registerItem("maple_syrup", new Item(new FabricItemSettings().food(GallifreyFoodComponents.MAPLE_SYRUP)));
     public static final Item TREEBORG_PASTE = registerItem("treeborg_paste", new Item(new FabricItemSettings().food(GallifreyFoodComponents.TREEBORG_PASTE)));

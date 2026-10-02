@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "M M",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:weathered_copper"
+    }
+  },
+  "result": {
+    "item": "gallifrey:weathered_copper_roundel",
+    "count": 4
+  }
+}

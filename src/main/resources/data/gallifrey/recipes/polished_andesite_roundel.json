@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "M M",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:polished_andesite"
+    }
+  },
+  "result": {
+    "item": "gallifrey:polished_andesite_roundel",
+    "count": 4
+  }
+}

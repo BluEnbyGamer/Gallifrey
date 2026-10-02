@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_door",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:wasted_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:wasted_door",
+    "count": 3
+  }
+}

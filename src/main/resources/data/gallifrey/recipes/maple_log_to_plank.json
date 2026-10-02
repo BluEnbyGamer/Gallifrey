@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "gallifrey:maple_log"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:maple_planks",
+    "count": 4
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "gallifrey:block/vioquartz_roundel"
+    },
+    "axis=x": {
+      "model": "gallifrey:block/vioquartz_roundel",
+      "y": 90
+    }
+  }
+}

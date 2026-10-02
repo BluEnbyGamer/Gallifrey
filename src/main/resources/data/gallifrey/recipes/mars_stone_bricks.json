@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "MM",
-    "MM"
+    "CC",
+    "CC"
   ],
   "key": {
-    "M": {
-      "item": "gallifrey:mars_stone"
+    "C": {
+      "item": "gallifrey:mars_cobblestone"
     }
   },
   "result": {

@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "gallifrey:block/yellow_concrete_roundel"
+    },
+    "axis=x": {
+      "model": "gallifrey:block/yellow_concrete_roundel",
+      "y": 90
+    }
+  }
+}

@@ -1,22 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " W ",
-    "DSD",
+    " S ",
+    "ICI",
     " I "
   ],
   "key": {
-    "W": {
-      "item": "gallifrey:white_point_star"
-    },
-    "D": {
-      "item": "gallifrey:dalekanium_ingot"
-    },
     "S": {
       "item": "gallifrey:sonic_crystal"
     },
     "I": {
       "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "gallifrey:blank_circuit"
     }
   },
   "result": {

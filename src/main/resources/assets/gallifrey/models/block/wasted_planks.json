@@ -1,8 +1,6 @@
 {
-  "parent": "block/cube_all",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gallifrey:block/ddwa/wasted_planks",
-    "particle": "gallifrey:block/ddwa/wasted_planks"
-  },
-  "render_type": "solid"
+    "all": "gallifrey:block/wasted_planks"
+  }
 }

@@ -138,6 +138,222 @@ public class GallifreyModBlocks {
     // ROUNDELS
     // ============================================================
 
+    // Additional roundels
+    public static final Block AMBQUARTZ_ROUNDEL = registerBlock(
+            "ambquartz_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block BLACK_CONCRETE_ROUNDEL = registerBlock(
+            "black_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block BLUE_CONCRETE_ROUNDEL = registerBlock(
+            "blue_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block BLUEQUARTZ_ROUNDEL = registerBlock(
+            "bluequartz_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block BROWN_CONCRETE_ROUNDEL = registerBlock(
+            "brown_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block COPPER_ROUNDEL = registerBlock(
+            "copper_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block CRIMQUARTZ_ROUNDEL = registerBlock(
+            "crimquartz_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block CYAN_CONCRETE_ROUNDEL = registerBlock(
+            "cyan_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block DIRT_ROUNDEL = registerBlock(
+            "dirt_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block END_STONE_BRICKS_ROUNDEL = registerBlock(
+            "end_stone_bricks_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block EXPOSED_COPPER_ROUNDEL = registerBlock(
+            "exposed_copper_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block GRAY_CONCRETE_ROUNDEL = registerBlock(
+            "gray_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block GREEN_CONCRETE_ROUNDEL = registerBlock(
+            "green_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block LIGHT_BLUE_CONCRETE_ROUNDEL = registerBlock(
+            "light_blue_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block LIGHT_GRAY_CONCRETE_ROUNDEL = registerBlock(
+            "light_gray_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block LIME_CONCRETE_ROUNDEL = registerBlock(
+            "lime_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block MAGENTA_CONCRETE_ROUNDEL = registerBlock(
+            "magenta_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block MOSS_ROUNDEL = registerBlock(
+            "moss_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block OBSIQUARTZ_ROUNDEL = registerBlock(
+            "obsiquartz_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block ORANGE_CONCRETE_ROUNDEL = registerBlock(
+            "orange_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block OXIDIZED_COPPER_ROUNDEL = registerBlock(
+            "oxidized_copper_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block PINK_CONCRETE_ROUNDEL = registerBlock(
+            "pink_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block POLISHED_ANDESITE_ROUNDEL = registerBlock(
+            "polished_andesite_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block POLISHED_DEEPSLATE_ROUNDEL = registerBlock(
+            "polished_deepslate_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block POLISHED_DIORITE_ROUNDEL = registerBlock(
+            "polished_diorite_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block POLISHED_GRANITE_ROUNDEL = registerBlock(
+            "polished_granite_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block PURPLE_CONCRETE_ROUNDEL = registerBlock(
+            "purple_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block RED_CONCRETE_ROUNDEL = registerBlock(
+            "red_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block SANDSTONE_ROUNDEL = registerBlock(
+            "sandstone_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block STRIPPED_ACACIA_LOG_ROUNDEL = registerBlock(
+            "stripped_acacia_log_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block STRIPPED_BIRCH_LOG_ROUNDEL = registerBlock(
+            "stripped_birch_log_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block STRIPPED_CHERRY_LOG_ROUNDEL = registerBlock(
+            "stripped_cherry_log_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block STRIPPED_DARK_OAK_LOG_ROUNDEL = registerBlock(
+            "stripped_dark_oak_log_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block STRIPPED_JUNGLE_LOG_ROUNDEL = registerBlock(
+            "stripped_jungle_log_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block STRIPPED_MANGROVE_LOG_ROUNDEL = registerBlock(
+            "stripped_mangrove_log_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block STRIPPED_OAK_LOG_ROUNDEL = registerBlock(
+            "stripped_oak_log_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block STRIPPED_SPRUCE_LOG_ROUNDEL = registerBlock(
+            "stripped_spruce_log_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block VERDQUARTZ_ROUNDEL = registerBlock(
+            "verdquartz_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block VIOQUARTZ_ROUNDEL = registerBlock(
+            "vioquartz_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block WEATHERED_COPPER_ROUNDEL = registerBlock(
+            "weathered_copper_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block WHITE_CONCRETE_ROUNDEL = registerBlock(
+            "white_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block YELLOW_CONCRETE_ROUNDEL = registerBlock(
+            "yellow_concrete_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
+    public static final Block HARTNELL_ROUNDEL = registerBlock(
+            "hartnell_roundel",
+            new RoundelBlock(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE))
+    );
+
     public static final Block BASALT_ROUNDEL = registerBlock(
             "basalt_roundel",
             new RoundelBlock(
@@ -1342,14 +1558,73 @@ public class GallifreyModBlocks {
     public static final Block WASTED_LOG = registerBlock("wasted_log",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).sounds(BlockSoundGroup.WOOD)));
 
+    public static final Block WASTED_WOOD = registerBlock("wasted_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD).sounds(BlockSoundGroup.WOOD)));
+
+    public static final Block STRIPPED_WASTED_LOG = registerBlock("stripped_wasted_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).sounds(BlockSoundGroup.WOOD)));
+
+    public static final Block STRIPPED_WASTED_WOOD = registerBlock("stripped_wasted_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD).sounds(BlockSoundGroup.WOOD)));
+
     public static final Block WASTED_PLANK_SLAB = registerBlock("wasted_plank_slab",
             new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).sounds(BlockSoundGroup.WOOD)));
 
     public static final Block WASTED_PLANKS = registerBlock("wasted_planks",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).sounds(BlockSoundGroup.WOOD)));
 
+    public static final Block WASTED_STAIRS = registerBlock("wasted_stairs",
+            new StairsBlock(WASTED_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).sounds(BlockSoundGroup.WOOD)));
+
+    public static final Block WASTED_BUTTON = registerBlock("wasted_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON), BlockSetType.OAK, 15, true));
+
+    public static final Block WASTED_PRESSURE_PLATE = registerBlock("wasted_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
+                    FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+
+    public static final Block WASTED_FENCE = registerBlock("wasted_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).sounds(BlockSoundGroup.WOOD)));
+
+    public static final Block WASTED_FENCE_GATE = registerBlock("wasted_fence_gate",
+            new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).sounds(BlockSoundGroup.WOOD), WoodType.OAK));
+
+    public static final Block WASTED_DOOR = registerBlock("wasted_door",
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR), BlockSetType.OAK));
+
+    public static final Block WASTED_TRAPDOOR = registerBlock("wasted_trapdoor",
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
+
     public static final Block WASTED_GRASS = registerBlock("wastedgrass",
             new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.ROOTED_DIRT)));
+
+    public static final Identifier WASTED_SIGN_TEXTURE =
+            new Identifier(GallifreyMod.MOD_ID, "entity/signs/wasted");
+
+    public static final Identifier WASTED_HANGING_SIGN_TEXTURE =
+            new Identifier(GallifreyMod.MOD_ID, "entity/signs/hanging/wasted");
+
+    public static final Identifier WASTED_HANGING_GUI_SIGN_TEXTURE =
+            new Identifier(GallifreyMod.MOD_ID, "textures/gui/hanging_signs/wasted");
+
+    public static final Block STANDING_WASTED_SIGN = Registry.register(
+            Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "wasted_standing_sign"),
+            new TerraformSignBlock(WASTED_SIGN_TEXTURE, FabricBlockSettings.copyOf(Blocks.OAK_SIGN)));
+
+    public static final Block WALL_WASTED_SIGN = Registry.register(
+            Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "wasted_wall_sign"),
+            new TerraformWallSignBlock(WASTED_SIGN_TEXTURE,
+                    FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).dropsLike(STANDING_WASTED_SIGN)));
+
+    public static final Block HANGING_WASTED_SIGN = Registry.register(
+            Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "wasted_hanging_sign"),
+            new TerraformHangingSignBlock(WASTED_HANGING_SIGN_TEXTURE, WASTED_HANGING_GUI_SIGN_TEXTURE,
+                    FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN)));
+
+    public static final Block WALL_HANGING_WASTED_SIGN = Registry.register(
+            Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, "wasted_wall_hanging_sign"),
+            new TerraformWallHangingSignBlock(WASTED_HANGING_SIGN_TEXTURE, WASTED_HANGING_GUI_SIGN_TEXTURE,
+                    FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(HANGING_WASTED_SIGN)));
 
     public static void register() {
         GallifreyMod.LOGGER.info(
@@ -1411,8 +1686,14 @@ public class GallifreyModBlocks {
 
         // Skaro wasted wood set
         flammable.add(WASTED_LOG, 5, 5);
+        flammable.add(WASTED_WOOD, 5, 5);
+        flammable.add(STRIPPED_WASTED_LOG, 5, 5);
+        flammable.add(STRIPPED_WASTED_WOOD, 5, 5);
         flammable.add(WASTED_PLANKS, 5, 20);
         flammable.add(WASTED_PLANK_SLAB, 5, 20);
+        flammable.add(WASTED_STAIRS, 5, 20);
+        flammable.add(WASTED_FENCE, 5, 20);
+        flammable.add(WASTED_FENCE_GATE, 5, 20);
         flammable.add(WASTED_LEAVES, 30, 60);
 
 
@@ -1430,7 +1711,16 @@ public class GallifreyModBlocks {
 
 
         // Maple wood set
-        // flammable.add(MAPLE_LOG, 5, 5);
+        flammable.add(MAPLE_LOG, 5, 5);
+        flammable.add(STRIP_MAPLE_LOG, 5, 5);
+        flammable.add(MAPLE_WOOD, 5, 5);
+        flammable.add(STRIP_MAPLE_WOOD, 5, 5);
+        flammable.add(MAPLE_PLANKS, 5, 20);
+        flammable.add(MAPLE_LEAVES, 30, 60);
+        flammable.add(MAPLE_STAIRS, 5, 20);
+        flammable.add(MAPLE_SLAB, 5, 20);
+        flammable.add(MAPLE_FENCE, 5, 20);
+        flammable.add(MAPLE_FENCE_GATE, 5, 20);
 
 
         // Willow wood set

@@ -13,7 +13,7 @@ import java.util.List;
  * items appear in when no section is selected.
  *
  * To add a section: declare it below, add it to ALL, and add a lang line
- * "creative_section.gallifrey.<id>". Six fit in the sidebar as-is.
+ * "creative_section.gallifrey.<id>". The sidebar sizes itself from the number of sections.
  */
 public final class GallifreyTabSections {
 
@@ -125,6 +125,26 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.HANGING_MAPLE_SIGN);
                 entries.add(GallifreyModItems.MAPLE_BOAT);
                 entries.add(GallifreyModItems.MAPLE_CHEST_BOAT);
+
+                // Wasted wood set
+                entries.add(GallifreyModBlocks.WASTED_LOG);
+                entries.add(GallifreyModBlocks.WASTED_LEAVES);
+                entries.add(GallifreyModBlocks.WASTED_WOOD);
+                entries.add(GallifreyModBlocks.STRIPPED_WASTED_LOG);
+                entries.add(GallifreyModBlocks.STRIPPED_WASTED_WOOD);
+                entries.add(GallifreyModBlocks.WASTED_PLANKS);
+                entries.add(GallifreyModBlocks.WASTED_STAIRS);
+                entries.add(GallifreyModBlocks.WASTED_PLANK_SLAB);
+                entries.add(GallifreyModBlocks.WASTED_FENCE);
+                entries.add(GallifreyModBlocks.WASTED_FENCE_GATE);
+                entries.add(GallifreyModBlocks.WASTED_DOOR);
+                entries.add(GallifreyModBlocks.WASTED_TRAPDOOR);
+                entries.add(GallifreyModBlocks.WASTED_PRESSURE_PLATE);
+                entries.add(GallifreyModBlocks.WASTED_BUTTON);
+                entries.add(GallifreyModItems.WASTED_SIGN);
+                entries.add(GallifreyModItems.HANGING_WASTED_SIGN);
+                entries.add(GallifreyModItems.WASTED_BOAT);
+                entries.add(GallifreyModItems.WASTED_CHEST_BOAT);
             }
     );
 
@@ -178,6 +198,58 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.STRUCTURE_ROUNDEL);
                 entries.add(GallifreyModBlocks.LODESTONE_ROUNDEL);
                 entries.add(GallifreyModBlocks.QUARTZ_ROUNDEL);
+                entries.add(GallifreyModBlocks.AMBQUARTZ_ROUNDEL);
+                entries.add(GallifreyModBlocks.BLACK_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.BLUE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.BLUEQUARTZ_ROUNDEL);
+                entries.add(GallifreyModBlocks.BROWN_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.COPPER_ROUNDEL);
+                entries.add(GallifreyModBlocks.CRIMQUARTZ_ROUNDEL);
+                entries.add(GallifreyModBlocks.CYAN_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.DIRT_ROUNDEL);
+                entries.add(GallifreyModBlocks.END_STONE_BRICKS_ROUNDEL);
+                entries.add(GallifreyModBlocks.EXPOSED_COPPER_ROUNDEL);
+                entries.add(GallifreyModBlocks.GRAY_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.GREEN_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIGHT_BLUE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIGHT_GRAY_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIME_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.MAGENTA_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.MOSS_ROUNDEL);
+                entries.add(GallifreyModBlocks.OBSIQUARTZ_ROUNDEL);
+                entries.add(GallifreyModBlocks.ORANGE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.OXIDIZED_COPPER_ROUNDEL);
+                entries.add(GallifreyModBlocks.PINK_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.POLISHED_ANDESITE_ROUNDEL);
+                entries.add(GallifreyModBlocks.POLISHED_DEEPSLATE_ROUNDEL);
+                entries.add(GallifreyModBlocks.POLISHED_DIORITE_ROUNDEL);
+                entries.add(GallifreyModBlocks.POLISHED_GRANITE_ROUNDEL);
+                entries.add(GallifreyModBlocks.PURPLE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.RED_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.SANDSTONE_ROUNDEL);
+                entries.add(GallifreyModBlocks.STRIPPED_ACACIA_LOG_ROUNDEL);
+                entries.add(GallifreyModBlocks.STRIPPED_BIRCH_LOG_ROUNDEL);
+                entries.add(GallifreyModBlocks.STRIPPED_CHERRY_LOG_ROUNDEL);
+                entries.add(GallifreyModBlocks.STRIPPED_DARK_OAK_LOG_ROUNDEL);
+                entries.add(GallifreyModBlocks.STRIPPED_JUNGLE_LOG_ROUNDEL);
+                entries.add(GallifreyModBlocks.STRIPPED_MANGROVE_LOG_ROUNDEL);
+                entries.add(GallifreyModBlocks.STRIPPED_OAK_LOG_ROUNDEL);
+                entries.add(GallifreyModBlocks.STRIPPED_SPRUCE_LOG_ROUNDEL);
+                entries.add(GallifreyModBlocks.VERDQUARTZ_ROUNDEL);
+                entries.add(GallifreyModBlocks.VIOQUARTZ_ROUNDEL);
+                entries.add(GallifreyModBlocks.WEATHERED_COPPER_ROUNDEL);
+                entries.add(GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.HARTNELL_ROUNDEL);
+            }
+    );
+
+    public static final CreativeSection MISC_STUFF = CreativeSection.of(
+            "misc_stuff",
+            () -> new ItemStack(GallifreyModBlocks.EXQUISITE_CAT),
+            entries -> {
+                entries.add(GallifreyModBlocks.EXQUISITE_CAT);
+                entries.add(GallifreyModBlocks.GOOD_HEAVENS);
             }
     );
 
@@ -228,15 +300,9 @@ public final class GallifreyTabSections {
             entries -> {
                 entries.add(GallifreyModBlocks.WASTED_DIRT);
                 entries.add(GallifreyModBlocks.WASTED_GRASS);
-                entries.add(GallifreyModBlocks.WASTED_LOG);
-                entries.add(GallifreyModBlocks.WASTED_LEAVES);
-                entries.add(GallifreyModBlocks.WASTED_PLANKS);
-                entries.add(GallifreyModBlocks.WASTED_PLANK_SLAB);
                 entries.add(GallifreyModBlocks.KALETITE);
                 entries.add(GallifreyModBlocks.COBBLED_KALETITE);
                 entries.add(GallifreyModBlocks.KALETITE_BRICKS);
-                entries.add(GallifreyModBlocks.EXQUISITE_CAT);
-                entries.add(GallifreyModBlocks.GOOD_HEAVENS);
                 entries.add(GallifreyModBlocks.DALEKANIUM_BLOCK);
                 entries.add(GallifreyModBlocks.DALEKANIUM_ORE);
                 entries.add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
@@ -249,6 +315,7 @@ public final class GallifreyTabSections {
             WOOD_TYPES,
             MISC,
             ROUNDELS,
+            MISC_STUFF,
             CLOTHING,
             MARS,
             SKARO

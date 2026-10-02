@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "gallifrey:block/dirt_roundel",
+    "down": "gallifrey:block/dirt_roundel",
+    "up": "gallifrey:block/dirt_roundel",
+    "north": "gallifrey:block/dirt_roundel_half",
+    "south": "gallifrey:block/dirt_roundel_half",
+    "east": "gallifrey:block/dirt_roundel_half",
+    "west": "gallifrey:block/dirt_roundel_half"
+  }
+}
