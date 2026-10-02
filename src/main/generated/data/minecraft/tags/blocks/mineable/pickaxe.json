@@ -28,6 +28,8 @@
     "gallifrey:deepslate_sonic_crystal_ore",
     "gallifrey:white_point_ore",
     "gallifrey:deepslate_white_point_ore",
-    "gallifrey:nether_white_point_ore"
+    "gallifrey:nether_white_point_ore",
+    "#gallifrey:prehistoric_ores",
+    "#gallifrey:prehistoric_blocks"
   ]
 }

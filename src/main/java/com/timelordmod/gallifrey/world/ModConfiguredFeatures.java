@@ -37,6 +37,8 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> TREEBORG_KEY =registerKey("treeborg");
     public static final RegistryKey<ConfiguredFeature<?, ?>> ASH_KEY =registerKey("ash");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_KEY =registerKey("maple");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_TREE_KEY = registerKey("prehistoric_tree");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_ORE_KEY = registerKey("prehistoric_ore");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -169,6 +171,20 @@ public class ModConfiguredFeatures {
                         .build()
         );
 
+        register(context, PREHISTORIC_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LOG),
+                new StraightTrunkPlacer(6, 3, 1),
+                BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LEAVES),
+                new BlobFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1), 3),
+                new TwoLayersFeatureSize(1, 0, 1)
+        ).build());
+
+        RuleTest prehistoricStoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
+        RuleTest prehistoricDeepslateReplacables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        register(context, PREHISTORIC_ORE_KEY, Feature.ORE, new OreFeatureConfig(List.of(
+                OreFeatureConfig.createTarget(prehistoricStoneReplacables, GallifreyModBlocks.PREHISTORIC_ORE.getDefaultState()),
+                OreFeatureConfig.createTarget(prehistoricDeepslateReplacables, GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE.getDefaultState())
+        ), 8));
     }
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(GallifreyMod.MOD_ID, name));
