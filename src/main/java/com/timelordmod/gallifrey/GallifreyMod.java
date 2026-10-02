@@ -71,7 +71,15 @@ public class GallifreyMod implements ModInitializer {
 		StrippableBlockRegistry.register(GallifreyModBlocks.ASH_WOOD, GallifreyModBlocks.STRIP_ASH_WOOD);
 
 		//Maple wood set
+		StrippableBlockRegistry.register(GallifreyModBlocks.MAPLE_LOG, GallifreyModBlocks.STRIP_MAPLE_LOG);
+		StrippableBlockRegistry.register(GallifreyModBlocks.MAPLE_WOOD, GallifreyModBlocks.STRIP_MAPLE_WOOD);
 
+		//Skaro wasted wood set
+		StrippableBlockRegistry.register(GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.STRIPPED_WASTED_LOG);
+		StrippableBlockRegistry.register(GallifreyModBlocks.WASTED_WOOD, GallifreyModBlocks.STRIPPED_WASTED_WOOD);
+
+		StrippableBlockRegistry.register(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.STRIPPED_PREHISTORIC_LOG);
+		StrippableBlockRegistry.register(GallifreyModBlocks.PREHISTORIC_WOOD, GallifreyModBlocks.STRIPPED_PREHISTORIC_WOOD);
 
 		//Moon-pine wood set
 
@@ -107,6 +115,13 @@ public class GallifreyMod implements ModInitializer {
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mondas"))
 						.tintColor(130, 150, 170)
+						.registerPortal();
+
+		CustomPortalBuilder.beginPortal()
+						.frameBlock(GallifreyModBlocks.PREHISTORIC_BLOCK)
+						.lightWithItem(GallifreyModItems.PREHISTORIC_INGOT)
+						.destDimID(new Identifier(GallifreyMod.MOD_ID, "prehistoric"))
+						.tintColor(82, 140, 72)
 						.registerPortal();
 
 		MarsWorldHandler.register();

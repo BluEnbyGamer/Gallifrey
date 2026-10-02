@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "M M",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:lodestone"
+    }
+  },
+  "result": {
+    "item": "gallifrey:lodestone_roundel",
+    "count": 4
+  }
+}

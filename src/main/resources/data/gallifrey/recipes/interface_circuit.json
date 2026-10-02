@@ -2,13 +2,10 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "NON",
-    "QBS",
+    "QBC",
     "NON"
   ],
-    "key": {
-      "S": {
-        "item": "minecraft:glass_pane"
-      },
+  "key": {
     "N": {
       "item": "gallifrey:steel_ingot"
     },
@@ -16,10 +13,13 @@
       "item": "minecraft:redstone"
     },
     "B": {
-      "item": "regeneration:blank_circuit"
+      "item": "gallifrey:blank_circuit"
     },
-  "Q": {
-    "item": "minecraft:writable_book"
+    "Q": {
+      "item": "minecraft:writable_book"
+    },
+    "C": {
+      "item": "minecraft:quartz"
     }
   },
   "result": {

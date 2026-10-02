@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "gallifrey:block/hartnell_c",
+    "down": "gallifrey:block/hartnell_a",
+    "up": "gallifrey:block/hartnell_a",
+    "north": "gallifrey:block/hartnell_b",
+    "south": "gallifrey:block/hartnell_b",
+    "east": "gallifrey:block/hartnell_b",
+    "west": "gallifrey:block/hartnell_b"
+  }
+}

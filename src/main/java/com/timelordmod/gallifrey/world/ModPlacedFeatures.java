@@ -35,6 +35,8 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> TREEBORG_PLACED_KEY = registerKey("treeborg_placed");
     public static final RegistryKey<PlacedFeature> ASH_PLACED_KEY = registerKey("ash_placed");
     public static final RegistryKey<PlacedFeature> MAPLE_PLACED_KEY = registerKey("maple_placed");
+    public static final RegistryKey<PlacedFeature> PREHISTORIC_PLACED_KEY = registerKey("prehistoric_placed");
+    public static final RegistryKey<PlacedFeature> PREHISTORIC_ORE_PLACED_KEY = registerKey("prehistoric_ore_placed");
 
     public static void boostrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -108,6 +110,17 @@ public class ModPlacedFeatures {
         ModOrePlacement.modifiersWithCount(5,
         HeightRangePlacementModifier.uniform(YOffset.fixed(-48), YOffset.fixed(48))));
 
+        register(context, PREHISTORIC_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PREHISTORIC_TREE_KEY),
+                List.of(
+                        CountPlacementModifier.of(7),
+                        SquarePlacementModifier.of(),
+                        HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES),
+                        PlacedFeatures.wouldSurvive(GallifreyModBlocks.PREHISTORIC_SAPLING),
+                        BiomePlacementModifier.of()
+                ));
+        register(context, PREHISTORIC_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PREHISTORIC_ORE_KEY),
+                ModOrePlacement.modifiersWithCount(10,
+                        HeightRangePlacementModifier.uniform(YOffset.fixed(-48), YOffset.fixed(96))));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

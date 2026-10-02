@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "gallifrey:block/oxidized_copper_roundel",
+    "down": "gallifrey:block/oxidized_copper_roundel",
+    "up": "gallifrey:block/oxidized_copper_roundel",
+    "north": "gallifrey:block/oxidized_copper_roundel_half",
+    "south": "gallifrey:block/oxidized_copper_roundel_half",
+    "east": "gallifrey:block/oxidized_copper_roundel_half",
+    "west": "gallifrey:block/oxidized_copper_roundel_half"
+  }
+}

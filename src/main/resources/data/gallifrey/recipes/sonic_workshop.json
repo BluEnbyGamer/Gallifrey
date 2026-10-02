@@ -3,20 +3,17 @@
   "pattern": [
     "PPP",
     "SCS",
-    "DID"
+    "III"
   ],
   "key": {
     "P": {
-      "item": "gallifrey:polished_mars_stone"
+      "item": "gallifrey:steel_block"
     },
     "S": {
       "item": "gallifrey:sonic_crystal"
     },
     "C": {
       "item": "gallifrey:blank_circuit"
-    },
-    "D": {
-      "item": "gallifrey:dalekanium_ingot"
     },
     "I": {
       "item": "minecraft:iron_ingot"

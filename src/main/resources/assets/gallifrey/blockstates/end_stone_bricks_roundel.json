@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "gallifrey:block/end_stone_bricks_roundel"
+    },
+    "axis=x": {
+      "model": "gallifrey:block/end_stone_bricks_roundel",
+      "y": 90
+    }
+  }
+}

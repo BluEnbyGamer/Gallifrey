@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "gallifrey:block/prehistoric_stairs"
+      }
+    }
+  ]
+}
