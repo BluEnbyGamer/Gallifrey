@@ -10,7 +10,6 @@
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
-          "tag": "gallifrey:prehistoric_stone_ore_replaceables"
         }
       },
       {
@@ -19,7 +18,6 @@
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
-          "tag": "gallifrey:prehistoric_deepslate_ore_replaceables"
         }
       }
     ]
