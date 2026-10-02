@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:sonic_crystal_ore",
+    "gallifrey:nether_sonic_crystal_ore",
+    "gallifrey:deepslate_sonic_crystal_ore",
+    "gallifrey:dalekanium_ore",
+    "gallifrey:deepslate_dalekanium_ore",
+    "gallifrey:dalekanium_block",
+    "gallifrey:prehistoric_ore",
+    "gallifrey:deepslate_prehistoric_ore"
+  ]
+}

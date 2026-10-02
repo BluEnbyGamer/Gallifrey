@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:maple_log"
+    }
+  },
+  "result": {
+    "item": "gallifrey:maple_wood",
+    "count": 3
+  }
+}

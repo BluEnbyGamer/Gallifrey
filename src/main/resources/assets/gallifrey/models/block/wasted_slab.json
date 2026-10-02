@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "gallifrey:block/wasted_planks",
+    "side": "gallifrey:block/wasted_planks",
+    "top": "gallifrey:block/wasted_planks"
+  }
+}

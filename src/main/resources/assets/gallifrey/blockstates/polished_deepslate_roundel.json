@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "gallifrey:block/polished_deepslate_roundel"
+    },
+    "axis=x": {
+      "model": "gallifrey:block/polished_deepslate_roundel",
+      "y": 90
+    }
+  }
+}

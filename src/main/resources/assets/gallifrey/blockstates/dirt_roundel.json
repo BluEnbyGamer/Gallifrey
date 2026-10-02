@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "gallifrey:block/dirt_roundel"
+    },
+    "axis=x": {
+      "model": "gallifrey:block/dirt_roundel",
+      "y": 90
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_door",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:prehistoric_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:prehistoric_door",
+    "count": 3
+  }
+}

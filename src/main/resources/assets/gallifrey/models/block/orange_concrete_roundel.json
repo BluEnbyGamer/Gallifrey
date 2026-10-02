@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "gallifrey:block/orange_concrete_roundel",
+    "down": "gallifrey:block/orange_concrete_roundel",
+    "up": "gallifrey:block/orange_concrete_roundel",
+    "north": "gallifrey:block/orange_concrete_roundel_half",
+    "south": "gallifrey:block/orange_concrete_roundel_half",
+    "east": "gallifrey:block/orange_concrete_roundel_half",
+    "west": "gallifrey:block/orange_concrete_roundel_half"
+  }
+}
