@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "M M",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:polished_diorite"
+    }
+  },
+  "result": {
+    "item": "gallifrey:polished_diorite_roundel",
+    "count": 4
+  }
+}

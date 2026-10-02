@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:maple_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:maple_trapdoor",
+    "count": 2
+  }
+}

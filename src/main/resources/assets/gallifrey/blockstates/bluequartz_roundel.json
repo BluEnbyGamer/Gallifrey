@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "gallifrey:block/bluequartz_roundel"
+    },
+    "axis=x": {
+      "model": "gallifrey:block/bluequartz_roundel",
+      "y": 90
+    }
+  }
+}

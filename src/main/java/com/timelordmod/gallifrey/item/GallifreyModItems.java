@@ -14,6 +14,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 import com.timelordmod.gallifrey.item.custom.HeadwearItem;
+import com.timelordmod.gallifrey.item.custom.PrehistoricArmorMaterial;
+import com.timelordmod.gallifrey.item.custom.PrehistoricToolMaterial;
 
 public class GallifreyModItems {
 
@@ -106,6 +108,29 @@ public class GallifreyModItems {
     public static final Item MAPLE_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MAPLE_BOAT_ID, ModBoats.MAPLE_BOAT_KEY, false);
     public static final Item MAPLE_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MAPLE_CHEST_BOAT_ID, ModBoats.MAPLE_BOAT_KEY, true);
 
+    public static final Item WASTED_SIGN = registerItem("wasted_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), GallifreyModBlocks.STANDING_WASTED_SIGN, GallifreyModBlocks.WALL_WASTED_SIGN));
+    public static final Item HANGING_WASTED_SIGN = registerItem("wasted_hanging_sign",
+            new HangingSignItem(GallifreyModBlocks.HANGING_WASTED_SIGN, GallifreyModBlocks.WALL_HANGING_WASTED_SIGN, new FabricItemSettings().maxCount(16)));
+
+    public static final Item WASTED_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WASTED_BOAT_ID, ModBoats.WASTED_BOAT_KEY, false);
+    public static final Item WASTED_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WASTED_CHEST_BOAT_ID, ModBoats.WASTED_BOAT_KEY, true);
+
+    // PREHISTORIC MATERIALS AND GEAR
+    public static final Item PREHISTORIC_INGOT = new Item(new FabricItemSettings());
+    public static final Item PREHISTORIC_UPGRADE_SMITHING_TEMPLATE = new Item(new FabricItemSettings());
+
+    public static final SwordItem PREHISTORIC_SWORD = new SwordItem(PrehistoricToolMaterial.INSTANCE, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem PREHISTORIC_PICKAXE = new PickaxeItem(PrehistoricToolMaterial.INSTANCE, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem PREHISTORIC_AXE = new AxeItem(PrehistoricToolMaterial.INSTANCE, 5.5F, -3.0F, new FabricItemSettings());
+    public static final ShovelItem PREHISTORIC_SHOVEL = new ShovelItem(PrehistoricToolMaterial.INSTANCE, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem PREHISTORIC_HOE = new HoeItem(PrehistoricToolMaterial.INSTANCE, -2, -1.0F, new FabricItemSettings());
+
+    public static final ArmorItem PREHISTORIC_HELMET = new ArmorItem(PrehistoricArmorMaterial.INSTANCE, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem PREHISTORIC_CHESTPLATE = new ArmorItem(PrehistoricArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem PREHISTORIC_LEGGINGS = new ArmorItem(PrehistoricArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem PREHISTORIC_BOOTS = new ArmorItem(PrehistoricArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS, new FabricItemSettings());
+
     // FOOD ITEMS
     public static final Item MAPLE_SYRUP = registerItem("maple_syrup", new Item(new FabricItemSettings().food(GallifreyFoodComponents.MAPLE_SYRUP)));
     public static final Item TREEBORG_PASTE = registerItem("treeborg_paste", new Item(new FabricItemSettings().food(GallifreyFoodComponents.TREEBORG_PASTE)));
@@ -156,6 +181,17 @@ public class GallifreyModItems {
         registerItem("steel_ingot", STEEL_INGOT);
         registerItem("raw_steel", RAW_STEEL);
         registerItem("dalekanium_ingot", DALEKANIUM_INGOT);
+        registerItem("prehistoric_ingot", PREHISTORIC_INGOT);
+        registerItem("prehistoric_upgrade_smithing_template", PREHISTORIC_UPGRADE_SMITHING_TEMPLATE);
+        registerItem("prehistoric_sword", PREHISTORIC_SWORD);
+        registerItem("prehistoric_pickaxe", PREHISTORIC_PICKAXE);
+        registerItem("prehistoric_axe", PREHISTORIC_AXE);
+        registerItem("prehistoric_shovel", PREHISTORIC_SHOVEL);
+        registerItem("prehistoric_hoe", PREHISTORIC_HOE);
+        registerItem("prehistoric_helmet", PREHISTORIC_HELMET);
+        registerItem("prehistoric_chestplate", PREHISTORIC_CHESTPLATE);
+        registerItem("prehistoric_leggings", PREHISTORIC_LEGGINGS);
+        registerItem("prehistoric_boots", PREHISTORIC_BOOTS);
 
         registerItem("sonic_screwdriver", SONIC_SCREWDRIVER);
         registerItem("fez", FEZ);

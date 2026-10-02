@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "gallifrey:block/prehistoric_planks",
+    "side": "gallifrey:block/prehistoric_planks"
+  }
+}

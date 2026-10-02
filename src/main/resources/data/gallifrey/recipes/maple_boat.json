@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:maple_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:maple_boat",
+    "count": 1
+  }
+}

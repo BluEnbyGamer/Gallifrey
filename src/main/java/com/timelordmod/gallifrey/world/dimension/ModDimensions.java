@@ -23,6 +23,9 @@ public final class ModDimensions {
     public static final RegistryKey<World> SKARO_LEVEL_KEY = RegistryKey.of(
             RegistryKeys.WORLD, GallifreyMod.id("skaro"));
 
+    public static final RegistryKey<World> PREHISTORIC_LEVEL_KEY = RegistryKey.of(
+            RegistryKeys.WORLD, GallifreyMod.id("prehistoric"));
+
     public static final RegistryKey<World> MONDAS_LEVEL_KEY = RegistryKey.of(
             RegistryKeys.WORLD, GallifreyMod.id("mondas"));
 }

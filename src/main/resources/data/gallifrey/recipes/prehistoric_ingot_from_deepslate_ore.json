@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "gallifrey:deepslate_prehistoric_ore"
+  },
+  "result": "gallifrey:prehistoric_ingot",
+  "experience": 1.2,
+  "cookingtime": 200
+}

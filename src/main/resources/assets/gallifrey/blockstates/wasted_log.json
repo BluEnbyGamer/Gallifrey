@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x": {
-      "model": "gallifrey:block/wasted_log",
+      "model": "gallifrey:block/wasted_log_horizontal",
       "x": 90,
       "y": 90
     },
@@ -9,7 +9,7 @@
       "model": "gallifrey:block/wasted_log"
     },
     "axis=z": {
-      "model": "gallifrey:block/wasted_log",
+      "model": "gallifrey:block/wasted_log_horizontal",
       "x": 90
     }
   }

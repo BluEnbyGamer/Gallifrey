@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "gallifrey:block/end_stone_bricks_roundel",
+    "down": "gallifrey:block/end_stone_bricks_roundel",
+    "up": "gallifrey:block/end_stone_bricks_roundel",
+    "north": "gallifrey:block/end_stone_bricks_roundel_half",
+    "south": "gallifrey:block/end_stone_bricks_roundel_half",
+    "east": "gallifrey:block/end_stone_bricks_roundel_half",
+    "west": "gallifrey:block/end_stone_bricks_roundel_half"
+  }
+}

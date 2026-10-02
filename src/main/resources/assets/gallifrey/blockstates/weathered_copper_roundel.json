@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "gallifrey:block/weathered_copper_roundel"
+    },
+    "axis=x": {
+      "model": "gallifrey:block/weathered_copper_roundel",
+      "y": 90
+    }
+  }
+}

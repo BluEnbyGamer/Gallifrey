@@ -1,0 +1,11 @@
+{
+  "type": "gallifrey:prehistoric_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gallifrey:prehistoric",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gallifrey:prehistoric"
+    }
+  }
+}

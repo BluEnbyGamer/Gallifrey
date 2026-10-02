@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "gallifrey:prehistoric_ore"
+  },
+  "result": "gallifrey:prehistoric_ingot",
+  "experience": 1.0,
+  "cookingtime": 100
+}
