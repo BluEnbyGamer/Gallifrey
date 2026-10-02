@@ -183,6 +183,316 @@ public class GallifreyModBlocks {
             )
     );
 
+    public static final Block AMBQUARTZ_ROUNDEL = registerBlock(
+            "ambquartz_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
+            )
+    );
+
+    public static final Block BLUEQUARTZ_ROUNDEL = registerBlock(
+            "bluequartz_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
+            )
+    );
+
+    public static final Block BLACK_CONCRETE_ROUNDEL = registerBlock(
+            "black_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block BLUE_CONCRETE_ROUNDEL = registerBlock(
+            "blue_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block BROWN_CONCRETE_ROUNDEL = registerBlock(
+            "brown_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block COPPER_ROUNDEL = registerBlock(
+            "copper_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)
+            )
+    );
+
+    public static final Block CRIMQUARTZ_ROUNDEL = registerBlock(
+            "crimquartz_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
+            )
+    );
+
+    public static final Block OBSIQUARTZ_ROUNDEL = registerBlock(
+            "obsiquartz_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
+            )
+    );
+
+    public static final Block VERDQUARTZ_ROUNDEL = registerBlock(
+            "verdquartz_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
+            )
+    );
+
+    public static final Block VIOQUARTZ_ROUNDEL = registerBlock(
+            "vioquartz_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
+                            .sounds(BlockSoundGroup.STONE)
+            )
+    );
+
+    public static final Block CYAN_CONCRETE_ROUNDEL = registerBlock(
+            "cyan_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block DIRT_ROUNDEL = registerBlock(
+            "dirt_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.DIRT)
+            )
+    );
+
+    public static final Block END_STONE_BRICKS_ROUNDEL = registerBlock(
+            "end_stone_bricks_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.END_STONE_BRICKS)
+            )
+    );
+
+    public static final Block EXPOSED_COPPER_ROUNDEL = registerBlock(
+            "exposed_copper_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.EXPOSED_COPPER)
+            )
+    );
+
+    public static final Block GRAY_CONCRETE_ROUNDEL = registerBlock(
+            "gray_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block GREEN_CONCRETE_ROUNDEL = registerBlock(
+            "green_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block LIGHT_BLUE_CONCRETE_ROUNDEL = registerBlock(
+            "light_blue_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block LIGHT_GRAY_CONCRETE_ROUNDEL = registerBlock(
+            "light_gray_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block LIME_CONCRETE_ROUNDEL = registerBlock(
+            "lime_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block MAGENTA_CONCRETE_ROUNDEL = registerBlock(
+            "magenta_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block MOSS_ROUNDEL = registerBlock(
+            "moss_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.MOSS_BLOCK)
+            )
+    );
+
+    public static final Block ORANGE_CONCRETE_ROUNDEL = registerBlock(
+            "orange_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block OXIDIZED_COPPER_ROUNDEL = registerBlock(
+            "oxidized_copper_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block POLISHED_DIORITE_ROUNDEL = registerBlock(
+            "polished_diorite_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE)
+            )
+    );
+
+    public static final Block POLISHED_ANDESITE_ROUNDEL = registerBlock(
+            "polished_andesite_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE)
+            )
+    );
+
+    public static final Block POLISHED_DEEPSLATE_ROUNDEL = registerBlock(
+            "polished_deepslate_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.POLISHED_DEEPSLATE)
+            )
+    );
+
+    public static final Block PINK_CONCRETE_ROUNDEL = registerBlock(
+            "pink_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block POLISHED_GRANITE_ROUNDEL = registerBlock(
+            "polished_granite_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE)
+            )
+    );
+
+    public static final Block PURPLE_CONCRETE_ROUNDEL = registerBlock(
+            "purple_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block RED_CONCRETE_ROUNDEL = registerBlock(
+            "red_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block SANDSTONE_ROUNDEL = registerBlock(
+            "sandstone_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.SANDSTONE)
+            )
+    );
+
+    public static final Block STRIPPED_ACACIA_LOG_ROUNDEL = registerBlock(
+            "stripped_acacia_log_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.STRIPPED_ACACIA_LOG)
+                            .mapColor(Blocks.STRIPPED_ACACIA_LOG.getDefaultMapColor())
+            )
+    );
+
+    public static final Block STRIPPED_BIRCH_LOG_ROUNDEL = registerBlock(
+            "stripped_birch_log_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.STRIPPED_BIRCH_LOG)
+                            .mapColor(Blocks.STRIPPED_BIRCH_LOG.getDefaultMapColor())
+            )
+    );
+
+    public static final Block STRIPPED_CHERRY_LOG_ROUNDEL = registerBlock(
+            "stripped_cherry_log_roundel",
+            new RoundelBlock(
+
+                    FabricBlockSettings.copyOf(Blocks.STRIPPED_CHERRY_LOG)
+                            .mapColor(Blocks.STRIPPED_CHERRY_LOG.getDefaultMapColor())
+            )
+    );
+
+    public static final Block STRIPPED_DARK_OAK_LOG_ROUNDEL = registerBlock(
+            "stripped_dark_oak_log_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.STRIPPED_DARK_OAK_LOG)
+                            .mapColor(Blocks.STRIPPED_DARK_OAK_LOG.getDefaultMapColor())
+            )
+    );
+
+    public static final Block STRIPPED_JUNGLE_LOG_ROUNDEL = registerBlock(
+            "stripped_jungle_log_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.STRIPPED_JUNGLE_LOG)
+                            .mapColor(Blocks.STRIPPED_JUNGLE_LOG.getDefaultMapColor())
+            )
+    );
+
+    public static final Block STRIPPED_MANGROVE_LOG_ROUNDEL = registerBlock(
+            "stripped_mangrove_log_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.STRIPPED_MANGROVE_LOG)
+                            .mapColor(Blocks.STRIPPED_MANGROVE_LOG.getDefaultMapColor())
+            )
+    );
+
+    public static final Block STRIPPED_OAK_LOG_ROUNDEL = registerBlock(
+            "stripped_oak_log_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG)
+                            .mapColor(Blocks.STRIPPED_OAK_LOG.getDefaultMapColor())
+            )
+    );
+
+    public static final Block STRIPPED_SPRUCE_LOG_ROUNDEL = registerBlock(
+            "stripped_spruce_log_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.STRIPPED_SPRUCE_LOG)
+                            .mapColor(Blocks.STRIPPED_SPRUCE_LOG.getDefaultMapColor())
+            )
+    );
+
+    public static final Block WEATHERED_COPPER_ROUNDEL = registerBlock(
+            "weathered_copper_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.WEATHERED_COPPER)
+            )
+    );
+
+    public static final Block WHITE_CONCRETE_ROUNDEL = registerBlock(
+            "white_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block YELLOW_CONCRETE_ROUNDEL = registerBlock(
+            "yellow_concrete_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+            )
+    );
+
+    public static final Block HARTNELL_ROUNDEL = registerBlock(
+            "hartnell_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.STONE)
+            )
+    );
 
         // ============================================================
         // SONIC SCREWDRIVER

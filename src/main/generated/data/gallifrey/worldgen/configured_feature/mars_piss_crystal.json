@@ -6,11 +6,15 @@
     "targets": [
       {
         "state": {
-          "Name": "gallifrey:piss_crystal"
+          "Name": "gallifrey:piss_crystal",
+          "Properties": {
+            "facing": "up",
+            "waterlogged": "false"
+          }
         },
         "target": {
-          "predicate_type": "minecraft:block_match",
-          "block": "gallifrey:mars_stone"
+          "block": "gallifrey:mars_stone",
+          "predicate_type": "minecraft:block_match"
         }
       }
     ]

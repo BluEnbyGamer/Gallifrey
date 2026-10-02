@@ -80,6 +80,44 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.WHITE_POINT_ORE, GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE,
                         GallifreyModBlocks.NETHER_WHITE_POINT_ORE);
 
+        // Roundels: mined with the same tool as the vanilla block each one is made from.
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(
+                        GallifreyModBlocks.STRIPPED_ACACIA_LOG_ROUNDEL, GallifreyModBlocks.STRIPPED_BIRCH_LOG_ROUNDEL,
+                        GallifreyModBlocks.STRIPPED_CHERRY_LOG_ROUNDEL, GallifreyModBlocks.STRIPPED_DARK_OAK_LOG_ROUNDEL,
+                        GallifreyModBlocks.STRIPPED_JUNGLE_LOG_ROUNDEL, GallifreyModBlocks.STRIPPED_MANGROVE_LOG_ROUNDEL,
+                        GallifreyModBlocks.STRIPPED_OAK_LOG_ROUNDEL, GallifreyModBlocks.STRIPPED_SPRUCE_LOG_ROUNDEL);
+
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(
+                        GallifreyModBlocks.BASALT_ROUNDEL, GallifreyModBlocks.BONE_ROUNDEL,
+                        GallifreyModBlocks.STRUCTURE_ROUNDEL, GallifreyModBlocks.LODESTONE_ROUNDEL,
+                        GallifreyModBlocks.QUARTZ_ROUNDEL, GallifreyModBlocks.AMBQUARTZ_ROUNDEL,
+                        GallifreyModBlocks.BLUEQUARTZ_ROUNDEL, GallifreyModBlocks.BLACK_CONCRETE_ROUNDEL,
+                        GallifreyModBlocks.BLUE_CONCRETE_ROUNDEL, GallifreyModBlocks.BROWN_CONCRETE_ROUNDEL,
+                        GallifreyModBlocks.COPPER_ROUNDEL, GallifreyModBlocks.CRIMQUARTZ_ROUNDEL,
+                        GallifreyModBlocks.OBSIQUARTZ_ROUNDEL, GallifreyModBlocks.VERDQUARTZ_ROUNDEL,
+                        GallifreyModBlocks.VIOQUARTZ_ROUNDEL, GallifreyModBlocks.CYAN_CONCRETE_ROUNDEL,
+                        GallifreyModBlocks.END_STONE_BRICKS_ROUNDEL, GallifreyModBlocks.EXPOSED_COPPER_ROUNDEL,
+                        GallifreyModBlocks.GRAY_CONCRETE_ROUNDEL, GallifreyModBlocks.GREEN_CONCRETE_ROUNDEL,
+                        GallifreyModBlocks.LIGHT_BLUE_CONCRETE_ROUNDEL, GallifreyModBlocks.LIGHT_GRAY_CONCRETE_ROUNDEL,
+                        GallifreyModBlocks.LIME_CONCRETE_ROUNDEL, GallifreyModBlocks.MAGENTA_CONCRETE_ROUNDEL,
+                        GallifreyModBlocks.ORANGE_CONCRETE_ROUNDEL, GallifreyModBlocks.OXIDIZED_COPPER_ROUNDEL,
+                        GallifreyModBlocks.POLISHED_DIORITE_ROUNDEL, GallifreyModBlocks.POLISHED_ANDESITE_ROUNDEL,
+                        GallifreyModBlocks.POLISHED_DEEPSLATE_ROUNDEL, GallifreyModBlocks.PINK_CONCRETE_ROUNDEL,
+                        GallifreyModBlocks.POLISHED_GRANITE_ROUNDEL, GallifreyModBlocks.PURPLE_CONCRETE_ROUNDEL,
+                        GallifreyModBlocks.RED_CONCRETE_ROUNDEL, GallifreyModBlocks.SANDSTONE_ROUNDEL,
+                        GallifreyModBlocks.WEATHERED_COPPER_ROUNDEL, GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL,
+                        GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL, GallifreyModBlocks.HARTNELL_ROUNDEL);
+
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+                .add(
+                        GallifreyModBlocks.DIRT_ROUNDEL);
+
+        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+                .add(
+                        GallifreyModBlocks.MOSS_ROUNDEL);
+
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(GallifreyModBlocks.TARDIS_FENCE, GallifreyModBlocks.TREEBORG_FENCE,
                         GallifreyModBlocks.ASH_FENCE, GallifreyModBlocks.MAPLE_FENCE,

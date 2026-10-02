@@ -11,7 +11,7 @@
               "add": false,
               "conditions": [
                 {
-                  "block": "gallifrey:wasted_plank_slab",
+                  "block": "gallifrey:wasted_slab",
                   "condition": "minecraft:block_state_property",
                   "properties": {
                     "type": "double"
@@ -25,7 +25,7 @@
               "function": "minecraft:explosion_decay"
             }
           ],
-          "name": "gallifrey:wasted_plank_slab"
+          "name": "gallifrey:wasted_slab"
         }
       ],
       "rolls": 1.0

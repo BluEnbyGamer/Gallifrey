@@ -139,6 +139,56 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         // MISC BLOCK DROPS
         addDrop(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
+
+        // ROUNDELS
+        addDrop(GallifreyModBlocks.BASALT_ROUNDEL);
+        addDrop(GallifreyModBlocks.BONE_ROUNDEL);
+        addDrop(GallifreyModBlocks.STRUCTURE_ROUNDEL);
+        addDrop(GallifreyModBlocks.LODESTONE_ROUNDEL);
+        addDrop(GallifreyModBlocks.QUARTZ_ROUNDEL);
+        addDrop(GallifreyModBlocks.AMBQUARTZ_ROUNDEL);
+        addDrop(GallifreyModBlocks.BLUEQUARTZ_ROUNDEL);
+        addDrop(GallifreyModBlocks.BLACK_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.BLUE_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.BROWN_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.COPPER_ROUNDEL);
+        addDrop(GallifreyModBlocks.CRIMQUARTZ_ROUNDEL);
+        addDrop(GallifreyModBlocks.OBSIQUARTZ_ROUNDEL);
+        addDrop(GallifreyModBlocks.VERDQUARTZ_ROUNDEL);
+        addDrop(GallifreyModBlocks.VIOQUARTZ_ROUNDEL);
+        addDrop(GallifreyModBlocks.CYAN_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.DIRT_ROUNDEL);
+        addDrop(GallifreyModBlocks.END_STONE_BRICKS_ROUNDEL);
+        addDrop(GallifreyModBlocks.EXPOSED_COPPER_ROUNDEL);
+        addDrop(GallifreyModBlocks.GRAY_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.GREEN_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.LIGHT_BLUE_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.LIGHT_GRAY_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.LIME_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.MAGENTA_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.MOSS_ROUNDEL);
+        addDrop(GallifreyModBlocks.ORANGE_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.OXIDIZED_COPPER_ROUNDEL);
+        addDrop(GallifreyModBlocks.POLISHED_DIORITE_ROUNDEL);
+        addDrop(GallifreyModBlocks.POLISHED_ANDESITE_ROUNDEL);
+        addDrop(GallifreyModBlocks.POLISHED_DEEPSLATE_ROUNDEL);
+        addDrop(GallifreyModBlocks.PINK_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.POLISHED_GRANITE_ROUNDEL);
+        addDrop(GallifreyModBlocks.PURPLE_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.RED_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.SANDSTONE_ROUNDEL);
+        addDrop(GallifreyModBlocks.STRIPPED_ACACIA_LOG_ROUNDEL);
+        addDrop(GallifreyModBlocks.STRIPPED_BIRCH_LOG_ROUNDEL);
+        addDrop(GallifreyModBlocks.STRIPPED_CHERRY_LOG_ROUNDEL);
+        addDrop(GallifreyModBlocks.STRIPPED_DARK_OAK_LOG_ROUNDEL);
+        addDrop(GallifreyModBlocks.STRIPPED_JUNGLE_LOG_ROUNDEL);
+        addDrop(GallifreyModBlocks.STRIPPED_MANGROVE_LOG_ROUNDEL);
+        addDrop(GallifreyModBlocks.STRIPPED_OAK_LOG_ROUNDEL);
+        addDrop(GallifreyModBlocks.STRIPPED_SPRUCE_LOG_ROUNDEL);
+        addDrop(GallifreyModBlocks.WEATHERED_COPPER_ROUNDEL);
+        addDrop(GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL);
+        addDrop(GallifreyModBlocks.HARTNELL_ROUNDEL);
         addDrop(GallifreyModBlocks.TREE_TAPPER);
         addDrop(GallifreyModBlocks.SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
         addDrop(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
