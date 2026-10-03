@@ -125,6 +125,48 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.HANGING_MAPLE_SIGN);
                 entries.add(GallifreyModItems.MAPLE_BOAT);
                 entries.add(GallifreyModItems.MAPLE_CHEST_BOAT);
+
+                // Moonpine wood set
+                entries.add(GallifreyModBlocks.MOONPINE_SAPLING);
+                entries.add(GallifreyModBlocks.MOONPINE_LEAVES);
+                entries.add(GallifreyModBlocks.MOONPINE_LOG);
+                entries.add(GallifreyModBlocks.MOONPINE_WOOD);
+                entries.add(GallifreyModBlocks.STRIP_MOONPINE_LOG);
+                entries.add(GallifreyModBlocks.STRIP_MOONPINE_WOOD);
+                entries.add(GallifreyModBlocks.MOONPINE_PLANKS);
+                entries.add(GallifreyModBlocks.MOONPINE_STAIRS);
+                entries.add(GallifreyModBlocks.MOONPINE_SLAB);
+                entries.add(GallifreyModBlocks.MOONPINE_FENCE);
+                entries.add(GallifreyModBlocks.MOONPINE_FENCE_GATE);
+                entries.add(GallifreyModBlocks.MOONPINE_DOOR);
+                entries.add(GallifreyModBlocks.MOONPINE_TRAPDOOR);
+                entries.add(GallifreyModBlocks.MOONPINE_PRESSURE_PLATE);
+                entries.add(GallifreyModBlocks.MOONPINE_BUTTON);
+                entries.add(GallifreyModItems.MOONPINE_SIGN);
+                entries.add(GallifreyModItems.HANGING_MOONPINE_SIGN);
+                entries.add(GallifreyModItems.MOONPINE_BOAT);
+                entries.add(GallifreyModItems.MOONPINE_CHEST_BOAT);
+
+                // Prehistoric wood set
+                entries.add(GallifreyModBlocks.PREHISTORIC_SAPLING);
+                entries.add(GallifreyModBlocks.PREHISTORIC_LEAVES);
+                entries.add(GallifreyModBlocks.PREHISTORIC_LOG);
+                entries.add(GallifreyModBlocks.PREHISTORIC_WOOD);
+                entries.add(GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
+                entries.add(GallifreyModBlocks.STRIP_PREHISTORIC_WOOD);
+                entries.add(GallifreyModBlocks.PREHISTORIC_PLANKS);
+                entries.add(GallifreyModBlocks.PREHISTORIC_STAIRS);
+                entries.add(GallifreyModBlocks.PREHISTORIC_SLAB);
+                entries.add(GallifreyModBlocks.PREHISTORIC_FENCE);
+                entries.add(GallifreyModBlocks.PREHISTORIC_FENCE_GATE);
+                entries.add(GallifreyModBlocks.PREHISTORIC_DOOR);
+                entries.add(GallifreyModBlocks.PREHISTORIC_TRAPDOOR);
+                entries.add(GallifreyModBlocks.PREHISTORIC_PRESSURE_PLATE);
+                entries.add(GallifreyModBlocks.PREHISTORIC_BUTTON);
+                entries.add(GallifreyModItems.PREHISTORIC_SIGN);
+                entries.add(GallifreyModItems.HANGING_PREHISTORIC_SIGN);
+                entries.add(GallifreyModItems.PREHISTORIC_BOAT);
+                entries.add(GallifreyModItems.PREHISTORIC_CHEST_BOAT);
             }
     );
 
@@ -166,6 +208,22 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.RAW_STEEL_BLOCK);
                 entries.add(GallifreyModBlocks.STEEL_BLOCK);
                 entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
+
+                // Prehistoric ore and gear
+                entries.add(GallifreyModBlocks.PREHISTORIC_ORE);
+                entries.add(GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE);
+                entries.add(GallifreyModItems.PREHISTORIC_INGOT);
+                entries.add(GallifreyModBlocks.PREHISTORIC_BLOCK);
+                entries.add(GallifreyModItems.PREHISTORIC_UPGRADE_SMITHING_TEMPLATE);
+                entries.add(GallifreyModItems.PREHISTORIC_SWORD);
+                entries.add(GallifreyModItems.PREHISTORIC_PICKAXE);
+                entries.add(GallifreyModItems.PREHISTORIC_AXE);
+                entries.add(GallifreyModItems.PREHISTORIC_SHOVEL);
+                entries.add(GallifreyModItems.PREHISTORIC_HOE);
+                entries.add(GallifreyModItems.PREHISTORIC_HELMET);
+                entries.add(GallifreyModItems.PREHISTORIC_CHESTPLATE);
+                entries.add(GallifreyModItems.PREHISTORIC_LEGGINGS);
+                entries.add(GallifreyModItems.PREHISTORIC_BOOTS);
             }
     );
 
@@ -271,10 +329,26 @@ public final class GallifreyTabSections {
             entries -> {
                 entries.add(GallifreyModBlocks.WASTED_DIRT);
                 entries.add(GallifreyModBlocks.WASTED_GRASS);
-                entries.add(GallifreyModBlocks.WASTED_LOG);
+                // Wasted wood set
+                entries.add(GallifreyModBlocks.WASTED_SAPLING);
                 entries.add(GallifreyModBlocks.WASTED_LEAVES);
+                entries.add(GallifreyModBlocks.WASTED_LOG);
+                entries.add(GallifreyModBlocks.WASTED_WOOD);
+                entries.add(GallifreyModBlocks.STRIP_WASTED_LOG);
+                entries.add(GallifreyModBlocks.STRIP_WASTED_WOOD);
                 entries.add(GallifreyModBlocks.WASTED_PLANKS);
+                entries.add(GallifreyModBlocks.WASTED_STAIRS);
                 entries.add(GallifreyModBlocks.WASTED_SLAB);
+                entries.add(GallifreyModBlocks.WASTED_FENCE);
+                entries.add(GallifreyModBlocks.WASTED_FENCE_GATE);
+                entries.add(GallifreyModBlocks.WASTED_DOOR);
+                entries.add(GallifreyModBlocks.WASTED_TRAPDOOR);
+                entries.add(GallifreyModBlocks.WASTED_PRESSURE_PLATE);
+                entries.add(GallifreyModBlocks.WASTED_BUTTON);
+                entries.add(GallifreyModItems.WASTED_SIGN);
+                entries.add(GallifreyModItems.HANGING_WASTED_SIGN);
+                entries.add(GallifreyModItems.WASTED_BOAT);
+                entries.add(GallifreyModItems.WASTED_CHEST_BOAT);
                 entries.add(GallifreyModBlocks.KALETITE);
                 entries.add(GallifreyModBlocks.COBBLED_KALETITE);
                 entries.add(GallifreyModBlocks.KALETITE_BRICKS);

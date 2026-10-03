@@ -74,12 +74,17 @@ public class GallifreyMod implements ModInitializer {
 		StrippableBlockRegistry.register(GallifreyModBlocks.MAPLE_LOG, GallifreyModBlocks.STRIP_MAPLE_LOG);
 		StrippableBlockRegistry.register(GallifreyModBlocks.MAPLE_WOOD, GallifreyModBlocks.STRIP_MAPLE_WOOD);
 
-		//Skaro wasted wood set
-		//StrippableBlockRegistry.register(GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.STRIPPED_WASTED_LOG);
-		//StrippableBlockRegistry.register(GallifreyModBlocks.WASTED_WOOD, GallifreyModBlocks.STRIPPED_WASTED_WOOD);
+		//Moonpine wood set
+		StrippableBlockRegistry.register(GallifreyModBlocks.MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_LOG);
+		StrippableBlockRegistry.register(GallifreyModBlocks.MOONPINE_WOOD, GallifreyModBlocks.STRIP_MOONPINE_WOOD);
 
-		//StrippableBlockRegistry.register(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.STRIPPED_PREHISTORIC_LOG);
-		//StrippableBlockRegistry.register(GallifreyModBlocks.PREHISTORIC_WOOD, GallifreyModBlocks.STRIPPED_PREHISTORIC_WOOD);
+		//Skaro wasted wood set
+		StrippableBlockRegistry.register(GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.STRIP_WASTED_LOG);
+		StrippableBlockRegistry.register(GallifreyModBlocks.WASTED_WOOD, GallifreyModBlocks.STRIP_WASTED_WOOD);
+
+		//Prehistoric wood set
+		StrippableBlockRegistry.register(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
+		StrippableBlockRegistry.register(GallifreyModBlocks.PREHISTORIC_WOOD, GallifreyModBlocks.STRIP_PREHISTORIC_WOOD);
 
 		//Moon-pine wood set
 

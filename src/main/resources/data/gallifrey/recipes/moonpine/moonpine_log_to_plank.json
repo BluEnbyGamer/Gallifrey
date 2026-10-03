@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gallifrey:moonpine_log"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:moonpine_planks",
+    "count": 4
+  }
+}

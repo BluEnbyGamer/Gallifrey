@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "boat",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:moonpine_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:moonpine_boat",
+    "count": 1
+  }
+}

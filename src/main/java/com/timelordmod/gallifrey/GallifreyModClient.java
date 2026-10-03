@@ -405,6 +405,52 @@ public class GallifreyModClient implements ClientModInitializer {
         );
 
         // =========================================================
+        // MOONPINE RENDER LAYER
+        // =========================================================
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.MOONPINE_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.POTTED_MOONPINE_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.MOONPINE_LEAVES,
+                RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.MOONPINE_TRAPDOOR,
+                RenderLayer.getCutoutMipped()
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(
+                        new Identifier(
+                                "gallifrey",
+                                "boat/moonpine_boat"
+                        ),
+                        "main"
+                ),
+                BoatEntityModel::getTexturedModelData
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(
+                        new Identifier(
+                                "gallifrey",
+                                "chest_boat/moonpine_boat"
+                        ),
+                        "main"
+                ),
+                ChestBoatEntityModel::getTexturedModelData
+        );
+
+        // =========================================================
         // WASTED RENDER LAYER
         // =========================================================
 
@@ -421,6 +467,38 @@ public class GallifreyModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(
                 GallifreyModBlocks.WASTED_TRAPDOOR,
                 RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.WASTED_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.POTTED_WASTED_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(
+                        new Identifier(
+                                "gallifrey",
+                                "boat/wasted_boat"
+                        ),
+                        "main"
+                ),
+                BoatEntityModel::getTexturedModelData
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(
+                        new Identifier(
+                                "gallifrey",
+                                "chest_boat/wasted_boat"
+                        ),
+                        "main"
+                ),
+                ChestBoatEntityModel::getTexturedModelData
         );
 
         // =========================================================
@@ -440,6 +518,38 @@ public class GallifreyModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(
         GallifreyModBlocks.PREHISTORIC_TRAPDOOR,
         RenderLayer.getCutoutMipped()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.PREHISTORIC_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.POTTED_PREHISTORIC_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(
+                        new Identifier(
+                                "gallifrey",
+                                "boat/prehistoric_boat"
+                        ),
+                        "main"
+                ),
+                BoatEntityModel::getTexturedModelData
+        );
+
+        EntityModelLayerRegistry.registerModelLayer(
+                new EntityModelLayer(
+                        new Identifier(
+                                "gallifrey",
+                                "chest_boat/prehistoric_boat"
+                        ),
+                        "main"
+                ),
+                ChestBoatEntityModel::getTexturedModelData
         );
     }
 

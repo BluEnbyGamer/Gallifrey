@@ -113,14 +113,25 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.STANDING_MAPLE_SIGN);
         addDrop(GallifreyModBlocks.HANGING_MAPLE_SIGN);
 
-        //MOON-PINE WOOD SET BLOCK DROPS
-        //addDrop(GallifreyModBlocks.ULANDA_SAPLING);
-        //addDrop(GallifreyModBlocks.ULANDA_LEAVES, leavesDrops(GallifreyModBlocks.ULANDA_LEAVES, GallifreyModBlocks.ULANDA_SAPLING, 0.0025f));
-        //addDrop(GallifreyModBlocks.ULANDA_LOG);
-        //addDrop(GallifreyModBlocks.STRIP_ULANDA_LOG);
-        //addDrop(GallifreyModBlocks.ULANDA_WOOD);
-        //addDrop(GallifreyModBlocks.STRIP_ULANDA_WOOD);
-        //addDrop(GallifreyModBlocks.ULANDA_PLANKS);
+        //MOONPINE WOOD SET BLOCK DROPS
+        addDrop(GallifreyModBlocks.MOONPINE_SAPLING);
+        addDrop(GallifreyModBlocks.MOONPINE_LEAVES, leavesDrops(GallifreyModBlocks.MOONPINE_LEAVES, GallifreyModBlocks.MOONPINE_SAPLING, 0.0025f));
+        addDrop(GallifreyModBlocks.MOONPINE_LOG);
+        addDrop(GallifreyModBlocks.STRIP_MOONPINE_LOG);
+        addDrop(GallifreyModBlocks.MOONPINE_WOOD);
+        addDrop(GallifreyModBlocks.STRIP_MOONPINE_WOOD);
+        addDrop(GallifreyModBlocks.MOONPINE_PLANKS);
+        addDrop(GallifreyModBlocks.MOONPINE_STAIRS);
+        addPottedPlantDrops(GallifreyModBlocks.POTTED_MOONPINE_SAPLING);
+        addDrop(GallifreyModBlocks.MOONPINE_SLAB, slabDrops(GallifreyModBlocks.MOONPINE_SLAB));
+        addDrop(GallifreyModBlocks.MOONPINE_BUTTON);
+        addDrop(GallifreyModBlocks.MOONPINE_FENCE);
+        addDrop(GallifreyModBlocks.MOONPINE_FENCE_GATE);
+        addDrop(GallifreyModBlocks.MOONPINE_DOOR, doorDrops(GallifreyModBlocks.MOONPINE_DOOR));
+        addDrop(GallifreyModBlocks.MOONPINE_TRAPDOOR);
+        addDrop(GallifreyModBlocks.MOONPINE_PRESSURE_PLATE);
+        addDrop(GallifreyModBlocks.STANDING_MOONPINE_SIGN);
+        addDrop(GallifreyModBlocks.HANGING_MOONPINE_SIGN);
 
         // MARS BLOCK DROPS
         addDrop(GallifreyModBlocks.MARS_STONE);

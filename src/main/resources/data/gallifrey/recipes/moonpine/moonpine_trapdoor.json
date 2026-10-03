@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:moonpine_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:moonpine_trapdoor",
+    "count": 2
+  }
+}

@@ -23,11 +23,13 @@ public class ModModelProvider extends FabricModelProvider {
         BlockStateModelGenerator.BlockTexturePool treeborgPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TREEBORG_PLANKS);
         BlockStateModelGenerator.BlockTexturePool ashPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ASH_PLANKS);
         BlockStateModelGenerator.BlockTexturePool maplePool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.MAPLE_PLANKS);
+        BlockStateModelGenerator.BlockTexturePool moonpinePool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.MOONPINE_PLANKS);
         tardiswoodPool.family(GallifreyModBlocks.TARDIS_FAMILY);
         ulandaPool.family(GallifreyModBlocks.ULANDA_FAMILY);
         treeborgPool.family(GallifreyModBlocks.TREEBORG_FAMILY);
         ashPool.family(GallifreyModBlocks.ASH_FAMILY);
         maplePool.family(GallifreyModBlocks.MAPLE_FAMILY);
+        moonpinePool.family(GallifreyModBlocks.MOONPINE_FAMILY);
 
         //TARDIS WOOD TYPE
         blockStateModelGenerator.registerLog(GallifreyModBlocks.TARDIS_LOG).log(GallifreyModBlocks.TARDIS_LOG).wood(GallifreyModBlocks.TARDIS_WOOD);
@@ -90,8 +92,17 @@ public class ModModelProvider extends FabricModelProvider {
         maplePool.fenceGate(GallifreyModBlocks.MAPLE_FENCE_GATE);
 
 
-        //MOON-PINE WOOD TYPE
-
+        //MOONPINE WOOD TYPE
+        blockStateModelGenerator.registerLog(GallifreyModBlocks.MOONPINE_LOG).log(GallifreyModBlocks.MOONPINE_LOG).wood(GallifreyModBlocks.MOONPINE_WOOD);
+        blockStateModelGenerator.registerLog(GallifreyModBlocks.STRIP_MOONPINE_LOG).log(GallifreyModBlocks.STRIP_MOONPINE_LOG).wood(GallifreyModBlocks.STRIP_MOONPINE_WOOD);
+        blockStateModelGenerator.registerDoor(GallifreyModBlocks.MOONPINE_DOOR);
+        blockStateModelGenerator.registerTrapdoor(GallifreyModBlocks.MOONPINE_TRAPDOOR);
+        moonpinePool.stairs(GallifreyModBlocks.MOONPINE_STAIRS);
+        moonpinePool.slab(GallifreyModBlocks.MOONPINE_SLAB);
+        moonpinePool.button(GallifreyModBlocks.MOONPINE_BUTTON);
+        moonpinePool.pressurePlate(GallifreyModBlocks.MOONPINE_PRESSURE_PLATE);
+        moonpinePool.fence(GallifreyModBlocks.MOONPINE_FENCE);
+        moonpinePool.fenceGate(GallifreyModBlocks.MOONPINE_FENCE_GATE);
 
         // MISC BLOCKS REGISTRY
         blockStateModelGenerator.registerSingleton(GallifreyModBlocks.TARDIS_LEAVES, TexturedModel.LEAVES);
@@ -99,11 +110,13 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSingleton(GallifreyModBlocks.TREEBORG_LEAVES, TexturedModel.LEAVES);
         blockStateModelGenerator.registerSingleton(GallifreyModBlocks.ASH_LEAVES, TexturedModel.LEAVES);
         blockStateModelGenerator.registerSingleton(GallifreyModBlocks.MAPLE_LEAVES, TexturedModel.LEAVES);
+        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.MOONPINE_LEAVES, TexturedModel.LEAVES);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.TARDIS_SAPLING, GallifreyModBlocks.POTTED_TARDIS_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.ULANDA_SAPLING, GallifreyModBlocks.POTTED_ULANDA_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.TREEBORG_SAPLING, GallifreyModBlocks.POTTED_TREEBORG_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.ASH_SAPLING, GallifreyModBlocks.POTTED_ASH_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.MAPLE_SAPLING, GallifreyModBlocks.POTTED_MAPLE_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.MOONPINE_SAPLING, GallifreyModBlocks.POTTED_MOONPINE_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override
@@ -113,6 +126,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(GallifreyModItems.HANGING_TREEBORG_SIGN, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.HANGING_ASH_SIGN, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.HANGING_MAPLE_SIGN, Models.GENERATED);
+        itemModelGenerator.register(GallifreyModItems.HANGING_MOONPINE_SIGN, Models.GENERATED);
 
         itemModelGenerator.register(GallifreyModItems.TARDIS_BOAT, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.TARDIS_CHEST_BOAT, Models.GENERATED);
@@ -128,6 +142,9 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(GallifreyModItems.MAPLE_BOAT, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.MAPLE_CHEST_BOAT, Models.GENERATED);
+
+        itemModelGenerator.register(GallifreyModItems.MOONPINE_BOAT, Models.GENERATED);
+        itemModelGenerator.register(GallifreyModItems.MOONPINE_CHEST_BOAT, Models.GENERATED);
 
         itemModelGenerator.register(GallifreyModItems.DW_XIV_MUSIC_DISC, Models.GENERATED);
         itemModelGenerator.register(GallifreyModItems.GALLIFREY_MUSIC_DISC, Models.GENERATED);

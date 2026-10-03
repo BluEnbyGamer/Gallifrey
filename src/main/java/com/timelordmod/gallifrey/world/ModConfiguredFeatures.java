@@ -2,7 +2,6 @@ package com.timelordmod.gallifrey.world;
 
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
-import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -17,8 +16,10 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.CherryFoliagePlacer;
+import net.minecraft.world.gen.foliage.MegaPineFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.trunk.CherryTrunkPlacer;
+import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
@@ -37,7 +38,9 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> TREEBORG_KEY =registerKey("treeborg");
     public static final RegistryKey<ConfiguredFeature<?, ?>> ASH_KEY =registerKey("ash");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_KEY =registerKey("maple");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MOONPINE_KEY =registerKey("moonpine");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_TREE_KEY = registerKey("prehistoric_tree");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_TREE_KEY = registerKey("wasted_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_ORE_KEY = registerKey("prehistoric_ore");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
@@ -170,6 +173,24 @@ public class ModConfiguredFeatures {
                 )
                         .build()
         );
+
+        register(context, MOONPINE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.MOONPINE_LOG),
+                new GiantTrunkPlacer(13, 2, 14),
+                BlockStateProvider.of(GallifreyModBlocks.MOONPINE_LEAVES),
+                new MegaPineFoliagePlacer(
+                        ConstantIntProvider.create(0),
+                        ConstantIntProvider.create(0),
+                        UniformIntProvider.create(13, 17)),
+                new TwoLayersFeatureSize(1, 1, 2)).build());
+
+        register(context, WASTED_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.WASTED_LOG),
+                new StraightTrunkPlacer(4, 2, 0),
+                BlockStateProvider.of(GallifreyModBlocks.WASTED_LEAVES),
+                new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1)
+        ).build());
 
         register(context, PREHISTORIC_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LOG),

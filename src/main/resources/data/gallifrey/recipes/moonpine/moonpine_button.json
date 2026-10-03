@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "gallifrey:moonpine_planks"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:moonpine_button",
+    "count": 1
+  }
+}

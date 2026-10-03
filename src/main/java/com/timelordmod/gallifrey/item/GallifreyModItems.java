@@ -108,10 +108,27 @@ public class GallifreyModItems {
     public static final Item MAPLE_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MAPLE_BOAT_ID, ModBoats.MAPLE_BOAT_KEY, false);
     public static final Item MAPLE_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MAPLE_CHEST_BOAT_ID, ModBoats.MAPLE_BOAT_KEY, true);
 
+    public static final Item MOONPINE_SIGN = registerItem("moonpine_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), GallifreyModBlocks.STANDING_MOONPINE_SIGN, GallifreyModBlocks.WALL_MOONPINE_SIGN));
+    public static final Item HANGING_MOONPINE_SIGN = registerItem("moonpine_hanging_sign",
+            new HangingSignItem(GallifreyModBlocks.HANGING_MOONPINE_SIGN, GallifreyModBlocks.WALL_HANGING_MOONPINE_SIGN, new FabricItemSettings().maxCount(16)));
+    public static final Item MOONPINE_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MOONPINE_BOAT_ID, ModBoats.MOONPINE_BOAT_KEY, false);
+    public static final Item MOONPINE_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MOONPINE_CHEST_BOAT_ID, ModBoats.MOONPINE_BOAT_KEY, true);
+
+
     public static final Item WASTED_SIGN = registerItem("wasted_sign",
             new SignItem(new FabricItemSettings().maxCount(16), GallifreyModBlocks.STANDING_WASTED_SIGN, GallifreyModBlocks.WALL_WASTED_SIGN));
     public static final Item HANGING_WASTED_SIGN = registerItem("wasted_hanging_sign",
             new HangingSignItem(GallifreyModBlocks.HANGING_WASTED_SIGN, GallifreyModBlocks.WALL_HANGING_WASTED_SIGN, new FabricItemSettings().maxCount(16)));
+    public static final Item WASTED_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WASTED_BOAT_ID, ModBoats.WASTED_BOAT_KEY, false);
+    public static final Item WASTED_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WASTED_CHEST_BOAT_ID, ModBoats.WASTED_BOAT_KEY, true);
+
+    public static final Item PREHISTORIC_SIGN = registerItem("prehistoric_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), GallifreyModBlocks.STANDING_PREHISTORIC_SIGN, GallifreyModBlocks.WALL_PREHISTORIC_SIGN));
+    public static final Item HANGING_PREHISTORIC_SIGN = registerItem("prehistoric_hanging_sign",
+            new HangingSignItem(GallifreyModBlocks.HANGING_PREHISTORIC_SIGN, GallifreyModBlocks.WALL_HANGING_PREHISTORIC_SIGN, new FabricItemSettings().maxCount(16)));
+    public static final Item PREHISTORIC_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.PREHISTORIC_BOAT_ID, ModBoats.PREHISTORIC_BOAT_KEY, false);
+    public static final Item PREHISTORIC_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.PREHISTORIC_CHEST_BOAT_ID, ModBoats.PREHISTORIC_BOAT_KEY, true);
 
 
     // PREHISTORIC MATERIALS AND GEAR

@@ -34,7 +34,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.KALETITE_BRICKS, GallifreyModBlocks.WASTED_DIRT,
                         GallifreyModBlocks.WASTED_GRASS, GallifreyModBlocks.WASTED_LEAVES,
                         GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.WASTED_PLANKS,
-                        GallifreyModBlocks.WASTED_SLAB);
+                        GallifreyModBlocks.WASTED_SLAB)
+
+        .add(GallifreyModBlocks.MOONPINE_LOG, GallifreyModBlocks.MOONPINE_WOOD,
+                GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
+        .add(GallifreyModBlocks.WASTED_WOOD,
+                GallifreyModBlocks.STRIP_WASTED_LOG, GallifreyModBlocks.STRIP_WASTED_WOOD)
+        .add(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.PREHISTORIC_WOOD,
+                GallifreyModBlocks.STRIP_PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_WOOD,
+                GallifreyModBlocks.PREHISTORIC_PLANKS);
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(GallifreyModBlocks.MARS_STONE, GallifreyModBlocks.MARS_COBBLESTONE,
@@ -121,11 +129,33 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(GallifreyModBlocks.TARDIS_FENCE, GallifreyModBlocks.TREEBORG_FENCE,
                         GallifreyModBlocks.ASH_FENCE, GallifreyModBlocks.MAPLE_FENCE,
-                        GallifreyModBlocks.ULANDA_FENCE);
+                        GallifreyModBlocks.MOONPINE_FENCE, GallifreyModBlocks.ULANDA_FENCE,
+                        GallifreyModBlocks.WASTED_FENCE, GallifreyModBlocks.PREHISTORIC_FENCE);
 
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
                 .add(GallifreyModBlocks.TARDIS_FENCE_GATE, GallifreyModBlocks.TREEBORG_FENCE_GATE,
                         GallifreyModBlocks.ASH_FENCE_GATE, GallifreyModBlocks.MAPLE_FENCE_GATE,
-                        GallifreyModBlocks.ULANDA_FENCE_GATE);
+                        GallifreyModBlocks.MOONPINE_FENCE_GATE,GallifreyModBlocks.ULANDA_FENCE_GATE,
+                        GallifreyModBlocks.WASTED_FENCE_GATE, GallifreyModBlocks.PREHISTORIC_FENCE_GATE);
+
+        // Logs tag: leaves only stay alive next to blocks in this tag,
+        // so every tree's logs must be here or its leaves decay.
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+                .add(GallifreyModBlocks.ULANDA_LOG, GallifreyModBlocks.ULANDA_WOOD,
+                        GallifreyModBlocks.STRIP_ULANDA_LOG, GallifreyModBlocks.STRIP_ULANDA_WOOD)
+                .add(GallifreyModBlocks.TREEBORG_LOG, GallifreyModBlocks.TREEBORG_WOOD,
+                        GallifreyModBlocks.STRIP_TREEBORG_LOG, GallifreyModBlocks.STRIP_TREEBORG_WOOD)
+                .add(GallifreyModBlocks.TARDIS_LOG, GallifreyModBlocks.TARDIS_WOOD,
+                        GallifreyModBlocks.STRIP_TARDIS_LOG, GallifreyModBlocks.STRIP_TARDIS_WOOD)
+                .add(GallifreyModBlocks.ASH_LOG, GallifreyModBlocks.ASH_WOOD,
+                        GallifreyModBlocks.STRIP_ASH_LOG, GallifreyModBlocks.STRIP_ASH_WOOD)
+                .add(GallifreyModBlocks.MAPLE_LOG, GallifreyModBlocks.MAPLE_WOOD,
+                        GallifreyModBlocks.STRIP_MAPLE_LOG, GallifreyModBlocks.STRIP_MAPLE_WOOD)
+                .add(GallifreyModBlocks.MOONPINE_LOG, GallifreyModBlocks.MOONPINE_WOOD,
+                        GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
+                .add(GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.WASTED_WOOD,
+                        GallifreyModBlocks.STRIP_WASTED_LOG, GallifreyModBlocks.STRIP_WASTED_WOOD)
+                .add(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.PREHISTORIC_WOOD,
+                        GallifreyModBlocks.STRIP_PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_WOOD);
     }
 }

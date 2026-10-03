@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gallifrey:stripped_moonpine_log"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:stripped_moonpine_wood",
+    "count": 1
+  }
+}

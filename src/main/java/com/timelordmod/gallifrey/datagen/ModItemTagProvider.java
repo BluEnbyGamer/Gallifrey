@@ -21,7 +21,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(GallifreyModBlocks.TREEBORG_PLANKS.asItem())
                 .add(GallifreyModBlocks.ULANDA_PLANKS.asItem())
                 .add(GallifreyModBlocks.ASH_PLANKS.asItem())
-                .add(GallifreyModBlocks.MAPLE_PLANKS.asItem());
+                .add(GallifreyModBlocks.MAPLE_PLANKS.asItem())
+                .add(GallifreyModBlocks.MOONPINE_PLANKS.asItem())
+                .add(GallifreyModBlocks.WASTED_PLANKS.asItem())
+                .add(GallifreyModBlocks.PREHISTORIC_PLANKS.asItem());
 
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
                 .add(GallifreyModItems.DW_XIV_MUSIC_DISC)

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_door",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:moonpine_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:moonpine_door",
+    "count": 3
+  }
+}
