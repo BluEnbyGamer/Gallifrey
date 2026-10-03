@@ -8,11 +8,11 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:template"
+      "item": "minecraft:quartz_block"
     }
   },
   "result": {
-    "item": "gallifrey:template_roundel",
-    "count": 1
+    "item": "gallifrey:quartz_roundel",
+    "count": 4
   }
 }
