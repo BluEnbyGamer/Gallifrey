@@ -43,7 +43,10 @@ public class GallifreyModBlocks {
     // ============================================================
     // MARS BLOCKS
     // ============================================================
-
+    //public static final Block MARS_SAND = registerBlock("mars_cobblestone",
+           // new FallingBlock(FabricBlockSettings.copyOf(Blocks.RED_SAND)));
+//public static final Block MARS_SANDSTONE = registerBlock("mars_sandstone",
+            //new Block(FabricBlockSettings.copyOf(Blocks.SANDSTONE)));
     public static final Block MARS_STONE = registerBlock("mars_stone",
             new Block(FabricBlockSettings.copyOf(Blocks.STONE).strength(1.5f, 6.0f)));
     public static final Block MARS_COBBLESTONE = registerBlock("mars_cobblestone",
@@ -178,6 +181,13 @@ public class GallifreyModBlocks {
 
     public static final Block QUARTZ_ROUNDEL = registerBlock(
             "quartz_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
+            )
+    );
+
+    public static final Block VANILLA_QUATZ_ROUNDEL = registerBlock(
+            "vanilla_quartz_roundel",
             new RoundelBlock(
                     FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
             )

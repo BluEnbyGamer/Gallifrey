@@ -34,6 +34,8 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 
 /**
  *                     ==== Block Type info ====
@@ -70,20 +72,40 @@ public class TapperBlock extends Block {
     // Tree lookup table. Add new tappable trees here (e.g. Maple -> syrup).
     // ------------------------------------------------------------------
 
+    /** One tappable tree: the log the tapper hangs on, the leaves that prove the tree is alive, and what it gives. */
+    public record Tap(Block log, Block leaves, Item product) {}
+
+    private static List<Tap> taps;
+
+    /**
+     * The one list of tappable trees. The block uses it, and so does the JEI page,
+     * so a tree added here shows up in JEI automatically.
+     * Built on first use because the blocks and items don't exist yet while this class loads.
+     */
+    public static List<Tap> taps() {
+        if (taps == null) {
+            taps = List.of(
+                    new Tap(GallifreyModBlocks.TREEBORG_LOG, GallifreyModBlocks.TREEBORG_LEAVES, GallifreyModItems.TREEBORG_PASTE),
+                    new Tap(Blocks.OAK_LOG, Blocks.OAK_LEAVES, GallifreyModItems.SILICONE),
+                    new Tap(GallifreyModBlocks.MAPLE_LOG, GallifreyModBlocks.MAPLE_LEAVES, GallifreyModItems.MAPLE_SYRUP)
+            );
+        }
+        return taps;
+    }
+
     @Nullable
     private static Block leavesFor(BlockState log) {
-        if (log.isOf(GallifreyModBlocks.TREEBORG_LOG)) return GallifreyModBlocks.TREEBORG_LEAVES;
-        if (log.isOf(Blocks.OAK_LOG)) return Blocks.OAK_LEAVES;
-        if (log.isOf(GallifreyModBlocks.MAPLE_LOG)) return GallifreyModBlocks.MAPLE_LEAVES;
-
+        for (Tap tap : taps()) {
+            if (log.isOf(tap.log())) return tap.leaves();
+        }
         return null;
     }
 
     @Nullable
     private static Item productFor(BlockState log) {
-        if (log.isOf(GallifreyModBlocks.TREEBORG_LOG)) return GallifreyModItems.TREEBORG_PASTE;
-        if (log.isOf(Blocks.OAK_LOG)) return GallifreyModItems.SILICONE;
-        if (log.isOf(GallifreyModBlocks.MAPLE_LOG)) return GallifreyModItems.MAPLE_SYRUP;
+        for (Tap tap : taps()) {
+            if (log.isOf(tap.log())) return tap.product();
+        }
         return null;
     }
 

@@ -147,6 +147,7 @@
   "block.gallifrey.mars_iron_ore": "Mars Iron Ore",
   "block.gallifrey.sonic_workshop": "Sonic Workshop",
   "block.gallifrey.tapper": "Tree Tapper",
+  "jei.gallifrey.tapper": "Tree Tapping",
   "block.gallifrey.sonic_workshop.needs_sonic": "Insert a Sonic Screwdriver",
   "block.gallifrey.tapper.filling": "Filling...",
   "block.gallifrey.tapper.not_a_tree": "This tapper isn't on a living tree",
