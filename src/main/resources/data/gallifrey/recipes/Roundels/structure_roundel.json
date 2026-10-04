@@ -2,20 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "pattern": [
-    " # ",
-    "#=#",
-    " # "
+    " = ",
+    "# #",
+    " = "
   ],
   "key": {
     "#": {
-      "item": "gallifrey:quartz_roundel"
+      "item": "minecraft:obsidian"
     },
     "=": {
-      "item": "minecraft:yellow_dye"
+      "item": "minecraft:quartz"
     }
   },
   "result": {
-    "item": "gallifrey:ambquartz_roundel",
+    "item": "gallifrey:structure_roundel",
     "count": 4
   }
 }

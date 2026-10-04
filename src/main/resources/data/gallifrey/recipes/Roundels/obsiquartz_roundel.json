@@ -8,7 +8,7 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:quartz_block"
+      "item": "gallifrey:quartz_roundel"
     },
     "=": {
       "item": "minecraft:yellow_dye"

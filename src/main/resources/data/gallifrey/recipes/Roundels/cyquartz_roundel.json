@@ -11,11 +11,11 @@
       "item": "gallifrey:quartz_roundel"
     },
     "=": {
-      "item": "minecraft:yellow_dye"
+      "item": "minecraft:cyan_dye"
     }
   },
   "result": {
-    "item": "gallifrey:ambquartz_roundel",
+    "item": "gallifrey:cyquartz_roundel",
     "count": 4
   }
 }

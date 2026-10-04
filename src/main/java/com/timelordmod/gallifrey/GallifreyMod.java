@@ -8,9 +8,11 @@ import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
 import com.timelordmod.gallifrey.world.biome.ModBiomes;
 import com.timelordmod.gallifrey.world.MarsWorldHandler;
+import com.timelordmod.gallifrey.world.portal.GallifreyPortalAreaHelper;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.BiomeKeys;
@@ -23,6 +25,9 @@ public class GallifreyMod implements ModInitializer {
 	public static final String MOD_ID = "gallifrey";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final Identifier VM_PACKET_ID = new Identifier(MOD_ID, "vm_packet");
+	public static final Identifier GALLIFREY_FRAME_TESTER =
+			new Identifier(GallifreyMod.MOD_ID, "gallifrey_frame");
+
 
 	@Override
 	public void onInitialize() {
@@ -93,8 +98,11 @@ public class GallifreyMod implements ModInitializer {
 
 
 		// Custom Dimension Stuff
+		CustomPortalApiRegistry.registerPortalFrameTester(GALLIFREY_FRAME_TESTER, GallifreyPortalAreaHelper::new);
+
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.REINFORCED_STEEL_BLOCK)
+						.customFrameTester(GALLIFREY_FRAME_TESTER)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "gallifrey"))
 						.tintColor(230, 142, 48)
