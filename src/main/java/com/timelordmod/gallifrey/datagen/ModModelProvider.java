@@ -24,6 +24,7 @@ public class ModModelProvider extends FabricModelProvider {
         BlockStateModelGenerator.BlockTexturePool ashPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ASH_PLANKS);
         BlockStateModelGenerator.BlockTexturePool maplePool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.MAPLE_PLANKS);
         BlockStateModelGenerator.BlockTexturePool moonpinePool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.MOONPINE_PLANKS);
+        BlockStateModelGenerator.BlockTexturePool hartnellPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.HARTNELL_BLOCK);
         tardiswoodPool.family(GallifreyModBlocks.TARDIS_FAMILY);
         ulandaPool.family(GallifreyModBlocks.ULANDA_FAMILY);
         treeborgPool.family(GallifreyModBlocks.TREEBORG_FAMILY);
@@ -117,6 +118,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.ASH_SAPLING, GallifreyModBlocks.POTTED_ASH_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.MAPLE_SAPLING, GallifreyModBlocks.POTTED_MAPLE_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.MOONPINE_SAPLING, GallifreyModBlocks.POTTED_MOONPINE_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+        hartnellPool.wall(GallifreyModBlocks.HARTNELL_WALL);
     }
 
     @Override

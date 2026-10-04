@@ -13,8 +13,8 @@
           }
         },
         "target": {
-          "block": "gallifrey:mars_stone",
-          "predicate_type": "minecraft:block_match"
+          "predicate_type": "minecraft:tag_match",
+          "tag": "gallifrey:mars_ore_replaceables"
         }
       }
     ]

@@ -155,6 +155,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.STEEL_BLOCK);
         addDrop(GallifreyModBlocks.PISS_CRYSTAL);
         addDrop(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
+        addDrop(GallifreyModBlocks.HARTNELL_BLOCK);
+        addDrop(GallifreyModBlocks.HARTNELL_WALL);
 
         // ROUNDELS
         addDrop(GallifreyModBlocks.BASALT_ROUNDEL);
@@ -205,7 +207,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL);
         addDrop(GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL);
         addDrop(GallifreyModBlocks.HARTNELL_ROUNDEL);
-        addDrop(GallifreyModBlocks.HARTNELL_WALL);
         addDrop(GallifreyModBlocks.TREE_TAPPER);
         addDrop(GallifreyModBlocks.SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
         addDrop(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));

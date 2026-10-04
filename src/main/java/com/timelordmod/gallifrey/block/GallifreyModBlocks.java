@@ -93,6 +93,13 @@ public class GallifreyModBlocks {
             )
     );
 
+    public static final Block HARTNELL_BLOCK = registerBlock(
+            "hartnell_block",
+            new Block(
+                    FabricBlockSettings.copyOf(Blocks.STONE)
+            )
+    );
+
     public static final Block STEEL_BLOCK = registerBlock(
             "steel_block",
             new Block(

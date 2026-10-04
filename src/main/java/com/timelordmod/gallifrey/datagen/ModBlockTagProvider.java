@@ -149,6 +149,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.MOONPINE_FENCE_GATE,GallifreyModBlocks.ULANDA_FENCE_GATE,
                         GallifreyModBlocks.WASTED_FENCE_GATE, GallifreyModBlocks.PREHISTORIC_FENCE_GATE);
 
+        getOrCreateTagBuilder(BlockTags.WALLS)
+                .add(GallifreyModBlocks.HARTNELL_WALL);
+
         // Logs tag: leaves only stay alive next to blocks in this tag,
         // so every tree's logs must be here or its leaves decay.
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)

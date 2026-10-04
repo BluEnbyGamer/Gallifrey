@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top_right",
-  "textures": {
-    "bottom": "gallifrey:block/prehistoric_door_bottom",
-    "top": "gallifrey:block/prehistoric_door_top"
-  }
-}

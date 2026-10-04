@@ -2,7 +2,6 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "conditions": [
         {
@@ -14,7 +13,8 @@
           "type": "minecraft:item",
           "name": "gallifrey:wasted_leaves"
         }
-      ]
+      ],
+      "rolls": 1.0
     }
   ]
 }

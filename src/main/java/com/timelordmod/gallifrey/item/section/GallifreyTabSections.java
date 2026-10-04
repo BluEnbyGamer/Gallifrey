@@ -225,18 +225,12 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.RAW_STEEL_BLOCK);
                 entries.add(GallifreyModBlocks.STEEL_BLOCK);
                 entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
-
-                // Prehistoric ore and gear
-            }
-    );
-
-    public static final CreativeSection MISC_BLOCKS = CreativeSection.of(
-            "misc_blocks",
-            () -> new ItemStack(GallifreyModBlocks.HARTNELL_WALL),
-            entries -> {
+                entries.add(GallifreyModBlocks.HARTNELL_BLOCK);
                 entries.add(GallifreyModBlocks.HARTNELL_WALL);
                 entries.add(GallifreyModBlocks.GOOD_HEAVENS);
                 entries.add(GallifreyModBlocks.EXQUISITE_CAT);
+
+                // Prehistoric ore and gear
             }
     );
 
@@ -366,8 +360,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.KALETITE);
                 entries.add(GallifreyModBlocks.COBBLED_KALETITE);
                 entries.add(GallifreyModBlocks.KALETITE_BRICKS);
-                entries.add(GallifreyModBlocks.EXQUISITE_CAT);
-                entries.add(GallifreyModBlocks.GOOD_HEAVENS);
                 entries.add(GallifreyModBlocks.DALEKANIUM_BLOCK);
                 entries.add(GallifreyModBlocks.DALEKANIUM_ORE);
                 entries.add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
@@ -380,7 +372,6 @@ public final class GallifreyTabSections {
             WOOD_TYPES,
             PREHISTORIC,
             MISC,
-            MISC_BLOCKS,
             ROUNDELS,
             CLOTHING,
             MARS,

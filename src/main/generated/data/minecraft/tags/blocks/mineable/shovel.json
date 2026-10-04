@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "gallifrey:mars_sand",
     "gallifrey:dirt_roundel"
   ]
 }

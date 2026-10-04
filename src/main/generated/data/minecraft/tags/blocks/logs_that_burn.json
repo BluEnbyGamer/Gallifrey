@@ -30,8 +30,6 @@
     "gallifrey:stripped_wasted_log",
     "gallifrey:stripped_wasted_wood",
     "gallifrey:prehistoric_log",
-    "gallifrey:prehistoric_wood",
-    "gallifrey:stripped_prehistoric_log",
-    "gallifrey:stripped_prehistoric_wood"
+    "gallifrey:stripped_prehistoric_log"
   ]
 }

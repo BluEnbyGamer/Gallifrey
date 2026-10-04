@@ -98,7 +98,8 @@ dependencies {
 	modImplementation "maven.modrinth:biolith:NikAXMfS"
 	include("maven.modrinth:biolith:NikAXMfS")
 
-	modCompileOnly "mezz.jei:jei-1.20.1-fabric-api:15.62.0.217"
+	//please leave this alone
+	modCompileOnly "mezz.jei:jei-1.20.1-fabric:15.62.0.217"
 }
 
 /*

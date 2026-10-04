@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_wall_side_tall",
   "textures": {
-    "texture": "gallifrey:block/hartnell_block"
+    "wall": "gallifrey:block/hartnell_block"
   }
 }
