@@ -99,13 +99,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(
                         GallifreyModBlocks.BASALT_ROUNDEL, GallifreyModBlocks.BONE_ROUNDEL,
+                        GallifreyModBlocks.VANILLA_QUATZ_ROUNDEL,
                         GallifreyModBlocks.STRUCTURE_ROUNDEL, GallifreyModBlocks.LODESTONE_ROUNDEL,
                         GallifreyModBlocks.QUARTZ_ROUNDEL, GallifreyModBlocks.AMBQUARTZ_ROUNDEL,
                         GallifreyModBlocks.BLUEQUARTZ_ROUNDEL, GallifreyModBlocks.BLACK_CONCRETE_ROUNDEL,
                         GallifreyModBlocks.BLUE_CONCRETE_ROUNDEL, GallifreyModBlocks.BROWN_CONCRETE_ROUNDEL,
                         GallifreyModBlocks.COPPER_ROUNDEL, GallifreyModBlocks.CRIMQUARTZ_ROUNDEL,
                         GallifreyModBlocks.OBSIQUARTZ_ROUNDEL, GallifreyModBlocks.VERDQUARTZ_ROUNDEL,
-                        GallifreyModBlocks.VIOQUARTZ_ROUNDEL, GallifreyModBlocks.CYAN_CONCRETE_ROUNDEL,
+                        GallifreyModBlocks.VIOQUARTZ_ROUNDEL, GallifreyModBlocks.CYQUARTZ_ROUNDEL,
                         GallifreyModBlocks.END_STONE_BRICKS_ROUNDEL, GallifreyModBlocks.EXPOSED_COPPER_ROUNDEL,
                         GallifreyModBlocks.GRAY_CONCRETE_ROUNDEL, GallifreyModBlocks.GREEN_CONCRETE_ROUNDEL,
                         GallifreyModBlocks.LIGHT_BLUE_CONCRETE_ROUNDEL, GallifreyModBlocks.LIGHT_GRAY_CONCRETE_ROUNDEL,

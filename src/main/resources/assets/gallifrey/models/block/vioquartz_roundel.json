@@ -4,8 +4,8 @@
     "particle": "gallifrey:block/vioquartz_roundel",
     "down": "gallifrey:block/vioquartz_roundel",
     "up": "gallifrey:block/vioquartz_roundel",
-    "north": "gallifrey:block/vioquartz_roundel_half",
-    "south": "gallifrey:block/vioquartz_roundel_half",
+    "north": "gallifrey:block/vioquartz_roundel",
+    "south": "gallifrey:block/vioquartz_roundel",
     "east": "gallifrey:block/vioquartz_roundel_half",
     "west": "gallifrey:block/vioquartz_roundel_half"
   }

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "particle": "gallifrey:block/vanilla_quartz._roundel_top",
-    "down": "gallifrey:block/vanilla_quartz._roundel_top",
-    "up": "gallifrey:block/vanilla_quartz._roundel_top",
-    "north": "gallifrey:block/vanilla_quartz._roundel_side_a",
-    "south": "gallifrey:block/vanilla_quartz._roundel_side_a",
-    "east": "gallifrey:block/vanilla_quartz._roundel_side_b",
-    "west": "gallifrey:block/vanilla_quartz._roundel_side_b"
+    "particle": "gallifrey:block/vanilla_quartz_roundel_top",
+    "down": "gallifrey:block/vanilla_quartz_roundel_top",
+    "up": "gallifrey:block/vanilla_quartz_roundel_top",
+    "north": "gallifrey:block/vanilla_quartz_roundel",
+    "south": "gallifrey:block/vanilla_quartz_roundel",
+    "east": "gallifrey:block/vanilla_quartz_roundel_half",
+    "west": "gallifrey:block/vanilla_quartz_roundel_half"
   }
 }

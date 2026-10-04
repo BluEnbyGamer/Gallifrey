@@ -264,10 +264,10 @@ public class GallifreyModBlocks {
             )
     );
 
-    public static final Block CYAN_CONCRETE_ROUNDEL = registerBlock(
-            "cyan_concrete_roundel",
+    public static final Block CYQUARTZ_ROUNDEL = registerBlock(
+            "cyquartz_roundel",
             new RoundelBlock(
-                    FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE)
+                    FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK)
             )
     );
 

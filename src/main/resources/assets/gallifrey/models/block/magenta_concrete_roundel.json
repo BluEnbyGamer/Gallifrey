@@ -4,8 +4,8 @@
     "particle": "gallifrey:block/magenta_concrete_roundel",
     "down": "gallifrey:block/magenta_concrete_roundel",
     "up": "gallifrey:block/magenta_concrete_roundel",
-    "north": "gallifrey:block/magenta_concrete_roundel_half",
-    "south": "gallifrey:block/magenta_concrete_roundel_half",
+    "north": "gallifrey:block/magenta_concrete_roundel",
+    "south": "gallifrey:block/magenta_concrete_roundel",
     "east": "gallifrey:block/magenta_concrete_roundel_half",
     "west": "gallifrey:block/magenta_concrete_roundel_half"
   }

@@ -4,8 +4,8 @@
     "particle": "gallifrey:block/ambquartz_roundel",
     "down": "gallifrey:block/ambquartz_roundel",
     "up": "gallifrey:block/ambquartz_roundel",
-    "north": "gallifrey:block/ambquartz_roundel_half",
-    "south": "gallifrey:block/ambquartz_roundel_half",
+    "north": "gallifrey:block/ambquartz_roundel",
+    "south": "gallifrey:block/ambquartz_roundel",
     "east": "gallifrey:block/ambquartz_roundel_half",
     "west": "gallifrey:block/ambquartz_roundel_half"
   }

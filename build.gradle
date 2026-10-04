@@ -98,10 +98,7 @@ dependencies {
 	modImplementation "maven.modrinth:biolith:NikAXMfS"
 	include("maven.modrinth:biolith:NikAXMfS")
 
-	// JEI: compile against its API only. JEI stays optional for players;
-	// in dev it runs from the jar already in run/mods.
-	modCompileOnlyApi "mezz.jei:jei-1.20.1-common-api:15.62.0.217"
-	modCompileOnlyApi "mezz.jei:jei-1.20.1-fabric-api:15.62.0.217"
+	modCompileOnly "mezz.jei:jei-1.20.1-fabric:15.62.0.217"
 }
 
 /*

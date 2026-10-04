@@ -4,8 +4,8 @@
     "particle": "gallifrey:block/verdquartz_roundel",
     "down": "gallifrey:block/verdquartz_roundel",
     "up": "gallifrey:block/verdquartz_roundel",
-    "north": "gallifrey:block/verdquartz_roundel_half",
-    "south": "gallifrey:block/verdquartz_roundel_half",
+    "north": "gallifrey:block/verdquartz_roundel",
+    "south": "gallifrey:block/verdquartz_roundel",
     "east": "gallifrey:block/verdquartz_roundel_half",
     "west": "gallifrey:block/verdquartz_roundel_half"
   }

@@ -4,8 +4,8 @@
     "particle": "gallifrey:block/sandstone_roundel",
     "down": "gallifrey:block/sandstone_roundel",
     "up": "gallifrey:block/sandstone_roundel",
-    "north": "gallifrey:block/sandstone_roundel_half",
-    "south": "gallifrey:block/sandstone_roundel_half",
+    "north": "gallifrey:block/sandstone_roundel",
+    "south": "gallifrey:block/sandstone_roundel",
     "east": "gallifrey:block/sandstone_roundel_half",
     "west": "gallifrey:block/sandstone_roundel_half"
   }

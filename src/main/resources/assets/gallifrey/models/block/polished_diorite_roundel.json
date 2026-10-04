@@ -4,8 +4,8 @@
     "particle": "gallifrey:block/polished_diorite_roundel",
     "down": "gallifrey:block/polished_diorite_roundel",
     "up": "gallifrey:block/polished_diorite_roundel",
-    "north": "gallifrey:block/polished_diorite_roundel_half",
-    "south": "gallifrey:block/polished_diorite_roundel_half",
+    "north": "gallifrey:block/polished_diorite_roundel",
+    "south": "gallifrey:block/polished_diorite_roundel",
     "east": "gallifrey:block/polished_diorite_roundel_half",
     "west": "gallifrey:block/polished_diorite_roundel_half"
   }

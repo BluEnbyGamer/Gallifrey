@@ -4,8 +4,8 @@
     "particle": "gallifrey:block/exposed_copper_roundel",
     "down": "gallifrey:block/exposed_copper_roundel",
     "up": "gallifrey:block/exposed_copper_roundel",
-    "north": "gallifrey:block/exposed_copper_roundel_half",
-    "south": "gallifrey:block/exposed_copper_roundel_half",
+    "north": "gallifrey:block/exposed_copper_roundel",
+    "south": "gallifrey:block/exposed_copper_roundel",
     "east": "gallifrey:block/exposed_copper_roundel_half",
     "west": "gallifrey:block/exposed_copper_roundel_half"
   }

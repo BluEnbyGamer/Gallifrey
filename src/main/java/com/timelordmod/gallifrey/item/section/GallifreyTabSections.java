@@ -231,10 +231,16 @@ public final class GallifreyTabSections {
             "roundels",
             () -> new ItemStack(GallifreyModBlocks.STRUCTURE_ROUNDEL),
             entries -> {
+                entries.add(GallifreyModBlocks.MOSS_ROUNDEL);
+                entries.add(GallifreyModBlocks.DIRT_ROUNDEL);
+                entries.add(GallifreyModBlocks.END_STONE_BRICKS_ROUNDEL);
+                entries.add(GallifreyModBlocks.SANDSTONE_ROUNDEL);
+                entries.add(GallifreyModBlocks.HARTNELL_ROUNDEL);
                 entries.add(GallifreyModBlocks.BASALT_ROUNDEL);
                 entries.add(GallifreyModBlocks.BONE_ROUNDEL);
                 entries.add(GallifreyModBlocks.STRUCTURE_ROUNDEL);
                 entries.add(GallifreyModBlocks.LODESTONE_ROUNDEL);
+                entries.add(GallifreyModBlocks.VANILLA_QUATZ_ROUNDEL);
                 entries.add(GallifreyModBlocks.QUARTZ_ROUNDEL);
                 entries.add(GallifreyModBlocks.BLUEQUARTZ_ROUNDEL);
                 entries.add(GallifreyModBlocks.CRIMQUARTZ_ROUNDEL);
@@ -242,31 +248,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.OBSIQUARTZ_ROUNDEL);
                 entries.add(GallifreyModBlocks.VERDQUARTZ_ROUNDEL);
                 entries.add(GallifreyModBlocks.VIOQUARTZ_ROUNDEL);
-                entries.add(GallifreyModBlocks.BLACK_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.BLUE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.BROWN_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.COPPER_ROUNDEL);
-                entries.add(GallifreyModBlocks.CYAN_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.DIRT_ROUNDEL);
-                entries.add(GallifreyModBlocks.END_STONE_BRICKS_ROUNDEL);
-                entries.add(GallifreyModBlocks.EXPOSED_COPPER_ROUNDEL);
-                entries.add(GallifreyModBlocks.GRAY_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.GREEN_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.LIGHT_BLUE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.LIGHT_GRAY_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.LIME_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.MAGENTA_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.MOSS_ROUNDEL);
-                entries.add(GallifreyModBlocks.ORANGE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.OXIDIZED_COPPER_ROUNDEL);
-                entries.add(GallifreyModBlocks.PINK_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.POLISHED_ANDESITE_ROUNDEL);
-                entries.add(GallifreyModBlocks.POLISHED_DEEPSLATE_ROUNDEL);
-                entries.add(GallifreyModBlocks.POLISHED_DIORITE_ROUNDEL);
-                entries.add(GallifreyModBlocks.POLISHED_GRANITE_ROUNDEL);
-                entries.add(GallifreyModBlocks.PURPLE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.RED_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.SANDSTONE_ROUNDEL);
+                entries.add(GallifreyModBlocks.CYQUARTZ_ROUNDEL);
                 entries.add(GallifreyModBlocks.STRIPPED_ACACIA_LOG_ROUNDEL);
                 entries.add(GallifreyModBlocks.STRIPPED_BIRCH_LOG_ROUNDEL);
                 entries.add(GallifreyModBlocks.STRIPPED_CHERRY_LOG_ROUNDEL);
@@ -274,11 +256,28 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.STRIPPED_JUNGLE_LOG_ROUNDEL);
                 entries.add(GallifreyModBlocks.STRIPPED_MANGROVE_LOG_ROUNDEL);
                 entries.add(GallifreyModBlocks.STRIPPED_OAK_LOG_ROUNDEL);
-                entries.add(GallifreyModBlocks.STRIPPED_SPRUCE_LOG_ROUNDEL);
+                entries.add(GallifreyModBlocks.STRIPPED_SPRUCE_LOG_ROUNDEL);;
+                entries.add(GallifreyModBlocks.COPPER_ROUNDEL);
+                entries.add(GallifreyModBlocks.EXPOSED_COPPER_ROUNDEL);
                 entries.add(GallifreyModBlocks.WEATHERED_COPPER_ROUNDEL);
+                entries.add(GallifreyModBlocks.OXIDIZED_COPPER_ROUNDEL);
+                //CONCRETE ROUNDELS
+                entries.add(GallifreyModBlocks.GRAY_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.GREEN_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIGHT_BLUE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIGHT_GRAY_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIME_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.MAGENTA_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.ORANGE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.PINK_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.PURPLE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.RED_CONCRETE_ROUNDEL);
                 entries.add(GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL);
                 entries.add(GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.HARTNELL_ROUNDEL);
+                entries.add(GallifreyModBlocks.POLISHED_ANDESITE_ROUNDEL);
+                entries.add(GallifreyModBlocks.POLISHED_DEEPSLATE_ROUNDEL);
+                entries.add(GallifreyModBlocks.POLISHED_DIORITE_ROUNDEL);
+                entries.add(GallifreyModBlocks.POLISHED_GRANITE_ROUNDEL);
             }
     );
 

@@ -4,8 +4,8 @@
     "particle": "gallifrey:block/weathered_copper_roundel",
     "down": "gallifrey:block/weathered_copper_roundel",
     "up": "gallifrey:block/weathered_copper_roundel",
-    "north": "gallifrey:block/weathered_copper_roundel_half",
-    "south": "gallifrey:block/weathered_copper_roundel_half",
+    "north": "gallifrey:block/weathered_copper_roundel",
+    "south": "gallifrey:block/weathered_copper_roundel",
     "east": "gallifrey:block/weathered_copper_roundel_half",
     "west": "gallifrey:block/weathered_copper_roundel_half"
   }
