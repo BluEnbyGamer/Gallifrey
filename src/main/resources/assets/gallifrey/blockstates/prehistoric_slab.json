@@ -1,9 +1,13 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "gallifrey:block/prehistoric_slab"
-      }
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/prehistoric_slab"
+    },
+    "type=double": {
+      "model": "gallifrey:block/prehistoric_planks"
+    },
+    "type=top": {
+      "model": "gallifrey:block/prehistoric_slab_top"
     }
-  ]
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/template_fence_gate",
+  "parent": "minecraft:block/pressure_plate_down",
   "textures": {
     "texture": "gallifrey:block/prehistoric_planks"
   }

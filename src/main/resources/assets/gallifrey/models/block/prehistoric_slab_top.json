@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/stairs",
+  "parent": "minecraft:block/slab_top",
   "textures": {
     "bottom": "gallifrey:block/prehistoric_planks",
     "side": "gallifrey:block/prehistoric_planks",
