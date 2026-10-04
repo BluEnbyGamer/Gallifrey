@@ -1,12 +1,17 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
       "item": "gallifrey:prehistoric_log"
     }
-  ],
+  },
   "result": {
     "item": "gallifrey:prehistoric_wood",
-    "count": 1
+    "count": 3
   }
 }

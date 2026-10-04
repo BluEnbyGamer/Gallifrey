@@ -137,10 +137,10 @@ public class GallifreyModBlocks {
             new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).strength(1.5f), UniformIntProvider.create(2, 5)));
 
     public static final Block PREHISTORIC_ORE = registerBlock("prehistoric_ore",
-            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(1.5f), UniformIntProvider.create(2, 5)));
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(3.0f).requiresTool(), UniformIntProvider.create(2, 5)));
 
     public static final Block DEEPSLATE_PREHISTORIC_ORE = registerBlock("deepslate_prehistoric_ore",
-            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(1.5f), UniformIntProvider.create(2, 5)));
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4.5f).requiresTool(), UniformIntProvider.create(2, 5)));
 
 
     // ============================================================
@@ -2034,13 +2034,6 @@ public class GallifreyModBlocks {
             )
     );
 
-    public static final Block STRIP_PREHISTORIC_WOOD = registerBlock(
-            "stripped_prehistoric_wood",
-            new PillarBlock(
-                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD)
-            )
-    );
-
     public static final Block PREHISTORIC_PLANKS = registerBlock(
             "prehistoric_planks",
             new Block(
@@ -2326,7 +2319,6 @@ public class GallifreyModBlocks {
         flammable.add(PREHISTORIC_LOG, 5, 5);
         flammable.add(STRIP_PREHISTORIC_LOG, 5, 5);
         flammable.add(PREHISTORIC_WOOD, 5, 5);
-        flammable.add(STRIP_PREHISTORIC_WOOD, 5, 5);
         flammable.add(PREHISTORIC_PLANKS, 5, 20);
         flammable.add(PREHISTORIC_LEAVES, 30, 60);
         flammable.add(PREHISTORIC_VINE, 15, 100);

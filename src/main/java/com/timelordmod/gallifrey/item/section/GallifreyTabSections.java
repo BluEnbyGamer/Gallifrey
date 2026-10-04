@@ -148,13 +148,20 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.MOONPINE_CHEST_BOAT);
 
                 // Prehistoric wood set
+            }
+    );
+
+    public static final CreativeSection PREHISTORIC = CreativeSection.of(
+            "prehistoric",
+            () -> new ItemStack(GallifreyModBlocks.PREHISTORIC_SAPLING),
+            entries -> {
                 entries.add(GallifreyModBlocks.PREHISTORIC_SAPLING);
+                entries.add(GallifreyModBlocks.POTTED_PREHISTORIC_SAPLING);
                 entries.add(GallifreyModBlocks.PREHISTORIC_VINE);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LEAVES);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LOG);
                 entries.add(GallifreyModBlocks.PREHISTORIC_WOOD);
                 entries.add(GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
-                entries.add(GallifreyModBlocks.STRIP_PREHISTORIC_WOOD);
                 entries.add(GallifreyModBlocks.PREHISTORIC_PLANKS);
                 entries.add(GallifreyModBlocks.PREHISTORIC_STAIRS);
                 entries.add(GallifreyModBlocks.PREHISTORIC_SLAB);
@@ -164,6 +171,20 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.PREHISTORIC_TRAPDOOR);
                 entries.add(GallifreyModBlocks.PREHISTORIC_PRESSURE_PLATE);
                 entries.add(GallifreyModBlocks.PREHISTORIC_BUTTON);
+                entries.add(GallifreyModBlocks.PREHISTORIC_ORE);
+                entries.add(GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE);
+                entries.add(GallifreyModBlocks.PREHISTORIC_BLOCK);
+                entries.add(GallifreyModItems.PREHISTORIC_INGOT);
+                entries.add(GallifreyModItems.PREHISTORIC_UPGRADE_SMITHING_TEMPLATE);
+                entries.add(GallifreyModItems.PREHISTORIC_SWORD);
+                entries.add(GallifreyModItems.PREHISTORIC_PICKAXE);
+                entries.add(GallifreyModItems.PREHISTORIC_AXE);
+                entries.add(GallifreyModItems.PREHISTORIC_SHOVEL);
+                entries.add(GallifreyModItems.PREHISTORIC_HOE);
+                entries.add(GallifreyModItems.PREHISTORIC_HELMET);
+                entries.add(GallifreyModItems.PREHISTORIC_CHESTPLATE);
+                entries.add(GallifreyModItems.PREHISTORIC_LEGGINGS);
+                entries.add(GallifreyModItems.PREHISTORIC_BOOTS);
             }
     );
 
@@ -207,20 +228,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
 
                 // Prehistoric ore and gear
-                entries.add(GallifreyModBlocks.PREHISTORIC_ORE);
-                entries.add(GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE);
-                entries.add(GallifreyModItems.PREHISTORIC_INGOT);
-                entries.add(GallifreyModBlocks.PREHISTORIC_BLOCK);
-                entries.add(GallifreyModItems.PREHISTORIC_UPGRADE_SMITHING_TEMPLATE);
-                entries.add(GallifreyModItems.PREHISTORIC_SWORD);
-                entries.add(GallifreyModItems.PREHISTORIC_PICKAXE);
-                entries.add(GallifreyModItems.PREHISTORIC_AXE);
-                entries.add(GallifreyModItems.PREHISTORIC_SHOVEL);
-                entries.add(GallifreyModItems.PREHISTORIC_HOE);
-                entries.add(GallifreyModItems.PREHISTORIC_HELMET);
-                entries.add(GallifreyModItems.PREHISTORIC_CHESTPLATE);
-                entries.add(GallifreyModItems.PREHISTORIC_LEGGINGS);
-                entries.add(GallifreyModItems.PREHISTORIC_BOOTS);
             }
     );
 
@@ -360,6 +367,7 @@ public final class GallifreyTabSections {
     /** Sidebar order. */
     public static final List<CreativeSection> ALL = List.of(
             WOOD_TYPES,
+            PREHISTORIC,
             MISC,
             ROUNDELS,
             CLOTHING,

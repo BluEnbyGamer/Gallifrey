@@ -30,6 +30,8 @@
     "gallifrey:deepslate_white_point_ore",
     "gallifrey:nether_white_point_ore",
     "#gallifrey:prehistoric_ores",
-    "#gallifrey:prehistoric_blocks"
+    "#gallifrey:prehistoric_blocks",
+    "gallifrey:prehistoric_ore",
+    "gallifrey:deepslate_prehistoric_ore"
   ]
 }

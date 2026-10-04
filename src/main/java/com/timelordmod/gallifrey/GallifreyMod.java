@@ -96,7 +96,6 @@ public class GallifreyMod implements ModInitializer {
 
 		//Prehistoric wood set
 		StrippableBlockRegistry.register(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
-		StrippableBlockRegistry.register(GallifreyModBlocks.PREHISTORIC_WOOD, GallifreyModBlocks.STRIP_PREHISTORIC_WOOD);
 
 		//Moon-pine wood set
 

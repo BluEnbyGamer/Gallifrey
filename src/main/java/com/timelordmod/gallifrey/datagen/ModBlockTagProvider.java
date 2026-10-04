@@ -41,7 +41,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         .add(GallifreyModBlocks.WASTED_WOOD,
                 GallifreyModBlocks.STRIP_WASTED_LOG, GallifreyModBlocks.STRIP_WASTED_WOOD)
         .add(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.PREHISTORIC_WOOD,
-                GallifreyModBlocks.STRIP_PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_WOOD,
+                GallifreyModBlocks.STRIP_PREHISTORIC_LOG,
                 GallifreyModBlocks.PREHISTORIC_PLANKS);
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
@@ -161,6 +161,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.WASTED_WOOD,
                         GallifreyModBlocks.STRIP_WASTED_LOG, GallifreyModBlocks.STRIP_WASTED_WOOD)
                 .add(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.PREHISTORIC_WOOD,
-                        GallifreyModBlocks.STRIP_PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_WOOD);
+                        GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
     }
 }
