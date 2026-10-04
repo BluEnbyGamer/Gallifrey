@@ -299,6 +299,7 @@ public class VortexManipulatorScreen extends Screen {
             case "skaro" -> new Identifier("gallifrey", "skaro");
             case "mars" -> new Identifier("gallifrey", "mars");
             case "mondas" -> new Identifier("gallifrey", "mondas");
+            case "prehistoric" -> new Identifier("gallifrey", "prehistoric");
             default -> Identifier.tryParse(n);
         };
     }

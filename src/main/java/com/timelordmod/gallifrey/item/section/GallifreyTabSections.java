@@ -153,14 +153,13 @@ public final class GallifreyTabSections {
 
     public static final CreativeSection PREHISTORIC = CreativeSection.of(
             "prehistoric",
-            () -> new ItemStack(GallifreyModBlocks.PREHISTORIC_SAPLING),
+            () -> new ItemStack(GallifreyModItems.PREHISTORIC_INGOT),
             entries -> {
                 entries.add(GallifreyModBlocks.PREHISTORIC_SAPLING);
                 entries.add(GallifreyModBlocks.POTTED_PREHISTORIC_SAPLING);
                 entries.add(GallifreyModBlocks.PREHISTORIC_VINE);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LEAVES);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LOG);
-                entries.add(GallifreyModBlocks.PREHISTORIC_WOOD);
                 entries.add(GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
                 entries.add(GallifreyModBlocks.PREHISTORIC_PLANKS);
                 entries.add(GallifreyModBlocks.PREHISTORIC_STAIRS);
@@ -228,6 +227,16 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
 
                 // Prehistoric ore and gear
+            }
+    );
+
+    public static final CreativeSection MISC_BLOCKS = CreativeSection.of(
+            "misc_blocks",
+            () -> new ItemStack(GallifreyModBlocks.HARTNELL_WALL),
+            entries -> {
+                entries.add(GallifreyModBlocks.HARTNELL_WALL);
+                entries.add(GallifreyModBlocks.GOOD_HEAVENS);
+                entries.add(GallifreyModBlocks.EXQUISITE_CAT);
             }
     );
 
@@ -371,6 +380,7 @@ public final class GallifreyTabSections {
             WOOD_TYPES,
             PREHISTORIC,
             MISC,
+            MISC_BLOCKS,
             ROUNDELS,
             CLOTHING,
             MARS,

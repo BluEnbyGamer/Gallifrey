@@ -151,6 +151,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.MARS_IRON_ORE, oreDrops(GallifreyModBlocks.MARS_IRON_ORE, net.minecraft.item.Items.RAW_IRON));
 
         // MISC BLOCK DROPS
+        addDrop(GallifreyModBlocks.RAW_STEEL_BLOCK);
+        addDrop(GallifreyModBlocks.STEEL_BLOCK);
+        addDrop(GallifreyModBlocks.PISS_CRYSTAL);
         addDrop(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
 
         // ROUNDELS
@@ -202,6 +205,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL);
         addDrop(GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL);
         addDrop(GallifreyModBlocks.HARTNELL_ROUNDEL);
+        addDrop(GallifreyModBlocks.HARTNELL_WALL);
         addDrop(GallifreyModBlocks.TREE_TAPPER);
         addDrop(GallifreyModBlocks.SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
         addDrop(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
@@ -209,6 +213,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.WHITE_POINT_ORE, oreDrops(GallifreyModBlocks.WHITE_POINT_ORE, GallifreyModItems.WHITE_POINT_STAR));
         addDrop(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE, GallifreyModItems.WHITE_POINT_STAR));
         addDrop(GallifreyModBlocks.NETHER_WHITE_POINT_ORE, oreDrops(GallifreyModBlocks.NETHER_WHITE_POINT_ORE, GallifreyModItems.WHITE_POINT_STAR));
+        addDrop(GallifreyModBlocks.PREHISTORIC_ORE, oreDrops(GallifreyModBlocks.PREHISTORIC_ORE, GallifreyModItems.PREHISTORIC_INGOT));
+        addDrop(GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE, GallifreyModItems.PREHISTORIC_INGOT));
 
         // Skaro blocks
         addDrop(GallifreyModBlocks.EXQUISITE_CAT);

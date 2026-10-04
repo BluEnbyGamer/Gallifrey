@@ -40,7 +40,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
         .add(GallifreyModBlocks.WASTED_WOOD,
                 GallifreyModBlocks.STRIP_WASTED_LOG, GallifreyModBlocks.STRIP_WASTED_WOOD)
-        .add(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.PREHISTORIC_WOOD,
+        .add(GallifreyModBlocks.PREHISTORIC_LOG,
                 GallifreyModBlocks.STRIP_PREHISTORIC_LOG,
                 GallifreyModBlocks.PREHISTORIC_PLANKS);
 
@@ -78,7 +78,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.MARS_IRON_ORE, GallifreyModBlocks.PISS_CRYSTAL,
                         GallifreyModBlocks.EXQUISITE_CAT, GallifreyModBlocks.GOOD_HEAVENS,
                         GallifreyModBlocks.COBBLED_KALETITE, GallifreyModBlocks.KALETITE,
-                        GallifreyModBlocks.KALETITE_BRICKS);
+                        GallifreyModBlocks.KALETITE_BRICKS, GallifreyModBlocks.HARTNELL_WALL);
 
         // Sonic crystal and Dalekanium ores require an iron pickaxe.
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
@@ -126,7 +126,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.POLISHED_GRANITE_ROUNDEL, GallifreyModBlocks.PURPLE_CONCRETE_ROUNDEL,
                         GallifreyModBlocks.RED_CONCRETE_ROUNDEL, GallifreyModBlocks.SANDSTONE_ROUNDEL,
                         GallifreyModBlocks.WEATHERED_COPPER_ROUNDEL, GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL,
-                        GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL, GallifreyModBlocks.HARTNELL_ROUNDEL);
+                        GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL, GallifreyModBlocks.HARTNELL_ROUNDEL,
+                        GallifreyModBlocks.HARTNELL_WALL);
 
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(
@@ -165,7 +166,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
                 .add(GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.WASTED_WOOD,
                         GallifreyModBlocks.STRIP_WASTED_LOG, GallifreyModBlocks.STRIP_WASTED_WOOD)
-                .add(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.PREHISTORIC_WOOD,
-                        GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
+                .add(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
     }
 }

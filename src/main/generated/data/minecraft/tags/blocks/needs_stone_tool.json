@@ -1,24 +1,6 @@
 {
   "replace": false,
   "values": [
-    "gallifrey:mars_stone",
-    "gallifrey:mars_cobblestone",
-    "gallifrey:mars_andesite",
-    "gallifrey:mars_diorite",
-    "gallifrey:mars_granite",
-    "gallifrey:polished_mars_stone",
-    "gallifrey:mars_polished_andesite",
-    "gallifrey:mars_polished_diorite",
-    "gallifrey:mars_polished_granite",
-    "gallifrey:mars_stone_bricks",
-    "gallifrey:mars_stone_bricks_cracked",
-    "gallifrey:mars_chizelled_stone_bricks",
-    "gallifrey:mars_iron_ore",
-    "gallifrey:piss_crystal",
-    "gallifrey:exquisite_cat",
-    "gallifrey:good_heavens",
-    "gallifrey:cobbled_kaletite",
-    "gallifrey:kaletite",
-    "gallifrey:kaletite_bricks"
+    "gallifrey:mars_sandstone"
   ]
 }

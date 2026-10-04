@@ -508,6 +508,13 @@ public class GallifreyModBlocks {
             )
     );
 
+    public static final Block HARTNELL_WALL = registerBlock(
+            "hartnell_wall",
+            new WallBlock(
+                    FabricBlockSettings.copyOf(Blocks.STONE)
+            )
+    );
+
         // ============================================================
         // SONIC SCREWDRIVER
         // ============================================================
@@ -2017,12 +2024,6 @@ public class GallifreyModBlocks {
             )
     );
 
-    public static final Block PREHISTORIC_WOOD = registerBlock(
-            "prehistoric_wood",
-            new PillarBlock(
-                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD)
-            )
-    );
 
     public static final Block PREHISTORIC_LOG = registerBlock(
             "prehistoric_log",
@@ -2322,7 +2323,6 @@ public class GallifreyModBlocks {
         // Prehistoric wood set
         flammable.add(PREHISTORIC_LOG, 5, 5);
         flammable.add(STRIP_PREHISTORIC_LOG, 5, 5);
-        flammable.add(PREHISTORIC_WOOD, 5, 5);
         flammable.add(PREHISTORIC_PLANKS, 5, 20);
         flammable.add(PREHISTORIC_LEAVES, 30, 60);
         flammable.add(PREHISTORIC_VINE, 15, 100);
