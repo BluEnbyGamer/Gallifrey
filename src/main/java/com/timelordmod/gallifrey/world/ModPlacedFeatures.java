@@ -38,6 +38,8 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> MOONPINE_PLACED_KEY = registerKey("moonpine_placed");
     public static final RegistryKey<PlacedFeature> PREHISTORIC_PLACED_KEY = registerKey("prehistoric_placed");
     public static final RegistryKey<PlacedFeature> PREHISTORIC_ORE_PLACED_KEY = registerKey("prehistoric_ore_placed");
+    public static final RegistryKey<PlacedFeature> WASTED_OAK_PLACED_KEY = registerKey("wasted_oak_placed");
+    public static final RegistryKey<PlacedFeature> WASTED_BIRCH_PLACED_KEY = registerKey("wasted_birch_placed");
 
     public static void boostrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -130,6 +132,24 @@ public class ModPlacedFeatures {
         register(context, PREHISTORIC_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PREHISTORIC_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(10,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-48), YOffset.fixed(96))));
+
+        register(context, WASTED_OAK_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WASTED_OAK_TREE_KEY),
+                List.of(
+                        CountPlacementModifier.of(3),
+                        SquarePlacementModifier.of(),
+                        HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES),
+                        PlacedFeatures.wouldSurvive(GallifreyModBlocks.WASTED_SAPLING),
+                        BiomePlacementModifier.of()
+                ));
+
+        register(context, WASTED_BIRCH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WASTED_BIRCH_TREE_KEY),
+                List.of(
+                        CountPlacementModifier.of(2),
+                        SquarePlacementModifier.of(),
+                        HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES),
+                        PlacedFeatures.wouldSurvive(GallifreyModBlocks.WASTED_SAPLING),
+                        BiomePlacementModifier.of()
+                ));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

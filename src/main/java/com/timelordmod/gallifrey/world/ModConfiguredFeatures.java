@@ -41,6 +41,8 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> MOONPINE_KEY =registerKey("moonpine");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_TREE_KEY = registerKey("prehistoric_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_TREE_KEY = registerKey("wasted_tree");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_OAK_TREE_KEY = registerKey("wasted_oak_tree");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_BIRCH_TREE_KEY = registerKey("wasted_birch_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_ORE_KEY = registerKey("prehistoric_ore");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
@@ -187,6 +189,24 @@ public class ModConfiguredFeatures {
         register(context, WASTED_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(GallifreyModBlocks.WASTED_LOG),
                 new StraightTrunkPlacer(4, 2, 0),
+                BlockStateProvider.of(GallifreyModBlocks.WASTED_LEAVES),
+                new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1)
+        ).build());
+
+        // Skaro forest variants: both use only the Wasted woodset, with silhouettes
+        // inspired by vanilla oak and birch trees.
+        register(context, WASTED_OAK_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.WASTED_LOG),
+                new StraightTrunkPlacer(4, 2, 0),
+                BlockStateProvider.of(GallifreyModBlocks.WASTED_LEAVES),
+                new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
+                new TwoLayersFeatureSize(1, 0, 1)
+        ).build());
+
+        register(context, WASTED_BIRCH_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.WASTED_LOG),
+                new StraightTrunkPlacer(5, 2, 0),
                 BlockStateProvider.of(GallifreyModBlocks.WASTED_LEAVES),
                 new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1)
