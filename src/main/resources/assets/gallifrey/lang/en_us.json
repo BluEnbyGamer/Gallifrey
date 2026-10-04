@@ -306,5 +306,7 @@
   "creative_section.gallifrey.prehistoric": "Prehistoric",
   "block.gallifrey.prehistoric_standing_sign": "Prehistoric Sign",
   "block.gallifrey.prehistoric_wall_sign": "Prehistoric Sign",
-  "block.gallifrey.prehistoric_wall_hanging_sign": "Prehistoric Hanging Sign"
+  "block.gallifrey.prehistoric_wall_hanging_sign": "Prehistoric Hanging Sign",
+  "block.gallifrey.mars_sand": "Mars Sand",
+  "block.gallifrey.mars_sandstone": "Mars Sandstone"
 }

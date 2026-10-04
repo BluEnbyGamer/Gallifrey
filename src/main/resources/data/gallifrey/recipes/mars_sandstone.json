@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "gallifrey:mars_sand"
+    }
+  },
+  "result": {
+    "item": "gallifrey:mars_sandstone",
+    "count": 1
+  }
+}

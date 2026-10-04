@@ -6,7 +6,6 @@ import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
@@ -49,7 +48,7 @@ public class ModConfiguredFeatures {
         RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplacables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
         RuleTest netherReplacables = new TagMatchRuleTest(BlockTags.BASE_STONE_NETHER);
-        RuleTest marsReplacables = new BlockMatchRuleTest(GallifreyModBlocks.MARS_STONE);
+        RuleTest marsReplacables = new TagMatchRuleTest(net.minecraft.registry.tag.TagKey.of(RegistryKeys.BLOCK, GallifreyMod.id("mars_ore_replaceables")));
 
         // --- Sonic Crystal ---
         List<OreFeatureConfig.Target> overworldSonicCrystalOres = List.of(

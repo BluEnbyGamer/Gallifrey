@@ -134,6 +134,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.HANGING_MOONPINE_SIGN);
 
         // MARS BLOCK DROPS
+        addDrop(GallifreyModBlocks.MARS_SAND);
+        addDrop(GallifreyModBlocks.MARS_SANDSTONE);
         addDrop(GallifreyModBlocks.MARS_STONE);
         addDrop(GallifreyModBlocks.MARS_COBBLESTONE);
         addDrop(GallifreyModBlocks.MARS_ANDESITE);

@@ -309,6 +309,8 @@ public final class GallifreyTabSections {
             "mars",
             () -> new ItemStack(GallifreyModBlocks.MARS_STONE),
             entries -> {
+                entries.add(GallifreyModBlocks.MARS_SAND);
+                entries.add(GallifreyModBlocks.MARS_SANDSTONE);
                 entries.add(GallifreyModBlocks.MARS_STONE);
                 entries.add(GallifreyModBlocks.MARS_COBBLESTONE);
                 entries.add(GallifreyModBlocks.MARS_ANDESITE);

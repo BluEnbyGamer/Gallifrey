@@ -44,8 +44,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 GallifreyModBlocks.STRIP_PREHISTORIC_LOG,
                 GallifreyModBlocks.PREHISTORIC_PLANKS);
 
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+                .add(GallifreyModBlocks.MARS_SAND);
+
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(GallifreyModBlocks.MARS_STONE, GallifreyModBlocks.MARS_COBBLESTONE,
+                .add(GallifreyModBlocks.MARS_SANDSTONE,
+                        GallifreyModBlocks.MARS_STONE, GallifreyModBlocks.MARS_COBBLESTONE,
                         GallifreyModBlocks.MARS_ANDESITE, GallifreyModBlocks.MARS_DIORITE,
                         GallifreyModBlocks.MARS_GRANITE, GallifreyModBlocks.POLISHED_MARS_STONE,
                         GallifreyModBlocks.MARS_POLISHED_ANDESITE, GallifreyModBlocks.MARS_POLISHED_DIORITE,
@@ -64,7 +68,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         // Mars blocks and ordinary Skaro stone blocks can be harvested with a stone pickaxe.
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(GallifreyModBlocks.MARS_STONE, GallifreyModBlocks.MARS_COBBLESTONE,
+                .add(GallifreyModBlocks.MARS_SANDSTONE,
+                        GallifreyModBlocks.MARS_STONE, GallifreyModBlocks.MARS_COBBLESTONE,
                         GallifreyModBlocks.MARS_ANDESITE, GallifreyModBlocks.MARS_DIORITE,
                         GallifreyModBlocks.MARS_GRANITE, GallifreyModBlocks.POLISHED_MARS_STONE,
                         GallifreyModBlocks.MARS_POLISHED_ANDESITE, GallifreyModBlocks.MARS_POLISHED_DIORITE,

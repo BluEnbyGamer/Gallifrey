@@ -407,26 +407,165 @@
           "surface_type": "floor"
         },
         "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "gallifrey:mars_stone"
-          }
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "min_threshold": -1.0,
+                "max_threshold": 0.0,
+                "noise": "minecraft:surface"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "gallifrey:mars_sand"
+                }
+              }
+            },
+            {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "gallifrey:mars_sandstone"
+              }
+            }
+          ]
         }
       },
       {
         "type": "minecraft:condition",
         "if_true": {
           "type": "minecraft:stone_depth",
-          "offset": 3,
+          "offset": 1,
           "add_surface_depth": false,
           "secondary_depth_range": 0,
           "surface_type": "floor"
         },
         "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "gallifrey:mars_cobblestone"
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "min_threshold": -1.0,
+                "max_threshold": 0.0,
+                "noise": "minecraft:surface"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "gallifrey:mars_sand"
+                }
+              }
+            },
+            {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "gallifrey:mars_sandstone"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:not",
+          "invert": {
+            "type": "minecraft:stone_depth",
+            "offset": 1,
+            "add_surface_depth": false,
+            "secondary_depth_range": 0,
+            "surface_type": "floor"
           }
+        },
+        "then_run": {
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "min_threshold": -1.0,
+                "max_threshold": 0.0,
+                "noise": "minecraft:surface"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "gallifrey:mars_stone"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "min_threshold": 0.0,
+                "max_threshold": 0.4,
+                "noise": "minecraft:surface"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "gallifrey:mars_cobblestone"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "min_threshold": 0.4,
+                "max_threshold": 0.6,
+                "noise": "minecraft:surface"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "gallifrey:mars_diorite"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "min_threshold": 0.6,
+                "max_threshold": 0.8,
+                "noise": "minecraft:surface"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "gallifrey:mars_andesite"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "min_threshold": 0.8,
+                "max_threshold": 1.0,
+                "noise": "minecraft:surface"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "gallifrey:mars_granite"
+                }
+              }
+            },
+            {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "gallifrey:mars_stone"
+              }
+            }
+          ]
         }
       },
       {
