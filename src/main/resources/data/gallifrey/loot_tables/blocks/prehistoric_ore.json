@@ -34,9 +34,9 @@
                   "condition": "minecraft:match_tool",
                   "predicate": {
                     "items": [
-                      "minecraft:iron_pickaxe",
                       "minecraft:diamond_pickaxe",
-                      "minecraft:netherite_pickaxe"
+                      "minecraft:netherite_pickaxe",
+                      "gallifrey:prehistoric_pickaxe"
                     ]
                   }
                 }

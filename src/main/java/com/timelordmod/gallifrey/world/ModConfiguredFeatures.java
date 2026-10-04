@@ -194,9 +194,9 @@ public class ModConfiguredFeatures {
 
         register(context, PREHISTORIC_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LOG),
-                new StraightTrunkPlacer(6, 3, 1),
+                new StraightTrunkPlacer(4, 8, 0),
                 BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LEAVES),
-                new BlobFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1), 3),
+                new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1)
         ).build());
 

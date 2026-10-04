@@ -121,7 +121,7 @@ public class ModPlacedFeatures {
 
         register(context, PREHISTORIC_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PREHISTORIC_TREE_KEY),
                 List.of(
-                        CountPlacementModifier.of(7),
+                        CountPlacementModifier.of(12),
                         SquarePlacementModifier.of(),
                         HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES),
                         PlacedFeatures.wouldSurvive(GallifreyModBlocks.PREHISTORIC_SAPLING),

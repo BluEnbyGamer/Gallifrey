@@ -123,14 +123,6 @@ public class GallifreyModItems {
     public static final Item WASTED_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WASTED_BOAT_ID, ModBoats.WASTED_BOAT_KEY, false);
     public static final Item WASTED_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WASTED_CHEST_BOAT_ID, ModBoats.WASTED_BOAT_KEY, true);
 
-    public static final Item PREHISTORIC_SIGN = registerItem("prehistoric_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), GallifreyModBlocks.STANDING_PREHISTORIC_SIGN, GallifreyModBlocks.WALL_PREHISTORIC_SIGN));
-    public static final Item HANGING_PREHISTORIC_SIGN = registerItem("prehistoric_hanging_sign",
-            new HangingSignItem(GallifreyModBlocks.HANGING_PREHISTORIC_SIGN, GallifreyModBlocks.WALL_HANGING_PREHISTORIC_SIGN, new FabricItemSettings().maxCount(16)));
-    public static final Item PREHISTORIC_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.PREHISTORIC_BOAT_ID, ModBoats.PREHISTORIC_BOAT_KEY, false);
-    public static final Item PREHISTORIC_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.PREHISTORIC_CHEST_BOAT_ID, ModBoats.PREHISTORIC_BOAT_KEY, true);
-
-
     // PREHISTORIC MATERIALS AND GEAR
     public static final Item PREHISTORIC_INGOT = new Item(new FabricItemSettings());
     public static final Item PREHISTORIC_UPGRADE_SMITHING_TEMPLATE = new Item(new FabricItemSettings());

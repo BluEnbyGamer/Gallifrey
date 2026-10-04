@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "base": {
-    "item": "minecraft:diamond_shovel"
+    "item": "minecraft:iron_shovel"
   },
   "addition": {
     "item": "gallifrey:prehistoric_ingot"

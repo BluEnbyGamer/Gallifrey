@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "base": {
-    "item": "minecraft:diamond_hoe"
+    "item": "minecraft:iron_hoe"
   },
   "addition": {
     "item": "gallifrey:prehistoric_ingot"

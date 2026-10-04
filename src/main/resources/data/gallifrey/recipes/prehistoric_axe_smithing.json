@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "base": {
-    "item": "minecraft:diamond_axe"
+    "item": "minecraft:iron_axe"
   },
   "addition": {
     "item": "gallifrey:prehistoric_ingot"

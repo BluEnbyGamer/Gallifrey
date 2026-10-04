@@ -1,3 +1,6 @@
 {
-  "parent": "gallifrey:block/prehistoric_vine"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gallifrey:block/prehistoric_vine"
+  }
 }

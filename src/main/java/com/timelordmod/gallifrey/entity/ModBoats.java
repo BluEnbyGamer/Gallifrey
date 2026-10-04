@@ -31,8 +31,6 @@ public class ModBoats {
     public static final Identifier WASTED_BOAT_ID = new Identifier(GallifreyMod.MOD_ID, "wasted_boat");
     public static final Identifier WASTED_CHEST_BOAT_ID = new Identifier(GallifreyMod.MOD_ID, "wasted_chest_boat");
 
-    public static final Identifier PREHISTORIC_BOAT_ID = new Identifier(GallifreyMod.MOD_ID, "prehistoric_boat");
-    public static final Identifier PREHISTORIC_CHEST_BOAT_ID = new Identifier(GallifreyMod.MOD_ID, "prehistoric_chest_boat");
 
 
     public static final RegistryKey<TerraformBoatType> TARDIS_BOAT_KEY = TerraformBoatTypeRegistry.createKey(TARDIS_BOAT_ID);
@@ -42,7 +40,6 @@ public class ModBoats {
     public static final RegistryKey<TerraformBoatType> MAPLE_BOAT_KEY = TerraformBoatTypeRegistry.createKey(MAPLE_BOAT_ID);
     public static final RegistryKey<TerraformBoatType> MOONPINE_BOAT_KEY = TerraformBoatTypeRegistry.createKey(MOONPINE_BOAT_ID);
     public static final RegistryKey<TerraformBoatType> WASTED_BOAT_KEY = TerraformBoatTypeRegistry.createKey(WASTED_BOAT_ID);
-    public static final RegistryKey<TerraformBoatType> PREHISTORIC_BOAT_KEY = TerraformBoatTypeRegistry.createKey(PREHISTORIC_BOAT_ID);
 
 
     public static void registerBoats() {
@@ -88,12 +85,6 @@ public class ModBoats {
                 .planks(GallifreyModBlocks.WASTED_PLANKS.asItem())
                 .build();
 
-        TerraformBoatType prehistoricBoat = new TerraformBoatType.Builder()
-                .item(GallifreyModItems.PREHISTORIC_BOAT)
-                .chestItem(GallifreyModItems.PREHISTORIC_CHEST_BOAT)
-                .planks(GallifreyModBlocks.PREHISTORIC_PLANKS.asItem())
-                .build();
-
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, ULANDA_BOAT_KEY, ulandaBoat);
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, TARDIS_BOAT_KEY, tardisBoat);
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, TREEBORG_BOAT_KEY, treeborgBoat);
@@ -101,6 +92,5 @@ public class ModBoats {
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, MAPLE_BOAT_KEY, mapleBoat);
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, MOONPINE_BOAT_KEY, moonpineBoat);
         Registry.register(TerraformBoatTypeRegistry.INSTANCE, WASTED_BOAT_KEY, wastedBoat);
-        Registry.register(TerraformBoatTypeRegistry.INSTANCE, PREHISTORIC_BOAT_KEY, prehistoricBoat);
     }
 }

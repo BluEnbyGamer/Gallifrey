@@ -149,6 +149,7 @@ public final class GallifreyTabSections {
 
                 // Prehistoric wood set
                 entries.add(GallifreyModBlocks.PREHISTORIC_SAPLING);
+                entries.add(GallifreyModBlocks.PREHISTORIC_VINE);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LEAVES);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LOG);
                 entries.add(GallifreyModBlocks.PREHISTORIC_WOOD);
@@ -163,10 +164,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.PREHISTORIC_TRAPDOOR);
                 entries.add(GallifreyModBlocks.PREHISTORIC_PRESSURE_PLATE);
                 entries.add(GallifreyModBlocks.PREHISTORIC_BUTTON);
-                entries.add(GallifreyModItems.PREHISTORIC_SIGN);
-                entries.add(GallifreyModItems.HANGING_PREHISTORIC_SIGN);
-                entries.add(GallifreyModItems.PREHISTORIC_BOAT);
-                entries.add(GallifreyModItems.PREHISTORIC_CHEST_BOAT);
             }
     );
 

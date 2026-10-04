@@ -307,10 +307,5 @@
   "creative_section.gallifrey.prehistoric": "Prehistoric",
   "block.gallifrey.prehistoric_standing_sign": "Prehistoric Sign",
   "block.gallifrey.prehistoric_wall_sign": "Prehistoric Sign",
-  "block.gallifrey.prehistoric_hanging_sign": "Prehistoric Hanging Sign",
-  "block.gallifrey.prehistoric_wall_hanging_sign": "Prehistoric Hanging Sign",
-  "item.gallifrey.prehistoric_sign": "Prehistoric Sign",
-  "item.gallifrey.prehistoric_hanging_sign": "Prehistoric Hanging Sign",
-  "item.gallifrey.prehistoric_boat": "Prehistoric Boat",
-  "item.gallifrey.prehistoric_chest_boat": "Prehistoric Chest Boat"
+  "block.gallifrey.prehistoric_wall_hanging_sign": "Prehistoric Hanging Sign"
 }

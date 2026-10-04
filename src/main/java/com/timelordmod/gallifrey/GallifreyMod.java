@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 import com.timelordmod.gallifrey.networking.packets.SonicCasingPacket;
 
+import com.timelordmod.gallifrey.world.feature.PrehistoricVinesFeature;
 public class GallifreyMod implements ModInitializer {
 	public static final String MOD_ID = "gallifrey";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -31,6 +32,12 @@ public class GallifreyMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+        net.minecraft.registry.Registry.register(
+                net.minecraft.registry.Registries.FEATURE,
+                id("prehistoric_vines"),
+                new PrehistoricVinesFeature(net.minecraft.world.gen.feature.DefaultFeatureConfig.CODEC)
+        );
+
 
 
 		LOGGER.info("[Gallifrey] Initialising core systems...!");

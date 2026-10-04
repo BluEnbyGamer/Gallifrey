@@ -86,7 +86,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK,
                         GallifreyModBlocks.WHITE_POINT_ORE, GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE,
-                        GallifreyModBlocks.NETHER_WHITE_POINT_ORE);
+                        GallifreyModBlocks.NETHER_WHITE_POINT_ORE,
+                        GallifreyModBlocks.PREHISTORIC_ORE, GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE);
+
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.PREHISTORIC_ORE, GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE);
 
         // Roundels: mined with the same tool as the vanilla block each one is made from.
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)

@@ -2,11 +2,11 @@ package com.timelordmod.gallifrey.block;
 
 import com.timelordmod.gallifrey.item.custom.SonicWorkshopItem;
 
-import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
-import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.timelordmod.gallifrey.GallifreyMod;
+import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
+import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
 import com.timelordmod.gallifrey.block.custom.SonicSignalBlock;
 import com.timelordmod.gallifrey.block.custom.TapperBlock;
 import com.timelordmod.gallifrey.block.entity.RoundelBlock;
@@ -1844,7 +1844,7 @@ public class GallifreyModBlocks {
     public static final Block POTTED_WASTED_SAPLING = registerBlock(
             "potted_wasted_sapling",
             new FlowerPotBlock(
-                    GallifreyModBlocks.WASTED_SAPLING,
+                    GallifreyModBlocks.PREHISTORIC_SAPLING,
                     FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)
             )
     );
@@ -2002,42 +2002,49 @@ public class GallifreyModBlocks {
     public static final Block PREHISTORIC_LEAVES = registerBlock(
             "prehistoric_leaves",
             new LeavesBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_LEAVES)
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_LEAVES)
+            )
+    );
+
+    public static final Block PREHISTORIC_VINE = registerBlock(
+            "prehistoric_vine",
+            new VineBlock(
+                    FabricBlockSettings.copyOf(Blocks.VINE)
             )
     );
 
     public static final Block PREHISTORIC_WOOD = registerBlock(
             "prehistoric_wood",
             new PillarBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD)
             )
     );
 
     public static final Block PREHISTORIC_LOG = registerBlock(
             "prehistoric_log",
             new PillarBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_LOG)
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_LOG)
             )
     );
 
     public static final Block STRIP_PREHISTORIC_LOG = registerBlock(
             "stripped_prehistoric_log",
             new PillarBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_LOG)
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_LOG)
             )
     );
 
     public static final Block STRIP_PREHISTORIC_WOOD = registerBlock(
             "stripped_prehistoric_wood",
             new PillarBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD)
             )
     );
 
     public static final Block PREHISTORIC_PLANKS = registerBlock(
             "prehistoric_planks",
             new Block(
-                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD)
             )
     );
 
@@ -2045,15 +2052,15 @@ public class GallifreyModBlocks {
             "prehistoric_sapling",
             new SaplingBlock(
                     new PrehistoricSaplingGenerator(),
-                    FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING)
             )
     );
 
     public static final Block POTTED_PREHISTORIC_SAPLING = registerBlock(
             "potted_prehistoric_sapling",
             new FlowerPotBlock(
-                    GallifreyModBlocks.WASTED_SAPLING,
-                    FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)
+                    GallifreyModBlocks.PREHISTORIC_SAPLING,
+                    FabricBlockSettings.copyOf(Blocks.POTTED_JUNGLE_SAPLING)
             )
     );
 
@@ -2061,22 +2068,22 @@ public class GallifreyModBlocks {
             "prehistoric_stairs",
             new StairsBlock(
                     GallifreyModBlocks.PREHISTORIC_PLANKS.getDefaultState(),
-                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD)
             )
     );
 
     public static final Block PREHISTORIC_SLAB = registerBlock(
             "prehistoric_slab",
             new SlabBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD)
             )
     );
 
     public static final Block PREHISTORIC_BUTTON = registerBlock(
             "prehistoric_button",
             new ButtonBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
-                    BlockSetType.OAK,
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD),
+                    BlockSetType.JUNGLE,
                     15,
                     true
             )
@@ -2086,113 +2093,50 @@ public class GallifreyModBlocks {
             "prehistoric_pressure_plate",
             new PressurePlateBlock(
                     PressurePlateBlock.ActivationRule.EVERYTHING,
-                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
-                    BlockSetType.OAK
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD),
+                    BlockSetType.JUNGLE
             )
     );
 
     public static final Block PREHISTORIC_FENCE = registerBlock(
             "prehistoric_fence",
             new FenceBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD)
             )
     );
 
     public static final Block PREHISTORIC_FENCE_GATE = registerBlock(
             "prehistoric_fence_gate",
             new FenceGateBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD),
-                    WoodType.OAK
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_WOOD),
+                    WoodType.JUNGLE
             )
     );
 
     public static final Block PREHISTORIC_DOOR = registerBlock(
             "prehistoric_door",
             new DoorBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_DOOR),
-                    BlockSetType.OAK
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_DOOR),
+                    BlockSetType.JUNGLE
             )
     );
 
     public static final Block PREHISTORIC_TRAPDOOR = registerBlock(
             "prehistoric_trapdoor",
             new TrapdoorBlock(
-                    FabricBlockSettings.copyOf(Blocks.DARK_OAK_TRAPDOOR),
-                    BlockSetType.ACACIA
+                    FabricBlockSettings.copyOf(Blocks.JUNGLE_TRAPDOOR),
+                    BlockSetType.JUNGLE
             )
     );
 
 
+    public static final BlockFamily PREHISTORIC_FAMILY =
+            BlockFamilies.register(GallifreyModBlocks.PREHISTORIC_PLANKS)
+                    .group("wooden")
+                    .unlockCriterionName("has_planks")
+                    .build();
 
-    // ============================================================
-    // PREHISTORIC SIGNS
-    // ============================================================
 
-    public static final Identifier PREHISTORIC_SIGN_TEXTURE =
-            new Identifier(GallifreyMod.MOD_ID, "entity/signs/prehistoric");
-
-    public static final Identifier PREHISTORIC_HANGING_SIGN_TEXTURE =
-            new Identifier(GallifreyMod.MOD_ID, "entity/signs/hanging/prehistoric");
-
-    public static final Identifier PREHISTORIC_HANGING_GUI_SIGN_TEXTURE =
-            new Identifier(
-                    GallifreyMod.MOD_ID,
-                    "textures/gui/hanging_signs/prehistoric"
-            );
-
-    public static final Block STANDING_PREHISTORIC_SIGN =
-            Registry.register(
-                    Registries.BLOCK,
-                    new Identifier(
-                            GallifreyMod.MOD_ID,
-                            "prehistoric_standing_sign"
-                    ),
-                    new TerraformSignBlock(
-                            PREHISTORIC_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.OAK_SIGN)
-                    )
-            );
-
-    public static final Block WALL_PREHISTORIC_SIGN =
-            Registry.register(
-                    Registries.BLOCK,
-                    new Identifier(
-                            GallifreyMod.MOD_ID,
-                            "prehistoric_wall_sign"
-                    ),
-                    new TerraformWallSignBlock(
-                            PREHISTORIC_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).dropsLike(STANDING_PREHISTORIC_SIGN)
-                    )
-            );
-
-    public static final Block HANGING_PREHISTORIC_SIGN =
-            Registry.register(
-                    Registries.BLOCK,
-                    new Identifier(
-                            GallifreyMod.MOD_ID,
-                            "prehistoric_hanging_sign"
-                    ),
-                    new TerraformHangingSignBlock(
-                            PREHISTORIC_HANGING_SIGN_TEXTURE,
-                            PREHISTORIC_HANGING_GUI_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN)
-                    )
-            );
-
-    public static final Block WALL_HANGING_PREHISTORIC_SIGN =
-            Registry.register(
-                    Registries.BLOCK,
-                    new Identifier(
-                            GallifreyMod.MOD_ID,
-                            "prehistoric_wall_hanging_sign"
-                    ),
-                    new TerraformWallHangingSignBlock(
-                            PREHISTORIC_HANGING_SIGN_TEXTURE,
-                            PREHISTORIC_HANGING_GUI_SIGN_TEXTURE,
-                            FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(HANGING_PREHISTORIC_SIGN)
-                    )
-            );
 
     // Storage block for Prehistoric Ingots (9 ingots -> 1 block).
     public static final Block PREHISTORIC_BLOCK = registerBlock(
@@ -2385,6 +2329,7 @@ public class GallifreyModBlocks {
         flammable.add(STRIP_PREHISTORIC_WOOD, 5, 5);
         flammable.add(PREHISTORIC_PLANKS, 5, 20);
         flammable.add(PREHISTORIC_LEAVES, 30, 60);
+        flammable.add(PREHISTORIC_VINE, 15, 100);
         flammable.add(PREHISTORIC_STAIRS, 5, 20);
         flammable.add(PREHISTORIC_SLAB, 5, 20);
         flammable.add(PREHISTORIC_FENCE, 5, 20);

@@ -511,6 +511,11 @@ public class GallifreyModClient implements ClientModInitializer {
         );
 
         BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.PREHISTORIC_VINE,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
         GallifreyModBlocks.PREHISTORIC_DOOR,
         RenderLayer.getCutoutMipped()
         );
@@ -530,27 +535,6 @@ public class GallifreyModClient implements ClientModInitializer {
                 RenderLayer.getCutout()
         );
 
-        EntityModelLayerRegistry.registerModelLayer(
-                new EntityModelLayer(
-                        new Identifier(
-                                "gallifrey",
-                                "boat/prehistoric_boat"
-                        ),
-                        "main"
-                ),
-                BoatEntityModel::getTexturedModelData
-        );
-
-        EntityModelLayerRegistry.registerModelLayer(
-                new EntityModelLayer(
-                        new Identifier(
-                                "gallifrey",
-                                "chest_boat/prehistoric_boat"
-                        ),
-                        "main"
-                ),
-                ChestBoatEntityModel::getTexturedModelData
-        );
     }
 
 

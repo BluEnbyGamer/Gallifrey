@@ -15,15 +15,15 @@ public class PrehistoricArmorMaterial implements ArmorMaterial {
 
     @Override
     public int getDurability(ArmorItem.Type type) {
-        return BASE_DURABILITY[type.getEquipmentSlot().getEntitySlotId()] * 35;
+        return BASE_DURABILITY[type.getEquipmentSlot().getEntitySlotId()] * 36;
     }
 
     @Override
     public int getProtection(ArmorItem.Type type) {
         return switch (type) {
             case BOOTS -> 3;
-            case LEGGINGS -> 8;
-            case CHESTPLATE -> 6;
+            case LEGGINGS -> 6;
+            case CHESTPLATE -> 8;
             case HELMET -> 3;
         };
     }
@@ -55,6 +55,6 @@ public class PrehistoricArmorMaterial implements ArmorMaterial {
 
     @Override
     public float getKnockbackResistance() {
-        return 0.1F;
+        return 0.08F;
     }
 }

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "base": {
-    "item": "minecraft:diamond_helmet"
+    "item": "minecraft:iron_helmet"
   },
   "addition": {
     "item": "gallifrey:prehistoric_ingot"
