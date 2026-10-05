@@ -38,11 +38,11 @@ public class GallifreyMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-        net.minecraft.registry.Registry.register(
-                net.minecraft.registry.Registries.FEATURE,
-                id("prehistoric_vines"),
-                new PrehistoricVinesFeature(net.minecraft.world.gen.feature.DefaultFeatureConfig.CODEC)
-        );
+		net.minecraft.registry.Registry.register(
+				net.minecraft.registry.Registries.FEATURE,
+				id("prehistoric_vines"),
+				new PrehistoricVinesFeature(net.minecraft.world.gen.feature.DefaultFeatureConfig.CODEC)
+		);
 
 
 
@@ -90,10 +90,10 @@ public class GallifreyMod implements ModInitializer {
 				SonicCasingPacket::receive
 		);
 
-        ServerPlayNetworking.registerGlobalReceiver(
-                new Identifier(MOD_ID, "sonic_shades_use"),
-                SonicShadesPacket::receive
-        );
+		ServerPlayNetworking.registerGlobalReceiver(
+				new Identifier(MOD_ID, "sonic_shades_use"),
+				SonicShadesPacket::receive
+		);
 
 
 		// Strippable blocks registry
@@ -137,34 +137,43 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalApiRegistry.registerPortalFrameTester(GALLIFREY_FRAME_TESTER, GallifreyPortalAreaHelper::new);
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.REINFORCED_STEEL_BLOCK)
-						.customFrameTester(GALLIFREY_FRAME_TESTER)
-						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.destDimID(new Identifier(GallifreyMod.MOD_ID, "gallifrey"))
-						.tintColor(230, 142, 48)
-						.registerPortal();
+				.frameBlock(GallifreyModBlocks.REINFORCED_STEEL_BLOCK)
+				.customFrameTester(GALLIFREY_FRAME_TESTER)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "gallifrey"))
+				.tintColor(230, 142, 48)
+				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.MARS_STONE_BRICKS)
-						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mars"))
-						.tintColor(150, 55, 35)
-						.registerPortal();
+				.frameBlock(GallifreyModBlocks.MARS_STONE_BRICKS)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "mars"))
+				.tintColor(150, 55, 35)
+				.registerPortal();
 
 		// AWT planet ports. These use blocks/items already present in Gallifrey.
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.DALEKANIUM_BLOCK)
-						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.destDimID(new Identifier(GallifreyMod.MOD_ID, "skaro"))
-						.tintColor(150, 110, 45)
-						.registerPortal();
+				.frameBlock(GallifreyModBlocks.DALEKANIUM_BLOCK)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "skaro"))
+				.tintColor(150, 110, 45)
+				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.STEEL_BLOCK)
-						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mondas"))
-						.tintColor(130, 150, 170)
-						.registerPortal();
+				.frameBlock(GallifreyModBlocks.STEEL_BLOCK)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "mondas"))
+				.tintColor(130, 150, 170)
+				.registerPortal();
+
+		// Pete's World: parallel Overworld with a different seed.
+		// Crying obsidian frame, lit with a White Point Star like the others.
+		CustomPortalBuilder.beginPortal()
+				.frameBlock(net.minecraft.block.Blocks.CRYING_OBSIDIAN)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "petes_world"))
+				.tintColor(90, 140, 230)
+				.registerPortal();
 
 
 

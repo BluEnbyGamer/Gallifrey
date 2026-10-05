@@ -28,4 +28,8 @@ public final class ModDimensions {
 
     public static final RegistryKey<World> MONDAS_LEVEL_KEY = RegistryKey.of(
             RegistryKeys.WORLD, GallifreyMod.id("mondas"));
+
+    /** Pete's World: a vanilla-style Overworld that uses its own, derived seed. */
+    public static final RegistryKey<World> PETES_WORLD_LEVEL_KEY = RegistryKey.of(
+            RegistryKeys.WORLD, GallifreyMod.id("petes_world"));
 }
