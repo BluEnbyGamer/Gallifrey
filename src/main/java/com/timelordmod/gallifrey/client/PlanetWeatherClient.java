@@ -5,7 +5,7 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3f;
+import org.joml.Vector3f;
 
 /**
  * Client-side visual weather for Gallifrey's custom planets.
@@ -90,7 +90,7 @@ public final class PlanetWeatherClient {
                 double x = client.player.getX() + (world.random.nextDouble() * 34.0D - 17.0D);
                 double y = client.player.getY() + 6.0D + world.random.nextDouble() * 14.0D;
                 double z = client.player.getZ() + (world.random.nextDouble() * 34.0D - 17.0D);
-                world.addParticle(ParticleTypes.SNOWBALL, x, y, z, 0.18D, -0.22D, 0.0D);
+                world.addParticle(ParticleTypes.SNOWFLAKE, x, y, z, 0.18D, -0.22D, 0.0D);
             }
         }
     }
@@ -106,7 +106,7 @@ public final class PlanetWeatherClient {
 
             // Dense red dust moving mostly horizontally, like a genuine sandstorm.
             DustParticleEffect dust = new DustParticleEffect(
-                    new Vec3f(0.72F, 0.16F, 0.045F),
+                    new Vector3f(0.72F, 0.16F, 0.045F),
                     1.15F
             );
 
