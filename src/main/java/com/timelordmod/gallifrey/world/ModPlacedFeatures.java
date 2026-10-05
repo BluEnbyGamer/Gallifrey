@@ -38,6 +38,10 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> MOONPINE_PLACED_KEY = registerKey("moonpine_placed");
     public static final RegistryKey<PlacedFeature> PREHISTORIC_PLACED_KEY = registerKey("prehistoric_placed");
     public static final RegistryKey<PlacedFeature> PREHISTORIC_ORE_PLACED_KEY = registerKey("prehistoric_ore_placed");
+
+    public static final RegistryKey<PlacedFeature> ATRIUM_ORE_UPPER_PLACED_KEY = registerKey("atrium_ore_upper");
+    public static final RegistryKey<PlacedFeature> ATRIUM_ORE_MIDDLE_PLACED_KEY = registerKey("atrium_ore_middle");
+    public static final RegistryKey<PlacedFeature> ATRIUM_ORE_SMALL_PLACED_KEY = registerKey("atrium_ore_small");
     public static final RegistryKey<PlacedFeature> WASTED_OAK_PLACED_KEY = registerKey("wasted_oak_placed");
     public static final RegistryKey<PlacedFeature> WASTED_BIRCH_PLACED_KEY = registerKey("wasted_birch_placed");
 
@@ -132,6 +136,22 @@ public class ModPlacedFeatures {
         register(context, PREHISTORIC_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PREHISTORIC_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(10,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-48), YOffset.fixed(96))));
+
+        // Atrium mirrors Minecraft 1.20.1 iron's three Overworld placements:
+        // upper: 90 veins, middle: 10 veins, small: 10 veins.
+        register(context, ATRIUM_ORE_UPPER_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ATRIUM_ORE_KEY),
+                List.of(
+                        CountPlacementModifier.of(90),
+                        SquarePlacementModifier.of(),
+                        HeightRangePlacementModifier.trapezoid(YOffset.fixed(80), YOffset.fixed(384)),
+                        BiomePlacementModifier.of()
+                ));
+        register(context, ATRIUM_ORE_MIDDLE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ATRIUM_ORE_KEY),
+                ModOrePlacement.modifiersWithCount(10,
+                        HeightRangePlacementModifier.uniform(YOffset.fixed(-24), YOffset.fixed(56))));
+        register(context, ATRIUM_ORE_SMALL_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ATRIUM_ORE_SMALL_KEY),
+                ModOrePlacement.modifiersWithCount(10,
+                        HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(72))));
 
         register(context, WASTED_OAK_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WASTED_OAK_TREE_KEY),
                 List.of(

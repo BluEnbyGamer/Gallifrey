@@ -44,9 +44,20 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_BIRCH_TREE_KEY = registerKey("wasted_birch_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_ORE_KEY = registerKey("prehistoric_ore");
 
+    public static final RegistryKey<ConfiguredFeature<?, ?>> ATRIUM_ORE_KEY = registerKey("atrium_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> ATRIUM_ORE_SMALL_KEY = registerKey("atrium_ore_small");
+
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplacables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+
+        // --- Atrium ---
+        List<OreFeatureConfig.Target> atriumTargets = List.of(
+                OreFeatureConfig.createTarget(stoneReplacables, GallifreyModBlocks.ATRIUM_ORE.getDefaultState()),
+                OreFeatureConfig.createTarget(deepslateReplacables, GallifreyModBlocks.DEEPSLATE_ATRIUM_ORE.getDefaultState())
+        );
+        register(context, ATRIUM_ORE_KEY, Feature.ORE, new OreFeatureConfig(atriumTargets, 9));
+        register(context, ATRIUM_ORE_SMALL_KEY, Feature.ORE, new OreFeatureConfig(atriumTargets, 4));
         RuleTest netherReplacables = new TagMatchRuleTest(BlockTags.BASE_STONE_NETHER);
         RuleTest marsReplacables = new TagMatchRuleTest(net.minecraft.registry.tag.TagKey.of(RegistryKeys.BLOCK, GallifreyMod.id("mars_ore_replaceables")));
 

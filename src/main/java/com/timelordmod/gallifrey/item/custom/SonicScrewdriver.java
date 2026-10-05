@@ -487,6 +487,54 @@ public class SonicScrewdriver extends Item {
     }
 
     // =========================================================
+    // SHARED SONIC ACTIVATION
+    // =========================================================
+
+    /**
+     * Performs the same server-side sonic action used by right-clicking the
+     * screwdriver. Wearable sonic devices can call this without duplicating
+     * the targeting/SonicHandler implementation.
+     */
+    public static void activate(PlayerEntity player, World world, ItemStack stack) {
+        if (world.isClient) {
+            return;
+        }
+
+        if (getPower(stack) <= 0) {
+            player.sendMessage(Text.literal("§cSONIC: Power depleted."), true);
+            return;
+        }
+
+        HitResult target = getSonicTarget(player);
+        SonicMode mode = getMode(stack);
+        SonicCasing casing = getCasing(stack);
+
+        SonicHandler.use(player, world, target, mode);
+
+        world.playSound(
+                null,
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                GallifreySounds.SONIC,
+                SoundCategory.PLAYERS,
+                1.0F,
+                1.0F
+        );
+
+        consumePower(stack);
+
+        player.sendMessage(
+                Text.literal(
+                        "§b" + casing.getDisplayName()
+                                + " §7| §bPOWER: §f" + getPower(stack)
+                                + "§7/§f" + MAX_POWER
+                ),
+                true
+        );
+    }
+
+    // =========================================================
     // USE
     // =========================================================
 
@@ -565,83 +613,7 @@ public class SonicScrewdriver extends Item {
         // =====================================================
 
         if (!world.isClient) {
-
-            // -------------------------------------------------
-            // GET TARGET
-            // -------------------------------------------------
-
-            HitResult target =
-                    getSonicTarget(player);
-
-            // -------------------------------------------------
-            // GET MODE
-            // -------------------------------------------------
-
-            SonicMode mode =
-                    getMode(stack);
-
-            // -------------------------------------------------
-            // GET CASING
-            // -------------------------------------------------
-
-            SonicCasing casing =
-                    getCasing(stack);
-
-            // -------------------------------------------------
-            // USE SONIC
-            // -------------------------------------------------
-
-            SonicHandler.use(
-                    player,
-                    world,
-                    target,
-                    mode
-            );
-
-            // -------------------------------------------------
-            // PLAY SOUND
-            // -------------------------------------------------
-            //
-            // This plays ONLY when this method is called
-            // by the player's right-click.
-            //
-            // It is NOT connected to inventoryTick().
-            // It is NOT connected to isOn().
-            // It does NOT loop.
-            // -------------------------------------------------
-
-            world.playSound(
-                    null,
-                    player.getX(),
-                    player.getY(),
-                    player.getZ(),
-                    GallifreySounds.SONIC,
-                    SoundCategory.PLAYERS,
-                    1.0F,
-                    1.0F
-            );
-
-            // -------------------------------------------------
-            // CONSUME POWER
-            // -------------------------------------------------
-
-            consumePower(stack);
-
-            // -------------------------------------------------
-            // STATUS
-            // -------------------------------------------------
-
-            player.sendMessage(
-                    Text.literal(
-                            "§b"
-                                    + casing.getDisplayName()
-                                    + " §7| §bPOWER: §f"
-                                    + getPower(stack)
-                                    + "§7/§f"
-                                    + MAX_POWER
-                    ),
-                    true
-            );
+            activate(player, world, stack);
         }
 
         return TypedActionResult.success(

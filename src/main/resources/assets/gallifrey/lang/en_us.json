@@ -310,5 +310,15 @@
   "block.gallifrey.prehistoric_wall_hanging_sign": "Prehistoric Hanging Sign",
   "block.gallifrey.mars_sand": "Mars Sand",
   "block.gallifrey.mars_sandstone": "Mars Sandstone",
-  "creative_section.gallifrey.misc_blocks": "Misc Blocks"
+  "creative_section.gallifrey.misc_blocks": "Misc Blocks",
+  "block.gallifrey.atrium_block": "Atrium Block",
+  "block.gallifrey.atrium_ore": "Atrium Ore",
+  "block.gallifrey.deepslate_atrium_ore": "Deepslate Atrium Ore",
+  "item.gallifrey.atrium": "Atrium",
+  "item.gallifrey.atrium_fuel": "Atrium Fuel",
+  "item.gallifrey.energized_atrium": "Energized Atrium",
+  "item.gallifrey.atrium_core": "Atrium Core",
+  "item.gallifrey.sonic_shades": "Sonic Shades",
+  "key.gallifrey.sonic_shades": "Use Sonic Shades",
+  "category.gallifrey": "Gallifrey"
 }

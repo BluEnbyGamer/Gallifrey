@@ -42,6 +42,7 @@ public class GallifreyModClient implements ClientModInitializer {
     public void onInitializeClient() {
 
         com.timelordmod.gallifrey.client.ModClientPackets.register();;
+        SonicShadesClient.register();
         ClientTickEvents.END_CLIENT_TICK.register(GallifreyModClient::tickMondasWeather);
 
         // =========================================================

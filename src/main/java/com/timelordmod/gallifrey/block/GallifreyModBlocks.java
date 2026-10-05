@@ -2152,6 +2152,32 @@ public class GallifreyModBlocks {
     );
 
     // ============================================================
+    // ATRIUM
+    // ============================================================
+
+    public static final Block ATRIUM_BLOCK = registerBlock("atrium_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    .sounds(BlockSoundGroup.METAL)
+                    .requiresTool()
+                    .strength(5.0F, 6.0F)));
+
+    public static final Block ATRIUM_ORE = registerBlock("atrium_ore",
+            new ExperienceDroppingBlock(
+                    FabricBlockSettings.copyOf(Blocks.IRON_ORE)
+                            .sounds(BlockSoundGroup.STONE)
+                            .requiresTool()
+                            .strength(3.0F, 3.0F),
+                    UniformIntProvider.create(2, 5)));
+
+    public static final Block DEEPSLATE_ATRIUM_ORE = registerBlock("deepslate_atrium_ore",
+            new ExperienceDroppingBlock(
+                    FabricBlockSettings.copyOf(Blocks.DEEPSLATE_IRON_ORE)
+                            .sounds(BlockSoundGroup.DEEPSLATE)
+                            .requiresTool()
+                            .strength(4.5F, 3.0F),
+                    UniformIntProvider.create(2, 5)));
+
+    // ============================================================
     // TARDIS EXTERIOR
     // ============================================================
 

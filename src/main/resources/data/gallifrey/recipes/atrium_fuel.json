@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ACA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:atrium"
+    },
+    "C": {
+      "item": "minecraft:coal"
+    }
+  },
+  "result": {
+    "item": "gallifrey:atrium_fuel",
+    "count": 1
+  }
+}

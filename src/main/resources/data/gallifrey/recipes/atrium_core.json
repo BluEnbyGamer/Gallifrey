@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EEE",
+    "ENE",
+    "EEE"
+  ],
+  "key": {
+    "E": {
+      "item": "gallifrey:energized_atrium"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "gallifrey:atrium_core",
+    "count": 1
+  }
+}

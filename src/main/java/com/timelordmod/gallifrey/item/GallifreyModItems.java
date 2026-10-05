@@ -13,6 +13,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
+import com.timelordmod.gallifrey.item.custom.SonicShadesItem;
 import com.timelordmod.gallifrey.item.custom.HeadwearItem;
 import com.timelordmod.gallifrey.item.custom.PrehistoricArmorMaterial;
 import com.timelordmod.gallifrey.item.custom.PrehistoricToolMaterial;
@@ -172,6 +173,19 @@ public class GallifreyModItems {
                             .maxDamage(100)
             );
 
+    public static final SonicShadesItem SONIC_SHADES =
+            new SonicShadesItem(
+                    new FabricItemSettings()
+                            .maxCount(1)
+                            .maxDamage(100)
+            );
+
+    // Atrium materials
+    public static final Item ATRIUM = new Item(new FabricItemSettings());
+    public static final Item ATRIUM_FUEL = new Item(new FabricItemSettings());
+    public static final Item ENERGIZED_ATRIUM = new Item(new FabricItemSettings());
+    public static final Item ATRIUM_CORE = new Item(new FabricItemSettings());
+
 
 
 
@@ -201,6 +215,12 @@ public class GallifreyModItems {
         registerItem("prehistoric_boots", PREHISTORIC_BOOTS);
 
         registerItem("sonic_screwdriver", SONIC_SCREWDRIVER);
+        registerItem("sonic_shades", SONIC_SHADES);
+
+        registerItem("atrium", ATRIUM);
+        registerItem("atrium_fuel", ATRIUM_FUEL);
+        registerItem("energized_atrium", ENERGIZED_ATRIUM);
+        registerItem("atrium_core", ATRIUM_CORE);
         registerItem("fez", FEZ);
         registerItem("fancyfez", FANCYFEZ);
         registerItem("purplefez", PURPLEFEZ);

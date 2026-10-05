@@ -2,6 +2,7 @@ package com.timelordmod.gallifrey.networking;
 
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
+import com.timelordmod.gallifrey.networking.packets.SonicShadesPacket;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.util.Identifier;
 
@@ -17,8 +18,10 @@ public class ModPackets {
     public static final Identifier VM_PACKET = new Identifier(GallifreyMod.MOD_ID, "vm_packet");
     public static final Identifier VM_STATE = new Identifier(GallifreyMod.MOD_ID, "vm_state");
     public static final Identifier OPEN_SONIC_WORKSHOP = new Identifier(GallifreyMod.MOD_ID, "open_sonic_workshop");
+    public static final Identifier SONIC_SHADES_USE = new Identifier(GallifreyMod.MOD_ID, "sonic_shades_use");
 
     public static void registerC2SPackets() {
         ServerPlayNetworking.registerGlobalReceiver(VM_PACKET, VMPacket::receive);
+        ServerPlayNetworking.registerGlobalReceiver(SONIC_SHADES_USE, SonicShadesPacket::receive);
     }
 }

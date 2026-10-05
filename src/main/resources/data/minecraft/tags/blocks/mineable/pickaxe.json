@@ -33,6 +33,9 @@
     "#gallifrey:prehistoric_blocks",
     "gallifrey:prehistoric_ore",
     "gallifrey:deepslate_prehistoric_ore",
-    "gallifrey:mars_sandstone"
+    "gallifrey:mars_sandstone",
+    "gallifrey:atrium_ore",
+    "gallifrey:deepslate_atrium_ore",
+    "gallifrey:atrium_block"
   ]
 }

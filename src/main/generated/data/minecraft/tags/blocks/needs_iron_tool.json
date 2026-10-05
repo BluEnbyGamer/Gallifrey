@@ -6,6 +6,9 @@
     "gallifrey:deepslate_sonic_crystal_ore",
     "gallifrey:dalekanium_ore",
     "gallifrey:deepslate_dalekanium_ore",
-    "gallifrey:dalekanium_block"
+    "gallifrey:dalekanium_block",
+    "gallifrey:atrium_ore",
+    "gallifrey:deepslate_atrium_ore",
+    "gallifrey:atrium_block"
   ]
 }

@@ -15,30 +15,30 @@ import net.minecraft.util.Identifier;
  * fabric.mod.json, so it is only ever loaded when JEI is installed.
  * Nothing else in the mod may reference this package.
  */
-@JeiPlugin
-public class GallifreyJeiPlugin implements IModPlugin {
+//@JeiPlugin
+//public class GallifreyJeiPlugin implements IModPlugin {
 
-    @Override
-    public Identifier getPluginUid() {
-        return new Identifier(GallifreyMod.MOD_ID, "jei_plugin");
-    }
+  //  @Override
+  //  public Identifier getPluginUid() {
+    //    return new Identifier(GallifreyMod.MOD_ID, "jei_plugin");
+  //  }
 
-    @Override
-    public void registerCategories(IRecipeCategoryRegistration registration) {
-        registration.addRecipeCategories(
-                new TapperCategory(registration.getJeiHelpers().getGuiHelper())
-        );
-    }
+   // @Override
+  //  public void registerCategories(IRecipeCategoryRegistration registration) {
+   //     registration.addRecipeCategories(
+   //             new TapperCategory(registration.getJeiHelpers().getGuiHelper())
+  //      );
+  //  }
 
-    @Override
-    public void registerRecipes(IRecipeRegistration registration) {
+  //  @Override
+  //  public void registerRecipes(IRecipeRegistration registration) {
         // Same list the block itself uses, so JEI can never drift out of date.
-        registration.addRecipes(TapperCategory.TYPE, TapperBlock.taps());
-    }
+   //     registration.addRecipes(TapperCategory.TYPE, TapperBlock.taps());
+ //   }
 
-    @Override
-    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+  //  @Override
+  //  public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         // Makes "Tree Tapper" show as the workstation tab, and pressing U on the tapper lists everything it makes.
-        registration.addRecipeCatalysts(TapperCategory.TYPE, GallifreyModBlocks.TREE_TAPPER);
-    }
-}
+ //       registration.addRecipeCatalysts(TapperCategory.TYPE, GallifreyModBlocks.TREE_TAPPER);
+  //  }
+//}

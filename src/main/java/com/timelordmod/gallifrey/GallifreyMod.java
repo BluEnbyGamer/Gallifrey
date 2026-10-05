@@ -7,6 +7,11 @@ import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
 import com.timelordmod.gallifrey.world.biome.ModBiomes;
+import com.timelordmod.gallifrey.world.ModPlacedFeatures;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.world.gen.GenerationStep;
 import com.timelordmod.gallifrey.world.MarsWorldHandler;
 import com.timelordmod.gallifrey.world.portal.GallifreyPortalAreaHelper;
 import net.fabricmc.api.ModInitializer;
@@ -20,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 import com.timelordmod.gallifrey.networking.packets.SonicCasingPacket;
+import com.timelordmod.gallifrey.networking.packets.SonicShadesPacket;
 
 import com.timelordmod.gallifrey.world.feature.PrehistoricVinesFeature;
 public class GallifreyMod implements ModInitializer {
@@ -47,6 +53,27 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyModItems.register();
 		GallifreyModBlocks.register();
 		GallifreyModBlockEntities.register();
+
+		// Atrium fuel burns for 3x the time of coal: 4800 ticks vs 1600.
+		FuelRegistry.INSTANCE.add(GallifreyModItems.ATRIUM_FUEL, 4800);
+
+		// Atrium generation is explicitly limited to vanilla Overworld biomes.
+		BiomeModifications.addFeature(
+				BiomeSelectors.foundInOverworld(),
+				GenerationStep.Feature.UNDERGROUND_ORES,
+				ModPlacedFeatures.ATRIUM_ORE_UPPER_PLACED_KEY
+		);
+		BiomeModifications.addFeature(
+				BiomeSelectors.foundInOverworld(),
+				GenerationStep.Feature.UNDERGROUND_ORES,
+				ModPlacedFeatures.ATRIUM_ORE_MIDDLE_PLACED_KEY
+		);
+		BiomeModifications.addFeature(
+				BiomeSelectors.foundInOverworld(),
+				GenerationStep.Feature.UNDERGROUND_ORES,
+				ModPlacedFeatures.ATRIUM_ORE_SMALL_PLACED_KEY
+		);
+
 		GallifreyCreativeTab.register();
 		ModBoats.registerBoats();
 		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, ModBiomes.TREEBORG_FOREST, 0.3d);
@@ -62,6 +89,11 @@ public class GallifreyMod implements ModInitializer {
 				new Identifier(MOD_ID, "change_sonic_workshop_casing"),
 				SonicCasingPacket::receive
 		);
+
+        ServerPlayNetworking.registerGlobalReceiver(
+                new Identifier(MOD_ID, "sonic_shades_use"),
+                SonicShadesPacket::receive
+        );
 
 
 		// Strippable blocks registry

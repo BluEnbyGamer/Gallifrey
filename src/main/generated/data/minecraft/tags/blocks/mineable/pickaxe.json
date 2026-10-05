@@ -71,6 +71,9 @@
     "gallifrey:white_concrete_roundel",
     "gallifrey:yellow_concrete_roundel",
     "gallifrey:hartnell_roundel",
-    "gallifrey:hartnell_wall"
+    "gallifrey:hartnell_wall",
+    "gallifrey:atrium_ore",
+    "gallifrey:deepslate_atrium_ore",
+    "gallifrey:atrium_block"
   ]
 }

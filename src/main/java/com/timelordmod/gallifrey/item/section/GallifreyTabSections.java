@@ -197,6 +197,15 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE);
                 entries.add(GallifreyModBlocks.NETHER_WHITE_POINT_ORE);
                 entries.add(GallifreyModItems.WHITE_POINT_STAR);
+
+                // Atrium
+                entries.add(GallifreyModBlocks.ATRIUM_ORE);
+                entries.add(GallifreyModBlocks.DEEPSLATE_ATRIUM_ORE);
+                entries.add(GallifreyModBlocks.ATRIUM_BLOCK);
+                entries.add(GallifreyModItems.ATRIUM);
+                entries.add(GallifreyModItems.ATRIUM_FUEL);
+                entries.add(GallifreyModItems.ENERGIZED_ATRIUM);
+                entries.add(GallifreyModItems.ATRIUM_CORE);
                 entries.add(GallifreyModItems.BLANK_CIRCUIT);
                 entries.add(GallifreyModItems.LOCATION_CIRCUIT);
                 entries.add(GallifreyModItems.INTERFACE_CIRCUIT);
@@ -304,6 +313,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.YELLOWFEZ);
                 entries.add(GallifreyModItems.TRUSTABLE_HAT);
                 entries.add(GallifreyModItems.EYESTALK);
+                entries.add(GallifreyModItems.SONIC_SHADES);
                 entries.add(GallifreyModItems.OMEGA_HELMET);
             }
     );
