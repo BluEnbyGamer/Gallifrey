@@ -39,8 +39,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         .add(GallifreyModBlocks.MOONPINE_LOG, GallifreyModBlocks.MOONPINE_WOOD,
                 GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
         .add(GallifreyModBlocks.WASTED_WOOD,
-                GallifreyModBlocks.STRIP_WASTED_LOG, GallifreyModBlocks.STRIP_WASTED_WOOD)
-        .add(GallifreyModBlocks.PREHISTORIC_LOG,
+                GallifreyModBlocks.PREHISTORIC_LOG,
                 GallifreyModBlocks.STRIP_PREHISTORIC_LOG,
                 GallifreyModBlocks.PREHISTORIC_PLANKS);
 
@@ -168,7 +167,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(GallifreyModBlocks.MOONPINE_LOG, GallifreyModBlocks.MOONPINE_WOOD,
                         GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
                 .add(GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.WASTED_WOOD,
-                        GallifreyModBlocks.STRIP_WASTED_LOG, GallifreyModBlocks.STRIP_WASTED_WOOD)
-                .add(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
+                GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
     }
 }
