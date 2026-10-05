@@ -9,6 +9,7 @@
     "client.LivingEntityRendererAccessor",
     "client.MondasFogMixin",
     "client.MarsFogMixin",
+    "client.LostRealityFogMixin",
     "client.LogoDrawerMixin",
     "client.CreativeInventoryScreenAccessor",
     "client.HandledScreenAccessor",
