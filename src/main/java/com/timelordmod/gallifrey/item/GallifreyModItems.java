@@ -176,7 +176,6 @@ public class GallifreyModItems {
     public static final SonicShadesItem SONIC_SHADES =
             new SonicShadesItem(
                     new FabricItemSettings()
-                            .maxCount(1)
                             .maxDamage(100)
             );
 

@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 public class SonicShadesItem extends SonicScrewdriver implements Equipment {
 
     public SonicShadesItem(Settings settings) {
-        super(settings.maxCount(1));
+        super(settings);
     }
 
     @Override
