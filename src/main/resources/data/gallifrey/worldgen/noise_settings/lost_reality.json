@@ -433,7 +433,7 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "gallifrey:mars"
+            "gallifrey:lost_mars"
           ]
         },
         "then_run": {
@@ -624,7 +624,7 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "gallifrey:mondas"
+            "gallifrey:lost_mondas"
           ]
         },
         "then_run": {
@@ -676,7 +676,7 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "gallifrey:skaro_waste_land"
+            "gallifrey:lost_skaro_waste_land"
           ]
         },
         "then_run": {
@@ -745,9 +745,9 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "gallifrey:prehistoric",
-            "gallifrey:gallifreyan_plains",
-            "gallifrey:gallifreyan_ulanda_forest"
+            "gallifrey:lost_prehistoric",
+            "gallifrey:lost_gallifreyan_plains",
+            "gallifrey:lost_gallifreyan_ulanda_forest"
           ]
         },
         "then_run": {

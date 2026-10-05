@@ -7,7 +7,7 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "gallifrey:mars",
+          "biome": "gallifrey:lost_mars",
           "parameters": {
             "temperature": [
               -2.0,
@@ -37,7 +37,7 @@
           }
         },
         {
-          "biome": "gallifrey:mondas",
+          "biome": "gallifrey:lost_mondas",
           "parameters": {
             "temperature": [
               -2.0,
@@ -67,7 +67,7 @@
           }
         },
         {
-          "biome": "gallifrey:skaro_waste_land",
+          "biome": "gallifrey:lost_skaro_waste_land",
           "parameters": {
             "temperature": [
               -0.25,
@@ -97,7 +97,7 @@
           }
         },
         {
-          "biome": "gallifrey:prehistoric",
+          "biome": "gallifrey:lost_prehistoric",
           "parameters": {
             "temperature": [
               -0.25,
@@ -127,7 +127,7 @@
           }
         },
         {
-          "biome": "gallifrey:gallifreyan_plains",
+          "biome": "gallifrey:lost_gallifreyan_plains",
           "parameters": {
             "temperature": [
               0.3,
@@ -157,7 +157,7 @@
           }
         },
         {
-          "biome": "gallifrey:gallifreyan_ulanda_forest",
+          "biome": "gallifrey:lost_gallifreyan_ulanda_forest",
           "parameters": {
             "temperature": [
               0.3,
