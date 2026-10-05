@@ -1,10 +1,10 @@
 {
-	"format_version": "1.21.6",
+	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "sonic_glasses",
-		"particle": "sonic_glasses"
+		"0": "gallifrey:item/sonic_glasses",
+		"particle": "gallifrey:item/sonic_glasses"
 	},
 	"elements": [
 		{
