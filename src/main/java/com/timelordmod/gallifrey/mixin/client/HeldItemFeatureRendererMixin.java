@@ -4,7 +4,6 @@ import com.timelordmod.gallifrey.item.custom.HeadwearItem;
 import com.timelordmod.gallifrey.item.custom.SonicShadesItem;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.feature.HeldItemFeatureRenderer;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.client.util.math.MatrixStack;
@@ -15,17 +14,20 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Headwear is still present in the player's inventory/hand in creative mode
- * after it is equipped.  Vanilla then renders that same stack as a held item,
- * producing the large duplicate seen on the body.  The actual head feature
- * renderer is already responsible for the wearable copy, so suppress the held
- * copy while the same headwear is equipped.
+ * Prevents wearable head items from also being rendered by vanilla's
+ * third-person held-item feature. The head feature renderer is the ONLY
+ * renderer that should draw these items on the player.
+ *
+ * This intentionally checks the item in either hand, rather than comparing
+ * complete ItemStacks. Creative-mode copies can have different NBT/counts,
+ * but they are still the same wearable item and must not produce the large,
+ * upside-down held copy.
  */
 @Mixin(HeldItemFeatureRenderer.class)
 public abstract class HeldItemFeatureRendererMixin {
 
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
-    private void gallifrey$hideEquippedHeadwearInHands(
+    private void gallifrey$hideHeadwearHeldCopy(
             MatrixStack matrices,
             VertexConsumerProvider vertexConsumers,
             int light,
@@ -44,22 +46,15 @@ public abstract class HeldItemFeatureRendererMixin {
 
         ItemStack mainHand = player.getMainHandStack();
         ItemStack offHand = player.getOffHandStack();
-        ItemStack equipped = player.getEquippedStack(EquipmentSlot.HEAD);
 
-        if (equipped.isEmpty()) {
-            return;
-        }
-
-        boolean isGallifreyHeadwear = equipped.getItem() instanceof HeadwearItem
-                || equipped.getItem() instanceof SonicShadesItem;
-
-        if (!isGallifreyHeadwear) {
-            return;
-        }
-
-        if ((!mainHand.isEmpty() && mainHand.getItem() == equipped.getItem())
-                || (!offHand.isEmpty() && offHand.getItem() == equipped.getItem())) {
+        if (gallifrey$isHeadwear(mainHand) || gallifrey$isHeadwear(offHand)) {
             ci.cancel();
         }
+    }
+
+    private static boolean gallifrey$isHeadwear(ItemStack stack) {
+        return !stack.isEmpty()
+                && (stack.getItem() instanceof HeadwearItem
+                || stack.getItem() instanceof SonicShadesItem);
     }
 }
