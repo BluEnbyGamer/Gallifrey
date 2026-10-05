@@ -9,7 +9,8 @@
     "client.MarsFogMixin",
     "client.LogoDrawerMixin",
     "client.CreativeInventoryScreenAccessor",
-    "client.HandledScreenAccessor"
+    "client.HandledScreenAccessor",
+    "client.PlayerEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

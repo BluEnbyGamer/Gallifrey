@@ -1,6 +1,7 @@
 package com.timelordmod.gallifrey.mixin.client;
 
 import com.timelordmod.gallifrey.client.HatFeatureRenderer;
+import com.timelordmod.gallifrey.client.SonicShadesFeatureRenderer;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,6 +16,9 @@ public abstract class PlayerEntityRendererMixin {
         LivingEntityRendererAccessor accessor = (LivingEntityRendererAccessor) (Object) this;
         accessor.gallifrey$getFeatures().add(
                 new HatFeatureRenderer((PlayerEntityRenderer) (Object) this)
+        );
+        accessor.gallifrey$getFeatures().add(
+                new SonicShadesFeatureRenderer((PlayerEntityRenderer) (Object) this)
         );
     }
 }
