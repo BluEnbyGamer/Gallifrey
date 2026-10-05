@@ -221,6 +221,7 @@ public final class GallifreyTabSections {
 
                 // Sonics
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
+                entries.add(GallifreyModItems.SONIC_SHADES);
                 entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
                 entries.add(GallifreyModItems.SONIC_CRYSTAL);
                 entries.add(GallifreyModBlocks.SONIC_CRYSTAL_ORE);
@@ -313,7 +314,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.YELLOWFEZ);
                 entries.add(GallifreyModItems.TRUSTABLE_HAT);
                 entries.add(GallifreyModItems.EYESTALK);
-                entries.add(GallifreyModItems.SONIC_SHADES);
                 entries.add(GallifreyModItems.OMEGA_HELMET);
             }
     );

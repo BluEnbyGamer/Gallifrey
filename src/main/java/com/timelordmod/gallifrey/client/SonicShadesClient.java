@@ -67,12 +67,12 @@ public final class SonicShadesClient {
             return;
         }
 
-        int size = 48;
-        int margin = 10;
+        int size = 32;
+        int margin = 6;
         int x = context.getScaledWindowWidth() - size - margin;
         int y = margin;
 
-        float angle = (client.player.age + tickDelta) * 2.5F;
+        float angle = (client.player.age + tickDelta) * 1.5F;
         context.getMatrices().push();
         context.getMatrices().translate(x + size / 2.0F, y + size / 2.0F, 0.0F);
         context.getMatrices().multiply(RotationAxis.POSITIVE_Z.rotationDegrees(angle));
