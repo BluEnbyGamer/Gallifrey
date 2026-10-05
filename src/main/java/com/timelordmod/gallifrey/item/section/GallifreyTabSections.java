@@ -352,8 +352,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.WASTED_LEAVES);
                 entries.add(GallifreyModBlocks.WASTED_LOG);
                 entries.add(GallifreyModBlocks.WASTED_WOOD);
-                entries.add(GallifreyModBlocks.STRIP_WASTED_LOG);
-                entries.add(GallifreyModBlocks.STRIP_WASTED_WOOD);
                 entries.add(GallifreyModBlocks.WASTED_PLANKS);
                 entries.add(GallifreyModBlocks.WASTED_STAIRS);
                 entries.add(GallifreyModBlocks.WASTED_SLAB);

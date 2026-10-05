@@ -1830,20 +1830,6 @@ public class GallifreyModBlocks {
             )
     );
 
-    public static final Block STRIP_WASTED_LOG = registerBlock(
-            "stripped_wasted_log",
-            new PillarBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_LOG)
-            )
-    );
-
-    public static final Block STRIP_WASTED_WOOD = registerBlock(
-            "stripped_wasted_wood",
-            new PillarBlock(
-                    FabricBlockSettings.copyOf(Blocks.OAK_WOOD)
-            )
-    );
-
     public static final Block WASTED_PLANKS = registerBlock(
             "wasted_planks",
             new Block(
@@ -2319,9 +2305,7 @@ public class GallifreyModBlocks {
 
         // Skaro wasted wood set
         flammable.add(WASTED_LOG, 5, 5);
-        flammable.add(STRIP_WASTED_LOG, 5, 5);
         flammable.add(WASTED_WOOD, 5, 5);
-        flammable.add(STRIP_WASTED_WOOD, 5, 5);
         flammable.add(WASTED_PLANKS, 5, 20);
         flammable.add(WASTED_LEAVES, 30, 60);
         flammable.add(WASTED_STAIRS, 5, 20);
