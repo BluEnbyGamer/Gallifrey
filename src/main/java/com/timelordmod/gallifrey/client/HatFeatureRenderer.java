@@ -1,6 +1,8 @@
 package com.timelordmod.gallifrey.client;
 
+import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.item.custom.HeadwearItem;
+import com.timelordmod.gallifrey.item.custom.SonicShadesItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
@@ -13,6 +15,7 @@ import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.RotationAxis;
 
 public class HatFeatureRenderer extends FeatureRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> {
     public HatFeatureRenderer(FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> context) {
@@ -24,18 +27,28 @@ public class HatFeatureRenderer extends FeatureRenderer<AbstractClientPlayerEnti
                        AbstractClientPlayerEntity player, float limbAngle, float limbDistance,
                        float tickDelta, float animationProgress, float headYaw, float headPitch) {
         ItemStack stack = player.getEquippedStack(EquipmentSlot.HEAD);
-        if (!(stack.getItem() instanceof HeadwearItem)) return;
+        if (!(stack.getItem() instanceof HeadwearItem)
+                && !(stack.getItem() instanceof SonicShadesItem)) return;
 
         matrices.push();
-
-        // Use the model's own Blockbench `display.head` transform. This is the
-        // same transform used by the vanilla item renderer for head-worn items,
-        // so the compact model shown in the inventory/GUI is also the model
-        // used on the player's head. It prevents a second, oversized copy from
-        // being produced by applying NONE plus hand-written offsets.
         this.getContextModel().head.rotate(matrices);
+
+        if (stack.isOf(GallifreyModItems.EYESTALK)) {
+            matrices.translate(0.0D, 0.175D, 0.5D);
+        } else {
+            matrices.translate(0.0D, 0.15D, 0.3D);
+        }
+        matrices.multiply(RotationAxis.NEGATIVE_Z.rotationDegrees(180.0F));
+
+        // Keep the Trustable Hat on the same compact headwear scale as the
+        // Fezzes/Eye Stalk. Its original item model is taller, so rendering it
+        // at full item scale makes an oversized second-looking silhouette.
+        if (stack.isOf(GallifreyModItems.TRUSTABLE_HAT)) {
+            matrices.scale(0.75F, 0.75F, 0.75F);
+        }
+
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-        itemRenderer.renderItem(player, stack, ModelTransformationMode.HEAD, false, matrices,
+        itemRenderer.renderItem(player, stack, ModelTransformationMode.NONE, false, matrices,
                 vertexConsumers, player.getWorld(), light, OverlayTexture.DEFAULT_UV, 0);
         matrices.pop();
     }
