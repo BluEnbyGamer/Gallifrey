@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": { "item": "gallifrey:raw_steel" },
+    "title": { "translate": "advancement.gallifrey.steelroot.title" },
+    "description": { "translate": "advancement.gallifrey.steelroot.desc" },
+    "background": "gallifrey:textures/block/steel_block.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "found_dna": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": ["gallifrey:raw_steel"] }
+        ]
+      }
+    }
+  }
+}
