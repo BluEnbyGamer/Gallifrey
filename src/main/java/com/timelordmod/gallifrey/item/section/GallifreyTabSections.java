@@ -375,6 +375,14 @@ public final class GallifreyTabSections {
             }
     );
 
+    public static final CreativeSection REALITY = CreativeSection.of(
+            "reality",
+            () -> new ItemStack(GallifreyModBlocks.LOST_DIRT),
+            entries -> {
+                entries.add(GallifreyModBlocks.LOST_DIRT);
+            }
+    );
+
     /** Sidebar order. */
     public static final List<CreativeSection> ALL = List.of(
             WOOD_TYPES,
@@ -383,7 +391,8 @@ public final class GallifreyTabSections {
             ROUNDELS,
             CLOTHING,
             MARS,
-            SKARO
+            SKARO,
+            REALITY
     );
 
     private GallifreyTabSections() {}

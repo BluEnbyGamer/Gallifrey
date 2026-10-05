@@ -2248,6 +2248,13 @@ public class GallifreyModBlocks {
     public static final Block WASTED_GRASS = registerBlock("wastedgrass",
             new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.ROOTED_DIRT)));
 
+    // ============================================================
+    // REALITY BLOCKS (Lost Reality)
+    // ============================================================
+    /** Placeholder block so the lost_dirt texture has something to live on. Appears in patches in Lost Reality. */
+    public static final Block LOST_DIRT = registerBlock("lost_dirt",
+            new Block(FabricBlockSettings.copyOf(Blocks.DIRT)));
+
     public static void register() {
         GallifreyMod.LOGGER.info(
                 "Registering ModBlocks for " + GallifreyMod.MOD_ID

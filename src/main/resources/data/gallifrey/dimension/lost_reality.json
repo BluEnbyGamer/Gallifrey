@@ -1,0 +1,192 @@
+{
+  "type": "gallifrey:lost_reality_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gallifrey:lost_reality",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "gallifrey:mars",
+          "parameters": {
+            "temperature": [
+              -2.0,
+              -0.25
+            ],
+            "humidity": [
+              -2.0,
+              0.0
+            ],
+            "continentalness": [
+              -2.0,
+              2.0
+            ],
+            "erosion": [
+              -2.0,
+              2.0
+            ],
+            "weirdness": [
+              -2.0,
+              2.0
+            ],
+            "depth": [
+              -2.0,
+              2.0
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "gallifrey:mondas",
+          "parameters": {
+            "temperature": [
+              -2.0,
+              -0.25
+            ],
+            "humidity": [
+              0.0,
+              2.0
+            ],
+            "continentalness": [
+              -2.0,
+              2.0
+            ],
+            "erosion": [
+              -2.0,
+              2.0
+            ],
+            "weirdness": [
+              -2.0,
+              2.0
+            ],
+            "depth": [
+              -2.0,
+              2.0
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "gallifrey:skaro_waste_land",
+          "parameters": {
+            "temperature": [
+              -0.25,
+              0.3
+            ],
+            "humidity": [
+              -2.0,
+              0.0
+            ],
+            "continentalness": [
+              -2.0,
+              2.0
+            ],
+            "erosion": [
+              -2.0,
+              2.0
+            ],
+            "weirdness": [
+              -2.0,
+              2.0
+            ],
+            "depth": [
+              -2.0,
+              2.0
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "gallifrey:prehistoric",
+          "parameters": {
+            "temperature": [
+              -0.25,
+              0.3
+            ],
+            "humidity": [
+              0.0,
+              2.0
+            ],
+            "continentalness": [
+              -2.0,
+              2.0
+            ],
+            "erosion": [
+              -2.0,
+              2.0
+            ],
+            "weirdness": [
+              -2.0,
+              2.0
+            ],
+            "depth": [
+              -2.0,
+              2.0
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "gallifrey:gallifreyan_plains",
+          "parameters": {
+            "temperature": [
+              0.3,
+              2.0
+            ],
+            "humidity": [
+              -2.0,
+              0.0
+            ],
+            "continentalness": [
+              -2.0,
+              2.0
+            ],
+            "erosion": [
+              -2.0,
+              2.0
+            ],
+            "weirdness": [
+              -2.0,
+              2.0
+            ],
+            "depth": [
+              -2.0,
+              2.0
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "gallifrey:gallifreyan_ulanda_forest",
+          "parameters": {
+            "temperature": [
+              0.3,
+              2.0
+            ],
+            "humidity": [
+              0.0,
+              2.0
+            ],
+            "continentalness": [
+              -2.0,
+              2.0
+            ],
+            "erosion": [
+              -2.0,
+              2.0
+            ],
+            "weirdness": [
+              -2.0,
+              2.0
+            ],
+            "depth": [
+              -2.0,
+              2.0
+            ],
+            "offset": 0.0
+          }
+        }
+      ]
+    }
+  }
+}

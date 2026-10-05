@@ -224,6 +224,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.KALETITE);
         addDrop(GallifreyModBlocks.KALETITE_BRICKS);
         addDrop(GallifreyModBlocks.WASTED_DIRT);
+        addDrop(GallifreyModBlocks.LOST_DIRT);
         addDrop(GallifreyModBlocks.WASTED_GRASS);
         addDrop(GallifreyModBlocks.WASTED_LEAVES);
         addDrop(GallifreyModBlocks.WASTED_LOG);

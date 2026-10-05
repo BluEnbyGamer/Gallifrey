@@ -44,7 +44,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 GallifreyModBlocks.PREHISTORIC_PLANKS);
 
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
-                .add(GallifreyModBlocks.MARS_SAND);
+                .add(GallifreyModBlocks.MARS_SAND, GallifreyModBlocks.LOST_DIRT);
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(GallifreyModBlocks.MARS_SANDSTONE,
