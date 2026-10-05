@@ -6,10 +6,10 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -26,23 +26,27 @@ public abstract class ItemRendererHeadwearMixin {
 
     @Inject(method = "renderItem", at = @At("HEAD"), cancellable = true)
     private void gallifrey$hideHeadwearThirdPersonItem(
-            LivingEntity entity,
             ItemStack stack,
             ModelTransformationMode renderMode,
             boolean leftHanded,
             MatrixStack matrices,
             VertexConsumerProvider vertexConsumers,
-            World world,
             int light,
             int overlay,
-            int seed,
+            BakedModel bakedModel,
             CallbackInfo ci) {
 
-        if ((renderMode == ModelTransformationMode.THIRD_PERSON_RIGHT_HAND
-                || renderMode == ModelTransformationMode.THIRD_PERSON_LEFT_HAND)
-                && gallifrey$isHeadwear(stack)
-                && entity != null
-                && entity.getEquippedStack(EquipmentSlot.HEAD).isOf(stack.getItem())) {
+        if (renderMode != ModelTransformationMode.THIRD_PERSON_RIGHT_HAND
+                && renderMode != ModelTransformationMode.THIRD_PERSON_LEFT_HAND) {
+            return;
+        }
+
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player == null || !gallifrey$isHeadwear(stack)) {
+            return;
+        }
+
+        if (client.player.getEquippedStack(EquipmentSlot.HEAD).isOf(stack.getItem())) {
             ci.cancel();
         }
     }
