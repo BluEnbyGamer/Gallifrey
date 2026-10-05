@@ -57,7 +57,8 @@ public abstract class HeldItemFeatureRendererMixin {
             return;
         }
 
-        if (ItemStack.areEqual(mainHand, equipped) || ItemStack.areEqual(offHand, equipped)) {
+        if ((!mainHand.isEmpty() && mainHand.getItem() == equipped.getItem())
+                || (!offHand.isEmpty() && offHand.getItem() == equipped.getItem())) {
             ci.cancel();
         }
     }

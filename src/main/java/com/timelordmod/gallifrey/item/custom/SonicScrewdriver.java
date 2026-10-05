@@ -524,9 +524,13 @@ public class SonicScrewdriver extends Item {
 
         consumePower(stack);
 
+        String sonicName = stack.getItem() instanceof SonicShadesItem
+                ? "Sonic Shades"
+                : casing.getDisplayName();
+
         player.sendMessage(
                 Text.literal(
-                        "§b" + casing.getDisplayName()
+                        "§b" + sonicName
                                 + " §7| §bPOWER: §f" + getPower(stack)
                                 + "§7/§f" + MAX_POWER
                 ),
