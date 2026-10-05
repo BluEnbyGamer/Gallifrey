@@ -28,7 +28,7 @@ public class ModBiomes {
     public static final RegistryKey<Biome> GALLIFREYAN_TAIGA = registerKey("gallifreyan_taiga");
     public static final RegistryKey<Biome> GALLIFREYAN_ULANDA_FOREST = registerKey("gallifreyan_ulanda_forest");
     public static final RegistryKey<Biome> GALLIFREYAN_TARDIS_BIOME = registerKey("gallifreyan_tardis_biome");
-    public static final RegistryKey<Biome> GALLIFREYAN_OCEAN = registerKey("gallifreyan_ocean");
+    public static final RegistryKey<Biome> GALLIFREYAN_WASTELAND = registerKey("gallifreyan_wasteland");
     public static final RegistryKey<Biome> TREEBORG_FOREST = registerKey("treeborg_forest");
     public static final RegistryKey<Biome> GALLIFREYAN_TREEBORG_FOREST = registerKey("gallifreyan_treeborg_forest");
     public static final RegistryKey<Biome> GALLIFREYAN_ASH_FOREST = registerKey("gallifreyan_ash_forest");
@@ -88,7 +88,7 @@ public class ModBiomes {
         // ocean + ocean bands into one), which is what actually contains the Tardis
         // biome to its own extreme sliver instead of winning by default with nothing
         // else covering negative continentalness
-        context.register(GALLIFREYAN_OCEAN, createBiome(false, 0.5F, 0.5F, 10638337, 15105551, 14641191, 15109680,
+        context.register(GALLIFREYAN_WASTELAND, createBiome(false, 0.5F, 0.5F, 10638337, 15105551, 14641191, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     DefaultBiomeFeatures.addSeagrassOnStone(generationSettings);
                     DefaultBiomeFeatures.addKelp(generationSettings);
