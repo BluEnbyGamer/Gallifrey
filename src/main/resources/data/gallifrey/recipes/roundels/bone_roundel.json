@@ -3,19 +3,16 @@
   "category": "misc",
   "pattern": [
     " # ",
-    "#=#",
+    "# #",
     " # "
   ],
   "key": {
     "#": {
-      "item": "gallifrey:quartz_roundel"
-    },
-    "=": {
-      "item": "minecraft:black_dye"
+      "item": "minecraft:bone_block"
     }
   },
   "result": {
-    "item": "gallifrey:obsiquartz_roundel",
+    "item": "gallifrey:bone_roundel",
     "count": 4
   }
 }
