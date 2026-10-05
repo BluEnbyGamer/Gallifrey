@@ -5,6 +5,7 @@ import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.GallifreySounds;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.entity.ModBoats;
+import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.custom.GeoHeadwearItem;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -149,9 +150,10 @@ public class GallifreyModItems {
     public static final Item GALLIFREY_MUSIC_DISC = registerItem("music_disk_b",
             new MusicDiscItem(7, GallifreySounds.GALLIFREY, new FabricItemSettings().maxCount(1), 198));
 
+    public static final Item RADIATION_BUCKET = registerItem("radiation_bucket",
+            new BucketItem(GallifreyFluids.STILL_RADIATION, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
 
-
-    // AWT clothing port: wearable without Trinkets (uses the vanilla head equipment slot).
+    // Clothing
     public static final HeadwearItem FEZ = new HeadwearItem(new FabricItemSettings());
     public static final HeadwearItem FANCYFEZ = new HeadwearItem(new FabricItemSettings());
     public static final HeadwearItem PURPLEFEZ = new HeadwearItem(new FabricItemSettings());

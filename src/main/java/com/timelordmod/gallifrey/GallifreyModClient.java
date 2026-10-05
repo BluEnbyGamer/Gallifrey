@@ -8,6 +8,7 @@ import com.timelordmod.gallifrey.client.PlanetWeatherClient;
 import com.timelordmod.gallifrey.client.SonicShadesClient;
 import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
 import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
+import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
@@ -20,6 +21,8 @@ import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -42,6 +45,14 @@ public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), GallifreyFluids.STILL_RADIATION, GallifreyFluids.FLOWING_RADIATION);
+        FluidRenderHandlerRegistry.INSTANCE.register(GallifreyFluids.STILL_RADIATION, GallifreyFluids.FLOWING_RADIATION,
+                new SimpleFluidRenderHandler(
+                        new Identifier("minecraft:block/water_still"),
+                        new Identifier("minecraft:block/water_flow"),
+                        0x2EFF2E
+                ));
 
         com.timelordmod.gallifrey.client.ModClientPackets.register();;
         SonicShadesClient.register();
