@@ -23,7 +23,7 @@ import org.lwjgl.glfw.GLFW;
  *
  * V activates the worn shades; holding Shift while pressing V changes the
  * sonic mode, matching the screwdriver's sneak + right-click mode switch.
- * The supplied Gallifreyan symbol spins in the top-right while the shades
+ * The complete supplied Gallifreyan symbol spins in the top-left while the shades
  * are worn.
  */
 public final class SonicShadesClient {
@@ -67,14 +67,16 @@ public final class SonicShadesClient {
             return;
         }
 
-        int size = 32;
-        int margin = 6;
-        int x = context.getScaledWindowWidth() - size - margin;
-        int y = margin;
+        // Draw the complete 64x64 supplied PNG in the top-left.  The centre
+        // is kept far enough from the corner that rotation never clips the
+        // transparent corners or any part of the symbol.
+        int size = 64;
+        int centreX = 52;
+        int centreY = 52;
 
         float angle = (client.player.age + tickDelta) * 1.5F;
         context.getMatrices().push();
-        context.getMatrices().translate(x + size / 2.0F, y + size / 2.0F, 0.0F);
+        context.getMatrices().translate(centreX, centreY, 0.0F);
         context.getMatrices().multiply(RotationAxis.POSITIVE_Z.rotationDegrees(angle));
         context.drawTexture(
                 SYMBOL_TEXTURE,
