@@ -18,8 +18,10 @@ public class MondasFogMixin {
         if (camera.getFocusedEntity() == null) return;
         World world = camera.getFocusedEntity().getWorld();
         if ("mondas".equals(world.getRegistryKey().getValue().getPath())) {
-            RenderSystem.setShaderFogStart(1.0F);
-            RenderSystem.setShaderFogEnd(16.0F);
+            // Mondas is now deliberately hostile and near-whiteout in its blizzard.
+            RenderSystem.setShaderFogStart(0.0F);
+            RenderSystem.setShaderFogEnd(Math.min(viewDistance, 9.0F));
+            RenderSystem.setShaderFogColor(0.78F, 0.82F, 0.86F);
             ci.cancel();
         }
     }

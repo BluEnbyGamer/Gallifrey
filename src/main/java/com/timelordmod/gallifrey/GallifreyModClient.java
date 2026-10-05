@@ -4,6 +4,7 @@ import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.block.custom.SonicWorkshopBlock;
 import com.timelordmod.gallifrey.client.CreativeSectionSidebar;
+import com.timelordmod.gallifrey.client.PlanetWeatherClient;
 import com.timelordmod.gallifrey.client.SonicShadesClient;
 import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
 import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
@@ -44,7 +45,7 @@ public class GallifreyModClient implements ClientModInitializer {
 
         com.timelordmod.gallifrey.client.ModClientPackets.register();;
         SonicShadesClient.register();
-        ClientTickEvents.END_CLIENT_TICK.register(GallifreyModClient::tickMondasWeather);
+        ClientTickEvents.END_CLIENT_TICK.register(PlanetWeatherClient::tick);
 
         // =========================================================
         // SONIC SCREWDRIVER - CASING MODEL
@@ -540,21 +541,4 @@ public class GallifreyModClient implements ClientModInitializer {
     }
 
 
-
-    private static int mondasSnowTick;
-
-
-
-    private static void tickMondasWeather(MinecraftClient client) {
-        if (client.world == null || client.player == null) return;
-        ClientWorld world = client.world;
-        if (!"mondas".equals(world.getRegistryKey().getValue().getPath())) return;
-
-        if (++mondasSnowTick % 2 == 0) {
-            double x = client.player.getX() + (world.random.nextDouble() * 20.0D - 10.0D);
-            double y = client.player.getY() + 10.0D;
-            double z = client.player.getZ() + (world.random.nextDouble() * 20.0D - 10.0D);
-            world.addParticle(ParticleTypes.SNOWFLAKE, x, y, z, 0.0D, -0.3D, 0.0D);
-        }
-    }
 }
