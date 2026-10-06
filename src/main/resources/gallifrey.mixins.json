@@ -8,7 +8,6 @@
   ],
   "client": [
     "client.LivingEntityRendererAccessor",
-    "client.MondasFogMixin",
     "client.MarsFogMixin",
     "client.LostRealityFogMixin",
     "client.LogoDrawerMixin",

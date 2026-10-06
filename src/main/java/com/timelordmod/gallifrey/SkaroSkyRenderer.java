@@ -49,9 +49,13 @@ public class SkaroSkyRenderer implements DimensionRenderingRegistry.SkyRenderer 
         RenderSystem.disableCull();
         RenderSystem.depthMask(false);
 
-        // A single Skaro sun. Its warm light disappears smoothly into the night.
+        // Skaro has a twin-sun system. Both suns follow the same day/night cycle,
+        // but the secondary sun has a separate orbital heading and is slightly smaller.
+        float sunAlpha = 1.0F - nightStrength;
         drawCelestialBody(matrices, buffer, tessellator, dayAngle, 0.0F, 30.0F,
-                SUN_TEXTURE, 1.0F - nightStrength);
+                SUN_TEXTURE, sunAlpha);
+        drawCelestialBody(matrices, buffer, tessellator, dayAngle, 40.0F, 20.0F,
+                SUN_TEXTURE, sunAlpha);
 
         // Keep all three moons above the horizon while their horizontal positions
         // continue to orbit at different speeds. This makes the three-moon system

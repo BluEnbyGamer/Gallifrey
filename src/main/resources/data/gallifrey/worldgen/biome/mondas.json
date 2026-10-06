@@ -4,8 +4,8 @@
   "downfall": 2.0,
   "has_precipitation": true,
   "effects": {
-    "sky_color": 8364543,
-    "fog_color": 12638463,
+    "sky_color": 725024,
+    "fog_color": 659228,
     "water_color": 4159204,
     "water_fog_color": 329011
   },

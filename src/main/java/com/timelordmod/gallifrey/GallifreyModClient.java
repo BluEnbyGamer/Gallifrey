@@ -138,6 +138,11 @@ public class GallifreyModClient implements ClientModInitializer {
                 new SkaroSkyRenderer()
         );
 
+        DimensionRenderingRegistry.registerSkyRenderer(
+                ModDimensions.MONDAS_LEVEL_KEY,
+                new MondasSkyRenderer()
+        );
+
         // =========================================================
         // MARS CRYSTAL RENDER LAYER
         // =========================================================
