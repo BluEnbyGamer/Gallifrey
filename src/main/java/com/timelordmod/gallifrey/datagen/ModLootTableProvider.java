@@ -133,6 +133,26 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.STANDING_MOONPINE_SIGN);
         addDrop(GallifreyModBlocks.HANGING_MOONPINE_SIGN);
 
+        // CLASSIC BLOCK DROPS
+        addDrop(GallifreyModBlocks.CLASSIC_STONE);
+        addDrop(GallifreyModBlocks.CLASSIC_GRASS);
+        addDrop(GallifreyModBlocks.CLASSIC_DIRT);
+        addDrop(GallifreyModBlocks.CLASSIC_COBBLE);
+        addDrop(GallifreyModBlocks.CLASSIC_PLANKS);
+        addDrop(GallifreyModBlocks.CLASSIC_LOG);
+        addDrop(GallifreyModBlocks.CLASSIC_SAPLING);
+        addDrop(GallifreyModBlocks.CLASSIC_LEAVES, leavesDrops(GallifreyModBlocks.CLASSIC_LEAVES, GallifreyModBlocks.CLASSIC_SAPLING, 0.05f));
+        addDrop(GallifreyModBlocks.CLASSIC_SAND);
+        addDrop(GallifreyModBlocks.CLASSIC_GRAVEL);
+        addDrop(GallifreyModBlocks.CLASSIC_GOLD);
+        addDrop(GallifreyModBlocks.CLASSIC_IRON);
+        addDrop(GallifreyModBlocks.CLASSIC_GLASS);
+        addDrop(GallifreyModBlocks.CLASSIC_SPONGE);
+        addDrop(GallifreyModBlocks.CLASSIC_BRICKS);
+        addDrop(GallifreyModBlocks.CLASSIC_TNT);
+        addDrop(GallifreyModBlocks.CLASSIC_RED_FLOWER);
+        addDrop(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
+
         // MARS BLOCK DROPS
         addDrop(GallifreyModBlocks.MARS_SAND);
         addDrop(GallifreyModBlocks.MARS_SANDSTONE);
@@ -149,25 +169,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED);
         addDrop(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS);
         addDrop(GallifreyModBlocks.MARS_IRON_ORE, oreDrops(GallifreyModBlocks.MARS_IRON_ORE, net.minecraft.item.Items.RAW_IRON));
-
-        // CLASSIC BLOCK DROPS
-        addDrop(GallifreyModBlocks.CLASSIC_STONE);
-        addDrop(GallifreyModBlocks.CLASSIC_GRASS);
-        addDrop(GallifreyModBlocks.CLASSIC_DIRT);
-        addDrop(GallifreyModBlocks.CLASSIC_COBBLE);
-        addDrop(GallifreyModBlocks.CLASSIC_PLANKS);
-        addDrop(GallifreyModBlocks.CLASSIC_LOG);
-        addDrop(GallifreyModBlocks.CLASSIC_LEAVES);
-        addDrop(GallifreyModBlocks.CLASSIC_SAND);
-        addDrop(GallifreyModBlocks.CLASSIC_GRAVEL);
-        addDrop(GallifreyModBlocks.CLASSIC_GOLD);
-        addDrop(GallifreyModBlocks.CLASSIC_IRON);
-        addDrop(GallifreyModBlocks.CLASSIC_GLASS);
-        addDrop(GallifreyModBlocks.CLASSIC_SPONGE);
-        addDrop(GallifreyModBlocks.CLASSIC_BRICKS);
-        addDrop(GallifreyModBlocks.CLASSIC_TNT);
-        addDrop(GallifreyModBlocks.CLASSIC_RED_FLOWER);
-        addDrop(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
 
         // MISC BLOCK DROPS
         addDrop(GallifreyModBlocks.RAW_STEEL_BLOCK);
@@ -235,6 +236,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.NETHER_WHITE_POINT_ORE, oreDrops(GallifreyModBlocks.NETHER_WHITE_POINT_ORE, GallifreyModItems.WHITE_POINT_STAR));
         addDrop(GallifreyModBlocks.PREHISTORIC_ORE, oreDrops(GallifreyModBlocks.PREHISTORIC_ORE, GallifreyModItems.PREHISTORIC_INGOT));
         addDrop(GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE, GallifreyModItems.PREHISTORIC_INGOT));
+
+        // Atrium block was previously omitted from the loot provider.
+        addDrop(GallifreyModBlocks.ATRIUM_BLOCK);
 
         // Skaro blocks
         addDrop(GallifreyModBlocks.EXQUISITE_CAT);

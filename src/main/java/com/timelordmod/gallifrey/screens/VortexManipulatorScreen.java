@@ -87,7 +87,7 @@ public class VortexManipulatorScreen extends Screen {
             addDrawableChild(selfDestructStatus);
             drawHintText = "";
         } else {
-            drawHintText = "READY • overworld, nether, end, Gallifrey, Skaro, Mars, Mondas, Pete's World, Lost Reality or namespace:path.";
+            drawHintText = "READY • overworld, nether, end, Gallifrey, Skaro, Mars, Mondas, Classic, Pete's World, Lost Reality or namespace:path.";
         }
     }
 
@@ -305,6 +305,7 @@ public class VortexManipulatorScreen extends Screen {
             case "mars" -> new Identifier("gallifrey", "mars");
             case "mondas" -> new Identifier("gallifrey", "mondas");
             case "prehistoric" -> new Identifier("gallifrey", "prehistoric");
+            case "classic" -> new Identifier("gallifrey", "classic");
             default -> Identifier.tryParse(n);
         };
     }

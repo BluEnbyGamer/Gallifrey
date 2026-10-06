@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:overworld",
+  "type": "gallifrey:classic_type",
   "generator": {
     "type": "minecraft:noise",
     "settings": "gallifrey:classic",

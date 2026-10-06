@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "III",
-    "III",
-    "III"
+    "XXX",
+    "XXX",
+    "XXX"
   ],
   "key": {
-    "I": {
+    "X": {
       "item": "minecraft:iron_ingot"
     }
   },

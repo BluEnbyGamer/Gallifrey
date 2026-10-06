@@ -394,6 +394,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_COBBLE);
                 entries.add(GallifreyModBlocks.CLASSIC_PLANKS);
                 entries.add(GallifreyModBlocks.CLASSIC_LOG);
+                entries.add(GallifreyModBlocks.CLASSIC_SAPLING);
                 entries.add(GallifreyModBlocks.CLASSIC_LEAVES);
                 entries.add(GallifreyModBlocks.CLASSIC_SAND);
                 entries.add(GallifreyModBlocks.CLASSIC_GRAVEL);

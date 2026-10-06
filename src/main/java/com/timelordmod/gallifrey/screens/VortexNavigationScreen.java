@@ -75,6 +75,7 @@ public class VortexNavigationScreen extends VortexManipulatorSubScreen {
             case "mars" -> new Identifier("gallifrey", "mars");
             case "mondas" -> new Identifier("gallifrey", "mondas");
             case "prehistoric" -> new Identifier("gallifrey", "prehistoric");
+            case "classic" -> new Identifier("gallifrey", "classic");
             default -> Identifier.tryParse(n);
         };
     }

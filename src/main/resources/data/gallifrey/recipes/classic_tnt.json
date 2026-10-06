@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "SGS",
     "GSG",
-    "SGS"
+    "SGS",
+    "GSG"
   ],
   "key": {
-    "S": {
-      "item": "gallifrey:classic_sand"
-    },
     "G": {
       "item": "minecraft:gunpowder"
+    },
+    "S": {
+      "item": "gallifrey:classic_sand"
     }
   },
   "result": {

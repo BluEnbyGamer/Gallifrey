@@ -16,6 +16,19 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_LOG, GallifreyModBlocks.CLASSIC_PLANKS);
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+                .add(GallifreyModBlocks.CLASSIC_LOG);
+        getOrCreateTagBuilder(BlockTags.LEAVES)
+                .add(GallifreyModBlocks.CLASSIC_LEAVES);
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_GRASS, GallifreyModBlocks.CLASSIC_DIRT, GallifreyModBlocks.CLASSIC_SAND, GallifreyModBlocks.CLASSIC_GRAVEL);
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_STONE, GallifreyModBlocks.CLASSIC_COBBLE, GallifreyModBlocks.CLASSIC_GOLD,
+                        GallifreyModBlocks.CLASSIC_IRON, GallifreyModBlocks.CLASSIC_BRICKS, GallifreyModBlocks.CLASSIC_SPONGE,
+                        GallifreyModBlocks.CLASSIC_GLASS, GallifreyModBlocks.CLASSIC_TNT);
+
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(GallifreyModBlocks.ULANDA_LOG, GallifreyModBlocks.ULANDA_WOOD,
                         GallifreyModBlocks.STRIP_ULANDA_LOG, GallifreyModBlocks.STRIP_ULANDA_WOOD)
                 .add(GallifreyModBlocks.TREEBORG_LOG, GallifreyModBlocks.TREEBORG_WOOD,

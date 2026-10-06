@@ -42,6 +42,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_TREE_KEY = registerKey("wasted_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_OAK_TREE_KEY = registerKey("wasted_oak_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_BIRCH_TREE_KEY = registerKey("wasted_birch_tree");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> CLASSIC_TREE_KEY = registerKey("classic_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_ORE_KEY = registerKey("prehistoric_ore");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> ATRIUM_ORE_KEY = registerKey("atrium_ore");
