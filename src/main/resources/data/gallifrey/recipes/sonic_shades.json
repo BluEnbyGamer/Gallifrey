@@ -1,29 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "III",
-    "SBS",
-    "RER"
+    "ICI",
+    "SBS"
   ],
   "key": {
     "I": {
       "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
     },
     "S": {
       "item": "gallifrey:sonic_crystal"
     },
     "B": {
       "item": "gallifrey:blank_circuit"
-    },
-    "R": {
-      "item": "minecraft:redstone"
-    },
-    "E": {
-      "item": "gallifrey:energized_atrium"
     }
   },
   "result": {
-    "item": "gallifrey:sonic_workshop",
+    "item": "gallifrey:sonic_shades",
     "count": 1
   }
 }

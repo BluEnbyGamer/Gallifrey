@@ -1,16 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "EEE",
-    "ENE",
-    "EEE"
+    "AEA",
+    "ERE",
+    "AEA"
   ],
   "key": {
+    "A": {
+      "item": "gallifrey:atrium"
+    },
     "E": {
       "item": "gallifrey:energized_atrium"
     },
-    "N": {
-      "item": "minecraft:nether_star"
+    "R": {
+      "item": "minecraft:redstone_block"
     }
   },
   "result": {

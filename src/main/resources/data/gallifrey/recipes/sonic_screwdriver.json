@@ -2,18 +2,24 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     " S ",
-    "ICI",
-    " I "
+    "CBC",
+    "RIR"
   ],
   "key": {
     "S": {
       "item": "gallifrey:sonic_crystal"
     },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "B": {
+      "item": "gallifrey:blank_circuit"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
     "I": {
       "item": "minecraft:iron_ingot"
-    },
-    "C": {
-      "item": "gallifrey:blank_circuit"
     }
   },
   "result": {
