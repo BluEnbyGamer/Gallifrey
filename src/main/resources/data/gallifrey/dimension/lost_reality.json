@@ -185,6 +185,66 @@
             ],
             "offset": 0.0
           }
+        },
+        {
+          "biome": "gallifrey:lost_classic",
+          "parameters": {
+            "temperature": [
+              -2.0,
+              2.0
+            ],
+            "humidity": [
+              -2.0,
+              2.0
+            ],
+            "continentalness": [
+              0.2,
+              2.0
+            ],
+            "erosion": [
+              -2.0,
+              2.0
+            ],
+            "weirdness": [
+              -2.0,
+              -0.9
+            ],
+            "depth": [
+              -2.0,
+              2.0
+            ],
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "gallifrey:lost_classic",
+          "parameters": {
+            "temperature": [
+              -2.0,
+              2.0
+            ],
+            "humidity": [
+              -2.0,
+              2.0
+            ],
+            "continentalness": [
+              0.2,
+              2.0
+            ],
+            "erosion": [
+              -2.0,
+              2.0
+            ],
+            "weirdness": [
+              0.9,
+              2.0
+            ],
+            "depth": [
+              -2.0,
+              2.0
+            ],
+            "offset": 0.0
+          }
         }
       ]
     }

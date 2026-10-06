@@ -403,7 +403,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_SPONGE);
                 entries.add(GallifreyModBlocks.CLASSIC_BRICKS);
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
-                entries.add(GallifreyModBlocks.CLASSIC_WOOL_WINDOWS);
                 entries.add(GallifreyModBlocks.CLASSIC_RED_FLOWER);
                 entries.add(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
             });
