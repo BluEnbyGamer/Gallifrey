@@ -135,7 +135,7 @@ public class GallifreyModClient implements ClientModInitializer {
 
         DimensionRenderingRegistry.registerSkyRenderer(
                 ModDimensions.SKARO_LEVEL_KEY,
-                new TwinSunSkyRenderer()
+                new SkaroSkyRenderer()
         );
 
         // =========================================================

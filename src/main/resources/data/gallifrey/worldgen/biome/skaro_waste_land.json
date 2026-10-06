@@ -27,17 +27,16 @@
     [],
     [],
     [
-      "gallifrey:dalekanium_ore_placed",
+      "gallifrey:dalekanium_ore_upper",
+      "gallifrey:dalekanium_ore_middle",
+      "gallifrey:dalekanium_ore_lower",
       "gallifrey:skaro_andesite_placed",
       "gallifrey:skaro_diorite_placed",
       "gallifrey:skaro_granite_placed"
     ],
     [],
     [],
-    [
-      "gallifrey:wasted_oak_placed",
-      "gallifrey:wasted_birch_placed"
-    ],
+    [],
     []
   ],
   "spawners": {
