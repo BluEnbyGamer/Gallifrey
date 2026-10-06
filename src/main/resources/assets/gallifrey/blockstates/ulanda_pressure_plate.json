@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "gallifrey:block/ulanda_pressure_plate"
+    },
+    "powered=true": {
+      "model": "gallifrey:block/ulanda_pressure_plate_down"
+    }
+  }
+}

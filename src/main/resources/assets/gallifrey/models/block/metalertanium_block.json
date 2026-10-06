@@ -1,13 +1,13 @@
 {
   "parent": "block/cube",
   "textures": {
-    "down": "awt:block/metalertanium/metalertanium_block",
-    "up": "awt:block/metalertanium/metalertanium_block",
-    "north": "awt:block/metalertanium/metalertanium_block",
-    "east": "awt:block/metalertanium/metalertanium_block",
-    "south": "awt:block/metalertanium/metalertanium_block",
-    "west": "awt:block/metalertanium/metalertanium_block",
-    "particle": "awt:block/metalertanium/metalertanium_block"
+    "down": "gallifrey:block/metalertanium/metalertanium_block",
+    "up": "gallifrey:block/metalertanium/metalertanium_block",
+    "north": "gallifrey:block/metalertanium/metalertanium_block",
+    "east": "gallifrey:block/metalertanium/metalertanium_block",
+    "south": "gallifrey:block/metalertanium/metalertanium_block",
+    "west": "gallifrey:block/metalertanium/metalertanium_block",
+    "particle": "gallifrey:block/metalertanium/metalertanium_block"
   },
   "render_type": "solid"
 }

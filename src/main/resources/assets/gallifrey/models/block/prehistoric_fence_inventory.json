@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/fence_inventory",
   "textures": {
-    "texture": "gallifrey:block/prehistoric_planks"
+    "texture": "gallifrey:block/prehistoric/prehistoric_planks"
   }
 }

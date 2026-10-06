@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/tardis_slab"
+    },
+    "type=double": {
+      "model": "gallifrey:block/tardis_planks"
+    },
+    "type=top": {
+      "model": "gallifrey:block/tardis_slab_top"
+    }
+  }
+}

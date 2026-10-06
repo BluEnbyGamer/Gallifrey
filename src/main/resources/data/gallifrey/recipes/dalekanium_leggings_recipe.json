@@ -8,11 +8,11 @@
   ],
   "key": {
     "a": {
-      "item": "awt:dalekanium_ingot"
+      "item": "gallifrey:dalekanium_ingot"
     }
   },
   "result": {
-    "item": "awt:dalekanium_leggings",
+    "item": "gallifrey:dalekanium_leggings",
     "count": 1
   }
 }

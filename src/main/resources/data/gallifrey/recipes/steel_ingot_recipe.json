@@ -14,11 +14,11 @@
       "item": "minecraft:gold_ingot"
     },
     "c": {
-      "item": "awt:dalekanium_ingot"
+      "item": "gallifrey:dalekanium_ingot"
     }
   },
   "result": {
-    "item": "awt:steel_ingot",
+    "item": "gallifrey:steel_ingot",
     "count": 2
   }
 }

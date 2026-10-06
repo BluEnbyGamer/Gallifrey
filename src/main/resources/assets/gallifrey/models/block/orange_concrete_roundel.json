@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "particle": "gallifrey:block/orange_concrete_roundel",
-    "down": "gallifrey:block/orange_concrete_roundel",
-    "up": "gallifrey:block/orange_concrete_roundel",
-    "north": "gallifrey:block/orange_concrete_roundel",
-    "south": "gallifrey:block/orange_concrete_roundel",
-    "east": "gallifrey:block/orange_concrete_roundel_half",
-    "west": "gallifrey:block/orange_concrete_roundel_half"
+    "particle": "gallifrey:block/roundel/orange_concrete_roundel",
+    "down": "gallifrey:block/roundel/orange_concrete_roundel",
+    "up": "gallifrey:block/roundel/orange_concrete_roundel",
+    "north": "gallifrey:block/roundel/orange_concrete_roundel",
+    "south": "gallifrey:block/roundel/orange_concrete_roundel",
+    "east": "gallifrey:block/roundel/orange_concrete_roundel_half",
+    "west": "gallifrey:block/roundel/orange_concrete_roundel_half"
   }
 }

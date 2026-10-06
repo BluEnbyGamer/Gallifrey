@@ -8,7 +8,7 @@
   ],
   "key": {
     "a": {
-      "item": "awt:dalekanium_ingot"
+      "item": "gallifrey:dalekanium_ingot"
     },
     "b": {
       "item": "minecraft:stick"
@@ -16,7 +16,7 @@
   },
 
   "result": {
-    "item": "awt:dalekanium_axe",
+    "item": "gallifrey:dalekanium_axe",
     "count": 1
   }
 }

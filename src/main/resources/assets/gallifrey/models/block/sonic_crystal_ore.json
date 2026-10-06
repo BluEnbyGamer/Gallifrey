@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gallifrey:block/sonic_crystal_ore"
+    "all": "gallifrey:block/sonic_block/sonic_crystal_ore"
   }
 }

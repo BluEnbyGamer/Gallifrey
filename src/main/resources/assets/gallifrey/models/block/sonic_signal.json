@@ -1,6 +1,6 @@
 {
   "textures": {
-    "particle": "gallifrey:block/sonic_crystal_ore"
+    "particle": "gallifrey:block/sonic_block/sonic_crystal_ore"
   },
   "elements": []
 }

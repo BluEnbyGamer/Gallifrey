@@ -1,15 +1,15 @@
 {
   "type": "minecraft:smithing_transform",
   "template": {
-    "item": "awt:metalertanium_ingot"
+    "item": "gallifrey:metalertanium_ingot"
   },
   "base": {
-    "item": "awt:dalekanium_leggings"
+    "item": "gallifrey:dalekanium_leggings"
   },
   "addition": {
     "item": "minecraft:lava_bucket"
   },
   "result": {
-    "item": "awt:metalertanium_leggings"
+    "item": "gallifrey:metalertanium_leggings"
   }
 }

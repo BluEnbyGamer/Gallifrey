@@ -115,6 +115,33 @@ public class GallifreyModBlocks {
             )
     );
 
+    // Steel grates
+    public static final Block GRATE_BLOCK = registerBlock(
+            "grate_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK))
+    );
+
+    public static final Block THICK_GRATE_BLOCK = registerBlock(
+            "thick_grate_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK))
+    );
+
+    public static final Block RUSTY_GRATE_BLOCK = registerBlock(
+            "rusty_grate_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK))
+    );
+
+    public static final Block RUSTY_THICK_GRATE_BLOCK = registerBlock(
+            "rusty_thick_grate_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK))
+    );
+
+    // Storage block for Metalertanium Ingots. Netherite-grade, like the gear.
+    public static final Block METALERTANIUM_BLOCK = registerBlock(
+            "metalertanium_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.NETHERITE_BLOCK))
+    );
+
     public static final Block TREE_TAPPER = registerBlock(
             "tapper",
             new TapperBlock(

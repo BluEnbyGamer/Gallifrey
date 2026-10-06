@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "particle": "gallifrey:block/oxidized_copper_roundel",
-    "down": "gallifrey:block/oxidized_copper_roundel",
-    "up": "gallifrey:block/oxidized_copper_roundel",
-    "north": "gallifrey:block/oxidized_copper_roundel",
-    "south": "gallifrey:block/oxidized_copper_roundel",
-    "east": "gallifrey:block/oxidized_copper_roundel_half",
-    "west": "gallifrey:block/oxidized_copper_roundel_half"
+    "particle": "gallifrey:block/roundel/oxidized_copper_roundel",
+    "down": "gallifrey:block/roundel/oxidized_copper_roundel",
+    "up": "gallifrey:block/roundel/oxidized_copper_roundel",
+    "north": "gallifrey:block/roundel/oxidized_copper_roundel",
+    "south": "gallifrey:block/roundel/oxidized_copper_roundel",
+    "east": "gallifrey:block/roundel/oxidized_copper_roundel_half",
+    "west": "gallifrey:block/roundel/oxidized_copper_roundel_half"
   }
 }

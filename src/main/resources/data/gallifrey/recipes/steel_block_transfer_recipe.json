@@ -8,11 +8,11 @@
   ],
   "key": {
     "a": {
-      "item": "awt:steel_block"
+      "item": "gallifrey:steel_block"
     }
   },
   "result": {
-    "item": "awt:steel_ingot",
+    "item": "gallifrey:steel_ingot",
     "count": 9
   }
 }

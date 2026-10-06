@@ -8,11 +8,11 @@
   ],
   "key": {
     "a": {
-      "item": "awt:rusty_grate_block"
+      "item": "gallifrey:rusty_grate_block"
     }
   },
     "result": {
-      "item": "awt:thick_rusty_grate_block",
+      "item": "gallifrey:rusty_thick_grate_block",
       "count": 2
     }
 }

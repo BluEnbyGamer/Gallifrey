@@ -1,15 +1,15 @@
 {
   "type": "minecraft:smithing_transform",
   "template": {
-    "item": "awt:steel_template"
+    "item": "gallifrey:steel_template"
   },
   "base": {
     "item": "minecraft:iron_chestplate"
   },
   "addition": {
-    "item": "awt:steel_ingot"
+    "item": "gallifrey:steel_ingot"
   },
   "result": {
-    "item": "awt:steel_chestplate"
+    "item": "gallifrey:steel_chestplate"
   }
 }

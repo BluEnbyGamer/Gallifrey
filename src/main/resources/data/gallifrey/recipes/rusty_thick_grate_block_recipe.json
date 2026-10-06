@@ -8,14 +8,14 @@
   ],
   "key": {
     "a": {
-      "item": "awt:thick_grate_block"
+      "item": "gallifrey:thick_grate_block"
     },
     "b": {
       "item": "minecraft:water_bucket"
     }
   },
     "result": {
-      "item": "awt:thick_rusty_grate_block",
+      "item": "gallifrey:rusty_thick_grate_block",
       "count": 1
     }
 }

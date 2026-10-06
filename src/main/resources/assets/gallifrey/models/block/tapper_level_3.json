@@ -1,7 +1,7 @@
 {
   "parent": "gallifrey:block/tapper_level_0",
   "textures": {
-    "0": "gallifrey:block/tapper_level3",
-    "particle": "gallifrey:block/tapper_level3"
+    "0": "gallifrey:block/tapper/tapper_level3",
+    "particle": "gallifrey:block/tapper/tapper_level3"
   }
 }

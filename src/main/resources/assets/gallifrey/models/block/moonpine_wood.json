@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "gallifrey:block/moonpine_wood/moonpine_log",
+    "side": "gallifrey:block/moonpine_wood/moonpine_log"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "awt:item/dalekanium/liquid_dalekanium"
+    "layer0": "gallifrey:item/dalekanium/liquid_dalekanium"
   }
 }

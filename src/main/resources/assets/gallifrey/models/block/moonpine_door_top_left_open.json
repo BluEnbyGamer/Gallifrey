@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left_open",
+  "textures": {
+    "bottom": "gallifrey:block/moonpine_wood/moonpine_door_bottom",
+    "top": "gallifrey:block/moonpine_wood/moonpine_door_top"
+  }
+}

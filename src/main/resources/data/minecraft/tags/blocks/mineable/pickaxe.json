@@ -36,6 +36,11 @@
     "gallifrey:mars_sandstone",
     "gallifrey:atrium_ore",
     "gallifrey:deepslate_atrium_ore",
-    "gallifrey:atrium_block"
+    "gallifrey:atrium_block",
+    "gallifrey:grate_block",
+    "gallifrey:thick_grate_block",
+    "gallifrey:rusty_grate_block",
+    "gallifrey:rusty_thick_grate_block",
+    "gallifrey:metalertanium_block"
   ]
 }

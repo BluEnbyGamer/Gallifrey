@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "end": "gallifrey:block/wasted_log",
-    "side": "gallifrey:block/wasted_log"
+    "end": "gallifrey:block/skaro/wasted_log",
+    "side": "gallifrey:block/skaro/wasted_log"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "gallifrey:block/moonpine_wood/moonpine_planks"
+  }
+}

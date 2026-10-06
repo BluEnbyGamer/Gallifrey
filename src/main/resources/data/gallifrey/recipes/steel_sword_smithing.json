@@ -1,15 +1,15 @@
 {
   "type": "minecraft:smithing_transform",
   "template": {
-    "item": "awt:steel_template"
+    "item": "gallifrey:steel_template"
   },
   "base": {
     "item": "minecraft:iron_sword"
   },
   "addition": {
-    "item": "awt:steel_ingot"
+    "item": "gallifrey:steel_ingot"
   },
   "result": {
-    "item": "awt:steel_sword"
+    "item": "gallifrey:steel_sword"
   }
 }

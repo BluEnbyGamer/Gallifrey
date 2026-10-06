@@ -8,11 +8,11 @@
   ],
   "key": {
     "a": {
-      "item": "awt:grate_block"
+      "item": "gallifrey:grate_block"
     }
   },
     "result": {
-      "item": "awt:thick_grate_block",
+      "item": "gallifrey:thick_grate_block",
       "count": 2
     }
 }

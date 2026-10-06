@@ -1,6 +1,6 @@
 {
   "parent": "gallifrey:block/prehistoric_trapdoor_bottom",
   "textures": {
-    "texture": "gallifrey:block/prehistoric_trapdoor"
+    "texture": "gallifrey:block/prehistoric/prehistoric_trapdoor"
   }
 }

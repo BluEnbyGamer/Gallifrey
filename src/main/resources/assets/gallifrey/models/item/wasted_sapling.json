@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gallifrey:block/wasted_sapling"
+    "layer0": "gallifrey:block/skaro/wasted_sapling"
   }
 }

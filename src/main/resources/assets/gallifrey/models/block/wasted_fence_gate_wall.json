@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/template_fence_gate_wall",
   "textures": {
-    "texture": "gallifrey:block/wasted_planks"
+    "texture": "gallifrey:block/skaro/wasted_planks"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gallifrey:block/wasted_planks"
+    "all": "gallifrey:block/skaro/wasted_planks"
   }
 }

@@ -61,6 +61,11 @@ public class VortexNavigationScreen extends VortexManipulatorSubScreen {
     private Identifier parseDimension(String input) {
         if (input == null || input.trim().isEmpty()) return null;
         String n = input.trim().toLowerCase();
+        // Names with spaces can't be dimension IDs, so match them by hand.
+        // Ignores spaces, apostrophes, underscores and hyphens: "Pete's World", "petes world", "petes_world" all work.
+        String squashed = n.replace("'", "").replace("\u2019", "").replace(" ", "").replace("_", "").replace("-", "");
+        if (squashed.equals("petesworld")) return new Identifier("gallifrey", "petes_world");
+        if (squashed.equals("lostreality")) return new Identifier("gallifrey", "lost_reality");
         return switch (n) {
             case "overworld" -> new Identifier("minecraft", "overworld");
             case "nether" -> new Identifier("minecraft", "the_nether");
@@ -69,6 +74,7 @@ public class VortexNavigationScreen extends VortexManipulatorSubScreen {
             case "skaro" -> new Identifier("gallifrey", "skaro");
             case "mars" -> new Identifier("gallifrey", "mars");
             case "mondas" -> new Identifier("gallifrey", "mondas");
+            case "prehistoric" -> new Identifier("gallifrey", "prehistoric");
             default -> Identifier.tryParse(n);
         };
     }

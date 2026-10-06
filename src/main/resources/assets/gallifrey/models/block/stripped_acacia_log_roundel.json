@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "particle": "gallifrey:block/stripped_acacia_log_roundel",
-    "down": "gallifrey:block/stripped_acacia_log_roundel",
-    "up": "gallifrey:block/stripped_acacia_log_roundel",
-    "north": "gallifrey:block/stripped_acacia_log_roundel",
-    "south": "gallifrey:block/stripped_acacia_log_roundel",
-    "east": "gallifrey:block/stripped_acacia_log_roundel_half",
-    "west": "gallifrey:block/stripped_acacia_log_roundel_half"
+    "particle": "gallifrey:block/roundel/stripped_acacia_log_roundel",
+    "down": "gallifrey:block/roundel/stripped_acacia_log_roundel",
+    "up": "gallifrey:block/roundel/stripped_acacia_log_roundel",
+    "north": "gallifrey:block/roundel/stripped_acacia_log_roundel",
+    "south": "gallifrey:block/roundel/stripped_acacia_log_roundel",
+    "east": "gallifrey:block/roundel/stripped_acacia_log_roundel_half",
+    "west": "gallifrey:block/roundel/stripped_acacia_log_roundel_half"
   }
 }

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "particle": "gallifrey:block/end_stone_bricks_roundel",
-    "down": "gallifrey:block/end_stone_bricks_roundel",
-    "up": "gallifrey:block/end_stone_bricks_roundel",
-    "north": "gallifrey:block/end_stone_bricks_roundel",
-    "south": "gallifrey:block/end_stone_bricks_roundel",
-    "east": "gallifrey:block/end_stone_bricks_roundel_half",
-    "west": "gallifrey:block/end_stone_bricks_roundel_half"
+    "particle": "gallifrey:block/roundel/end_stone_bricks_roundel",
+    "down": "gallifrey:block/roundel/end_stone_bricks_roundel",
+    "up": "gallifrey:block/roundel/end_stone_bricks_roundel",
+    "north": "gallifrey:block/roundel/end_stone_bricks_roundel",
+    "south": "gallifrey:block/roundel/end_stone_bricks_roundel",
+    "east": "gallifrey:block/roundel/end_stone_bricks_roundel_half",
+    "west": "gallifrey:block/roundel/end_stone_bricks_roundel_half"
   }
 }

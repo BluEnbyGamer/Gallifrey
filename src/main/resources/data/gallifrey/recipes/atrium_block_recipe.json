@@ -8,11 +8,11 @@
   ],
   "key": {
     "a": {
-      "item": "awt:atrium"
+      "item": "gallifrey:atrium"
     }
   },
     "result": {
-      "item": "awt:atrium_block",
+      "item": "gallifrey:atrium_block",
       "count": 1
     }
 }

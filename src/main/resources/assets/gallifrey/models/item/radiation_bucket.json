@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gallifrey:item/skaro_water_bucket"
+    "layer0": "gallifrey:item/skaro/skaro_water_bucket"
   }
 }

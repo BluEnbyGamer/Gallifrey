@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "gallifrey:prehistoric_ore",
-    "gallifrey:deepslate_prehistoric_ore"
+    "gallifrey:deepslate_prehistoric_ore",
+    "gallifrey:metalertanium_block"
   ]
 }

@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "gallifrey:mars_sandstone"
+    "gallifrey:mars_sandstone",
+    "gallifrey:grate_block",
+    "gallifrey:thick_grate_block",
+    "gallifrey:rusty_grate_block",
+    "gallifrey:rusty_thick_grate_block"
   ]
 }

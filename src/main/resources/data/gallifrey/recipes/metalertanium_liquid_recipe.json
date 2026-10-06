@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "template": {
-    "item": "awt:liquid_dalekanium"
+    "item": "gallifrey:liquid_dalekanium"
   },
   "base": {
     "item": "minecraft:netherite_ingot"
@@ -10,6 +10,6 @@
     "item": "minecraft:lava_bucket"
   },
   "result": {
-    "item": "awt:liquid_metalertanium"
+    "item": "gallifrey:liquid_metalertanium"
   }
 }

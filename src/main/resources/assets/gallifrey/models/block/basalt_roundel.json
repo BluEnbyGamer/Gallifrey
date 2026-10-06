@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "particle": "gallifrey:block/basalt_roundel_top",
-    "down": "gallifrey:block/basalt_roundel_top",
-    "up": "gallifrey:block/basalt_roundel_top",
-    "north": "gallifrey:block/basalt_roundel",
-    "south": "gallifrey:block/basalt_roundel",
-    "east": "gallifrey:block/basalt_roundel_half",
-    "west": "gallifrey:block/basalt_roundel_half"
+    "particle": "gallifrey:block/roundel/basalt_roundel_top",
+    "down": "gallifrey:block/roundel/basalt_roundel_top",
+    "up": "gallifrey:block/roundel/basalt_roundel_top",
+    "north": "gallifrey:block/roundel/basalt_roundel",
+    "south": "gallifrey:block/roundel/basalt_roundel",
+    "east": "gallifrey:block/roundel/basalt_roundel_half",
+    "west": "gallifrey:block/roundel/basalt_roundel_half"
   }
 }

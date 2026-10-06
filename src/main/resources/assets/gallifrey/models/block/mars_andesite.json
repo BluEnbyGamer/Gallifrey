@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gallifrey:block/mars_andesite"
+    "all": "gallifrey:block/mars/mars_andesite"
   }
 }

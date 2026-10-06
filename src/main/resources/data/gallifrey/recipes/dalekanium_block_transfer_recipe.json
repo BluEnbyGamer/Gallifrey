@@ -8,11 +8,11 @@
   ],
   "key": {
     "a": {
-      "item": "awt:dalekanium_block"
+      "item": "gallifrey:dalekanium_block"
     }
   },
   "result": {
-    "item": "awt:dalekanium_ingot",
+    "item": "gallifrey:dalekanium_ingot",
     "count": 9
   }
 }

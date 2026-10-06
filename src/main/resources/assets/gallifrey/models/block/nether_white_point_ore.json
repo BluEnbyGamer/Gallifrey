@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gallifrey:block/nether_white_point_ore"
+    "all": "gallifrey:block/white_point/nether_white_point_ore"
   }
 }

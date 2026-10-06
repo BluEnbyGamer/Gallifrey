@@ -1,14 +1,25 @@
 package com.timelordmod.gallifrey.datagen;
 
-import com.timelordmod.gallifrey.block.GallifreyModBlocks;
-import com.timelordmod.gallifrey.item.GallifreyModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.Models;
-import net.minecraft.data.client.TexturedModel;
 
+/**
+ * Intentionally generates nothing.
+ *
+ * Datagen always writes textures as "gallifrey:block/<block id>", in one flat folder.
+ * The textures are now sorted into sub-folders (block/ulanda_wood/, item/steel/, ...),
+ * so every generated model pointed at a file that is no longer there.
+ *
+ * All blockstates and models are now ordinary hand-edited files in
+ *   src/main/resources/assets/gallifrey/blockstates
+ *   src/main/resources/assets/gallifrey/models
+ * To add a new block, copy the files of a similar block there and change the names.
+ *
+ * Do NOT add generator calls back in here unless the textures for that block
+ * sit directly in textures/block/ or textures/item/ again.
+ */
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
         super(output);
@@ -16,139 +27,9 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
-        //WOOD TYPE POOLS
-        BlockStateModelGenerator.BlockTexturePool ulandaPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ULANDA_PLANKS);
-        BlockStateModelGenerator.BlockTexturePool tardiswoodPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TARDIS_PLANKS);
-        BlockStateModelGenerator.BlockTexturePool treeborgPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.TREEBORG_PLANKS);
-        BlockStateModelGenerator.BlockTexturePool ashPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.ASH_PLANKS);
-        BlockStateModelGenerator.BlockTexturePool maplePool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.MAPLE_PLANKS);
-        BlockStateModelGenerator.BlockTexturePool moonpinePool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.MOONPINE_PLANKS);
-        BlockStateModelGenerator.BlockTexturePool hartnellPool = blockStateModelGenerator.registerCubeAllModelTexturePool(GallifreyModBlocks.HARTNELL_BLOCK);
-        tardiswoodPool.family(GallifreyModBlocks.TARDIS_FAMILY);
-        ulandaPool.family(GallifreyModBlocks.ULANDA_FAMILY);
-        treeborgPool.family(GallifreyModBlocks.TREEBORG_FAMILY);
-        ashPool.family(GallifreyModBlocks.ASH_FAMILY);
-        maplePool.family(GallifreyModBlocks.MAPLE_FAMILY);
-        moonpinePool.family(GallifreyModBlocks.MOONPINE_FAMILY);
-
-        //TARDIS WOOD TYPE
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.TARDIS_LOG).log(GallifreyModBlocks.TARDIS_LOG).wood(GallifreyModBlocks.TARDIS_WOOD);
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.STRIP_TARDIS_LOG).log(GallifreyModBlocks.STRIP_TARDIS_LOG).wood(GallifreyModBlocks.STRIP_TARDIS_WOOD);
-        blockStateModelGenerator.registerDoor(GallifreyModBlocks.TARDIS_WOOD_DOOR);
-        blockStateModelGenerator.registerTrapdoor(GallifreyModBlocks.TARDIS_TRAPDOOR);
-        tardiswoodPool.stairs(GallifreyModBlocks.TARDIS_STAIRS);
-        tardiswoodPool.slab(GallifreyModBlocks.TARDIS_SLAB);
-        tardiswoodPool.button(GallifreyModBlocks.TARDIS_BUTTON);
-        tardiswoodPool.pressurePlate(GallifreyModBlocks.TARDIS_PRESSURE_PLATE);
-        tardiswoodPool.fence(GallifreyModBlocks.TARDIS_FENCE);
-        tardiswoodPool.fenceGate(GallifreyModBlocks.TARDIS_FENCE_GATE);
-
-        //ULANDA WOOD TYPE
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.ULANDA_LOG).log(GallifreyModBlocks.ULANDA_LOG).wood(GallifreyModBlocks.ULANDA_WOOD);
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.STRIP_ULANDA_LOG).log(GallifreyModBlocks.STRIP_ULANDA_LOG).wood(GallifreyModBlocks.STRIP_ULANDA_WOOD);
-        blockStateModelGenerator.registerDoor(GallifreyModBlocks.ULANDA_DOOR);
-        blockStateModelGenerator.registerTrapdoor(GallifreyModBlocks.ULANDA_TRAPDOOR);
-        ulandaPool.stairs(GallifreyModBlocks.ULANDA_STAIRS);
-        ulandaPool.slab(GallifreyModBlocks.ULANDA_SLAB);
-        ulandaPool.button(GallifreyModBlocks.ULANDA_BUTTON);
-        ulandaPool.pressurePlate(GallifreyModBlocks.ULANDA_PRESSURE_PLATE);
-        ulandaPool.fence(GallifreyModBlocks.ULANDA_FENCE);
-        ulandaPool.fenceGate(GallifreyModBlocks.ULANDA_FENCE_GATE);
-
-        //TREE-BORG WOOD TYPE
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.TREEBORG_LOG).log(GallifreyModBlocks.TREEBORG_LOG).wood(GallifreyModBlocks.TREEBORG_WOOD);
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.STRIP_TREEBORG_LOG).log(GallifreyModBlocks.STRIP_TREEBORG_LOG).wood(GallifreyModBlocks.STRIP_TREEBORG_WOOD);
-        blockStateModelGenerator.registerDoor(GallifreyModBlocks.TREEBORG_DOOR);
-        blockStateModelGenerator.registerTrapdoor(GallifreyModBlocks.TREEBORG_TRAPDOOR);
-        treeborgPool.stairs(GallifreyModBlocks.TREEBORG_STAIRS);
-        treeborgPool.slab(GallifreyModBlocks.TREEBORG_SLAB);
-        treeborgPool.button(GallifreyModBlocks.TREEBORG_BUTTON);
-        treeborgPool.pressurePlate(GallifreyModBlocks.TREEBORG_PRESSURE_PLATE);
-        treeborgPool.fence(GallifreyModBlocks.TREEBORG_FENCE);
-        treeborgPool.fenceGate(GallifreyModBlocks.TREEBORG_FENCE_GATE);
-
-        //ASH WOOD TYPE
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.ASH_LOG).log(GallifreyModBlocks.ASH_LOG).wood(GallifreyModBlocks.ASH_WOOD);
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.STRIP_ASH_LOG).log(GallifreyModBlocks.STRIP_ASH_LOG).wood(GallifreyModBlocks.STRIP_ASH_WOOD);
-        blockStateModelGenerator.registerDoor(GallifreyModBlocks.ASH_DOOR);
-        blockStateModelGenerator.registerTrapdoor(GallifreyModBlocks.ASH_TRAPDOOR);
-        ashPool.stairs(GallifreyModBlocks.ASH_STAIRS);
-        ashPool.slab(GallifreyModBlocks.ASH_SLAB);
-        ashPool.button(GallifreyModBlocks.ASH_BUTTON);
-        ashPool.pressurePlate(GallifreyModBlocks.ASH_PRESSURE_PLATE);
-        ashPool.fence(GallifreyModBlocks.ASH_FENCE);
-        ashPool.fenceGate(GallifreyModBlocks.ASH_FENCE_GATE);
-
-        //MAPLE WOOD TYPE
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.MAPLE_LOG).log(GallifreyModBlocks.MAPLE_LOG).wood(GallifreyModBlocks.MAPLE_WOOD);
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.STRIP_MAPLE_LOG).log(GallifreyModBlocks.STRIP_MAPLE_LOG).wood(GallifreyModBlocks.STRIP_MAPLE_WOOD);
-        blockStateModelGenerator.registerDoor(GallifreyModBlocks.MAPLE_DOOR);
-        blockStateModelGenerator.registerTrapdoor(GallifreyModBlocks.MAPLE_TRAPDOOR);
-        maplePool.stairs(GallifreyModBlocks.MAPLE_STAIRS);
-        maplePool.slab(GallifreyModBlocks.MAPLE_SLAB);
-        maplePool.button(GallifreyModBlocks.MAPLE_BUTTON);
-        maplePool.pressurePlate(GallifreyModBlocks.MAPLE_PRESSURE_PLATE);
-        maplePool.fence(GallifreyModBlocks.MAPLE_FENCE);
-        maplePool.fenceGate(GallifreyModBlocks.MAPLE_FENCE_GATE);
-
-
-        //MOONPINE WOOD TYPE
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.MOONPINE_LOG).log(GallifreyModBlocks.MOONPINE_LOG).wood(GallifreyModBlocks.MOONPINE_WOOD);
-        blockStateModelGenerator.registerLog(GallifreyModBlocks.STRIP_MOONPINE_LOG).log(GallifreyModBlocks.STRIP_MOONPINE_LOG).wood(GallifreyModBlocks.STRIP_MOONPINE_WOOD);
-        blockStateModelGenerator.registerDoor(GallifreyModBlocks.MOONPINE_DOOR);
-        blockStateModelGenerator.registerTrapdoor(GallifreyModBlocks.MOONPINE_TRAPDOOR);
-        moonpinePool.stairs(GallifreyModBlocks.MOONPINE_STAIRS);
-        moonpinePool.slab(GallifreyModBlocks.MOONPINE_SLAB);
-        moonpinePool.button(GallifreyModBlocks.MOONPINE_BUTTON);
-        moonpinePool.pressurePlate(GallifreyModBlocks.MOONPINE_PRESSURE_PLATE);
-        moonpinePool.fence(GallifreyModBlocks.MOONPINE_FENCE);
-        moonpinePool.fenceGate(GallifreyModBlocks.MOONPINE_FENCE_GATE);
-
-        // MISC BLOCKS REGISTRY
-        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.TARDIS_LEAVES, TexturedModel.LEAVES);
-        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.ULANDA_LEAVES, TexturedModel.LEAVES);
-        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.TREEBORG_LEAVES, TexturedModel.LEAVES);
-        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.ASH_LEAVES, TexturedModel.LEAVES);
-        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.MAPLE_LEAVES, TexturedModel.LEAVES);
-        blockStateModelGenerator.registerSingleton(GallifreyModBlocks.MOONPINE_LEAVES, TexturedModel.LEAVES);
-        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.TARDIS_SAPLING, GallifreyModBlocks.POTTED_TARDIS_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.ULANDA_SAPLING, GallifreyModBlocks.POTTED_ULANDA_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.TREEBORG_SAPLING, GallifreyModBlocks.POTTED_TREEBORG_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.ASH_SAPLING, GallifreyModBlocks.POTTED_ASH_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.MAPLE_SAPLING, GallifreyModBlocks.POTTED_MAPLE_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerFlowerPotPlant(GallifreyModBlocks.MOONPINE_SAPLING, GallifreyModBlocks.POTTED_MOONPINE_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
-        hartnellPool.wall(GallifreyModBlocks.HARTNELL_WALL);
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(GallifreyModItems.HANGING_TARDIS_SIGN, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.HANGING_ULANDA_SIGN, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.HANGING_TREEBORG_SIGN, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.HANGING_ASH_SIGN, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.HANGING_MAPLE_SIGN, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.HANGING_MOONPINE_SIGN, Models.GENERATED);
-
-        itemModelGenerator.register(GallifreyModItems.TARDIS_BOAT, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.TARDIS_CHEST_BOAT, Models.GENERATED);
-
-        itemModelGenerator.register(GallifreyModItems.ULANDA_BOAT, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.ULANDA_CHEST_BOAT, Models.GENERATED);
-
-        itemModelGenerator.register(GallifreyModItems.TREEBORG_BOAT, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.TREEBORG_CHEST_BOAT, Models.GENERATED);
-
-        itemModelGenerator.register(GallifreyModItems.ASH_BOAT, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.ASH_CHEST_BOAT, Models.GENERATED);
-
-        itemModelGenerator.register(GallifreyModItems.MAPLE_BOAT, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.MAPLE_CHEST_BOAT, Models.GENERATED);
-
-        itemModelGenerator.register(GallifreyModItems.MOONPINE_BOAT, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.MOONPINE_CHEST_BOAT, Models.GENERATED);
-
-        itemModelGenerator.register(GallifreyModItems.DW_XIV_MUSIC_DISC, Models.GENERATED);
-        itemModelGenerator.register(GallifreyModItems.GALLIFREY_MUSIC_DISC, Models.GENERATED);
     }
 }

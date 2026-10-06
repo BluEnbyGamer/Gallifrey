@@ -235,6 +235,20 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.RAW_STEEL_BLOCK);
                 entries.add(GallifreyModBlocks.STEEL_BLOCK);
                 entries.add(GallifreyModBlocks.REINFORCED_STEEL_BLOCK);
+                entries.add(GallifreyModBlocks.GRATE_BLOCK);
+                entries.add(GallifreyModBlocks.THICK_GRATE_BLOCK);
+                entries.add(GallifreyModBlocks.RUSTY_GRATE_BLOCK);
+                entries.add(GallifreyModBlocks.RUSTY_THICK_GRATE_BLOCK);
+                entries.add(GallifreyModItems.STEEL_TEMPLATE);
+                entries.add(GallifreyModItems.STEEL_SWORD);
+                entries.add(GallifreyModItems.STEEL_PICKAXE);
+                entries.add(GallifreyModItems.STEEL_AXE);
+                entries.add(GallifreyModItems.STEEL_SHOVEL);
+                entries.add(GallifreyModItems.STEEL_HOE);
+                entries.add(GallifreyModItems.STEEL_HELMET);
+                entries.add(GallifreyModItems.STEEL_CHESTPLATE);
+                entries.add(GallifreyModItems.STEEL_LEGGINGS);
+                entries.add(GallifreyModItems.STEEL_BOOTS);
                 entries.add(GallifreyModBlocks.HARTNELL_BLOCK);
                 entries.add(GallifreyModBlocks.HARTNELL_WALL);
                 entries.add(GallifreyModBlocks.GOOD_HEAVENS);
@@ -373,6 +387,31 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.DALEKANIUM_ORE);
                 entries.add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
                 entries.add(GallifreyModItems.DALEKANIUM_INGOT);
+                entries.add(GallifreyModItems.LIQUID_DALEKANIUM);
+                entries.add(GallifreyModItems.DALEKANIUM_SWORD);
+                entries.add(GallifreyModItems.DALEKANIUM_PICKAXE);
+                entries.add(GallifreyModItems.DALEKANIUM_AXE);
+                entries.add(GallifreyModItems.DALEKANIUM_SHOVEL);
+                entries.add(GallifreyModItems.DALEKANIUM_HOE);
+                entries.add(GallifreyModItems.DALEKANIUM_HELMET);
+                entries.add(GallifreyModItems.DALEKANIUM_CHESTPLATE);
+                entries.add(GallifreyModItems.DALEKANIUM_LEGGINGS);
+                entries.add(GallifreyModItems.DALEKANIUM_BOOTS);
+                // Metalertanium
+                entries.add(GallifreyModItems.METALERT_DUST);
+                entries.add(GallifreyModItems.LIQUID_METALERTANIUM);
+                entries.add(GallifreyModItems.METALERTANIUM_INGOT);
+                entries.add(GallifreyModBlocks.METALERTANIUM_BLOCK);
+                entries.add(GallifreyModItems.METALERTANIUM_SWORD);
+                entries.add(GallifreyModItems.METALERTANIUM_PICKAXE);
+                entries.add(GallifreyModItems.METALERTANIUM_AXE);
+                entries.add(GallifreyModItems.METALERTANIUM_SHOVEL);
+                entries.add(GallifreyModItems.METALERTANIUM_HOE);
+                entries.add(GallifreyModItems.METALERTANIUM_HELMET);
+                entries.add(GallifreyModItems.METALERTANIUM_CHESTPLATE);
+                entries.add(GallifreyModItems.METALERTANIUM_LEGGINGS);
+                entries.add(GallifreyModItems.METALERTANIUM_BOOTS);
+                entries.add(GallifreyModItems.RADIATION_BUCKET);
             }
     );
 

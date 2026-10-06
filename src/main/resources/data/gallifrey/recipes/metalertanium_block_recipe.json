@@ -8,11 +8,11 @@
   ],
   "key": {
     "a": {
-      "item": "awt:metalertanium_ingot"
+      "item": "gallifrey:metalertanium_ingot"
     }
   },
     "result": {
-      "item": "awt:metalertanium_block",
+      "item": "gallifrey:metalertanium_block",
       "count": 1
     }
 }

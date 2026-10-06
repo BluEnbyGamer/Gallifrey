@@ -1,15 +1,15 @@
 {
   "type": "minecraft:smithing_transform",
   "template": {
-    "item": "awt:metalertanium_ingot"
+    "item": "gallifrey:metalertanium_ingot"
   },
   "base": {
-    "item": "awt:dalekanium_pickaxe"
+    "item": "gallifrey:dalekanium_pickaxe"
   },
   "addition": {
     "item": "minecraft:lava_bucket"
   },
   "result": {
-    "item": "awt:metalertanium_pickaxe"
+    "item": "gallifrey:metalertanium_pickaxe"
   }
 }

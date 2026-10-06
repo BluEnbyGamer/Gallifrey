@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "awt:item/dalekanium/dalekanium_axe"
+    "layer0": "gallifrey:item/dalekanium/dalekanium_axe"
   }
 }

@@ -7,9 +7,12 @@
     "default_block":  {
                           "Name":  "gallifrey:kaletite"
                       },
-    "default_fluid":  {
-                          "Name":  "minecraft:water"
-                      },
+    "default_fluid": {
+    "Name": "gallifrey:radiation",
+    "Properties": {
+      "level": "0"
+    }
+  },
     "noise":  {
                   "height":  384,
                   "min_y":  -64,

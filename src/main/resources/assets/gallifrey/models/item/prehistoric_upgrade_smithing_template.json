@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gallifrey:item/prehistoric_upgrade_smithing_template"
+    "layer0": "gallifrey:item/prehistoric/prehistoric_upgrade_smithing_template"
   }
 }

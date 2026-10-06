@@ -2,9 +2,9 @@
   "type": "minecraft:smelting",
   "category": "misc",
   "ingredient": {
-    "item": "awt:dalekanium_block"
+    "item": "gallifrey:dalekanium_block"
   },
-  "result": "awt:liquid_dalekanium",
+  "result": "gallifrey:liquid_dalekanium",
   "experience": 0.7,
   "cookingtime": 200
 }

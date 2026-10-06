@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "awt:block/metalertanium_block"
+      "model": "gallifrey:block/metalertanium_block"
     }
   }
 }

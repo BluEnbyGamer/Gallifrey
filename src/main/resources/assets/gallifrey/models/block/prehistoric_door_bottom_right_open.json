@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/door_bottom_right_open",
   "textures": {
-    "bottom": "gallifrey:block/prehistoric_door_bottom",
-    "top": "gallifrey:block/prehistoric_door_top"
+    "bottom": "gallifrey:block/prehistoric/prehistoric_door_bottom",
+    "top": "gallifrey:block/prehistoric/prehistoric_door_top"
   }
 }

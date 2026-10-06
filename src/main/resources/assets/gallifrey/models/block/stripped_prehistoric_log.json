@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "end": "gallifrey:block/prehistoric_planks",
-    "side": "gallifrey:block/prehistoric_planks"
+    "end": "gallifrey:block/prehistoric/prehistoric_planks",
+    "side": "gallifrey:block/prehistoric/prehistoric_planks"
   }
 }

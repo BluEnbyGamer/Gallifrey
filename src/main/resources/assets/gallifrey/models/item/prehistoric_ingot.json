@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gallifrey:item/prehistoric_ingot"
+    "layer0": "gallifrey:item/prehistoric/prehistoric_ingot"
   }
 }

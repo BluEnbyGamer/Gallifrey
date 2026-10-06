@@ -96,6 +96,17 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(GallifreyModBlocks.PREHISTORIC_ORE, GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE);
 
+        // Steel grates and the Metalertanium block.
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.GRATE_BLOCK, GallifreyModBlocks.THICK_GRATE_BLOCK,
+                        GallifreyModBlocks.RUSTY_GRATE_BLOCK, GallifreyModBlocks.RUSTY_THICK_GRATE_BLOCK,
+                        GallifreyModBlocks.METALERTANIUM_BLOCK);
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(GallifreyModBlocks.GRATE_BLOCK, GallifreyModBlocks.THICK_GRATE_BLOCK,
+                        GallifreyModBlocks.RUSTY_GRATE_BLOCK, GallifreyModBlocks.RUSTY_THICK_GRATE_BLOCK);
+        getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(GallifreyModBlocks.METALERTANIUM_BLOCK);
+
         // Roundels: mined with the same tool as the vanilla block each one is made from.
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(

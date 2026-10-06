@@ -6,8 +6,8 @@
     32
   ],
   "textures": {
-    "0": "gallifrey:block/tapper_level0",
-    "particle": "gallifrey:block/tapper_level0"
+    "0": "gallifrey:block/tapper/tapper_level0",
+    "particle": "gallifrey:block/tapper/tapper_level0"
   },
   "elements": [
     {

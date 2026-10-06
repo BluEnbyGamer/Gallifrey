@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/button",
   "textures": {
-    "texture": "gallifrey:block/wasted_planks"
+    "texture": "gallifrey:block/skaro/wasted_planks"
   }
 }

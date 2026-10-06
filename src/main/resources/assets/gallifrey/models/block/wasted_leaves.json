@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/leaves",
   "textures": {
-    "all": "gallifrey:block/wasted_leaves"
+    "all": "gallifrey:block/skaro/wasted_leaves"
   }
 }

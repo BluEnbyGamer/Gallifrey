@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "awt:block/grate_block"
+      "model": "gallifrey:block/grate_block"
     }
   }
 }

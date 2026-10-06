@@ -18,6 +18,8 @@ import com.timelordmod.gallifrey.item.custom.SonicShadesItem;
 import com.timelordmod.gallifrey.item.custom.HeadwearItem;
 import com.timelordmod.gallifrey.item.custom.PrehistoricArmorMaterial;
 import com.timelordmod.gallifrey.item.custom.PrehistoricToolMaterial;
+import com.timelordmod.gallifrey.item.custom.ModArmorMaterials;
+import com.timelordmod.gallifrey.item.custom.ModToolMaterials;
 
 public class GallifreyModItems {
 
@@ -140,6 +142,44 @@ public class GallifreyModItems {
     public static final ArmorItem PREHISTORIC_LEGGINGS = new ArmorItem(PrehistoricArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final ArmorItem PREHISTORIC_BOOTS = new ArmorItem(PrehistoricArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS, new FabricItemSettings());
 
+    // STEEL GEAR (same stats as iron)
+    public static final Item STEEL_TEMPLATE = new Item(new FabricItemSettings());
+    public static final SwordItem STEEL_SWORD = new SwordItem(ModToolMaterials.STEEL, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem STEEL_PICKAXE = new PickaxeItem(ModToolMaterials.STEEL, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem STEEL_AXE = new AxeItem(ModToolMaterials.STEEL, 6.0F, -3.1F, new FabricItemSettings());
+    public static final ShovelItem STEEL_SHOVEL = new ShovelItem(ModToolMaterials.STEEL, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem STEEL_HOE = new HoeItem(ModToolMaterials.STEEL, -2, -1.0F, new FabricItemSettings());
+    public static final ArmorItem STEEL_HELMET = new ArmorItem(ModArmorMaterials.STEEL, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem STEEL_CHESTPLATE = new ArmorItem(ModArmorMaterials.STEEL, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem STEEL_LEGGINGS = new ArmorItem(ModArmorMaterials.STEEL, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem STEEL_BOOTS = new ArmorItem(ModArmorMaterials.STEEL, ArmorItem.Type.BOOTS, new FabricItemSettings());
+
+    // DALEKANIUM GEAR (same stats as iron)
+    public static final Item LIQUID_DALEKANIUM = new Item(new FabricItemSettings());
+    public static final SwordItem DALEKANIUM_SWORD = new SwordItem(ModToolMaterials.DALEKANIUM, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem DALEKANIUM_PICKAXE = new PickaxeItem(ModToolMaterials.DALEKANIUM, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem DALEKANIUM_AXE = new AxeItem(ModToolMaterials.DALEKANIUM, 6.0F, -3.1F, new FabricItemSettings());
+    public static final ShovelItem DALEKANIUM_SHOVEL = new ShovelItem(ModToolMaterials.DALEKANIUM, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem DALEKANIUM_HOE = new HoeItem(ModToolMaterials.DALEKANIUM, -2, -1.0F, new FabricItemSettings());
+    public static final ArmorItem DALEKANIUM_HELMET = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem DALEKANIUM_CHESTPLATE = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem DALEKANIUM_LEGGINGS = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem DALEKANIUM_BOOTS = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.BOOTS, new FabricItemSettings());
+
+    // METALERTANIUM GEAR (same stats as netherite, and fireproof like netherite)
+    public static final Item METALERT_DUST = new Item(new FabricItemSettings());
+    public static final Item LIQUID_METALERTANIUM = new Item(new FabricItemSettings().fireproof());
+    public static final Item METALERTANIUM_INGOT = new Item(new FabricItemSettings().fireproof());
+    public static final SwordItem METALERTANIUM_SWORD = new SwordItem(ModToolMaterials.METALERTANIUM, 3, -2.4F, new FabricItemSettings().fireproof());
+    public static final PickaxeItem METALERTANIUM_PICKAXE = new PickaxeItem(ModToolMaterials.METALERTANIUM, 1, -2.8F, new FabricItemSettings().fireproof());
+    public static final AxeItem METALERTANIUM_AXE = new AxeItem(ModToolMaterials.METALERTANIUM, 5.0F, -3.0F, new FabricItemSettings().fireproof());
+    public static final ShovelItem METALERTANIUM_SHOVEL = new ShovelItem(ModToolMaterials.METALERTANIUM, 1.5F, -3.0F, new FabricItemSettings().fireproof());
+    public static final HoeItem METALERTANIUM_HOE = new HoeItem(ModToolMaterials.METALERTANIUM, -4, 0.0F, new FabricItemSettings().fireproof());
+    public static final ArmorItem METALERTANIUM_HELMET = new ArmorItem(ModArmorMaterials.METALERTANIUM, ArmorItem.Type.HELMET, new FabricItemSettings().fireproof());
+    public static final ArmorItem METALERTANIUM_CHESTPLATE = new ArmorItem(ModArmorMaterials.METALERTANIUM, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().fireproof());
+    public static final ArmorItem METALERTANIUM_LEGGINGS = new ArmorItem(ModArmorMaterials.METALERTANIUM, ArmorItem.Type.LEGGINGS, new FabricItemSettings().fireproof());
+    public static final ArmorItem METALERTANIUM_BOOTS = new ArmorItem(ModArmorMaterials.METALERTANIUM, ArmorItem.Type.BOOTS, new FabricItemSettings().fireproof());
+
     // FOOD ITEMS
     public static final Item MAPLE_SYRUP = registerItem("maple_syrup", new Item(new FabricItemSettings().food(GallifreyFoodComponents.MAPLE_SYRUP)));
     public static final Item TREEBORG_PASTE = registerItem("treeborg_paste", new Item(new FabricItemSettings().food(GallifreyFoodComponents.TREEBORG_PASTE)));
@@ -214,6 +254,41 @@ public class GallifreyModItems {
         registerItem("prehistoric_chestplate", PREHISTORIC_CHESTPLATE);
         registerItem("prehistoric_leggings", PREHISTORIC_LEGGINGS);
         registerItem("prehistoric_boots", PREHISTORIC_BOOTS);
+
+        registerItem("steel_template", STEEL_TEMPLATE);
+        registerItem("steel_sword", STEEL_SWORD);
+        registerItem("steel_pickaxe", STEEL_PICKAXE);
+        registerItem("steel_axe", STEEL_AXE);
+        registerItem("steel_shovel", STEEL_SHOVEL);
+        registerItem("steel_hoe", STEEL_HOE);
+        registerItem("steel_helmet", STEEL_HELMET);
+        registerItem("steel_chestplate", STEEL_CHESTPLATE);
+        registerItem("steel_leggings", STEEL_LEGGINGS);
+        registerItem("steel_boots", STEEL_BOOTS);
+
+        registerItem("liquid_dalekanium", LIQUID_DALEKANIUM);
+        registerItem("dalekanium_sword", DALEKANIUM_SWORD);
+        registerItem("dalekanium_pickaxe", DALEKANIUM_PICKAXE);
+        registerItem("dalekanium_axe", DALEKANIUM_AXE);
+        registerItem("dalekanium_shovel", DALEKANIUM_SHOVEL);
+        registerItem("dalekanium_hoe", DALEKANIUM_HOE);
+        registerItem("dalekanium_helmet", DALEKANIUM_HELMET);
+        registerItem("dalekanium_chestplate", DALEKANIUM_CHESTPLATE);
+        registerItem("dalekanium_leggings", DALEKANIUM_LEGGINGS);
+        registerItem("dalekanium_boots", DALEKANIUM_BOOTS);
+
+        registerItem("metalert_dust", METALERT_DUST);
+        registerItem("liquid_metalertanium", LIQUID_METALERTANIUM);
+        registerItem("metalertanium_ingot", METALERTANIUM_INGOT);
+        registerItem("metalertanium_sword", METALERTANIUM_SWORD);
+        registerItem("metalertanium_pickaxe", METALERTANIUM_PICKAXE);
+        registerItem("metalertanium_axe", METALERTANIUM_AXE);
+        registerItem("metalertanium_shovel", METALERTANIUM_SHOVEL);
+        registerItem("metalertanium_hoe", METALERTANIUM_HOE);
+        registerItem("metalertanium_helmet", METALERTANIUM_HELMET);
+        registerItem("metalertanium_chestplate", METALERTANIUM_CHESTPLATE);
+        registerItem("metalertanium_leggings", METALERTANIUM_LEGGINGS);
+        registerItem("metalertanium_boots", METALERTANIUM_BOOTS);
 
         registerItem("sonic_screwdriver", SONIC_SCREWDRIVER);
         registerItem("sonic_shades", SONIC_SHADES);
