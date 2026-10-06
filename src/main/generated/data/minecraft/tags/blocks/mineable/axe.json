@@ -1,6 +1,12 @@
 {
   "replace": false,
   "values": [
+    "gallifrey:classic_log",
+    "gallifrey:classic_planks",
+    "gallifrey:classic_stairs",
+    "gallifrey:classic_slab",
+    "gallifrey:classic_fence",
+    "gallifrey:classic_fence_gate",
     "gallifrey:ulanda_log",
     "gallifrey:ulanda_wood",
     "gallifrey:stripped_ulanda_log",
@@ -21,12 +27,6 @@
     "gallifrey:maple_wood",
     "gallifrey:stripped_maple_log",
     "gallifrey:stripped_maple_wood",
-    "gallifrey:dalekanium_block",
-    "gallifrey:dalekanium_ore",
-    "gallifrey:deepslate_dalekanium_ore",
-    "gallifrey:exquisite_cat",
-    "gallifrey:good_heavens",
-    "gallifrey:kaletite_bricks",
     "gallifrey:wasted_dirt",
     "gallifrey:wastedgrass",
     "gallifrey:wasted_leaves",
@@ -48,6 +48,9 @@
     "gallifrey:stripped_jungle_log_roundel",
     "gallifrey:stripped_mangrove_log_roundel",
     "gallifrey:stripped_oak_log_roundel",
-    "gallifrey:stripped_spruce_log_roundel"
+    "gallifrey:stripped_spruce_log_roundel",
+    "gallifrey:classic_planks",
+    "gallifrey:classic_log",
+    "gallifrey:classic_leaves"
   ]
 }

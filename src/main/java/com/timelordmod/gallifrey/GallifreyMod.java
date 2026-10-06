@@ -150,7 +150,8 @@ public class GallifreyMod implements ModInitializer {
 		//Moon-pine wood set
 
 
-
+		//GRASSBLOCK STUFF
+		com.timelordmod.gallifrey.block.custom.GrassInteractions.register();
 
 
 		// Custom Dimension Stuff
