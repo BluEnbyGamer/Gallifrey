@@ -179,5 +179,27 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
                 .add(GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.WASTED_WOOD,
                 GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
+
+        // CLASSIC BLOCK TAGS
+        // Keep Classic trees compatible with vanilla leaf-decay rules and tool tags.
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+                .add(GallifreyModBlocks.CLASSIC_LOG);
+
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_STONE, GallifreyModBlocks.CLASSIC_COBBLE,
+                        GallifreyModBlocks.CLASSIC_GOLD, GallifreyModBlocks.CLASSIC_IRON,
+                        GallifreyModBlocks.CLASSIC_GLASS, GallifreyModBlocks.CLASSIC_SPONGE,
+                        GallifreyModBlocks.CLASSIC_BRICKS, GallifreyModBlocks.CLASSIC_TNT);
+
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_PLANKS, GallifreyModBlocks.CLASSIC_LOG,
+                        GallifreyModBlocks.CLASSIC_LEAVES);
+
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_DIRT, GallifreyModBlocks.CLASSIC_GRASS,
+                        GallifreyModBlocks.CLASSIC_SAND, GallifreyModBlocks.CLASSIC_GRAVEL);
+
+        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_LEAVES, GallifreyModBlocks.CLASSIC_GRASS);
     }
 }

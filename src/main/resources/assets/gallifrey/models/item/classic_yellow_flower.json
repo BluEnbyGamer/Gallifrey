@@ -1,3 +1,6 @@
 {
-  "parent": "gallifrey:block/classic_yellow_flower"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gallifrey:block/classic_minecraft/classic_yellow_flower"
+  }
 }

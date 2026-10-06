@@ -150,6 +150,25 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS);
         addDrop(GallifreyModBlocks.MARS_IRON_ORE, oreDrops(GallifreyModBlocks.MARS_IRON_ORE, net.minecraft.item.Items.RAW_IRON));
 
+        // CLASSIC BLOCK DROPS
+        addDrop(GallifreyModBlocks.CLASSIC_STONE);
+        addDrop(GallifreyModBlocks.CLASSIC_GRASS);
+        addDrop(GallifreyModBlocks.CLASSIC_DIRT);
+        addDrop(GallifreyModBlocks.CLASSIC_COBBLE);
+        addDrop(GallifreyModBlocks.CLASSIC_PLANKS);
+        addDrop(GallifreyModBlocks.CLASSIC_LOG);
+        addDrop(GallifreyModBlocks.CLASSIC_LEAVES);
+        addDrop(GallifreyModBlocks.CLASSIC_SAND);
+        addDrop(GallifreyModBlocks.CLASSIC_GRAVEL);
+        addDrop(GallifreyModBlocks.CLASSIC_GOLD);
+        addDrop(GallifreyModBlocks.CLASSIC_IRON);
+        addDrop(GallifreyModBlocks.CLASSIC_GLASS);
+        addDrop(GallifreyModBlocks.CLASSIC_SPONGE);
+        addDrop(GallifreyModBlocks.CLASSIC_BRICKS);
+        addDrop(GallifreyModBlocks.CLASSIC_TNT);
+        addDrop(GallifreyModBlocks.CLASSIC_RED_FLOWER);
+        addDrop(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
+
         // MISC BLOCK DROPS
         addDrop(GallifreyModBlocks.RAW_STEEL_BLOCK);
         addDrop(GallifreyModBlocks.STEEL_BLOCK);

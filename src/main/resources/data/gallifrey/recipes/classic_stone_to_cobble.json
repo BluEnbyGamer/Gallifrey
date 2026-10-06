@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "gallifrey:classic_stone"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_cobble",
+    "count": 4
+  }
+}

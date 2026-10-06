@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SGS",
+    "GSG",
+    "SGS"
+  ],
+  "key": {
+    "S": {
+      "item": "gallifrey:classic_sand"
+    },
+    "G": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_tnt",
+    "count": 1
+  }
+}

@@ -1,3 +1,6 @@
 {
-  "parent": "gallifrey:block/prehistoric_sapling"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gallifrey:block/prehistoric/prehistoric_sapling"
+  }
 }

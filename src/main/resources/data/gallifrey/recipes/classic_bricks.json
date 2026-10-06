@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CC",
+    "CC"
+  ],
+  "key": {
+    "C": {
+      "item": "gallifrey:classic_cobble"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_bricks",
+    "count": 4
+  }
+}
