@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "gallifrey:mars_sand",
-    "gallifrey:dirt_roundel",
-    "gallifrey:lost_dirt"
+    "gallifrey:lost_dirt",
+    "gallifrey:dirt_roundel"
   ]
 }
