@@ -33,8 +33,16 @@ public class MondasSkyRenderer implements DimensionRenderingRegistry.SkyRenderer
             new Identifier("gallifrey", "textures/environment/mondas_planet_red.png");
     private static final Identifier PLANET_RINGED_TEXTURE =
             new Identifier("gallifrey", "textures/environment/mondas_planet_ringed.png");
+    private static final Identifier PLANET_PURPLE_TEXTURE =
+            new Identifier("gallifrey", "textures/environment/mondas_planet_purple.png");
+    private static final Identifier PLANET_ICE_TEXTURE =
+            new Identifier("gallifrey", "textures/environment/mondas_planet_ice.png");
+    private static final Identifier PLANET_GOLD_TEXTURE =
+            new Identifier("gallifrey", "textures/environment/mondas_planet_gold.png");
+    private static final Identifier PLANET_GREEN_TEXTURE =
+            new Identifier("gallifrey", "textures/environment/mondas_planet_green.png");
 
-    private static final int STAR_COUNT = 150;
+    private static final int STAR_COUNT = 240;
 
     @Override
     public void render(WorldRenderContext context) {
@@ -57,12 +65,18 @@ public class MondasSkyRenderer implements DimensionRenderingRegistry.SkyRenderer
         drawStarLayer(matrices, time * 0.0012F, 0.85F, 0.70F, 0.78F, 0.90F, 0.75F, 1.0F);
         drawStarLayer(matrices, time * -0.0020F + 37.0F, 1.0F, 0.92F, 0.98F, 1.0F, 1.0F, 0.75F);
         drawStarLayer(matrices, time * 0.0032F + 91.0F, 1.45F, 0.70F, 0.82F, 1.0F, 1.0F, 0.55F);
+        drawStarLayer(matrices, time * -0.0046F + 143.0F, 0.58F, 0.62F, 0.76F, 1.0F, 0.72F, 0.95F);
+        drawStarLayer(matrices, time * 0.0065F + 319.0F, 0.42F, 1.0F, 0.88F, 0.70F, 0.62F, 1.0F);
 
         // Large distant galaxies slide slowly through the sky.
         drawCelestialTexture(matrices, time * 0.00075F + 25.0F,
                 18.0F, 34.0F, GALAXY_TEXTURE, 0.58F, 0.70F, 0.95F, 0.38F);
         drawCelestialTexture(matrices, time * -0.00052F + 205.0F,
                 32.0F, 24.0F, GALAXY_TEXTURE, 0.75F, 0.55F, 0.95F, 0.28F);
+        drawCelestialTexture(matrices, time * 0.00034F + 315.0F,
+                52.0F, 18.0F, GALAXY_TEXTURE, 0.55F, 0.80F, 1.0F, 0.20F);
+        drawCelestialTexture(matrices, time * -0.00027F + 118.0F,
+                67.0F, 15.0F, GALAXY_TEXTURE, 1.0F, 0.45F, 0.70F, 0.18F);
 
         // Different planets move at different apparent speeds and headings.
         drawCelestialTexture(matrices, time * 0.0025F + 70.0F,
@@ -71,6 +85,14 @@ public class MondasSkyRenderer implements DimensionRenderingRegistry.SkyRenderer
                 28.0F, 11.0F, PLANET_RED_TEXTURE, 0.95F, 0.68F, 0.60F, 0.82F);
         drawCelestialTexture(matrices, time * 0.0011F + 275.0F,
                 38.0F, 6.0F, PLANET_RINGED_TEXTURE, 0.90F, 0.82F, 0.68F, 0.72F);
+        drawCelestialTexture(matrices, time * -0.00135F + 35.0F,
+                22.0F, 5.0F, PLANET_PURPLE_TEXTURE, 0.92F, 0.62F, 1.0F, 0.80F);
+        drawCelestialTexture(matrices, time * 0.00082F + 232.0F,
+                47.0F, 7.5F, PLANET_ICE_TEXTURE, 0.72F, 0.90F, 1.0F, 0.78F);
+        drawCelestialTexture(matrices, time * -0.00068F + 330.0F,
+                58.0F, 4.5F, PLANET_GOLD_TEXTURE, 1.0F, 0.72F, 0.34F, 0.76F);
+        drawCelestialTexture(matrices, time * 0.00165F + 188.0F,
+                72.0F, 9.0F, PLANET_GREEN_TEXTURE, 0.55F, 1.0F, 0.72F, 0.74F);
 
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.depthMask(true);
