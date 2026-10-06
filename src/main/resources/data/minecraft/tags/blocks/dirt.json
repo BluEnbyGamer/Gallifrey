@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:classic_grass",
+    "gallifrey:classic_dirt",
+    "gallifrey:wastedgrass",
+    "gallifrey:wasted_dirt"
+  ]
+}

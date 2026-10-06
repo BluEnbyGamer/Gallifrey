@@ -1,6 +1,6 @@
-{
+{.
   "display": {
-    "icon": { "item": "gallifrey:sonic_crystal" },
+    "icon": { "item": "gallifrey:raw_sonic_crystal" },
     "title": { "translate": "advancement.gallifrey.sonicroot.title" },
     "description": { "translate": "advancement.gallifrey.sonicroot.desc" },
     "background": "gallifrey:textures/block/sonic_crystal_ore.png",
