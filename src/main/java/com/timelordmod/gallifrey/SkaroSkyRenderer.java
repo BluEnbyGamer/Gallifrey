@@ -43,6 +43,9 @@ public class SkaroSkyRenderer implements DimensionRenderingRegistry.SkyRenderer 
 
         RenderSystem.enableBlend();
         RenderSystem.blendFunc(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE);
+        // Celestial bodies are sky objects. Do not let one moon's quad
+        // depth-test against another moon or the terrain depth buffer.
+        RenderSystem.disableDepthTest();
         RenderSystem.depthMask(false);
 
         // A single Skaro sun. Its warm light disappears smoothly into the night.
@@ -63,6 +66,7 @@ public class SkaroSkyRenderer implements DimensionRenderingRegistry.SkyRenderer 
 
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.depthMask(true);
+        RenderSystem.enableDepthTest();
         RenderSystem.disableBlend();
     }
 
