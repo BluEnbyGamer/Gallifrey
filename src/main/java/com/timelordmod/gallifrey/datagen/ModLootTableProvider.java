@@ -247,8 +247,44 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         // Skaro blocks
         addDrop(GallifreyModBlocks.EXQUISITE_CAT);
         addDrop(GallifreyModBlocks.GOOD_HEAVENS);
-        addDrop(GallifreyModBlocks.COBBLED_KALETITE);
-        addDrop(GallifreyModBlocks.KALETITE);
+        addDrop(GallifreyModBlocks.SKARO_STONE,
+                drops(GallifreyModBlocks.SKARO_STONE, GallifreyModBlocks.SKARO_COBBLESTONE));
+        addDrop(GallifreyModBlocks.SKARO_COBBLESTONE);
+        addDrop(GallifreyModBlocks.SKARO_ANDESITE);
+        addDrop(GallifreyModBlocks.SKARO_DIORITE);
+        addDrop(GallifreyModBlocks.SKARO_GRANITE);
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_ANDESITE);
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_DIORITE);
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_GRANITE);
+        addDrop(GallifreyModBlocks.POLISHED_SKARO_STONE);
+        addDrop(GallifreyModBlocks.SKARO_DEEPSLATE,
+                drops(GallifreyModBlocks.SKARO_DEEPSLATE, GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE));
+        addDrop(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE);
+        addDrop(GallifreyModBlocks.SKARO_DEEPSLATE_TILES);
+        addDrop(GallifreyModBlocks.SKARO_STONE_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_STONE_SLAB, slabDrops(GallifreyModBlocks.SKARO_STONE_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_COBBLESTONE_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_COBBLESTONE_SLAB, slabDrops(GallifreyModBlocks.SKARO_COBBLESTONE_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_ANDESITE_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_ANDESITE_SLAB, slabDrops(GallifreyModBlocks.SKARO_ANDESITE_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_DIORITE_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_DIORITE_SLAB, slabDrops(GallifreyModBlocks.SKARO_DIORITE_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_GRANITE_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_GRANITE_SLAB, slabDrops(GallifreyModBlocks.SKARO_GRANITE_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_SLAB, slabDrops(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_DIORITE_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_DIORITE_SLAB, slabDrops(GallifreyModBlocks.SKARO_POLISHED_DIORITE_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_GRANITE_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_GRANITE_SLAB, slabDrops(GallifreyModBlocks.SKARO_POLISHED_GRANITE_SLAB));
+        addDrop(GallifreyModBlocks.POLISHED_SKARO_STONE_STAIRS);
+        addDrop(GallifreyModBlocks.POLISHED_SKARO_STONE_SLAB, slabDrops(GallifreyModBlocks.POLISHED_SKARO_STONE_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_DEEPSLATE_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_DEEPSLATE_SLAB, slabDrops(GallifreyModBlocks.SKARO_DEEPSLATE_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB, slabDrops(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS);
+        addDrop(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB, slabDrops(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB));
         addDrop(GallifreyModBlocks.KALETITE_BRICKS);
         addDrop(GallifreyModBlocks.WASTED_DIRT);
         addDrop(GallifreyModBlocks.LOST_DIRT);

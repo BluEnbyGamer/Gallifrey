@@ -413,7 +413,7 @@ public final class GallifreyTabSections {
 
     public static final CreativeSection SKARO = CreativeSection.of(
             "skaro",
-            () -> new ItemStack(GallifreyModBlocks.KALETITE),
+            () -> new ItemStack(GallifreyModBlocks.SKARO_STONE),
             entries -> {
                 entries.add(GallifreyModBlocks.WASTED_DIRT);
                 entries.add(GallifreyModBlocks.WASTED_GRASS);
@@ -435,8 +435,42 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.HANGING_WASTED_SIGN);
                 entries.add(GallifreyModItems.WASTED_BOAT);
                 entries.add(GallifreyModItems.WASTED_CHEST_BOAT);
-                entries.add(GallifreyModBlocks.KALETITE);
-                entries.add(GallifreyModBlocks.COBBLED_KALETITE);
+                entries.add(GallifreyModBlocks.SKARO_STONE);
+                entries.add(GallifreyModBlocks.SKARO_COBBLESTONE);
+                entries.add(GallifreyModBlocks.SKARO_ANDESITE);
+                entries.add(GallifreyModBlocks.SKARO_DIORITE);
+                entries.add(GallifreyModBlocks.SKARO_GRANITE);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_ANDESITE);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_DIORITE);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_GRANITE);
+                entries.add(GallifreyModBlocks.POLISHED_SKARO_STONE);
+                entries.add(GallifreyModBlocks.SKARO_DEEPSLATE);
+                entries.add(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE);
+                entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES);
+                entries.add(GallifreyModBlocks.SKARO_STONE_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_STONE_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_COBBLESTONE_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_COBBLESTONE_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_ANDESITE_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_ANDESITE_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_DIORITE_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_DIORITE_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_GRANITE_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_GRANITE_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_DIORITE_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_DIORITE_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_GRANITE_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_GRANITE_SLAB);
+                entries.add(GallifreyModBlocks.POLISHED_SKARO_STONE_STAIRS);
+                entries.add(GallifreyModBlocks.POLISHED_SKARO_STONE_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS);
+                entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB);
                 entries.add(GallifreyModBlocks.KALETITE_BRICKS);
                 entries.add(GallifreyModBlocks.DALEKANIUM_BLOCK);
                 entries.add(GallifreyModBlocks.DALEKANIUM_ORE);

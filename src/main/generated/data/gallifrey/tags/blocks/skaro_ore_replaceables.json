@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:skaro_stone",
+    "gallifrey:skaro_andesite",
+    "gallifrey:skaro_diorite",
+    "gallifrey:skaro_granite"
+  ]
+}

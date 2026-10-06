@@ -903,14 +903,14 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "gallifrey:kaletite"
+                  "Name": "gallifrey:skaro_stone"
                 }
               }
             },
             {
               "type": "minecraft:block",
               "result_state": {
-                "Name": "gallifrey:cobbled_kaletite"
+                "Name": "gallifrey:skaro_deepslate"
               }
             }
           ]

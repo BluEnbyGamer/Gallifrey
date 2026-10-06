@@ -2324,12 +2324,83 @@ public class GallifreyModBlocks {
     public static final Block GOOD_HEAVENS = registerBlock("good_heavens",
             new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE)));
 
-    public static final Block COBBLED_KALETITE = registerBlock("cobbled_kaletite",
-            new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE).requiresTool()));
+    // Skaro stone set.  These deliberately mirror the Overworld stone family,
+    // but use Skaro textures so the dimension has its own identity.
+    public static final Block SKARO_STONE = registerBlock("skaro_stone",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).requiresTool()));
+    public static final Block SKARO_COBBLESTONE = registerBlock("skaro_cobblestone",
+            new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE).requiresTool()));
+    public static final Block SKARO_ANDESITE = registerBlock("skaro_andesite",
+            new Block(FabricBlockSettings.copyOf(Blocks.ANDESITE).requiresTool()));
+    public static final Block SKARO_DIORITE = registerBlock("skaro_diorite",
+            new Block(FabricBlockSettings.copyOf(Blocks.DIORITE).requiresTool()));
+    public static final Block SKARO_GRANITE = registerBlock("skaro_granite",
+            new Block(FabricBlockSettings.copyOf(Blocks.GRANITE).requiresTool()));
+    public static final Block SKARO_POLISHED_ANDESITE = registerBlock("skaro_polished_andesite",
+            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE).requiresTool()));
+    public static final Block SKARO_POLISHED_DIORITE = registerBlock("skaro_polished_diorite",
+            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE).requiresTool()));
+    public static final Block SKARO_POLISHED_GRANITE = registerBlock("skaro_polished_granite",
+            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE).requiresTool()));
+    public static final Block POLISHED_SKARO_STONE = registerBlock("polished_skaro_stone",
+            new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE).requiresTool()));
+    public static final Block SKARO_DEEPSLATE = registerBlock("skaro_deepslate",
+            new Block(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).requiresTool()));
+    public static final Block SKARO_COBBLED_DEEPSLATE = registerBlock("skaro_cobbled_deepslate",
+            new Block(FabricBlockSettings.copyOf(Blocks.COBBLED_DEEPSLATE).requiresTool()));
+    public static final Block SKARO_DEEPSLATE_TILES = registerBlock("skaro_deepslate_tiles",
+            new Block(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_TILES).requiresTool()));
 
-    public static final Block KALETITE = registerBlock("kaletite",
-            new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE).requiresTool()));
+    public static final Block SKARO_STONE_STAIRS = registerBlock("skaro_stone_stairs",
+            new StairsBlock(SKARO_STONE.getDefaultState(), FabricBlockSettings.copyOf(SKARO_STONE)));
+    public static final Block SKARO_STONE_SLAB = registerBlock("skaro_stone_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_STONE)));
+    public static final Block SKARO_COBBLESTONE_STAIRS = registerBlock("skaro_cobblestone_stairs",
+            new StairsBlock(SKARO_COBBLESTONE.getDefaultState(), FabricBlockSettings.copyOf(SKARO_COBBLESTONE)));
+    public static final Block SKARO_COBBLESTONE_SLAB = registerBlock("skaro_cobblestone_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_COBBLESTONE)));
+    public static final Block SKARO_ANDESITE_STAIRS = registerBlock("skaro_andesite_stairs",
+            new StairsBlock(SKARO_ANDESITE.getDefaultState(), FabricBlockSettings.copyOf(SKARO_ANDESITE)));
+    public static final Block SKARO_ANDESITE_SLAB = registerBlock("skaro_andesite_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_ANDESITE)));
+    public static final Block SKARO_DIORITE_STAIRS = registerBlock("skaro_diorite_stairs",
+            new StairsBlock(SKARO_DIORITE.getDefaultState(), FabricBlockSettings.copyOf(SKARO_DIORITE)));
+    public static final Block SKARO_DIORITE_SLAB = registerBlock("skaro_diorite_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_DIORITE)));
+    public static final Block SKARO_GRANITE_STAIRS = registerBlock("skaro_granite_stairs",
+            new StairsBlock(SKARO_GRANITE.getDefaultState(), FabricBlockSettings.copyOf(SKARO_GRANITE)));
+    public static final Block SKARO_GRANITE_SLAB = registerBlock("skaro_granite_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_GRANITE)));
+    public static final Block SKARO_POLISHED_ANDESITE_STAIRS = registerBlock("skaro_polished_andesite_stairs",
+            new StairsBlock(SKARO_POLISHED_ANDESITE.getDefaultState(), FabricBlockSettings.copyOf(SKARO_POLISHED_ANDESITE)));
+    public static final Block SKARO_POLISHED_ANDESITE_SLAB = registerBlock("skaro_polished_andesite_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_POLISHED_ANDESITE)));
+    public static final Block SKARO_POLISHED_DIORITE_STAIRS = registerBlock("skaro_polished_diorite_stairs",
+            new StairsBlock(SKARO_POLISHED_DIORITE.getDefaultState(), FabricBlockSettings.copyOf(SKARO_POLISHED_DIORITE)));
+    public static final Block SKARO_POLISHED_DIORITE_SLAB = registerBlock("skaro_polished_diorite_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_POLISHED_DIORITE)));
+    public static final Block SKARO_POLISHED_GRANITE_STAIRS = registerBlock("skaro_polished_granite_stairs",
+            new StairsBlock(SKARO_POLISHED_GRANITE.getDefaultState(), FabricBlockSettings.copyOf(SKARO_POLISHED_GRANITE)));
+    public static final Block SKARO_POLISHED_GRANITE_SLAB = registerBlock("skaro_polished_granite_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_POLISHED_GRANITE)));
+    public static final Block POLISHED_SKARO_STONE_STAIRS = registerBlock("polished_skaro_stone_stairs",
+            new StairsBlock(POLISHED_SKARO_STONE.getDefaultState(), FabricBlockSettings.copyOf(POLISHED_SKARO_STONE)));
+    public static final Block POLISHED_SKARO_STONE_SLAB = registerBlock("polished_skaro_stone_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(POLISHED_SKARO_STONE)));
+    public static final Block SKARO_DEEPSLATE_STAIRS = registerBlock("skaro_deepslate_stairs",
+            new StairsBlock(SKARO_DEEPSLATE.getDefaultState(), FabricBlockSettings.copyOf(SKARO_DEEPSLATE)));
+    public static final Block SKARO_DEEPSLATE_SLAB = registerBlock("skaro_deepslate_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_DEEPSLATE)));
+    public static final Block SKARO_COBBLED_DEEPSLATE_STAIRS = registerBlock("skaro_cobbled_deepslate_stairs",
+            new StairsBlock(SKARO_COBBLED_DEEPSLATE.getDefaultState(), FabricBlockSettings.copyOf(SKARO_COBBLED_DEEPSLATE)));
+    public static final Block SKARO_COBBLED_DEEPSLATE_SLAB = registerBlock("skaro_cobbled_deepslate_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_COBBLED_DEEPSLATE)));
+    public static final Block SKARO_DEEPSLATE_TILES_STAIRS = registerBlock("skaro_deepslate_tiles_stairs",
+            new StairsBlock(SKARO_DEEPSLATE_TILES.getDefaultState(), FabricBlockSettings.copyOf(SKARO_DEEPSLATE_TILES)));
+    public static final Block SKARO_DEEPSLATE_TILES_SLAB = registerBlock("skaro_deepslate_tiles_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(SKARO_DEEPSLATE_TILES)));
 
+    // Kept for existing Skaro architecture; the old Kaletite stone/cobble blocks are removed.
     public static final Block KALETITE_BRICKS = registerBlock("kaletite_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE).requiresTool()));
 

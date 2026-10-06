@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "gallifrey:skaro_stone"
+    }
+  },
+  "result": {
+    "item": "gallifrey:polished_skaro_stone",
+    "count": 4
+  }
+}

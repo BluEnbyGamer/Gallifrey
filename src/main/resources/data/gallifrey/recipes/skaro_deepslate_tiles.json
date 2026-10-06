@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "gallifrey:skaro_deepslate"
+    }
+  },
+  "result": {
+    "item": "gallifrey:skaro_deepslate_tiles",
+    "count": 4
+  }
+}

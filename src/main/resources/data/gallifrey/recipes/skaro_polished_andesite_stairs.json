@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "gallifrey:skaro_polished_andesite"
+    }
+  },
+  "result": {
+    "item": "gallifrey:skaro_polished_andesite_stairs",
+    "count": 4
+  }
+}

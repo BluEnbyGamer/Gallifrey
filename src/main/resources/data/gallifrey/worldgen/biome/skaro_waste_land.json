@@ -27,8 +27,10 @@
     [],
     [],
     [
-      "gallifrey:skaro_kaletite_placed",
-      "gallifrey:dalekanium_ore_placed"
+      "gallifrey:dalekanium_ore_placed",
+      "gallifrey:skaro_andesite_placed",
+      "gallifrey:skaro_diorite_placed",
+      "gallifrey:skaro_granite_placed"
     ],
     [],
     [],
