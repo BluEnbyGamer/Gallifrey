@@ -385,7 +385,7 @@ public final class GallifreyTabSections {
 
     public static final CreativeSection CLASSIC = CreativeSection.of(
             "classic",
-            () -> new ItemStack(GallifreyModBlocks.CLASSIC_STONE),
+            () -> new ItemStack(GallifreyModBlocks.CLASSIC_GRASS),
             entries -> {
                 entries.add(GallifreyModBlocks.CLASSIC_STONE);
                 entries.add(GallifreyModBlocks.CLASSIC_GRASS);
@@ -413,7 +413,7 @@ public final class GallifreyTabSections {
 
     public static final CreativeSection SKARO = CreativeSection.of(
             "skaro",
-            () -> new ItemStack(GallifreyModBlocks.SKARO_STONE),
+            () -> new ItemStack(GallifreyModBlocks.WASTED_GRASS),
             entries -> {
                 entries.add(GallifreyModBlocks.WASTED_DIRT);
                 entries.add(GallifreyModBlocks.WASTED_GRASS);
