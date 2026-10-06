@@ -47,9 +47,7 @@
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
-      "minecraft:underwater_magma",
-      "gallifrey:sonic_crystal_ore_placed",
-      "gallifrey:white_point_ore_placed"
+      "minecraft:underwater_magma"
     ],
     [],
     [],

@@ -27,7 +27,6 @@ import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 import com.timelordmod.gallifrey.networking.packets.SonicCasingPacket;
 import com.timelordmod.gallifrey.networking.packets.SonicShadesPacket;
 
-
 import com.timelordmod.gallifrey.world.feature.PrehistoricVinesFeature;
 public class GallifreyMod implements ModInitializer {
 	public static final String MOD_ID = "gallifrey";
@@ -151,8 +150,7 @@ public class GallifreyMod implements ModInitializer {
 		//Moon-pine wood set
 
 
-		//GRASS BLOCKS REGISTERY
-		com.timelordmod.gallifrey.block.custom.GrassInteractions.register();
+
 
 
 		// Custom Dimension Stuff

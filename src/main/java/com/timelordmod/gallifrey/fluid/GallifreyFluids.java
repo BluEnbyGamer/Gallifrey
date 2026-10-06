@@ -45,8 +45,11 @@ public class GallifreyFluids {
                     .sounds(BlockSoundGroup.SLIME)) {
                 @Override
                 public void onEntityCollision(BlockState state, net.minecraft.world.World world, BlockPos pos, Entity entity) {
-                    entity.setOnFireFor(2);
                     super.onEntityCollision(state, world, pos, entity);
+                    // Radiation remains swimmable, but it must still burn anything
+                    // that enters it. Apply the fire after vanilla water collision
+                    // handling so the water tag cannot immediately extinguish it.
+                    entity.setOnFireFor(2);
                 }
             }
     );

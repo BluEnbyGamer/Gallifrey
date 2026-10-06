@@ -4,8 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "ServerWorldSeedMixin",
-    "ClassicHurtSoundMixin",
-    "EatGrassGoalMixin"
+    "ClassicHurtSoundMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",

@@ -1,16 +1,8 @@
 {
   "replace": false,
   "values": [
-    "gallifrey:classic_grass",
-    "gallifrey:classic_dirt",
-    "gallifrey:classic_sand",
-    "gallifrey:classic_gravel",
     "gallifrey:mars_sand",
     "gallifrey:lost_dirt",
-    "gallifrey:dirt_roundel",
-    "gallifrey:classic_dirt",
-    "gallifrey:classic_grass",
-    "gallifrey:classic_sand",
-    "gallifrey:classic_gravel"
+    "gallifrey:dirt_roundel"
   ]
 }

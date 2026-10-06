@@ -46,28 +46,61 @@ public class SkaroSkyRenderer implements DimensionRenderingRegistry.SkyRenderer 
         // Celestial bodies are sky objects. Do not let one moon's quad
         // depth-test against another moon or the terrain depth buffer.
         RenderSystem.disableDepthTest();
+        RenderSystem.disableCull();
         RenderSystem.depthMask(false);
 
         // A single Skaro sun. Its warm light disappears smoothly into the night.
         drawCelestialBody(matrices, buffer, tessellator, dayAngle, 0.0F, 30.0F,
                 SUN_TEXTURE, 1.0F - nightStrength);
 
-        // Flidor — the largest, natural moon; slow, prominent orbit.
-        drawCelestialBody(matrices, buffer, tessellator, dayAngle * 0.95F + 12.0F,
-                -28.0F, 23.0F, FLIDOR_TEXTURE, nightStrength);
+        // Keep all three moons above the horizon while their horizontal positions
+        // continue to orbit at different speeds. This makes the three-moon system
+        // visibly present throughout the Skaro night instead of allowing an orbit
+        // to put a moon below the player's horizon.
+        drawMoon(matrices, buffer, tessellator, dayAngle * 0.95F + 12.0F,
+                18.0F, 23.0F, FLIDOR_TEXTURE, nightStrength);
 
         // Falkus — artificial moon; visibly faster orbit, inspired by its rapid cycle.
-        drawCelestialBody(matrices, buffer, tessellator, dayAngle * 3.0F + 145.0F,
-                22.0F, 15.0F, FALKUS_TEXTURE, nightStrength);
+        drawMoon(matrices, buffer, tessellator, dayAngle * 3.0F + 145.0F,
+                10.0F, 15.0F, FALKUS_TEXTURE, nightStrength);
 
         // Omega Mysterium — distant and small, with a much slower apparent motion.
-        drawCelestialBody(matrices, buffer, tessellator, dayAngle * 0.35F + 260.0F,
-                -65.0F, 9.0F, OMEGA_TEXTURE, nightStrength);
+        drawMoon(matrices, buffer, tessellator, dayAngle * 0.35F + 260.0F,
+                26.0F, 9.0F, OMEGA_TEXTURE, nightStrength);
 
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.depthMask(true);
         RenderSystem.enableDepthTest();
+        RenderSystem.enableCull();
         RenderSystem.disableBlend();
+    }
+
+    private void drawMoon(MatrixStack matrices, BufferBuilder buffer, Tessellator tessellator,
+                           float orbitYawDegrees, float elevationDegrees, float size,
+                           Identifier texture, float alpha) {
+        if (alpha <= 0.01F) {
+            return;
+        }
+
+        matrices.push();
+        // A fixed positive elevation keeps each moon in the visible night sky;
+        // the yaw provides the actual orbital movement around Skaro.
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0F + orbitYawDegrees));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(elevationDegrees));
+
+        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+        RenderSystem.setShaderTexture(0, texture);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, alpha);
+
+        Matrix4f matrix = matrices.peek().getPositionMatrix();
+        buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
+        buffer.vertex(matrix, -size, 100.0F, -size).texture(0.0F, 0.0F).next();
+        buffer.vertex(matrix,  size, 100.0F, -size).texture(1.0F, 0.0F).next();
+        buffer.vertex(matrix,  size, 100.0F,  size).texture(1.0F, 1.0F).next();
+        buffer.vertex(matrix, -size, 100.0F,  size).texture(0.0F, 1.0F).next();
+        BufferRenderer.drawWithGlobalProgram(buffer.end());
+
+        matrices.pop();
     }
 
     private void drawCelestialBody(MatrixStack matrices, BufferBuilder buffer, Tessellator tessellator,
