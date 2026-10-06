@@ -31,7 +31,11 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
-    public static final SonicCrystalItem SONIC_CRYSTAL = new SonicCrystalItem(
+    public static final RawSonicCrystalItem RAW_SONIC_CRYSTAL = new RawSonicCrystalItem(
+            new FabricItemSettings()
+    );
+
+    public static final RefinedSonicCrystalItem REFINED_SONIC_CRYSTAL = new RefinedSonicCrystalItem(
             new FabricItemSettings()
     );
 
@@ -238,7 +242,8 @@ public class GallifreyModItems {
         registerItem("location_circuit",LOCATION_CIRCUIT);
         registerItem("interface_circuit", INTERFACE_CIRCUIT);
         registerItem("dimension_circuit",DIMENSION_CIRCUIT);
-        registerItem("sonic_crystal",SONIC_CRYSTAL);
+        registerItem("raw_sonic_crystal",RAW_SONIC_CRYSTAL);
+        registerItem("refined_sonic_crystal",REFINED_SONIC_CRYSTAL);
         registerItem("steel_ingot", STEEL_INGOT);
         registerItem("raw_steel", RAW_STEEL);
         registerItem("dalekanium_ingot", DALEKANIUM_INGOT);
