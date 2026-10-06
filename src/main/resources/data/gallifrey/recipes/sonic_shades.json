@@ -12,10 +12,10 @@
       "item": "minecraft:copper_ingot"
     },
     "S": {
-      "item": "gallifrey:refined_sonic_crystal"
+      "item": "gallifrey:sonic_crystal"
     },
     "B": {
-      "item": "gallifrey:atrium_core"
+      "item": "gallifrey:blank_circuit"
     }
   },
   "result": {

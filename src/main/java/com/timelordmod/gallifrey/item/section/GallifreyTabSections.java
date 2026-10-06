@@ -156,6 +156,7 @@ public final class GallifreyTabSections {
             () -> new ItemStack(GallifreyModItems.PREHISTORIC_INGOT),
             entries -> {
                 entries.add(GallifreyModBlocks.PREHISTORIC_SAPLING);
+                entries.add(GallifreyModBlocks.POTTED_PREHISTORIC_SAPLING);
                 entries.add(GallifreyModBlocks.PREHISTORIC_VINE);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LEAVES);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LOG);
@@ -222,8 +223,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
                 entries.add(GallifreyModItems.SONIC_SHADES);
                 entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
-                entries.add(GallifreyModItems.RAW_SONIC_CRYSTAL);
-                entries.add(GallifreyModItems.REFINED_SONIC_CRYSTAL);
+                entries.add(GallifreyModItems.SONIC_CRYSTAL);
                 entries.add(GallifreyModBlocks.SONIC_CRYSTAL_ORE);
                 entries.add(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE);
                 entries.add(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE);
@@ -338,8 +338,6 @@ public final class GallifreyTabSections {
             () -> new ItemStack(GallifreyModBlocks.MARS_STONE),
             entries -> {
                 entries.add(GallifreyModBlocks.MARS_SAND);
-                entries.add(GallifreyModBlocks.MARS_SAND_STAIRS);
-                entries.add(GallifreyModBlocks.MARS_SAND_SLAB);
                 entries.add(GallifreyModBlocks.MARS_SANDSTONE_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_SANDSTONE_SLAB);
                 entries.add(GallifreyModBlocks.MARS_STONE_STAIRS);

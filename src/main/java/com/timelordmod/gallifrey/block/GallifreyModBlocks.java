@@ -112,8 +112,6 @@ public class GallifreyModBlocks {
     public static final Block MARS_CHISELED_STONE_BRICKS = registerBlock("mars_chizelled_stone_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.CHISELED_STONE_BRICKS)));
     // Mars building variants (crystals and ores intentionally excluded).
-    public static final Block MARS_SAND_STAIRS = registerBlock("mars_sand_stairs", new StairsBlock(MARS_SAND.getDefaultState(), FabricBlockSettings.copyOf(MARS_SAND)));
-    public static final Block MARS_SAND_SLAB = registerBlock("mars_sand_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_SAND)));
     public static final Block MARS_SANDSTONE_STAIRS = registerBlock("mars_sandstone_stairs", new StairsBlock(MARS_SANDSTONE.getDefaultState(), FabricBlockSettings.copyOf(MARS_SANDSTONE)));
     public static final Block MARS_SANDSTONE_SLAB = registerBlock("mars_sandstone_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_SANDSTONE)));
     public static final Block MARS_STONE_STAIRS = registerBlock("mars_stone_stairs", new StairsBlock(MARS_STONE.getDefaultState(), FabricBlockSettings.copyOf(MARS_STONE)));
