@@ -142,7 +142,7 @@ public class GallifreyModItems {
     public static final ArmorItem PREHISTORIC_LEGGINGS = new ArmorItem(PrehistoricArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final ArmorItem PREHISTORIC_BOOTS = new ArmorItem(PrehistoricArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS, new FabricItemSettings());
 
-    // STEEL GEAR (same stats as iron)
+    // STEEL GEAR
     public static final Item STEEL_TEMPLATE = new Item(new FabricItemSettings());
     public static final SwordItem STEEL_SWORD = new SwordItem(ModToolMaterials.STEEL, 3, -2.4F, new FabricItemSettings());
     public static final PickaxeItem STEEL_PICKAXE = new PickaxeItem(ModToolMaterials.STEEL, 1, -2.8F, new FabricItemSettings());
@@ -154,7 +154,7 @@ public class GallifreyModItems {
     public static final ArmorItem STEEL_LEGGINGS = new ArmorItem(ModArmorMaterials.STEEL, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final ArmorItem STEEL_BOOTS = new ArmorItem(ModArmorMaterials.STEEL, ArmorItem.Type.BOOTS, new FabricItemSettings());
 
-    // DALEKANIUM GEAR (same stats as iron)
+    // DALEKANIUM GEAR
     public static final Item LIQUID_DALEKANIUM = new Item(new FabricItemSettings());
     public static final SwordItem DALEKANIUM_SWORD = new SwordItem(ModToolMaterials.DALEKANIUM, 3, -2.4F, new FabricItemSettings());
     public static final PickaxeItem DALEKANIUM_PICKAXE = new PickaxeItem(ModToolMaterials.DALEKANIUM, 1, -2.8F, new FabricItemSettings());
@@ -166,8 +166,7 @@ public class GallifreyModItems {
     public static final ArmorItem DALEKANIUM_LEGGINGS = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final ArmorItem DALEKANIUM_BOOTS = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.BOOTS, new FabricItemSettings());
 
-    // METALERTANIUM GEAR (same stats as netherite, and fireproof like netherite)
-    public static final Item METALERT_DUST = new Item(new FabricItemSettings());
+    // METALERTANIUM GEAR
     public static final Item LIQUID_METALERTANIUM = new Item(new FabricItemSettings().fireproof());
     public static final Item METALERTANIUM_INGOT = new Item(new FabricItemSettings().fireproof());
     public static final SwordItem METALERTANIUM_SWORD = new SwordItem(ModToolMaterials.METALERTANIUM, 3, -2.4F, new FabricItemSettings().fireproof());
@@ -277,7 +276,6 @@ public class GallifreyModItems {
         registerItem("dalekanium_leggings", DALEKANIUM_LEGGINGS);
         registerItem("dalekanium_boots", DALEKANIUM_BOOTS);
 
-        registerItem("metalert_dust", METALERT_DUST);
         registerItem("liquid_metalertanium", LIQUID_METALERTANIUM);
         registerItem("metalertanium_ingot", METALERTANIUM_INGOT);
         registerItem("metalertanium_sword", METALERTANIUM_SWORD);

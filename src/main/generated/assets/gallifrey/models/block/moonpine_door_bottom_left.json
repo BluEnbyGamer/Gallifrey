@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_bottom_left",
-  "textures": {
-    "bottom": "gallifrey:block/moonpine_door_bottom",
-    "top": "gallifrey:block/moonpine_door_top"
-  }
-}

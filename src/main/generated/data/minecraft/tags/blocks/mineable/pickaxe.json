@@ -32,6 +32,11 @@
     "gallifrey:nether_white_point_ore",
     "gallifrey:prehistoric_ore",
     "gallifrey:deepslate_prehistoric_ore",
+    "gallifrey:grate_block",
+    "gallifrey:thick_grate_block",
+    "gallifrey:rusty_grate_block",
+    "gallifrey:rusty_thick_grate_block",
+    "gallifrey:metalertanium_block",
     "gallifrey:basalt_roundel",
     "gallifrey:bone_roundel",
     "gallifrey:vanilla_quartz_roundel",
@@ -71,9 +76,6 @@
     "gallifrey:white_concrete_roundel",
     "gallifrey:yellow_concrete_roundel",
     "gallifrey:hartnell_roundel",
-    "gallifrey:hartnell_wall",
-    "gallifrey:atrium_ore",
-    "gallifrey:deepslate_atrium_ore",
-    "gallifrey:atrium_block"
+    "gallifrey:hartnell_wall"
   ]
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "gallifrey:block/ulanda_planks",
-    "side": "gallifrey:block/ulanda_planks",
-    "top": "gallifrey:block/ulanda_planks"
-  }
-}

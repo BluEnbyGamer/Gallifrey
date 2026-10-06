@@ -21,6 +21,10 @@
     "gallifrey:cobbled_kaletite",
     "gallifrey:kaletite",
     "gallifrey:kaletite_bricks",
-    "gallifrey:hartnell_wall"
+    "gallifrey:hartnell_wall",
+    "gallifrey:grate_block",
+    "gallifrey:thick_grate_block",
+    "gallifrey:rusty_grate_block",
+    "gallifrey:rusty_thick_grate_block"
   ]
 }

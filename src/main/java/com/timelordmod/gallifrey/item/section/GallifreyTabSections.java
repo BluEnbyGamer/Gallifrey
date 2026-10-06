@@ -398,7 +398,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.DALEKANIUM_LEGGINGS);
                 entries.add(GallifreyModItems.DALEKANIUM_BOOTS);
                 // Metalertanium
-                entries.add(GallifreyModItems.METALERT_DUST);
                 entries.add(GallifreyModItems.LIQUID_METALERTANIUM);
                 entries.add(GallifreyModItems.METALERTANIUM_INGOT);
                 entries.add(GallifreyModBlocks.METALERTANIUM_BLOCK);

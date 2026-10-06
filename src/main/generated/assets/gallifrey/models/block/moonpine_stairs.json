@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "gallifrey:block/moonpine_planks",
-    "side": "gallifrey:block/moonpine_planks",
-    "top": "gallifrey:block/moonpine_planks"
-  }
-}
