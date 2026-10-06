@@ -13,6 +13,7 @@ public class GallifreySounds {
 
     public static final SoundEvent DWXIV = registerSound("dw_xiv_music");
     public static final SoundEvent GALLIFREY = registerSound("gallifrey_music");
+    public static final SoundEvent MONDAS_BLIZZARD_WIND = registerSound("mondas_blizzard_wind");
 
     // Classic Minecraft sound set
     public static final SoundEvent CLASSIC_STONE_STEP_0 = registerSound("classic_stone_step_0");

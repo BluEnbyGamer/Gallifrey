@@ -571,5 +571,10 @@
     "sounds": [
       "gallifrey:type70mat"
     ]
+  },
+  "mondas_blizzard_wind": {
+    "sounds": [
+      "gallifrey:mondas_blizzard_wind"
+    ]
   }
 }

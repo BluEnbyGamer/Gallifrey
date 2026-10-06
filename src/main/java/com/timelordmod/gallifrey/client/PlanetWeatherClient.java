@@ -5,6 +5,7 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.Vec3d;
+import com.timelordmod.gallifrey.GallifreySounds;
 import org.joml.Vector3f;
 
 /**
@@ -25,7 +26,17 @@ public final class PlanetWeatherClient {
     private static int marsStormTicks = 0;
     private static boolean marsSandstorm = false;
 
+    private static final int MONDAS_MIN_CALM_TICKS = 5_400;   // 4.5 minutes
+    private static final int MONDAS_MAX_CALM_TICKS = 12_000;  // 10 minutes
+    private static final int MONDAS_MIN_STORM_TICKS = 900;    // 45 seconds
+    private static final int MONDAS_MAX_STORM_TICKS = 1_800;  // 90 seconds
+    private static final int MONDAS_WIND_REPEAT_TICKS = 160;  // just under 8 seconds
+
+    private static int mondasCalmTicks = 5_400;
+    private static int mondasStormTicks = 0;
     private static int mondasTick = 0;
+    private static int mondasWindTicks = 0;
+    private static boolean mondasBlizzard = false;
 
     private PlanetWeatherClient() {}
 
@@ -40,12 +51,26 @@ public final class PlanetWeatherClient {
         if ("mondas".equals(dimension)) {
             tickMondasBlizzard(world, client);
         } else if ("mars".equals(dimension)) {
+            resetMondas();
             tickMarsSandstorm(world, client);
         } else {
+            resetMondas();
             marsSandstorm = false;
             marsStormTicks = 0;
             marsCalmTicks = MARS_MIN_CALM_TICKS;
         }
+    }
+
+    public static boolean isMondasBlizzard() {
+        return mondasBlizzard;
+    }
+
+    /** 0..1 intensity, useful for Mondas fog and other client effects. */
+    public static float mondasBlizzardIntensity(float tickDelta) {
+        if (!mondasBlizzard) return 0.0F;
+        float fadeIn = Math.min(1.0F, (MONDAS_MIN_STORM_TICKS - mondasStormTicks + 80.0F) / 80.0F);
+        float fadeOut = Math.min(1.0F, (mondasStormTicks + tickDelta) / 80.0F);
+        return Math.min(fadeIn, fadeOut);
     }
 
     public static boolean isMarsSandstorm() {
@@ -56,7 +81,6 @@ public final class PlanetWeatherClient {
     public static float marsStormIntensity(float tickDelta) {
         if (!marsSandstorm) return 0.0F;
 
-        // Fade in/out over the first/last 100 ticks instead of popping in.
         float fadeIn = Math.min(1.0F, (MARS_MIN_STORM_TICKS - marsStormTicks + 100.0F) / 100.0F);
         float fadeOut = Math.min(1.0F, (marsStormTicks + tickDelta) / 100.0F);
         return Math.min(fadeIn, fadeOut);
@@ -65,34 +89,88 @@ public final class PlanetWeatherClient {
     private static void tickMondasBlizzard(ClientWorld world, MinecraftClient client) {
         mondasTick++;
 
+        if (!mondasBlizzard) {
+            if (--mondasCalmTicks <= 0) {
+                // Each weather window has a 30% chance of becoming a blizzard.
+                if (world.random.nextFloat() < 0.30F) {
+                    mondasBlizzard = true;
+                    mondasStormTicks = randomMondasStormDuration(world);
+                    mondasWindTicks = 0;
+                } else {
+                    mondasCalmTicks = randomMondasCalmDuration(world);
+                }
+            }
+            return;
+        }
+
+        mondasStormTicks--;
+        mondasWindTicks--;
+
+        if (mondasWindTicks <= 0) {
+            // The sound is deliberately local and short, then restarted with a
+            // slight pitch change so the wind does not sound like one frozen loop.
+            world.playSound(
+                    client.player.getX(), client.player.getY(), client.player.getZ(),
+                    GallifreySounds.MONDAS_BLIZZARD_WIND,
+                    net.minecraft.sound.SoundCategory.WEATHER,
+                    0.72F,
+                    0.82F + world.random.nextFloat() * 0.18F,
+                    false
+            );
+            mondasWindTicks = MONDAS_WIND_REPEAT_TICKS + world.random.nextInt(25);
+        }
+
         // Heavy snowfall: several snowflakes every tick over a much larger area.
-        int particles = 8 + world.random.nextInt(7);
+        int particles = 18 + world.random.nextInt(12);
         if (mondasTick % 2 == 0) {
-            particles += 8;
+            particles += 12;
         }
 
         for (int i = 0; i < particles; i++) {
-            double x = client.player.getX() + (world.random.nextDouble() * 44.0D - 22.0D);
-            double y = client.player.getY() + 8.0D + world.random.nextDouble() * 18.0D;
-            double z = client.player.getZ() + (world.random.nextDouble() * 44.0D - 22.0D);
+            double x = client.player.getX() + (world.random.nextDouble() * 52.0D - 26.0D);
+            double y = client.player.getY() + 8.0D + world.random.nextDouble() * 20.0D;
+            double z = client.player.getZ() + (world.random.nextDouble() * 52.0D - 26.0D);
 
-            // Strong sideways wind makes the blizzard visibly blow across the screen.
-            double windX = 0.12D + world.random.nextDouble() * 0.24D;
-            double windZ = -0.08D + world.random.nextDouble() * 0.16D;
-            double fall = -0.35D - world.random.nextDouble() * 0.28D;
+            double windX = 0.16D + world.random.nextDouble() * 0.34D;
+            double windZ = -0.12D + world.random.nextDouble() * 0.24D;
+            double fall = -0.42D - world.random.nextDouble() * 0.32D;
 
             world.addParticle(ParticleTypes.SNOWFLAKE, x, y, z, windX, fall, windZ);
         }
 
-        // Occasional thicker snow clumps to sell the whiteout effect.
         if (mondasTick % 3 == 0) {
-            for (int i = 0; i < 4; i++) {
-                double x = client.player.getX() + (world.random.nextDouble() * 34.0D - 17.0D);
-                double y = client.player.getY() + 6.0D + world.random.nextDouble() * 14.0D;
-                double z = client.player.getZ() + (world.random.nextDouble() * 34.0D - 17.0D);
-                world.addParticle(ParticleTypes.SNOWFLAKE, x, y, z, 0.18D, -0.22D, 0.0D);
+            for (int i = 0; i < 6; i++) {
+                double x = client.player.getX() + (world.random.nextDouble() * 40.0D - 20.0D);
+                double y = client.player.getY() + 6.0D + world.random.nextDouble() * 16.0D;
+                double z = client.player.getZ() + (world.random.nextDouble() * 40.0D - 20.0D);
+                world.addParticle(ParticleTypes.SNOWFLAKE, x, y, z,
+                        0.22D + world.random.nextDouble() * 0.18D,
+                        -0.28D - world.random.nextDouble() * 0.15D, 0.0D);
             }
         }
+
+        if (mondasStormTicks <= 0) {
+            mondasBlizzard = false;
+            mondasCalmTicks = randomMondasCalmDuration(world);
+            mondasWindTicks = 0;
+        }
+    }
+
+    private static void resetMondas() {
+        mondasBlizzard = false;
+        mondasStormTicks = 0;
+        mondasCalmTicks = MONDAS_MIN_CALM_TICKS;
+        mondasWindTicks = 0;
+    }
+
+    private static int randomMondasCalmDuration(ClientWorld world) {
+        return MONDAS_MIN_CALM_TICKS
+                + world.random.nextInt(MONDAS_MAX_CALM_TICKS - MONDAS_MIN_CALM_TICKS + 1);
+    }
+
+    private static int randomMondasStormDuration(ClientWorld world) {
+        return MONDAS_MIN_STORM_TICKS
+                + world.random.nextInt(MONDAS_MAX_STORM_TICKS - MONDAS_MIN_STORM_TICKS + 1);
     }
 
     private static void tickMarsSandstorm(ClientWorld world, MinecraftClient client) {
