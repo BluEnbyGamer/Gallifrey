@@ -139,6 +139,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.CLASSIC_DIRT);
         addDrop(GallifreyModBlocks.CLASSIC_COBBLE);
         addDrop(GallifreyModBlocks.CLASSIC_PLANKS);
+        addDrop(GallifreyModBlocks.CLASSIC_STAIRS);
+        addDrop(GallifreyModBlocks.CLASSIC_SLAB);
+        addDrop(GallifreyModBlocks.CLASSIC_FENCE);
+        addDrop(GallifreyModBlocks.CLASSIC_FENCE_GATE);
         addDrop(GallifreyModBlocks.CLASSIC_LOG);
         addDrop(GallifreyModBlocks.CLASSIC_SAPLING);
         addDrop(GallifreyModBlocks.CLASSIC_LEAVES, leavesDrops(GallifreyModBlocks.CLASSIC_LEAVES, GallifreyModBlocks.CLASSIC_SAPLING, 0.05f));

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/classic_slab"
+    },
+    "type=double": {
+      "model": "gallifrey:block/classic_planks"
+    },
+    "type=top": {
+      "model": "gallifrey:block/classic_slab_top"
+    }
+  }
+}

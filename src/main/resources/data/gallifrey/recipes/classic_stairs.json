@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:classic_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_stairs",
+    "count": 4
+  }
+}

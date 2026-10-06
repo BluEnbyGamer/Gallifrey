@@ -393,6 +393,10 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_DIRT);
                 entries.add(GallifreyModBlocks.CLASSIC_COBBLE);
                 entries.add(GallifreyModBlocks.CLASSIC_PLANKS);
+                entries.add(GallifreyModBlocks.CLASSIC_STAIRS);
+                entries.add(GallifreyModBlocks.CLASSIC_SLAB);
+                entries.add(GallifreyModBlocks.CLASSIC_FENCE);
+                entries.add(GallifreyModBlocks.CLASSIC_FENCE_GATE);
                 entries.add(GallifreyModBlocks.CLASSIC_LOG);
                 entries.add(GallifreyModBlocks.CLASSIC_SAPLING);
                 entries.add(GallifreyModBlocks.CLASSIC_LEAVES);

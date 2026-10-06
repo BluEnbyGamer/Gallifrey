@@ -58,6 +58,10 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_DIRT = registerBlock("classic_dirt", new Block(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_COBBLE = registerBlock("classic_cobble", new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_PLANKS = registerBlock("classic_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_STAIRS = registerBlock("classic_stairs", new StairsBlock(CLASSIC_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_WOOD).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_SLAB = registerBlock("classic_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_FENCE = registerBlock("classic_fence", new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_FENCE_GATE = registerBlock("classic_fence_gate", new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD).sounds(CLASSIC_WOOD_SOUNDS), WoodType.OAK));
     public static final Block CLASSIC_LOG = registerBlock("classic_log", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).sounds(CLASSIC_WOOD_SOUNDS)));
     public static final Block CLASSIC_SAPLING = registerBlock("classic_sapling", new SaplingBlock(new ClassicSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_LEAVES = registerBlock("classic_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).sounds(CLASSIC_GRASS_SOUNDS)));
@@ -2366,6 +2370,10 @@ public class GallifreyModBlocks {
         // Classic wood set
         flammable.add(CLASSIC_LOG, 5, 5);
         flammable.add(CLASSIC_PLANKS, 5, 20);
+        flammable.add(CLASSIC_STAIRS, 5, 20);
+        flammable.add(CLASSIC_SLAB, 5, 20);
+        flammable.add(CLASSIC_FENCE, 5, 20);
+        flammable.add(CLASSIC_FENCE_GATE, 5, 20);
         flammable.add(CLASSIC_LEAVES, 30, 60);
 
         // TARDIS wood set
