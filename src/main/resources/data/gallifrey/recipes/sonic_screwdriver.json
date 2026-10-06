@@ -7,13 +7,13 @@
   ],
   "key": {
     "S": {
-      "item": "gallifrey:sonic_crystal"
+      "item": "gallifrey:refined_sonic_crystal"
     },
     "C": {
       "item": "minecraft:copper_ingot"
     },
     "B": {
-      "item": "gallifrey:blank_circuit"
+      "item": "gallifrey:atrium_core"
     },
     "R": {
       "item": "minecraft:redstone"

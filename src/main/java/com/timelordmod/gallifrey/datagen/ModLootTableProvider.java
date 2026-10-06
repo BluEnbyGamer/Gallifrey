@@ -232,9 +232,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL);
         addDrop(GallifreyModBlocks.HARTNELL_ROUNDEL);
         addDrop(GallifreyModBlocks.TREE_TAPPER);
-        addDrop(GallifreyModBlocks.SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
-        addDrop(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
-        addDrop(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE, GallifreyModItems.SONIC_CRYSTAL));
+        addDrop(GallifreyModBlocks.SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.SONIC_CRYSTAL_ORE, GallifreyModItems.RAW_SONIC_CRYSTAL));
+        addDrop(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE, GallifreyModItems.RAW_SONIC_CRYSTAL));
+        addDrop(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE, oreDrops(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE, GallifreyModItems.RAW_SONIC_CRYSTAL));
         addDrop(GallifreyModBlocks.WHITE_POINT_ORE, oreDrops(GallifreyModBlocks.WHITE_POINT_ORE, GallifreyModItems.WHITE_POINT_STAR));
         addDrop(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE, oreDrops(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE, GallifreyModItems.WHITE_POINT_STAR));
         addDrop(GallifreyModBlocks.NETHER_WHITE_POINT_ORE, oreDrops(GallifreyModBlocks.NETHER_WHITE_POINT_ORE, GallifreyModItems.WHITE_POINT_STAR));
