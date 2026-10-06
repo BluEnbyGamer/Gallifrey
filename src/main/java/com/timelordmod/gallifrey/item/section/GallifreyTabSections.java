@@ -223,7 +223,8 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
                 entries.add(GallifreyModItems.SONIC_SHADES);
                 entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
-                entries.add(GallifreyModItems.SONIC_CRYSTAL);
+                entries.add(GallifreyModItems.RAW_SONIC_CRYSTAL);
+                entries.add(GallifreyModItems.REFINED_SONIC_CRYSTAL);
                 entries.add(GallifreyModBlocks.SONIC_CRYSTAL_ORE);
                 entries.add(GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE);
                 entries.add(GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE);

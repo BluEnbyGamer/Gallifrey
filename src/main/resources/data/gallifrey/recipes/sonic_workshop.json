@@ -10,10 +10,10 @@
       "item": "minecraft:iron_ingot"
     },
     "S": {
-      "item": "gallifrey:sonic_crystal"
+      "item": "gallifrey:refined_sonic_crystal"
     },
     "B": {
-      "item": "gallifrey:blank_circuit"
+      "item": "gallifrey:interface_circuit"
     },
     "R": {
       "item": "minecraft:redstone"
