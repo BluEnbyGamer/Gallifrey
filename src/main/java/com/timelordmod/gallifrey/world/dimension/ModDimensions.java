@@ -36,4 +36,7 @@ public final class ModDimensions {
     /** Lost Reality: a checkerboard patchwork of the other dimensions' biomes. */
     public static final RegistryKey<World> LOST_REALITY_LEVEL_KEY = RegistryKey.of(
             RegistryKeys.WORLD, GallifreyMod.id("lost_reality"));
+
+    public static final RegistryKey<World> CLASSIC_LEVEL_KEY = RegistryKey.of(
+            RegistryKeys.WORLD, GallifreyMod.id("classic"));
 }

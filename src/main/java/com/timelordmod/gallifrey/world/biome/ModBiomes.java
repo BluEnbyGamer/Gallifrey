@@ -128,6 +128,8 @@ public class ModBiomes {
         GenerationSettings.LookupBackedBuilder generationSettings = new GenerationSettings.LookupBackedBuilder(placedFeatures, carvers);
         DefaultBiomeFeatures.addLandCarvers(generationSettings);
         DefaultBiomeFeatures.addDefaultOres(generationSettings);
+        generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.SONIC_CRYSTAL_ORE_PLACED_KEY);
+        generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.WHITE_POINT_ORE_PLACED_KEY);
         featureCustomizer.accept(generationSettings);
         DefaultBiomeFeatures.addDefaultMushrooms(generationSettings);
 

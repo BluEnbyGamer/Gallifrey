@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "gallifrey:mars_diorite"
+    }
+  },
+  "result": {
+    "item": "gallifrey:mars_diorite_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "gallifrey:mars_sandstone"
+    }
+  },
+  "result": {
+    "item": "gallifrey:mars_sandstone_stairs",
+    "count": 4
+  }
+}

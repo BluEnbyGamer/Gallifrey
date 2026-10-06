@@ -103,18 +103,18 @@ public class ModPlacedFeatures {
                 ));
 
         register(context, SONIC_CRYSTAL_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SONIC_CRYSTAL_ORE_KEY),
-                 ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
-                    HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+                 ModOrePlacement.modifiersWithCount(4, // Gold-like rarity
+                    HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(32))));
         register(context, NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NETHER_SONIC_CRYSTAL_ORE_KEY),
-                ModOrePlacement.modifiersWithCount(12, // Veins per Chunk
-                    HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+                ModOrePlacement.modifiersWithCount(4, // Gold-like rarity
+                    HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(96))));
 
         register(context, WHITE_POINT_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WHITE_POINT_ORE_KEY),
-                ModOrePlacement.modifiersWithCount(4, // Veins per Chunk
-                        HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+                ModOrePlacement.modifiersWithCount(1, // Netherite-like rarity
+                        HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(16))));
         register(context, NETHER_WHITE_POINT_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NETHER_WHITE_POINT_ORE_KEY),
-                ModOrePlacement.modifiersWithCount(6, // Veins per Chunk
-                        HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(80))));
+                ModOrePlacement.modifiersWithCount(1, // Netherite-like rarity
+                        HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(32))));
 
 
         register(context, MARS_IRON_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MARS_IRON_ORE_KEY),

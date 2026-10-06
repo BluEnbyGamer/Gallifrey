@@ -407,6 +407,130 @@
           "if_true": {
             "type": "minecraft:noise_threshold",
             "noise": "gallifrey:lost_patch",
+            "min_threshold": 0.9,
+            "max_threshold": 1.05
+          },
+          "then_run": {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:stone_depth",
+              "offset": 3,
+              "add_surface_depth": false,
+              "secondary_depth_range": 0,
+              "surface_type": "floor"
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "minecraft:netherrack"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:above_preliminary_surface"
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:noise_threshold",
+            "noise": "gallifrey:lost_patch",
+            "min_threshold": 1.05,
+            "max_threshold": 1.2
+          },
+          "then_run": {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:stone_depth",
+              "offset": 3,
+              "add_surface_depth": false,
+              "secondary_depth_range": 0,
+              "surface_type": "floor"
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "minecraft:end_stone"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:above_preliminary_surface"
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:noise_threshold",
+            "noise": "gallifrey:lost_patch",
+            "min_threshold": 1.2,
+            "max_threshold": 1.35
+          },
+          "then_run": {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:stone_depth",
+              "offset": 3,
+              "add_surface_depth": false,
+              "secondary_depth_range": 0,
+              "surface_type": "floor"
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "gallifrey:good_heavens"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:above_preliminary_surface"
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:noise_threshold",
+            "noise": "gallifrey:lost_patch",
+            "min_threshold": 1.35,
+            "max_threshold": 1.5
+          },
+          "then_run": {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:stone_depth",
+              "offset": 3,
+              "add_surface_depth": false,
+              "secondary_depth_range": 0,
+              "surface_type": "floor"
+            },
+            "then_run": {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "gallifrey:exquisite_cat"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:above_preliminary_surface"
+        },
+        "then_run": {
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:noise_threshold",
+            "noise": "gallifrey:lost_patch",
             "min_threshold": 0.5,
             "max_threshold": 2.0
           },

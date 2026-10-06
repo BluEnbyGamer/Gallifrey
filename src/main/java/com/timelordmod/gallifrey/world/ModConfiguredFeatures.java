@@ -69,8 +69,8 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> netherSonicCrystalOres = List.of(
                 OreFeatureConfig.createTarget(netherReplacables, GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE.getDefaultState()));
 
-        register(context, SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldSonicCrystalOres, 12));
-        register(context, NETHER_SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherSonicCrystalOres, 12));
+        register(context, SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldSonicCrystalOres, 9));
+        register(context, NETHER_SONIC_CRYSTAL_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherSonicCrystalOres, 9));
 
         // --- White Point ---
         List<OreFeatureConfig.Target> overworldWhitePointOres = List.of(
@@ -80,8 +80,8 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> netherWhitePointOres = List.of(
                 OreFeatureConfig.createTarget(netherReplacables, GallifreyModBlocks.NETHER_WHITE_POINT_ORE.getDefaultState()));
 
-        register(context, WHITE_POINT_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldWhitePointOres, 12));
-        register(context, NETHER_WHITE_POINT_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherWhitePointOres, 12));
+        register(context, WHITE_POINT_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldWhitePointOres, 3));
+        register(context, NETHER_WHITE_POINT_ORE_KEY, Feature.ORE, new OreFeatureConfig(netherWhitePointOres, 3));
 
         // --- Mars Iron ---
         List<OreFeatureConfig.Target> marsIronOres = List.of(

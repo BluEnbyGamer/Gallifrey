@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "gallifrey:mars_sand"
+    "gallifrey:mars_sand",
+    "gallifrey:mars_sand_stairs",
+    "gallifrey:mars_sand_slab",
+    "gallifrey:classic_sand",
+    "gallifrey:classic_gravel"
   ]
 }

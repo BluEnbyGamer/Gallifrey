@@ -338,6 +338,34 @@ public final class GallifreyTabSections {
             () -> new ItemStack(GallifreyModBlocks.MARS_STONE),
             entries -> {
                 entries.add(GallifreyModBlocks.MARS_SAND);
+                entries.add(GallifreyModBlocks.MARS_SAND_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_SAND_SLAB);
+                entries.add(GallifreyModBlocks.MARS_SANDSTONE_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_SANDSTONE_SLAB);
+                entries.add(GallifreyModBlocks.MARS_STONE_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_STONE_SLAB);
+                entries.add(GallifreyModBlocks.MARS_COBBLESTONE_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_COBBLESTONE_SLAB);
+                entries.add(GallifreyModBlocks.MARS_ANDESITE_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_ANDESITE_SLAB);
+                entries.add(GallifreyModBlocks.MARS_DIORITE_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_DIORITE_SLAB);
+                entries.add(GallifreyModBlocks.MARS_GRANITE_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_GRANITE_SLAB);
+                entries.add(GallifreyModBlocks.POLISHED_MARS_STONE_STAIRS);
+                entries.add(GallifreyModBlocks.POLISHED_MARS_STONE_SLAB);
+                entries.add(GallifreyModBlocks.MARS_POLISHED_ANDESITE_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_POLISHED_ANDESITE_SLAB);
+                entries.add(GallifreyModBlocks.MARS_POLISHED_DIORITE_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_POLISHED_DIORITE_SLAB);
+                entries.add(GallifreyModBlocks.MARS_POLISHED_GRANITE_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_POLISHED_GRANITE_SLAB);
+                entries.add(GallifreyModBlocks.MARS_STONE_BRICKS_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_STONE_BRICKS_SLAB);
+                entries.add(GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED_SLAB);
+                entries.add(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS_STAIRS);
+                entries.add(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS_SLAB);
                 entries.add(GallifreyModBlocks.MARS_SANDSTONE);
                 entries.add(GallifreyModBlocks.MARS_STONE);
                 entries.add(GallifreyModBlocks.MARS_COBBLESTONE);
@@ -355,6 +383,30 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.PISS_CRYSTAL);
             }
     );
+
+    public static final CreativeSection CLASSIC = CreativeSection.of(
+            "classic",
+            () -> new ItemStack(GallifreyModBlocks.CLASSIC_STONE),
+            entries -> {
+                entries.add(GallifreyModBlocks.CLASSIC_STONE);
+                entries.add(GallifreyModBlocks.CLASSIC_GRASS);
+                entries.add(GallifreyModBlocks.CLASSIC_DIRT);
+                entries.add(GallifreyModBlocks.CLASSIC_COBBLE);
+                entries.add(GallifreyModBlocks.CLASSIC_PLANKS);
+                entries.add(GallifreyModBlocks.CLASSIC_LOG);
+                entries.add(GallifreyModBlocks.CLASSIC_LEAVES);
+                entries.add(GallifreyModBlocks.CLASSIC_SAND);
+                entries.add(GallifreyModBlocks.CLASSIC_GRAVEL);
+                entries.add(GallifreyModBlocks.CLASSIC_GOLD);
+                entries.add(GallifreyModBlocks.CLASSIC_IRON);
+                entries.add(GallifreyModBlocks.CLASSIC_GLASS);
+                entries.add(GallifreyModBlocks.CLASSIC_SPONGE);
+                entries.add(GallifreyModBlocks.CLASSIC_BRICKS);
+                entries.add(GallifreyModBlocks.CLASSIC_TNT);
+                entries.add(GallifreyModBlocks.CLASSIC_WOOL_WINDOWS);
+                entries.add(GallifreyModBlocks.CLASSIC_RED_FLOWER);
+                entries.add(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
+            });
 
     public static final CreativeSection SKARO = CreativeSection.of(
             "skaro",
@@ -422,6 +474,7 @@ public final class GallifreyTabSections {
             ROUNDELS,
             CLOTHING,
             MARS,
+            CLASSIC,
             SKARO
     );
 

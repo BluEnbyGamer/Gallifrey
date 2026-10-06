@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "top": "gallifrey:block/mars/mars_cobblestone",
+    "bottom": "gallifrey:block/mars/mars_cobblestone",
+    "side": "gallifrey:block/mars/mars_cobblestone"
+  }
+}

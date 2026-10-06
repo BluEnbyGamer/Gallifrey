@@ -12,7 +12,8 @@ import java.util.function.Supplier;
 /**
  * Armour tiers for the mod's metals.
  *
- * STEEL and DALEKANIUM copy vanilla IRON exactly.
+ * STEEL is a small step above iron while remaining well below diamond.
+ * DALEKANIUM copies vanilla IRON exactly.
  * METALERTANIUM copies vanilla NETHERITE exactly.
  *
  * The name is also the texture name. In 1.20.1 the game always looks for worn armour at
@@ -21,7 +22,7 @@ import java.util.function.Supplier;
  */
 public enum ModArmorMaterials implements ArmorMaterial {
     //            name            durability  boots legs chest helmet  ench  equip sound                          toughness  knockback
-    STEEL(        "steel",         15,         2,    5,   6,    2,      9,    SoundEvents.ITEM_ARMOR_EQUIP_IRON,      0.0F,      0.0F,
+    STEEL(        "steel",         18,         2,    5,   7,    2,      10,   SoundEvents.ITEM_ARMOR_EQUIP_IRON,      0.5F,      0.0F,
             () -> Ingredient.ofItems(GallifreyModItems.STEEL_INGOT)),
     DALEKANIUM(   "dalekanium",    15,         2,    5,   6,    2,      9,    SoundEvents.ITEM_ARMOR_EQUIP_IRON,      0.0F,      0.0F,
             () -> Ingredient.ofItems(GallifreyModItems.DALEKANIUM_INGOT)),

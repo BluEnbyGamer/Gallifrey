@@ -74,6 +74,26 @@ public class GallifreyMod implements ModInitializer {
 				ModPlacedFeatures.ATRIUM_ORE_SMALL_PLACED_KEY
 		);
 
+		// Nether ore generation: both rare ores use the Nether-specific configured targets.
+		BiomeModifications.addFeature(
+				BiomeSelectors.includeByKey(
+						BiomeKeys.NETHER_WASTES, BiomeKeys.SOUL_SAND_VALLEY, BiomeKeys.CRIMSON_FOREST,
+						BiomeKeys.WARPED_FOREST, BiomeKeys.BASALT_DELTAS),
+				GenerationStep.Feature.UNDERGROUND_ORES,
+				ModPlacedFeatures.NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY);
+		BiomeModifications.addFeature(
+				BiomeSelectors.includeByKey(
+						BiomeKeys.NETHER_WASTES, BiomeKeys.SOUL_SAND_VALLEY, BiomeKeys.CRIMSON_FOREST,
+						BiomeKeys.WARPED_FOREST, BiomeKeys.BASALT_DELTAS),
+				GenerationStep.Feature.UNDERGROUND_ORES,
+				ModPlacedFeatures.NETHER_WHITE_POINT_ORE_PLACED_KEY);
+
+		// Sonic Crystal also belongs in the vanilla Overworld.
+		BiomeModifications.addFeature(
+				BiomeSelectors.foundInOverworld(),
+				GenerationStep.Feature.UNDERGROUND_ORES,
+				ModPlacedFeatures.SONIC_CRYSTAL_ORE_PLACED_KEY);
+
 		GallifreyCreativeTab.register();
 		ModBoats.registerBoats();
 		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, ModBiomes.TREEBORG_FOREST, 0.3d);

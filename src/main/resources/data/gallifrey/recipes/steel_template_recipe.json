@@ -1,17 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "pattern": [
-    "aaa",
-    "aba",
-    "aaa"
+    "DID",
+    "IPI",
+    "DPD"
   ],
   "key": {
-    "a": {
-      "item": "gallifrey:steel_block"
+    "D": {
+      "item": "minecraft:diamond"
     },
-    "b": {
-      "item": "minecraft:netherite_upgrade_smithing_template"
+    "I": {
+      "item": "gallifrey:steel_ingot"
+    },
+    "P": {
+      "item": "minecraft:paper"
     }
   },
   "result": {

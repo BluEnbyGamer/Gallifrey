@@ -3,6 +3,8 @@ package com.timelordmod.gallifrey.block;
 import com.timelordmod.gallifrey.item.custom.SonicWorkshopItem;
 
 import com.timelordmod.gallifrey.GallifreyMod;
+import com.timelordmod.gallifrey.GallifreySounds;
+import com.timelordmod.gallifrey.GallifreySounds;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
@@ -41,6 +43,35 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 public class GallifreyModBlocks {
 
     // ============================================================
+    // CLASSIC BLOCKS
+    // ============================================================
+
+    // Classic-era blocks and their custom 2009-era sound groups.
+    private static final BlockSoundGroup CLASSIC_STONE_SOUNDS = new BlockSoundGroup(1.0F, 1.0F, GallifreySounds.CLASSIC_STONE_STEP_0, GallifreySounds.CLASSIC_STONE_STEP_1, GallifreySounds.CLASSIC_STONE_STEP_2, GallifreySounds.CLASSIC_STONE_STEP_3, GallifreySounds.CLASSIC_STONE_STEP_3);
+    private static final BlockSoundGroup CLASSIC_GRASS_SOUNDS = new BlockSoundGroup(1.0F, 1.0F, GallifreySounds.CLASSIC_GRASS_STEP_0, GallifreySounds.CLASSIC_GRASS_STEP_1, GallifreySounds.CLASSIC_GRASS_STEP_2, GallifreySounds.CLASSIC_GRASS_STEP_3, GallifreySounds.CLASSIC_GRASS_STEP_3);
+    private static final BlockSoundGroup CLASSIC_WOOD_SOUNDS = new BlockSoundGroup(1.0F, 1.0F, GallifreySounds.CLASSIC_WOOD_STEP_0, GallifreySounds.CLASSIC_WOOD_STEP_1, GallifreySounds.CLASSIC_WOOD_STEP_2, GallifreySounds.CLASSIC_WOOD_STEP_3, GallifreySounds.CLASSIC_WOOD_STEP_3);
+    private static final BlockSoundGroup CLASSIC_GRAVEL_SOUNDS = new BlockSoundGroup(1.0F, 1.0F, GallifreySounds.CLASSIC_GRAVEL_STEP_0, GallifreySounds.CLASSIC_GRAVEL_STEP_1, GallifreySounds.CLASSIC_GRAVEL_STEP_2, GallifreySounds.CLASSIC_GRAVEL_STEP_3, GallifreySounds.CLASSIC_GRAVEL_STEP_3);
+
+    public static final Block CLASSIC_STONE = registerBlock("classic_stone", new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_GRASS = registerBlock("classic_grass", new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(CLASSIC_GRASS_SOUNDS)));
+    public static final Block CLASSIC_DIRT = registerBlock("classic_dirt", new Block(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(CLASSIC_GRASS_SOUNDS)));
+    public static final Block CLASSIC_COBBLE = registerBlock("classic_cobble", new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_PLANKS = registerBlock("classic_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_LOG = registerBlock("classic_log", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_LEAVES = registerBlock("classic_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).sounds(CLASSIC_GRASS_SOUNDS)));
+    public static final Block CLASSIC_SAND = registerBlock("classic_sand", new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND).sounds(CLASSIC_GRAVEL_SOUNDS)));
+    public static final Block CLASSIC_GRAVEL = registerBlock("classic_gravel", new FallingBlock(FabricBlockSettings.copyOf(Blocks.GRAVEL).sounds(CLASSIC_GRAVEL_SOUNDS)));
+    public static final Block CLASSIC_GOLD = registerBlock("classic_gold", new Block(FabricBlockSettings.copyOf(Blocks.GOLD_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_IRON = registerBlock("classic_iron", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_GLASS = registerBlock("classic_glass", new GlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).sounds(BlockSoundGroup.GLASS)));
+    public static final Block CLASSIC_SPONGE = registerBlock("classic_sponge", new Block(FabricBlockSettings.copyOf(Blocks.SPONGE).sounds(CLASSIC_GRASS_SOUNDS)));
+    public static final Block CLASSIC_BRICKS = registerBlock("classic_bricks", new Block(FabricBlockSettings.copyOf(Blocks.BRICKS).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_TNT = registerBlock("classic_tnt", new Block(FabricBlockSettings.copyOf(Blocks.TNT).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_WOOL_WINDOWS = registerBlock("classic_wool_windows", new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL).sounds(BlockSoundGroup.WOOL)));
+    public static final Block CLASSIC_RED_FLOWER = registerBlock("classic_red_flower", new FlowerbedBlock(FabricBlockSettings.copyOf(Blocks.RED_TULIP)));
+    public static final Block CLASSIC_YELLOW_FLOWER = registerBlock("classic_yellow_flower", new FlowerbedBlock(FabricBlockSettings.copyOf(Blocks.DANDELION)));
+
+    // ============================================================
     // MARS BLOCKS
     // ============================================================
     /** Falling Mars sand, matching vanilla sand behaviour. */
@@ -75,6 +106,36 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS)));
     public static final Block MARS_CHISELED_STONE_BRICKS = registerBlock("mars_chizelled_stone_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.CHISELED_STONE_BRICKS)));
+    // Mars building variants (crystals and ores intentionally excluded).
+    public static final Block MARS_SAND_STAIRS = registerBlock("mars_sand_stairs", new StairsBlock(MARS_SAND.getDefaultState(), FabricBlockSettings.copyOf(MARS_SAND)));
+    public static final Block MARS_SAND_SLAB = registerBlock("mars_sand_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_SAND)));
+    public static final Block MARS_SANDSTONE_STAIRS = registerBlock("mars_sandstone_stairs", new StairsBlock(MARS_SANDSTONE.getDefaultState(), FabricBlockSettings.copyOf(MARS_SANDSTONE)));
+    public static final Block MARS_SANDSTONE_SLAB = registerBlock("mars_sandstone_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_SANDSTONE)));
+    public static final Block MARS_STONE_STAIRS = registerBlock("mars_stone_stairs", new StairsBlock(MARS_STONE.getDefaultState(), FabricBlockSettings.copyOf(MARS_STONE)));
+    public static final Block MARS_STONE_SLAB = registerBlock("mars_stone_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_STONE)));
+    public static final Block MARS_COBBLESTONE_STAIRS = registerBlock("mars_cobblestone_stairs", new StairsBlock(MARS_COBBLESTONE.getDefaultState(), FabricBlockSettings.copyOf(MARS_COBBLESTONE)));
+    public static final Block MARS_COBBLESTONE_SLAB = registerBlock("mars_cobblestone_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_COBBLESTONE)));
+    public static final Block MARS_ANDESITE_STAIRS = registerBlock("mars_andesite_stairs", new StairsBlock(MARS_ANDESITE.getDefaultState(), FabricBlockSettings.copyOf(MARS_ANDESITE)));
+    public static final Block MARS_ANDESITE_SLAB = registerBlock("mars_andesite_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_ANDESITE)));
+    public static final Block MARS_DIORITE_STAIRS = registerBlock("mars_diorite_stairs", new StairsBlock(MARS_DIORITE.getDefaultState(), FabricBlockSettings.copyOf(MARS_DIORITE)));
+    public static final Block MARS_DIORITE_SLAB = registerBlock("mars_diorite_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_DIORITE)));
+    public static final Block MARS_GRANITE_STAIRS = registerBlock("mars_granite_stairs", new StairsBlock(MARS_GRANITE.getDefaultState(), FabricBlockSettings.copyOf(MARS_GRANITE)));
+    public static final Block MARS_GRANITE_SLAB = registerBlock("mars_granite_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_GRANITE)));
+    public static final Block POLISHED_MARS_STONE_STAIRS = registerBlock("polished_mars_stone_stairs", new StairsBlock(POLISHED_MARS_STONE.getDefaultState(), FabricBlockSettings.copyOf(POLISHED_MARS_STONE)));
+    public static final Block POLISHED_MARS_STONE_SLAB = registerBlock("polished_mars_stone_slab", new SlabBlock(FabricBlockSettings.copyOf(POLISHED_MARS_STONE)));
+    public static final Block MARS_POLISHED_ANDESITE_STAIRS = registerBlock("mars_polished_andesite_stairs", new StairsBlock(MARS_POLISHED_ANDESITE.getDefaultState(), FabricBlockSettings.copyOf(MARS_POLISHED_ANDESITE)));
+    public static final Block MARS_POLISHED_ANDESITE_SLAB = registerBlock("mars_polished_andesite_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_POLISHED_ANDESITE)));
+    public static final Block MARS_POLISHED_DIORITE_STAIRS = registerBlock("mars_polished_diorite_stairs", new StairsBlock(MARS_POLISHED_DIORITE.getDefaultState(), FabricBlockSettings.copyOf(MARS_POLISHED_DIORITE)));
+    public static final Block MARS_POLISHED_DIORITE_SLAB = registerBlock("mars_polished_diorite_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_POLISHED_DIORITE)));
+    public static final Block MARS_POLISHED_GRANITE_STAIRS = registerBlock("mars_polished_granite_stairs", new StairsBlock(MARS_POLISHED_GRANITE.getDefaultState(), FabricBlockSettings.copyOf(MARS_POLISHED_GRANITE)));
+    public static final Block MARS_POLISHED_GRANITE_SLAB = registerBlock("mars_polished_granite_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_POLISHED_GRANITE)));
+    public static final Block MARS_STONE_BRICKS_STAIRS = registerBlock("mars_stone_bricks_stairs", new StairsBlock(MARS_STONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(MARS_STONE_BRICKS)));
+    public static final Block MARS_STONE_BRICKS_SLAB = registerBlock("mars_stone_bricks_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_STONE_BRICKS)));
+    public static final Block MARS_STONE_BRICKS_CRACKED_STAIRS = registerBlock("mars_stone_bricks_cracked_stairs", new StairsBlock(MARS_STONE_BRICKS_CRACKED.getDefaultState(), FabricBlockSettings.copyOf(MARS_STONE_BRICKS_CRACKED)));
+    public static final Block MARS_STONE_BRICKS_CRACKED_SLAB = registerBlock("mars_stone_bricks_cracked_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_STONE_BRICKS_CRACKED)));
+    public static final Block MARS_CHISELED_STONE_BRICKS_STAIRS = registerBlock("mars_chizelled_stone_bricks_stairs", new StairsBlock(MARS_CHISELED_STONE_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(MARS_CHISELED_STONE_BRICKS)));
+    public static final Block MARS_CHISELED_STONE_BRICKS_SLAB = registerBlock("mars_chizelled_stone_bricks_slab", new SlabBlock(FabricBlockSettings.copyOf(MARS_CHISELED_STONE_BRICKS)));
+
     public static final Block MARS_IRON_ORE = registerBlock("mars_iron_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_ORE)));
     public static final Block PISS_CRYSTAL = registerBlock("piss_crystal",

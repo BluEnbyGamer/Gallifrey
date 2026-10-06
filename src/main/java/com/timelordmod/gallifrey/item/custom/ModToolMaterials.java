@@ -9,13 +9,14 @@ import java.util.function.Supplier;
 /**
  * Tool tiers for the mod's metals.
  *
- * STEEL and DALEKANIUM copy vanilla IRON exactly.
+ * STEEL is a small step above iron while remaining well below diamond.
+ * DALEKANIUM copies vanilla IRON exactly.
  * METALERTANIUM copies vanilla NETHERITE exactly.
  *
  * Order of the numbers: mining level, durability, mining speed, attack damage bonus, enchantability.
  */
 public enum ModToolMaterials implements ToolMaterial {
-    STEEL(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.ofItems(GallifreyModItems.STEEL_INGOT)),
+    STEEL(2, 300, 6.5F, 2.25F, 14, () -> Ingredient.ofItems(GallifreyModItems.STEEL_INGOT)),
     DALEKANIUM(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.ofItems(GallifreyModItems.DALEKANIUM_INGOT)),
     METALERTANIUM(4, 2031, 9.0F, 4.0F, 15, () -> Ingredient.ofItems(GallifreyModItems.METALERTANIUM_INGOT));
 
