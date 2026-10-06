@@ -1,9 +1,8 @@
 package com.timelordmod.gallifrey.block;
 
+import com.timelordmod.gallifrey.block.custom.SpreadingGrassBlock;
 import com.timelordmod.gallifrey.item.custom.SonicWorkshopItem;
-
 import com.timelordmod.gallifrey.GallifreyMod;
-import com.timelordmod.gallifrey.GallifreySounds;
 import com.timelordmod.gallifrey.GallifreySounds;
 import com.terraformersmc.terraform.sign.block.TerraformWallSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformWallHangingSignBlock;
@@ -28,6 +27,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import com.timelordmod.gallifrey.block.custom.SonicWorkshopBlock;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import java.util.List;
 
 
 /**
@@ -54,7 +54,10 @@ public class GallifreyModBlocks {
     private static final BlockSoundGroup CLASSIC_GRAVEL_SOUNDS = new BlockSoundGroup(1.0F, 1.0F, GallifreySounds.CLASSIC_GRAVEL_STEP_0, GallifreySounds.CLASSIC_GRAVEL_STEP_1, GallifreySounds.CLASSIC_GRAVEL_STEP_2, GallifreySounds.CLASSIC_GRAVEL_STEP_3, GallifreySounds.CLASSIC_GRAVEL_STEP_3);
 
     public static final Block CLASSIC_STONE = registerBlock("classic_stone", new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(CLASSIC_STONE_SOUNDS)));
-    public static final Block CLASSIC_GRASS = registerBlock("classic_grass", new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(CLASSIC_GRASS_SOUNDS)));
+    public static final Block CLASSIC_GRASS = registerBlock("classic_grass",
+            new SpreadingGrassBlock(() -> GallifreyModBlocks.CLASSIC_DIRT,
+                    () -> List.of(GallifreyModBlocks.CLASSIC_RED_FLOWER, GallifreyModBlocks.CLASSIC_YELLOW_FLOWER),
+                    FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_DIRT = registerBlock("classic_dirt", new Block(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_COBBLE = registerBlock("classic_cobble", new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_PLANKS = registerBlock("classic_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).sounds(CLASSIC_WOOD_SOUNDS)));
@@ -2334,11 +2337,12 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE).requiresTool()));
 
     public static final Block WASTED_DIRT = registerBlock("wasted_dirt",
-            new GlassBlock(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(BlockSoundGroup.ROOTED_DIRT)));
+            new Block(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(BlockSoundGroup.ROOTED_DIRT)));
 
     public static final Block WASTED_GRASS = registerBlock("wastedgrass",
-            new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.ROOTED_DIRT)));
-
+            new SpreadingGrassBlock(() -> GallifreyModBlocks.WASTED_DIRT,
+                    () -> List.of(Blocks.GRASS),
+                    FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.ROOTED_DIRT)));
     // ============================================================
     // REALITY BLOCKS (Lost Reality)
     // ============================================================

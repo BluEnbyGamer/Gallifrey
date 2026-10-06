@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
+    "gallifrey:classic_stone",
+    "gallifrey:classic_cobble",
+    "gallifrey:classic_gold",
+    "gallifrey:classic_iron",
+    "gallifrey:classic_bricks",
+    "gallifrey:classic_sponge",
+    "gallifrey:classic_glass",
+    "gallifrey:classic_tnt",
     "gallifrey:mars_sandstone",
     "gallifrey:mars_stone",
     "gallifrey:mars_cobblestone",
@@ -76,6 +84,14 @@
     "gallifrey:white_concrete_roundel",
     "gallifrey:yellow_concrete_roundel",
     "gallifrey:hartnell_roundel",
-    "gallifrey:hartnell_wall"
+    "gallifrey:hartnell_wall",
+    "gallifrey:classic_stone",
+    "gallifrey:classic_cobble",
+    "gallifrey:classic_gold",
+    "gallifrey:classic_iron",
+    "gallifrey:classic_glass",
+    "gallifrey:classic_sponge",
+    "gallifrey:classic_bricks",
+    "gallifrey:classic_tnt"
   ]
 }

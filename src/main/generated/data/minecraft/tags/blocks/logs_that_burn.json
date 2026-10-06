@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "gallifrey:classic_log",
     "gallifrey:ulanda_log",
     "gallifrey:ulanda_wood",
     "gallifrey:stripped_ulanda_log",
@@ -28,6 +29,7 @@
     "gallifrey:wasted_log",
     "gallifrey:wasted_wood",
     "gallifrey:prehistoric_log",
-    "gallifrey:stripped_prehistoric_log"
+    "gallifrey:stripped_prehistoric_log",
+    "gallifrey:classic_log"
   ]
 }

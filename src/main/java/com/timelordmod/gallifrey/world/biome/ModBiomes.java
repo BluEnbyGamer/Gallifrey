@@ -42,14 +42,14 @@ public class ModBiomes {
         var carvers = context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER);
 
         //Register all biomes easily
-        context.register(GALLIFREYAN_PLAINS, createBiome(false, 0.8F, 0.4F, 10638337, 15105551, 14641191, 15109680,
+        context.register(GALLIFREYAN_PLAINS, createBiome(true, false, 0.8F, 0.4F, 10638337, 15105551, 14641191, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     DefaultBiomeFeatures.addPlainsTallGrass(generationSettings);
                     DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
                     DefaultBiomeFeatures.addDefaultGrass(generationSettings);
                 }));
 
-        context.register(GALLIFREYAN_BIRCH_FOREST, createBiome(false, 0.6F, 0.6F, 10638337, 15105551, 14641191, 15109680,
+        context.register(GALLIFREYAN_BIRCH_FOREST, createBiome(true, false, 0.6F, 0.6F, 10638337, 15105551, 14641191, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     DefaultBiomeFeatures.addBirchTrees(generationSettings);
                     DefaultBiomeFeatures.addLargeFerns(generationSettings);
@@ -57,7 +57,7 @@ public class ModBiomes {
                     DefaultBiomeFeatures.addDefaultGrass(generationSettings);
                 }));
 
-        context.register(GALLIFREYAN_TAIGA, createBiome(false, 0.25F, 0.8F, 10638337, 15105551, 14641191, 15109680,
+        context.register(GALLIFREYAN_TAIGA, createBiome(true, false, 0.25F, 0.8F, 10638337, 15105551, 14641191, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     DefaultBiomeFeatures.addTaigaTrees(generationSettings);
                     DefaultBiomeFeatures.addSweetBerryBushes(generationSettings);
@@ -67,7 +67,7 @@ public class ModBiomes {
         // New: Ulanda Forest - dense Ulanda tree cover via the ULANDA_PLACED_KEY placed
         // feature (registered in ModPlacedFeatures), not a DefaultBiomeFeatures call,
         // since this is our own custom tree, not a vanilla default
-        context.register(GALLIFREYAN_ULANDA_FOREST, createBiome(false, 0.5F, 0.6F, 10638337, 15105551, 14641191, 15109680,
+        context.register(GALLIFREYAN_ULANDA_FOREST, createBiome(true, false, 0.5F, 0.6F, 10638337, 15105551, 14641191, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.ULANDA_PLACED_KEY);
                     DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
@@ -77,7 +77,7 @@ public class ModBiomes {
         // New: Tardis biome - placed at an extreme continentalness value in the
         // dimension's biome source (see gallifrey.json), matching real mushroom
         // fields rarity rather than approximating it with a placement chance
-        context.register(GALLIFREYAN_TARDIS_BIOME, createBiome(false, 0.5F, 0.5F, 10638337, 15105551, 15215, 15109680,
+        context.register(GALLIFREYAN_TARDIS_BIOME, createBiome(true, false, 0.5F, 0.5F, 10638337, 15105551, 15215, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.TARDIS_PLACED_KEY);
                     DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
@@ -88,13 +88,13 @@ public class ModBiomes {
         // ocean + ocean bands into one), which is what actually contains the Tardis
         // biome to its own extreme sliver instead of winning by default with nothing
         // else covering negative continentalness
-        context.register(GALLIFREYAN_WASTELAND, createBiome(false, 0.5F, 0.5F, 10638337, 15105551, 14641191, 15109680,
+        context.register(GALLIFREYAN_WASTELAND, createBiome(true, false, 0.5F, 0.5F, 10638337, 15105551, 14641191, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     DefaultBiomeFeatures.addSeagrassOnStone(generationSettings);
                     DefaultBiomeFeatures.addKelp(generationSettings);
                 }));
 
-        context.register(GALLIFREYAN_TREEBORG_FOREST, createBiome(false, 0.5F, 0.6F, 10638337, 15105551, 14641191, 15109680,
+        context.register(GALLIFREYAN_TREEBORG_FOREST, createBiome(true, false, 0.5F, 0.6F, 10638337, 15105551, 14641191, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.TREEBORG_PLACED_KEY);
                     DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
@@ -102,14 +102,17 @@ public class ModBiomes {
                 }));
 
         // Ash Forest - Gallifrey's ash trees, a bit sparser than the Treeborg forest
-        context.register(GALLIFREYAN_ASH_FOREST, createBiome(false, 0.5F, 0.6F, 10638337, 15105551, 14641191, 15109680,
+        context.register(GALLIFREYAN_ASH_FOREST, createBiome(true, false, 0.5F, 0.6F, 10638337, 15105551, 14641191, 15109680,
                 placedFeatures, carvers, generationSettings -> {
                     generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.ASH_PLACED_KEY);
                     DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
                     DefaultBiomeFeatures.addDefaultGrass(generationSettings);
                 }));
 
-        context.register(TREEBORG_FOREST, createBiome(false, 0.5F, 0.6F, 12638463, 7972607, 5274162, 5877296,
+        // Overworld biome (swapped in for vanilla forest by Biolith). It must NOT add the
+        // Gallifrey ores itself: GallifreyMod already adds the sonic crystal ore to every
+        // overworld biome, and listing it twice crashes with "Feature order cycle found".
+        context.register(TREEBORG_FOREST, createBiome(false, false, 0.5F, 0.6F, 12638463, 7972607, 5274162, 5877296,
                 placedFeatures, carvers, generationSettings -> {
                     generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.TREEBORG_PLACED_KEY);
                     DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
@@ -120,7 +123,8 @@ public class ModBiomes {
     // Helper method to eliminate copy-pasted boilerplate. featureCustomizer supplies
     // whatever's unique to that biome (its trees, its extra plants); the shared
     // defaults (carvers, ores, mushrooms) are added here once for all 4 biomes.
-    private static Biome createBiome(boolean precipitation, float temp, float downfall, int fog, int sky, int grass, int foliage,
+    // gallifreyOres: true for biomes in the Gallifrey dimension, false for overworld biomes.
+    private static Biome createBiome(boolean gallifreyOres, boolean precipitation, float temp, float downfall, int fog, int sky, int grass, int foliage,
                                      RegistryEntryLookup<PlacedFeature> placedFeatures, RegistryEntryLookup<ConfiguredCarver<?>> carvers,
                                      Consumer<GenerationSettings.LookupBackedBuilder> featureCustomizer) {
         SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
@@ -128,8 +132,10 @@ public class ModBiomes {
         GenerationSettings.LookupBackedBuilder generationSettings = new GenerationSettings.LookupBackedBuilder(placedFeatures, carvers);
         DefaultBiomeFeatures.addLandCarvers(generationSettings);
         DefaultBiomeFeatures.addDefaultOres(generationSettings);
-        generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.SONIC_CRYSTAL_ORE_PLACED_KEY);
-        generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.WHITE_POINT_ORE_PLACED_KEY);
+        if (gallifreyOres) {
+            generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.SONIC_CRYSTAL_ORE_PLACED_KEY);
+            generationSettings.feature(GenerationStep.Feature.UNDERGROUND_ORES, ModPlacedFeatures.WHITE_POINT_ORE_PLACED_KEY);
+        }
         featureCustomizer.accept(generationSettings);
         DefaultBiomeFeatures.addDefaultMushrooms(generationSettings);
 

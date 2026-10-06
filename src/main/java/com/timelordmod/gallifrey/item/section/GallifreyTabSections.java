@@ -156,7 +156,6 @@ public final class GallifreyTabSections {
             () -> new ItemStack(GallifreyModItems.PREHISTORIC_INGOT),
             entries -> {
                 entries.add(GallifreyModBlocks.PREHISTORIC_SAPLING);
-                entries.add(GallifreyModBlocks.POTTED_PREHISTORIC_SAPLING);
                 entries.add(GallifreyModBlocks.PREHISTORIC_VINE);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LEAVES);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LOG);
@@ -198,7 +197,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.NETHER_WHITE_POINT_ORE);
                 entries.add(GallifreyModItems.WHITE_POINT_STAR);
 
-                // Atrium
+                // Atrium, circuits & disks
                 entries.add(GallifreyModBlocks.ATRIUM_ORE);
                 entries.add(GallifreyModBlocks.DEEPSLATE_ATRIUM_ORE);
                 entries.add(GallifreyModBlocks.ATRIUM_BLOCK);
@@ -294,23 +293,23 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.EXPOSED_COPPER_ROUNDEL);
                 entries.add(GallifreyModBlocks.WEATHERED_COPPER_ROUNDEL);
                 entries.add(GallifreyModBlocks.OXIDIZED_COPPER_ROUNDEL);
-                //CONCRETE ROUNDELS
-                entries.add(GallifreyModBlocks.GRAY_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.GREEN_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.LIGHT_BLUE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.LIGHT_GRAY_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.LIME_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.MAGENTA_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.ORANGE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.PINK_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.PURPLE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.RED_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL);
                 entries.add(GallifreyModBlocks.POLISHED_ANDESITE_ROUNDEL);
                 entries.add(GallifreyModBlocks.POLISHED_DEEPSLATE_ROUNDEL);
                 entries.add(GallifreyModBlocks.POLISHED_DIORITE_ROUNDEL);
                 entries.add(GallifreyModBlocks.POLISHED_GRANITE_ROUNDEL);
+                //CONCRETE ROUNDELS
+                entries.add(GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIGHT_GRAY_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.GRAY_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.RED_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.ORANGE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIME_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.GREEN_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIGHT_BLUE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.PURPLE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.MAGENTA_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.PINK_CONCRETE_ROUNDEL);
             }
     );
 
@@ -385,7 +384,7 @@ public final class GallifreyTabSections {
 
     public static final CreativeSection CLASSIC = CreativeSection.of(
             "classic",
-            () -> new ItemStack(GallifreyModBlocks.CLASSIC_STONE),
+            () -> new ItemStack(GallifreyModBlocks.CLASSIC_GRASS),
             entries -> {
                 entries.add(GallifreyModBlocks.CLASSIC_STONE);
                 entries.add(GallifreyModBlocks.CLASSIC_GRASS);
@@ -413,7 +412,7 @@ public final class GallifreyTabSections {
 
     public static final CreativeSection SKARO = CreativeSection.of(
             "skaro",
-            () -> new ItemStack(GallifreyModBlocks.KALETITE),
+            () -> new ItemStack(GallifreyModBlocks.WASTED_GRASS),
             entries -> {
                 entries.add(GallifreyModBlocks.WASTED_DIRT);
                 entries.add(GallifreyModBlocks.WASTED_GRASS);
