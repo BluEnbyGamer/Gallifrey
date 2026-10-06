@@ -23,9 +23,6 @@
 		],
 		"fabric-datagen": [
 			"com.timelordmod.gallifrey.GallifreyModDataGenerator"
-		],
-		"jei_mod_plugin": [
-			"com.timelordmod.gallifrey.compat.jei.GallifreyJeiPlugin"
 		]
 	},
 	"mixins": [
@@ -38,5 +35,7 @@
 		"java": ">=17",
 		"geckolib": ">=4.8.3"
 	},
-	"suggests": {"regeneration": "*"}
+	"suggests": {
+		"regeneration": "*"
+	}
 }
