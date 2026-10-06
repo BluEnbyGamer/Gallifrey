@@ -516,6 +516,33 @@ public class GallifreyModClient implements ClientModInitializer {
         );
 
         // =========================================================
+        // CLASSIC RENDER LAYER
+        // =========================================================
+
+        // Classic saplings and flowers use transparent cross-plane textures.
+        // They must be rendered with cutout rather than the default solid layer
+        // or the transparent pixels appear as black squares in-world.
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.CLASSIC_SAPLING,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.CLASSIC_RED_FLOWER,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.CLASSIC_YELLOW_FLOWER,
+                RenderLayer.getCutout()
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.CLASSIC_LEAVES,
+                RenderLayer.getCutoutMipped()
+        );
+
+        // =========================================================
         // PREHISTORIC RENDER LAYER
         // =========================================================
 
