@@ -3,10 +3,10 @@
   "temperature": 2.0,
   "downfall": 0.0,
   "effects": {
-    "fog_color": 9073756,
-    "sky_color": 13872735,
+    "fog_color": 6082518,
+    "sky_color": 4103605,
     "water_color": 5607190,
-    "water_fog_color": 2635560,
+    "water_fog_color": 2785164,
     "grass_color": 7824977,
     "foliage_color": 6844216,
     "mood_sound": {
@@ -14,6 +14,18 @@
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2.0
+    },
+    "particle": {
+      "probability": 0.005,
+      "options": {
+        "type": "minecraft:dust",
+        "color": [
+          0.55,
+          0.64,
+          0.74
+        ],
+        "scale": 1.0
+      }
     }
   },
   "carvers": {
@@ -37,10 +49,7 @@
     [],
     [],
     [],
-    [
-      "gallifrey:wasted_oak_placed",
-      "gallifrey:wasted_birch_placed"
-    ]
+    []
   ],
   "spawners": {
     "monster": [],

@@ -37,10 +37,7 @@
     [],
     [],
     [],
-    [
-      "gallifrey:wasted_oak_placed",
-      "gallifrey:wasted_birch_placed"
-    ]
+    []
   ],
   "spawners": {
     "monster": [],
