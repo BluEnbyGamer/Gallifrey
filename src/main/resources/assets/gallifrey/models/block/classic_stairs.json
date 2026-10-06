@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/stairs",
   "textures": {
-    "bottom": "gallifrey:block/skaro/classic_planks",
-    "side": "gallifrey:block/skaro/classic_planks",
-    "top": "gallifrey:block/skaro/classic_planks"
+    "bottom": "gallifrey:block/classic_minecraft/classic_planks",
+    "side": "gallifrey:block/classic_minecraft/classic_planks",
+    "top": "gallifrey:block/classic_minecraft/classic_planks"
   }
 }

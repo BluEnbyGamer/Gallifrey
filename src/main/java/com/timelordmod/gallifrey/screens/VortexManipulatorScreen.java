@@ -62,8 +62,9 @@ public class VortexManipulatorScreen extends Screen {
 
     private void buildNavigation() {
         label("DIMENSION", left + 18, top + 74);
-        dimension = field(left + 18, top + 86, 464, "overworld or namespace:path");
+        dimension = field(left + 18, top + 86, 382, "overworld or namespace:path");
         dimension.setText("overworld");
+        addDrawableChild(btn(left + 406, top + 86, 76, 24, "DIM LIST", b -> client.setScreen(new VortexDimensionsScreen(this))));
 
         label("PLAYER TARGET — OPTIONAL", left + 18, top + 116);
         targetPlayer = field(left + 18, top + 128, 464, "Online player; overrides coordinates");
@@ -87,7 +88,7 @@ public class VortexManipulatorScreen extends Screen {
             addDrawableChild(selfDestructStatus);
             drawHintText = "";
         } else {
-            drawHintText = "READY • overworld, nether, end, Gallifrey, Skaro, Mars, Mondas, Classic, Pete's World, Lost Reality or namespace:path.";
+            drawHintText = "READY • use DIM LIST for built-in destinations, or enter namespace:dimension_id for other mods.";
         }
     }
 
@@ -208,6 +209,10 @@ public class VortexManipulatorScreen extends Screen {
                 screen.selfDestructStatus.setMessage(Text.literal("SELF-DESTRUCT ARMED — " + ((sd + 19) / 20) + "s   [CANCEL]"));
             }
         }
+    }
+
+    public void setDimensionValue(String value) {
+        if (dimension != null) dimension.setText(value);
     }
 
     private void teleport() {
