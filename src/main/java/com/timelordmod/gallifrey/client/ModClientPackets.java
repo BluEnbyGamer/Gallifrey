@@ -33,6 +33,13 @@ public final class ModClientPackets {
             });
         });
 
+        ClientPlayNetworking.registerGlobalReceiver(ModPackets.TARDIS_CLOSE_CONSOLE, (client, handler, buf, responseSender) ->
+                client.execute(() -> {
+                    if (client.currentScreen instanceof TardisMonitorScreen) {
+                        client.setScreen(null);
+                    }
+                }));
+
         ClientPlayNetworking.registerGlobalReceiver(ModPackets.VM_STATE, (client, handler, buf, responseSender) -> {
             PacketByteBuf copy = new PacketByteBuf(buf.copy());
             client.execute(() -> {

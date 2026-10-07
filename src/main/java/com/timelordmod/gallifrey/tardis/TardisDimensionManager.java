@@ -3,7 +3,10 @@ package com.timelordmod.gallifrey.tardis;
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.block.TardisExteriorBlock;
 import com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity;
+import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.GallifreySounds;
+import com.timelordmod.gallifrey.networking.ModPackets;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -154,12 +157,12 @@ public final class TardisDimensionManager {
             return false;
         }
 
-        tardis.generateInterior(interior);
-        Vec3d entry = interiorEntry(tardis);
+        // Changing the room invalidates the current interior layout. Safely eject
+        // everybody first, including the pilot who requested the change.
         for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
             if (registry.isInside(player, id) && player.getServerWorld() == interior) {
-                player.teleport(interior, entry.x, entry.y, entry.z,
-                        tardis.getCachedState().get(TardisExteriorBlock.ROTATION) * 45.0f, player.getPitch());
+                closeConsole(player);
+                exit(player);
             }
         }
 
@@ -238,6 +241,7 @@ public final class TardisDimensionManager {
 
     public static void tickFlight(MinecraftServer server) {
         TardisRegistryState registry = TardisRegistryState.get(server);
+        tickInteriorSafety(server, registry);
         for (TardisRegistryState.Record record : new java.util.ArrayList<>(registryRecords(registry))) {
             ServerWorld world = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.world())));
             if (world == null) continue;
@@ -261,6 +265,115 @@ public final class TardisDimensionManager {
                 }
             }
         }
+    }
+
+    /** Keeps players from falling into the void of the shared TARDIS pocket dimension. */
+    private static void tickInteriorSafety(MinecraftServer server, TardisRegistryState registry) {
+        ServerWorld interior = getInterior(server);
+        if (interior == null) return;
+
+        for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+            if (player.getServerWorld() != interior) continue;
+            UUID id = registry.getActiveTardis(player.getUuid());
+            if (id == null) continue;
+            TardisRegistryState.Record record = registry.get(id);
+            if (record == null) continue;
+
+            BlockPos origin = BlockPos.fromLong(record.origin());
+            // Interior templates are built around Y=64. If a player falls more
+            // than eight blocks below their TARDIS floor, return them above the
+            // physical console rather than letting them reach the world void.
+            if (player.getY() >= origin.getY() - 8) continue;
+
+            BlockPos console = tardisConsolePosition(interior, origin, record, server);
+            Vec3d target = console == null
+                    ? new Vec3d(origin.getX() + 0.5, origin.getY() + 2.0, origin.getZ() + 0.5)
+                    : new Vec3d(console.getX() + 0.5, console.getY() + 1.25, console.getZ() + 0.5);
+            player.teleport(interior, target.x, target.y, target.z, player.getYaw(), player.getPitch());
+            player.setVelocity(Vec3d.ZERO);
+            player.sendMessage(Text.literal("The TARDIS catches you and returns you to the console."), true);
+        }
+    }
+
+    /** Finds the registered console, falling back to a modest search only when needed. */
+    private static BlockPos tardisConsolePosition(ServerWorld interior, BlockPos origin, TardisRegistryState.Record record, MinecraftServer server) {
+        ServerWorld exterior = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.world())));
+        if (exterior != null) {
+            BlockPos exteriorPos = BlockPos.fromLong(record.pos());
+            if (exterior.getBlockEntity(exteriorPos) instanceof TardisExteriorBlockEntity tardis) {
+                BlockPos stored = tardis.getConsolePos();
+                if (stored != null && interior.getBlockState(stored).isOf(GallifreyModBlocks.TARDIS_CONSOLE)) {
+                    return stored;
+                }
+            }
+        }
+
+        // The console may have been broken in an older save before consolePos
+        // existed. Search only around the normal central console area.
+        for (int x = origin.getX() - 12; x <= origin.getX() + 12; x++) {
+            for (int y = Math.max(interior.getBottomY(), origin.getY() - 2); y <= origin.getY() + 8; y++) {
+                for (int z = origin.getZ() - 12; z <= origin.getZ() + 12; z++) {
+                    BlockPos pos = new BlockPos(x, y, z);
+                    if (interior.getBlockState(pos).isOf(GallifreyModBlocks.TARDIS_CONSOLE)) return pos;
+                }
+            }
+        }
+        return null;
+    }
+
+    /** Permanently removes a TARDIS and its pocket interior. */
+    public static boolean deleteTardis(MinecraftServer server, UUID id) {
+        TardisRegistryState registry = TardisRegistryState.get(server);
+        TardisRegistryState.Record record = registry.get(id);
+        if (record == null) return false;
+
+        ServerWorld exteriorWorld = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.world())));
+        BlockPos exteriorPos = BlockPos.fromLong(record.pos());
+
+        // Eject linked players before deleting the record so exit() can still
+        // resolve the physical exterior.
+        for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+            if (registry.isInside(player, id)) {
+                closeConsole(player);
+                if (exteriorWorld != null) {
+                    player.teleport(exteriorWorld, exteriorPos.getX() + 0.5, exteriorPos.getY() + 0.15,
+                            exteriorPos.getZ() + 0.5, player.getYaw(), player.getPitch());
+                }
+                registry.clearActive(player);
+            }
+        }
+
+        ServerWorld interior = getInterior(server);
+        if (interior != null) {
+            // The registry stores the origin but not the latest footprint. Clear
+            // a generous area around it so the generated interior is removed.
+            clearDeletedInterior(interior, BlockPos.fromLong(record.origin()));
+        }
+
+        if (exteriorWorld != null) {
+            exteriorWorld.getChunk(exteriorPos.getX() >> 4, exteriorPos.getZ() >> 4);
+            if (exteriorWorld.getBlockState(exteriorPos).isOf(GallifreyModBlocks.TARDIS_EXTERIOR)) {
+                exteriorWorld.setBlockState(exteriorPos, net.minecraft.block.Blocks.AIR.getDefaultState(), 3);
+            }
+        }
+        registry.remove(id);
+        return true;
+    }
+
+    private static void clearDeletedInterior(ServerWorld world, BlockPos origin) {
+        // Current interiors occupy a modest footprint. A 96x32x96 cleanup box
+        // also removes layouts whose saved footprint was larger in older builds.
+        for (int x = -48; x <= 48; x++) {
+            for (int y = -2; y <= 32; y++) {
+                for (int z = -48; z <= 48; z++) {
+                    world.setBlockState(origin.add(x, y, z), net.minecraft.block.Blocks.AIR.getDefaultState(), 2);
+                }
+            }
+        }
+    }
+
+    public static void closeConsole(ServerPlayerEntity player) {
+        ServerPlayNetworking.send(player, ModPackets.TARDIS_CLOSE_CONSOLE, net.fabricmc.fabric.api.networking.v1.PacketByteBufs.create());
     }
 
     private static java.util.Collection<TardisRegistryState.Record> registryRecords(TardisRegistryState state) {

@@ -41,6 +41,13 @@ public class TardisExteriorBlock extends Block implements BlockEntityProvider {
     }
 
     @Override
+    public boolean canPlaceAt(BlockState state, World world, BlockPos pos) {
+        // A TARDIS must never be placed inside another TARDIS pocket dimension.
+        return !world.getRegistryKey().equals(TardisDimensionManager.interiorKey())
+                && super.canPlaceAt(state, world, pos);
+    }
+
+    @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new TardisExteriorBlockEntity(pos, state);
     }

@@ -21,6 +21,7 @@ public class ModPackets {
     public static final Identifier SONIC_SHADES_USE = new Identifier(GallifreyMod.MOD_ID, "sonic_shades_use");
     public static final Identifier TARDIS_MONITOR_ACTION = new Identifier(GallifreyMod.MOD_ID, "tardis_monitor_action");
     public static final Identifier TARDIS_MONITOR_STATE = new Identifier(GallifreyMod.MOD_ID, "tardis_monitor_state");
+    public static final Identifier TARDIS_CLOSE_CONSOLE = new Identifier(GallifreyMod.MOD_ID, "tardis_close_console");
 
     public static void registerC2SPackets() {
         ServerPlayNetworking.registerGlobalReceiver(VM_PACKET, VMPacket::receive);

@@ -2210,7 +2210,9 @@ public class GallifreyModBlocks {
             new TardisExteriorBlock(
                     FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
                             .nonOpaque()
-                            .strength(2.0f)
+                            // The physical TARDIS cannot be mined or destroyed by players.
+                            // Its only removal path is /tardis delete <tardis id>.
+                            .strength(-1.0f, 3600000.0f)
             )
     );
 

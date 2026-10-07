@@ -101,6 +101,14 @@ public final class TardisRegistryState extends PersistentState {
         }
     }
 
+    /** Removes a TARDIS permanently from the registry and clears all player links to it. */
+    public boolean remove(UUID id) {
+        boolean removed = tardises.remove(id) != null;
+        activeTardises.entrySet().removeIf(entry -> id.equals(entry.getValue()));
+        if (removed) markDirty();
+        return removed;
+    }
+
     public void setActive(ServerPlayerEntity player, UUID tardis) {
         activeTardises.put(player.getUuid(), tardis);
         markDirty();

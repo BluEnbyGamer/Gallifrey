@@ -2,6 +2,9 @@ package com.timelordmod.gallifrey.block;
 
 import com.timelordmod.gallifrey.block.entity.TardisConsoleBlockEntity;
 import com.timelordmod.gallifrey.tardis.TardisMonitorNetworking;
+import com.timelordmod.gallifrey.tardis.TardisRegistryState;
+import com.timelordmod.gallifrey.tardis.TardisDimensionManager;
+import com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
@@ -11,6 +14,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
@@ -22,6 +26,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 
 /**
  * The actual TARDIS control console. The supplied Hartnell console Geo model
@@ -78,6 +84,49 @@ public class TardisConsoleBlock extends Block implements BlockEntityProvider {
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new TardisConsoleBlockEntity(pos, state);
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
+        if (world.isClient || !(placer instanceof ServerPlayerEntity player)
+                || !world.getRegistryKey().equals(TardisDimensionManager.interiorKey())) return;
+
+        TardisRegistryState registry = TardisRegistryState.get(player.getServer());
+        java.util.UUID id = registry.getActiveTardis(player.getUuid());
+        if (id == null) return;
+        TardisRegistryState.Record record = registry.get(id);
+        if (record == null) return;
+        ServerWorld exterior = player.getServer().getWorld(net.minecraft.registry.RegistryKey.of(
+                net.minecraft.registry.RegistryKeys.WORLD, new net.minecraft.util.Identifier(record.world())));
+        if (exterior == null) return;
+        BlockPos exteriorPos = BlockPos.fromLong(record.pos());
+        if (exterior.getBlockEntity(exteriorPos) instanceof TardisExteriorBlockEntity tardis
+                && id.equals(tardis.getTardisId())) {
+            tardis.setConsolePos(pos);
+        }
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (!state.isOf(newState.getBlock())) {
+            if (!world.isClient && world.getRegistryKey().equals(TardisDimensionManager.interiorKey())
+                    && world.getBlockEntity(pos) instanceof TardisConsoleBlockEntity) {
+                // Clear the stored position if this was the registered console.
+                // The next placed console inside the TARDIS will re-register itself.
+                for (TardisRegistryState.Record record : TardisRegistryState.get(world.getServer()).records()) {
+                    ServerWorld exterior = world.getServer().getWorld(net.minecraft.registry.RegistryKey.of(
+                            net.minecraft.registry.RegistryKeys.WORLD, new net.minecraft.util.Identifier(record.world())));
+                    if (exterior == null) continue;
+                    BlockPos exteriorPos = BlockPos.fromLong(record.pos());
+                    if (exterior.getBlockEntity(exteriorPos) instanceof TardisExteriorBlockEntity tardis
+                            && pos.equals(tardis.getConsolePos())) {
+                        tardis.setConsolePos(null);
+                    }
+                }
+            }
+        }
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
 
     @Override

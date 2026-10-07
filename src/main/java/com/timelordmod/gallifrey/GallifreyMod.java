@@ -20,6 +20,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import com.timelordmod.gallifrey.tardis.TardisCommands;
 import com.timelordmod.gallifrey.tardis.TardisDimensionManager;
 import com.timelordmod.gallifrey.tardis.TardisMonitorNetworking;
@@ -57,6 +58,12 @@ public class GallifreyMod implements ModInitializer {
 		TardisCommands.register();
 		TardisMonitorNetworking.register();
 		ServerTickEvents.END_SERVER_TICK.register(TardisDimensionManager::tickFlight);
+
+        // The physical TARDIS is persistent world infrastructure. Prevent normal
+        // block breaking (including Creative mode); /tardis delete <id> is its
+        // intentional removal path.
+        PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) ->
+                !state.isOf(GallifreyModBlocks.TARDIS_EXTERIOR));
 
 		GallifreySounds.register();
 

@@ -45,6 +45,9 @@ public final class TardisCommands {
                         .executes(ctx -> refuel(ctx.getSource())))
                 .then(CommandManager.literal("info")
                         .executes(ctx -> info(ctx.getSource())))
+                .then(CommandManager.literal("delete")
+                        .then(CommandManager.argument("tardisId", StringArgumentType.word())
+                                .executes(ctx -> delete(ctx.getSource(), StringArgumentType.getString(ctx, "tardisId")))))
                 .then(CommandManager.literal("interiors")
                         .executes(ctx -> interiors(ctx.getSource())))
                 .then(CommandManager.literal("interior")
@@ -155,6 +158,39 @@ public final class TardisCommands {
                     tardis.getFuel() + "/" + com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity.MAX_FUEL + ")."), true);
             return 1;
         } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    private static int delete(ServerCommandSource source, String rawId) {
+        try {
+            java.util.UUID id = java.util.UUID.fromString(rawId);
+            net.minecraft.server.MinecraftServer server = source.getServer();
+            TardisRegistryState state = TardisRegistryState.get(server);
+            TardisRegistryState.Record record = state.get(id);
+            if (record == null) {
+                source.sendError(Text.literal("No TARDIS exists with ID " + rawId + "."));
+                return 0;
+            }
+
+            // Owners may delete their own TARDIS. Server operators may delete
+            // any TARDIS so administrators can clean up abandoned worlds.
+            ServerPlayerEntity player = source.getPlayer();
+            boolean allowed = source.hasPermissionLevel(2)
+                    || (player != null && record.owner() != null && record.owner().equals(player.getUuid()));
+            if (!allowed) {
+                source.sendError(Text.literal("Only the TARDIS owner or a server operator can delete that TARDIS."));
+                return 0;
+            }
+
+            if (!TardisDimensionManager.deleteTardis(server, id)) {
+                source.sendError(Text.literal("The TARDIS could not be deleted."));
+                return 0;
+            }
+            source.sendFeedback(() -> Text.literal("Deleted TARDIS " + id + "."), true);
+            return 1;
+        } catch (IllegalArgumentException e) {
+            source.sendError(Text.literal("Invalid TARDIS ID. Use the UUID shown by /tardis info."));
             return 0;
         }
     }

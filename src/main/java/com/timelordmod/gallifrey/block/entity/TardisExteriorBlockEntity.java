@@ -34,6 +34,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     private String interiorStructure = "tardis_platform";
     private int exteriorVariant;
     private Vec3i interiorSize = new Vec3i(5, 5, 5);
+    private BlockPos consolePos;
 
     private boolean flightPending;
     private int flightTicks;
@@ -84,6 +85,12 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         }
     }
     public Vec3i getInteriorSize() { return interiorSize; }
+    public BlockPos getConsolePos() { return consolePos; }
+
+    public void setConsolePos(BlockPos pos) {
+        consolePos = pos == null ? null : pos.toImmutable();
+        markDirty();
+    }
 
     public boolean canAccess(UUID player) {
         return !locked || (owner != null && owner.equals(player));
@@ -180,6 +187,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
                 if (world.getBlockState(candidate).isAir()
                         && world.getBlockState(candidate.down()).isSolidBlock(world, candidate.down())) {
                     world.setBlockState(candidate, com.timelordmod.gallifrey.block.GallifreyModBlocks.TARDIS_CONSOLE.getDefaultState(), 3);
+                    consolePos = candidate.toImmutable();
+                    markDirty();
                     return;
                 }
             }
