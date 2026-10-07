@@ -389,33 +389,72 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:stone_depth",
-          "offset": 0,
-          "add_surface_depth": true,
-          "secondary_depth_range": 0,
-          "surface_type": "floor"
+          "type": "minecraft:not",
+          "invert": {
+            "type": "minecraft:water",
+            "offset": 0,
+            "surface_depth_multiplier": 0,
+            "add_stone_depth": true
+          }
         },
         "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "gallifrey:classic_grass"
+          "type": "minecraft:condition",
+          "if_true": {
+            "type": "minecraft:stone_depth",
+            "offset": 0,
+            "add_surface_depth": true,
+            "secondary_depth_range": 0,
+            "surface_type": "floor"
+          },
+          "then_run": {
+            "type": "minecraft:block",
+            "result_state": {
+              "Name": "gallifrey:classic_sand"
+            }
           }
         }
       },
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:stone_depth",
-          "offset": 3,
-          "add_surface_depth": true,
-          "secondary_depth_range": 0,
-          "surface_type": "floor"
+          "type": "minecraft:above_preliminary_surface"
         },
         "then_run": {
-          "type": "minecraft:block",
-          "result_state": {
-            "Name": "gallifrey:classic_dirt"
-          }
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "offset": 0,
+                "add_surface_depth": true,
+                "secondary_depth_range": 0,
+                "surface_type": "floor"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "gallifrey:classic_grass"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "offset": 3,
+                "add_surface_depth": true,
+                "secondary_depth_range": 0,
+                "surface_type": "floor"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "gallifrey:classic_dirt"
+                }
+              }
+            }
+          ]
         }
       },
       {
