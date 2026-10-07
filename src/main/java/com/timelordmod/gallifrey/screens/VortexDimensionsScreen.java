@@ -13,6 +13,8 @@ public class VortexDimensionsScreen extends Screen {
     private static final int W = 540, H = 360;
     private static final int PANEL = 0xF0091118, PANEL_LIGHT = 0xFF101D25, PANEL_DARK = 0xFF080D12;
     private static final int TEXT = 0xFFE7FBFF, DIM = 0xFF75AAB5;
+    private static final int AMBER = 0xFFFFC857, AMBER_DIM = 0xFF9A6A1F;
+    private static final int SILVER = 0xFFD7DCE0, STEEL = 0xFF7D858C;
 
     private static final List<Destination> DESTINATIONS = List.of(
             new Destination("Overworld", "minecraft:overworld"),
