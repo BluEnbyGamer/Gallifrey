@@ -18,9 +18,18 @@ import java.util.UUID;
 
 public abstract class VortexManipulatorSubScreen extends Screen {
     protected static final int W = 540, H = 360;
-    protected static final int PANEL = 0xF0060B13, PANEL_LIGHT = 0xFF111C28, PANEL_DARK = 0xFF050A10;
-    protected static final int CYAN = 0xFF6FE8FF, CYAN_DIM = 0xFF1C7896, CYAN_DARK = 0xFF0B3B4D;
-    protected static final int TEXT = 0xFFEAF8FF, DIM = 0xFF7896A6, GREEN = 0xFF65FFB0, RED = 0xFFFF5D7A;
+    protected static final int PANEL = 0xF0091118, PANEL_LIGHT = 0xFF101D25, PANEL_DARK = 0xFF080D12;
+    protected static final int CYAN = 0xFF26E6FF, CYAN_DIM = 0xFF08758C, CYAN_DARK = 0xFF063D4A;
+    protected static final int TEXT = 0xFFE7FBFF, DIM = 0xFF75AAB5, GREEN = 0xFF38FF88, RED = 0xFFFF4F6B;
+
+    protected int accent() { return CYAN; }
+    protected int accentDim() { return CYAN_DIM; }
+    protected int accentDark() { return CYAN_DARK; }
+    protected int panel() { return PANEL; }
+    protected int panelLight() { return PANEL_LIGHT; }
+    protected int panelDark() { return PANEL_DARK; }
+    protected int textColor() { return TEXT; }
+    protected int dimColor() { return DIM; }
 
     protected int left, top;
     protected boolean owner;
@@ -43,16 +52,16 @@ public abstract class VortexManipulatorSubScreen extends Screen {
 
     protected void buildHeader(DrawContext c, String title) {
         c.fill(0, 0, width, height, 0x99000000);
-        c.fill(left - 3, top - 3, left + W + 3, top + H + 3, 0x402B9DFF);
-        c.fill(left, top, left + W, top + H, PANEL);
-        c.drawBorder(left, top, W, H, CYAN);
-        c.drawBorder(left + 4, top + 4, W - 8, H - 8, CYAN_DARK);
-        c.fill(left + 10, top + 10, left + W - 10, top + 34, PANEL_LIGHT);
-        c.fill(left + 10, top + 33, left + W - 10, top + 34, CYAN_DIM);
-        c.drawText(textRenderer, "VORTEX MANIPULATOR", left + 20, top + 17, CYAN, false);
-        c.drawText(textRenderer, owner ? "ISOMORPHIC CONTROLS ONLINE" : "ISOMORPHIC LOCK",
-                left + 345, top + 17, owner ? GREEN : RED, false);
-        c.drawText(textRenderer, title, left + 24, top + 62, CYAN, false);
+        c.fill(left - 3, top - 3, left + W + 3, top + H + 3, (accentDark() & 0x00FFFFFF) | 0x55000000);
+        c.fill(left, top, left + W, top + H, panel());
+        c.drawBorder(left, top, W, H, accent());
+        c.drawBorder(left + 4, top + 4, W - 8, H - 8, accentDark());
+        c.fill(left + 10, top + 10, left + W - 10, top + 34, panelLight());
+        c.fill(left + 10, top + 33, left + W - 10, top + 34, accentDim());
+        c.drawText(textRenderer, "VORTEX MANIPULATOR", left + 20, top + 17, accent(), false);
+        if (title != null && !title.isBlank()) {
+            c.drawText(textRenderer, title, left + 24, top + 62, accent(), false);
+        }
     }
 
     protected void buildBackButton() {
@@ -67,8 +76,8 @@ public abstract class VortexManipulatorSubScreen extends Screen {
         TextFieldWidget f = new TextFieldWidget(textRenderer, x, y, w, 24, Text.literal(placeholder));
         f.setMaxLength(128);
         f.setPlaceholder(Text.literal(placeholder));
-        f.setEditableColor(TEXT);
-        f.setUneditableColor(DIM);
+        f.setEditableColor(textColor());
+        f.setUneditableColor(dimColor());
         addDrawableChild(f);
         return f;
     }
@@ -139,9 +148,9 @@ public abstract class VortexManipulatorSubScreen extends Screen {
         }
 
         @Override public void renderButton(DrawContext c, int mx, int my, float delta) {
-            int bg = isHovered() ? 0xFF123044 : PANEL_DARK;
+            int bg = isHovered() ? 0xFF123744 : PANEL_DARK;
             c.fill(getX(), getY(), getX() + getWidth(), getY() + getHeight(), bg);
-            c.drawBorder(getX(), getY(), getWidth(), getHeight(), active ? CYAN_DIM : 0xFF294956);
+            c.drawBorder(getX(), getY(), getWidth(), getHeight(), active ? CYAN_DIM : 0xFF30434A);
             c.drawCenteredTextWithShadow(textRenderer, getMessage(),
                     getX() + getWidth() / 2, getY() + getHeight() / 2 - 4,
                     active ? TEXT : DIM);

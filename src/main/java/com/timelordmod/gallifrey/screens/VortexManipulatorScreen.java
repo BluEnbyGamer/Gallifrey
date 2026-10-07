@@ -19,9 +19,11 @@ import java.util.UUID;
 /** Main Vortex Manipulator control console. */
 public class VortexManipulatorScreen extends Screen {
     private static final int W = 500, H = 280;
-    private static final int PANEL = 0xF0060B13, PANEL_LIGHT = 0xFF111C28, PANEL_DARK = 0xFF050A10;
-    private static final int CYAN = 0xFF6FE8FF, CYAN_DIM = 0xFF1C7896, CYAN_DARK = 0xFF0B3B4D;
-    private static final int TEXT = 0xFFEAF8FF, DIM = 0xFF7896A6, GREEN = 0xFF65FFB0, RED = 0xFFFF5D7A;
+    private static final int PANEL = 0xF00B0A08, PANEL_LIGHT = 0xFF17130C, PANEL_DARK = 0xFF070807;
+    private static final int GOLD = 0xFFFFC857, GOLD_DIM = 0xFF9A6A1F, GOLD_DARK = 0xFF4B3211;
+    private static final int SILVER = 0xFFD7DCE0, SILVER_DIM = 0xFF7D858C;
+    private static final int BROWN = 0xFF6A4524;
+    private static final int TEXT = 0xFFF5F1E8, DIM = 0xFFAAA397, GREEN = 0xFF54E88A, RED = 0xFFFF5364;
 
     private int left, top;
     private int tab;
@@ -48,16 +50,16 @@ public class VortexManipulatorScreen extends Screen {
     private void rebuild() {
         clearChildren();
         pendingLabels.clear();
-        if (tab == 0) buildNavigation();
-        else if (tab == 1) buildLocations();
-        else buildAccess();
+        buildNavigation();
         buildTabs();
     }
 
     private void buildTabs() {
-        addDrawableChild(btn(left + 12, top + 39, 150, 22, "NAVIGATION", b -> switchTab(0)));
-        addDrawableChild(btn(left + 170, top + 39, 150, 22, "SAVED LOCATIONS", b -> switchTab(1)));
-        addDrawableChild(btn(left + 328, top + 39, 160, 22, "ISOMORPHIC CONTROLS", b -> switchTab(2)));
+        addDrawableChild(btn(left + 12, top + 39, 150, 22, "NAVIGATION", b -> {}));
+        addDrawableChild(btn(left + 170, top + 39, 150, 22, "SAVED LOCATIONS",
+                b -> client.setScreen(new VortexSavedLocationsScreen())));
+        addDrawableChild(btn(left + 328, top + 39, 160, 22, "ISOMORPHIC CONTROLS",
+                b -> client.setScreen(new VortexIsomorphicScreen())));
     }
 
     private void buildNavigation() {
@@ -121,7 +123,7 @@ public class VortexManipulatorScreen extends Screen {
     }
 
     private void buildAccess() {
-        label("ONLINE PLAYER TO AUTHORIZE", left + 18, top + 74);
+        label("PLAYER TO AUTHORIZE", left + 18, top + 74);
         accessPlayer = field(left + 18, top + 86, 352, "Player name");
         ButtonWidget add = btn(left + 382, top + 86, 100, 24, "ADD PLAYER", b -> addPlayer());
         add.active = owner;
@@ -347,19 +349,14 @@ public class VortexManipulatorScreen extends Screen {
 
     private void drawPanel(DrawContext c) {
         c.fill(0, 0, width, height, 0x99000000);
-        c.fill(left - 3, top - 3, left + W + 3, top + H + 3, 0x402B9DFF);
+        c.fill(left - 3, top - 3, left + W + 3, top + H + 3, 0x553A2612);
         c.fill(left, top, left + W, top + H, PANEL);
-        c.drawBorder(left, top, W, H, CYAN);
-        c.drawBorder(left + 4, top + 4, W - 8, H - 8, CYAN_DARK);
+        c.drawBorder(left, top, W, H, GOLD);
+        c.drawBorder(left + 4, top + 4, W - 8, H - 8, GOLD_DARK);
         c.fill(left + 10, top + 10, left + W - 10, top + 32, PANEL_LIGHT);
-        c.fill(left + 10, top + 31, left + W - 10, top + 32, CYAN_DIM);
-        c.drawText(textRenderer, "VORTEX MANIPULATOR", left + 18, top + 17, CYAN, false);
-        Text status = selfDestructTicks > 0
-                ? Text.literal("DESTRUCT ARMED").formatted(net.minecraft.util.Formatting.RED)
-                : Text.literal(owner ? "ONLINE" : "LOCKED");
-        c.drawText(textRenderer, status, left + W - 122, top + 17, selfDestructTicks > 0 ? RED : (owner ? GREEN : RED), false);
-        String section = tab == 0 ? "TEMPORAL NAVIGATION" : tab == 1 ? "VM MEMORY" : "ISOMORPHIC AUTHORIZATION";
-        c.drawText(textRenderer, fit(section, W - 36), left + 18, top + 67, CYAN, false);
+        c.fill(left + 10, top + 31, left + W - 10, top + 32, GOLD_DIM);
+        c.drawText(textRenderer, "VORTEX MANIPULATOR", left + 18, top + 17, GOLD, false);
+
     }
 
     private class ThemedButtonWidget extends ButtonWidget {
@@ -368,9 +365,9 @@ public class VortexManipulatorScreen extends Screen {
         }
 
         @Override public void renderButton(DrawContext c, int mx, int my, float delta) {
-            int bg = isHovered() ? 0xFF123044 : PANEL_DARK;
+            int bg = isHovered() ? 0xFF332512 : PANEL_DARK;
             c.fill(getX(), getY(), getX() + getWidth(), getY() + getHeight(), bg);
-            c.drawBorder(getX(), getY(), getWidth(), getHeight(), active ? CYAN_DIM : 0xFF294956);
+            c.drawBorder(getX(), getY(), getWidth(), getY() + getHeight() - getY(), active ? GOLD_DIM : SILVER_DIM);
             Text visible = Text.literal(fit(getMessage().getString(), Math.max(12, getWidth() - 12)));
             c.drawCenteredTextWithShadow(textRenderer, visible, getX() + getWidth() / 2,
                     getY() + getHeight() / 2 - 4, active ? TEXT : DIM);

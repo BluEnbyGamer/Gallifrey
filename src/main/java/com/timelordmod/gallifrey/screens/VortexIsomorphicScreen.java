@@ -5,11 +5,19 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.gui.widget.ButtonWidget;
 
 public class VortexIsomorphicScreen extends VortexManipulatorSubScreen {
+    @Override protected int accent() { return 0xFFB58CFF; }
+    @Override protected int accentDim() { return 0xFF6848A8; }
+    @Override protected int accentDark() { return 0xFF241443; }
+    @Override protected int panel() { return 0xF0090710; }
+    @Override protected int panelLight() { return 0xFF171021; }
+    @Override protected int panelDark() { return 0xFF040306; }
+    @Override protected int dimColor() { return 0xFF9D90B5; }
     private TextFieldWidget accessPlayer;
 
     public VortexIsomorphicScreen() { super("Vortex Manipulator - Isomorphic Controls"); }
 
     @Override protected void build() {
+        accessPlayer = field(left + 24, top + 92, 350, "Online player name");
         ButtonWidget add = btn(left + 386, top + 92, 130, 24, "ADD PLAYER", b -> addPlayer());
         add.active = owner;
         addDrawableChild(add);
@@ -38,7 +46,7 @@ public class VortexIsomorphicScreen extends VortexManipulatorSubScreen {
 
     @Override public void render(DrawContext c, int mx, int my, float delta) {
         buildHeader(c, "ISOMORPHIC CONTROLS");
-        c.drawText(textRenderer, "Only the VM owner can change authorized users.", left + 24, top + 116, DIM, false);
+        c.drawText(textRenderer, "Only the VM owner can change authorized users.", left + 24, top + 116, dimColor(), false);
         super.render(c, mx, my, delta);
     }
 }

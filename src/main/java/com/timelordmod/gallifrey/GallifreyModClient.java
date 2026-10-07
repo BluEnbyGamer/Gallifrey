@@ -143,6 +143,11 @@ public class GallifreyModClient implements ClientModInitializer {
                 new MondasSkyRenderer()
         );
 
+        DimensionRenderingRegistry.registerSkyRenderer(
+                ModDimensions.LOST_REALITY_LEVEL_KEY,
+                new LostRealitySkyRenderer()
+        );
+
         // =========================================================
         // MARS CRYSTAL RENDER LAYER
         // =========================================================

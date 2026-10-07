@@ -12,9 +12,9 @@ import net.minecraft.text.Text;
 /** Confirmation screen shown before the Vortex Manipulator self-destructs. */
 public class VortexSelfDestructConfirmScreen extends Screen {
     private static final int W = 500, H = 210;
-    private static final int PANEL = 0xF0060B13, PANEL_LIGHT = 0xFF111C28, PANEL_DARK = 0xFF050A10;
-    private static final int CYAN = 0xFF6FE8FF, CYAN_DIM = 0xFF1C7896, CYAN_DARK = 0xFF0B3B4D;
-    private static final int TEXT = 0xFFEAF8FF, DIM = 0xFF7896A6, RED = 0xFFFF5D7A;
+    private static final int PANEL = 0xF0100707, PANEL_LIGHT = 0xFF21100E, PANEL_DARK = 0xFF060202;
+    private static final int RED = 0xFFFF3B30, RED_DIM = 0xFF9E201A, RED_DARK = 0xFF4A0B08;
+    private static final int TEXT = 0xFFF4E9E7, DIM = 0xFFC58D86, YELLOW = 0xFFFFC857;
 
     private final Screen parent;
     private int left, top;
@@ -44,18 +44,21 @@ public class VortexSelfDestructConfirmScreen extends Screen {
 
     @Override public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         context.fill(0, 0, width, height, 0x99000000);
-        context.fill(left - 3, top - 3, left + W + 3, top + H + 3, 0x402B9DFF);
+        context.fill(left - 3, top - 3, left + W + 3, top + H + 3, 0x554A0B08);
         context.fill(left, top, left + W, top + H, PANEL);
-        context.drawBorder(left, top, W, H, CYAN);
-        context.drawBorder(left + 4, top + 4, W - 8, H - 8, CYAN_DARK);
+        context.drawBorder(left, top, W, H, RED);
+        context.drawBorder(left + 4, top + 4, W - 8, H - 8, RED_DARK);
         context.fill(left + 8, top + 8, left + W - 8, top + 28, PANEL_LIGHT);
-        context.fill(left + 8, top + 27, left + W - 8, top + 28, CYAN_DIM);
-        context.drawText(textRenderer, "VORTEX MANIPULATOR", left + 16, top + 12, CYAN, false);
-        context.drawCenteredTextWithShadow(textRenderer, Text.literal("SELF-DESTRUCT"), left + W / 2, top + 42, RED);
-        context.drawCenteredTextWithShadow(textRenderer, Text.literal("Arm the Vortex Manipulator self-destruct sequence?"), left + W / 2, top + 68, TEXT);
-        context.drawCenteredTextWithShadow(textRenderer, Text.literal("YES starts a 10-second countdown."), left + W / 2, top + 91, RED);
-        context.drawCenteredTextWithShadow(textRenderer, Text.literal("You can cancel it before detonation."), left + W / 2, top + 106, RED);
-        context.drawCenteredTextWithShadow(textRenderer, Text.literal("NO returns you to the control console."), left + W / 2, top + 123, DIM);
+        context.drawText(textRenderer, "VORTEX MANIPULATOR", left + 16, top + 12, RED, false);
+        for (int x = left + 10; x < left + W - 10; x += 28) {
+            context.fill(x, top + 31, Math.min(x + 14, left + W - 10), top + 37, YELLOW);
+            context.fill(Math.min(x + 14, left + W - 10), top + 31, Math.min(x + 28, left + W - 10), top + 37, RED_DARK);
+        }
+        context.drawCenteredTextWithShadow(textRenderer, Text.literal("⚠  SELF-DESTRUCT  ⚠"), left + W / 2, top + 52, YELLOW);
+        context.drawCenteredTextWithShadow(textRenderer, Text.literal("Arm the Vortex Manipulator self-destruct sequence?"), left + W / 2, top + 76, TEXT);
+        context.drawCenteredTextWithShadow(textRenderer, Text.literal("YES starts a 10-second countdown."), left + W / 2, top + 99, RED);
+        context.drawCenteredTextWithShadow(textRenderer, Text.literal("You can cancel it before detonation."), left + W / 2, top + 114, RED);
+        context.drawCenteredTextWithShadow(textRenderer, Text.literal("NO returns you to the control console."), left + W / 2, top + 129, DIM);
         super.render(context, mouseX, mouseY, delta);
     }
 
@@ -72,9 +75,9 @@ public class VortexSelfDestructConfirmScreen extends Screen {
             super(x, y, w, h, message, action, DEFAULT_NARRATION_SUPPLIER);
         }
         @Override public void renderButton(DrawContext c, int mx, int my, float delta) {
-            int bg = isHovered() ? 0xFF123044 : PANEL_DARK;
+            int bg = isHovered() ? 0xFF4A0B08 : PANEL_DARK;
             c.fill(getX(), getY(), getX() + getWidth(), getY() + getHeight(), bg);
-            c.drawBorder(getX(), getY(), getWidth(), getHeight(), active ? CYAN_DIM : 0xFF294956);
+            c.drawBorder(getX(), getY(), getWidth(), getHeight(), active ? RED : RED_DIM);
             Text visible = Text.literal(fit(getMessage().getString(), Math.max(12, getWidth() - 12)));
             c.drawCenteredTextWithShadow(textRenderer, visible, getX() + getWidth() / 2, getY() + getHeight() / 2 - 4, active ? TEXT : DIM);
         }

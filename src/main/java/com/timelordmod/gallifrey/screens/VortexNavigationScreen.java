@@ -10,6 +10,13 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class VortexNavigationScreen extends VortexManipulatorSubScreen {
+    @Override protected int accent() { return 0xFFFFC857; }
+    @Override protected int accentDim() { return 0xFF9A6A1F; }
+    @Override protected int accentDark() { return 0xFF4B3211; }
+    @Override protected int panel() { return 0xF00B0A08; }
+    @Override protected int panelLight() { return 0xFF17130C; }
+    @Override protected int panelDark() { return 0xFF070807; }
+    @Override protected int dimColor() { return 0xFFAAA397; }
     private TextFieldWidget dimension, x, y, z, targetPlayer;
     private boolean surfaceMode;
 
@@ -81,9 +88,9 @@ public class VortexNavigationScreen extends VortexManipulatorSubScreen {
     }
 
     @Override public void render(DrawContext c, int mx, int my, float delta) {
-        buildHeader(c, "TEMPORAL NAVIGATION");
-        c.drawText(textRenderer, "Dimension", left + 24, top + 82, DIM, false);
-        c.drawText(textRenderer, "Player target overrides coordinates when filled.", left + 24, top + 127, DIM, false);
+        buildHeader(c, "");
+        c.drawText(textRenderer, "DIMENSION", left + 24, top + 82, dimColor(), false);
+        c.drawText(textRenderer, "PLAYER TARGET — OPTIONAL", left + 24, top + 127, dimColor(), false);
         super.render(c, mx, my, delta);
     }
 }

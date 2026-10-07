@@ -199,14 +199,37 @@ public class VMPacket {
             RegistryKey<World> key = RegistryKey.of(RegistryKeys.WORLD, dimensionId);
             targetWorld = server.getWorld(key);
             if (targetWorld == null) { player.sendMessage(Text.literal("Unknown dimension: " + dimensionId), true); return; }
-            double targetY = surfaceMode ? targetWorld.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(x), (int) Math.floor(z)) : y;
-            targetPos = new Vec3d(x, targetY, z);
+            if (surfaceMode) {
+                int surfaceX = (int) Math.floor(x);
+                int surfaceZ = (int) Math.floor(z);
+                Double surfaceY = findSafeSurfaceY(targetWorld, surfaceX, surfaceZ);
+                if (surfaceY == null) {
+                    player.sendMessage(Text.literal("SURFACE TELEPORT FAILED: no safe surface above Y=64 at those coordinates."), true);
+                    return;
+                }
+                targetPos = new Vec3d(x, surfaceY, z);
+            } else {
+                targetPos = new Vec3d(x, y, z);
+            }
         }
         ServerWorld sourceWorld = player.getServerWorld();
         Vec3d sourcePos = player.getPos();
         BlockPos targetBlockPos = BlockPos.ofFloored(targetPos);
         PENDING_EFFECTS.put(player.getUuid(), new PendingTeleportEffect(sourceWorld.getRegistryKey(), sourcePos, targetWorld.getRegistryKey(), targetPos,
                 new ChunkPosKey(targetBlockPos.getX() >> 4, targetBlockPos.getZ() >> 4), TeleportPhase.SOURCE_WARMUP, 1, ItemStack.EMPTY, ItemStack.EMPTY, Map.of()));
+    }
+
+    /**
+     * Finds the standing Y position for Surface mode. The destination chunk is
+     * loaded before reading its heightmap, and anything at/below Y=64 is
+     * rejected rather than allowing the VM to drop the player into underground
+     * terrain or a void dimension.
+     */
+    private static Double findSafeSurfaceY(ServerWorld world, int x, int z) {
+        world.getChunk(x >> 4, z >> 4);
+        int surfaceY = world.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z);
+        if (surfaceY <= 64) return null;
+        return (double) surfaceY;
     }
 
     private static void saveLocation(ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
