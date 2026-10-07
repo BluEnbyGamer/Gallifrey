@@ -26,6 +26,7 @@ public class VortexDimensionsScreen extends Screen {
             new Destination("Mondas", "gallifrey:mondas"),
             new Destination("Prehistoric", "gallifrey:prehistoric"),
             new Destination("Classic", "gallifrey:classic"),
+            new Destination("Classic Nether (Alpha 1.2.6)", "gallifrey:classic_nether"),
             new Destination("Pete's World", "gallifrey:petes_world"),
             new Destination("Lost Reality", "gallifrey:lost_reality")
     );

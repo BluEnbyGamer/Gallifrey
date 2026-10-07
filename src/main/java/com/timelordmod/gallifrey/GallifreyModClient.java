@@ -45,6 +45,8 @@ import com.timelordmod.gallifrey.entity.GallifreyEntities;
 import com.timelordmod.gallifrey.client.SkaroCityDalekRenderer;
 import com.timelordmod.gallifrey.client.SkaroCityDalekAltRenderer;
 import com.timelordmod.gallifrey.client.SupremeCouncilDalekRenderer;
+import com.timelordmod.gallifrey.client.AlphaGhastRenderer;
+import com.timelordmod.gallifrey.client.AlphaZombiePigmanRenderer;
 import com.timelordmod.gallifrey.entity.client.LaserRenderer;
 
 public class GallifreyModClient implements ClientModInitializer {
@@ -66,6 +68,8 @@ public class GallifreyModClient implements ClientModInitializer {
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK_ALT, SkaroCityDalekAltRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.SUPREME_COUNCIL_DALEK, SupremeCouncilDalekRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.LASER, LaserRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.ALPHA_GHAST, AlphaGhastRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.ALPHA_ZOMBIE_PIGMAN, AlphaZombiePigmanRenderer::new);
         SonicShadesClient.register();
         ClientTickEvents.END_CLIENT_TICK.register(PlanetWeatherClient::tick);
 

@@ -1,0 +1,57 @@
+{
+  "has_precipitation": false,
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "effects": {
+    "sky_color": 7254527,
+    "fog_color": 3344392,
+    "water_color": 4159204,
+    "water_fog_color": 329011
+  },
+  "carvers": {
+    "air": "minecraft:nether_cave"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:patch_fire",
+      "gallifrey:classic_nether_soul_sand",
+      "gallifrey:classic_nether_glowstone"
+    ],
+    [],
+    [
+      "minecraft:spring_lava"
+    ],
+    []
+  ],
+  "spawners": {
+    "monster": [
+      {
+        "type": "gallifrey:alpha_ghast",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "gallifrey:alpha_zombie_pigman",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "misc": [],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "spawn_costs": {}
+}

@@ -67,6 +67,30 @@ public class GallifreyMod implements ModInitializer {
 				com.timelordmod.gallifrey.entity.custom.SupremeCouncilDalekEntity.createAttributes()
 		);
 
+		FabricDefaultAttributeRegistry.register(
+				GallifreyEntities.ALPHA_GHAST,
+				com.timelordmod.gallifrey.entity.custom.AlphaGhastEntity.createGhastAttributes()
+		);
+
+		FabricDefaultAttributeRegistry.register(
+				GallifreyEntities.ALPHA_ZOMBIE_PIGMAN,
+				com.timelordmod.gallifrey.entity.custom.AlphaZombiePigmanEntity.createAttributes()
+		);
+
+		net.minecraft.entity.SpawnRestriction.register(
+				GallifreyEntities.ALPHA_GHAST,
+				net.minecraft.entity.SpawnRestriction.Location.NO_RESTRICTIONS,
+				net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+				(type, world, reason, pos, random) -> true
+		);
+
+		net.minecraft.entity.SpawnRestriction.register(
+				GallifreyEntities.ALPHA_ZOMBIE_PIGMAN,
+				net.minecraft.entity.SpawnRestriction.Location.ON_GROUND,
+				net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+				(type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down())
+		);
+
 		GallifreyModItems.register();
 		GallifreyModBlocks.register();
 		GallifreyModBlockEntities.register();

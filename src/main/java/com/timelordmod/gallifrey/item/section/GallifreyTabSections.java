@@ -404,6 +404,9 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
                 entries.add(GallifreyModBlocks.CLASSIC_RED_FLOWER);
                 entries.add(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
+                entries.add(GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK);
+                entries.add(GallifreyModBlocks.CLASSIC_NETHER_SOUL_SAND);
+                entries.add(GallifreyModBlocks.CLASSIC_NETHER_GLOWSTONE);
             });
 
     public static final CreativeSection SKARO = CreativeSection.of(
