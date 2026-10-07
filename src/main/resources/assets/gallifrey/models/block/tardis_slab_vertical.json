@@ -1,0 +1,42 @@
+{
+  "credit": "Gallifrey vertical slab",
+  "textures": {
+    "top": "gallifrey:block/tardis_wood/tardis_planks",
+    "bottom": "gallifrey:block/tardis_wood/tardis_planks",
+    "side": "gallifrey:block/tardis_wood/tardis_planks"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        8,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#bottom"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "north": {
+          "texture": "#side"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#side"
+        },
+        "east": {
+          "texture": "#side"
+        }
+      }
+    }
+  ]
+}

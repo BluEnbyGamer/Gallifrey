@@ -26,6 +26,7 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 
 import net.minecraft.client.MinecraftClient;
@@ -40,6 +41,9 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
+import com.timelordmod.gallifrey.entity.GallifreyEntities;
+import com.timelordmod.gallifrey.client.SkaroCityDalekRenderer;
+import com.timelordmod.gallifrey.entity.client.LaserRenderer;
 
 public class GallifreyModClient implements ClientModInitializer {
 
@@ -55,6 +59,9 @@ public class GallifreyModClient implements ClientModInitializer {
                 ));
 
         com.timelordmod.gallifrey.client.ModClientPackets.register();;
+
+        EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK, SkaroCityDalekRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.LASER, LaserRenderer::new);
         SonicShadesClient.register();
         ClientTickEvents.END_CLIENT_TICK.register(PlanetWeatherClient::tick);
 

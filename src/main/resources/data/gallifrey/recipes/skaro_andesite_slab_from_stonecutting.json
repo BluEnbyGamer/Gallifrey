@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "gallifrey:skaro_andesite"
+  },
+  "result": "gallifrey:skaro_andesite_slab",
+  "count": 2
+}

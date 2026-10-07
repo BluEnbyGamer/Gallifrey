@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "gallifrey:skaro_cobblestone"
+  },
+  "result": "gallifrey:skaro_cobblestone_stairs",
+  "count": 1
+}

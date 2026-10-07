@@ -71,6 +71,19 @@
     "gallifrey:classic_gold",
     "gallifrey:classic_iron",
     "gallifrey:classic_bricks",
-    "gallifrey:classic_tnt"
+    "gallifrey:classic_tnt",
+    "gallifrey:mars_sandstone_slab_vertical",
+    "gallifrey:mars_stone_slab_vertical",
+    "gallifrey:mars_cobblestone_slab_vertical",
+    "gallifrey:mars_andesite_slab_vertical",
+    "gallifrey:mars_diorite_slab_vertical",
+    "gallifrey:mars_granite_slab_vertical",
+    "gallifrey:polished_mars_stone_slab_vertical",
+    "gallifrey:mars_polished_andesite_slab_vertical",
+    "gallifrey:mars_polished_diorite_slab_vertical",
+    "gallifrey:mars_polished_granite_slab_vertical",
+    "gallifrey:mars_stone_bricks_slab_vertical",
+    "gallifrey:mars_stone_bricks_cracked_slab_vertical",
+    "gallifrey:mars_chizelled_stone_bricks_slab_vertical"
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/skaro_polished_andesite_slab"
+    },
+    "type=double": {
+      "model": "gallifrey:block/skaro_polished_andesite"
+    },
+    "type=top": {
+      "model": "gallifrey:block/skaro_polished_andesite_slab_top"
+    }
+  }
+}

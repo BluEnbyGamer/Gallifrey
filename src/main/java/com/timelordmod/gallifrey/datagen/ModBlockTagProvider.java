@@ -16,7 +16,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
-                .add(GallifreyModBlocks.CLASSIC_LOG, GallifreyModBlocks.CLASSIC_PLANKS, GallifreyModBlocks.CLASSIC_STAIRS, GallifreyModBlocks.CLASSIC_SLAB, GallifreyModBlocks.CLASSIC_FENCE, GallifreyModBlocks.CLASSIC_FENCE_GATE);
+                .add(GallifreyModBlocks.CLASSIC_LOG, GallifreyModBlocks.CLASSIC_PLANKS, GallifreyModBlocks.CLASSIC_STAIRS, GallifreyModBlocks.CLASSIC_SLAB, GallifreyModBlocks.CLASSIC_VERTICAL_SLAB, GallifreyModBlocks.CLASSIC_FENCE, GallifreyModBlocks.CLASSIC_FENCE_GATE);
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
                 .add(GallifreyModBlocks.CLASSIC_LOG);
         getOrCreateTagBuilder(BlockTags.LEAVES)
@@ -42,7 +42,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(GallifreyModBlocks.WASTED_DIRT,
                         GallifreyModBlocks.WASTED_GRASS, GallifreyModBlocks.WASTED_LEAVES,
                         GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.WASTED_PLANKS,
-                        GallifreyModBlocks.WASTED_SLAB)
+                        GallifreyModBlocks.WASTED_SLAB, GallifreyModBlocks.WASTED_VERTICAL_SLAB)
 
         .add(GallifreyModBlocks.MOONPINE_LOG, GallifreyModBlocks.MOONPINE_WOOD,
                 GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
@@ -72,18 +72,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.SKARO_POLISHED_DIORITE, GallifreyModBlocks.SKARO_POLISHED_GRANITE,
                         GallifreyModBlocks.POLISHED_SKARO_STONE, GallifreyModBlocks.SKARO_DEEPSLATE,
                         GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE, GallifreyModBlocks.SKARO_DEEPSLATE_TILES,
-                        GallifreyModBlocks.SKARO_STONE_STAIRS, GallifreyModBlocks.SKARO_STONE_SLAB,
-                        GallifreyModBlocks.SKARO_COBBLESTONE_STAIRS, GallifreyModBlocks.SKARO_COBBLESTONE_SLAB,
-                        GallifreyModBlocks.SKARO_ANDESITE_STAIRS, GallifreyModBlocks.SKARO_ANDESITE_SLAB,
-                        GallifreyModBlocks.SKARO_DIORITE_STAIRS, GallifreyModBlocks.SKARO_DIORITE_SLAB,
-                        GallifreyModBlocks.SKARO_GRANITE_STAIRS, GallifreyModBlocks.SKARO_GRANITE_SLAB,
-                        GallifreyModBlocks.SKARO_POLISHED_ANDESITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_ANDESITE_SLAB,
-                        GallifreyModBlocks.SKARO_POLISHED_DIORITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_DIORITE_SLAB,
-                        GallifreyModBlocks.SKARO_POLISHED_GRANITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_GRANITE_SLAB,
-                        GallifreyModBlocks.POLISHED_SKARO_STONE_STAIRS, GallifreyModBlocks.POLISHED_SKARO_STONE_SLAB,
-                        GallifreyModBlocks.SKARO_DEEPSLATE_STAIRS, GallifreyModBlocks.SKARO_DEEPSLATE_SLAB,
-                        GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_STAIRS, GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB,
-                        GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB,
+                        GallifreyModBlocks.SKARO_STONE_STAIRS, GallifreyModBlocks.SKARO_STONE_SLAB, GallifreyModBlocks.SKARO_STONE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_COBBLESTONE_STAIRS, GallifreyModBlocks.SKARO_COBBLESTONE_SLAB, GallifreyModBlocks.SKARO_COBBLESTONE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_ANDESITE_STAIRS, GallifreyModBlocks.SKARO_ANDESITE_SLAB, GallifreyModBlocks.SKARO_ANDESITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_DIORITE_STAIRS, GallifreyModBlocks.SKARO_DIORITE_SLAB, GallifreyModBlocks.SKARO_DIORITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_GRANITE_STAIRS, GallifreyModBlocks.SKARO_GRANITE_SLAB, GallifreyModBlocks.SKARO_GRANITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_POLISHED_ANDESITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_ANDESITE_SLAB, GallifreyModBlocks.SKARO_POLISHED_ANDESITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_POLISHED_DIORITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_DIORITE_SLAB, GallifreyModBlocks.SKARO_POLISHED_DIORITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_POLISHED_GRANITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_GRANITE_SLAB, GallifreyModBlocks.SKARO_POLISHED_GRANITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.POLISHED_SKARO_STONE_STAIRS, GallifreyModBlocks.POLISHED_SKARO_STONE_SLAB, GallifreyModBlocks.POLISHED_SKARO_STONE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_DEEPSLATE_STAIRS, GallifreyModBlocks.SKARO_DEEPSLATE_SLAB, GallifreyModBlocks.SKARO_DEEPSLATE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_STAIRS, GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB, GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_VERTICAL_SLAB,
                         GallifreyModBlocks.KALETITE_BRICKS)
                 .add(GallifreyModBlocks.SONIC_CRYSTAL_ORE, GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE,
                         GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE)
@@ -107,18 +107,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.SKARO_POLISHED_DIORITE, GallifreyModBlocks.SKARO_POLISHED_GRANITE,
                         GallifreyModBlocks.POLISHED_SKARO_STONE, GallifreyModBlocks.SKARO_DEEPSLATE,
                         GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE, GallifreyModBlocks.SKARO_DEEPSLATE_TILES,
-                        GallifreyModBlocks.SKARO_STONE_STAIRS, GallifreyModBlocks.SKARO_STONE_SLAB,
-                        GallifreyModBlocks.SKARO_COBBLESTONE_STAIRS, GallifreyModBlocks.SKARO_COBBLESTONE_SLAB,
-                        GallifreyModBlocks.SKARO_ANDESITE_STAIRS, GallifreyModBlocks.SKARO_ANDESITE_SLAB,
-                        GallifreyModBlocks.SKARO_DIORITE_STAIRS, GallifreyModBlocks.SKARO_DIORITE_SLAB,
-                        GallifreyModBlocks.SKARO_GRANITE_STAIRS, GallifreyModBlocks.SKARO_GRANITE_SLAB,
-                        GallifreyModBlocks.SKARO_POLISHED_ANDESITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_ANDESITE_SLAB,
-                        GallifreyModBlocks.SKARO_POLISHED_DIORITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_DIORITE_SLAB,
-                        GallifreyModBlocks.SKARO_POLISHED_GRANITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_GRANITE_SLAB,
-                        GallifreyModBlocks.POLISHED_SKARO_STONE_STAIRS, GallifreyModBlocks.POLISHED_SKARO_STONE_SLAB,
-                        GallifreyModBlocks.SKARO_DEEPSLATE_STAIRS, GallifreyModBlocks.SKARO_DEEPSLATE_SLAB,
-                        GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_STAIRS, GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB,
-                        GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB,
+                        GallifreyModBlocks.SKARO_STONE_STAIRS, GallifreyModBlocks.SKARO_STONE_SLAB, GallifreyModBlocks.SKARO_STONE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_COBBLESTONE_STAIRS, GallifreyModBlocks.SKARO_COBBLESTONE_SLAB, GallifreyModBlocks.SKARO_COBBLESTONE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_ANDESITE_STAIRS, GallifreyModBlocks.SKARO_ANDESITE_SLAB, GallifreyModBlocks.SKARO_ANDESITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_DIORITE_STAIRS, GallifreyModBlocks.SKARO_DIORITE_SLAB, GallifreyModBlocks.SKARO_DIORITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_GRANITE_STAIRS, GallifreyModBlocks.SKARO_GRANITE_SLAB, GallifreyModBlocks.SKARO_GRANITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_POLISHED_ANDESITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_ANDESITE_SLAB, GallifreyModBlocks.SKARO_POLISHED_ANDESITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_POLISHED_DIORITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_DIORITE_SLAB, GallifreyModBlocks.SKARO_POLISHED_DIORITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_POLISHED_GRANITE_STAIRS, GallifreyModBlocks.SKARO_POLISHED_GRANITE_SLAB, GallifreyModBlocks.SKARO_POLISHED_GRANITE_VERTICAL_SLAB,
+                        GallifreyModBlocks.POLISHED_SKARO_STONE_STAIRS, GallifreyModBlocks.POLISHED_SKARO_STONE_SLAB, GallifreyModBlocks.POLISHED_SKARO_STONE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_DEEPSLATE_STAIRS, GallifreyModBlocks.SKARO_DEEPSLATE_SLAB, GallifreyModBlocks.SKARO_DEEPSLATE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_STAIRS, GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB, GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_VERTICAL_SLAB,
+                        GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_VERTICAL_SLAB,
                         GallifreyModBlocks.KALETITE_BRICKS, GallifreyModBlocks.HARTNELL_WALL);
 
         // Sonic crystal and Dalekanium ores require an iron pickaxe.

@@ -5,6 +5,7 @@ import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.GallifreySounds;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.entity.ModBoats;
+import com.timelordmod.gallifrey.entity.GallifreyEntities;
 import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.custom.GeoHeadwearItem;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
@@ -76,6 +77,13 @@ public class GallifreyModItems {
             1.15F,
             ArmorMaterials.NETHERITE,
             new FabricItemSettings().fireproof()
+    );
+
+    public static final SpawnEggItem SKARO_CITY_DALEK_SPAWN_EGG = new SpawnEggItem(
+            GallifreyEntities.SKARO_CITY_DALEK,
+            0x6D737A,
+            0x3D7DFF,
+            new FabricItemSettings()
     );
 
     public static final Item TARDIS_SIGN = registerItem("tardis_sign",
@@ -307,6 +315,7 @@ public class GallifreyModItems {
         registerItem("trustable_hat", TRUSTABLE_HAT);
         registerItem("eyestalk", EYESTALK);
         registerItem("omega_helmet", OMEGA_HELMET);
+        registerItem("skaro_city_dalek_spawn_egg", SKARO_CITY_DALEK_SPAWN_EGG);
 
         GallifreyMod.LOGGER.debug("[Gallifrey] Items registered.");
     }

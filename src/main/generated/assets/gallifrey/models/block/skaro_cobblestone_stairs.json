@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "gallifrey:block/skaro/skaro_cobblestone",
+    "side": "gallifrey:block/skaro/skaro_cobblestone",
+    "top": "gallifrey:block/skaro/skaro_cobblestone"
+  }
+}

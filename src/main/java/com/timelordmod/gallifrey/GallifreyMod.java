@@ -3,6 +3,7 @@ package com.timelordmod.gallifrey;
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.entity.ModBoats;
+import com.timelordmod.gallifrey.entity.GallifreyEntities;
 import com.timelordmod.gallifrey.item.GallifreyCreativeTab;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.networking.packets.VMPacket;
@@ -11,6 +12,7 @@ import com.timelordmod.gallifrey.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.world.gen.GenerationStep;
 import com.timelordmod.gallifrey.world.MarsWorldHandler;
 import com.timelordmod.gallifrey.world.portal.GallifreyPortalAreaHelper;
@@ -49,6 +51,11 @@ public class GallifreyMod implements ModInitializer {
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
 
 		GallifreySounds.register();
+
+		FabricDefaultAttributeRegistry.register(
+				GallifreyEntities.SKARO_CITY_DALEK,
+				com.timelordmod.gallifrey.entity.custom.SkaroCityDalekEntity.createAttributes()
+		);
 
 		GallifreyModItems.register();
 		GallifreyModBlocks.register();

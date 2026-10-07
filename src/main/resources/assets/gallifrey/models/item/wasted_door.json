@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gallifrey:block/skaro/wasted_door_top"
+    "layer0": "gallifrey:item/skaro/wasted_door"
   }
 }

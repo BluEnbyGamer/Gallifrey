@@ -2,30 +2,34 @@ package com.timelordmod.gallifrey.mixin.client;
 
 import com.timelordmod.gallifrey.item.custom.HeadwearItem;
 import com.timelordmod.gallifrey.item.custom.SonicShadesItem;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
+import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
+import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
-import net.minecraft.client.render.model.BakedModel;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 /**
- * Headwear is drawn by HatFeatureRenderer only when worn.
- *
- * In particular, do not let another item-render path apply the model's
- * Blockbench `head` transform a second time.  That is what produces the
- * oversized/inverted copy seen on Fezzes, the Eye Stalk and Sonic Shades.
- * The custom head renderer uses ModelTransformationMode.NONE deliberately.
+ * Uses the supplied flat 2D texture for GUI/inventory and item-frame rendering,
+ * while leaving the original Blockbench model untouched for hands and worn use.
  */
 @Mixin(ItemRenderer.class)
 public abstract class ItemRendererHeadwearMixin {
 
-    @Inject(method = "renderItem", at = @At("HEAD"), cancellable = true)
-    private void gallifrey$hideDuplicateHeadwearRender(
+    @ModifyVariable(
+            method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V",
+            at = @At("HEAD"),
+            argsOnly = true
+    )
+    private BakedModel gallifrey$use2dHeadwearModel(
+            BakedModel originalModel,
             ItemStack stack,
             ModelTransformationMode renderMode,
             boolean leftHanded,
@@ -33,21 +37,30 @@ public abstract class ItemRendererHeadwearMixin {
             VertexConsumerProvider vertexConsumers,
             int light,
             int overlay,
-            BakedModel bakedModel,
-            CallbackInfo ci) {
+            BakedModel bakedModel) {
 
         if (!gallifrey$isHeadwear(stack)) {
-            return;
+            return originalModel;
         }
 
-        // HatFeatureRenderer is the sole renderer for worn headwear.  It uses
-        // NONE, so cancelling HEAD and third-person hand transforms cannot
-        // affect the compact model on the player's head or the GUI icon.
-        if (renderMode == ModelTransformationMode.HEAD
-                || renderMode == ModelTransformationMode.THIRD_PERSON_RIGHT_HAND
-                || renderMode == ModelTransformationMode.THIRD_PERSON_LEFT_HAND) {
-            ci.cancel();
+        // Inventory/creative screens use GUI; item frames use FIXED.
+        // FIRST_PERSON_* and THIRD_PERSON_* remain the original 3D model,
+        // and HEAD remains the original 3D model when worn.
+        if (renderMode != ModelTransformationMode.GUI
+                && renderMode != ModelTransformationMode.FIXED) {
+            return originalModel;
         }
+
+        Identifier itemId = Registries.ITEM.getId(stack.getItem());
+        ModelIdentifier flatModelId = new ModelIdentifier(
+                itemId.getNamespace(),
+                "item/" + itemId.getPath() + "_2d",
+                "inventory"
+        );
+
+        return MinecraftClient.getInstance()
+                .getBakedModelManager()
+                .getModel(flatModelId);
     }
 
     private static boolean gallifrey$isHeadwear(ItemStack stack) {
