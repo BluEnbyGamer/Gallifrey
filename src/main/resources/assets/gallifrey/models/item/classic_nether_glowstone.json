@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "gallifrey:block/alpha_nether/glowstone"
-  }
+  "parent": "gallifrey:block/classic_nether_glowstone"
 }

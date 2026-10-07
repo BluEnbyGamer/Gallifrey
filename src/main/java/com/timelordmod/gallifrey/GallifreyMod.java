@@ -26,6 +26,7 @@ import net.minecraft.world.biome.BiomeKeys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
+import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.networking.packets.SonicCasingPacket;
 import com.timelordmod.gallifrey.networking.packets.SonicShadesPacket;
 
@@ -51,6 +52,7 @@ public class GallifreyMod implements ModInitializer {
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
 
 		GallifreySounds.register();
+		GallifreyFluids.registerModFluids();
 
 		FabricDefaultAttributeRegistry.register(
 				GallifreyEntities.SKARO_CITY_DALEK,

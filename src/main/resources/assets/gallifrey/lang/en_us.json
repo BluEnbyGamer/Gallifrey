@@ -470,5 +470,7 @@
   "block.gallifrey.classic_nether_soul_sand": "Alpha Soul Sand",
   "block.gallifrey.classic_nether_glowstone": "Alpha Glowstone",
   "entity.gallifrey.alpha_ghast": "Alpha Ghast",
-  "entity.gallifrey.alpha_zombie_pigman": "Alpha Zombie Pigman"
+  "entity.gallifrey.alpha_zombie_pigman": "Alpha Zombie Pigman",
+  "block.gallifrey.classic_nether_magma": "Classic Nether Magma",
+  "block.gallifrey.classic_nether_quartz_ore": "Classic Nether Quartz Ore"
 }

@@ -62,6 +62,16 @@ public class GallifreyModClient implements ClientModInitializer {
                         0x2EFF2E
                 ));
 
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
+                GallifreyFluids.STILL_CLASSIC_LAVA, GallifreyFluids.FLOWING_CLASSIC_LAVA);
+        FluidRenderHandlerRegistry.INSTANCE.register(
+                GallifreyFluids.STILL_CLASSIC_LAVA, GallifreyFluids.FLOWING_CLASSIC_LAVA,
+                new SimpleFluidRenderHandler(
+                        new Identifier("gallifrey:block/classic_nether/lava_still"),
+                        new Identifier("gallifrey:block/classic_nether/lava_flow"),
+                        0xFFFFFF
+                ));
+
         com.timelordmod.gallifrey.client.ModClientPackets.register();;
 
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK, SkaroCityDalekRenderer::new);

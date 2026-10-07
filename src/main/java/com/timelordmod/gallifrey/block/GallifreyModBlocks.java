@@ -85,6 +85,10 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.SOUL_SAND)));
     public static final Block CLASSIC_NETHER_GLOWSTONE = registerBlock("classic_nether_glowstone",
             new Block(FabricBlockSettings.copyOf(Blocks.GLOWSTONE)));
+    public static final Block CLASSIC_NETHER_MAGMA = registerBlock("classic_nether_magma",
+            new Block(FabricBlockSettings.copyOf(Blocks.MAGMA_BLOCK)));
+    public static final Block CLASSIC_NETHER_QUARTZ_ORE = registerBlock("classic_nether_quartz_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.NETHER_QUARTZ_ORE)));
 
     // ============================================================
     // MARS BLOCKS

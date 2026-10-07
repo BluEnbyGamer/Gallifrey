@@ -4,7 +4,7 @@
     "Name": "gallifrey:classic_nether_netherrack"
   },
   "default_fluid": {
-    "Name": "minecraft:lava",
+    "Name": "gallifrey:classic_nether_lava",
     "Properties": {
       "level": "0"
     }

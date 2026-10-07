@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gallifrey:block/classic_nether/glowstone"
+    "all": "gallifrey:block/classic_nether/quartz_ore"
   }
 }

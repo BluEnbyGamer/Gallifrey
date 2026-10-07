@@ -33,6 +33,28 @@ public class GallifreyFluids {
             new Flowing()
     );
 
+    public static final FlowableFluid STILL_CLASSIC_LAVA = Registry.register(
+            Registries.FLUID,
+            new Identifier(GallifreyMod.MOD_ID, "classic_lava"),
+            new ClassicLavaStill()
+    );
+
+    public static final FlowableFluid FLOWING_CLASSIC_LAVA = Registry.register(
+            Registries.FLUID,
+            new Identifier(GallifreyMod.MOD_ID, "flowing_classic_lava"),
+            new ClassicLavaFlowing()
+    );
+
+    public static final FluidBlock CLASSIC_LAVA = Registry.register(
+            Registries.BLOCK,
+            new Identifier(GallifreyMod.MOD_ID, "classic_nether_lava"),
+            new FluidBlock(STILL_CLASSIC_LAVA, FabricBlockSettings.copyOf(net.minecraft.block.Blocks.LAVA)
+                    .strength(100.0F)
+                    .noCollision()
+                    .dropsNothing()
+                    .replaceable())
+    );
+
     public static final FluidBlock RADIATION = Registry.register(
             Registries.BLOCK,
             new Identifier(GallifreyMod.MOD_ID, "radiation"),
@@ -139,6 +161,98 @@ public class GallifreyFluids {
     }
 
     public static class Still extends RadiationFluid {
+        @Override
+        public int getLevel(FluidState state) {
+            return 8;
+        }
+
+        @Override
+        public boolean isStill(FluidState state) {
+            return true;
+        }
+    }
+
+    public abstract static class ClassicLavaFluid extends FlowableFluid {
+        @Override
+        public Fluid getStill() {
+            return STILL_CLASSIC_LAVA;
+        }
+
+        @Override
+        public Fluid getFlowing() {
+            return FLOWING_CLASSIC_LAVA;
+        }
+
+        @Override
+        public Item getBucketItem() {
+            return net.minecraft.item.Items.BUCKET;
+        }
+
+        @Override
+        protected boolean isInfinite(net.minecraft.world.World world) {
+            return false;
+        }
+
+        @Override
+        protected void beforeBreakingBlock(net.minecraft.world.WorldAccess world, BlockPos pos, BlockState state) {
+            Block.dropStacks(state, world, pos, state.hasBlockEntity() ? world.getBlockEntity(pos) : null);
+        }
+
+        @Override
+        protected int getFlowSpeed(WorldView world) {
+            return 5;
+        }
+
+        @Override
+        protected int getLevelDecreasePerBlock(WorldView world) {
+            return 2;
+        }
+
+        @Override
+        public int getTickRate(WorldView world) {
+            return 30;
+        }
+
+        @Override
+        protected float getBlastResistance() {
+            return 100.0F;
+        }
+
+        @Override
+        protected BlockState toBlockState(FluidState state) {
+            return CLASSIC_LAVA.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
+        }
+
+        @Override
+        public boolean matchesType(Fluid fluid) {
+            return fluid == STILL_CLASSIC_LAVA || fluid == FLOWING_CLASSIC_LAVA;
+        }
+
+        @Override
+        protected boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, net.minecraft.util.math.Direction direction) {
+            return direction == net.minecraft.util.math.Direction.DOWN && !fluid.matchesType(STILL_CLASSIC_LAVA);
+        }
+    }
+
+    public static class ClassicLavaFlowing extends ClassicLavaFluid {
+        @Override
+        protected void appendProperties(StateManager.Builder<Fluid, FluidState> builder) {
+            super.appendProperties(builder);
+            builder.add(Properties.LEVEL_1_8);
+        }
+
+        @Override
+        public int getLevel(FluidState state) {
+            return state.get(Properties.LEVEL_1_8);
+        }
+
+        @Override
+        public boolean isStill(FluidState state) {
+            return false;
+        }
+    }
+
+    public static class ClassicLavaStill extends ClassicLavaFluid {
         @Override
         public int getLevel(FluidState state) {
             return 8;

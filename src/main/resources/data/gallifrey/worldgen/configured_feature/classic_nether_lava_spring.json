@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:spring",
+  "config": {
+    "state": {
+      "Name": "gallifrey:classic_nether_lava"
+    },
+    "requires_block": true,
+    "rock_count": 4,
+    "hole_count": 1
+  }
+}

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gallifrey:block/alpha_nether/soul_sand"
+    "all": "gallifrey:block/classic_nether/soul_sand"
   }
 }
