@@ -16,6 +16,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.minecraft.world.gen.GenerationStep;
 import com.timelordmod.gallifrey.world.MarsWorldHandler;
 import com.timelordmod.gallifrey.world.portal.GallifreyPortalAreaHelper;
+import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -197,6 +198,16 @@ public class GallifreyMod implements ModInitializer {
 
 		// Custom Dimension Stuff
 		CustomPortalApiRegistry.registerPortalFrameTester(GALLIFREY_FRAME_TESTER, GallifreyPortalAreaHelper::new);
+
+		// Classic Nether: normal obsidian + flint and steel, linked 1:1 with Classic.
+		// Custom Portal API handles ignition and the reciprocal destination in both dimensions.
+		CustomPortalBuilder.beginPortal()
+						.frameBlock(net.minecraft.block.Blocks.OBSIDIAN)
+						.lightWithItem(net.minecraft.item.Items.FLINT_AND_STEEL)
+						.destDimID(ModDimensions.CLASSIC_NETHER_LEVEL_KEY.getValue())
+						.returnDim(ModDimensions.CLASSIC_LEVEL_KEY.getValue(), false)
+						.tintColor(131, 66, 184)
+						.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.REINFORCED_STEEL_BLOCK)
