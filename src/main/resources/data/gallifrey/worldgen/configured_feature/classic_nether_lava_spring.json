@@ -1,11 +1,22 @@
 {
-  "type": "minecraft:spring",
+  "type": "minecraft:spring_feature",
   "config": {
-    "state": {
-      "Name": "gallifrey:classic_nether_lava"
-    },
-    "requires_block": true,
+    "hole_count": 1,
+    "requires_block_below": true,
     "rock_count": 4,
-    "hole_count": 1
+    "state": {
+      "Name": "gallifrey:classic_nether_lava",
+      "Properties": {
+        "falling": "true"
+      }
+    },
+    "valid_blocks": [
+      "gallifrey:classic_nether_netherrack",
+      "gallifrey:classic_nether_soul_sand",
+      "gallifrey:classic_nether_magma",
+      "minecraft:netherrack",
+      "minecraft:soul_sand",
+      "minecraft:gravel"
+    ]
   }
 }
