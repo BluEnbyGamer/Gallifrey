@@ -4,6 +4,7 @@ import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.block.entity.SonicWorkshopBlockEntity;
 import com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity;
 import com.timelordmod.gallifrey.block.entity.TardisConsoleBlockEntity;
+import com.timelordmod.gallifrey.block.entity.TardisInteriorDoorBlockEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
@@ -33,6 +34,16 @@ public class GallifreyModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(
                             TardisConsoleBlockEntity::new,
                             GallifreyModBlocks.TARDIS_CONSOLE
+                    ).build()
+            );
+
+    public static final BlockEntityType<TardisInteriorDoorBlockEntity> TARDIS_INTERIOR_DOOR =
+            Registry.register(
+                    Registries.BLOCK_ENTITY_TYPE,
+                    GallifreyMod.id("tardis_interior_door"),
+                    FabricBlockEntityTypeBuilder.create(
+                            TardisInteriorDoorBlockEntity::new,
+                            GallifreyModBlocks.TARDIS_INTERIOR_DOOR
                     ).build()
             );
 

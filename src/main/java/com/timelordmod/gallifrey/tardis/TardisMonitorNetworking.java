@@ -2,6 +2,7 @@ package com.timelordmod.gallifrey.tardis;
 
 import com.timelordmod.gallifrey.GallifreySounds;
 import com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity;
+import com.timelordmod.gallifrey.tardis.TardisExteriorCatalog;
 import com.timelordmod.gallifrey.networking.ModPackets;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -70,9 +71,9 @@ public final class TardisMonitorNetworking {
                     TardisDimensionManager.swapInterior(player, name);
                     sendState(player);
                 }
-                case "EXTERIOR_VARIANT" -> {
-                    int variant = buf.readVarInt();
-                    setExteriorVariant(player, variant);
+                case "EXTERIOR_STYLE" -> {
+                    String style = buf.readString(64);
+                    setExteriorStyle(player, style);
                     sendState(player);
                 }
                 case "LOCK" -> { setLock(player, true); sendState(player); }
@@ -108,10 +109,18 @@ public final class TardisMonitorNetworking {
         return true;
     }
 
-    private static boolean setExteriorVariant(ServerPlayerEntity player, int variant) {
+    private static boolean setExteriorStyle(ServerPlayerEntity player, String style) {
         TardisExteriorBlockEntity tardis = findActive(player);
-        if (tardis == null || !tardis.canPilot(player.getUuid())) return false;
-        tardis.setExteriorVariant(variant);
+        if (tardis == null || !tardis.canPilot(player.getUuid())) {
+            player.sendMessage(Text.literal("Only the TARDIS owner can change its exterior."), true);
+            return false;
+        }
+        if (!TardisExteriorCatalog.contains(style)) {
+            player.sendMessage(Text.literal("Unknown TARDIS exterior."), true);
+            return false;
+        }
+        tardis.setExteriorStyle(style);
+        player.sendMessage(Text.literal("Exterior changed to " + tardis.getExteriorStyleName() + "."), true);
         return true;
     }
 
@@ -136,8 +145,10 @@ public final class TardisMonitorNetworking {
         out.writeBoolean(true);
         out.writeInt(tardis.getFuel());
         out.writeInt(TardisExteriorBlockEntity.MAX_FUEL);
-        out.writeVarInt(tardis.getExteriorVariant());
-        out.writeString(tardis.getExteriorVariantName(), 32);
+        out.writeString(tardis.getExteriorStyle(), 64);
+        out.writeString(tardis.getExteriorStyleName(), 64);
+        out.writeVarInt(TardisExteriorCatalog.names().size());
+        for (String style : TardisExteriorCatalog.names()) out.writeString(style, 64);
         out.writeString(tardis.getInteriorStructure(), 64);
         out.writeVarInt(TardisInteriorCatalog.names().size());
         for (String name : TardisInteriorCatalog.names()) out.writeString(name, 64);

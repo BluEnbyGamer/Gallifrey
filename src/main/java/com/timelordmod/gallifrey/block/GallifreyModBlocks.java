@@ -2226,6 +2226,16 @@ public class GallifreyModBlocks {
             )
     );
 
+    /** Physical exit door installed inside each generated TARDIS interior. */
+    public static final Block TARDIS_INTERIOR_DOOR = registerBlockNoItem(
+            "tardis_interior_door",
+            new TardisInteriorDoorBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE)
+                            .strength(-1.0f, 3600000.0f)
+                            .nonOpaque()
+            )
+    );
+
 
     // ============================================================
     // BLOCK REGISTRATION
@@ -2233,6 +2243,14 @@ public class GallifreyModBlocks {
 
     private static Block registerBlock(String name, Block block) {
         return registerBlock(name, block, false);
+    }
+
+    private static Block registerBlockNoItem(String name, Block block) {
+        return Registry.register(
+                Registries.BLOCK,
+                new Identifier(GallifreyMod.MOD_ID, name),
+                block
+        );
     }
 
     private static Block registerBlock(String name, Block block, boolean sonicWorkshopItem) {

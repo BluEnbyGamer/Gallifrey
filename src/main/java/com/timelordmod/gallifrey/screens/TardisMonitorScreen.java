@@ -31,8 +31,9 @@ public class TardisMonitorScreen extends Screen {
     private int left, top;
     private int tab = 0;
     private int fuel, maxFuel;
-    private int exteriorVariant;
-    private String exteriorVariantName = "Default";
+    private String exteriorStyle = "policebox";
+    private String exteriorStyleName = "Police Box";
+    private List<String> exteriorStyles = new ArrayList<>();
     private String interior = "tardis_platform";
     private String selectedInterior = "tardis_platform";
     private List<String> interiors = new ArrayList<>();
@@ -77,16 +78,19 @@ public class TardisMonitorScreen extends Screen {
     }
 
     private void buildExterior() {
-        int[] variants = {0, 1, 2, 3};
-        for (int i : variants) {
-            int row = i / 2, col = i % 2;
-            int bx = left + 22 + col * 288;
-            int by = top + 106 + row * 58;
-            String name = variantName(i);
-            addDrawableChild(button(bx, by, 272, 44, (i == exteriorVariant ? "● " : "○ ") + name,
-                    b -> selectExterior(i)));
+        int count = exteriorStyles.isEmpty() ? 9 : exteriorStyles.size();
+        for (int i = 0; i < count; i++) {
+            int row = i / 3, col = i % 3;
+            int bx = left + 18 + col * 196;
+            int by = top + 102 + row * 42;
+            String style = exteriorStyles.isEmpty() ? fallbackStyle(i) : exteriorStyles.get(i);
+            String name = pretty(style);
+            String marker = style.equals(exteriorStyle) ? "● " : "○ ";
+            addDrawableChild(button(bx, by, 186, 34, marker + name,
+                    b -> selectExterior(style)));
         }
-        addDrawableChild(button(left + 22, top + 232, 560, 28, "APPLY SHELL TO TARDIS", b -> selectExterior(exteriorVariant)));
+        addDrawableChild(button(left + 18, top + 236, 576, 30,
+                "ACTIVE SHELL: " + exteriorStyleName.toUpperCase(Locale.ROOT), b -> {}));
     }
 
     private void buildInterior() {
@@ -164,13 +168,13 @@ public class TardisMonitorScreen extends Screen {
         ClientPlayNetworking.send(ModPackets.TARDIS_MONITOR_ACTION, buf);
     }
 
-    private void selectExterior(int variant) {
+    private void selectExterior(String style) {
         PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeString("EXTERIOR_VARIANT");
-        buf.writeVarInt(variant);
+        buf.writeString("EXTERIOR_STYLE");
+        buf.writeString(style, 64);
         ClientPlayNetworking.send(ModPackets.TARDIS_MONITOR_ACTION, buf);
-        exteriorVariant = variant;
-        exteriorVariantName = variantName(variant);
+        exteriorStyle = style;
+        exteriorStyleName = pretty(style);
         rebuild();
     }
 
@@ -192,12 +196,17 @@ public class TardisMonitorScreen extends Screen {
         rebuild();
     }
 
-    private String variantName(int v) {
-        return switch (v) {
-            case 1 -> "Classic Blue";
-            case 2 -> "Weathered Blue";
-            case 3 -> "Dark Blue";
-            default -> "Default Blue";
+    private String fallbackStyle(int i) {
+        return switch (i) {
+            case 1 -> "policebox_alt";
+            case 2 -> "policebox_alt2";
+            case 3 -> "policebox_badwolf";
+            case 4 -> "policebox_coral";
+            case 5 -> "policebox_dino";
+            case 6 -> "policebox_purple";
+            case 7 -> "policebox_tokomak";
+            case 8 -> "gamblebox";
+            default -> "policebox";
         };
     }
 
@@ -248,7 +257,7 @@ public class TardisMonitorScreen extends Screen {
         c.fill(left + 84, top + 342, left + 84 + barW, top + 353, PANEL_DARK);
         c.fill(left + 84, top + 342, left + 84 + filled, top + 353, GREEN);
         c.drawText(textRenderer, Text.literal(fuel + " / " + maxFuel), left + 322, top + 344, TEXT, false);
-        c.drawText(textRenderer, Text.literal("SHELL: " + exteriorVariantName), left + 405, top + 344, AMBER, false);
+        c.drawText(textRenderer, Text.literal("SHELL: " + exteriorStyleName), left + 405, top + 344, AMBER, false);
 
         if (tab == 0) {
             c.drawText(textRenderer, Text.literal("DESTINATION"), left + 22, top + 94, DIM, false);
@@ -259,7 +268,7 @@ public class TardisMonitorScreen extends Screen {
             c.drawText(textRenderer, Text.literal(interiorDimension), left + 22, top + 292, TEXT, false);
         } else if (tab == 1) {
             c.drawText(textRenderer, Text.literal("ISOMORPHIC SHELL CONTROL"), left + 22, top + 94, DIM, false);
-            c.drawText(textRenderer, Text.literal("Select the police-box shell presentation for this TARDIS."), left + 22, top + 215, DIM, false);
+            c.drawText(textRenderer, Text.literal("Select a supplied shell texture; the matching emission map is used automatically."), left + 22, top + 310, DIM, false);
         } else if (tab == 2) {
             c.drawText(textRenderer, Text.literal("INTERIOR ARCHITECTURE"), left + 22, top + 84, DIM, false);
             c.drawText(textRenderer, Text.literal("Installing an interior ejects everyone first, then rebuilds the room."), left + 22, top + 323, DIM, false);
@@ -292,8 +301,11 @@ public class TardisMonitorScreen extends Screen {
         if (!valid) return;
         int fuel = buf.readInt();
         int maxFuel = buf.readInt();
-        int variant = buf.readVarInt();
-        String variantName = buf.readString(32);
+        String style = buf.readString(64);
+        String styleName = buf.readString(64);
+        int styleCount = buf.readVarInt();
+        List<String> styles = new ArrayList<>();
+        for (int i = 0; i < styleCount; i++) styles.add(buf.readString(64));
         String interior = buf.readString(64);
         int count = buf.readVarInt();
         List<String> interiors = new ArrayList<>();
@@ -311,8 +323,9 @@ public class TardisMonitorScreen extends Screen {
             if (client.currentScreen != screen) client.setScreen(screen);
             screen.fuel = fuel;
             screen.maxFuel = maxFuel;
-            screen.exteriorVariant = variant;
-            screen.exteriorVariantName = variantName;
+            screen.exteriorStyle = style;
+            screen.exteriorStyleName = styleName;
+            screen.exteriorStyles = styles;
             screen.interior = interior;
             screen.interiors = interiors;
             if (!interiors.contains(screen.selectedInterior)) screen.selectedInterior = interior;

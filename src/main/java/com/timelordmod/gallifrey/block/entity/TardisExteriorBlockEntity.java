@@ -4,6 +4,8 @@ import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 import com.timelordmod.gallifrey.tardis.TardisDimensionManager;
 import com.timelordmod.gallifrey.tardis.TardisInteriorCatalog;
 import com.timelordmod.gallifrey.tardis.TardisRegistryState;
+import com.timelordmod.gallifrey.tardis.TardisExteriorCatalog;
+import com.timelordmod.gallifrey.block.entity.TardisInteriorDoorBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -32,9 +34,10 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     private BlockPos interiorOrigin = new BlockPos(0, 64, 0);
     private boolean interiorGenerated;
     private String interiorStructure = "tardis_platform";
-    private int exteriorVariant;
+    private String exteriorStyle = "policebox";
     private Vec3i interiorSize = new Vec3i(5, 5, 5);
     private BlockPos consolePos;
+    private BlockPos interiorDoorPos;
 
     private boolean flightPending;
     private int flightTicks;
@@ -74,17 +77,11 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     public int getFuel() { return fuel; }
     public BlockPos getInteriorOrigin() { return interiorOrigin; }
     public String getInteriorStructure() { return interiorStructure; }
-    public int getExteriorVariant() { return Math.max(0, Math.min(3, exteriorVariant)); }
-    public String getExteriorVariantName() {
-        return switch (getExteriorVariant()) {
-            case 1 -> "Classic Blue";
-            case 2 -> "Weathered Blue";
-            case 3 -> "Dark Blue";
-            default -> "Default";
-        };
-    }
-    public void setExteriorVariant(int variant) {
-        exteriorVariant = Math.max(0, Math.min(3, variant));
+    public String getExteriorStyle() { return TardisExteriorCatalog.get(exteriorStyle).id(); }
+    public String getExteriorStyleName() { return TardisExteriorCatalog.get(exteriorStyle).displayName(); }
+    public void setExteriorStyle(String style) {
+        exteriorStyle = TardisExteriorCatalog.get(style).id();
+        updateInteriorDoorStyle();
         markDirty();
         if (world != null && !world.isClient) {
             world.updateListeners(pos, getCachedState(), getCachedState(), 3);
@@ -92,10 +89,26 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     }
     public Vec3i getInteriorSize() { return interiorSize; }
     public BlockPos getConsolePos() { return consolePos; }
+    public BlockPos getInteriorDoorPos() { return interiorDoorPos; }
 
     public void setConsolePos(BlockPos pos) {
         consolePos = pos == null ? null : pos.toImmutable();
         markDirty();
+    }
+
+    public void setInteriorDoorPos(BlockPos pos) {
+        interiorDoorPos = pos == null ? null : pos.toImmutable();
+        markDirty();
+    }
+
+    private void updateInteriorDoorStyle() {
+        if (world == null || world.isClient || world.getServer() == null || tardisId == null || interiorDoorPos == null) return;
+        TardisRegistryState.Record record = TardisRegistryState.get(world.getServer()).get(tardisId);
+        if (record == null) return;
+        ServerWorld interior = TardisDimensionManager.getInterior(world.getServer(), record);
+        if (interior != null && interior.getBlockEntity(interiorDoorPos) instanceof TardisInteriorDoorBlockEntity door) {
+            door.setExteriorStyle(exteriorStyle);
+        }
     }
 
     public boolean canAccess(UUID player) {
@@ -147,6 +160,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         template.get().place(world, placement, placement,
                 new net.minecraft.structure.StructurePlacementData(), world.getRandom(), 2);
         installConsole(world);
+        installInteriorDoor(world);
         interiorGenerated = true;
         markDirty();
         return true;
@@ -179,6 +193,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         template.get().place(world, placement, placement,
                 new net.minecraft.structure.StructurePlacementData(), world.getRandom(), 2);
         installConsole(world);
+        installInteriorDoor(world);
         interiorGenerated = true;
         markDirty();
         return true;
@@ -276,7 +291,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         nbt.putLong("InteriorOrigin", interiorOrigin.asLong());
         nbt.putBoolean("InteriorGenerated", interiorGenerated);
         nbt.putString("InteriorStructure", interiorStructure);
-        nbt.putInt("ExteriorVariant", exteriorVariant);
+        nbt.putString("ExteriorStyle", exteriorStyle);
+        if (interiorDoorPos != null) nbt.putLong("InteriorDoorPos", interiorDoorPos.asLong());
         nbt.putInt("InteriorSizeX", interiorSize.getX());
         nbt.putInt("InteriorSizeY", interiorSize.getY());
         nbt.putInt("InteriorSizeZ", interiorSize.getZ());
@@ -299,7 +315,14 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         if (nbt.contains("InteriorOrigin")) interiorOrigin = BlockPos.fromLong(nbt.getLong("InteriorOrigin"));
         interiorGenerated = nbt.getBoolean("InteriorGenerated");
         if (nbt.contains("InteriorStructure")) interiorStructure = nbt.getString("InteriorStructure");
-        exteriorVariant = Math.max(0, Math.min(3, nbt.getInt("ExteriorVariant")));
+        if (nbt.contains("ExteriorStyle")) {
+            exteriorStyle = TardisExteriorCatalog.get(nbt.getString("ExteriorStyle")).id();
+        } else if (nbt.contains("ExteriorVariant")) {
+            exteriorStyle = TardisExteriorCatalog.migrateLegacyIndex(nbt.getInt("ExteriorVariant"));
+        } else {
+            exteriorStyle = "policebox";
+        }
+        if (nbt.contains("InteriorDoorPos")) interiorDoorPos = BlockPos.fromLong(nbt.getLong("InteriorDoorPos"));
         interiorSize = new Vec3i(Math.max(1, nbt.getInt("InteriorSizeX")), Math.max(1, nbt.getInt("InteriorSizeY")), Math.max(1, nbt.getInt("InteriorSizeZ")));
 
         flightPending = nbt.getBoolean("FlightPending");

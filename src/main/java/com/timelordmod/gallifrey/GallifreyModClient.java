@@ -8,12 +8,14 @@ import com.timelordmod.gallifrey.client.PlanetWeatherClient;
 import com.timelordmod.gallifrey.client.SonicShadesClient;
 import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
 import com.timelordmod.gallifrey.client.TardisConsoleBlockEntityRenderer;
+import com.timelordmod.gallifrey.client.TardisInteriorDoorRenderer;
 import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
 import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 import com.timelordmod.gallifrey.model.TardisModel;
+import com.timelordmod.gallifrey.model.TardisInteriorDoorModel;
 import com.timelordmod.gallifrey.screens.SonicWorkshopScreen;
 import com.timelordmod.gallifrey.screens.VortexManipulatorScreen;
 import com.timelordmod.gallifrey.sonic.SonicCasing;
@@ -267,9 +269,19 @@ public class GallifreyModClient implements ClientModInitializer {
                 TardisModel::getTexturedModelData
         );
 
+        EntityModelLayerRegistry.registerModelLayer(
+                TardisInteriorDoorRenderer.LAYER,
+                TardisInteriorDoorModel::getTexturedModelData
+        );
+
         BlockEntityRendererRegistry.register(
                 GallifreyModBlockEntities.TARDIS_EXTERIOR,
                 TardisExteriorRenderer::new
+        );
+
+        BlockEntityRendererRegistry.register(
+                GallifreyModBlockEntities.TARDIS_INTERIOR_DOOR,
+                TardisInteriorDoorRenderer::new
         );
 
         BlockEntityRendererRegistry.register(
