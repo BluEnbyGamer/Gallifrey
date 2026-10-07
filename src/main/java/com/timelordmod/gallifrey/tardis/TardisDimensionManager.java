@@ -223,11 +223,11 @@ public final class TardisDimensionManager {
 
         // Classic TARDIS sequence: dematerialise at the old location, ride the
         // flight sound through the vortex, then materialise at the destination.
-        currentWorld.playSound(null, currentPos, GallifreySounds.TARDIS_DEMATERIALIZE, SoundCategory.BLOCKS, 1.8f, 1.0f);
-        currentWorld.playSound(null, currentPos, GallifreySounds.TARDIS_FLIGHT, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        currentWorld.playSound(null, currentPos, GallifreySounds.TYPE70DEMAT, SoundCategory.BLOCKS, 1.8f, 1.0f);
+        currentWorld.playSound(null, currentPos, GallifreySounds.TYPE70FLIGHT, SoundCategory.BLOCKS, 1.0f, 1.0f);
         ServerWorld interior = getInterior(server);
         if (interior != null) {
-            interior.playSound(null, tardis.getInteriorOrigin(), GallifreySounds.TARDIS_FLIGHT, SoundCategory.AMBIENT, 0.75f, 1.0f);
+            interior.playSound(null, tardis.getInteriorOrigin(), GallifreySounds.TYPE70FLIGHT, SoundCategory.AMBIENT, 0.75f, 1.0f);
         }
 
         // Store the target on the TARDIS. A server tick performs the actual
@@ -303,11 +303,11 @@ public final class TardisDimensionManager {
                 }
             }
         }
-        targetWorld.playSound(null, targetPos, GallifreySounds.TARDIS_MATERIALIZE, SoundCategory.BLOCKS, 1.8f, 1.0f);
-        targetWorld.playSound(null, targetPos, GallifreySounds.TARDIS_CLOISTER, SoundCategory.AMBIENT, 0.20f, 1.0f);
+        targetWorld.playSound(null, targetPos, GallifreySounds.TYPE70MAT, SoundCategory.BLOCKS, 1.8f, 1.0f);
+        targetWorld.playSound(null, targetPos, GallifreySounds.DRWHOVALE, SoundCategory.AMBIENT, 0.20f, 1.0f);
         ServerWorld interior = getInterior(server);
         if (interior != null) {
-            interior.playSound(null, tardis.getInteriorOrigin(), GallifreySounds.TARDIS_MATERIALIZE, SoundCategory.AMBIENT, 0.75f, 1.0f);
+            interior.playSound(null, tardis.getInteriorOrigin(), GallifreySounds.TYPE70MAT, SoundCategory.AMBIENT, 0.75f, 1.0f);
         }
         spawnMaterializationParticles(targetWorld, targetPos);
     }
