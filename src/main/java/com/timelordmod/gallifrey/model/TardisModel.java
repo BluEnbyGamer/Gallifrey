@@ -27,7 +27,7 @@ public class TardisModel extends Model {
 	private final ModelPart phone;
 	private final ModelPart leftdoor;
 	public TardisModel(ModelPart root) {
-		super(RenderLayer::getEntityTranslucent);
+		super(RenderLayer::getEntityCutoutNoCull);
 		this.bone = root.getChild("bone");
 		this.sides = root.getChild("sides");
 		this.roof = root.getChild("roof");

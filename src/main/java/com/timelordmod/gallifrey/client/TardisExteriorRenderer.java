@@ -65,8 +65,9 @@ public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExterio
             pulse = 1.0F + (float) Math.sin((1.0F - progress) * Math.PI * 12.0F) * 0.04F;
         }
 
-        matrices.translate(0.0F, (1.0F - phase) * 0.08F, 0.0F);
-        matrices.scale(-pulse, -pulse, pulse);
+        float phaseScale = Math.max(0.06F, phase);
+        matrices.translate(0.0F, (1.0F - phaseScale) * 0.08F, 0.0F);
+        matrices.scale(-pulse * phaseScale, -pulse * phaseScale, pulse * phaseScale);
 
         String style = blockEntity.getExteriorStyle();
         Identifier texture = texture(style);
@@ -74,20 +75,20 @@ public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExterio
 
         model.render(
                 matrices,
-                vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(texture)),
+                vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(texture)),
                 light,
                 overlay,
-                1.0F, 1.0F, 1.0F, phase
+                1.0F, 1.0F, 1.0F, 1.0F
         );
 
         // The supplied emission maps keep lamps/signage glowing without the
         // old hard-coded colour tint system.
         model.render(
                 matrices,
-                vertexConsumers.getBuffer(RenderLayer.getEntityTranslucentEmissive(emission)),
+                vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(emission)),
                 light,
                 overlay,
-                1.0F, 1.0F, 1.0F, phase
+                1.0F, 1.0F, 1.0F, 1.0F
         );
 
         matrices.pop();
