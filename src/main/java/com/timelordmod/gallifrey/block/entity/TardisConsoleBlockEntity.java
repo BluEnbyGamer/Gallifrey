@@ -1,6 +1,7 @@
 package com.timelordmod.gallifrey.block.entity;
 
 import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -29,7 +30,7 @@ public class TardisConsoleBlockEntity extends BlockEntity implements GeoBlockEnt
     public void setPowered(boolean powered) {
         this.powered = powered;
         markDirty();
-        if (world != null && !world.isClient) world.getChunkManager().markForUpdate(pos);
+        if (world != null && !world.isClient) world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.timelordmod.gallifrey.client.CreativeSectionSidebar;
 import com.timelordmod.gallifrey.client.PlanetWeatherClient;
 import com.timelordmod.gallifrey.client.SonicShadesClient;
 import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
+import com.timelordmod.gallifrey.client.TardisConsoleBlockEntityRenderer;
 import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
 import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
