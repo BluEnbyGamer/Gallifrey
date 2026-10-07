@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.entity.client;
 
+import net.minecraft.client.model.Dilation;
 import com.timelordmod.gallifrey.entity.custom.LaserEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;

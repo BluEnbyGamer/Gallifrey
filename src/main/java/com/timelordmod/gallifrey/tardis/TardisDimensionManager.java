@@ -54,6 +54,10 @@ public final class TardisDimensionManager {
         return RegistryKey.of(RegistryKeys.WORLD, INTERIOR_DIMENSION_ID);
     }
 
+    public static boolean isInteriorWorld(net.minecraft.world.WorldView worldView) {
+        return worldView instanceof World world && isInteriorWorld(world);
+    }
+
     public static boolean isInteriorWorld(World world) {
         Identifier id = world.getRegistryKey().getValue();
         return id.getNamespace().equals(GallifreyMod.MOD_ID)
