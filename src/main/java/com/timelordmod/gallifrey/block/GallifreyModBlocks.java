@@ -1,6 +1,7 @@
 package com.timelordmod.gallifrey.block;
 
 import com.timelordmod.gallifrey.block.custom.SpreadingGrassBlock;
+import com.timelordmod.gallifrey.block.TardisConsoleBlock;
 import com.timelordmod.gallifrey.item.custom.SonicWorkshopItem;
 
 import com.timelordmod.gallifrey.GallifreyMod;
@@ -2213,10 +2214,10 @@ public class GallifreyModBlocks {
             )
     );
 
-    /** Functional TARDIS console monitor. */
-    public static final Block TARDIS_MONITOR = registerBlock(
-            "tardis_monitor",
-            new TardisMonitorBlock(
+    /** The physical TARDIS control console using the supplied Hartnell Geo model. */
+    public static final Block TARDIS_CONSOLE = registerBlock(
+            "tardis_console",
+            new TardisConsoleBlock(
                     FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE)
                             .strength(1.5f)
                             .nonOpaque()

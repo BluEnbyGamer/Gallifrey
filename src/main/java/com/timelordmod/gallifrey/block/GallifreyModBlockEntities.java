@@ -3,6 +3,7 @@ package com.timelordmod.gallifrey.block;
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.block.entity.SonicWorkshopBlockEntity;
 import com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity;
+import com.timelordmod.gallifrey.block.entity.TardisConsoleBlockEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
@@ -22,6 +23,16 @@ public class GallifreyModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(
                             TardisExteriorBlockEntity::new,
                             GallifreyModBlocks.TARDIS_EXTERIOR
+                    ).build()
+            );
+
+    public static final BlockEntityType<TardisConsoleBlockEntity> TARDIS_CONSOLE =
+            Registry.register(
+                    Registries.BLOCK_ENTITY_TYPE,
+                    GallifreyMod.id("tardis_console"),
+                    FabricBlockEntityTypeBuilder.create(
+                            TardisConsoleBlockEntity::new,
+                            GallifreyModBlocks.TARDIS_CONSOLE
                     ).build()
             );
 

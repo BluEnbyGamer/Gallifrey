@@ -272,6 +272,11 @@ public class GallifreyModClient implements ClientModInitializer {
         );
 
         BlockEntityRendererRegistry.register(
+                GallifreyModBlockEntities.TARDIS_CONSOLE,
+                TardisConsoleBlockEntityRenderer::new
+        );
+
+        BlockEntityRendererRegistry.register(
                 GallifreyModBlockEntities.SONIC_WORKSHOP_BLOCK_ENTITY,
                 SonicWorkshopBlockEntityRenderer::new
         );

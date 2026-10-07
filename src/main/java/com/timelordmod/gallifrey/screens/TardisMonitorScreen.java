@@ -14,7 +14,7 @@ import net.minecraft.text.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Full TARDIS console monitor: navigation, artron reserves, interior and exterior controls. */
+/** Full TARDIS console: navigation, artron reserves, interior and exterior controls. */
 public class TardisMonitorScreen extends Screen {
     private static final int W = 560;
     private static final int H = 360;
@@ -43,7 +43,7 @@ public class TardisMonitorScreen extends Screen {
     private ButtonWidget flightButton, refuelButton, interiorApplyButton, variantButton;
 
     public TardisMonitorScreen() {
-        super(Text.literal("TARDIS Monitor"));
+        super(Text.literal("TARDIS Console"));
     }
 
     @Override
@@ -152,7 +152,7 @@ public class TardisMonitorScreen extends Screen {
         context.fill(left, top, left + W, top + H, PANEL);
         context.drawBorder(left, top, W, H, BLUE_DIM);
         context.fill(left + 12, top + 12, left + W - 12, top + 44, PANEL_DARK);
-        context.drawText(textRenderer, Text.literal("TARDIS CONTROL MONITOR"), left + 24, top + 23, BLUE, false);
+        context.drawText(textRenderer, Text.literal("TARDIS CONTROL CONSOLE"), left + 24, top + 23, BLUE, false);
         context.drawText(textRenderer, Text.literal(locked ? "ISOMORPHIC SECURITY: LOCKED" : "ISOMORPHIC SECURITY: OPEN"), left + 330, top + 23, locked ? GOLD : GREEN, false);
 
         context.drawText(textRenderer, Text.literal("ARTRON RESERVES"), left + 22, top + 60, DIM, false);

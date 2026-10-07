@@ -55,6 +55,7 @@ public class GallifreyMod implements ModInitializer {
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
 
 		TardisCommands.register();
+		TardisMonitorNetworking.register();
 		ServerTickEvents.END_SERVER_TICK.register(TardisDimensionManager::tickFlight);
 
 		GallifreySounds.register();

@@ -230,7 +230,7 @@ public final class GallifreyTabSections {
 
                 // TARDIS
                 entries.add(GallifreyModBlocks.TARDIS_EXTERIOR);
-                entries.add(GallifreyModBlocks.TARDIS_MONITOR);
+                entries.add(GallifreyModBlocks.TARDIS_CONSOLE);
 
                 //STEEL
                 entries.add(GallifreyModItems.RAW_STEEL);

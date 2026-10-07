@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import java.util.List;
 import java.util.UUID;
 
-/** Server-side protocol for the in-world TARDIS monitor. */
+/** Server-side protocol for the in-world TARDIS console. */
 public final class TardisMonitorNetworking {
     private TardisMonitorNetworking() {}
 
@@ -32,7 +32,7 @@ public final class TardisMonitorNetworking {
 
     public static boolean openFor(ServerPlayerEntity player) {
         if (!sendState(player)) {
-            player.sendMessage(Text.literal("The monitor cannot find your active TARDIS."), true);
+            player.sendMessage(Text.literal("The console cannot find your active TARDIS."), true);
             return false;
         }
         return true;
@@ -73,10 +73,10 @@ public final class TardisMonitorNetworking {
                     setExteriorVariant(player, variant);
                     sendState(player);
                 }
-                default -> player.sendMessage(Text.literal("Unknown TARDIS monitor action."), true);
+                default -> player.sendMessage(Text.literal("Unknown TARDIS console action."), true);
             }
         } catch (Exception e) {
-            player.sendMessage(Text.literal("TARDIS monitor command could not be completed."), true);
+            player.sendMessage(Text.literal("TARDIS console command could not be completed."), true);
             sendState(player);
         }
     }

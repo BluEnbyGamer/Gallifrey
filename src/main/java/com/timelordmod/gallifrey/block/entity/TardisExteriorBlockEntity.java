@@ -131,7 +131,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         world.getChunk(chunk.x, chunk.z);
         template.get().place(world, placement, placement,
                 new net.minecraft.structure.StructurePlacementData(), world.getRandom(), 2);
-        installMonitor(world);
+        installConsole(world);
         interiorGenerated = true;
         markDirty();
         return true;
@@ -163,21 +163,21 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         world.getChunk(chunk.x, chunk.z);
         template.get().place(world, placement, placement,
                 new net.minecraft.structure.StructurePlacementData(), world.getRandom(), 2);
-        installMonitor(world);
+        installConsole(world);
         interiorGenerated = true;
         markDirty();
         return true;
     }
 
-    /** Places one functional monitor in a clear floor position if the selected interior does not already contain one. */
-    private void installMonitor(ServerWorld world) {
+    /** Places the physical Hartnell TARDIS console in a clear central floor position. */
+    private void installConsole(ServerWorld world) {
         BlockPos base = interiorOrigin.add(0, 1, 2);
         for (int dx = -3; dx <= 3; dx++) {
             for (int dz = -3; dz <= 3; dz++) {
                 BlockPos candidate = base.add(dx, 0, dz);
                 if (world.getBlockState(candidate).isAir()
                         && world.getBlockState(candidate.down()).isSolidBlock(world, candidate.down())) {
-                    world.setBlockState(candidate, com.timelordmod.gallifrey.block.GallifreyModBlocks.TARDIS_MONITOR.getDefaultState(), 3);
+                    world.setBlockState(candidate, com.timelordmod.gallifrey.block.GallifreyModBlocks.TARDIS_CONSOLE.getDefaultState(), 3);
                     return;
                 }
             }
