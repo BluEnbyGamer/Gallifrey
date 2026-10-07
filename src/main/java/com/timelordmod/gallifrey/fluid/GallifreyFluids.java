@@ -135,6 +135,11 @@ public class GallifreyFluids {
         }
 
         @Override
+        protected boolean canBeReplacedWith(FluidState state, net.minecraft.world.BlockView world, BlockPos pos, Fluid fluid, net.minecraft.util.math.Direction direction) {
+            return false;
+        }
+
+        @Override
         public int getTickRate(WorldView world) {
             return 5;
         }
