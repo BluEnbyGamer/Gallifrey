@@ -43,8 +43,20 @@ public class TardisExteriorBlock extends Block implements BlockEntityProvider {
     @Override
     public boolean canPlaceAt(BlockState state, World world, BlockPos pos) {
         // A TARDIS must never be placed inside another TARDIS pocket dimension.
-        return !world.getRegistryKey().equals(TardisDimensionManager.interiorKey())
+        return !TardisDimensionManager.isInteriorWorld(world)
                 && super.canPlaceAt(state, world, pos);
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, net.minecraft.entity.LivingEntity placer, net.minecraft.item.ItemStack stack) {
+        super.onPlaced(world, pos, state, placer, stack);
+        if (!world.isClient && placer instanceof ServerPlayerEntity player
+                && world.getBlockEntity(pos) instanceof TardisExteriorBlockEntity tardis) {
+            tardis.ensureInitialized(player);
+            if (tardis.getTardisId() != null) {
+                player.sendMessage(Text.literal("New TARDIS created: " + tardis.getTardisId()), true);
+            }
+        }
     }
 
     @Override

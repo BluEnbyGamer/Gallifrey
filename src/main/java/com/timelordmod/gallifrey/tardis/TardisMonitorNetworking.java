@@ -75,6 +75,8 @@ public final class TardisMonitorNetworking {
                     setExteriorVariant(player, variant);
                     sendState(player);
                 }
+                case "LOCK" -> { setLock(player, true); sendState(player); }
+                case "UNLOCK" -> { setLock(player, false); sendState(player); }
                 case "PLAY_DRWHO_VALE" -> playDrWhoVale(player);
                 default -> player.sendMessage(Text.literal("Unknown TARDIS console action."), true);
             }
@@ -95,6 +97,17 @@ public final class TardisMonitorNetworking {
         player.sendMessage(Text.literal("Now playing: Doctor Who Vale"), true);
     }
 
+    private static boolean setLock(ServerPlayerEntity player, boolean locked) {
+        TardisExteriorBlockEntity tardis = findActive(player);
+        if (tardis == null || !tardis.canPilot(player.getUuid())) {
+            player.sendMessage(Text.literal("Only the TARDIS owner can change security."), true);
+            return false;
+        }
+        tardis.setLocked(locked);
+        player.sendMessage(Text.literal(locked ? "TARDIS security locked." : "TARDIS security open."), true);
+        return true;
+    }
+
     private static boolean setExteriorVariant(ServerPlayerEntity player, int variant) {
         TardisExteriorBlockEntity tardis = findActive(player);
         if (tardis == null || !tardis.canPilot(player.getUuid())) return false;
@@ -113,6 +126,12 @@ public final class TardisMonitorNetworking {
         TardisRegistryState.Record record = registry.get(id);
         if (record == null) return false;
 
+        ServerWorld interior = TardisDimensionManager.getInterior(player.getServer(), record);
+        if (interior == null && !TardisDimensionManager.INTERIOR_DIMENSION_ID.toString().equals(record.interiorDimension())) {
+            interior = TardisDimensionManager.ensureInteriorWorld(player.getServer(), id);
+        }
+        if (interior != null) TardisDimensionManager.sendInteriorDimensionKey(player, interior.getRegistryKey().getValue());
+
         PacketByteBuf out = PacketByteBufs.create();
         out.writeBoolean(true);
         out.writeInt(tardis.getFuel());
@@ -123,6 +142,7 @@ public final class TardisMonitorNetworking {
         out.writeVarInt(TardisInteriorCatalog.names().size());
         for (String name : TardisInteriorCatalog.names()) out.writeString(name, 64);
         out.writeString(record.world(), 128);
+        out.writeString(record.interiorDimension(), 128);
         BlockPos pos = BlockPos.fromLong(record.pos());
         out.writeDouble(pos.getX());
         out.writeDouble(pos.getY());

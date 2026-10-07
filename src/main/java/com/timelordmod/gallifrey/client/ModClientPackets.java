@@ -8,6 +8,8 @@ import com.timelordmod.gallifrey.screens.TardisMonitorScreen;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 
 /** Server-to-client packet receivers. Client only: call from GallifreyModClient. */
 public final class ModClientPackets {
@@ -31,6 +33,11 @@ public final class ModClientPackets {
                 }
                 TardisMonitorScreen.applyServerState(copy);
             });
+        });
+
+        ClientPlayNetworking.registerGlobalReceiver(ModPackets.TARDIS_REGISTER_DIMENSION, (client, handler, buf, responseSender) -> {
+            RegistryKey<net.minecraft.world.World> key = RegistryKey.of(RegistryKeys.WORLD, buf.readIdentifier());
+            client.execute(() -> client.getNetworkHandler().getWorldKeys().add(key));
         });
 
         ClientPlayNetworking.registerGlobalReceiver(ModPackets.TARDIS_CLOSE_CONSOLE, (client, handler, buf, responseSender) ->

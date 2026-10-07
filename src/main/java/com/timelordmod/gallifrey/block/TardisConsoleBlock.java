@@ -90,7 +90,7 @@ public class TardisConsoleBlock extends Block implements BlockEntityProvider {
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         super.onPlaced(world, pos, state, placer, itemStack);
         if (world.isClient || !(placer instanceof ServerPlayerEntity player)
-                || !world.getRegistryKey().equals(TardisDimensionManager.interiorKey())) return;
+                || !TardisDimensionManager.isInteriorWorld(world)) return;
 
         TardisRegistryState registry = TardisRegistryState.get(player.getServer());
         java.util.UUID id = registry.getActiveTardis(player.getUuid());
@@ -110,7 +110,7 @@ public class TardisConsoleBlock extends Block implements BlockEntityProvider {
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.isOf(newState.getBlock())) {
-            if (!world.isClient && world.getRegistryKey().equals(TardisDimensionManager.interiorKey())
+            if (!world.isClient && TardisDimensionManager.isInteriorWorld(world)
                     && world.getBlockEntity(pos) instanceof TardisConsoleBlockEntity) {
                 // Clear the stored position if this was the registered console.
                 // The next placed console inside the TARDIS will re-register itself.

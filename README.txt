@@ -55,3 +55,10 @@ You are free to copy, modify, distribute, and use the project's contents without
 Gallifrey is a fan-made project and is not affiliated with, endorsed by, or sponsored by the BBC or the creators and rights holders of Doctor Who.
 
 Doctor Who and its related names, characters, designs, and concepts are trademarks and/or intellectual property of their respective owners.
+
+Gallifrey TARDIS v15 notes
+- Every newly placed TARDIS creates its own isolated persistent pocket dimension: gallifrey:tardis_<tardis uuid without dashes>.
+- The old gallifrey:tardis dimension is retained for legacy saves.
+- The Hartnell console has a dedicated 32x32 inventory/held-item PNG.
+- The TARDIS console UI is reorganized into Navigation / Exterior / Interior / Systems tabs, inspired by the Vortex Manipulator's compact navigation/isomorphic-control layout.
+- Flight, exterior shell selection, interior selection/application, security, refuelling, and Doctor Who Vale playback are available from the console UI.

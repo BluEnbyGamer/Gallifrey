@@ -42,13 +42,17 @@ public final class TardisRegistryState extends PersistentState {
             NbtCompound t = list.getCompound(i);
             try {
                 UUID id = t.getUuid("Id");
+                String interiorDimension = t.contains("InteriorDimension")
+                        ? t.getString("InteriorDimension")
+                        : TardisDimensionManager.INTERIOR_DIMENSION_ID.toString();
                 Record record = new Record(
                         id,
                         t.containsUuid("Owner") ? t.getUuid("Owner") : null,
                         t.getString("World"),
                         t.getLong("Pos"),
                         t.getLong("Origin"),
-                        t.getBoolean("Locked")
+                        t.getBoolean("Locked"),
+                        interiorDimension
                 );
                 state.tardises.put(id, record);
             } catch (IllegalArgumentException ignored) {
@@ -80,15 +84,15 @@ public final class TardisRegistryState extends PersistentState {
         return nextInteriorSlot++;
     }
 
-    public void register(UUID id, UUID owner, ServerWorld world, long pos, long origin, boolean locked) {
-        tardises.put(id, new Record(id, owner, world.getRegistryKey().getValue().toString(), pos, origin, locked));
+    public void register(UUID id, UUID owner, ServerWorld world, long pos, long origin, boolean locked, String interiorDimension) {
+        tardises.put(id, new Record(id, owner, world.getRegistryKey().getValue().toString(), pos, origin, locked, interiorDimension));
         markDirty();
     }
 
     public void updateLocation(UUID id, ServerWorld world, long pos) {
         Record old = tardises.get(id);
         if (old != null) {
-            tardises.put(id, new Record(id, old.owner(), world.getRegistryKey().getValue().toString(), pos, old.origin(), old.locked()));
+            tardises.put(id, new Record(id, old.owner(), world.getRegistryKey().getValue().toString(), pos, old.origin(), old.locked(), old.interiorDimension()));
             markDirty();
         }
     }
@@ -96,7 +100,7 @@ public final class TardisRegistryState extends PersistentState {
     public void updateLock(UUID id, boolean locked) {
         Record old = tardises.get(id);
         if (old != null) {
-            tardises.put(id, new Record(id, old.owner(), old.world(), old.pos(), old.origin(), locked));
+            tardises.put(id, new Record(id, old.owner(), old.world(), old.pos(), old.origin(), locked, old.interiorDimension()));
             markDirty();
         }
     }
@@ -136,6 +140,7 @@ public final class TardisRegistryState extends PersistentState {
             t.putLong("Pos", r.pos());
             t.putLong("Origin", r.origin());
             t.putBoolean("Locked", r.locked());
+            t.putString("InteriorDimension", r.interiorDimension());
             list.add(t);
         }
         nbt.put("Tardises", list);
@@ -151,5 +156,13 @@ public final class TardisRegistryState extends PersistentState {
         return nbt;
     }
 
-    public record Record(UUID id, UUID owner, String world, long pos, long origin, boolean locked) {}
+    public void updateInteriorDimension(UUID id, String interiorDimension, long origin) {
+        Record old = tardises.get(id);
+        if (old != null) {
+            tardises.put(id, new Record(id, old.owner(), old.world(), old.pos(), origin, old.locked(), interiorDimension));
+            markDirty();
+        }
+    }
+
+    public record Record(UUID id, UUID owner, String world, long pos, long origin, boolean locked, String interiorDimension) {}
 }

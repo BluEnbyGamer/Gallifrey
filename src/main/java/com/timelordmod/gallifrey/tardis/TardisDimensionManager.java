@@ -6,6 +6,7 @@ import com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.GallifreySounds;
 import com.timelordmod.gallifrey.networking.ModPackets;
+import com.timelordmod.gallifrey.mixin.MinecraftServerAccessor;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.block.BlockState;
@@ -14,6 +15,11 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.WorldGenerationProgressLogger;
+import net.minecraft.registry.Registry;
+import net.minecraft.world.SaveProperties;
+import net.minecraft.world.dimension.DimensionOptions;
+import net.minecraft.world.level.LevelProperties;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -29,21 +35,93 @@ import net.minecraft.world.World;
 import java.util.UUID;
 
 public final class TardisDimensionManager {
+    /** Legacy shared interior retained solely so older saves can still be migrated. */
     public static final Identifier INTERIOR_DIMENSION_ID = new Identifier(GallifreyMod.MOD_ID, "tardis");
     private static final BlockPos DEFAULT_ENTRY_OFFSET = new BlockPos(0, 1, 0);
 
     private TardisDimensionManager() {}
 
+    /** Each TARDIS receives its own persistent world key. */
+    public static Identifier getDimensionId(UUID tardisId) {
+        return new Identifier(GallifreyMod.MOD_ID, "tardis_" + tardisId.toString().replace("-", ""));
+    }
+
     public static Identifier getDimensionId(long tardisId) {
-        return INTERIOR_DIMENSION_ID;
+        return new Identifier(GallifreyMod.MOD_ID, "tardis_" + Long.toUnsignedString(tardisId));
     }
 
     public static RegistryKey<World> interiorKey() {
         return RegistryKey.of(RegistryKeys.WORLD, INTERIOR_DIMENSION_ID);
     }
 
+    public static boolean isInteriorWorld(World world) {
+        Identifier id = world.getRegistryKey().getValue();
+        return id.getNamespace().equals(GallifreyMod.MOD_ID)
+                && (id.getPath().equals("tardis") || id.getPath().startsWith("tardis_"));
+    }
+
     public static ServerWorld getInterior(MinecraftServer server) {
         return server.getWorld(interiorKey());
+    }
+
+    public static ServerWorld getInterior(MinecraftServer server, TardisRegistryState.Record record) {
+        if (record == null) return null;
+        return server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.interiorDimension())));
+    }
+
+    /** Creates and registers an isolated TARDIS world at runtime. */
+    public static ServerWorld ensureInteriorWorld(MinecraftServer server, UUID tardisId) {
+        Identifier id = getDimensionId(tardisId);
+        RegistryKey<World> key = RegistryKey.of(RegistryKeys.WORLD, id);
+        ServerWorld existing = server.getWorld(key);
+        if (existing != null) return existing;
+
+        try {
+            MinecraftServerAccessor access = (MinecraftServerAccessor) server;
+            Registry<DimensionOptions> dimensions = server.getRegistryManager().get(RegistryKeys.DIMENSION);
+            DimensionOptions template = dimensions.get(INTERIOR_DIMENSION_ID);
+            if (template == null) {
+                GallifreyMod.LOGGER.error("Unable to create TARDIS world {}: missing dimension template {}", id, INTERIOR_DIMENSION_ID);
+                return null;
+            }
+
+            SaveProperties saveProperties = server.getSaveProperties();
+            LevelProperties properties = new LevelProperties(
+                    saveProperties.getLevelInfo(),
+                    saveProperties.getGeneratorOptions(),
+                    LevelProperties.SpecialProperty.NONE,
+                    saveProperties.getLifecycle());
+            properties.setInitialized(true);
+            ServerWorld world = new ServerWorld(
+                    server,
+                    access.gallifrey$getWorkerExecutor(),
+                    access.gallifrey$getSession(),
+                    properties,
+                    key,
+                    template,
+                    new WorldGenerationProgressLogger(0),
+                    false,
+                    server.getOverworld().getSeed(),
+                    java.util.List.of(),
+                    false,
+                    null);
+            access.gallifrey$getWorlds().put(key, world);
+            world.setSpawnPos(new BlockPos(0, 65, 0), 0.0f);
+            GallifreyMod.LOGGER.info("Created isolated TARDIS dimension {}", id);
+            return world;
+        } catch (Throwable t) {
+            GallifreyMod.LOGGER.error("Failed to create isolated TARDIS dimension {}", id, t);
+            return null;
+        }
+    }
+
+    /** Restores all per-TARDIS worlds after the server has loaded. */
+    public static void restoreInteriorWorlds(MinecraftServer server) {
+        for (TardisRegistryState.Record record : TardisRegistryState.get(server).records()) {
+            if (!INTERIOR_DIMENSION_ID.toString().equals(record.interiorDimension())) {
+                ensureInteriorWorld(server, record.id());
+            }
+        }
     }
 
     public static Vec3d interiorEntry(TardisExteriorBlockEntity tardis) {
@@ -60,22 +138,36 @@ public final class TardisDimensionManager {
             return false;
         }
 
-        ServerWorld interior = getInterior(server);
+        TardisRegistryState registry = TardisRegistryState.get(server);
+        tardis.ensureInitialized(player);
+        if (tardis.getTardisId() == null) return false;
+
+        UUID activeId = tardis.getTardisId();
+        TardisRegistryState.Record existingRecord = registry.get(activeId);
+        ServerWorld interior = existingRecord == null
+                ? ensureInteriorWorld(server, activeId)
+                : getInterior(server, existingRecord);
         if (interior == null) {
             player.sendMessage(Text.literal("The TARDIS interior dimension is unavailable."), true);
             return false;
         }
 
-        tardis.ensureInitialized(player);
         if (!tardis.generateInterior(interior)) {
             player.sendMessage(Text.literal("The TARDIS interior structure could not be loaded."), true);
             return false;
         }
 
-        TardisRegistryState registry = TardisRegistryState.get(server);
-        registry.register(tardis.getTardisId(), tardis.getOwner(), player.getServerWorld(),
-                tardis.getPos().asLong(), tardis.getInteriorOrigin().asLong(), tardis.isLocked());
+        registry = TardisRegistryState.get(server);
+        TardisRegistryState.Record record = registry.get(tardis.getTardisId());
+        if (record == null) {
+            String interiorDimension = getDimensionId(tardis.getTardisId()).toString();
+            registry.register(tardis.getTardisId(), tardis.getOwner(), player.getServerWorld(),
+                    tardis.getPos().asLong(), tardis.getInteriorOrigin().asLong(), tardis.isLocked(), interiorDimension);
+            record = registry.get(tardis.getTardisId());
+        }
         registry.setActive(player, tardis.getTardisId());
+
+        sendInteriorDimensionKey(player, interior.getRegistryKey().getValue());
 
         ChunkPos chunk = new ChunkPos(tardis.getInteriorOrigin());
         interior.getChunkManager().addTicket(net.minecraft.server.world.ChunkTicketType.POST_TELEPORT, chunk, 2, player.getId());
@@ -137,7 +229,10 @@ public final class TardisDimensionManager {
         }
         TardisRegistryState.Record record = registry.get(id);
         if (record == null) return false;
-        ServerWorld interior = getInterior(server);
+        ServerWorld interior = getInterior(server, record);
+        if (interior == null) {
+            interior = ensureInteriorWorld(server, id);
+        }
         if (interior == null) return false;
 
         ServerWorld exteriorWorld = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.world())));
@@ -228,7 +323,7 @@ public final class TardisDimensionManager {
         // flight sound through the vortex, then materialise at the destination.
         currentWorld.playSound(null, currentPos, GallifreySounds.TYPE70DEMAT, SoundCategory.BLOCKS, 1.8f, 1.0f);
         currentWorld.playSound(null, currentPos, GallifreySounds.TYPE70FLIGHT, SoundCategory.BLOCKS, 1.0f, 1.0f);
-        ServerWorld interior = getInterior(server);
+        ServerWorld interior = getInterior(server, record);
         if (interior != null) {
             interior.playSound(null, tardis.getInteriorOrigin(), GallifreySounds.TYPE70FLIGHT, SoundCategory.AMBIENT, 0.75f, 1.0f);
         }
@@ -267,17 +362,15 @@ public final class TardisDimensionManager {
         }
     }
 
-    /** Keeps players from falling into the void of the shared TARDIS pocket dimension. */
+    /** Keeps players from falling out of their individual TARDIS pocket dimension. */
     private static void tickInteriorSafety(MinecraftServer server, TardisRegistryState registry) {
-        ServerWorld interior = getInterior(server);
-        if (interior == null) return;
-
         for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-            if (player.getServerWorld() != interior) continue;
             UUID id = registry.getActiveTardis(player.getUuid());
             if (id == null) continue;
             TardisRegistryState.Record record = registry.get(id);
             if (record == null) continue;
+            ServerWorld interior = getInterior(server, record);
+            if (interior == null || player.getServerWorld() != interior) continue;
 
             BlockPos origin = BlockPos.fromLong(record.origin());
             // Interior templates are built around Y=64. If a player falls more
@@ -343,10 +436,11 @@ public final class TardisDimensionManager {
             }
         }
 
-        ServerWorld interior = getInterior(server);
-        if (interior != null) {
-            // The registry stores the origin but not the latest footprint. Clear
-            // a generous area around it so the generated interior is removed.
+        ServerWorld interior = getInterior(server, record);
+        if (interior != null && !INTERIOR_DIMENSION_ID.toString().equals(record.interiorDimension())) {
+            try { interior.close(); } catch (Exception ignored) {}
+            ((MinecraftServerAccessor) server).gallifrey$getWorlds().remove(interior.getRegistryKey());
+        } else if (interior != null) {
             clearDeletedInterior(interior, BlockPos.fromLong(record.origin()));
         }
 
@@ -370,6 +464,12 @@ public final class TardisDimensionManager {
                 }
             }
         }
+    }
+
+    public static void sendInteriorDimensionKey(ServerPlayerEntity player, Identifier id) {
+        net.minecraft.network.PacketByteBuf buf = net.fabricmc.fabric.api.networking.v1.PacketByteBufs.create();
+        buf.writeIdentifier(id);
+        ServerPlayNetworking.send(player, ModPackets.TARDIS_REGISTER_DIMENSION, buf);
     }
 
     public static void closeConsole(ServerPlayerEntity player) {
@@ -417,7 +517,8 @@ public final class TardisDimensionManager {
             }
         }
         targetWorld.playSound(null, targetPos, GallifreySounds.TYPE70MAT, SoundCategory.BLOCKS, 1.8f, 1.0f);
-        ServerWorld interior = getInterior(server);
+        TardisRegistryState.Record record = registry.get(tardis.getTardisId());
+        ServerWorld interior = getInterior(server, record);
         if (interior != null) {
             interior.playSound(null, tardis.getInteriorOrigin(), GallifreySounds.TYPE70MAT, SoundCategory.AMBIENT, 0.75f, 1.0f);
         }

@@ -13,73 +13,115 @@ import net.minecraft.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-/** Full TARDIS console: navigation, artron reserves, interior and exterior controls. */
+/**
+ * TARDIS console UI, deliberately laid out like the Vortex Manipulator:
+ * compact navigation tabs, dense isomorphic controls, clear status blocks,
+ * and no giant Minecraft-style inventory window.
+ */
 public class TardisMonitorScreen extends Screen {
-    private static final int W = 560;
-    private static final int H = 360;
-    private static final int PANEL = 0xF0081117;
-    private static final int PANEL_LIGHT = 0xFF102832;
-    private static final int PANEL_DARK = 0xFF071015;
-    private static final int BLUE = 0xFF53D6F2;
-    private static final int BLUE_DIM = 0xFF1D7188;
-    private static final int GOLD = 0xFFE2B85C;
-    private static final int TEXT = 0xFFEAF6F7;
-    private static final int DIM = 0xFF86A9B2;
-    private static final int GREEN = 0xFF68E09A;
-    private static final int RED = 0xFFFF6675;
+    private static final int W = 620, H = 390;
+    private static final int PANEL = 0xF0091117, PANEL_LIGHT = 0xFF101D25, PANEL_DARK = 0xFF060C10;
+    private static final int BLUE = 0xFF63DDF2, BLUE_DIM = 0xFF276B7A;
+    private static final int AMBER = 0xFFFFC857, AMBER_DIM = 0xFF9A6A1F;
+    private static final int TEXT = 0xFFE8F8FA, DIM = 0xFF86AAB4, GREEN = 0xFF5FE39A, RED = 0xFFFF6675;
+    private static final int SILVER = 0xFFD2D9DC;
 
     private int left, top;
+    private int tab = 0;
     private int fuel, maxFuel;
     private int exteriorVariant;
     private String exteriorVariantName = "Default";
     private String interior = "tardis_platform";
+    private String selectedInterior = "tardis_platform";
     private List<String> interiors = new ArrayList<>();
-    private boolean flightPending;
-    private boolean locked;
-    private int interiorIndex;
+    private boolean flightPending, locked;
+    private String exteriorDimension = "minecraft:overworld";
+    private String interiorDimension = "gallifrey:tardis";
+    private double exteriorX, exteriorY, exteriorZ;
 
     private TextFieldWidget dimension, x, y, z;
-    private ButtonWidget flightButton, refuelButton, interiorApplyButton, variantButton;
+    private ButtonWidget flightButton;
+    private int interiorPage;
 
-    public TardisMonitorScreen() {
-        super(Text.literal("TARDIS Console"));
-    }
+    public TardisMonitorScreen() { super(Text.literal("TARDIS Console")); }
 
     @Override
     protected void init() {
         left = (width - W) / 2;
         top = (height - H) / 2;
-        clearChildren();
-
-        dimension = field(left + 22, top + 112, 240, "minecraft:overworld");
-        addDrawableChild(button(left + 270, top + 112, 124, 24, "DIM LIST", b -> client.setScreen(new TardisDimensionsScreen(this))));
-        x = field(left + 22, top + 160, 72, "X");
-        y = field(left + 102, top + 160, 72, "Y");
-        z = field(left + 182, top + 160, 72, "Z");
-
-        flightButton = button(left + 264, top + 160, 130, 24, "FLIGHT", b -> sendFlight());
-        refuelButton = button(left + 402, top + 160, 136, 24, "REFUEL", b -> sendAction("REFUEL"));
-
-        addDrawableChild(button(left + 22, top + 218, 72, 24, "◀", b -> cycleInterior(-1)));
-        interiorApplyButton = button(left + 102, top + 218, 300, 24, "APPLY INTERIOR", b -> applyInterior());
-        addDrawableChild(button(left + 410, top + 218, 72, 24, "▶", b -> cycleInterior(1)));
-
-        variantButton = button(left + 22, top + 260, 216, 24, "EXTERIOR", b -> cycleVariant());
-        addDrawableChild(variantButton);
-        addDrawableChild(button(left + 246, top + 260, 292, 24, "CLOSE", b -> close()));
-        addDrawableChild(button(left + 22, top + 292, 516, 24, "MUSIC: PLAY DR WHO VALE", b -> sendAction("PLAY_DRWHO_VALE")));
-
-        syncInteriorIndex();
+        rebuild();
         requestState();
     }
 
-    private TextFieldWidget field(int x, int y, int w, String placeholder) {
-        TextFieldWidget f = new TextFieldWidget(textRenderer, x, y, w, 24, Text.literal(placeholder));
+    private void rebuild() {
+        clearChildren();
+        if (tab == 0) buildNavigation();
+        else if (tab == 1) buildExterior();
+        else if (tab == 2) buildInterior();
+        else buildSystems();
+    }
+
+    private void buildNavigation() {
+        dimension = field(left + 22, top + 108, 390, "minecraft:overworld");
+        addDrawableChild(button(left + 420, top + 108, 178, 24, "DIMENSION DIRECTORY", b -> client.setScreen(new TardisDimensionsScreen(this))));
+        x = field(left + 22, top + 157, 118, "X");
+        y = field(left + 150, top + 157, 118, "Y");
+        z = field(left + 278, top + 157, 118, "Z");
+        flightButton = button(left + 410, top + 157, 188, 24, "ENGAGE VORTEX", b -> sendFlight());
+
+        addDrawableChild(button(left + 22, top + 205, 186, 28, "CURRENT LOCATION", b -> loadCurrentLocation()));
+        addDrawableChild(button(left + 216, top + 205, 186, 28, "VORTEX: RETURN", b -> setCurrentExteriorAsDestination()));
+        addDrawableChild(button(left + 410, top + 205, 188, 28, "CANCEL / CLOSE", b -> close()));
+    }
+
+    private void buildExterior() {
+        int[] variants = {0, 1, 2, 3};
+        for (int i : variants) {
+            int row = i / 2, col = i % 2;
+            int bx = left + 22 + col * 288;
+            int by = top + 106 + row * 58;
+            String name = variantName(i);
+            addDrawableChild(button(bx, by, 272, 44, (i == exteriorVariant ? "● " : "○ ") + name,
+                    b -> selectExterior(i)));
+        }
+        addDrawableChild(button(left + 22, top + 232, 560, 28, "APPLY SHELL TO TARDIS", b -> selectExterior(exteriorVariant)));
+    }
+
+    private void buildInterior() {
+        int start = interiorPage * 6;
+        for (int i = 0; i < 6; i++) {
+            int index = start + i;
+            if (index >= interiors.size()) break;
+            String name = interiors.get(index);
+            int row = i / 2, col = i % 2;
+            int bx = left + 22 + col * 288;
+            int by = top + 100 + row * 45;
+            String marker = name.equals(selectedInterior) ? "● " : (name.equals(interior) ? "◆ " : "○ ");
+            addDrawableChild(button(bx, by, 272, 34, marker + pretty(name), b -> { selectedInterior = name; rebuild(); }));
+        }
+        addDrawableChild(button(left + 22, top + 250, 120, 26, "◀ PREV", b -> { if (interiorPage > 0) { interiorPage--; rebuild(); } }));
+        addDrawableChild(button(left + 146, top + 250, 328, 26, "SELECTED: " + pretty(selectedInterior), b -> {}));
+        addDrawableChild(button(left + 478, top + 250, 104, 26, "NEXT ▶", b -> {
+            if ((interiorPage + 1) * 6 < interiors.size()) { interiorPage++; rebuild(); }
+        }));
+        addDrawableChild(button(left + 22, top + 284, 560, 28, "INSTALL SELECTED INTERIOR  •  EJECTS ALL CREW", b -> applyInterior(selectedInterior)));
+    }
+
+    private void buildSystems() {
+        addDrawableChild(button(left + 22, top + 108, 272, 30, "REFUEL ARTRON RESERVES", b -> sendAction("REFUEL")));
+        addDrawableChild(button(left + 304, top + 108, 294, 30, locked ? "SECURITY: LOCKED" : "SECURITY: OPEN", b -> sendAction(locked ? "UNLOCK" : "LOCK")));
+        addDrawableChild(button(left + 22, top + 154, 272, 30, "MUSIC: PLAY DR WHO VALE", b -> sendAction("PLAY_DRWHO_VALE")));
+        addDrawableChild(button(left + 304, top + 154, 294, 30, "REQUEST SYSTEM STATUS", b -> requestState()));
+        addDrawableChild(button(left + 22, top + 200, 576, 30, "RETURN TO NAVIGATION", b -> switchTab(0)));
+    }
+
+    private TextFieldWidget field(int px, int py, int w, String placeholder) {
+        TextFieldWidget f = new TextFieldWidget(textRenderer, px, py, w, 24, Text.literal(placeholder));
         f.setMaxLength(128);
         f.setPlaceholder(Text.literal(placeholder));
         f.setEditableColor(TEXT);
-        f.setUneditableColor(DIM);
         addDrawableChild(f);
         return f;
     }
@@ -89,32 +131,22 @@ public class TardisMonitorScreen extends Screen {
     }
 
     public void setDimensionValue(String id) {
-        if (dimension != null) {
-            dimension.setText(id);
-            dimension.setSelectionStart(id.length());
-            dimension.setSelectionEnd(id.length());
-        }
+        if (dimension != null) dimension.setText(id);
     }
 
-    private void requestState() {
-        sendAction("REQUEST_STATE");
-    }
+    private void requestState() { sendAction("REQUEST_STATE"); }
 
     private void sendFlight() {
         try {
-            String dim = dimension.getText().trim();
-            double tx = Double.parseDouble(x.getText().trim());
-            double ty = Double.parseDouble(y.getText().trim());
-            double tz = Double.parseDouble(z.getText().trim());
             PacketByteBuf buf = PacketByteBufs.create();
             buf.writeString("FLIGHT");
-            buf.writeString(dim, 128);
-            buf.writeDouble(tx);
-            buf.writeDouble(ty);
-            buf.writeDouble(tz);
+            buf.writeString(dimension.getText().trim(), 128);
+            buf.writeDouble(Double.parseDouble(x.getText().trim()));
+            buf.writeDouble(Double.parseDouble(y.getText().trim()));
+            buf.writeDouble(Double.parseDouble(z.getText().trim()));
             ClientPlayNetworking.send(ModPackets.TARDIS_MONITOR_ACTION, buf);
-        } catch (NumberFormatException ignored) {
-            // The status line below gives the player feedback without closing the monitor.
+        } catch (Exception ignored) {
+            if (client != null && client.player != null) client.player.sendMessage(Text.literal("Enter valid destination coordinates."), true);
         }
     }
 
@@ -124,81 +156,139 @@ public class TardisMonitorScreen extends Screen {
         ClientPlayNetworking.send(ModPackets.TARDIS_MONITOR_ACTION, buf);
     }
 
-    private void applyInterior() {
-        if (interiors.isEmpty()) return;
+    private void applyInterior(String name) {
+        if (name == null || name.isEmpty()) return;
         PacketByteBuf buf = PacketByteBufs.create();
         buf.writeString("INTERIOR");
-        buf.writeString(interiors.get(interiorIndex), 64);
+        buf.writeString(name, 64);
         ClientPlayNetworking.send(ModPackets.TARDIS_MONITOR_ACTION, buf);
     }
 
-    private void cycleInterior(int delta) {
-        if (interiors.isEmpty()) return;
-        interiorIndex = (interiorIndex + delta) % interiors.size();
-        if (interiorIndex < 0) interiorIndex += interiors.size();
-        interiorApplyButton.setMessage(Text.literal("INTERIOR: " + interiors.get(interiorIndex)));
-    }
-
-    private void syncInteriorIndex() {
-        interiorIndex = Math.max(0, interiors.indexOf(interior));
-        if (interiorApplyButton != null && !interiors.isEmpty()) {
-            interiorApplyButton.setMessage(Text.literal("INTERIOR: " + interiors.get(interiorIndex)));
-        }
-    }
-
-    private void cycleVariant() {
+    private void selectExterior(int variant) {
         PacketByteBuf buf = PacketByteBufs.create();
         buf.writeString("EXTERIOR_VARIANT");
-        buf.writeVarInt((exteriorVariant + 1) % 4);
+        buf.writeVarInt(variant);
         ClientPlayNetworking.send(ModPackets.TARDIS_MONITOR_ACTION, buf);
+        exteriorVariant = variant;
+        exteriorVariantName = variantName(variant);
+        rebuild();
+    }
+
+    private void loadCurrentLocation() {
+        setField(dimension, exteriorDimension);
+        setField(x, fmt(exteriorX));
+        setField(y, fmt(exteriorY));
+        setField(z, fmt(exteriorZ));
+    }
+
+    private void setCurrentExteriorAsDestination() { loadCurrentLocation(); }
+
+    private void setField(TextFieldWidget field, String value) {
+        if (field != null) field.setText(value);
+    }
+
+    private void switchTab(int next) {
+        tab = next;
+        rebuild();
+    }
+
+    private String variantName(int v) {
+        return switch (v) {
+            case 1 -> "Classic Blue";
+            case 2 -> "Weathered Blue";
+            case 3 -> "Dark Blue";
+            default -> "Default Blue";
+        };
+    }
+
+    private String pretty(String name) {
+        if (name == null) return "Unknown";
+        String[] words = name.replace('_', ' ').split(" ");
+        StringBuilder out = new StringBuilder();
+        for (String word : words) {
+            if (word.isEmpty()) continue;
+            if (out.length() > 0) out.append(' ');
+            out.append(Character.toUpperCase(word.charAt(0))).append(word.substring(1));
+        }
+        return out.toString();
+    }
+
+    private String fmt(double d) {
+        return d == Math.rint(d) ? Long.toString((long) d) : String.format(Locale.ROOT, "%.2f", d);
     }
 
     @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context);
+    public void render(DrawContext c, int mouseX, int mouseY, float delta) {
+        c.fill(0, 0, width, height, 0x99000000);
         left = (width - W) / 2;
         top = (height - H) / 2;
+        c.fill(left - 3, top - 3, left + W + 3, top + H + 3, 0x553A2612);
+        c.fill(left, top, left + W, top + H, PANEL);
+        c.drawBorder(left, top, W, H, SILVER);
+        c.drawBorder(left + 4, top + 4, W - 8, H - 8, BLUE_DIM);
+        c.fill(left + 10, top + 10, left + W - 10, top + 38, PANEL_LIGHT);
+        c.fill(left + 10, top + 37, left + W - 10, top + 38, AMBER_DIM);
 
-        context.fill(left, top, left + W, top + H, PANEL);
-        context.drawBorder(left, top, W, H, BLUE_DIM);
-        context.fill(left + 12, top + 12, left + W - 12, top + 44, PANEL_DARK);
-        context.drawText(textRenderer, Text.literal("TARDIS CONTROL CONSOLE"), left + 24, top + 23, BLUE, false);
-        context.drawText(textRenderer, Text.literal(locked ? "ISOMORPHIC SECURITY: LOCKED" : "ISOMORPHIC SECURITY: OPEN"), left + 330, top + 23, locked ? GOLD : GREEN, false);
+        c.drawText(textRenderer, "TARDIS CONTROL MATRIX", left + 20, top + 19, BLUE, false);
+        c.drawText(textRenderer, flightPending ? "FLIGHT STATE: IN TRANSIT" : "FLIGHT STATE: READY", left + 405, top + 19, flightPending ? AMBER : GREEN, false);
 
-        context.drawText(textRenderer, Text.literal("ARTRON RESERVES"), left + 22, top + 60, DIM, false);
-        context.drawText(textRenderer, Text.literal(fuel + " / " + maxFuel), left + 22, top + 76, TEXT, false);
-        int barWidth = 240;
-        int filled = maxFuel <= 0 ? 0 : (int)(barWidth * (fuel / (double) maxFuel));
-        context.fill(left + 100, top + 76, left + 100 + barWidth, top + 88, PANEL_DARK);
-        context.fill(left + 100, top + 76, left + 100 + filled, top + 88, GREEN);
+        String[] tabs = {"NAVIGATION", "EXTERIOR", "INTERIOR", "SYSTEMS"};
+        for (int i = 0; i < tabs.length; i++) {
+            int bx = left + 18 + i * 149;
+            c.fill(bx, top + 49, bx + 140, top + 76, i == tab ? 0xFF163542 : PANEL_DARK);
+            c.drawBorder(bx, top + 49, 140, 27, i == tab ? BLUE : BLUE_DIM);
+            c.drawCenteredTextWithShadow(textRenderer, Text.literal(tabs[i]), bx + 70, top + 58, i == tab ? TEXT : DIM);
+        }
 
-        context.drawText(textRenderer, Text.literal("EXTERIOR VARIANT"), left + 370, top + 60, DIM, false);
-        context.drawText(textRenderer, Text.literal(exteriorVariantName), left + 370, top + 76, GOLD, false);
+        // Tab buttons are drawn as actual widgets below; these small chrome buttons are
+        // handled as mouse hit regions in mouseClicked so the layout stays clean.
+        c.drawText(textRenderer, Text.literal("ARTRON"), left + 22, top + 344, DIM, false);
+        int barW = 230;
+        int filled = maxFuel <= 0 ? 0 : (int)(barW * Math.max(0, Math.min(1, fuel / (double) maxFuel)));
+        c.fill(left + 84, top + 342, left + 84 + barW, top + 353, PANEL_DARK);
+        c.fill(left + 84, top + 342, left + 84 + filled, top + 353, GREEN);
+        c.drawText(textRenderer, Text.literal(fuel + " / " + maxFuel), left + 322, top + 344, TEXT, false);
+        c.drawText(textRenderer, Text.literal("SHELL: " + exteriorVariantName), left + 405, top + 344, AMBER, false);
 
-        context.drawText(textRenderer, Text.literal("DESTINATION"), left + 22, top + 94, DIM, false);
-        context.drawText(textRenderer, Text.literal("DIMENSION"), left + 22, top + 103, DIM, false);
-        context.drawText(textRenderer, Text.literal("X / Y / Z"), left + 22, top + 145, DIM, false);
+        if (tab == 0) {
+            c.drawText(textRenderer, Text.literal("DESTINATION"), left + 22, top + 94, DIM, false);
+            c.drawText(textRenderer, Text.literal("X / Y / Z"), left + 22, top + 143, DIM, false);
+            c.drawText(textRenderer, Text.literal("CURRENT EXTERIOR"), left + 22, top + 243, DIM, false);
+            c.drawText(textRenderer, Text.literal(exteriorDimension + "  @  " + fmt(exteriorX) + ", " + fmt(exteriorY) + ", " + fmt(exteriorZ)), left + 22, top + 259, TEXT, false);
+            c.drawText(textRenderer, Text.literal("POCKET DIMENSION"), left + 22, top + 276, DIM, false);
+            c.drawText(textRenderer, Text.literal(interiorDimension), left + 22, top + 292, TEXT, false);
+        } else if (tab == 1) {
+            c.drawText(textRenderer, Text.literal("ISOMORPHIC SHELL CONTROL"), left + 22, top + 94, DIM, false);
+            c.drawText(textRenderer, Text.literal("Select the police-box shell presentation for this TARDIS."), left + 22, top + 215, DIM, false);
+        } else if (tab == 2) {
+            c.drawText(textRenderer, Text.literal("INTERIOR ARCHITECTURE"), left + 22, top + 84, DIM, false);
+            c.drawText(textRenderer, Text.literal("Installing an interior ejects everyone first, then rebuilds the room."), left + 22, top + 323, DIM, false);
+        } else {
+            c.drawText(textRenderer, Text.literal("SYSTEMS / ISOMORPHIC CONTROLS"), left + 22, top + 94, DIM, false);
+            c.drawText(textRenderer, Text.literal(locked ? "Security is locked to the owner." : "Security is open."), left + 22, top + 250, locked ? AMBER : GREEN, false);
+        }
 
-        context.drawText(textRenderer, Text.literal("CURRENT INTERIOR"), left + 22, top + 198, DIM, false);
-        context.drawText(textRenderer, Text.literal(interior), left + 145, top + 198, TEXT, false);
-
-        String status = flightPending ? "IN FLIGHT — DEMATERIALISING" : "READY FOR FLIGHT";
-        context.drawText(textRenderer, Text.literal(status), left + 22, top + 326, flightPending ? GOLD : GREEN, false);
-        context.drawText(textRenderer, Text.literal("Flight consumes " + com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity.FLIGHT_COST + " artron energy."), left + 22, top + 344, DIM, false);
-
-        flightButton.active = !flightPending;
-        refuelButton.active = !flightPending;
-        interiorApplyButton.active = !flightPending && !interiors.isEmpty();
-        variantButton.setMessage(Text.literal("EXTERIOR: " + exteriorVariantName));
-        super.render(context, mouseX, mouseY, delta);
+        if (flightButton != null) flightButton.active = !flightPending;
+        super.render(c, mouseX, mouseY, delta);
     }
 
     @Override
-    public boolean shouldPause() { return false; }
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (button == 0) {
+            float sx = (float) ((mouseX - width / 2.0) + width / 2.0);
+            float sy = (float) ((mouseY - height / 2.0) + height / 2.0);
+            if (sy >= top + 49 && sy <= top + 76 && sx >= left + 18 && sx < left + 18 + 4 * 149) {
+                int selected = (int) ((sx - (left + 18)) / 149);
+                if (selected >= 0 && selected < 4) { switchTab(selected); return true; }
+            }
+        }
+        return super.mouseClicked(mouseX, mouseY, button);
+    }
+
+    @Override public boolean shouldPause() { return false; }
 
     public static void applyServerState(PacketByteBuf buf) {
         boolean valid = buf.readBoolean();
-        MinecraftClient client = MinecraftClient.getInstance();
         if (!valid) return;
         int fuel = buf.readInt();
         int maxFuel = buf.readInt();
@@ -209,38 +299,36 @@ public class TardisMonitorScreen extends Screen {
         List<String> interiors = new ArrayList<>();
         for (int i = 0; i < count; i++) interiors.add(buf.readString(64));
         String dim = buf.readString(128);
-        double x = buf.readDouble();
-        double y = buf.readDouble();
-        double z = buf.readDouble();
+        String pocket = buf.readString(128);
+        double x = buf.readDouble(), y = buf.readDouble(), z = buf.readDouble();
         boolean flight = buf.readBoolean();
         boolean locked = buf.readBoolean();
 
+        MinecraftClient client = MinecraftClient.getInstance();
         client.execute(() -> {
-            TardisMonitorScreen screen;
-            if (client.currentScreen instanceof TardisMonitorScreen existing) {
-                screen = existing;
-            } else {
-                screen = new TardisMonitorScreen();
-                client.setScreen(screen);
-            }
+            TardisMonitorScreen screen = client.currentScreen instanceof TardisMonitorScreen existing
+                    ? existing : new TardisMonitorScreen();
+            if (client.currentScreen != screen) client.setScreen(screen);
             screen.fuel = fuel;
             screen.maxFuel = maxFuel;
             screen.exteriorVariant = variant;
             screen.exteriorVariantName = variantName;
             screen.interior = interior;
             screen.interiors = interiors;
+            if (!interiors.contains(screen.selectedInterior)) screen.selectedInterior = interior;
+            screen.exteriorDimension = dim;
+            screen.interiorDimension = pocket;
+            screen.exteriorX = x;
+            screen.exteriorY = y;
+            screen.exteriorZ = z;
             screen.flightPending = flight;
             screen.locked = locked;
-            if (!screen.dimension.isFocused()) screen.dimension.setText(dim);
-            if (!screen.x.isFocused()) screen.x.setText(format(x));
-            if (!screen.y.isFocused()) screen.y.setText(format(y));
-            if (!screen.z.isFocused()) screen.z.setText(format(z));
-            screen.syncInteriorIndex();
+            if (screen.dimension != null && !screen.dimension.isFocused()) screen.dimension.setText(dim);
+            if (screen.x != null && !screen.x.isFocused()) screen.x.setText(screen.fmt(x));
+            if (screen.y != null && !screen.y.isFocused()) screen.y.setText(screen.fmt(y));
+            if (screen.z != null && !screen.z.isFocused()) screen.z.setText(screen.fmt(z));
+            if (flight && screen.tab != 0) screen.tab = 0;
+            screen.rebuild();
         });
-    }
-
-    private static String format(double d) {
-        if (d == Math.rint(d)) return Long.toString((long)d);
-        return String.format(java.util.Locale.ROOT, "%.2f", d);
     }
 }

@@ -49,15 +49,21 @@ public class TardisExteriorBlockEntity extends BlockEntity {
 
     public void ensureInitialized(ServerPlayerEntity firstOwner) {
         if (tardisId == null) {
-            tardisId = UUID.randomUUID();
+            UUID newId = UUID.randomUUID();
+            // Every newly created TARDIS gets a real, isolated pocket world.
+            // The legacy shared dimension remains available only for old saves.
+            ServerWorld interior = TardisDimensionManager.ensureInteriorWorld(firstOwner.getServer(), newId);
+            if (interior == null) {
+                firstOwner.sendMessage(net.minecraft.text.Text.literal("The TARDIS could not create its pocket dimension."), true);
+                return;
+            }
+            tardisId = newId;
             owner = firstOwner.getUuid();
             TardisRegistryState registry = TardisRegistryState.get(firstOwner.getServer());
-            int slot = registry.allocateInteriorSlot();
-            int x = (slot % 100) * 128;
-            int z = (slot / 100) * 128;
-            interiorOrigin = new BlockPos(x, 64, z);
+            interiorOrigin = new BlockPos(0, 64, 0);
+            String interiorDimension = interior.getRegistryKey().getValue().toString();
             registry.register(tardisId, owner, firstOwner.getServerWorld(), pos.asLong(),
-                    interiorOrigin.asLong(), locked);
+                    interiorOrigin.asLong(), locked, interiorDimension);
             markDirty();
         }
     }

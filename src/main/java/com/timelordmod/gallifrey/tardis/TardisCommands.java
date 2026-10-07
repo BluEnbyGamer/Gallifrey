@@ -230,8 +230,9 @@ public final class TardisCommands {
             }
             int shownFuel = fuel;
             boolean shownLocked = locked;
-            source.sendFeedback(() -> Text.literal("TARDIS " + id + " | " + record.world() +
-                    " @ " + pos.toShortString() + " | fuel " + shownFuel + "/" +
+            source.sendFeedback(() -> Text.literal("TARDIS " + id + " | exterior " + record.world() +
+                    " @ " + pos.toShortString() + " | pocket " + record.interiorDimension() +
+                    " | fuel " + shownFuel + "/" +
                     com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity.MAX_FUEL +
                     " | " + (shownLocked ? "LOCKED" : "UNLOCKED")), false);
             return 1;

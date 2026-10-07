@@ -1,3 +1,6 @@
 {
-  "parent": "gallifrey:block/tardis_console"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gallifrey:item/tardis_console"
+  }
 }
