@@ -249,7 +249,7 @@ public class GallifreyFluids {
         }
 
         @Override
-        protected void onScheduledTick(net.minecraft.world.World world, BlockPos pos, FluidState state) {
+        public void onScheduledTick(net.minecraft.world.World world, BlockPos pos, FluidState state) {
             // Classic water/lava interaction: source lava becomes obsidian;
             // stronger flowing lava becomes stone; weaker flowing lava becomes cobblestone.
             for (Direction direction : Direction.values()) {
@@ -346,7 +346,7 @@ public class GallifreyFluids {
         }
 
         @Override
-        protected void onScheduledTick(net.minecraft.world.World world, BlockPos pos, FluidState state) {
+        public void onScheduledTick(net.minecraft.world.World world, BlockPos pos, FluidState state) {
             for (Direction side : Direction.values()) {
                 FluidState other = world.getFluidState(pos.offset(side));
                 if (other.isOf(STILL_CLASSIC_LAVA) || other.isOf(FLOWING_CLASSIC_LAVA) || other.isIn(FluidTags.LAVA)) {
