@@ -8,6 +8,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.fluid.FlowableFluid;
+import net.minecraft.fluid.LavaFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
@@ -92,40 +93,16 @@ public class GallifreyFluids {
             return FLOWING_RADIATION;
         }
 
-        @Override
-        public Item getBucketItem() {
-            return GallifreyModItems.RADIATION_BUCKET;
-        }
 
-        @Override
-        protected boolean isInfinite(net.minecraft.world.World world) {
-            return false;
-        }
 
         @Override
         protected void beforeBreakingBlock(net.minecraft.world.WorldAccess world, BlockPos pos, BlockState state) {
             BlockEntityAccessor.dropStacks(state, world, pos);
         }
 
-        @Override
-        protected int getFlowSpeed(WorldView world) {
-            return 3;
-        }
 
-        @Override
-        protected int getLevelDecreasePerBlock(WorldView world) {
-            return 1;
-        }
 
-        @Override
-        public int getTickRate(WorldView world) {
-            return 20;
-        }
 
-        @Override
-        protected float getBlastResistance() {
-            return 100.0F;
-        }
 
         @Override
         protected BlockState toBlockState(FluidState state) {
@@ -137,10 +114,6 @@ public class GallifreyFluids {
             return fluid == STILL_RADIATION || fluid == FLOWING_RADIATION;
         }
 
-        @Override
-        protected boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, net.minecraft.util.math.Direction direction) {
-            return direction == net.minecraft.util.math.Direction.DOWN && !fluid.matchesType(STILL_RADIATION);
-        }
     }
 
     public static class Flowing extends RadiationFluid {
@@ -173,7 +146,7 @@ public class GallifreyFluids {
         }
     }
 
-    public abstract static class ClassicLavaFluid extends FlowableFluid {
+    public abstract static class ClassicLavaFluid extends LavaFluid {
         @Override
         public Fluid getStill() {
             return STILL_CLASSIC_LAVA;
@@ -184,40 +157,13 @@ public class GallifreyFluids {
             return FLOWING_CLASSIC_LAVA;
         }
 
-        @Override
-        public Item getBucketItem() {
-            return net.minecraft.item.Items.BUCKET;
-        }
 
-        @Override
-        protected boolean isInfinite(net.minecraft.world.World world) {
-            return false;
-        }
 
         @Override
         protected void beforeBreakingBlock(net.minecraft.world.WorldAccess world, BlockPos pos, BlockState state) {
             Block.dropStacks(state, world, pos, state.hasBlockEntity() ? world.getBlockEntity(pos) : null);
         }
 
-        @Override
-        protected int getFlowSpeed(WorldView world) {
-            return 5;
-        }
-
-        @Override
-        protected int getLevelDecreasePerBlock(WorldView world) {
-            return 2;
-        }
-
-        @Override
-        public int getTickRate(WorldView world) {
-            return 30;
-        }
-
-        @Override
-        protected float getBlastResistance() {
-            return 100.0F;
-        }
 
         @Override
         protected BlockState toBlockState(FluidState state) {
@@ -229,10 +175,6 @@ public class GallifreyFluids {
             return fluid == STILL_CLASSIC_LAVA || fluid == FLOWING_CLASSIC_LAVA;
         }
 
-        @Override
-        protected boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, net.minecraft.util.math.Direction direction) {
-            return direction == net.minecraft.util.math.Direction.DOWN && !fluid.matchesType(STILL_CLASSIC_LAVA);
-        }
     }
 
     public static class ClassicLavaFlowing extends ClassicLavaFluid {

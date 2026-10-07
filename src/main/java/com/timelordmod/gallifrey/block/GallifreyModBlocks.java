@@ -77,7 +77,7 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_RED_FLOWER = registerBlock("classic_red_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.RED_TULIP)));
     public static final Block CLASSIC_YELLOW_FLOWER = registerBlock("classic_yellow_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
 
-    // Alpha 1.2.6 Classic Nether block set. These are separate blocks so the
+    // Classic Nether block set based on the Alpha 1.2.6 assets. These are separate blocks so the
     // old terrain atlas can be imported without replacing modern Minecraft textures.
     public static final Block CLASSIC_NETHER_NETHERRACK = registerBlock("classic_nether_netherrack",
             new Block(FabricBlockSettings.copyOf(Blocks.NETHERRACK)));
