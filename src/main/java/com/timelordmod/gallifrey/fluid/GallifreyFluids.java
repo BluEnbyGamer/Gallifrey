@@ -135,7 +135,7 @@ public class GallifreyFluids {
         }
 
         @Override
-        protected int getTickRate(WorldView world) {
+        public int getTickRate(WorldView world) {
             return 5;
         }
 
