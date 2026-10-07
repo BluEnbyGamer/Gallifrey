@@ -93,6 +93,11 @@ public class GallifreyFluids {
             return FLOWING_RADIATION;
         }
 
+        @Override
+        public Item getBucketItem() {
+            return GallifreyModItems.RADIATION_BUCKET;
+        }
+
 
 
         @Override
