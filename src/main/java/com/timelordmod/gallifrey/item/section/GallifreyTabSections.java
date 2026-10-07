@@ -293,18 +293,18 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.WEATHERED_COPPER_ROUNDEL);
                 entries.add(GallifreyModBlocks.OXIDIZED_COPPER_ROUNDEL);
                 //CONCRETE ROUNDELS
+                entries.add(GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIGHT_GRAY_CONCRETE_ROUNDEL);
                 entries.add(GallifreyModBlocks.GRAY_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.RED_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.ORANGE_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.LIME_CONCRETE_ROUNDEL);
                 entries.add(GallifreyModBlocks.GREEN_CONCRETE_ROUNDEL);
                 entries.add(GallifreyModBlocks.LIGHT_BLUE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.LIGHT_GRAY_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.LIME_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.MAGENTA_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.ORANGE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.PINK_CONCRETE_ROUNDEL);
                 entries.add(GallifreyModBlocks.PURPLE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.RED_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.WHITE_CONCRETE_ROUNDEL);
-                entries.add(GallifreyModBlocks.YELLOW_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.MAGENTA_CONCRETE_ROUNDEL);
+                entries.add(GallifreyModBlocks.PINK_CONCRETE_ROUNDEL);
                 entries.add(GallifreyModBlocks.POLISHED_ANDESITE_ROUNDEL);
                 entries.add(GallifreyModBlocks.POLISHED_DEEPSLATE_ROUNDEL);
                 entries.add(GallifreyModBlocks.POLISHED_DIORITE_ROUNDEL);
