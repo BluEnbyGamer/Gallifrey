@@ -19,6 +19,9 @@ import com.timelordmod.gallifrey.sonic.SonicCasing;
 import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
@@ -53,6 +56,15 @@ public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+
+        // Register the complete supplied Classic-era asset pack as an optional built-in
+        // resource pack. The integrated Classic blocks use the supplied textures directly;
+        // this pack provides the remaining vanilla item/entity/sound overrides when enabled.
+        FabricLoader.getInstance().getModContainer(GallifreyMod.MOD_ID).ifPresent(container ->
+                ResourceManagerHelper.registerBuiltinResourcePack(
+                        new Identifier(GallifreyMod.MOD_ID, "classic_assets"),
+                        container,
+                        ResourcePackActivationType.NORMAL));
 
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), GallifreyFluids.STILL_RADIATION, GallifreyFluids.FLOWING_RADIATION);
         FluidRenderHandlerRegistry.INSTANCE.register(GallifreyFluids.STILL_RADIATION, GallifreyFluids.FLOWING_RADIATION,
