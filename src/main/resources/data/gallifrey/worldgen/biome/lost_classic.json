@@ -71,7 +71,11 @@
       "minecraft:red_mushroom_normal",
       "gallifrey:classic_tree_placed"
     ],
-    []
+    [
+      "gallifrey:classic_red_flower_placed",
+      "gallifrey:classic_yellow_flower_placed",
+      "gallifrey:classic_tree_placed"
+    ]
   ],
   "has_precipitation": false,
   "spawn_costs": {},
