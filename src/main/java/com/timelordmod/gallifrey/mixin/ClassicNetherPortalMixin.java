@@ -1,6 +1,8 @@
 package com.timelordmod.gallifrey.mixin;
 
 import com.timelordmod.gallifrey.world.dimension.ModDimensions;
+import com.timelordmod.gallifrey.block.GallifreyModBlocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.NetherPortalBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.packet.s2c.play.PositionFlag;
@@ -99,7 +101,7 @@ public abstract class ClassicNetherPortalMixin {
         Optional<BlockLocating.Rectangle> portal = target.getPortalForcer()
                 .getPortalRect(targetPos, false, target.getWorldBorder());
         if (portal.isEmpty()) {
-            portal = target.getPortalForcer().createPortal(targetPos, axis);
+            portal = gallifrey$createClassicPortal(target, targetPos, axis);
         }
 
         double x = targetPos.getX() + 0.5D;
@@ -115,4 +117,41 @@ public abstract class ClassicNetherPortalMixin {
 
         player.teleport(target, x, y, z, EnumSet.noneOf(PositionFlag.class), this.getYaw(), this.getPitch());
     }
+    private static Optional<BlockLocating.Rectangle> gallifrey$createClassicPortal(ServerWorld world, BlockPos center, Direction.Axis axis) {
+        Direction horizontal = axis == Direction.Axis.X ? Direction.EAST : Direction.SOUTH;
+        BlockPos bottomLeft = center.down(1).offset(horizontal, -1);
+        // Keep the generated portal at the requested coordinate and search a
+        // small vertical range if that location is obstructed.
+        for (int y = Math.max(world.getBottomY() + 1, center.getY() - 2); y <= Math.min(world.getTopY() - 5, center.getY() + 2); y++) {
+            BlockPos base = new BlockPos(center.getX(), y, center.getZ()).offset(horizontal, -1);
+            if (!world.getBlockState(base).isAir() && !world.getBlockState(base).isReplaceable()) continue;
+            boolean clear = true;
+            for (int yy = 0; yy < 5 && clear; yy++) {
+                for (int xx = 0; xx < 4; xx++) {
+                    BlockPos p = base.up(yy).offset(horizontal, xx);
+                    if (yy >= 1 && yy <= 3 && xx >= 1 && xx <= 2) {
+                        if (!world.getBlockState(p).isAir() && !world.getBlockState(p).isReplaceable()) { clear = false; break; }
+                    } else if (!world.getBlockState(p).isAir() && !world.getBlockState(p).isReplaceable()) { clear = false; break; }
+                }
+            }
+            if (!clear) continue;
+            for (int xx = 0; xx <= 3; xx++) {
+                world.setBlockState(base.offset(horizontal, xx), GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState(), 3);
+                world.setBlockState(base.up(4).offset(horizontal, xx), GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState(), 3);
+            }
+            for (int yy = 0; yy <= 4; yy++) {
+                world.setBlockState(base.up(yy), GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState(), 3);
+                world.setBlockState(base.up(yy).offset(horizontal, 3), GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState(), 3);
+            }
+            for (int yy = 1; yy <= 3; yy++) {
+                for (int xx = 1; xx <= 2; xx++) {
+                    world.setBlockState(base.up(yy).offset(horizontal, xx), Blocks.NETHER_PORTAL.getDefaultState().with(NetherPortalBlock.AXIS, axis), 3);
+                }
+            }
+            BlockPos ll = base.up(1).offset(horizontal, 1);
+            return Optional.of(new BlockLocating.Rectangle(ll, 2, 3));
+        }
+        return Optional.empty();
+    }
+
 }

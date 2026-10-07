@@ -80,8 +80,6 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_COBBLESTONE).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_OBSIDIAN = registerBlock("classic_obsidian",
             new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN).sounds(CLASSIC_STONE_SOUNDS)));
-    public static final Block CLASSIC_WOOL_WINDOWS = registerBlock("classic_wool_windows",
-            new GlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).sounds(BlockSoundGroup.GLASS).nonOpaque()));
 
 
     // Classic Nether block set based on the Alpha 1.2.6 assets. These are separate blocks so the

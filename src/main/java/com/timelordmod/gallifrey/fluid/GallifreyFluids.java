@@ -2,8 +2,11 @@ package com.timelordmod.gallifrey.fluid;
 
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
+import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.util.math.Direction;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.entity.Entity;
@@ -203,6 +206,41 @@ public class GallifreyFluids {
         @Override
         public BlockState toBlockState(FluidState state) {
             return CLASSIC_LAVA.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
+        }
+
+        @Override
+        protected void flow(net.minecraft.world.WorldAccess world, BlockPos pos, BlockState state, Direction direction, FluidState fluidState) {
+            if (direction == Direction.DOWN) {
+                FluidState below = world.getFluidState(pos);
+                if (below.isIn(FluidTags.WATER) && state.getBlock() instanceof FluidBlock) {
+                    BlockState result = fluidState.isStill()
+                            ? GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState()
+                            : (fluidState.getLevel() >= 5
+                                ? GallifreyModBlocks.CLASSIC_STONE.getDefaultState()
+                                : GallifreyModBlocks.CLASSIC_COBBLE.getDefaultState());
+                    world.setBlockState(pos, result, 3);
+                    return;
+                }
+            }
+            super.flow(world, pos, state, direction, fluidState);
+        }
+
+        @Override
+        protected void onScheduledTick(net.minecraft.world.World world, BlockPos pos, FluidState state) {
+            // Classic water/lava interaction: source lava becomes obsidian;
+            // stronger flowing lava becomes stone; weaker flowing lava becomes cobblestone.
+            for (Direction direction : Direction.values()) {
+                if (world.getFluidState(pos.offset(direction)).isIn(FluidTags.WATER)) {
+                    BlockState result = state.isStill()
+                            ? GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState()
+                            : (state.getLevel() >= 5
+                                ? GallifreyModBlocks.CLASSIC_STONE.getDefaultState()
+                                : GallifreyModBlocks.CLASSIC_COBBLE.getDefaultState());
+                    world.setBlockState(pos, result, 3);
+                    return;
+                }
+            }
+            super.onScheduledTick(world, pos, state);
         }
 
         @Override

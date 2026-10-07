@@ -1,8 +1,11 @@
 package com.timelordmod.gallifrey.mixin;
 
 import com.timelordmod.gallifrey.world.dimension.ModDimensions;
+import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FireBlock;
+import net.minecraft.block.NetherPortalBlock;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FlintAndSteelItem;
 import net.minecraft.item.ItemUsageContext;
@@ -39,14 +42,64 @@ public abstract class ClassicNetherFlintAndSteelMixin {
         BlockState fireState = serverWorld.getBlockState(firePos);
         if (!(fireState.getBlock() instanceof FireBlock)) return;
 
-        // Vanilla portals can be aligned on either horizontal axis.
+        // Vanilla's NetherPortal validator only accepts minecraft:obsidian.
+        // Classic portals deliberately accept both vanilla and Gallifrey's
+        // Classic Obsidian, while still producing the normal Nether Portal block.
         for (Direction.Axis axis : new Direction.Axis[]{Direction.Axis.X, Direction.Axis.Z}) {
-            Optional<NetherPortal> portal = NetherPortal.getNewPortal(serverWorld, firePos, axis);
-            if (portal.isPresent()) {
-                portal.get().createPortal();
-                return;
+            if (gallifrey$createPortal(serverWorld, firePos, axis)) return;
+        }
+    }
+
+    private static boolean gallifrey$createPortal(ServerWorld world, BlockPos firePos, Direction.Axis axis) {
+        Direction horizontal = axis == Direction.Axis.X ? Direction.EAST : Direction.SOUTH;
+        Direction perpendicular = horizontal.rotateYClockwise();
+        for (int dy = -4; dy <= 1; dy++) {
+            for (int a = -3; a <= 3; a++) {
+                for (int b = -3; b <= 3; b++) {
+                    BlockPos bottomLeft = firePos.down(dy).offset(horizontal, a).offset(perpendicular, b);
+                    if (!gallifrey$isFrame(world, bottomLeft, horizontal, perpendicular)) continue;
+                    // 2x3 interior. The fire must be inside it.
+                    boolean fireInside = false;
+                    for (int y = 1; y <= 3; y++) {
+                        for (int x = 1; x <= 2; x++) {
+                            BlockPos p = bottomLeft.up(y).offset(horizontal, x);
+                            if (p.equals(firePos)) fireInside = true;
+                        }
+                    }
+                    if (!fireInside) continue;
+                    for (int y = 1; y <= 3; y++) {
+                        for (int x = 1; x <= 2; x++) {
+                            world.setBlockState(bottomLeft.up(y).offset(horizontal, x),
+                                    Blocks.NETHER_PORTAL.getDefaultState().with(NetherPortalBlock.AXIS, axis), 3);
+                        }
+                    }
+                    return true;
+                }
             }
         }
+        return false;
+    }
+
+    private static boolean gallifrey$isFrame(ServerWorld world, BlockPos bottomLeft, Direction horizontal, Direction perpendicular) {
+        for (int x = 0; x <= 3; x++) {
+            if (!gallifrey$isObsidian(world.getBlockState(bottomLeft.up(0).offset(horizontal, x)))
+                    || !gallifrey$isObsidian(world.getBlockState(bottomLeft.up(4).offset(horizontal, x)))) return false;
+        }
+        for (int y = 0; y <= 4; y++) {
+            if (!gallifrey$isObsidian(world.getBlockState(bottomLeft.up(y)))
+                    || !gallifrey$isObsidian(world.getBlockState(bottomLeft.up(y).offset(horizontal, 3)))) return false;
+        }
+        for (int y = 1; y <= 3; y++) {
+            for (int x = 1; x <= 2; x++) {
+                BlockState state = world.getBlockState(bottomLeft.up(y).offset(horizontal, x));
+                if (!state.isAir() && !(state.getBlock() instanceof FireBlock)) return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean gallifrey$isObsidian(BlockState state) {
+        return state.isOf(Blocks.OBSIDIAN) || state.isOf(GallifreyModBlocks.CLASSIC_OBSIDIAN);
     }
 
     private static boolean isClassicPortalDimension(ServerWorld world) {

@@ -408,7 +408,12 @@ public final class GallifreyTabSections {
                 // Additional Classic-era blocks from the supplied Classic asset set.
                 entries.add(GallifreyModBlocks.CLASSIC_MOSSY_COBBLE);
                 entries.add(GallifreyModBlocks.CLASSIC_OBSIDIAN);
-                entries.add(GallifreyModBlocks.CLASSIC_WOOL_WINDOWS);
+                entries.add(Items.COAL_ORE);
+                entries.add(Items.IRON_ORE);
+                entries.add(Items.GOLD_ORE);
+                entries.add(Items.REDSTONE_ORE);
+                entries.add(Items.LAPIS_ORE);
+                entries.add(Items.DIAMOND_ORE);
 
                 // Classic-era vanilla utility/building items represented by the supplied assets.
                 entries.add(Items.CRAFTING_TABLE);
