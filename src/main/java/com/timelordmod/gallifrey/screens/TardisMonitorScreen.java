@@ -53,6 +53,7 @@ public class TardisMonitorScreen extends Screen {
         clearChildren();
 
         dimension = field(left + 22, top + 112, 240, "minecraft:overworld");
+        addDrawableChild(button(left + 270, top + 112, 124, 24, "DIM LIST", b -> client.setScreen(new TardisDimensionsScreen(this))));
         x = field(left + 22, top + 160, 72, "X");
         y = field(left + 102, top + 160, 72, "Y");
         z = field(left + 182, top + 160, 72, "Z");
@@ -84,6 +85,14 @@ public class TardisMonitorScreen extends Screen {
 
     private ButtonWidget button(int x, int y, int w, int h, String label, ButtonWidget.PressAction action) {
         return ButtonWidget.builder(Text.literal(label), action).dimensions(x, y, w, h).build();
+    }
+
+    public void setDimensionValue(String id) {
+        if (dimension != null) {
+            dimension.setText(id);
+            dimension.setSelectionStart(id.length());
+            dimension.setSelectionEnd(id.length());
+        }
     }
 
     private void requestState() {

@@ -42,7 +42,23 @@ public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExterio
         int rotation = blockEntity.getCachedState().get(TardisExteriorBlock.ROTATION);
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotation * 45.0F));
 
-        matrices.scale(-1.0F, -1.0F, 1.0F);
+        float phase = 1.0F;
+        float pulse = 1.0F;
+        if (blockEntity.isFlightPending()) {
+            // First third: fade/phase out. Middle third: unstable vortex.
+            // Final third: the exterior is almost fully phased out.
+            float progress = 1.0F - (blockEntity.getFlightTicks() / (float) blockEntity.getFlightTime());
+            phase = progress < 0.34F ? 1.0F - progress / 0.34F : 0.04F;
+            pulse = 1.0F + (float) Math.sin(progress * Math.PI * 20.0F) * 0.035F;
+        } else if (blockEntity.getMaterializationTicks() > 0) {
+            float progress = 1.0F - (blockEntity.getMaterializationTicks() / (float) blockEntity.getMaterializationTime());
+            // Stronger fade at the beginning, then settle into the normal shell.
+            phase = Math.min(1.0F, progress * 1.35F);
+            pulse = 1.0F + (float) Math.sin((1.0F - progress) * Math.PI * 12.0F) * 0.04F;
+        }
+
+        matrices.translate(0.0F, (1.0F - phase) * 0.08F, 0.0F);
+        matrices.scale(-pulse, -pulse, pulse);
 
         float red = 1.0F;
         float green = 1.0F;
@@ -54,12 +70,20 @@ public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExterio
             default -> { }
         }
 
+        // A subtle blue-white time-vortex tint during the unstable phase.
+        if (blockEntity.isFlightPending() && blockEntity.getFlightTicks() < 40) {
+            float vortex = 0.16F * (1.0F - blockEntity.getFlightTicks() / 40.0F);
+            red = Math.min(1.0F, red + vortex * 0.35F);
+            green = Math.min(1.0F, green + vortex * 0.55F);
+            blue = Math.min(1.0F, blue + vortex);
+        }
+
         model.render(
                 matrices,
                 vertexConsumers.getBuffer(model.getLayer(TEXTURE)),
                 light,
                 overlay,
-                red, green, blue, 1.0F
+                red, green, blue, phase
         );
 
         matrices.pop();

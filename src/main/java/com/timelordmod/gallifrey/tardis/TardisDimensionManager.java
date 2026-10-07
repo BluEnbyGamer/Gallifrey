@@ -3,6 +3,7 @@ package com.timelordmod.gallifrey.tardis;
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.block.TardisExteriorBlock;
 import com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity;
+import com.timelordmod.gallifrey.GallifreySounds;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -114,6 +115,7 @@ public final class TardisDimensionManager {
         }
 
         registry.clearActive(player);
+        world.playSound(null, pos, GallifreySounds.POLICE_BOX_DOOR_CLOSE, SoundCategory.BLOCKS, 0.65F, 1.0F);
         FabricDimensions.teleport(player, world,
                 new TeleportTarget(Vec3d.ofCenter(pos).add(0, 0.15, 0),
                         Vec3d.ZERO,
@@ -218,11 +220,18 @@ public final class TardisDimensionManager {
 
         tardis.consumeFuel(TardisExteriorBlockEntity.FLIGHT_COST);
         pilot.sendMessage(Text.literal("TARDIS flight initiated. Engines engaging..."), true);
-        currentWorld.playSound(null, currentPos, SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.BLOCKS, 1.5f, 0.65f);
-        targetWorld.playSound(null, targetPos, SoundEvents.BLOCK_BEACON_AMBIENT, SoundCategory.BLOCKS, 1.2f, 0.8f);
 
-        // Store the target on the TARDIS. A server tick will perform the actual
-        // dematerialisation/rematerialisation, keeping the interior occupied during flight.
+        // Classic TARDIS sequence: dematerialise at the old location, ride the
+        // flight sound through the vortex, then materialise at the destination.
+        currentWorld.playSound(null, currentPos, GallifreySounds.TARDIS_DEMATERIALIZE, SoundCategory.BLOCKS, 1.8f, 1.0f);
+        currentWorld.playSound(null, currentPos, GallifreySounds.TARDIS_FLIGHT, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        ServerWorld interior = getInterior(server);
+        if (interior != null) {
+            interior.playSound(null, tardis.getInteriorOrigin(), GallifreySounds.TARDIS_FLIGHT, SoundCategory.AMBIENT, 0.75f, 1.0f);
+        }
+
+        // Store the target on the TARDIS. A server tick performs the actual
+        // rematerialisation while players remain safely inside the TARDIS dimension.
         tardis.beginFlight(targetWorld.getRegistryKey().getValue(), targetPos, rotationFromYaw(yaw));
         return true;
     }
@@ -235,9 +244,20 @@ public final class TardisDimensionManager {
             BlockPos pos = BlockPos.fromLong(record.pos());
             world.getChunk(pos.getX() >> 4, pos.getZ() >> 4);
             BlockEntity be = world.getBlockEntity(pos);
-            if (be instanceof TardisExteriorBlockEntity tardis && tardis.isFlightPending()) {
-                if (tardis.tickFlight()) {
-                    materialize(server, registry, world, pos, tardis);
+            if (be instanceof TardisExteriorBlockEntity tardis) {
+                if (tardis.isFlightPending()) {
+                    int before = tardis.getFlightTicks();
+                    if (before % 3 == 0) {
+                        spawnPhaseParticles(world, pos, before);
+                    }
+                    if (tardis.tickFlight()) {
+                        materialize(server, registry, world, pos, tardis);
+                    }
+                } else if (tardis.getMaterializationTicks() > 0) {
+                    if (tardis.getMaterializationTicks() % 2 == 0) {
+                        spawnMaterializationParticles(world, pos);
+                    }
+                    tardis.tickMaterialization();
                 }
             }
         }
@@ -283,10 +303,36 @@ public final class TardisDimensionManager {
                 }
             }
         }
-        targetWorld.playSound(null, targetPos, SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.BLOCKS, 2.0f, 0.55f);
-        targetWorld.spawnParticles(net.minecraft.particle.ParticleTypes.REVERSE_PORTAL,
-                targetPos.getX() + 0.5, targetPos.getY() + 1.0, targetPos.getZ() + 0.5,
-                80, 0.5, 1.0, 0.5, 0.04);
+        targetWorld.playSound(null, targetPos, GallifreySounds.TARDIS_MATERIALIZE, SoundCategory.BLOCKS, 1.8f, 1.0f);
+        targetWorld.playSound(null, targetPos, GallifreySounds.TARDIS_CLOISTER, SoundCategory.AMBIENT, 0.20f, 1.0f);
+        ServerWorld interior = getInterior(server);
+        if (interior != null) {
+            interior.playSound(null, tardis.getInteriorOrigin(), GallifreySounds.TARDIS_MATERIALIZE, SoundCategory.AMBIENT, 0.75f, 1.0f);
+        }
+        spawnMaterializationParticles(targetWorld, targetPos);
+    }
+
+    private static void spawnPhaseParticles(ServerWorld world, BlockPos pos, int remainingTicks) {
+        double x = pos.getX() + 0.5;
+        double y = pos.getY() + 1.0;
+        double z = pos.getZ() + 0.5;
+        float pulse = 0.35F + (float)Math.sin(remainingTicks * 0.9F) * 0.12F;
+        world.spawnParticles(net.minecraft.particle.ParticleTypes.PORTAL, x, y, z,
+                18, 0.55, 1.0, 0.55, pulse);
+        if (remainingTicks < 45) {
+            world.spawnParticles(net.minecraft.particle.ParticleTypes.END_ROD, x, y, z,
+                    3, 0.35, 0.7, 0.35, 0.015);
+        }
+    }
+
+    private static void spawnMaterializationParticles(ServerWorld world, BlockPos pos) {
+        double x = pos.getX() + 0.5;
+        double y = pos.getY() + 1.0;
+        double z = pos.getZ() + 0.5;
+        world.spawnParticles(net.minecraft.particle.ParticleTypes.REVERSE_PORTAL, x, y, z,
+                45, 0.55, 1.0, 0.55, 0.04);
+        world.spawnParticles(net.minecraft.particle.ParticleTypes.END_ROD, x, y, z,
+                8, 0.45, 0.9, 0.45, 0.02);
     }
 
     private static boolean isSafeLandingSpace(ServerWorld world, BlockPos pos, boolean allowCurrent) {

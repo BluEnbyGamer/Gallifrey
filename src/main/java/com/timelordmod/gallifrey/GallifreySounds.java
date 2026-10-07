@@ -11,6 +11,14 @@ public class GallifreySounds {
     public static final SoundEvent VM_LAND = registerSound("vm_land");
     public static final SoundEvent SONIC = registerSound("sonic");
 
+    // TARDIS flight/phase sound set. These recordings were already bundled
+    // with Gallifrey and are now wired into the actual TARDIS flight loop.
+    public static final SoundEvent TARDIS_DEMATERIALIZE = registerSound("type70demat");
+    public static final SoundEvent TARDIS_FLIGHT = registerSound("type70flight");
+    public static final SoundEvent TARDIS_MATERIALIZE = registerSound("type70mat");
+    public static final SoundEvent TARDIS_CLOISTER = registerSound("drwhovale");
+    public static final SoundEvent TARDIS_EMERGENCY_LAND = registerSound("emergency_land");
+
     public static final SoundEvent DWXIV = registerSound("dw_xiv_music");
     public static final SoundEvent GALLIFREY = registerSound("gallifrey_music");
     public static final SoundEvent MONDAS_BLIZZARD_WIND = registerSound("mondas_blizzard_wind");

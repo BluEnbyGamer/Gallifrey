@@ -17,6 +17,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.sound.SoundCategory;
+import com.timelordmod.gallifrey.GallifreySounds;
 
 public class TardisExteriorBlock extends Block implements BlockEntityProvider {
     public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 7);
@@ -62,13 +64,20 @@ public class TardisExteriorBlock extends Block implements BlockEntityProvider {
                 return ActionResult.SUCCESS;
             }
             tardis.setLocked(!tardis.isLocked());
+            world.playSound(null, pos, tardis.isLocked()
+                    ? GallifreySounds.POLICE_BOX_DOOR_CLOSE
+                    : GallifreySounds.POLICE_BOX_DOOR_OPEN,
+                    SoundCategory.BLOCKS, 0.8F, 1.0F);
             serverPlayer.sendMessage(Text.literal(tardis.isLocked()
                     ? "TARDIS locked. Isomorphic security active."
                     : "TARDIS unlocked."), true);
             return ActionResult.SUCCESS;
         }
 
-        TardisDimensionManager.enter(serverPlayer, tardis);
+        boolean entered = TardisDimensionManager.enter(serverPlayer, tardis);
+        if (entered) {
+            world.playSound(null, pos, GallifreySounds.POLICE_BOX_DOOR_OPEN, SoundCategory.BLOCKS, 0.65F, 1.0F);
+        }
         return ActionResult.SUCCESS;
     }
 }

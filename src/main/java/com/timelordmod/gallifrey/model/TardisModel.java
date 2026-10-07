@@ -17,7 +17,9 @@ public class TardisModel extends Model {
     private final ModelPart tardis;
 
     public TardisModel(ModelPart root) {
-        super(RenderLayer::getEntityCutout);
+        // Translucent rendering lets the exterior phase in/out during
+        // dematerialisation and materialisation instead of popping instantly.
+        super(RenderLayer::getEntityTranslucent);
         this.tardis = root.getChild("tardis");
     }
 

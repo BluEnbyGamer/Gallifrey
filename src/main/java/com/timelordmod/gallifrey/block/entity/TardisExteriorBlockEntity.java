@@ -23,6 +23,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     public static final int MAX_FUEL = 1000;
     public static final int FLIGHT_COST = 10;
     private static final int FLIGHT_TIME = 60;
+    private static final int MATERIALIZATION_TIME = 20;
 
     private UUID tardisId;
     private UUID owner;
@@ -39,6 +40,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     private Identifier flightWorld;
     private BlockPos flightPos;
     private int flightRotation;
+    private int materializationTicks;
 
     public TardisExteriorBlockEntity(BlockPos pos, BlockState state) {
         super(GallifreyModBlockEntities.TARDIS_EXTERIOR, pos, state);
@@ -204,6 +206,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         flightWorld = targetWorld;
         flightPos = targetPos.toImmutable();
         flightRotation = rotation;
+        materializationTicks = 0;
         markDirty();
     }
 
@@ -225,12 +228,28 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     }
 
     public void finishFlight() {
-        cancelFlight();
+        flightPending = false;
+        flightTicks = 0;
+        flightWorld = null;
+        flightPos = null;
+        materializationTicks = MATERIALIZATION_TIME;
+        markDirty();
+    }
+
+    public boolean tickMaterialization() {
+        if (materializationTicks <= 0) return false;
+        materializationTicks--;
+        markDirty();
+        return materializationTicks > 0;
     }
 
     public Identifier getFlightWorld() { return flightWorld; }
     public BlockPos getFlightPos() { return flightPos; }
     public int getFlightRotation() { return flightRotation; }
+    public int getFlightTicks() { return flightTicks; }
+    public int getFlightTime() { return FLIGHT_TIME; }
+    public int getMaterializationTicks() { return materializationTicks; }
+    public int getMaterializationTime() { return MATERIALIZATION_TIME; }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
@@ -252,6 +271,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         if (flightWorld != null) nbt.putString("FlightWorld", flightWorld.toString());
         if (flightPos != null) nbt.putLong("FlightPos", flightPos.asLong());
         nbt.putInt("FlightRotation", flightRotation);
+        nbt.putInt("MaterializationTicks", materializationTicks);
     }
 
     @Override
@@ -272,5 +292,6 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         if (nbt.contains("FlightWorld")) flightWorld = new Identifier(nbt.getString("FlightWorld"));
         if (nbt.contains("FlightPos")) flightPos = BlockPos.fromLong(nbt.getLong("FlightPos"));
         flightRotation = nbt.getInt("FlightRotation");
+        materializationTicks = nbt.getInt("MaterializationTicks");
     }
 }
