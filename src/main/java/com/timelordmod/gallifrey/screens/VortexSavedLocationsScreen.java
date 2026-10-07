@@ -50,10 +50,9 @@ public class VortexSavedLocationsScreen extends VortexManipulatorSubScreen {
         client.setScreen(null);
     }
 
-    @Override public void render(DrawContext c, int mx, int my, float delta) {
+    @Override protected void renderVortexChrome(DrawContext c, int mx, int my, float delta) {
         buildHeader(c, "SAVED LOCATIONS");
         c.drawText(textRenderer, LOCATIONS.isEmpty() ? "No locations stored." :
                 "Select a location to travel, or delete it.", left + 24, top + 116, DIM, false);
-        super.render(c, mx, my, delta);
     }
 }

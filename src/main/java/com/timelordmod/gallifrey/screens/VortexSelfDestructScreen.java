@@ -33,7 +33,7 @@ public class VortexSelfDestructScreen extends VortexManipulatorSubScreen {
         buildBackButton();
     }
 
-    @Override public void render(DrawContext c, int mx, int my, float delta) {
+    @Override protected void renderVortexChrome(DrawContext c, int mx, int my, float delta) {
         buildHeader(c, "");
         // Hazard-stripe warning bands.
         for (int x = left + 14; x < left + W - 14; x += 28) {
@@ -45,6 +45,5 @@ public class VortexSelfDestructScreen extends VortexManipulatorSubScreen {
         c.drawCenteredTextWithShadow(textRenderer, Text.literal("⚠ SELF-DESTRUCT WARNING ⚠"), left + W / 2, top + 66, 0xFFFFC857);
         c.drawCenteredTextWithShadow(textRenderer, Text.literal("OWNER AUTHORIZATION REQUIRED"), left + W / 2, top + 86, RED);
         c.drawCenteredTextWithShadow(textRenderer, Text.literal("THE MANIPULATOR WILL BE DESTROYED AFTER 10 SECONDS"), left + W / 2, top + 101, 0xFFEADBD8);
-        super.render(c, mx, my, delta);
     }
 }

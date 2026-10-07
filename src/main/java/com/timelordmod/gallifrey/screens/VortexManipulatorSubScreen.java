@@ -106,9 +106,60 @@ public abstract class VortexManipulatorSubScreen extends Screen {
         buildHeader(c, getTitle().getString().replace("Vortex Manipulator", "").trim());
     }
 
+    /**
+     * Render the Vortex GUI at a consistent physical size regardless of Minecraft's GUI scale.
+     * The design is authored around GUI scale 3.5 and is reduced only when the screen is too
+     * small to contain it (notably GUI scale 4 on a small display).
+     */
+    protected float vortexGuiScale() {
+        double guiScale = MinecraftClient.getInstance().getWindow().getScaleFactor();
+        float desired = (float) (3.5D / guiScale);
+        float fit = Math.min((width - 20.0F) / W, (height - 20.0F) / H);
+        return Math.min(desired, fit);
+    }
+
+    protected int scaledMouseX(double mouseX) {
+        float s = vortexGuiScale();
+        return Math.round((float) (width * 0.5D + (mouseX - width * 0.5D) / s));
+    }
+
+    protected int scaledMouseY(double mouseY) {
+        float s = vortexGuiScale();
+        return Math.round((float) (height * 0.5D + (mouseY - height * 0.5D) / s));
+    }
+
     @Override public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        context.fill(0, 0, width, height, 0x99000000);
+        float s = vortexGuiScale();
+        context.getMatrices().push();
+        context.getMatrices().translate(width * 0.5F, height * 0.5F, 0.0F);
+        context.getMatrices().scale(s, s, 1.0F);
+        context.getMatrices().translate(-width * 0.5F, -height * 0.5F, 0.0F);
+        renderVortexChrome(context, scaledMouseX(mouseX), scaledMouseY(mouseY), delta);
+        super.render(context, scaledMouseX(mouseX), scaledMouseY(mouseY), delta);
+        context.getMatrices().pop();
+    }
+
+    /** Screen-specific decoration/text drawn behind the widgets. */
+    protected void renderVortexChrome(DrawContext context, int mouseX, int mouseY, float delta) {
         drawBase(context);
-        super.render(context, mouseX, mouseY, delta);
+    }
+
+    @Override public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        return super.mouseClicked(scaledMouseX(mouseX), scaledMouseY(mouseY), button);
+    }
+
+    @Override public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        return super.mouseReleased(scaledMouseX(mouseX), scaledMouseY(mouseY), button);
+    }
+
+    @Override public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
+        float s = vortexGuiScale();
+        return super.mouseDragged(scaledMouseX(mouseX), scaledMouseY(mouseY), button, deltaX / s, deltaY / s);
+    }
+
+    @Override public void mouseMoved(double mouseX, double mouseY) {
+        super.mouseMoved(scaledMouseX(mouseX), scaledMouseY(mouseY));
     }
 
     protected String shortDimension(String d) {

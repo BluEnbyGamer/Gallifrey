@@ -335,16 +335,57 @@ public class VortexManipulatorScreen extends Screen {
         return String.format(java.util.Locale.ROOT, "%.1f", d);
     }
 
+    private float vortexGuiScale() {
+        double guiScale = client.getWindow().getScaleFactor();
+        float desired = (float) (3.5D / guiScale);
+        float fit = Math.min((width - 20.0F) / W, (height - 20.0F) / H);
+        return Math.min(desired, fit);
+    }
+
+    private int scaledMouseX(double mouseX) {
+        float s = vortexGuiScale();
+        return Math.round((float) (width * 0.5D + (mouseX - width * 0.5D) / s));
+    }
+
+    private int scaledMouseY(double mouseY) {
+        float s = vortexGuiScale();
+        return Math.round((float) (height * 0.5D + (mouseY - height * 0.5D) / s));
+    }
+
     @Override public void render(DrawContext c, int mouseX, int mouseY, float delta) {
+        c.fill(0, 0, width, height, 0x99000000);
+        float s = vortexGuiScale();
+        c.getMatrices().push();
+        c.getMatrices().translate(width * 0.5F, height * 0.5F, 0.0F);
+        c.getMatrices().scale(s, s, 1.0F);
+        c.getMatrices().translate(-width * 0.5F, -height * 0.5F, 0.0F);
         drawPanel(c);
         for (String raw : pendingLabels) {
-            String[] parts = raw.split("\n", 3);
+            String[] parts = raw.split("\\n", 3);
             c.drawText(textRenderer, parts[2], Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), DIM, false);
         }
-        super.render(c, mouseX, mouseY, delta);
+        super.render(c, scaledMouseX(mouseX), scaledMouseY(mouseY), delta);
         if (drawHintText != null && !drawHintText.isEmpty()) {
             c.drawText(textRenderer, Text.literal(fit(drawHintText, W - 36)), left + 18, top + (tab == 0 ? 254 : 116), DIM, false);
         }
+        c.getMatrices().pop();
+    }
+
+    @Override public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        return super.mouseClicked(scaledMouseX(mouseX), scaledMouseY(mouseY), button);
+    }
+
+    @Override public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        return super.mouseReleased(scaledMouseX(mouseX), scaledMouseY(mouseY), button);
+    }
+
+    @Override public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
+        float s = vortexGuiScale();
+        return super.mouseDragged(scaledMouseX(mouseX), scaledMouseY(mouseY), button, deltaX / s, deltaY / s);
+    }
+
+    @Override public void mouseMoved(double mouseX, double mouseY) {
+        super.mouseMoved(scaledMouseX(mouseX), scaledMouseY(mouseY));
     }
 
     private void drawPanel(DrawContext c) {

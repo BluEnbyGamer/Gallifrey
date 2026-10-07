@@ -48,9 +48,8 @@ public class VortexIsomorphicScreen extends VortexManipulatorSubScreen {
         net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking.send(com.timelordmod.gallifrey.networking.ModPackets.VM_PACKET, p);
     }
 
-    @Override public void render(DrawContext c, int mx, int my, float delta) {
+    @Override protected void renderVortexChrome(DrawContext c, int mx, int my, float delta) {
         buildHeader(c, "ISOMORPHIC CONTROLS");
         c.drawText(textRenderer, "Only the VM owner can change authorized users.", left + 24, top + 116, DIM, false);
-        super.render(c, mx, my, delta);
     }
 }

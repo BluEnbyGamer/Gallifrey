@@ -64,8 +64,30 @@ public class VortexDimensionsScreen extends Screen {
         return new ThemedButtonWidget(x, y, w, h, Text.literal(label), action);
     }
 
+    private float vortexGuiScale() {
+        double guiScale = client.getWindow().getScaleFactor();
+        float desired = (float) (3.5D / guiScale);
+        float fit = Math.min((width - 20.0F) / W, (height - 20.0F) / H);
+        return Math.min(desired, fit);
+    }
+
+    private int scaledMouseX(double mouseX) {
+        float s = vortexGuiScale();
+        return Math.round((float) (width * 0.5D + (mouseX - width * 0.5D) / s));
+    }
+
+    private int scaledMouseY(double mouseY) {
+        float s = vortexGuiScale();
+        return Math.round((float) (height * 0.5D + (mouseY - height * 0.5D) / s));
+    }
+
     @Override public void render(DrawContext c, int mouseX, int mouseY, float delta) {
         c.fill(0, 0, width, height, 0x99000000);
+        float s = vortexGuiScale();
+        c.getMatrices().push();
+        c.getMatrices().translate(width * 0.5F, height * 0.5F, 0.0F);
+        c.getMatrices().scale(s, s, 1.0F);
+        c.getMatrices().translate(-width * 0.5F, -height * 0.5F, 0.0F);
         c.fill(left - 3, top - 3, left + W + 3, top + H + 3, 0x55373E44);
         c.fill(left, top, left + W, top + H, PANEL);
         c.drawBorder(left, top, W, H, SILVER);
@@ -75,11 +97,29 @@ public class VortexDimensionsScreen extends Screen {
         c.drawText(textRenderer, "VORTEX MANIPULATOR", left + 20, top + 17, AMBER, false);
         c.drawText(textRenderer, "DIMENSION DIRECTORY", left + 20, top + 45, AMBER, false);
         c.drawText(textRenderer, "SELECT A DESTINATION", left + 300, top + 45, DIM, false);
-        super.render(c, mouseX, mouseY, delta);
+        super.render(c, scaledMouseX(mouseX), scaledMouseY(mouseY), delta);
         c.drawText(textRenderer, "Other mods: enter their dimension ID as namespace:modid (example: othermod:dimension_name).",
                 left + 18, top + H - 58, DIM, false);
         c.drawText(textRenderer, "The namespace is normally the mod ID; use the exact ID supplied by that mod.",
                 left + 18, top + H - 47, DIM, false);
+        c.getMatrices().pop();
+    }
+
+    @Override public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        return super.mouseClicked(scaledMouseX(mouseX), scaledMouseY(mouseY), button);
+    }
+
+    @Override public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        return super.mouseReleased(scaledMouseX(mouseX), scaledMouseY(mouseY), button);
+    }
+
+    @Override public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
+        float s = vortexGuiScale();
+        return super.mouseDragged(scaledMouseX(mouseX), scaledMouseY(mouseY), button, deltaX / s, deltaY / s);
+    }
+
+    @Override public void mouseMoved(double mouseX, double mouseY) {
+        super.mouseMoved(scaledMouseX(mouseX), scaledMouseY(mouseY));
     }
 
     private class ThemedButtonWidget extends ButtonWidget {

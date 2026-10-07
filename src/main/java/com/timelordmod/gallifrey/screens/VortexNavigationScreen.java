@@ -87,10 +87,9 @@ public class VortexNavigationScreen extends VortexManipulatorSubScreen {
         };
     }
 
-    @Override public void render(DrawContext c, int mx, int my, float delta) {
+    @Override protected void renderVortexChrome(DrawContext c, int mx, int my, float delta) {
         buildHeader(c, "");
         c.drawText(textRenderer, "DIMENSION", left + 24, top + 82, dimColor(), false);
         c.drawText(textRenderer, "PLAYER TARGET — OPTIONAL", left + 24, top + 127, dimColor(), false);
-        super.render(c, mx, my, delta);
     }
 }

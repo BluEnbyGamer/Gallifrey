@@ -42,8 +42,30 @@ public class VortexSelfDestructConfirmScreen extends Screen {
         client.setScreen(parent);
     }
 
+    private float vortexGuiScale() {
+        double guiScale = client.getWindow().getScaleFactor();
+        float desired = (float) (3.5D / guiScale);
+        float fit = Math.min((width - 20.0F) / W, (height - 20.0F) / H);
+        return Math.min(desired, fit);
+    }
+
+    private int scaledMouseX(double mouseX) {
+        float s = vortexGuiScale();
+        return Math.round((float) (width * 0.5D + (mouseX - width * 0.5D) / s));
+    }
+
+    private int scaledMouseY(double mouseY) {
+        float s = vortexGuiScale();
+        return Math.round((float) (height * 0.5D + (mouseY - height * 0.5D) / s));
+    }
+
     @Override public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         context.fill(0, 0, width, height, 0x99000000);
+        float s = vortexGuiScale();
+        context.getMatrices().push();
+        context.getMatrices().translate(width * 0.5F, height * 0.5F, 0.0F);
+        context.getMatrices().scale(s, s, 1.0F);
+        context.getMatrices().translate(-width * 0.5F, -height * 0.5F, 0.0F);
         context.fill(left - 3, top - 3, left + W + 3, top + H + 3, 0x554A0B08);
         context.fill(left, top, left + W, top + H, PANEL);
         context.drawBorder(left, top, W, H, RED);
@@ -59,7 +81,25 @@ public class VortexSelfDestructConfirmScreen extends Screen {
         context.drawCenteredTextWithShadow(textRenderer, Text.literal("YES starts a 10-second countdown."), left + W / 2, top + 99, RED);
         context.drawCenteredTextWithShadow(textRenderer, Text.literal("You can cancel it before detonation."), left + W / 2, top + 114, RED);
         context.drawCenteredTextWithShadow(textRenderer, Text.literal("NO returns you to the control console."), left + W / 2, top + 129, DIM);
-        super.render(context, mouseX, mouseY, delta);
+        super.render(context, scaledMouseX(mouseX), scaledMouseY(mouseY), delta);
+        context.getMatrices().pop();
+    }
+
+    @Override public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        return super.mouseClicked(scaledMouseX(mouseX), scaledMouseY(mouseY), button);
+    }
+
+    @Override public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        return super.mouseReleased(scaledMouseX(mouseX), scaledMouseY(mouseY), button);
+    }
+
+    @Override public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
+        float s = vortexGuiScale();
+        return super.mouseDragged(scaledMouseX(mouseX), scaledMouseY(mouseY), button, deltaX / s, deltaY / s);
+    }
+
+    @Override public void mouseMoved(double mouseX, double mouseY) {
+        super.mouseMoved(scaledMouseX(mouseX), scaledMouseY(mouseY));
     }
 
     private String fit(String value, int maxWidth) {
