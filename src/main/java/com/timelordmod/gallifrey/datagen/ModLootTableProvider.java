@@ -165,8 +165,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
         // Classic ores mirror the corresponding vanilla ore drops, including Fortune/Silk Touch behavior.
         addDrop(GallifreyModBlocks.CLASSIC_COAL_ORE, oreDrops(GallifreyModBlocks.CLASSIC_COAL_ORE, net.minecraft.item.Items.COAL));
-        addDrop(GallifreyModBlocks.CLASSIC_IRON_ORE, oreDrops(GallifreyModBlocks.CLASSIC_IRON_ORE, net.minecraft.item.Items.RAW_IRON));
-        addDrop(GallifreyModBlocks.CLASSIC_GOLD_ORE, oreDrops(GallifreyModBlocks.CLASSIC_GOLD_ORE, net.minecraft.item.Items.RAW_GOLD));
+        addDrop(GallifreyModBlocks.CLASSIC_IRON_ORE, oreDrops(GallifreyModBlocks.CLASSIC_IRON_ORE, net.minecraft.item.Items.IRON_INGOT));
+        addDrop(GallifreyModBlocks.CLASSIC_GOLD_ORE, oreDrops(GallifreyModBlocks.CLASSIC_GOLD_ORE, net.minecraft.item.Items.GOLD_INGOT));
         addDrop(GallifreyModBlocks.CLASSIC_REDSTONE_ORE, oreDrops(GallifreyModBlocks.CLASSIC_REDSTONE_ORE, net.minecraft.item.Items.REDSTONE));
         addDrop(GallifreyModBlocks.CLASSIC_LAPIS_ORE, oreDrops(GallifreyModBlocks.CLASSIC_LAPIS_ORE, net.minecraft.item.Items.LAPIS_LAZULI));
         addDrop(GallifreyModBlocks.CLASSIC_DIAMOND_ORE, oreDrops(GallifreyModBlocks.CLASSIC_DIAMOND_ORE, net.minecraft.item.Items.DIAMOND));
