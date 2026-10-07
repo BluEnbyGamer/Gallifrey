@@ -124,6 +124,11 @@ public class GallifreyFluids {
             return 1;
         }
 
+        @Override
+        public boolean isInfinite(net.minecraft.world.World world) {
+            return false;
+        }
+
     }
 
     public static class Flowing extends RadiationFluid {
