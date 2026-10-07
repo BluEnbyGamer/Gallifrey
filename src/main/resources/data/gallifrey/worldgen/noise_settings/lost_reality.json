@@ -407,7 +407,7 @@
           "if_true": {
             "type": "minecraft:noise_threshold",
             "noise": "gallifrey:lost_patch",
-            "min_threshold": 0.9,
+            "min_threshold": 0.75,
             "max_threshold": 1.05
           },
           "then_run": {
@@ -439,7 +439,7 @@
             "type": "minecraft:noise_threshold",
             "noise": "gallifrey:lost_patch",
             "min_threshold": 1.05,
-            "max_threshold": 1.2
+            "max_threshold": 1.35
           },
           "then_run": {
             "type": "minecraft:condition",
@@ -469,8 +469,8 @@
           "if_true": {
             "type": "minecraft:noise_threshold",
             "noise": "gallifrey:lost_patch",
-            "min_threshold": 1.2,
-            "max_threshold": 1.35
+            "min_threshold": 1.35,
+            "max_threshold": 1.65
           },
           "then_run": {
             "type": "minecraft:condition",
@@ -500,8 +500,8 @@
           "if_true": {
             "type": "minecraft:noise_threshold",
             "noise": "gallifrey:lost_patch",
-            "min_threshold": 1.35,
-            "max_threshold": 1.5
+            "min_threshold": 1.65,
+            "max_threshold": 1.95
           },
           "then_run": {
             "type": "minecraft:condition",
@@ -526,8 +526,7 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "gallifrey:lost_skaro_waste_land",
-            "gallifrey:lost_skaro_lands"
+            "gallifrey:lost_skaro_waste_land"
           ]
         },
         "then_run": {
@@ -566,20 +565,9 @@
               }
             },
             {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:y_above",
-                "anchor": {
-                  "absolute": 0
-                },
-                "surface_depth_multiplier": 0,
-                "add_stone_depth": false
-              },
-              "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "gallifrey:skaro_stone"
-                }
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "gallifrey:skaro_stone"
               }
             },
             {
@@ -622,6 +610,59 @@
               "type": "minecraft:block",
               "result_state": {
                 "Name": "gallifrey:skaro_deepslate"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
+          "type": "minecraft:biome",
+          "biome_is": [
+            "minecraft:plains",
+            "minecraft:forest"
+          ]
+        },
+        "then_run": {
+          "type": "minecraft:sequence",
+          "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "offset": 0,
+                "add_surface_depth": false,
+                "secondary_depth_range": 0,
+                "surface_type": "floor"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "minecraft:grass_block"
+                }
+              }
+            },
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "offset": 3,
+                "add_surface_depth": false,
+                "secondary_depth_range": 0,
+                "surface_type": "floor"
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "minecraft:dirt"
+                }
+              }
+            },
+            {
+              "type": "minecraft:block",
+              "result_state": {
+                "Name": "minecraft:stone"
               }
             }
           ]

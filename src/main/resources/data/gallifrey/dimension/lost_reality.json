@@ -157,6 +157,36 @@
           }
         },
         {
+          "biome": "minecraft:plains",
+          "parameters": {
+            "temperature": [
+              0.3,
+              0.85
+            ],
+            "humidity": [
+              -0.55,
+              0.35
+            ],
+            "continentalness": [
+              0.2,
+              1.0
+            ],
+            "erosion": [
+              -0.8,
+              0.8
+            ],
+            "weirdness": [
+              -0.65,
+              0.65
+            ],
+            "depth": [
+              -1.0,
+              1.0
+            ],
+            "offset": -0.08
+          }
+        },
+        {
           "biome": "gallifrey:lost_gallifreyan_plains",
           "parameters": {
             "temperature": [
@@ -184,6 +214,36 @@
               2.0
             ],
             "offset": 0.0
+          }
+        },
+        {
+          "biome": "minecraft:forest",
+          "parameters": {
+            "temperature": [
+              0.35,
+              0.9
+            ],
+            "humidity": [
+              0.35,
+              1.0
+            ],
+            "continentalness": [
+              0.2,
+              1.0
+            ],
+            "erosion": [
+              -0.8,
+              0.8
+            ],
+            "weirdness": [
+              -0.65,
+              0.65
+            ],
+            "depth": [
+              -1.0,
+              1.0
+            ],
+            "offset": -0.1
           }
         },
         {
