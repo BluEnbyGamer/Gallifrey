@@ -304,7 +304,6 @@ public final class TardisDimensionManager {
             }
         }
         targetWorld.playSound(null, targetPos, GallifreySounds.TYPE70MAT, SoundCategory.BLOCKS, 1.8f, 1.0f);
-        targetWorld.playSound(null, targetPos, GallifreySounds.DRWHOVALE, SoundCategory.AMBIENT, 0.20f, 1.0f);
         ServerWorld interior = getInterior(server);
         if (interior != null) {
             interior.playSound(null, tardis.getInteriorOrigin(), GallifreySounds.TYPE70MAT, SoundCategory.AMBIENT, 0.75f, 1.0f);

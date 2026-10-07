@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.tardis;
 
+import com.timelordmod.gallifrey.GallifreySounds;
 import com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity;
 import com.timelordmod.gallifrey.networking.ModPackets;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
@@ -10,6 +11,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -73,12 +75,24 @@ public final class TardisMonitorNetworking {
                     setExteriorVariant(player, variant);
                     sendState(player);
                 }
+                case "PLAY_DRWHO_VALE" -> playDrWhoVale(player);
                 default -> player.sendMessage(Text.literal("Unknown TARDIS console action."), true);
             }
         } catch (Exception e) {
             player.sendMessage(Text.literal("TARDIS console command could not be completed."), true);
             sendState(player);
         }
+    }
+
+    private static void playDrWhoVale(ServerPlayerEntity player) {
+        TardisExteriorBlockEntity tardis = findActive(player);
+        if (tardis == null || !tardis.canPilot(player.getUuid())) {
+            player.sendMessage(Text.literal("The console cannot find your active TARDIS."), true);
+            return;
+        }
+        ServerWorld world = player.getServerWorld();
+        world.playSound(null, player.getBlockPos(), GallifreySounds.DRWHOVALE, SoundCategory.MUSIC, 1.0f, 1.0f);
+        player.sendMessage(Text.literal("Now playing: Doctor Who Vale"), true);
     }
 
     private static boolean setExteriorVariant(ServerPlayerEntity player, int variant) {

@@ -68,6 +68,7 @@ public class TardisMonitorScreen extends Screen {
         variantButton = button(left + 22, top + 260, 216, 24, "EXTERIOR", b -> cycleVariant());
         addDrawableChild(variantButton);
         addDrawableChild(button(left + 246, top + 260, 292, 24, "CLOSE", b -> close()));
+        addDrawableChild(button(left + 22, top + 292, 516, 24, "MUSIC: PLAY DR WHO VALE", b -> sendAction("PLAY_DRWHO_VALE")));
 
         syncInteriorIndex();
         requestState();
@@ -182,8 +183,8 @@ public class TardisMonitorScreen extends Screen {
         context.drawText(textRenderer, Text.literal(interior), left + 145, top + 198, TEXT, false);
 
         String status = flightPending ? "IN FLIGHT — DEMATERIALISING" : "READY FOR FLIGHT";
-        context.drawText(textRenderer, Text.literal(status), left + 22, top + 306, flightPending ? GOLD : GREEN, false);
-        context.drawText(textRenderer, Text.literal("Flight consumes " + com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity.FLIGHT_COST + " artron energy."), left + 22, top + 324, DIM, false);
+        context.drawText(textRenderer, Text.literal(status), left + 22, top + 326, flightPending ? GOLD : GREEN, false);
+        context.drawText(textRenderer, Text.literal("Flight consumes " + com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity.FLIGHT_COST + " artron energy."), left + 22, top + 344, DIM, false);
 
         flightButton.active = !flightPending;
         refuelButton.active = !flightPending;
