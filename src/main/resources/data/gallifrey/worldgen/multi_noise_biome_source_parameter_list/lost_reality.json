@@ -1,4 +1,5 @@
 {
+  "preset": "minecraft:overworld",
   "biomes": [
     {
       "biome": "gallifrey:lost_mars",
