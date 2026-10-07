@@ -1,10 +1,12 @@
-// Made with Blockbench 5.2.1
-// Exported for Minecraft version 1.17+ for Yarn
-// Paste this class into your mod and generate all required imports
-
 package com.timelordmod.gallifrey.model;
+
+import net.minecraft.client.model.*;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.util.math.MatrixStack;
+
    
-public class TardisInteriorDoorModel extends EntityModel<Entity> {
+public class TardisInteriorDoorModel extends Model {
 	private final ModelPart bone;
 	private final ModelPart front;
 	private final ModelPart doors;
@@ -12,6 +14,7 @@ public class TardisInteriorDoorModel extends EntityModel<Entity> {
 	private final ModelPart phone;
 	private final ModelPart leftdoor;
 	public TardisInteriorDoorModel(ModelPart root) {
+		super(RenderLayer::getEntityTranslucent);
 		this.bone = root.getChild("bone");
 		this.front = root.getChild("front");
 		this.doors = root.getChild("doors");
@@ -72,9 +75,6 @@ public class TardisInteriorDoorModel extends EntityModel<Entity> {
 
 		ModelPartData cube_r9 = leftdoor.addChild("cube_r9", ModelPartBuilder.create().uv(84, 48).cuboid(-1.7187F, -11.3358F, -5.679F, 1.0F, 1.0F, 0.0F, new Dilation(0.0F)), ModelTransform.of(-5.1126F, -23.1851F, 9.66F, 1.5708F, 0.0F, 0.0F));
 		return TexturedModelData.of(modelData, 256, 256);
-	}
-	@Override
-	public void setAngles(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 	}
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {

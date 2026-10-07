@@ -199,6 +199,27 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         return true;
     }
 
+    /** Places the physical police-box interior exit door. */
+    private void installInteriorDoor(ServerWorld world) {
+        BlockPos base = interiorOrigin.add(0, 1, -5);
+        for (int dx = -3; dx <= 3; dx++) {
+            for (int dz = -1; dz <= 1; dz++) {
+                BlockPos candidate = base.add(dx, 0, dz);
+                if (world.getBlockState(candidate).isAir()
+                        && world.getBlockState(candidate.down()).isSolidBlock(world, candidate.down())) {
+                    world.setBlockState(candidate, com.timelordmod.gallifrey.block.GallifreyModBlocks.TARDIS_INTERIOR_DOOR.getDefaultState(), 3);
+                    if (world.getBlockEntity(candidate) instanceof TardisInteriorDoorBlockEntity door) {
+                        door.setTardisId(tardisId);
+                        door.setExteriorStyle(exteriorStyle);
+                    }
+                    interiorDoorPos = candidate.toImmutable();
+                    markDirty();
+                    return;
+                }
+            }
+        }
+    }
+
     /** Places the physical Hartnell TARDIS console in a clear central floor position. */
     private void installConsole(ServerWorld world) {
         BlockPos base = interiorOrigin.add(0, 1, 2);

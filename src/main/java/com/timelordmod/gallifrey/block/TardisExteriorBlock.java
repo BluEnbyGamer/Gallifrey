@@ -17,6 +17,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import net.minecraft.sound.SoundCategory;
 import com.timelordmod.gallifrey.GallifreySounds;
 
@@ -41,7 +42,7 @@ public class TardisExteriorBlock extends Block implements BlockEntityProvider {
     }
 
     @Override
-    public boolean canPlaceAt(BlockState state, World world, BlockPos pos) {
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         // A TARDIS must never be placed inside another TARDIS pocket dimension.
         return !TardisDimensionManager.isInteriorWorld(world)
                 && super.canPlaceAt(state, world, pos);

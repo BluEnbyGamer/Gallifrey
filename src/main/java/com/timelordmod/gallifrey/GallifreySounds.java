@@ -128,6 +128,12 @@ public class GallifreySounds {
 
     private static SoundEvent registerSound(String name) {
         Identifier id = new Identifier(GallifreyMod.MOD_ID, name);
+        // Be defensive about duplicate/static re-registration. This project has
+        // accumulated sound definitions across older builds, and Fabric's
+        // registry-sync layer throws if the same sound is registered twice.
+        if (Registries.SOUND_EVENT.containsId(id)) {
+            return Registries.SOUND_EVENT.get(id);
+        }
         return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(id));
     }
 
