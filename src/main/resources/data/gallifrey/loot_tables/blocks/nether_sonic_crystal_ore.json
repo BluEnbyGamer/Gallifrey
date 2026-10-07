@@ -38,7 +38,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "gallifrey:sonic_crystal"
+              "name": "gallifrey:raw_sonic_crystal"
             }
           ]
         }

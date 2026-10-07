@@ -26,6 +26,20 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(GallifreyModBlocks.WASTED_PLANKS.asItem())
                 .add(GallifreyModBlocks.PREHISTORIC_PLANKS.asItem());
 
+        getOrCreateTagBuilder(ItemTags.WALLS)
+                .add(GallifreyModBlocks.SKARO_STONE_WALL.asItem())
+                .add(GallifreyModBlocks.SKARO_COBBLESTONE_WALL.asItem())
+                .add(GallifreyModBlocks.SKARO_ANDESITE_WALL.asItem())
+                .add(GallifreyModBlocks.SKARO_DIORITE_WALL.asItem())
+                .add(GallifreyModBlocks.SKARO_GRANITE_WALL.asItem())
+                .add(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_WALL.asItem())
+                .add(GallifreyModBlocks.SKARO_POLISHED_DIORITE_WALL.asItem())
+                .add(GallifreyModBlocks.SKARO_POLISHED_GRANITE_WALL.asItem())
+                .add(GallifreyModBlocks.POLISHED_SKARO_STONE_WALL.asItem())
+                .add(GallifreyModBlocks.SKARO_DEEPSLATE_WALL.asItem())
+                .add(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_WALL.asItem())
+                .add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_WALL.asItem());
+
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
                 .add(GallifreyModItems.DW_XIV_MUSIC_DISC)
                 .add(GallifreyModItems.GALLIFREY_MUSIC_DISC);

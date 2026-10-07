@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.block;
 
+import com.timelordmod.gallifrey.block.custom.SpreadingGrassBlock;
 import com.timelordmod.gallifrey.item.custom.SonicWorkshopItem;
 
 import com.timelordmod.gallifrey.GallifreyMod;
@@ -55,7 +56,7 @@ public class GallifreyModBlocks {
     private static final BlockSoundGroup CLASSIC_GRAVEL_SOUNDS = new BlockSoundGroup(1.0F, 1.0F, GallifreySounds.CLASSIC_GRAVEL_STEP_0, GallifreySounds.CLASSIC_GRAVEL_STEP_1, GallifreySounds.CLASSIC_GRAVEL_STEP_2, GallifreySounds.CLASSIC_GRAVEL_STEP_3, GallifreySounds.CLASSIC_GRAVEL_STEP_3);
 
     public static final Block CLASSIC_STONE = registerBlock("classic_stone", new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(CLASSIC_STONE_SOUNDS)));
-    public static final Block CLASSIC_GRASS = registerBlock("classic_grass", new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(CLASSIC_GRASS_SOUNDS)));
+    public static final Block CLASSIC_GRASS = registerBlock("classic_grass", new SpreadingGrassBlock(() -> GallifreyModBlocks.CLASSIC_DIRT, () -> java.util.List.of(GallifreyModBlocks.CLASSIC_RED_FLOWER, GallifreyModBlocks.CLASSIC_YELLOW_FLOWER), FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_DIRT = registerBlock("classic_dirt", new Block(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_COBBLE = registerBlock("classic_cobble", new Block(FabricBlockSettings.copyOf(Blocks.COBBLESTONE).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_PLANKS = registerBlock("classic_planks", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).sounds(CLASSIC_WOOD_SOUNDS)));
@@ -2037,13 +2038,6 @@ public class GallifreyModBlocks {
             )
     );
 
-    public static final Block STRIP_PREHISTORIC_LOG = registerBlock(
-            "stripped_prehistoric_log",
-            new PillarBlock(
-                    FabricBlockSettings.copyOf(Blocks.JUNGLE_LOG)
-            )
-    );
-
     public static final Block PREHISTORIC_PLANKS = registerBlock(
             "prehistoric_planks",
             new Block(
@@ -2321,6 +2315,32 @@ public class GallifreyModBlocks {
     public static final Block SKARO_DEEPSLATE_TILES_SLAB = registerBlock("skaro_deepslate_tiles_slab",
             new SlabBlock(FabricBlockSettings.copyOf(SKARO_DEEPSLATE_TILES)));
 
+    // Skaro walls, one for every Skaro stone type.
+    public static final Block SKARO_STONE_WALL = registerBlock("skaro_stone_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_STONE)));
+    public static final Block SKARO_COBBLESTONE_WALL = registerBlock("skaro_cobblestone_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_COBBLESTONE)));
+    public static final Block SKARO_ANDESITE_WALL = registerBlock("skaro_andesite_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_ANDESITE)));
+    public static final Block SKARO_DIORITE_WALL = registerBlock("skaro_diorite_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_DIORITE)));
+    public static final Block SKARO_GRANITE_WALL = registerBlock("skaro_granite_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_GRANITE)));
+    public static final Block SKARO_POLISHED_ANDESITE_WALL = registerBlock("skaro_polished_andesite_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_POLISHED_ANDESITE)));
+    public static final Block SKARO_POLISHED_DIORITE_WALL = registerBlock("skaro_polished_diorite_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_POLISHED_DIORITE)));
+    public static final Block SKARO_POLISHED_GRANITE_WALL = registerBlock("skaro_polished_granite_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_POLISHED_GRANITE)));
+    public static final Block POLISHED_SKARO_STONE_WALL = registerBlock("polished_skaro_stone_wall",
+            new WallBlock(FabricBlockSettings.copyOf(POLISHED_SKARO_STONE)));
+    public static final Block SKARO_DEEPSLATE_WALL = registerBlock("skaro_deepslate_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_DEEPSLATE)));
+    public static final Block SKARO_COBBLED_DEEPSLATE_WALL = registerBlock("skaro_cobbled_deepslate_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_COBBLED_DEEPSLATE)));
+    public static final Block SKARO_DEEPSLATE_TILES_WALL = registerBlock("skaro_deepslate_tiles_wall",
+            new WallBlock(FabricBlockSettings.copyOf(SKARO_DEEPSLATE_TILES)));
+
     // Kept for existing Skaro architecture; the old Kaletite stone/cobble blocks are removed.
     // Vertical slab variants for every mod slab.
 
@@ -2397,10 +2417,11 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE).requiresTool()));
 
     public static final Block WASTED_DIRT = registerBlock("wasted_dirt",
-            new GlassBlock(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(BlockSoundGroup.ROOTED_DIRT)));
+            new Block(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(BlockSoundGroup.ROOTED_DIRT)));
 
     public static final Block WASTED_GRASS = registerBlock("wastedgrass",
-            new Block(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.ROOTED_DIRT)));
+            new SpreadingGrassBlock(() -> GallifreyModBlocks.WASTED_DIRT, () -> java.util.List.of(Blocks.GRASS),
+                    FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.ROOTED_DIRT)));
 
     // ============================================================
     // REALITY BLOCKS (Lost Reality)
@@ -2516,7 +2537,6 @@ public class GallifreyModBlocks {
 
         // Prehistoric wood set
         flammable.add(PREHISTORIC_LOG, 5, 5);
-        flammable.add(STRIP_PREHISTORIC_LOG, 5, 5);
         flammable.add(PREHISTORIC_PLANKS, 5, 20);
         flammable.add(PREHISTORIC_LEAVES, 30, 60);
         flammable.add(PREHISTORIC_VINE, 15, 100);

@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "ServerWorldSeedMixin",
-    "ClassicHurtSoundMixin"
+    "ClassicHurtSoundMixin",
+    "EatGrassGoalMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",
@@ -13,7 +14,6 @@
     "client.LogoDrawerMixin",
     "client.CreativeInventoryScreenAccessor",
     "client.HandledScreenAccessor",
-    "client.PlayerEntityRendererMixin",
     "client.HeldItemFeatureRendererMixin"
   ],
   "injectors": {

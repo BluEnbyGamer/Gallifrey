@@ -31,7 +31,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.TARDIS_PLANKS);
                 entries.add(GallifreyModBlocks.TARDIS_STAIRS);
                 entries.add(GallifreyModBlocks.TARDIS_SLAB);
-                entries.add(GallifreyModBlocks.TARDIS_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.TARDIS_FENCE);
                 entries.add(GallifreyModBlocks.TARDIS_FENCE_GATE);
                 entries.add(GallifreyModBlocks.TARDIS_WOOD_DOOR);
@@ -53,7 +52,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.ULANDA_PLANKS);
                 entries.add(GallifreyModBlocks.ULANDA_STAIRS);
                 entries.add(GallifreyModBlocks.ULANDA_SLAB);
-                entries.add(GallifreyModBlocks.ULANDA_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.ULANDA_FENCE);
                 entries.add(GallifreyModBlocks.ULANDA_FENCE_GATE);
                 entries.add(GallifreyModBlocks.ULANDA_DOOR);
@@ -75,7 +73,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.TREEBORG_PLANKS);
                 entries.add(GallifreyModBlocks.TREEBORG_STAIRS);
                 entries.add(GallifreyModBlocks.TREEBORG_SLAB);
-                entries.add(GallifreyModBlocks.TREEBORG_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.TREEBORG_FENCE);
                 entries.add(GallifreyModBlocks.TREEBORG_FENCE_GATE);
                 entries.add(GallifreyModBlocks.TREEBORG_DOOR);
@@ -97,7 +94,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.ASH_PLANKS);
                 entries.add(GallifreyModBlocks.ASH_STAIRS);
                 entries.add(GallifreyModBlocks.ASH_SLAB);
-                entries.add(GallifreyModBlocks.ASH_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.ASH_FENCE);
                 entries.add(GallifreyModBlocks.ASH_FENCE_GATE);
                 entries.add(GallifreyModBlocks.ASH_DOOR);
@@ -119,7 +115,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.MAPLE_PLANKS);
                 entries.add(GallifreyModBlocks.MAPLE_STAIRS);
                 entries.add(GallifreyModBlocks.MAPLE_SLAB);
-                entries.add(GallifreyModBlocks.MAPLE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MAPLE_FENCE);
                 entries.add(GallifreyModBlocks.MAPLE_FENCE_GATE);
                 entries.add(GallifreyModBlocks.MAPLE_DOOR);
@@ -141,7 +136,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.MOONPINE_PLANKS);
                 entries.add(GallifreyModBlocks.MOONPINE_STAIRS);
                 entries.add(GallifreyModBlocks.MOONPINE_SLAB);
-                entries.add(GallifreyModBlocks.MOONPINE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MOONPINE_FENCE);
                 entries.add(GallifreyModBlocks.MOONPINE_FENCE_GATE);
                 entries.add(GallifreyModBlocks.MOONPINE_DOOR);
@@ -159,7 +153,7 @@ public final class GallifreyTabSections {
 
     public static final CreativeSection PREHISTORIC = CreativeSection.of(
             "prehistoric",
-            () -> new ItemStack(GallifreyModBlocks.PREHISTORIC_BLOCK),
+            () -> new ItemStack(GallifreyModItems.PREHISTORIC_INGOT),
             entries -> {
                 entries.add(GallifreyModBlocks.PREHISTORIC_SAPLING);
                 entries.add(GallifreyModBlocks.POTTED_PREHISTORIC_SAPLING);
@@ -170,7 +164,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.PREHISTORIC_PLANKS);
                 entries.add(GallifreyModBlocks.PREHISTORIC_STAIRS);
                 entries.add(GallifreyModBlocks.PREHISTORIC_SLAB);
-                entries.add(GallifreyModBlocks.PREHISTORIC_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.PREHISTORIC_FENCE);
                 entries.add(GallifreyModBlocks.PREHISTORIC_FENCE_GATE);
                 entries.add(GallifreyModBlocks.PREHISTORIC_DOOR);
@@ -264,21 +257,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.LOST_DIRT);
 
                 // Prehistoric ore and gear
-
-                // Clothing (kept at the bottom of Misc)
-                entries.add(GallifreyModItems.FEZ);
-                entries.add(GallifreyModItems.FANCYFEZ);
-                entries.add(GallifreyModItems.PURPLEFEZ);
-                entries.add(GallifreyModItems.GREENFEZ);
-                entries.add(GallifreyModItems.ORANGEFEZ);
-                entries.add(GallifreyModItems.BLUEFEZ);
-                entries.add(GallifreyModItems.DARKBLUEFEZ);
-                entries.add(GallifreyModItems.PINKFEZ);
-                entries.add(GallifreyModItems.GREYFEZ);
-                entries.add(GallifreyModItems.YELLOWFEZ);
-                entries.add(GallifreyModItems.TRUSTABLE_HAT);
-                entries.add(GallifreyModItems.EYESTALK);
-                entries.add(GallifreyModItems.OMEGA_HELMET);
             }
     );
 
@@ -336,6 +314,26 @@ public final class GallifreyTabSections {
             }
     );
 
+    public static final CreativeSection CLOTHING = CreativeSection.of(
+            "clothing",
+            () -> new ItemStack(GallifreyModItems.FEZ),
+            entries -> {
+                entries.add(GallifreyModItems.FEZ);
+                entries.add(GallifreyModItems.FANCYFEZ);
+                entries.add(GallifreyModItems.PURPLEFEZ);
+                entries.add(GallifreyModItems.GREENFEZ);
+                entries.add(GallifreyModItems.ORANGEFEZ);
+                entries.add(GallifreyModItems.BLUEFEZ);
+                entries.add(GallifreyModItems.DARKBLUEFEZ);
+                entries.add(GallifreyModItems.PINKFEZ);
+                entries.add(GallifreyModItems.GREYFEZ);
+                entries.add(GallifreyModItems.YELLOWFEZ);
+                entries.add(GallifreyModItems.TRUSTABLE_HAT);
+                entries.add(GallifreyModItems.EYESTALK);
+                entries.add(GallifreyModItems.OMEGA_HELMET);
+            }
+    );
+
     public static final CreativeSection MARS = CreativeSection.of(
             "mars",
             () -> new ItemStack(GallifreyModBlocks.MARS_STONE),
@@ -343,43 +341,30 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.MARS_SAND);
                 entries.add(GallifreyModBlocks.MARS_SANDSTONE_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_SANDSTONE_SLAB);
-                entries.add(GallifreyModBlocks.MARS_SANDSTONE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_STONE_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_STONE_SLAB);
-                entries.add(GallifreyModBlocks.MARS_STONE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_COBBLESTONE_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_COBBLESTONE_SLAB);
-                entries.add(GallifreyModBlocks.MARS_COBBLESTONE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_ANDESITE_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_ANDESITE_SLAB);
-                entries.add(GallifreyModBlocks.MARS_ANDESITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_DIORITE_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_DIORITE_SLAB);
-                entries.add(GallifreyModBlocks.MARS_DIORITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_GRANITE_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_GRANITE_SLAB);
-                entries.add(GallifreyModBlocks.MARS_GRANITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.POLISHED_MARS_STONE_STAIRS);
                 entries.add(GallifreyModBlocks.POLISHED_MARS_STONE_SLAB);
-                entries.add(GallifreyModBlocks.POLISHED_MARS_STONE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_POLISHED_ANDESITE_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_POLISHED_ANDESITE_SLAB);
-                entries.add(GallifreyModBlocks.MARS_POLISHED_ANDESITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_POLISHED_DIORITE_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_POLISHED_DIORITE_SLAB);
-                entries.add(GallifreyModBlocks.MARS_POLISHED_DIORITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_POLISHED_GRANITE_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_POLISHED_GRANITE_SLAB);
-                entries.add(GallifreyModBlocks.MARS_POLISHED_GRANITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_STONE_BRICKS_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_STONE_BRICKS_SLAB);
-                entries.add(GallifreyModBlocks.MARS_STONE_BRICKS_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED_SLAB);
-                entries.add(GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS_STAIRS);
                 entries.add(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS_SLAB);
-                entries.add(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.MARS_SANDSTONE);
                 entries.add(GallifreyModBlocks.MARS_STONE);
                 entries.add(GallifreyModBlocks.MARS_COBBLESTONE);
@@ -409,7 +394,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_PLANKS);
                 entries.add(GallifreyModBlocks.CLASSIC_STAIRS);
                 entries.add(GallifreyModBlocks.CLASSIC_SLAB);
-                entries.add(GallifreyModBlocks.CLASSIC_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.CLASSIC_FENCE);
                 entries.add(GallifreyModBlocks.CLASSIC_FENCE_GATE);
                 entries.add(GallifreyModBlocks.CLASSIC_LOG);
@@ -441,7 +425,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.WASTED_PLANKS);
                 entries.add(GallifreyModBlocks.WASTED_STAIRS);
                 entries.add(GallifreyModBlocks.WASTED_SLAB);
-                entries.add(GallifreyModBlocks.WASTED_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.WASTED_FENCE);
                 entries.add(GallifreyModBlocks.WASTED_FENCE_GATE);
                 entries.add(GallifreyModBlocks.WASTED_DOOR);
@@ -462,40 +445,28 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES);
                 entries.add(GallifreyModBlocks.SKARO_STONE_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_STONE_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_STONE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_COBBLESTONE_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_COBBLESTONE_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_COBBLESTONE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_ANDESITE_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_ANDESITE_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_ANDESITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_DIORITE_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_DIORITE_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_DIORITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_GRANITE_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_GRANITE_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_GRANITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_POLISHED_DIORITE_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_POLISHED_DIORITE_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_POLISHED_DIORITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_POLISHED_GRANITE_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_POLISHED_GRANITE_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_POLISHED_GRANITE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.POLISHED_SKARO_STONE_STAIRS);
                 entries.add(GallifreyModBlocks.POLISHED_SKARO_STONE_SLAB);
-                entries.add(GallifreyModBlocks.POLISHED_SKARO_STONE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB);
-                entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_VERTICAL_SLAB);
                 entries.add(GallifreyModBlocks.KALETITE_BRICKS);
                 entries.add(GallifreyModBlocks.DALEKANIUM_BLOCK);
                 entries.add(GallifreyModBlocks.DALEKANIUM_ORE);
@@ -525,7 +496,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.METALERTANIUM_LEGGINGS);
                 entries.add(GallifreyModItems.METALERTANIUM_BOOTS);
                 entries.add(GallifreyModItems.RADIATION_BUCKET);
-                entries.add(GallifreyModItems.SKARO_CITY_DALEK_SPAWN_EGG);
             }
     );
 
@@ -535,6 +505,7 @@ public final class GallifreyTabSections {
             PREHISTORIC,
             MISC,
             ROUNDELS,
+            CLOTHING,
             MARS,
             CLASSIC,
             SKARO

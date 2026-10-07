@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab_top",
-  "textures": {
-    "bottom": "gallifrey:block/ddwa/wasted_planks",
-    "top": "gallifrey:block/ddwa/wasted_planks",
-    "side": "gallifrey:block/ddwa/wasted_planks"
-  }
-}

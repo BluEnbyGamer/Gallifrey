@@ -151,8 +151,6 @@ public class GallifreyMod implements ModInitializer {
 
 		//Skaro wasted wood set
 
-		//Prehistoric wood set
-		StrippableBlockRegistry.register(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
 
 		//Moon-pine wood set
 

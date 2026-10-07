@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "top": "gallifrey:block/skaro/skaro_polished_andesite",
-    "bottom": "gallifrey:block/skaro/skaro_polished_andesite",
-    "side": "gallifrey:block/skaro/skaro_polished_andesite"
-  }
-}

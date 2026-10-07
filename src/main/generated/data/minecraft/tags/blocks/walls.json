@@ -1,6 +1,18 @@
 {
   "replace": false,
   "values": [
-    "gallifrey:hartnell_wall"
+    "gallifrey:hartnell_wall",
+    "gallifrey:skaro_stone_wall",
+    "gallifrey:skaro_cobblestone_wall",
+    "gallifrey:skaro_andesite_wall",
+    "gallifrey:skaro_diorite_wall",
+    "gallifrey:skaro_granite_wall",
+    "gallifrey:skaro_polished_andesite_wall",
+    "gallifrey:skaro_polished_diorite_wall",
+    "gallifrey:skaro_polished_granite_wall",
+    "gallifrey:polished_skaro_stone_wall",
+    "gallifrey:skaro_deepslate_wall",
+    "gallifrey:skaro_cobbled_deepslate_wall",
+    "gallifrey:skaro_deepslate_tiles_wall"
   ]
 }
