@@ -431,10 +431,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.WASTED_TRAPDOOR);
                 entries.add(GallifreyModBlocks.WASTED_PRESSURE_PLATE);
                 entries.add(GallifreyModBlocks.WASTED_BUTTON);
-                entries.add(GallifreyModItems.WASTED_SIGN);
-                entries.add(GallifreyModItems.HANGING_WASTED_SIGN);
-                entries.add(GallifreyModItems.WASTED_BOAT);
-                entries.add(GallifreyModItems.WASTED_CHEST_BOAT);
                 entries.add(GallifreyModBlocks.SKARO_STONE);
                 entries.add(GallifreyModBlocks.SKARO_COBBLESTONE);
                 entries.add(GallifreyModBlocks.SKARO_ANDESITE);

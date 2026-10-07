@@ -10,7 +10,6 @@ public class VortexIsomorphicScreen extends VortexManipulatorSubScreen {
     public VortexIsomorphicScreen() { super("Vortex Manipulator - Isomorphic Controls"); }
 
     @Override protected void build() {
-        accessPlayer = field(left + 24, top + 92, 350, "Online player name");
         ButtonWidget add = btn(left + 386, top + 92, 130, 24, "ADD PLAYER", b -> addPlayer());
         add.active = owner;
         addDrawableChild(add);

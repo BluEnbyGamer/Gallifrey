@@ -90,6 +90,11 @@ public final class PlanetWeatherClient {
         mondasTick++;
 
         if (!mondasBlizzard) {
+            // Mondas naturally snows even between blizzard events. The biome is
+            // configured for snow precipitation; these ambient flakes keep the
+            // surface visually snowy even while the vanilla weather timer is clear.
+            spawnGentleMondasSnow(world, client);
+
             if (--mondasCalmTicks <= 0) {
                 // Each weather window has a 30% chance of becoming a blizzard.
                 if (world.random.nextFloat() < 0.30F) {
@@ -153,6 +158,20 @@ public final class PlanetWeatherClient {
             mondasBlizzard = false;
             mondasCalmTicks = randomMondasCalmDuration(world);
             mondasWindTicks = 0;
+        }
+    }
+
+
+    private static void spawnGentleMondasSnow(ClientWorld world, MinecraftClient client) {
+        int particles = 2 + world.random.nextInt(3);
+        for (int i = 0; i < particles; i++) {
+            double x = client.player.getX() + (world.random.nextDouble() * 34.0D - 17.0D);
+            double y = client.player.getY() + 7.0D + world.random.nextDouble() * 15.0D;
+            double z = client.player.getZ() + (world.random.nextDouble() * 34.0D - 17.0D);
+            double driftX = -0.018D + world.random.nextDouble() * 0.036D;
+            double driftZ = -0.018D + world.random.nextDouble() * 0.036D;
+            double fall = -0.075D - world.random.nextDouble() * 0.07D;
+            world.addParticle(ParticleTypes.SNOWFLAKE, x, y, z, driftX, fall, driftZ);
         }
     }
 

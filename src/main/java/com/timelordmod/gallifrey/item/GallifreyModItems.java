@@ -124,12 +124,6 @@ public class GallifreyModItems {
     public static final Item MOONPINE_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.MOONPINE_CHEST_BOAT_ID, ModBoats.MOONPINE_BOAT_KEY, true);
 
 
-    public static final Item WASTED_SIGN = registerItem("wasted_sign",
-            new SignItem(new FabricItemSettings().maxCount(16), GallifreyModBlocks.STANDING_WASTED_SIGN, GallifreyModBlocks.WALL_WASTED_SIGN));
-    public static final Item HANGING_WASTED_SIGN = registerItem("wasted_hanging_sign",
-            new HangingSignItem(GallifreyModBlocks.HANGING_WASTED_SIGN, GallifreyModBlocks.WALL_HANGING_WASTED_SIGN, new FabricItemSettings().maxCount(16)));
-    public static final Item WASTED_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WASTED_BOAT_ID, ModBoats.WASTED_BOAT_KEY, false);
-    public static final Item WASTED_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WASTED_CHEST_BOAT_ID, ModBoats.WASTED_BOAT_KEY, true);
 
     // PREHISTORIC MATERIALS AND GEAR
     public static final Item PREHISTORIC_INGOT = new Item(new FabricItemSettings());

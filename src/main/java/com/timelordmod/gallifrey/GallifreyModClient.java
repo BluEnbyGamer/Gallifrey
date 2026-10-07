@@ -498,27 +498,6 @@ public class GallifreyModClient implements ClientModInitializer {
                 RenderLayer.getCutout()
         );
 
-        EntityModelLayerRegistry.registerModelLayer(
-                new EntityModelLayer(
-                        new Identifier(
-                                "gallifrey",
-                                "boat/wasted_boat"
-                        ),
-                        "main"
-                ),
-                BoatEntityModel::getTexturedModelData
-        );
-
-        EntityModelLayerRegistry.registerModelLayer(
-                new EntityModelLayer(
-                        new Identifier(
-                                "gallifrey",
-                                "chest_boat/wasted_boat"
-                        ),
-                        "main"
-                ),
-                ChestBoatEntityModel::getTexturedModelData
-        );
 
         // =========================================================
         // CLASSIC RENDER LAYER
