@@ -449,5 +449,17 @@
   "block.gallifrey.skaro_cobbled_deepslate_stairs": "Skaro Cobbled Deepslate Stairs",
   "block.gallifrey.skaro_cobbled_deepslate_slab": "Skaro Cobbled Deepslate Slab",
   "block.gallifrey.skaro_deepslate_tiles_stairs": "Skaro Deepslate Tiles Stairs",
-  "block.gallifrey.skaro_deepslate_tiles_slab": "Skaro Deepslate Tiles Slab"
+  "block.gallifrey.skaro_deepslate_tiles_slab": "Skaro Deepslate Tiles Slab",
+  "block.gallifrey.skaro_stone_wall": "Skaro Stone Wall",
+  "block.gallifrey.skaro_cobblestone_wall": "Skaro Cobblestone Wall",
+  "block.gallifrey.skaro_andesite_wall": "Skaro Andesite Wall",
+  "block.gallifrey.skaro_diorite_wall": "Skaro Diorite Wall",
+  "block.gallifrey.skaro_granite_wall": "Skaro Granite Wall",
+  "block.gallifrey.skaro_polished_andesite_wall": "Polished Skaro Andesite Wall",
+  "block.gallifrey.skaro_polished_diorite_wall": "Polished Skaro Diorite Wall",
+  "block.gallifrey.skaro_polished_granite_wall": "Polished Skaro Granite Wall",
+  "block.gallifrey.polished_skaro_stone_wall": "Polished Skaro Stone Wall",
+  "block.gallifrey.skaro_deepslate_wall": "Skaro Deepslate Wall",
+  "block.gallifrey.skaro_cobbled_deepslate_wall": "Skaro Cobbled Deepslate Wall",
+  "block.gallifrey.skaro_deepslate_tiles_wall": "Skaro Deepslate Tiles Wall"
 }

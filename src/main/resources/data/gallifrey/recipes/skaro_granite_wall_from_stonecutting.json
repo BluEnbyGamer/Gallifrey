@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "gallifrey:skaro_granite"
+  },
+  "result": "gallifrey:skaro_granite_wall",
+  "count": 1
+}

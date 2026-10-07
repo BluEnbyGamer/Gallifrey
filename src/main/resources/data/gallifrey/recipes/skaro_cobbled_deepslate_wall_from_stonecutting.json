@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "gallifrey:skaro_cobbled_deepslate"
+  },
+  "result": "gallifrey:skaro_cobbled_deepslate_wall",
+  "count": 1
+}

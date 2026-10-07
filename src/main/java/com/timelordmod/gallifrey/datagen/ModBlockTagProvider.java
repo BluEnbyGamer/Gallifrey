@@ -44,12 +44,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.WASTED_PLANKS,
                         GallifreyModBlocks.WASTED_SLAB)
 
-        .add(GallifreyModBlocks.MOONPINE_LOG, GallifreyModBlocks.MOONPINE_WOOD,
-                GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
-        .add(GallifreyModBlocks.WASTED_WOOD,
-                GallifreyModBlocks.PREHISTORIC_LOG,
-                GallifreyModBlocks.STRIP_PREHISTORIC_LOG,
-                GallifreyModBlocks.PREHISTORIC_PLANKS);
+                .add(GallifreyModBlocks.MOONPINE_LOG, GallifreyModBlocks.MOONPINE_WOOD,
+                        GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
+                .add(GallifreyModBlocks.WASTED_WOOD,
+                        GallifreyModBlocks.PREHISTORIC_LOG,
+                        GallifreyModBlocks.PREHISTORIC_PLANKS);
 
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(GallifreyModBlocks.MARS_SAND, GallifreyModBlocks.LOST_DIRT);
@@ -201,8 +200,27 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.MOONPINE_FENCE_GATE,GallifreyModBlocks.ULANDA_FENCE_GATE,
                         GallifreyModBlocks.WASTED_FENCE_GATE, GallifreyModBlocks.PREHISTORIC_FENCE_GATE);
 
+        // Walls only connect to each other (and look right) when they are in this tag.
         getOrCreateTagBuilder(BlockTags.WALLS)
-                .add(GallifreyModBlocks.HARTNELL_WALL);
+                .add(GallifreyModBlocks.HARTNELL_WALL)
+                .add(GallifreyModBlocks.SKARO_STONE_WALL, GallifreyModBlocks.SKARO_COBBLESTONE_WALL,
+                        GallifreyModBlocks.SKARO_ANDESITE_WALL, GallifreyModBlocks.SKARO_DIORITE_WALL,
+                        GallifreyModBlocks.SKARO_GRANITE_WALL, GallifreyModBlocks.SKARO_POLISHED_ANDESITE_WALL,
+                        GallifreyModBlocks.SKARO_POLISHED_DIORITE_WALL, GallifreyModBlocks.SKARO_POLISHED_GRANITE_WALL,
+                        GallifreyModBlocks.POLISHED_SKARO_STONE_WALL, GallifreyModBlocks.SKARO_DEEPSLATE_WALL,
+                        GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_WALL, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_WALL);
+
+        // Skaro walls are mined with a pickaxe, like the rest of the Skaro stone set.
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.SKARO_STONE_WALL, GallifreyModBlocks.SKARO_COBBLESTONE_WALL,
+                        GallifreyModBlocks.SKARO_ANDESITE_WALL, GallifreyModBlocks.SKARO_DIORITE_WALL,
+                        GallifreyModBlocks.SKARO_GRANITE_WALL, GallifreyModBlocks.SKARO_POLISHED_ANDESITE_WALL,
+                        GallifreyModBlocks.SKARO_POLISHED_DIORITE_WALL, GallifreyModBlocks.SKARO_POLISHED_GRANITE_WALL,
+                        GallifreyModBlocks.POLISHED_SKARO_STONE_WALL, GallifreyModBlocks.SKARO_DEEPSLATE_WALL,
+                        GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_WALL, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_WALL);
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(GallifreyModBlocks.SKARO_STONE_WALL, GallifreyModBlocks.SKARO_COBBLESTONE_WALL);
 
         // Logs tag: leaves only stay alive next to blocks in this tag,
         // so every tree's logs must be here or its leaves decay.
@@ -220,7 +238,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(GallifreyModBlocks.MOONPINE_LOG, GallifreyModBlocks.MOONPINE_WOOD,
                         GallifreyModBlocks.STRIP_MOONPINE_LOG, GallifreyModBlocks.STRIP_MOONPINE_WOOD)
                 .add(GallifreyModBlocks.WASTED_LOG, GallifreyModBlocks.WASTED_WOOD,
-                GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
+                        GallifreyModBlocks.PREHISTORIC_LOG);
 
         // CLASSIC BLOCK TAGS
         // Keep Classic trees compatible with vanilla leaf-decay rules and tool tags.

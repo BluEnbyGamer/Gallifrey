@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "gallifrey:skaro_polished_granite"
+    }
+  },
+  "result": {
+    "item": "gallifrey:skaro_polished_granite_wall",
+    "count": 6
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "top": "gallifrey:block/skaro/skaro_stone",
-    "bottom": "gallifrey:block/skaro/skaro_stone",
-    "side": "gallifrey:block/skaro/skaro_stone"
-  }
-}

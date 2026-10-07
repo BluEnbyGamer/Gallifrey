@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "top": "gallifrey:block/skaro/skaro_deepslate_tiles",
-    "bottom": "gallifrey:block/skaro/skaro_deepslate_tiles",
-    "side": "gallifrey:block/skaro/skaro_deepslate_tiles"
-  }
-}

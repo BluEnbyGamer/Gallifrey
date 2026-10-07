@@ -156,11 +156,9 @@ public final class GallifreyTabSections {
             () -> new ItemStack(GallifreyModItems.PREHISTORIC_INGOT),
             entries -> {
                 entries.add(GallifreyModBlocks.PREHISTORIC_SAPLING);
-                entries.add(GallifreyModBlocks.POTTED_PREHISTORIC_SAPLING);
                 entries.add(GallifreyModBlocks.PREHISTORIC_VINE);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LEAVES);
                 entries.add(GallifreyModBlocks.PREHISTORIC_LOG);
-                entries.add(GallifreyModBlocks.STRIP_PREHISTORIC_LOG);
                 entries.add(GallifreyModBlocks.PREHISTORIC_PLANKS);
                 entries.add(GallifreyModBlocks.PREHISTORIC_STAIRS);
                 entries.add(GallifreyModBlocks.PREHISTORIC_SLAB);
@@ -467,6 +465,18 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB);
                 entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS);
                 entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB);
+                entries.add(GallifreyModBlocks.SKARO_STONE_WALL);
+                entries.add(GallifreyModBlocks.SKARO_COBBLESTONE_WALL);
+                entries.add(GallifreyModBlocks.SKARO_ANDESITE_WALL);
+                entries.add(GallifreyModBlocks.SKARO_DIORITE_WALL);
+                entries.add(GallifreyModBlocks.SKARO_GRANITE_WALL);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_WALL);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_DIORITE_WALL);
+                entries.add(GallifreyModBlocks.SKARO_POLISHED_GRANITE_WALL);
+                entries.add(GallifreyModBlocks.POLISHED_SKARO_STONE_WALL);
+                entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_WALL);
+                entries.add(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_WALL);
+                entries.add(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_WALL);
                 entries.add(GallifreyModBlocks.KALETITE_BRICKS);
                 entries.add(GallifreyModBlocks.DALEKANIUM_BLOCK);
                 entries.add(GallifreyModBlocks.DALEKANIUM_ORE);

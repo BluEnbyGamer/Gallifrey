@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/skaro_cobbled_deepslate_slab"
+    },
+    "type=double": {
+      "model": "gallifrey:block/skaro_cobbled_deepslate"
+    },
+    "type=top": {
+      "model": "gallifrey:block/skaro_cobbled_deepslate_slab_top"
+    }
+  }
+}

@@ -59,6 +59,8 @@
     "gallifrey:grate_block",
     "gallifrey:thick_grate_block",
     "gallifrey:rusty_grate_block",
-    "gallifrey:rusty_thick_grate_block"
+    "gallifrey:rusty_thick_grate_block",
+    "gallifrey:skaro_stone_wall",
+    "gallifrey:skaro_cobblestone_wall"
   ]
 }
