@@ -134,6 +134,11 @@ public class GallifreyFluids {
             return 100.0F;
         }
 
+        @Override
+        protected int getTickRate(WorldView world) {
+            return 5;
+        }
+
     }
 
     public static class Flowing extends RadiationFluid {
