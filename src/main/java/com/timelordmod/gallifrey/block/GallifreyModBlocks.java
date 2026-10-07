@@ -12,7 +12,6 @@ import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.block.TerraformHangingSignBlock;
 import com.timelordmod.gallifrey.block.custom.SonicSignalBlock;
 import com.timelordmod.gallifrey.block.custom.TapperBlock;
-import com.timelordmod.gallifrey.block.custom.VerticalSlabBlock;
 import com.timelordmod.gallifrey.block.entity.RoundelBlock;
 import com.timelordmod.gallifrey.world.tree.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -71,7 +70,7 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_GRAVEL = registerBlock("classic_gravel", new FallingBlock(FabricBlockSettings.copyOf(Blocks.GRAVEL).sounds(CLASSIC_GRAVEL_SOUNDS)));
     public static final Block CLASSIC_GOLD = registerBlock("classic_gold", new Block(FabricBlockSettings.copyOf(Blocks.GOLD_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_IRON = registerBlock("classic_iron", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
-    public static final Block CLASSIC_GLASS = registerBlock("classic_glass", new GlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).sounds(BlockSoundGroup.GLASS)));
+    public static final Block CLASSIC_GLASS = registerBlock("classic_glass", new GlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).sounds(BlockSoundGroup.GLASS).nonOpaque()));
     public static final Block CLASSIC_SPONGE = registerBlock("classic_sponge", new Block(FabricBlockSettings.copyOf(Blocks.SPONGE).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_BRICKS = registerBlock("classic_bricks", new Block(FabricBlockSettings.copyOf(Blocks.BRICKS).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_TNT = registerBlock("classic_tnt", new TntBlock(FabricBlockSettings.copyOf(Blocks.TNT).sounds(CLASSIC_STONE_SOUNDS)));
@@ -189,17 +188,20 @@ public class GallifreyModBlocks {
 
     public static final Block THICK_GRATE_BLOCK = registerBlock(
             "thick_grate_block",
-            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK))
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    .nonOpaque())
     );
 
     public static final Block RUSTY_GRATE_BLOCK = registerBlock(
             "rusty_grate_block",
-            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK))
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    .nonOpaque())
     );
 
     public static final Block RUSTY_THICK_GRATE_BLOCK = registerBlock(
             "rusty_thick_grate_block",
-            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK))
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    .nonOpaque())
     );
 
     // Storage block for Metalertanium Ingots. Netherite-grade, like the gear.
@@ -2342,77 +2344,6 @@ public class GallifreyModBlocks {
             new WallBlock(FabricBlockSettings.copyOf(SKARO_DEEPSLATE_TILES)));
 
     // Kept for existing Skaro architecture; the old Kaletite stone/cobble blocks are removed.
-    // Vertical slab variants for every mod slab.
-
-    public static final Block CLASSIC_VERTICAL_SLAB = registerBlock("classic_slab_vertical", new VerticalSlabBlock(CLASSIC_PLANKS, FabricBlockSettings.copyOf(CLASSIC_SLAB)));
-
-    public static final Block MARS_SANDSTONE_VERTICAL_SLAB = registerBlock("mars_sandstone_slab_vertical", new VerticalSlabBlock(MARS_SANDSTONE, FabricBlockSettings.copyOf(MARS_SANDSTONE_SLAB)));
-
-    public static final Block MARS_STONE_VERTICAL_SLAB = registerBlock("mars_stone_slab_vertical", new VerticalSlabBlock(MARS_STONE, FabricBlockSettings.copyOf(MARS_STONE_SLAB)));
-
-    public static final Block MARS_COBBLESTONE_VERTICAL_SLAB = registerBlock("mars_cobblestone_slab_vertical", new VerticalSlabBlock(MARS_COBBLESTONE, FabricBlockSettings.copyOf(MARS_COBBLESTONE_SLAB)));
-
-    public static final Block MARS_ANDESITE_VERTICAL_SLAB = registerBlock("mars_andesite_slab_vertical", new VerticalSlabBlock(MARS_ANDESITE, FabricBlockSettings.copyOf(MARS_ANDESITE_SLAB)));
-
-    public static final Block MARS_DIORITE_VERTICAL_SLAB = registerBlock("mars_diorite_slab_vertical", new VerticalSlabBlock(MARS_DIORITE, FabricBlockSettings.copyOf(MARS_DIORITE_SLAB)));
-
-    public static final Block MARS_GRANITE_VERTICAL_SLAB = registerBlock("mars_granite_slab_vertical", new VerticalSlabBlock(MARS_GRANITE, FabricBlockSettings.copyOf(MARS_GRANITE_SLAB)));
-
-    public static final Block POLISHED_MARS_STONE_VERTICAL_SLAB = registerBlock("polished_mars_stone_slab_vertical", new VerticalSlabBlock(POLISHED_MARS_STONE, FabricBlockSettings.copyOf(POLISHED_MARS_STONE_SLAB)));
-
-    public static final Block MARS_POLISHED_ANDESITE_VERTICAL_SLAB = registerBlock("mars_polished_andesite_slab_vertical", new VerticalSlabBlock(MARS_POLISHED_ANDESITE, FabricBlockSettings.copyOf(MARS_POLISHED_ANDESITE_SLAB)));
-
-    public static final Block MARS_POLISHED_DIORITE_VERTICAL_SLAB = registerBlock("mars_polished_diorite_slab_vertical", new VerticalSlabBlock(MARS_POLISHED_DIORITE, FabricBlockSettings.copyOf(MARS_POLISHED_DIORITE_SLAB)));
-
-    public static final Block MARS_POLISHED_GRANITE_VERTICAL_SLAB = registerBlock("mars_polished_granite_slab_vertical", new VerticalSlabBlock(MARS_POLISHED_GRANITE, FabricBlockSettings.copyOf(MARS_POLISHED_GRANITE_SLAB)));
-
-    public static final Block MARS_STONE_BRICKS_VERTICAL_SLAB = registerBlock("mars_stone_bricks_slab_vertical", new VerticalSlabBlock(MARS_STONE_BRICKS, FabricBlockSettings.copyOf(MARS_STONE_BRICKS_SLAB)));
-
-    public static final Block MARS_STONE_BRICKS_CRACKED_VERTICAL_SLAB = registerBlock("mars_stone_bricks_cracked_slab_vertical", new VerticalSlabBlock(MARS_STONE_BRICKS_CRACKED, FabricBlockSettings.copyOf(MARS_STONE_BRICKS_CRACKED_SLAB)));
-
-    public static final Block MARS_CHISELED_STONE_BRICKS_VERTICAL_SLAB = registerBlock("mars_chizelled_stone_bricks_slab_vertical", new VerticalSlabBlock(MARS_CHISELED_STONE_BRICKS, FabricBlockSettings.copyOf(MARS_CHISELED_STONE_BRICKS_SLAB)));
-
-    public static final Block TARDIS_VERTICAL_SLAB = registerBlock("tardis_slab_vertical", new VerticalSlabBlock(TARDIS_PLANKS, FabricBlockSettings.copyOf(TARDIS_SLAB)));
-
-    public static final Block ULANDA_VERTICAL_SLAB = registerBlock("ulanda_slab_vertical", new VerticalSlabBlock(ULANDA_PLANKS, FabricBlockSettings.copyOf(ULANDA_SLAB)));
-
-    public static final Block TREEBORG_VERTICAL_SLAB = registerBlock("treeborg_slab_vertical", new VerticalSlabBlock(TREEBORG_PLANKS, FabricBlockSettings.copyOf(TREEBORG_SLAB)));
-
-    public static final Block ASH_VERTICAL_SLAB = registerBlock("ash_slab_vertical", new VerticalSlabBlock(ASH_PLANKS, FabricBlockSettings.copyOf(ASH_SLAB)));
-
-    public static final Block MAPLE_VERTICAL_SLAB = registerBlock("maple_slab_vertical", new VerticalSlabBlock(MAPLE_PLANKS, FabricBlockSettings.copyOf(MAPLE_SLAB)));
-
-    public static final Block MOONPINE_VERTICAL_SLAB = registerBlock("moonpine_slab_vertical", new VerticalSlabBlock(MOONPINE_PLANKS, FabricBlockSettings.copyOf(MOONPINE_SLAB)));
-
-    public static final Block WASTED_VERTICAL_SLAB = registerBlock("wasted_slab_vertical", new VerticalSlabBlock(WASTED_PLANKS, FabricBlockSettings.copyOf(WASTED_SLAB)));
-
-    public static final Block PREHISTORIC_VERTICAL_SLAB = registerBlock("prehistoric_slab_vertical", new VerticalSlabBlock(PREHISTORIC_PLANKS, FabricBlockSettings.copyOf(PREHISTORIC_SLAB)));
-
-    public static final Block SKARO_STONE_VERTICAL_SLAB = registerBlock("skaro_stone_slab_vertical", new VerticalSlabBlock(SKARO_STONE, FabricBlockSettings.copyOf(SKARO_STONE_SLAB)));
-
-    public static final Block SKARO_COBBLESTONE_VERTICAL_SLAB = registerBlock("skaro_cobblestone_slab_vertical", new VerticalSlabBlock(SKARO_COBBLESTONE, FabricBlockSettings.copyOf(SKARO_COBBLESTONE_SLAB)));
-
-    public static final Block SKARO_ANDESITE_VERTICAL_SLAB = registerBlock("skaro_andesite_slab_vertical", new VerticalSlabBlock(SKARO_ANDESITE, FabricBlockSettings.copyOf(SKARO_ANDESITE_SLAB)));
-
-    public static final Block SKARO_DIORITE_VERTICAL_SLAB = registerBlock("skaro_diorite_slab_vertical", new VerticalSlabBlock(SKARO_DIORITE, FabricBlockSettings.copyOf(SKARO_DIORITE_SLAB)));
-
-    public static final Block SKARO_GRANITE_VERTICAL_SLAB = registerBlock("skaro_granite_slab_vertical", new VerticalSlabBlock(SKARO_GRANITE, FabricBlockSettings.copyOf(SKARO_GRANITE_SLAB)));
-
-    public static final Block SKARO_POLISHED_ANDESITE_VERTICAL_SLAB = registerBlock("skaro_polished_andesite_slab_vertical", new VerticalSlabBlock(SKARO_POLISHED_ANDESITE, FabricBlockSettings.copyOf(SKARO_POLISHED_ANDESITE_SLAB)));
-
-    public static final Block SKARO_POLISHED_DIORITE_VERTICAL_SLAB = registerBlock("skaro_polished_diorite_slab_vertical", new VerticalSlabBlock(SKARO_POLISHED_DIORITE, FabricBlockSettings.copyOf(SKARO_POLISHED_DIORITE_SLAB)));
-
-    public static final Block SKARO_POLISHED_GRANITE_VERTICAL_SLAB = registerBlock("skaro_polished_granite_slab_vertical", new VerticalSlabBlock(SKARO_POLISHED_GRANITE, FabricBlockSettings.copyOf(SKARO_POLISHED_GRANITE_SLAB)));
-
-    public static final Block POLISHED_SKARO_STONE_VERTICAL_SLAB = registerBlock("polished_skaro_stone_slab_vertical", new VerticalSlabBlock(POLISHED_SKARO_STONE, FabricBlockSettings.copyOf(POLISHED_SKARO_STONE_SLAB)));
-
-    public static final Block SKARO_DEEPSLATE_VERTICAL_SLAB = registerBlock("skaro_deepslate_slab_vertical", new VerticalSlabBlock(SKARO_DEEPSLATE, FabricBlockSettings.copyOf(SKARO_DEEPSLATE_SLAB)));
-
-    public static final Block SKARO_COBBLED_DEEPSLATE_VERTICAL_SLAB = registerBlock("skaro_cobbled_deepslate_slab_vertical", new VerticalSlabBlock(SKARO_COBBLED_DEEPSLATE, FabricBlockSettings.copyOf(SKARO_COBBLED_DEEPSLATE_SLAB)));
-
-    public static final Block SKARO_DEEPSLATE_TILES_VERTICAL_SLAB = registerBlock("skaro_deepslate_tiles_slab_vertical", new VerticalSlabBlock(SKARO_DEEPSLATE_TILES, FabricBlockSettings.copyOf(SKARO_DEEPSLATE_TILES_SLAB)));
-
-
     public static final Block KALETITE_BRICKS = registerBlock("kaletite_bricks",
             new Block(FabricBlockSettings.copyOf(Blocks.STONE).sounds(BlockSoundGroup.STONE).requiresTool()));
 
@@ -2454,7 +2385,6 @@ public class GallifreyModBlocks {
         flammable.add(CLASSIC_PLANKS, 5, 20);
         flammable.add(CLASSIC_STAIRS, 5, 20);
         flammable.add(CLASSIC_SLAB, 5, 20);
-        flammable.add(CLASSIC_VERTICAL_SLAB, 5, 20);
         flammable.add(CLASSIC_FENCE, 5, 20);
         flammable.add(CLASSIC_FENCE_GATE, 5, 20);
         flammable.add(CLASSIC_LEAVES, 30, 60);
@@ -2468,7 +2398,6 @@ public class GallifreyModBlocks {
         flammable.add(TARDIS_LEAVES, 30, 60);
         flammable.add(TARDIS_STAIRS, 5, 20);
         flammable.add(TARDIS_SLAB, 5, 20);
-        flammable.add(TARDIS_VERTICAL_SLAB, 5, 20);
         flammable.add(TARDIS_FENCE, 5, 20);
         flammable.add(TARDIS_FENCE_GATE, 5, 20);
 
@@ -2481,7 +2410,6 @@ public class GallifreyModBlocks {
         flammable.add(ULANDA_LEAVES, 30, 60);
         flammable.add(ULANDA_STAIRS, 5, 20);
         flammable.add(ULANDA_SLAB, 5, 20);
-        flammable.add(ULANDA_VERTICAL_SLAB, 5, 20);
         flammable.add(ULANDA_FENCE, 5, 20);
         flammable.add(ULANDA_FENCE_GATE, 5, 20);
 
@@ -2494,7 +2422,6 @@ public class GallifreyModBlocks {
         flammable.add(TREEBORG_LEAVES, 30, 60);
         flammable.add(TREEBORG_STAIRS, 5, 20);
         flammable.add(TREEBORG_SLAB, 5, 20);
-        flammable.add(TREEBORG_VERTICAL_SLAB, 5, 20);
         flammable.add(TREEBORG_FENCE, 5, 20);
         flammable.add(TREEBORG_FENCE_GATE, 5, 20);
 
@@ -2505,7 +2432,6 @@ public class GallifreyModBlocks {
         flammable.add(WASTED_LEAVES, 30, 60);
         flammable.add(WASTED_STAIRS, 5, 20);
         flammable.add(WASTED_SLAB, 5, 20);
-        flammable.add(WASTED_VERTICAL_SLAB, 5, 20);
         flammable.add(WASTED_FENCE, 5, 20);
         flammable.add(WASTED_FENCE_GATE, 5, 20);
 
@@ -2518,7 +2444,6 @@ public class GallifreyModBlocks {
         flammable.add(ASH_LEAVES, 30, 60);
         flammable.add(ASH_STAIRS, 5, 20);
         flammable.add(ASH_SLAB, 5, 20);
-        flammable.add(ASH_VERTICAL_SLAB, 5, 20);
         flammable.add(ASH_FENCE, 5, 20);
         flammable.add(ASH_FENCE_GATE, 5, 20);
 
@@ -2531,7 +2456,6 @@ public class GallifreyModBlocks {
         flammable.add(MAPLE_LEAVES, 30, 60);
         flammable.add(MAPLE_STAIRS, 5, 20);
         flammable.add(MAPLE_SLAB, 5, 20);
-        flammable.add(MAPLE_VERTICAL_SLAB, 5, 20);
         flammable.add(MAPLE_FENCE, 5, 20);
         flammable.add(MAPLE_FENCE_GATE, 5, 20);
 
@@ -2542,7 +2466,6 @@ public class GallifreyModBlocks {
         flammable.add(PREHISTORIC_VINE, 15, 100);
         flammable.add(PREHISTORIC_STAIRS, 5, 20);
         flammable.add(PREHISTORIC_SLAB, 5, 20);
-        flammable.add(PREHISTORIC_VERTICAL_SLAB, 5, 20);
         flammable.add(PREHISTORIC_FENCE, 5, 20);
         flammable.add(PREHISTORIC_FENCE_GATE, 5, 20);
 
@@ -2555,7 +2478,6 @@ public class GallifreyModBlocks {
         flammable.add(MOONPINE_LEAVES, 30, 60);
         flammable.add(MOONPINE_STAIRS, 5, 20);
         flammable.add(MOONPINE_SLAB, 5, 20);
-        flammable.add(MOONPINE_VERTICAL_SLAB, 5, 20);
         flammable.add(MOONPINE_FENCE, 5, 20);
         flammable.add(MOONPINE_FENCE_GATE, 5, 20);
 

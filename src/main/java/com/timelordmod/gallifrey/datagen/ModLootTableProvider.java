@@ -285,6 +285,18 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB, slabDrops(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_SLAB));
         addDrop(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS);
         addDrop(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB, slabDrops(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB));
+        addDrop(GallifreyModBlocks.SKARO_STONE_WALL);
+        addDrop(GallifreyModBlocks.SKARO_COBBLESTONE_WALL);
+        addDrop(GallifreyModBlocks.SKARO_ANDESITE_WALL);
+        addDrop(GallifreyModBlocks.SKARO_DIORITE_WALL);
+        addDrop(GallifreyModBlocks.SKARO_GRANITE_WALL);
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_ANDESITE_WALL);
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_DIORITE_WALL);
+        addDrop(GallifreyModBlocks.SKARO_POLISHED_GRANITE_WALL);
+        addDrop(GallifreyModBlocks.POLISHED_SKARO_STONE_WALL);
+        addDrop(GallifreyModBlocks.SKARO_DEEPSLATE_WALL);
+        addDrop(GallifreyModBlocks.SKARO_COBBLED_DEEPSLATE_WALL);
+        addDrop(GallifreyModBlocks.SKARO_DEEPSLATE_TILES_WALL);
         addDrop(GallifreyModBlocks.KALETITE_BRICKS);
         addDrop(GallifreyModBlocks.WASTED_DIRT);
         addDrop(GallifreyModBlocks.LOST_DIRT);

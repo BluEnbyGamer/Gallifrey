@@ -486,6 +486,10 @@ public class GallifreyModClient implements ClientModInitializer {
         // =========================================================
 
         BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.CLASSIC_GLASS,
+                RenderLayer.getCutout()
+        );
+        BlockRenderLayerMap.INSTANCE.putBlock(
                 GallifreyModBlocks.GRATE_BLOCK,
                 RenderLayer.getCutout()
         );

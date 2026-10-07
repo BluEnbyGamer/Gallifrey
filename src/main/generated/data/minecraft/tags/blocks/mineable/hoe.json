@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "gallifrey:moss_roundel"
+    "gallifrey:moss_roundel",
+    "gallifrey:classic_leaves",
+    "gallifrey:classic_grass"
   ]
 }
