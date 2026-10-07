@@ -216,7 +216,13 @@ public class TardisMonitorScreen extends Screen {
         boolean locked = buf.readBoolean();
 
         client.execute(() -> {
-            if (!(client.currentScreen instanceof TardisMonitorScreen screen)) return;
+            TardisMonitorScreen screen;
+            if (client.currentScreen instanceof TardisMonitorScreen existing) {
+                screen = existing;
+            } else {
+                screen = new TardisMonitorScreen();
+                client.setScreen(screen);
+            }
             screen.fuel = fuel;
             screen.maxFuel = maxFuel;
             screen.exteriorVariant = variant;

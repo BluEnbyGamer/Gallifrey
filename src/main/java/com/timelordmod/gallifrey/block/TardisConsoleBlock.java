@@ -30,7 +30,10 @@ import net.minecraft.world.World;
  */
 public class TardisConsoleBlock extends Block implements BlockEntityProvider {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
+    // The supplied Hartnell model is roughly 3 blocks wide, so give the
+    // physical console a matching interaction/outline footprint.  This keeps
+    // clicks on the visible console (not just its centre block) opening the UI.
+    private static final VoxelShape SHAPE = Block.createCuboidShape(-16, 0, -16, 32, 16, 32);
 
     public TardisConsoleBlock(Settings settings) {
         super(settings);

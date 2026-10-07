@@ -21,7 +21,16 @@ public final class ModClientPackets {
 
         ClientPlayNetworking.registerGlobalReceiver(ModPackets.TARDIS_MONITOR_STATE, (client, handler, buf, responseSender) -> {
             PacketByteBuf copy = new PacketByteBuf(buf.copy());
-            client.execute(() -> TardisMonitorScreen.applyServerState(copy));
+            client.execute(() -> {
+                // The physical TARDIS console sends its state as the opening
+                // packet.  Create the screen here first; the old monitor UI
+                // expected a screen to already be open, so the state packet
+                // previously arrived and was simply discarded.
+                if (!(client.currentScreen instanceof TardisMonitorScreen)) {
+                    client.setScreen(new TardisMonitorScreen());
+                }
+                TardisMonitorScreen.applyServerState(copy);
+            });
         });
 
         ClientPlayNetworking.registerGlobalReceiver(ModPackets.VM_STATE, (client, handler, buf, responseSender) -> {
