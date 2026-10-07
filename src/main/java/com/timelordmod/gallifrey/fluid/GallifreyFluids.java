@@ -129,6 +129,11 @@ public class GallifreyFluids {
             return false;
         }
 
+        @Override
+        protected float getBlastResistance() {
+            return 100.0F;
+        }
+
     }
 
     public static class Flowing extends RadiationFluid {
