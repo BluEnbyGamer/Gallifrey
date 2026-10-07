@@ -270,6 +270,36 @@
         ],
         "offset": 0.0
       }
+    },
+    {
+      "biome": "gallifrey:lost_classic_nether",
+      "parameters": {
+        "temperature": [
+          0.5,
+          2.0
+        ],
+        "humidity": [
+          -2.0,
+          2.0
+        ],
+        "continentalness": [
+          -2.0,
+          0.2
+        ],
+        "erosion": [
+          -2.0,
+          2.0
+        ],
+        "weirdness": [
+          -0.8,
+          0.8
+        ],
+        "depth": [
+          -2.0,
+          2.0
+        ],
+        "offset": 0.0
+      }
     }
   ]
 }

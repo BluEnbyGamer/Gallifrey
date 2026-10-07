@@ -19,6 +19,9 @@ import com.timelordmod.gallifrey.sonic.SonicCasing;
 import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
@@ -43,12 +46,25 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import com.timelordmod.gallifrey.entity.GallifreyEntities;
 import com.timelordmod.gallifrey.client.SkaroCityDalekRenderer;
+import com.timelordmod.gallifrey.client.SkaroCityDalekAltRenderer;
+import com.timelordmod.gallifrey.client.SupremeCouncilDalekRenderer;
+import com.timelordmod.gallifrey.client.AlphaGhastRenderer;
+import com.timelordmod.gallifrey.client.AlphaZombiePigmanRenderer;
 import com.timelordmod.gallifrey.entity.client.LaserRenderer;
 
 public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+
+        // Register the complete supplied Classic-era asset pack as an optional built-in
+        // resource pack. The integrated Classic blocks use the supplied textures directly;
+        // this pack provides the remaining vanilla item/entity/sound overrides when enabled.
+        FabricLoader.getInstance().getModContainer(GallifreyMod.MOD_ID).ifPresent(container ->
+                ResourceManagerHelper.registerBuiltinResourcePack(
+                        new Identifier(GallifreyMod.MOD_ID, "classic_assets"),
+                        container,
+                        ResourcePackActivationType.NORMAL));
 
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(), GallifreyFluids.STILL_RADIATION, GallifreyFluids.FLOWING_RADIATION);
         FluidRenderHandlerRegistry.INSTANCE.register(GallifreyFluids.STILL_RADIATION, GallifreyFluids.FLOWING_RADIATION,
@@ -58,10 +74,34 @@ public class GallifreyModClient implements ClientModInitializer {
                         0x2EFF2E
                 ));
 
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
+                GallifreyFluids.STILL_CLASSIC_WATER, GallifreyFluids.FLOWING_CLASSIC_WATER);
+        FluidRenderHandlerRegistry.INSTANCE.register(
+                GallifreyFluids.STILL_CLASSIC_WATER, GallifreyFluids.FLOWING_CLASSIC_WATER,
+                new SimpleFluidRenderHandler(
+                        new Identifier("minecraft:block/water_still"),
+                        new Identifier("minecraft:block/water_flow"),
+                        0x3F76E4
+                ));
+
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
+                GallifreyFluids.STILL_CLASSIC_LAVA, GallifreyFluids.FLOWING_CLASSIC_LAVA);
+        FluidRenderHandlerRegistry.INSTANCE.register(
+                GallifreyFluids.STILL_CLASSIC_LAVA, GallifreyFluids.FLOWING_CLASSIC_LAVA,
+                new SimpleFluidRenderHandler(
+                        new Identifier("gallifrey:block/classic_nether/lava_still"),
+                        new Identifier("gallifrey:block/classic_nether/lava_flow"),
+                        0xFFFFFF
+                ));
+
         com.timelordmod.gallifrey.client.ModClientPackets.register();;
 
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK, SkaroCityDalekRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK_ALT, SkaroCityDalekAltRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.SUPREME_COUNCIL_DALEK, SupremeCouncilDalekRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.LASER, LaserRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.ALPHA_GHAST, AlphaGhastRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.ALPHA_ZOMBIE_PIGMAN, AlphaZombiePigmanRenderer::new);
         SonicShadesClient.register();
         ClientTickEvents.END_CLIENT_TICK.register(PlanetWeatherClient::tick);
 

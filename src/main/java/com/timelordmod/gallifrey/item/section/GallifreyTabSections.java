@@ -3,6 +3,7 @@ package com.timelordmod.gallifrey.item.section;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 import java.util.List;
 
@@ -404,6 +405,24 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
                 entries.add(GallifreyModBlocks.CLASSIC_RED_FLOWER);
                 entries.add(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
+
+                // Classic ore blocks. These drop the modern raw/gem materials, not old gear.
+                entries.add(GallifreyModBlocks.CLASSIC_COAL_ORE);
+                entries.add(GallifreyModBlocks.CLASSIC_IRON_ORE);
+                entries.add(GallifreyModBlocks.CLASSIC_GOLD_ORE);
+                entries.add(GallifreyModBlocks.CLASSIC_REDSTONE_ORE);
+                entries.add(GallifreyModBlocks.CLASSIC_LAPIS_ORE);
+                entries.add(GallifreyModBlocks.CLASSIC_DIAMOND_ORE);
+
+                // Classic fluids/buckets.
+                entries.add(GallifreyModItems.CLASSIC_WATER_BUCKET);
+                entries.add(GallifreyModItems.CLASSIC_LAVA_BUCKET);
+
+                entries.add(GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK);
+                entries.add(GallifreyModBlocks.CLASSIC_NETHER_SOUL_SAND);
+                entries.add(GallifreyModBlocks.CLASSIC_NETHER_GLOWSTONE);
+                entries.add(GallifreyModBlocks.CLASSIC_NETHER_MAGMA);
+                entries.add(GallifreyModBlocks.CLASSIC_NETHER_QUARTZ_ORE);
             });
 
     public static final CreativeSection SKARO = CreativeSection.of(

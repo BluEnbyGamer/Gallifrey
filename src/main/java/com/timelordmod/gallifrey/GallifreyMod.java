@@ -19,6 +19,9 @@ import com.timelordmod.gallifrey.world.portal.GallifreyPortalAreaHelper;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import com.timelordmod.gallifrey.tardis.TardisCommands;
+import com.timelordmod.gallifrey.tardis.TardisDimensionManager;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;
@@ -49,6 +52,9 @@ public class GallifreyMod implements ModInitializer {
 
 
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
+
+		TardisCommands.register();
+		ServerTickEvents.END_SERVER_TICK.register(TardisDimensionManager::tickFlight);
 
 		GallifreySounds.register();
 

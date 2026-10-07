@@ -76,6 +76,35 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_TNT = registerBlock("classic_tnt", new TntBlock(FabricBlockSettings.copyOf(Blocks.TNT).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_RED_FLOWER = registerBlock("classic_red_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.RED_TULIP)));
     public static final Block CLASSIC_YELLOW_FLOWER = registerBlock("classic_yellow_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
+    public static final Block CLASSIC_OBSIDIAN = registerBlock("classic_obsidian",
+            new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN).sounds(CLASSIC_STONE_SOUNDS)));
+
+    public static final Block CLASSIC_COAL_ORE = registerBlock("classic_coal_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.COAL_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_IRON_ORE = registerBlock("classic_iron_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_GOLD_ORE = registerBlock("classic_gold_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.GOLD_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_REDSTONE_ORE = registerBlock("classic_redstone_ore",
+            new Block(FabricBlockSettings.copyOf(CLASSIC_STONE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_LAPIS_ORE = registerBlock("classic_lapis_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.LAPIS_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_DIAMOND_ORE = registerBlock("classic_diamond_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.DIAMOND_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
+
+
+    // Classic Nether block set based on the Alpha 1.2.6 assets. These are separate blocks so the
+    // old terrain atlas can be imported without replacing modern Minecraft textures.
+    public static final Block CLASSIC_NETHER_NETHERRACK = registerBlock("classic_nether_netherrack",
+            new Block(FabricBlockSettings.copyOf(Blocks.NETHERRACK)));
+    public static final Block CLASSIC_NETHER_SOUL_SAND = registerBlock("classic_nether_soul_sand",
+            new Block(FabricBlockSettings.copyOf(Blocks.SOUL_SAND)));
+    public static final Block CLASSIC_NETHER_GLOWSTONE = registerBlock("classic_nether_glowstone",
+            new Block(FabricBlockSettings.copyOf(Blocks.GLOWSTONE)));
+    public static final Block CLASSIC_NETHER_MAGMA = registerBlock("classic_nether_magma",
+            new Block(FabricBlockSettings.copyOf(Blocks.MAGMA_BLOCK)));
+    public static final Block CLASSIC_NETHER_QUARTZ_ORE = registerBlock("classic_nether_quartz_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.NETHER_QUARTZ_ORE).strength(3.0F, 3.0F).requiresTool()));
 
     // ============================================================
     // MARS BLOCKS

@@ -87,6 +87,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                         GallifreyModBlocks.KALETITE_BRICKS)
                 .add(GallifreyModBlocks.SONIC_CRYSTAL_ORE, GallifreyModBlocks.NETHER_SONIC_CRYSTAL_ORE,
                         GallifreyModBlocks.DEEPSLATE_SONIC_CRYSTAL_ORE)
+                .add(GallifreyModBlocks.CLASSIC_COAL_ORE,   GallifreyModBlocks.CLASSIC_IRON_ORE, GallifreyModBlocks.CLASSIC_DIAMOND_ORE, GallifreyModBlocks.CLASSIC_GOLD_ORE, GallifreyModBlocks.CLASSIC_LAPIS_ORE, GallifreyModBlocks.CLASSIC_REDSTONE_ORE, GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK, GallifreyModBlocks.CLASSIC_NETHER_QUARTZ_ORE, GallifreyModBlocks.CLASSIC_STONE, GallifreyModBlocks.CLASSIC_COBBLE, GallifreyModBlocks.CLASSIC_GOLD, GallifreyModBlocks.CLASSIC_IRON, GallifreyModBlocks.CLASSIC_BRICKS)
                 .add(GallifreyModBlocks.WHITE_POINT_ORE, GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE,
                         GallifreyModBlocks.NETHER_WHITE_POINT_ORE);
 
@@ -275,18 +276,30 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(GallifreyModBlocks.ATRIUM_ORE, GallifreyModBlocks.DEEPSLATE_ATRIUM_ORE,
                         GallifreyModBlocks.ATRIUM_BLOCK)
                 .add(
-                        GallifreyModBlocks.MARS_SANDSTONE_STAIRS, GallifreyModBlocks.MARS_SANDSTONE_SLAB,
-                        GallifreyModBlocks.MARS_STONE_STAIRS, GallifreyModBlocks.MARS_STONE_SLAB,
-                        GallifreyModBlocks.MARS_COBBLESTONE_STAIRS, GallifreyModBlocks.MARS_COBBLESTONE_SLAB,
-                        GallifreyModBlocks.MARS_ANDESITE_STAIRS, GallifreyModBlocks.MARS_ANDESITE_SLAB,
-                        GallifreyModBlocks.MARS_DIORITE_STAIRS, GallifreyModBlocks.MARS_DIORITE_SLAB,
-                        GallifreyModBlocks.MARS_GRANITE_STAIRS, GallifreyModBlocks.MARS_GRANITE_SLAB,
-                        GallifreyModBlocks.POLISHED_MARS_STONE_STAIRS, GallifreyModBlocks.POLISHED_MARS_STONE_SLAB,
-                        GallifreyModBlocks.MARS_POLISHED_ANDESITE_STAIRS, GallifreyModBlocks.MARS_POLISHED_ANDESITE_SLAB,
-                        GallifreyModBlocks.MARS_POLISHED_DIORITE_STAIRS, GallifreyModBlocks.MARS_POLISHED_DIORITE_SLAB,
-                        GallifreyModBlocks.MARS_POLISHED_GRANITE_STAIRS, GallifreyModBlocks.MARS_POLISHED_GRANITE_SLAB,
-                        GallifreyModBlocks.MARS_STONE_BRICKS_STAIRS, GallifreyModBlocks.MARS_STONE_BRICKS_SLAB,
-                        GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED_STAIRS, GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED_SLAB,
+                        GallifreyModBlocks.MARS_SANDSTONE_STAIRS, GallifreyModBlocks.MARS_SANDSTONE_SLAB,
+
+                        GallifreyModBlocks.MARS_STONE_STAIRS, GallifreyModBlocks.MARS_STONE_SLAB,
+
+                        GallifreyModBlocks.MARS_COBBLESTONE_STAIRS, GallifreyModBlocks.MARS_COBBLESTONE_SLAB,
+
+                        GallifreyModBlocks.MARS_ANDESITE_STAIRS, GallifreyModBlocks.MARS_ANDESITE_SLAB,
+
+                        GallifreyModBlocks.MARS_DIORITE_STAIRS, GallifreyModBlocks.MARS_DIORITE_SLAB,
+
+                        GallifreyModBlocks.MARS_GRANITE_STAIRS, GallifreyModBlocks.MARS_GRANITE_SLAB,
+
+                        GallifreyModBlocks.POLISHED_MARS_STONE_STAIRS, GallifreyModBlocks.POLISHED_MARS_STONE_SLAB,
+
+                        GallifreyModBlocks.MARS_POLISHED_ANDESITE_STAIRS, GallifreyModBlocks.MARS_POLISHED_ANDESITE_SLAB,
+
+                        GallifreyModBlocks.MARS_POLISHED_DIORITE_STAIRS, GallifreyModBlocks.MARS_POLISHED_DIORITE_SLAB,
+
+                        GallifreyModBlocks.MARS_POLISHED_GRANITE_STAIRS, GallifreyModBlocks.MARS_POLISHED_GRANITE_SLAB,
+
+                        GallifreyModBlocks.MARS_STONE_BRICKS_STAIRS, GallifreyModBlocks.MARS_STONE_BRICKS_SLAB,
+
+                        GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED_STAIRS, GallifreyModBlocks.MARS_STONE_BRICKS_CRACKED_SLAB,
+
                         GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS_STAIRS, GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS_SLAB);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
