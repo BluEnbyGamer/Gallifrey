@@ -114,6 +114,11 @@ public class GallifreyFluids {
             return fluid == STILL_RADIATION || fluid == FLOWING_RADIATION;
         }
 
+        @Override
+        protected int getLevelDecreasePerBlock(WorldView world) {
+            return 1;
+        }
+
     }
 
     public static class Flowing extends RadiationFluid {
@@ -166,7 +171,7 @@ public class GallifreyFluids {
 
 
         @Override
-        protected BlockState toBlockState(FluidState state) {
+        public BlockState toBlockState(FluidState state) {
             return CLASSIC_LAVA.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
         }
 
