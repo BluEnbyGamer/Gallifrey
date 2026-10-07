@@ -81,7 +81,7 @@ public class GallifreyModClient implements ClientModInitializer {
                 new SimpleFluidRenderHandler(
                         new Identifier("minecraft:block/water_still"),
                         new Identifier("minecraft:block/water_flow"),
-                        0xFFFFFF
+                        0x3F76E4
                 ));
 
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
