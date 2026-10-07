@@ -88,7 +88,7 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_GOLD_ORE = registerBlock("classic_gold_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.GOLD_ORE).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_REDSTONE_ORE = registerBlock("classic_redstone_ore",
-            new Block(FabricBlockSettings.copyOf(Blocks.REDSTONE_ORE).sounds(CLASSIC_STONE_SOUNDS)));
+            new Block(FabricBlockSettings.copyOf(CLASSIC_STONE).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_LAPIS_ORE = registerBlock("classic_lapis_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.LAPIS_ORE).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_DIAMOND_ORE = registerBlock("classic_diamond_ore",
