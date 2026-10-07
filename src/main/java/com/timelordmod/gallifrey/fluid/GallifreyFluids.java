@@ -119,6 +119,11 @@ public class GallifreyFluids {
             return 1;
         }
 
+        @Override
+        protected int getFlowSpeed(WorldView world) {
+            return 1;
+        }
+
     }
 
     public static class Flowing extends RadiationFluid {
