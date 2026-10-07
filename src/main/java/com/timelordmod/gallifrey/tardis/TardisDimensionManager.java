@@ -63,7 +63,10 @@ public final class TardisDimensionManager {
         }
 
         tardis.ensureInitialized(player);
-        tardis.generateInterior(interior);
+        if (!tardis.generateInterior(interior)) {
+            player.sendMessage(Text.literal("The TARDIS interior structure could not be loaded."), true);
+            return false;
+        }
 
         TardisRegistryState registry = TardisRegistryState.get(server);
         registry.register(tardis.getTardisId(), tardis.getOwner(), player.getServerWorld(),
@@ -115,6 +118,55 @@ public final class TardisDimensionManager {
                 new TeleportTarget(Vec3d.ofCenter(pos).add(0, 0.15, 0),
                         Vec3d.ZERO,
                         tardis.getCachedState().get(TardisExteriorBlock.ROTATION) * 45.0f, 0.0f));
+        return true;
+    }
+
+    public static boolean swapInterior(ServerPlayerEntity pilot, String structureName) {
+        MinecraftServer server = pilot.getServer();
+        if (server == null) return false;
+        TardisRegistryState registry = TardisRegistryState.get(server);
+        UUID id = registry.getActiveTardis(pilot.getUuid());
+        if (id == null) {
+            pilot.sendMessage(Text.literal("Enter a TARDIS before changing its interior."), true);
+            return false;
+        }
+        TardisRegistryState.Record record = registry.get(id);
+        if (record == null) return false;
+        ServerWorld interior = getInterior(server);
+        if (interior == null) return false;
+
+        ServerWorld exteriorWorld = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.world())));
+        if (exteriorWorld == null) return false;
+        BlockPos exteriorPos = BlockPos.fromLong(record.pos());
+        if (!(exteriorWorld.getBlockEntity(exteriorPos) instanceof TardisExteriorBlockEntity tardis)) return false;
+        if (!tardis.canPilot(pilot.getUuid())) {
+            pilot.sendMessage(Text.literal("Only the TARDIS owner can change its interior."), true);
+            return false;
+        }
+        if (tardis.isFlightPending()) {
+            pilot.sendMessage(Text.literal("You cannot change the interior during flight."), true);
+            return false;
+        }
+        if (TardisInteriorCatalog.id(structureName) == null) {
+            pilot.sendMessage(Text.literal("Unknown interior. Use /tardis interiors to list the available designs."), true);
+            return false;
+        }
+
+        tardis.generateInterior(interior);
+        Vec3d entry = interiorEntry(tardis);
+        for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+            if (registry.isInside(player, id) && player.getServerWorld() == interior) {
+                player.teleport(interior, entry.x, entry.y, entry.z,
+                        tardis.getCachedState().get(TardisExteriorBlock.ROTATION) * 45.0f, player.getPitch());
+            }
+        }
+
+        if (!tardis.replaceInterior(interior, structureName)) {
+            pilot.sendMessage(Text.literal("That interior could not be loaded."), true);
+            return false;
+        }
+        pilot.sendMessage(Text.literal("TARDIS interior changed to " + structureName + "."), true);
+        interior.playSound(null, tardis.getInteriorOrigin(), SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.BLOCKS, 1.0f, 1.2f);
         return true;
     }
 

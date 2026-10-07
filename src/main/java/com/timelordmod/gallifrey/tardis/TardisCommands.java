@@ -44,7 +44,12 @@ public final class TardisCommands {
                 .then(CommandManager.literal("refuel")
                         .executes(ctx -> refuel(ctx.getSource())))
                 .then(CommandManager.literal("info")
-                        .executes(ctx -> info(ctx.getSource()))));
+                        .executes(ctx -> info(ctx.getSource())))
+                .then(CommandManager.literal("interiors")
+                        .executes(ctx -> interiors(ctx.getSource())))
+                .then(CommandManager.literal("interior")
+                        .then(CommandManager.argument("name", StringArgumentType.word())
+                                .executes(ctx -> interior(ctx.getSource(), StringArgumentType.getString(ctx, "name"))))));
     }
 
     private static int exit(ServerCommandSource source) {
@@ -150,6 +155,20 @@ public final class TardisCommands {
                     tardis.getFuel() + "/" + com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity.MAX_FUEL + ")."), true);
             return 1;
         } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    private static int interiors(ServerCommandSource source) {
+        source.sendFeedback(() -> Text.literal("Available TARDIS interiors: " + String.join(", ", TardisInteriorCatalog.names())), false);
+        return 1;
+    }
+
+    private static int interior(ServerCommandSource source, String name) {
+        try {
+            return TardisDimensionManager.swapInterior(source.getPlayerOrThrow(), name) ? 1 : 0;
+        } catch (Exception e) {
+            source.sendError(Text.literal("Only players can change TARDIS interiors."));
             return 0;
         }
     }

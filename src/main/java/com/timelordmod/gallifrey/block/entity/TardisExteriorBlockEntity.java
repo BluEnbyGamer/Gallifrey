@@ -2,6 +2,7 @@ package com.timelordmod.gallifrey.block.entity;
 
 import com.timelordmod.gallifrey.block.GallifreyModBlockEntities;
 import com.timelordmod.gallifrey.tardis.TardisDimensionManager;
+import com.timelordmod.gallifrey.tardis.TardisInteriorCatalog;
 import com.timelordmod.gallifrey.tardis.TardisRegistryState;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -10,6 +11,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.World;
@@ -28,6 +30,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     private int fuel = 100;
     private BlockPos interiorOrigin = new BlockPos(0, 64, 0);
     private boolean interiorGenerated;
+    private String interiorStructure = "tardis_platform";
+    private Vec3i interiorSize = new Vec3i(5, 5, 5);
 
     private boolean flightPending;
     private int flightTicks;
@@ -59,6 +63,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     public boolean isLocked() { return locked; }
     public int getFuel() { return fuel; }
     public BlockPos getInteriorOrigin() { return interiorOrigin; }
+    public String getInteriorStructure() { return interiorStructure; }
+    public Vec3i getInteriorSize() { return interiorSize; }
 
     public boolean canAccess(UUID player) {
         return !locked || (owner != null && owner.equals(player));
@@ -90,23 +96,72 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         return true;
     }
 
-    public void generateInterior(ServerWorld world) {
-        if (interiorGenerated) return;
+    public boolean generateInterior(ServerWorld world) {
+        if (interiorGenerated) return true;
+        Identifier structureId = TardisInteriorCatalog.id(interiorStructure);
+        if (structureId == null) return false;
 
-        Identifier structureId = new Identifier("gallifrey", "interiors/tardis_platform");
         java.util.Optional<net.minecraft.structure.StructureTemplate> template =
                 world.getStructureTemplateManager().getTemplate(structureId);
-        if (template.isEmpty()) return;
+        if (template.isEmpty()) return false;
 
+        interiorSize = template.get().getSize();
         BlockPos placement = interiorOrigin.add(-2, 0, -2);
         ChunkPos chunk = new ChunkPos(placement);
-        world.getChunkManager().addTicket(net.minecraft.server.world.ChunkTicketType.POST_TELEPORT,
-                chunk, 2, chunk.getStartPos().asLong());
-
+        // Structure placement needs the target chunk loaded. POST_TELEPORT is
+        // an entity ticket and requires an Integer ticket key, so it must not
+        // be used with a chunk-position long.
+        world.getChunk(chunk.x, chunk.z);
         template.get().place(world, placement, placement,
                 new net.minecraft.structure.StructurePlacementData(), world.getRandom(), 2);
         interiorGenerated = true;
         markDirty();
+        return true;
+    }
+
+    public boolean replaceInterior(ServerWorld world, String structureName) {
+        Identifier structureId = TardisInteriorCatalog.id(structureName);
+        if (structureId == null) return false;
+        java.util.Optional<net.minecraft.structure.StructureTemplate> template =
+                world.getStructureTemplateManager().getTemplate(structureId);
+        if (template.isEmpty()) return false;
+
+        // Older TARDIS saves predate the stored structure footprint. Recover it
+        // from the currently selected template before clearing the old interior.
+        if (interiorSize.getX() <= 1 && interiorSize.getY() <= 1 && interiorSize.getZ() <= 1) {
+            Identifier oldId = TardisInteriorCatalog.id(interiorStructure);
+            if (oldId != null) {
+                java.util.Optional<net.minecraft.structure.StructureTemplate> oldTemplate =
+                        world.getStructureTemplateManager().getTemplate(oldId);
+                oldTemplate.ifPresent(value -> interiorSize = value.getSize());
+            }
+        }
+        clearInterior(world);
+        interiorStructure = structureName.toLowerCase(java.util.Locale.ROOT);
+        interiorSize = template.get().getSize();
+        BlockPos placement = interiorOrigin.add(-2, 0, -2);
+        ChunkPos chunk = new ChunkPos(placement);
+        // Ensure the target chunk is loaded before placing the structure.
+        world.getChunk(chunk.x, chunk.z);
+        template.get().place(world, placement, placement,
+                new net.minecraft.structure.StructurePlacementData(), world.getRandom(), 2);
+        interiorGenerated = true;
+        markDirty();
+        return true;
+    }
+
+    private void clearInterior(ServerWorld world) {
+        BlockPos placement = interiorOrigin.add(-2, 0, -2);
+        int maxX = Math.max(1, interiorSize.getX());
+        int maxY = Math.max(1, interiorSize.getY());
+        int maxZ = Math.max(1, interiorSize.getZ());
+        for (int x = -1; x < maxX + 1; x++) {
+            for (int y = -1; y < maxY + 1; y++) {
+                for (int z = -1; z < maxZ + 1; z++) {
+                    world.setBlockState(placement.add(x, y, z), net.minecraft.block.Blocks.AIR.getDefaultState(), 2);
+                }
+            }
+        }
     }
 
     public void beginFlight(Identifier targetWorld, BlockPos targetPos, int rotation) {
@@ -152,6 +207,10 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         nbt.putInt("Fuel", fuel);
         nbt.putLong("InteriorOrigin", interiorOrigin.asLong());
         nbt.putBoolean("InteriorGenerated", interiorGenerated);
+        nbt.putString("InteriorStructure", interiorStructure);
+        nbt.putInt("InteriorSizeX", interiorSize.getX());
+        nbt.putInt("InteriorSizeY", interiorSize.getY());
+        nbt.putInt("InteriorSizeZ", interiorSize.getZ());
 
         nbt.putBoolean("FlightPending", flightPending);
         nbt.putInt("FlightTicks", flightTicks);
@@ -169,6 +228,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         fuel = Math.max(0, Math.min(MAX_FUEL, nbt.getInt("Fuel")));
         if (nbt.contains("InteriorOrigin")) interiorOrigin = BlockPos.fromLong(nbt.getLong("InteriorOrigin"));
         interiorGenerated = nbt.getBoolean("InteriorGenerated");
+        if (nbt.contains("InteriorStructure")) interiorStructure = nbt.getString("InteriorStructure");
+        interiorSize = new Vec3i(Math.max(1, nbt.getInt("InteriorSizeX")), Math.max(1, nbt.getInt("InteriorSizeY")), Math.max(1, nbt.getInt("InteriorSizeZ")));
 
         flightPending = nbt.getBoolean("FlightPending");
         flightTicks = nbt.getInt("FlightTicks");
