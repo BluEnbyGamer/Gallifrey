@@ -83,7 +83,7 @@ public class TardisMonitorScreen extends Screen {
     }
 
     private ButtonWidget button(int x, int y, int w, int h, String label, ButtonWidget.PressAction action) {
-        return new ButtonWidget(x, y, w, h, Text.literal(label), action, DEFAULT_NARRATION_SUPPLIER);
+        return ButtonWidget.builder(Text.literal(label), action).dimensions(x, y, w, h).build();
     }
 
     private void requestState() {
