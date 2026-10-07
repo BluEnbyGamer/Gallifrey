@@ -405,7 +405,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
                 entries.add(GallifreyModBlocks.CLASSIC_RED_FLOWER);
                 entries.add(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
-                entries.add(GallifreyModBlocks.CLASSIC_MOSSY_COBBLE);
 
                 // Classic ore blocks. These drop the modern raw/gem materials, not old gear.
                 entries.add(GallifreyModBlocks.CLASSIC_COAL_ORE);

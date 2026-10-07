@@ -4,6 +4,11 @@ import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.ApplyBonusLootFunction;
+import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public ModLootTableProvider(FabricDataOutput dataOutput) {
@@ -133,14 +138,14 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.STANDING_MOONPINE_SIGN);
         addDrop(GallifreyModBlocks.HANGING_MOONPINE_SIGN);
 
-        // CLASSIC BLOCK DROPS
-        addDrop(GallifreyModBlocks.CLASSIC_STONE);
-        addDrop(GallifreyModBlocks.CLASSIC_GRASS);
+        // CLASSIC BLOCK DROPS — mirror the vanilla block they are based on.
+        addDrop(GallifreyModBlocks.CLASSIC_STONE, drops(GallifreyModBlocks.CLASSIC_STONE, WITH_SILK_TOUCH, ItemEntry.builder(GallifreyModBlocks.CLASSIC_COBBLE)));
+        addDrop(GallifreyModBlocks.CLASSIC_GRASS, drops(GallifreyModBlocks.CLASSIC_GRASS, WITH_SILK_TOUCH, ItemEntry.builder(GallifreyModBlocks.CLASSIC_DIRT)));
         addDrop(GallifreyModBlocks.CLASSIC_DIRT);
         addDrop(GallifreyModBlocks.CLASSIC_COBBLE);
         addDrop(GallifreyModBlocks.CLASSIC_PLANKS);
         addDrop(GallifreyModBlocks.CLASSIC_STAIRS);
-        addDrop(GallifreyModBlocks.CLASSIC_SLAB);
+        addDrop(GallifreyModBlocks.CLASSIC_SLAB, slabDrops(GallifreyModBlocks.CLASSIC_SLAB));
         addDrop(GallifreyModBlocks.CLASSIC_FENCE);
         addDrop(GallifreyModBlocks.CLASSIC_FENCE_GATE);
         addDrop(GallifreyModBlocks.CLASSIC_LOG);
@@ -150,14 +155,31 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.CLASSIC_GRAVEL);
         addDrop(GallifreyModBlocks.CLASSIC_GOLD);
         addDrop(GallifreyModBlocks.CLASSIC_IRON);
-        addDrop(GallifreyModBlocks.CLASSIC_GLASS);
+        addDrop(GallifreyModBlocks.CLASSIC_GLASS, dropsWithSilkTouch(GallifreyModBlocks.CLASSIC_GLASS));
         addDrop(GallifreyModBlocks.CLASSIC_SPONGE);
         addDrop(GallifreyModBlocks.CLASSIC_BRICKS);
         addDrop(GallifreyModBlocks.CLASSIC_TNT);
         addDrop(GallifreyModBlocks.CLASSIC_RED_FLOWER);
         addDrop(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
-        addDrop(GallifreyModBlocks.CLASSIC_MOSSY_COBBLE);
         addDrop(GallifreyModBlocks.CLASSIC_OBSIDIAN);
+
+        // Classic ores mirror the corresponding vanilla ore drops, including Fortune/Silk Touch behavior.
+        addDrop(GallifreyModBlocks.CLASSIC_COAL_ORE, oreDrops(GallifreyModBlocks.CLASSIC_COAL_ORE, net.minecraft.item.Items.COAL));
+        addDrop(GallifreyModBlocks.CLASSIC_IRON_ORE, oreDrops(GallifreyModBlocks.CLASSIC_IRON_ORE, net.minecraft.item.Items.RAW_IRON));
+        addDrop(GallifreyModBlocks.CLASSIC_GOLD_ORE, oreDrops(GallifreyModBlocks.CLASSIC_GOLD_ORE, net.minecraft.item.Items.RAW_GOLD));
+        addDrop(GallifreyModBlocks.CLASSIC_REDSTONE_ORE, oreDrops(GallifreyModBlocks.CLASSIC_REDSTONE_ORE, net.minecraft.item.Items.REDSTONE));
+        addDrop(GallifreyModBlocks.CLASSIC_LAPIS_ORE, oreDrops(GallifreyModBlocks.CLASSIC_LAPIS_ORE, net.minecraft.item.Items.LAPIS_LAZULI));
+        addDrop(GallifreyModBlocks.CLASSIC_DIAMOND_ORE, oreDrops(GallifreyModBlocks.CLASSIC_DIAMOND_ORE, net.minecraft.item.Items.DIAMOND));
+
+        // Classic Nether blocks mirror their vanilla Nether counterparts.
+        addDrop(GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK);
+        addDrop(GallifreyModBlocks.CLASSIC_NETHER_SOUL_SAND);
+        addDrop(GallifreyModBlocks.CLASSIC_NETHER_GLOWSTONE, drops(GallifreyModBlocks.CLASSIC_NETHER_GLOWSTONE, WITH_SILK_TOUCH,
+                ItemEntry.builder(net.minecraft.item.Items.GLOWSTONE_DUST)
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 4.0F)))
+                        .apply(ApplyBonusLootFunction.uniformBonusCount(Enchantments.FORTUNE, 1))));
+        addDrop(GallifreyModBlocks.CLASSIC_NETHER_MAGMA);
+        addDrop(GallifreyModBlocks.CLASSIC_NETHER_QUARTZ_ORE, oreDrops(GallifreyModBlocks.CLASSIC_NETHER_QUARTZ_ORE, net.minecraft.item.Items.QUARTZ));
 
         // MARS BLOCK DROPS
         addDrop(GallifreyModBlocks.MARS_SAND);
