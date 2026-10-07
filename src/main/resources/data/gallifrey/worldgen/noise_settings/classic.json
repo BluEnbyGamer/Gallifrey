@@ -4,7 +4,7 @@
     "Name": "gallifrey:classic_stone"
   },
   "default_fluid": {
-    "Name": "minecraft:water",
+    "Name": "gallifrey:classic_water",
     "Properties": {
       "level": "0"
     }

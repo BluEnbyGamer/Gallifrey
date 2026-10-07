@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "minecraft:gold_ore"
+          "Name": "gallifrey:classic_gold_ore"
         },
         "target": {
           "block": "gallifrey:classic_stone",

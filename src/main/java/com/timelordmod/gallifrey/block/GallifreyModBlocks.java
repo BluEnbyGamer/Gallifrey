@@ -81,6 +81,19 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_OBSIDIAN = registerBlock("classic_obsidian",
             new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN).sounds(CLASSIC_STONE_SOUNDS)));
 
+    public static final Block CLASSIC_COAL_ORE = registerBlock("classic_coal_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.COAL_ORE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_IRON_ORE = registerBlock("classic_iron_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_ORE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_GOLD_ORE = registerBlock("classic_gold_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.GOLD_ORE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_REDSTONE_ORE = registerBlock("classic_redstone_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.REDSTONE_ORE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_LAPIS_ORE = registerBlock("classic_lapis_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.LAPIS_ORE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_DIAMOND_ORE = registerBlock("classic_diamond_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.DIAMOND_ORE).sounds(CLASSIC_STONE_SOUNDS)));
+
 
     // Classic Nether block set based on the Alpha 1.2.6 assets. These are separate blocks so the
     // old terrain atlas can be imported without replacing modern Minecraft textures.

@@ -405,64 +405,19 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
                 entries.add(GallifreyModBlocks.CLASSIC_RED_FLOWER);
                 entries.add(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
-                // Additional Classic-era blocks from the supplied Classic asset set.
                 entries.add(GallifreyModBlocks.CLASSIC_MOSSY_COBBLE);
-                entries.add(GallifreyModBlocks.CLASSIC_OBSIDIAN);
-                entries.add(Items.COAL_ORE);
-                entries.add(Items.IRON_ORE);
-                entries.add(Items.GOLD_ORE);
-                entries.add(Items.REDSTONE_ORE);
-                entries.add(Items.LAPIS_ORE);
-                entries.add(Items.DIAMOND_ORE);
 
-                // Classic-era vanilla utility/building items represented by the supplied assets.
-                entries.add(Items.CRAFTING_TABLE);
-                entries.add(Items.FURNACE);
-                entries.add(Items.ENCHANTING_TABLE);
-                entries.add(Items.OAK_DOOR);
-                entries.add(Items.OAK_TRAPDOOR);
-                entries.add(Items.IRON_DOOR);
-                entries.add(Items.OBSIDIAN);
-                entries.add(Items.CHEST);
-                entries.add(Items.BUCKET);
-                entries.add(Items.WATER_BUCKET);
-                entries.add(Items.LAVA_BUCKET);
-                entries.add(Items.FLINT_AND_STEEL);
-                entries.add(Items.DIAMOND);
-                entries.add(Items.EMERALD);
-                entries.add(Items.GOLD_INGOT);
-                entries.add(Items.IRON_INGOT);
-                entries.add(Items.GOLDEN_SWORD);
-                entries.add(Items.GOLDEN_PICKAXE);
-                entries.add(Items.GOLDEN_AXE);
-                entries.add(Items.GOLDEN_SHOVEL);
-                entries.add(Items.GOLDEN_HOE);
-                entries.add(Items.IRON_SWORD);
-                entries.add(Items.IRON_PICKAXE);
-                entries.add(Items.IRON_AXE);
-                entries.add(Items.IRON_SHOVEL);
-                entries.add(Items.IRON_HOE);
-                entries.add(Items.DIAMOND_SWORD);
-                entries.add(Items.DIAMOND_PICKAXE);
-                entries.add(Items.DIAMOND_AXE);
-                entries.add(Items.DIAMOND_SHOVEL);
-                entries.add(Items.DIAMOND_HOE);
-                entries.add(Items.CHAINMAIL_HELMET);
-                entries.add(Items.CHAINMAIL_CHESTPLATE);
-                entries.add(Items.CHAINMAIL_LEGGINGS);
-                entries.add(Items.CHAINMAIL_BOOTS);
-                entries.add(Items.IRON_HELMET);
-                entries.add(Items.IRON_CHESTPLATE);
-                entries.add(Items.IRON_LEGGINGS);
-                entries.add(Items.IRON_BOOTS);
-                entries.add(Items.GOLDEN_HELMET);
-                entries.add(Items.GOLDEN_CHESTPLATE);
-                entries.add(Items.GOLDEN_LEGGINGS);
-                entries.add(Items.GOLDEN_BOOTS);
-                entries.add(Items.DIAMOND_HELMET);
-                entries.add(Items.DIAMOND_CHESTPLATE);
-                entries.add(Items.DIAMOND_LEGGINGS);
-                entries.add(Items.DIAMOND_BOOTS);
+                // Classic ore blocks. These drop the modern raw/gem materials, not old gear.
+                entries.add(GallifreyModBlocks.CLASSIC_COAL_ORE);
+                entries.add(GallifreyModBlocks.CLASSIC_IRON_ORE);
+                entries.add(GallifreyModBlocks.CLASSIC_GOLD_ORE);
+                entries.add(GallifreyModBlocks.CLASSIC_REDSTONE_ORE);
+                entries.add(GallifreyModBlocks.CLASSIC_LAPIS_ORE);
+                entries.add(GallifreyModBlocks.CLASSIC_DIAMOND_ORE);
+
+                // Classic fluids/buckets.
+                entries.add(GallifreyModItems.CLASSIC_WATER_BUCKET);
+                entries.add(GallifreyModItems.CLASSIC_LAVA_BUCKET);
 
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK);
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_SOUL_SAND);

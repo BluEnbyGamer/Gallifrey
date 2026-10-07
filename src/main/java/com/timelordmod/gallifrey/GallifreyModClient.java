@@ -75,6 +75,16 @@ public class GallifreyModClient implements ClientModInitializer {
                 ));
 
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
+                GallifreyFluids.STILL_CLASSIC_WATER, GallifreyFluids.FLOWING_CLASSIC_WATER);
+        FluidRenderHandlerRegistry.INSTANCE.register(
+                GallifreyFluids.STILL_CLASSIC_WATER, GallifreyFluids.FLOWING_CLASSIC_WATER,
+                new SimpleFluidRenderHandler(
+                        new Identifier("minecraft:block/water_still"),
+                        new Identifier("minecraft:block/water_flow"),
+                        0xFFFFFF
+                ));
+
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
                 GallifreyFluids.STILL_CLASSIC_LAVA, GallifreyFluids.FLOWING_CLASSIC_LAVA);
         FluidRenderHandlerRegistry.INSTANCE.register(
                 GallifreyFluids.STILL_CLASSIC_LAVA, GallifreyFluids.FLOWING_CLASSIC_LAVA,

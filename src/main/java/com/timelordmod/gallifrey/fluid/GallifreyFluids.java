@@ -12,6 +12,7 @@ import net.minecraft.block.FluidBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.fluid.LavaFluid;
+import net.minecraft.fluid.WaterFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
@@ -50,10 +51,32 @@ public class GallifreyFluids {
             new ClassicLavaFlowing()
     );
 
+    public static final FlowableFluid STILL_CLASSIC_WATER = Registry.register(
+            Registries.FLUID,
+            new Identifier(GallifreyMod.MOD_ID, "classic_water"),
+            new ClassicWaterStill()
+    );
+
+    public static final FlowableFluid FLOWING_CLASSIC_WATER = Registry.register(
+            Registries.FLUID,
+            new Identifier(GallifreyMod.MOD_ID, "flowing_classic_water"),
+            new ClassicWaterFlowing()
+    );
+
     public static final FluidBlock CLASSIC_LAVA = Registry.register(
             Registries.BLOCK,
             new Identifier(GallifreyMod.MOD_ID, "classic_nether_lava"),
             new FluidBlock(STILL_CLASSIC_LAVA, FabricBlockSettings.copyOf(net.minecraft.block.Blocks.LAVA)
+                    .strength(100.0F)
+                    .noCollision()
+                    .dropsNothing()
+                    .replaceable())
+    );
+
+    public static final FluidBlock CLASSIC_WATER = Registry.register(
+            Registries.BLOCK,
+            new Identifier(GallifreyMod.MOD_ID, "classic_water"),
+            new FluidBlock(STILL_CLASSIC_WATER, FabricBlockSettings.copyOf(net.minecraft.block.Blocks.WATER)
                     .strength(100.0F)
                     .noCollision()
                     .dropsNothing()
@@ -285,4 +308,81 @@ public class GallifreyFluids {
             net.minecraft.block.Block.dropStacks(state, world, pos, state.hasBlockEntity() ? world.getBlockEntity(pos) : null);
         }
     }
+    public abstract static class ClassicWaterFluid extends WaterFluid {
+        @Override
+        public Fluid getStill() { return STILL_CLASSIC_WATER; }
+
+        @Override
+        public Fluid getFlowing() { return FLOWING_CLASSIC_WATER; }
+
+        @Override
+        public Item getBucketItem() { return GallifreyModItems.CLASSIC_WATER_BUCKET; }
+
+        @Override
+        public BlockState toBlockState(FluidState state) {
+            return CLASSIC_WATER.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
+        }
+
+        @Override
+        public boolean matchesType(Fluid fluid) {
+            return fluid == STILL_CLASSIC_WATER || fluid == FLOWING_CLASSIC_WATER;
+        }
+
+        @Override
+        protected void flow(net.minecraft.world.WorldAccess world, BlockPos pos, BlockState state, Direction direction, FluidState fluidState) {
+            for (Direction side : Direction.values()) {
+                FluidState other = world.getFluidState(pos.offset(side));
+                if (other.isOf(STILL_CLASSIC_LAVA) || other.isOf(FLOWING_CLASSIC_LAVA) || other.isIn(FluidTags.LAVA)) {
+                    BlockState result = other.isStill()
+                            ? GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState()
+                            : (other.getLevel() >= 5
+                                ? GallifreyModBlocks.CLASSIC_STONE.getDefaultState()
+                                : GallifreyModBlocks.CLASSIC_COBBLE.getDefaultState());
+                    world.setBlockState(pos.offset(side), result, 3);
+                    return;
+                }
+            }
+            super.flow(world, pos, state, direction, fluidState);
+        }
+
+        @Override
+        protected void onScheduledTick(net.minecraft.world.World world, BlockPos pos, FluidState state) {
+            for (Direction side : Direction.values()) {
+                FluidState other = world.getFluidState(pos.offset(side));
+                if (other.isOf(STILL_CLASSIC_LAVA) || other.isOf(FLOWING_CLASSIC_LAVA) || other.isIn(FluidTags.LAVA)) {
+                    BlockState result = other.isStill()
+                            ? GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState()
+                            : (other.getLevel() >= 5
+                                ? GallifreyModBlocks.CLASSIC_STONE.getDefaultState()
+                                : GallifreyModBlocks.CLASSIC_COBBLE.getDefaultState());
+                    world.setBlockState(pos.offset(side), result, 3);
+                    return;
+                }
+            }
+            super.onScheduledTick(world, pos, state);
+        }
+    }
+
+    public static class ClassicWaterFlowing extends ClassicWaterFluid {
+        @Override
+        protected void appendProperties(StateManager.Builder<Fluid, FluidState> builder) {
+            super.appendProperties(builder);
+            builder.add(Properties.LEVEL_1_8);
+        }
+
+        @Override
+        public int getLevel(FluidState state) { return state.get(Properties.LEVEL_1_8); }
+
+        @Override
+        public boolean isStill(FluidState state) { return false; }
+    }
+
+    public static class ClassicWaterStill extends ClassicWaterFluid {
+        @Override
+        public int getLevel(FluidState state) { return 8; }
+
+        @Override
+        public boolean isStill(FluidState state) { return true; }
+    }
+
 }

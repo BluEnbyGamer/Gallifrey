@@ -474,5 +474,13 @@
   "block.gallifrey.classic_nether_magma": "Classic Nether Magma",
   "block.gallifrey.classic_nether_quartz_ore": "Classic Nether Quartz Ore",
   "block.gallifrey.classic_mossy_cobble": "Classic Mossy Cobblestone",
-  "block.gallifrey.classic_obsidian": "Classic Obsidian"
+  "block.gallifrey.classic_obsidian": "Classic Obsidian",
+  "block.gallifrey.classic_coal_ore": "Classic Coal Ore",
+  "block.gallifrey.classic_iron_ore": "Classic Iron Ore",
+  "block.gallifrey.classic_gold_ore": "Classic Gold Ore",
+  "block.gallifrey.classic_redstone_ore": "Classic Redstone Ore",
+  "block.gallifrey.classic_lapis_ore": "Classic Lapis Ore",
+  "block.gallifrey.classic_diamond_ore": "Classic Diamond Ore",
+  "item.gallifrey.classic_water_bucket": "Classic Water Bucket",
+  "item.gallifrey.classic_lava_bucket": "Classic Lava Bucket"
 }

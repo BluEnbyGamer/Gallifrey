@@ -198,6 +198,11 @@ public class GallifreyModItems {
     public static final Item RADIATION_BUCKET = registerItem("radiation_bucket",
             new BucketItem(GallifreyFluids.STILL_RADIATION, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
 
+    public static final Item CLASSIC_WATER_BUCKET = registerItem("classic_water_bucket",
+            new BucketItem(GallifreyFluids.STILL_CLASSIC_WATER, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
+    public static final Item CLASSIC_LAVA_BUCKET = registerItem("classic_lava_bucket",
+            new BucketItem(GallifreyFluids.STILL_CLASSIC_LAVA, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
+
     // Clothing
     public static final HeadwearItem FEZ = new HeadwearItem(new FabricItemSettings());
     public static final HeadwearItem FANCYFEZ = new HeadwearItem(new FabricItemSettings());
