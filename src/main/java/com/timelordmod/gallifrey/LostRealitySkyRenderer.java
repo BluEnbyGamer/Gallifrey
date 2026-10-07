@@ -25,9 +25,9 @@ public class LostRealitySkyRenderer implements DimensionRenderingRegistry.SkyRen
     private static final Identifier WARP_TEXTURE =
             new Identifier("gallifrey", "textures/environment/lost_reality_warp.png");
     private static final Identifier SUN_TEXTURE =
-            new Identifier("gallifrey", "textures/environment/lost_reality_sun.png");
+            new Identifier("gallifrey", "textures/environment/lost_reality_sun_warped.png");
     private static final Identifier MOON_TEXTURE =
-            new Identifier("gallifrey", "textures/environment/lost_reality_moon.png");
+            new Identifier("gallifrey", "textures/environment/lost_reality_moon_merged.png");
 
     @Override
     public void render(WorldRenderContext context) {
@@ -56,8 +56,14 @@ public class LostRealitySkyRenderer implements DimensionRenderingRegistry.SkyRen
         drawStars(matrices, -time * 0.0031F + 51.0F, 0.10F + night * 0.60F);
 
         // Daytime sun and nighttime moon occupy opposite positions on the same orbit.
-        drawCelestial(matrices, angleDegrees, 0.0F, 25.0F, SUN_TEXTURE, 1.0F, day);
-        drawCelestial(matrices, angleDegrees + 180.0F, 0.0F, 18.0F, MOON_TEXTURE, 0.86F, night);
+        // The Lost Reality sun is deliberately unstable: layered, offset copies of the warped star
+        // make its silhouette shimmer and appear to fold in on itself.
+        drawCelestial(matrices, angleDegrees, 0.0F, 28.0F, SUN_TEXTURE, 1.10F, day);
+        drawCelestial(matrices, angleDegrees + 1.8F, 2.5F, 20.0F, SUN_TEXTURE, 0.55F, day * 0.82F);
+        // The moon is a warped composite of several planets/moons, so its surface never reads as a
+        // normal celestial body. Two translucent offsets sell the "everything merged together" effect.
+        drawCelestial(matrices, angleDegrees + 180.0F, 0.0F, 21.0F, MOON_TEXTURE, 0.92F, night);
+        drawCelestial(matrices, angleDegrees + 182.4F, -3.0F, 16.0F, MOON_TEXTURE, 0.42F, night * 0.9F);
 
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.depthMask(true);
