@@ -47,7 +47,7 @@ public class SkaroCityDalekEntity extends HostileEntity implements GeoEntity {
         return HostileEntity.createHostileAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 40.0D)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 32.0D)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16.0D)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8.0D)
                 .add(EntityAttributes.GENERIC_ARMOR, 8.0D)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 1.0D);
@@ -107,6 +107,12 @@ public class SkaroCityDalekEntity extends HostileEntity implements GeoEntity {
     }
 
     @Override
+    public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
+        // Daleks hover/glide and are not harmed by falls.
+        return false;
+    }
+
+    @Override
     public void tickMovement() {
         super.tickMovement();
 
@@ -156,7 +162,7 @@ public class SkaroCityDalekEntity extends HostileEntity implements GeoEntity {
         public boolean canStart() {
             this.target = this.dalek.getWorld().getEntitiesByClass(
                     LivingEntity.class,
-                    this.dalek.getBoundingBox().expand(32.0D),
+                    this.dalek.getBoundingBox().expand(16.0D),
                     entity -> entity.isAlive()
                             && entity != this.dalek
                             && !(entity instanceof SkaroCityDalekEntity)
@@ -175,7 +181,7 @@ public class SkaroCityDalekEntity extends HostileEntity implements GeoEntity {
                     && current.isAlive()
                     && !(current instanceof SkaroCityDalekEntity)
                     && gallifrey$canBeTargeted(current)
-                    && this.dalek.squaredDistanceTo(current) <= 32.0D * 32.0D;
+                    && this.dalek.squaredDistanceTo(current) <= 16.0D * 16.0D;
         }
 
         private static boolean gallifrey$canBeTargeted(LivingEntity entity) {

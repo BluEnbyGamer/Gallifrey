@@ -3,6 +3,8 @@ package com.timelordmod.gallifrey.entity;
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.entity.custom.LaserEntity;
 import com.timelordmod.gallifrey.entity.custom.SkaroCityDalekEntity;
+import com.timelordmod.gallifrey.entity.custom.SkaroCityDalekAltEntity;
+import com.timelordmod.gallifrey.entity.custom.SupremeCouncilDalekEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -16,6 +18,22 @@ public class GallifreyEntities {
     public static final EntityType<SkaroCityDalekEntity> SKARO_CITY_DALEK = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(GallifreyMod.MOD_ID, "skaro_city_dalek"),
             FabricEntityTypeBuilder.<SkaroCityDalekEntity>create(SpawnGroup.MONSTER, SkaroCityDalekEntity::new)
+                    .dimensions(EntityDimensions.fixed(1.8f, 1.9f))
+                    .trackRangeBlocks(64)
+                    .trackedUpdateRate(2)
+                    .build());
+
+    public static final EntityType<SkaroCityDalekAltEntity> SKARO_CITY_DALEK_ALT = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(GallifreyMod.MOD_ID, "skaro_city_dalek_alt"),
+            FabricEntityTypeBuilder.<SkaroCityDalekAltEntity>create(SpawnGroup.MONSTER, SkaroCityDalekAltEntity::new)
+                    .dimensions(EntityDimensions.fixed(1.8f, 1.9f))
+                    .trackRangeBlocks(64)
+                    .trackedUpdateRate(2)
+                    .build());
+
+    public static final EntityType<SupremeCouncilDalekEntity> SUPREME_COUNCIL_DALEK = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(GallifreyMod.MOD_ID, "supreme_council_dalek"),
+            FabricEntityTypeBuilder.<SupremeCouncilDalekEntity>create(SpawnGroup.MONSTER, SupremeCouncilDalekEntity::new)
                     .dimensions(EntityDimensions.fixed(1.8f, 1.9f))
                     .trackRangeBlocks(64)
                     .trackedUpdateRate(2)

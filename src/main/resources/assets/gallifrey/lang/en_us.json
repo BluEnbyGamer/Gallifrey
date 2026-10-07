@@ -460,5 +460,10 @@
   "block.gallifrey.polished_skaro_stone_wall": "Polished Skaro Stone Wall",
   "block.gallifrey.skaro_deepslate_wall": "Skaro Deepslate Wall",
   "block.gallifrey.skaro_cobbled_deepslate_wall": "Skaro Cobbled Deepslate Wall",
-  "block.gallifrey.skaro_deepslate_tiles_wall": "Skaro Deepslate Tiles Wall"
+  "block.gallifrey.skaro_deepslate_tiles_wall": "Skaro Deepslate Tiles Wall",
+  "item.gallifrey.raw_sonic_crystal": "Raw Sonic Crystal",
+  "item.gallifrey.refined_sonic_crystal": "Refined Sonic Crystal",
+  "entity.gallifrey.skaro_city_dalek": "Skaro City Dalek",
+  "entity.gallifrey.skaro_city_dalek_alt": "Skaro City Dalek (Alternate)",
+  "entity.gallifrey.supreme_council_dalek": "Supreme Council Dalek"
 }

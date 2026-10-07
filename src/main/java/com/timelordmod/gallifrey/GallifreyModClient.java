@@ -43,6 +43,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import com.timelordmod.gallifrey.entity.GallifreyEntities;
 import com.timelordmod.gallifrey.client.SkaroCityDalekRenderer;
+import com.timelordmod.gallifrey.client.SkaroCityDalekAltRenderer;
+import com.timelordmod.gallifrey.client.SupremeCouncilDalekRenderer;
 import com.timelordmod.gallifrey.entity.client.LaserRenderer;
 
 public class GallifreyModClient implements ClientModInitializer {
@@ -61,6 +63,8 @@ public class GallifreyModClient implements ClientModInitializer {
         com.timelordmod.gallifrey.client.ModClientPackets.register();;
 
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK, SkaroCityDalekRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK_ALT, SkaroCityDalekAltRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.SUPREME_COUNCIL_DALEK, SupremeCouncilDalekRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.LASER, LaserRenderer::new);
         SonicShadesClient.register();
         ClientTickEvents.END_CLIENT_TICK.register(PlanetWeatherClient::tick);

@@ -57,6 +57,16 @@ public class GallifreyMod implements ModInitializer {
 				com.timelordmod.gallifrey.entity.custom.SkaroCityDalekEntity.createAttributes()
 		);
 
+		FabricDefaultAttributeRegistry.register(
+				GallifreyEntities.SKARO_CITY_DALEK_ALT,
+				com.timelordmod.gallifrey.entity.custom.SkaroCityDalekAltEntity.createAttributes()
+		);
+
+		FabricDefaultAttributeRegistry.register(
+				GallifreyEntities.SUPREME_COUNCIL_DALEK,
+				com.timelordmod.gallifrey.entity.custom.SupremeCouncilDalekEntity.createAttributes()
+		);
+
 		GallifreyModItems.register();
 		GallifreyModBlocks.register();
 		GallifreyModBlockEntities.register();
