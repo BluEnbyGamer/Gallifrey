@@ -14,7 +14,8 @@
     "client.LogoDrawerMixin",
     "client.CreativeInventoryScreenAccessor",
     "client.HandledScreenAccessor",
-    "client.HeldItemFeatureRendererMixin"
+    "client.HeldItemFeatureRendererMixin",
+    "client.PlayerEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
