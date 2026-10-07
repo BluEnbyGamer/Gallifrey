@@ -44,12 +44,22 @@ public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExterio
 
         matrices.scale(-1.0F, -1.0F, 1.0F);
 
+        float red = 1.0F;
+        float green = 1.0F;
+        float blue = 1.0F;
+        switch (blockEntity.getExteriorVariant()) {
+            case 1 -> { red = 0.78F; green = 0.92F; blue = 1.0F; }
+            case 2 -> { red = 0.62F; green = 0.72F; blue = 0.78F; }
+            case 3 -> { red = 0.55F; green = 0.68F; blue = 0.82F; }
+            default -> { }
+        }
+
         model.render(
                 matrices,
                 vertexConsumers.getBuffer(model.getLayer(TEXTURE)),
                 light,
                 overlay,
-                1.0F, 1.0F, 1.0F, 1.0F
+                red, green, blue, 1.0F
         );
 
         matrices.pop();

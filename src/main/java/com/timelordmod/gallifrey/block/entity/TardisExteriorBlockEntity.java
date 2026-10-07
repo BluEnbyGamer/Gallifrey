@@ -31,6 +31,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     private BlockPos interiorOrigin = new BlockPos(0, 64, 0);
     private boolean interiorGenerated;
     private String interiorStructure = "tardis_platform";
+    private int exteriorVariant;
     private Vec3i interiorSize = new Vec3i(5, 5, 5);
 
     private boolean flightPending;
@@ -64,6 +65,22 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     public int getFuel() { return fuel; }
     public BlockPos getInteriorOrigin() { return interiorOrigin; }
     public String getInteriorStructure() { return interiorStructure; }
+    public int getExteriorVariant() { return Math.max(0, Math.min(3, exteriorVariant)); }
+    public String getExteriorVariantName() {
+        return switch (getExteriorVariant()) {
+            case 1 -> "Classic Blue";
+            case 2 -> "Weathered Blue";
+            case 3 -> "Dark Blue";
+            default -> "Default";
+        };
+    }
+    public void setExteriorVariant(int variant) {
+        exteriorVariant = Math.max(0, Math.min(3, variant));
+        markDirty();
+        if (world != null && !world.isClient) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        }
+    }
     public Vec3i getInteriorSize() { return interiorSize; }
 
     public boolean canAccess(UUID player) {
@@ -114,6 +131,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         world.getChunk(chunk.x, chunk.z);
         template.get().place(world, placement, placement,
                 new net.minecraft.structure.StructurePlacementData(), world.getRandom(), 2);
+        installMonitor(world);
         interiorGenerated = true;
         markDirty();
         return true;
@@ -145,9 +163,25 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         world.getChunk(chunk.x, chunk.z);
         template.get().place(world, placement, placement,
                 new net.minecraft.structure.StructurePlacementData(), world.getRandom(), 2);
+        installMonitor(world);
         interiorGenerated = true;
         markDirty();
         return true;
+    }
+
+    /** Places one functional monitor in a clear floor position if the selected interior does not already contain one. */
+    private void installMonitor(ServerWorld world) {
+        BlockPos base = interiorOrigin.add(0, 1, 2);
+        for (int dx = -3; dx <= 3; dx++) {
+            for (int dz = -3; dz <= 3; dz++) {
+                BlockPos candidate = base.add(dx, 0, dz);
+                if (world.getBlockState(candidate).isAir()
+                        && world.getBlockState(candidate.down()).isSolidBlock(world, candidate.down())) {
+                    world.setBlockState(candidate, com.timelordmod.gallifrey.block.GallifreyModBlocks.TARDIS_MONITOR.getDefaultState(), 3);
+                    return;
+                }
+            }
+        }
     }
 
     private void clearInterior(ServerWorld world) {
@@ -208,6 +242,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         nbt.putLong("InteriorOrigin", interiorOrigin.asLong());
         nbt.putBoolean("InteriorGenerated", interiorGenerated);
         nbt.putString("InteriorStructure", interiorStructure);
+        nbt.putInt("ExteriorVariant", exteriorVariant);
         nbt.putInt("InteriorSizeX", interiorSize.getX());
         nbt.putInt("InteriorSizeY", interiorSize.getY());
         nbt.putInt("InteriorSizeZ", interiorSize.getZ());
@@ -229,6 +264,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         if (nbt.contains("InteriorOrigin")) interiorOrigin = BlockPos.fromLong(nbt.getLong("InteriorOrigin"));
         interiorGenerated = nbt.getBoolean("InteriorGenerated");
         if (nbt.contains("InteriorStructure")) interiorStructure = nbt.getString("InteriorStructure");
+        exteriorVariant = Math.max(0, Math.min(3, nbt.getInt("ExteriorVariant")));
         interiorSize = new Vec3i(Math.max(1, nbt.getInt("InteriorSizeX")), Math.max(1, nbt.getInt("InteriorSizeY")), Math.max(1, nbt.getInt("InteriorSizeZ")));
 
         flightPending = nbt.getBoolean("FlightPending");

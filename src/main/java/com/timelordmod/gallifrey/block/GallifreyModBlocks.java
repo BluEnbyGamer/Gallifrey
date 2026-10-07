@@ -2213,6 +2213,16 @@ public class GallifreyModBlocks {
             )
     );
 
+    /** Functional TARDIS console monitor. */
+    public static final Block TARDIS_MONITOR = registerBlock(
+            "tardis_monitor",
+            new TardisMonitorBlock(
+                    FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE)
+                            .strength(1.5f)
+                            .nonOpaque()
+            )
+    );
+
 
     // ============================================================
     // BLOCK REGISTRATION

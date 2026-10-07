@@ -22,6 +22,7 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import com.timelordmod.gallifrey.tardis.TardisCommands;
 import com.timelordmod.gallifrey.tardis.TardisDimensionManager;
+import com.timelordmod.gallifrey.tardis.TardisMonitorNetworking;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;

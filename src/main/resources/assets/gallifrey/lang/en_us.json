@@ -481,5 +481,6 @@
   "block.gallifrey.classic_lapis_ore": "Classic Lapis Ore",
   "block.gallifrey.classic_diamond_ore": "Classic Diamond Ore",
   "item.gallifrey.classic_water_bucket": "Classic Water Bucket",
-  "item.gallifrey.classic_lava_bucket": "Classic Lava Bucket"
+  "item.gallifrey.classic_lava_bucket": "Classic Lava Bucket",
+  "block.gallifrey.tardis_monitor": "TARDIS Monitor"
 }

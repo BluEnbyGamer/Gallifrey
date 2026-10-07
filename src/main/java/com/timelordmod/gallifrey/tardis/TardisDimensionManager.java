@@ -203,6 +203,13 @@ public final class TardisDimensionManager {
             return false;
         }
 
+        int minY = targetWorld.getBottomY();
+        int maxY = targetWorld.getTopY() - 2;
+        if (targetPos.getY() < minY || targetPos.getY() > maxY) {
+            pilot.sendMessage(Text.literal("The TARDIS cannot materialise outside this dimension's build height."), true);
+            return false;
+        }
+
         targetWorld.getChunk(targetPos.getX() >> 4, targetPos.getZ() >> 4);
         if (!isSafeLandingSpace(targetWorld, targetPos, currentWorld == targetWorld && currentPos.equals(targetPos))) {
             pilot.sendMessage(Text.literal("The TARDIS cannot materialise there: the landing block is occupied."), true);
@@ -270,6 +277,11 @@ public final class TardisDimensionManager {
             newTardis.finishFlight();
             registry.updateLocation(newTardis.getTardisId(), targetWorld, targetPos.asLong());
             newTardis.markDirty();
+            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+                if (registry.isInside(player, newTardis.getTardisId())) {
+                    TardisMonitorNetworking.sendState(player);
+                }
+            }
         }
         targetWorld.playSound(null, targetPos, SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.BLOCKS, 2.0f, 0.55f);
         targetWorld.spawnParticles(net.minecraft.particle.ParticleTypes.REVERSE_PORTAL,
@@ -284,6 +296,31 @@ public final class TardisDimensionManager {
 
     public static int rotationFromYaw(float yaw) {
         return net.minecraft.util.math.MathHelper.floor((double)((yaw + 180.0F) * 8.0F / 360.0F) + 0.5D) & 7;
+    }
+
+    /** Refuels from Atrium Fuel items in the pilot inventory and returns energy added. */
+    public static int refuel(ServerPlayerEntity player) {
+        MinecraftServer server = player.getServer();
+        if (server == null) return 0;
+        TardisRegistryState registry = TardisRegistryState.get(server);
+        UUID id = registry.getActiveTardis(player.getUuid());
+        if (id == null) return 0;
+        TardisRegistryState.Record record = registry.get(id);
+        if (record == null || record.owner() == null || !record.owner().equals(player.getUuid())) return 0;
+        ServerWorld world = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.world())));
+        if (world == null) return 0;
+        BlockPos pos = BlockPos.fromLong(record.pos());
+        if (!(world.getBlockEntity(pos) instanceof TardisExteriorBlockEntity tardis)) return 0;
+
+        int added = 0;
+        for (int slot = 0; slot < player.getInventory().size()
+                && tardis.getFuel() < TardisExteriorBlockEntity.MAX_FUEL; slot++) {
+            net.minecraft.item.ItemStack stack = player.getInventory().getStack(slot);
+            if (!stack.isOf(com.timelordmod.gallifrey.item.GallifreyModItems.ATRIUM_FUEL)) continue;
+            stack.decrement(1);
+            added += tardis.addFuel(100);
+        }
+        return added;
     }
 
     public static void refuel(ServerPlayerEntity player, int amount) {

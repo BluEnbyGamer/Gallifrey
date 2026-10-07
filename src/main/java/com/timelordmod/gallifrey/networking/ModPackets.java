@@ -19,6 +19,8 @@ public class ModPackets {
     public static final Identifier VM_STATE = new Identifier(GallifreyMod.MOD_ID, "vm_state");
     public static final Identifier OPEN_SONIC_WORKSHOP = new Identifier(GallifreyMod.MOD_ID, "open_sonic_workshop");
     public static final Identifier SONIC_SHADES_USE = new Identifier(GallifreyMod.MOD_ID, "sonic_shades_use");
+    public static final Identifier TARDIS_MONITOR_ACTION = new Identifier(GallifreyMod.MOD_ID, "tardis_monitor_action");
+    public static final Identifier TARDIS_MONITOR_STATE = new Identifier(GallifreyMod.MOD_ID, "tardis_monitor_state");
 
     public static void registerC2SPackets() {
         ServerPlayNetworking.registerGlobalReceiver(VM_PACKET, VMPacket::receive);

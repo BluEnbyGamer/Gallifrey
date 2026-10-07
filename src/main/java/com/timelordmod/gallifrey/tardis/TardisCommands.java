@@ -193,10 +193,11 @@ public final class TardisCommands {
                 locked = tardis.isLocked();
             }
             int shownFuel = fuel;
+            boolean shownLocked = locked;
             source.sendFeedback(() -> Text.literal("TARDIS " + id + " | " + record.world() +
                     " @ " + pos.toShortString() + " | fuel " + shownFuel + "/" +
                     com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity.MAX_FUEL +
-                    " | " + (locked ? "LOCKED" : "UNLOCKED")), false);
+                    " | " + (shownLocked ? "LOCKED" : "UNLOCKED")), false);
             return 1;
         } catch (Exception e) {
             return 0;
