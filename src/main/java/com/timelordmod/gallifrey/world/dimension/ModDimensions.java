@@ -40,7 +40,7 @@ public final class ModDimensions {
     public static final RegistryKey<World> CLASSIC_LEVEL_KEY = RegistryKey.of(
             RegistryKeys.WORLD, GallifreyMod.id("classic"));
 
-    /** Alpha 1.2.6-style Classic Nether; deliberately not connected to portals. */
+    /** Classic Nether paired with the Classic dimension for vanilla Nether portals. */
     public static final RegistryKey<World> CLASSIC_NETHER_LEVEL_KEY = RegistryKey.of(
             RegistryKeys.WORLD, GallifreyMod.id("classic_nether"));
 }

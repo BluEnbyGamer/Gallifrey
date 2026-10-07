@@ -5,7 +5,8 @@
   "mixins": [
     "ServerWorldSeedMixin",
     "ClassicHurtSoundMixin",
-    "EatGrassGoalMixin"
+    "EatGrassGoalMixin",
+    "ClassicNetherPortalMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",
