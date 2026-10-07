@@ -199,8 +199,6 @@ public class GallifreyMod implements ModInitializer {
 		// Custom Dimension Stuff
 		CustomPortalApiRegistry.registerPortalFrameTester(GALLIFREY_FRAME_TESTER, GallifreyPortalAreaHelper::new);
 
-		// Classic Nether: normal obsidian + flint and steel, linked 1:1 with Classic.
-		// Custom Portal API handles ignition and the reciprocal destination in both dimensions.
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(net.minecraft.block.Blocks.OBSIDIAN)
 						.lightWithItem(net.minecraft.item.Items.FLINT_AND_STEEL)
