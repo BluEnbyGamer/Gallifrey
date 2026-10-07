@@ -156,6 +156,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.CLASSIC_TNT);
         addDrop(GallifreyModBlocks.CLASSIC_RED_FLOWER);
         addDrop(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
+        addDrop(GallifreyModBlocks.CLASSIC_MOSSY_COBBLE);
+        addDrop(GallifreyModBlocks.CLASSIC_OBSIDIAN);
+        addDrop(GallifreyModBlocks.CLASSIC_WOOL_WINDOWS);
 
         // MARS BLOCK DROPS
         addDrop(GallifreyModBlocks.MARS_SAND);

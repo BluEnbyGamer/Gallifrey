@@ -76,6 +76,13 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_TNT = registerBlock("classic_tnt", new TntBlock(FabricBlockSettings.copyOf(Blocks.TNT).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_RED_FLOWER = registerBlock("classic_red_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.RED_TULIP)));
     public static final Block CLASSIC_YELLOW_FLOWER = registerBlock("classic_yellow_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
+    public static final Block CLASSIC_MOSSY_COBBLE = registerBlock("classic_mossy_cobble",
+            new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_COBBLESTONE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_OBSIDIAN = registerBlock("classic_obsidian",
+            new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_WOOL_WINDOWS = registerBlock("classic_wool_windows",
+            new GlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).sounds(BlockSoundGroup.GLASS).nonOpaque()));
+
 
     // Classic Nether block set based on the Alpha 1.2.6 assets. These are separate blocks so the
     // old terrain atlas can be imported without replacing modern Minecraft textures.

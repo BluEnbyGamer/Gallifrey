@@ -472,5 +472,8 @@
   "entity.gallifrey.alpha_ghast": "Classic Ghast",
   "entity.gallifrey.alpha_zombie_pigman": "Classic Zombie Pigman",
   "block.gallifrey.classic_nether_magma": "Classic Nether Magma",
-  "block.gallifrey.classic_nether_quartz_ore": "Classic Nether Quartz Ore"
+  "block.gallifrey.classic_nether_quartz_ore": "Classic Nether Quartz Ore",
+  "block.gallifrey.classic_mossy_cobble": "Classic Mossy Cobblestone",
+  "block.gallifrey.classic_obsidian": "Classic Obsidian",
+  "block.gallifrey.classic_wool_windows": "Classic Wool Windows"
 }
