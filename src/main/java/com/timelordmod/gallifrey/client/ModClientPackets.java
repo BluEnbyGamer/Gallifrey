@@ -3,6 +3,7 @@ package com.timelordmod.gallifrey.client;
 import com.timelordmod.gallifrey.networking.ModPackets;
 import com.timelordmod.gallifrey.screens.SonicWorkshopScreen;
 import com.timelordmod.gallifrey.screens.VortexManipulatorScreen;
+import com.timelordmod.gallifrey.screens.VortexManipulatorSubScreen;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.math.BlockPos;
@@ -19,7 +20,13 @@ public final class ModClientPackets {
 
         ClientPlayNetworking.registerGlobalReceiver(ModPackets.VM_STATE, (client, handler, buf, responseSender) -> {
             PacketByteBuf copy = new PacketByteBuf(buf.copy());
-            client.execute(() -> VortexManipulatorScreen.applyServerState(copy));
+            client.execute(() -> {
+                if (client.currentScreen instanceof VortexManipulatorSubScreen) {
+                    VortexManipulatorSubScreen.applyServerState(copy);
+                } else {
+                    VortexManipulatorScreen.applyServerState(copy);
+                }
+            });
         });
     }
 }

@@ -34,6 +34,7 @@ public abstract class VortexManipulatorSubScreen extends Screen {
     protected int left, top;
     protected boolean owner;
     protected int selfDestructTicks;
+    protected boolean blockInboundTeleports;
     protected static final List<Location> LOCATIONS = new ArrayList<>();
     protected static final List<AccessUser> USERS = new ArrayList<>();
 
@@ -118,6 +119,7 @@ public abstract class VortexManipulatorSubScreen extends Screen {
     public static void applyServerState(PacketByteBuf buf) {
         boolean newOwner = buf.readBoolean();
         int sd = buf.readVarInt();
+        boolean newBlockInboundTeleports = buf.readBoolean();
         LOCATIONS.clear();
         USERS.clear();
         int lc = buf.readVarInt();
@@ -133,6 +135,7 @@ public abstract class VortexManipulatorSubScreen extends Screen {
         if (client.currentScreen instanceof VortexManipulatorSubScreen screen) {
             screen.owner = newOwner;
             screen.selfDestructTicks = sd;
+            screen.blockInboundTeleports = newBlockInboundTeleports;
             screen.clearAndRebuild();
         }
     }

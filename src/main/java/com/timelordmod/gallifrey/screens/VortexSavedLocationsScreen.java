@@ -5,13 +5,6 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.gui.widget.ButtonWidget;
 
 public class VortexSavedLocationsScreen extends VortexManipulatorSubScreen {
-    @Override protected int accent() { return 0xFF48F28B; }
-    @Override protected int accentDim() { return 0xFF16864A; }
-    @Override protected int accentDark() { return 0xFF063C24; }
-    @Override protected int panel() { return 0xF0050D09; }
-    @Override protected int panelLight() { return 0xFF0C1A12; }
-    @Override protected int panelDark() { return 0xFF020604; }
-    @Override protected int dimColor() { return 0xFF78A98B; }
     private TextFieldWidget locationName;
     private int page;
 
