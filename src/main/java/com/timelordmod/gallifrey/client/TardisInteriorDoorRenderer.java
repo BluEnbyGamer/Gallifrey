@@ -38,9 +38,9 @@ public class TardisInteriorDoorRenderer implements BlockEntityRenderer<TardisInt
         Identifier texture = TardisExteriorRenderer.texture(style);
         Identifier emission = TardisExteriorRenderer.emissionTexture(style);
 
-        model.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(texture)),
+        model.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(texture)),
                 light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
-        model.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityTranslucentEmissive(emission)),
+        model.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(emission)),
                 light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
 
         matrices.pop();

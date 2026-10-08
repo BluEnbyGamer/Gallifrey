@@ -21,13 +21,13 @@ public class TardisInteriorDoorModel extends Model {
 	private final ModelPart phone;
 	private final ModelPart leftdoor;
 	public TardisInteriorDoorModel(ModelPart root) {
-		super(RenderLayer::getEntityTranslucent);
+		super(RenderLayer::getEntityCutoutNoCull);
 		this.bone = root.getChild("bone");
-		this.front = root.getChild("front");
-		this.doors = root.getChild("doors");
-		this.rightdoor = root.getChild("rightdoor");
-		this.phone = root.getChild("phone");
-		this.leftdoor = root.getChild("leftdoor");
+		this.front = this.bone.getChild("front");
+		this.doors = this.front.getChild("doors");
+		this.rightdoor = this.doors.getChild("rightdoor");
+		this.phone = this.rightdoor.getChild("phone");
+		this.leftdoor = this.doors.getChild("leftdoor");
 	}
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
