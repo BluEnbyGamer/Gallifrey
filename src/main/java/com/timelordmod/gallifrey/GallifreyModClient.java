@@ -66,21 +66,21 @@ import com.timelordmod.gallifrey.entity.client.LaserRenderer;
 
 public class GallifreyModClient implements ClientModInitializer {
     private static KeyBinding rwfForward, rwfBack, rwfLeft, rwfRight, rwfUp, rwfDown, rwfFaster, rwfSlower;
-    private static float rwfSpeed = 0.35f;
+    private static float rwfSpeed = 1.0f;
 
     private static void registerRwfControls() {
-        rwfForward = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_forward", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_W, "category.gallifrey.tardis"));
-        rwfBack = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_back", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_S, "category.gallifrey.tardis"));
-        rwfLeft = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_left", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_A, "category.gallifrey.tardis"));
-        rwfRight = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_right", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_D, "category.gallifrey.tardis"));
+        rwfForward = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_forward", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UP, "category.gallifrey.tardis"));
+        rwfBack = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_back", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_DOWN, "category.gallifrey.tardis"));
+        rwfLeft = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_left", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_LEFT, "category.gallifrey.tardis"));
+        rwfRight = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_right", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT, "category.gallifrey.tardis"));
         rwfUp = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_up", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_SPACE, "category.gallifrey.tardis"));
         rwfDown = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_down", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_LEFT_SHIFT, "category.gallifrey.tardis"));
         rwfFaster = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_faster", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_E, "category.gallifrey.tardis"));
         rwfSlower = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_slower", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_Q, "category.gallifrey.tardis"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (!ModClientPackets.isRwfActive() || client.player == null || client.getNetworkHandler() == null) return;
-            if (rwfFaster.isPressed()) rwfSpeed = Math.min(2.5f, rwfSpeed + 0.05f);
-            if (rwfSlower.isPressed()) rwfSpeed = Math.max(0.05f, rwfSpeed - 0.05f);
+            if (rwfFaster.isPressed()) rwfSpeed = Math.min(4.0f, rwfSpeed + 1.0f);
+            if (rwfSlower.isPressed()) rwfSpeed = Math.max(1.0f, rwfSpeed - 1.0f);
             float f = (rwfForward.isPressed() ? 1 : 0) - (rwfBack.isPressed() ? 1 : 0);
             float st = (rwfRight.isPressed() ? 1 : 0) - (rwfLeft.isPressed() ? 1 : 0);
             float v = (rwfUp.isPressed() ? 1 : 0) - (rwfDown.isPressed() ? 1 : 0);

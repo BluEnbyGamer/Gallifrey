@@ -378,7 +378,7 @@ public final class TardisDimensionManager {
         tardis.setRealWorldFlight(true);
         world.playSound(null, pos, GallifreySounds.TYPE70FLIGHT, SoundCategory.BLOCKS, 1.0f, 1.0f);
         player.teleport(world, pos.getX() + 0.5, pos.getY() + 2.6, pos.getZ() + 0.5, java.util.Set.of(), player.getYaw(), 0.0f);
-        player.sendMessage(Text.literal("REAL WORLD FLIGHT engaged. WASD to fly, Space up, Shift down, scroll to change speed. /tardis rwf to exit."), true);
+        player.sendMessage(Text.literal("REAL WORLD FLIGHT engaged. Arrow keys to fly, Space up, Shift down, E/Q to change speed. /tardis rwf to exit."), true);
         sendRwfState(player, true);
         return true;
     }
@@ -395,6 +395,7 @@ public final class TardisDimensionManager {
         if (world == null) return;
         BlockPos pos = BlockPos.fromLong(record.pos());
         if (!(world.getBlockEntity(pos) instanceof TardisExteriorBlockEntity tardis) || !tardis.isRealWorldFlight()) return;
+        speed = net.minecraft.util.math.MathHelper.clamp(speed, 1.0f, 4.0f);
         if (!tardis.isPowered() || !tardis.isAntigravityEnabled()) { endRealWorldFlight(server, registry, tardis, world, pos, "RWF ended: power or antigravity unavailable."); sendRwfState(player, false); return; }
         Vec3d look = player.getRotationVec(1.0f).normalize();
         Vec3d flatForward = new Vec3d(look.x, 0, look.z);
@@ -411,18 +412,33 @@ public final class TardisDimensionManager {
     }
 
     private static void moveTardisFree(MinecraftServer server, TardisRegistryState registry, ServerWorld world, BlockPos pos, TardisExteriorBlockEntity tardis, Vec3d delta) {
-        int dx = (int)Math.round(delta.x); int dy = (int)Math.round(delta.y); int dz = (int)Math.round(delta.z);
+        int dx = (int) Math.round(delta.x);
+        int dy = (int) Math.round(delta.y);
+        int dz = (int) Math.round(delta.z);
         if (dx == 0 && dy == 0 && dz == 0) return;
-        BlockPos target = pos.add(dx, dy, dz);
-        if (target.getY() <= world.getBottomY() || target.getY() >= world.getTopY()-2) return;
-        if (!world.getBlockState(target).isAir() || !world.getBlockState(target.up()).isAir()) return;
+
+        // RWF moves the physical shell in whole-block increments. Walk the path one
+        // block at a time so higher speeds cannot tunnel through terrain.
+        int steps = Math.max(1, Math.max(Math.abs(dx), Math.max(Math.abs(dy), Math.abs(dz))));
+        int sx = Integer.signum(dx), sy = Integer.signum(dy), sz = Integer.signum(dz);
+        BlockPos current = pos;
+        for (int i = 0; i < steps; i++) {
+            BlockPos next = current.add(sx, sy, sz);
+            if (next.getY() <= world.getBottomY() || next.getY() >= world.getTopY() - 2) return;
+            if (!world.getBlockState(next).isAir() || !world.getBlockState(next.up()).isAir()) return;
+            current = next;
+        }
+
+        BlockPos target = current;
         NbtCompound nbt = tardis.createNbt();
         BlockState state = tardis.getCachedState();
         world.setBlockState(pos, net.minecraft.block.Blocks.AIR.getDefaultState(), 3);
         world.setBlockState(target, state, 3);
         if (world.getBlockEntity(target) instanceof TardisExteriorBlockEntity moved) {
             nbt.remove("x"); nbt.remove("y"); nbt.remove("z"); nbt.remove("id");
-            moved.readNbt(nbt); moved.markDirty(); registry.updateLocation(moved.getTardisId(), world, target.asLong());
+            moved.readNbt(nbt);
+            moved.markDirty();
+            registry.updateLocation(moved.getTardisId(), world, target.asLong());
         }
     }
 
@@ -748,6 +764,17 @@ public final class TardisDimensionManager {
             moved.readNbt(nbt);
             moved.markDirty();
             registry.updateLocation(moved.getTardisId(), world, target.asLong());
+            // If the pilot is standing on the shell while antigravity is disabled,
+            // carry them with the TARDIS instead of leaving them suspended in mid-air.
+            for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+                if (player.getServerWorld() != world || !moved.canPilot(player.getUuid())) continue;
+                double dx = player.getX() - (pos.getX() + 0.5);
+                double dz = player.getZ() - (pos.getZ() + 0.5);
+                double relativeY = player.getY() - (pos.getY() + 2.0);
+                if (dx * dx + dz * dz <= 2.25 && relativeY >= -0.5 && relativeY <= 2.0) {
+                    player.teleport(world, player.getX(), player.getY() + deltaY, player.getZ(), java.util.Set.of(), player.getYaw(), player.getPitch());
+                }
+            }
             return target;
         }
         return null;
