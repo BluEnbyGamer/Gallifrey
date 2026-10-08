@@ -62,3 +62,16 @@ Gallifrey TARDIS v15 notes
 - The Hartnell console has a dedicated 32x32 inventory/held-item PNG.
 - The TARDIS console UI is reorganized into Navigation / Exterior / Interior / Systems tabs, inspired by the Vortex Manipulator's compact navigation/isomorphic-control layout.
 - Flight, exterior shell selection, interior selection/application, security, refuelling, and Doctor Who Vale playback are available from the console UI.
+
+
+TARDIS systems in this build
+----------------------------
+- /tardis idfinder (and /tardis IdFinder) lists registered TARDIS UUIDs.
+- /tardis exterior <style> changes the owner's exterior shell.
+- /tardis antigrav toggles antigravity; with it disabled, the physical TARDIS falls.
+- /tardis selfdestruct arms a 10-second TARDIS self-destruct; /tardis selfdestruct cancel cancels it.
+- TARDIS flight requires artron power and antigravity and performs a visible real-world takeoff before rematerialisation.
+- Occupied landing coordinates are resolved to the highest available supported two-block space.
+- The exterior is physically two blocks tall and uses an open-then-enter door interaction.
+- Console controls and TARDIS commands are server-side owner-gated.
+- Exterior/emission lighting and interior lighting shut down when artron power reaches zero.

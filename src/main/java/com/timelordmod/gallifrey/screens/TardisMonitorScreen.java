@@ -37,7 +37,8 @@ public class TardisMonitorScreen extends Screen {
     private String interior = "tardis_platform";
     private String selectedInterior = "tardis_platform";
     private List<String> interiors = new ArrayList<>();
-    private boolean flightPending, locked;
+    private boolean flightPending, locked, antigravity = true, powered = true;
+    private int selfDestructTicks;
     private String exteriorDimension = "minecraft:overworld";
     private String interiorDimension = "gallifrey:tardis";
     private double exteriorX, exteriorY, exteriorZ;
@@ -47,6 +48,23 @@ public class TardisMonitorScreen extends Screen {
     private int interiorPage;
 
     public TardisMonitorScreen() { super(Text.literal("TARDIS Console")); }
+
+    private float guiScale() {
+        double windowScale = client == null ? 1.0D : client.getWindow().getScaleFactor();
+        float desired = (float) (3.25D / Math.max(1.0D, windowScale));
+        float fit = Math.min((width - 20.0F) / W, (height - 20.0F) / H);
+        return Math.min(desired, fit);
+    }
+
+    private int scaledMouseX(double mouseX) {
+        float s = guiScale();
+        return Math.round((float) (width * 0.5D + (mouseX - width * 0.5D) / s));
+    }
+
+    private int scaledMouseY(double mouseY) {
+        float s = guiScale();
+        return Math.round((float) (height * 0.5D + (mouseY - height * 0.5D) / s));
+    }
 
     @Override
     protected void init() {
@@ -118,7 +136,10 @@ public class TardisMonitorScreen extends Screen {
         addDrawableChild(button(left + 304, top + 108, 294, 30, locked ? "SECURITY: LOCKED" : "SECURITY: OPEN", b -> sendAction(locked ? "UNLOCK" : "LOCK")));
         addDrawableChild(button(left + 22, top + 154, 272, 30, "MUSIC: PLAY DR WHO VALE", b -> sendAction("PLAY_DRWHO_VALE")));
         addDrawableChild(button(left + 304, top + 154, 294, 30, "REQUEST SYSTEM STATUS", b -> requestState()));
-        addDrawableChild(button(left + 22, top + 200, 576, 30, "RETURN TO NAVIGATION", b -> switchTab(0)));
+        addDrawableChild(button(left + 22, top + 200, 272, 30, antigravity ? "ANTIGRAVITY: ON" : "ANTIGRAVITY: OFF", b -> sendAction("ANTIGRAV")));
+        String destruct = selfDestructTicks > 0 ? "SELF-DESTRUCT: " + ((selfDestructTicks + 19) / 20) + "s" : "SELF-DESTRUCT: ARM (10s)";
+        addDrawableChild(button(left + 304, top + 200, 294, 30, destruct, b -> sendAction(selfDestructTicks > 0 ? "CANCEL_SELF_DESTRUCT" : "SELF_DESTRUCT")));
+        addDrawableChild(button(left + 22, top + 246, 576, 30, "RETURN TO NAVIGATION", b -> switchTab(0)));
     }
 
     private TextFieldWidget field(int px, int py, int w, String placeholder) {
@@ -229,6 +250,11 @@ public class TardisMonitorScreen extends Screen {
     @Override
     public void render(DrawContext c, int mouseX, int mouseY, float delta) {
         c.fill(0, 0, width, height, 0x99000000);
+        float s = guiScale();
+        c.getMatrices().push();
+        c.getMatrices().translate(width * 0.5F, height * 0.5F, 0.0F);
+        c.getMatrices().scale(s, s, 1.0F);
+        c.getMatrices().translate(-width * 0.5F, -height * 0.5F, 0.0F);
         left = (width - W) / 2;
         top = (height - H) / 2;
         c.fill(left - 3, top - 3, left + W + 3, top + H + 3, 0x553A2612);
@@ -258,6 +284,7 @@ public class TardisMonitorScreen extends Screen {
         c.fill(left + 84, top + 342, left + 84 + filled, top + 353, GREEN);
         c.drawText(textRenderer, Text.literal(fuel + " / " + maxFuel), left + 322, top + 344, TEXT, false);
         c.drawText(textRenderer, Text.literal("SHELL: " + exteriorStyleName), left + 405, top + 344, AMBER, false);
+        c.drawText(textRenderer, Text.literal(powered ? "POWER: ONLINE" : "POWER: OFFLINE"), left + 405, top + 325, powered ? GREEN : RED, false);
 
         if (tab == 0) {
             c.drawText(textRenderer, Text.literal("DESTINATION"), left + 22, top + 94, DIM, false);
@@ -277,21 +304,35 @@ public class TardisMonitorScreen extends Screen {
             c.drawText(textRenderer, Text.literal(locked ? "Security is locked to the owner." : "Security is open."), left + 22, top + 250, locked ? AMBER : GREEN, false);
         }
 
-        if (flightButton != null) flightButton.active = !flightPending;
-        super.render(c, mouseX, mouseY, delta);
+        if (flightButton != null) flightButton.active = !flightPending && powered && antigravity;
+        super.render(c, scaledMouseX(mouseX), scaledMouseY(mouseY), delta);
+        c.getMatrices().pop();
     }
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (button == 0) {
-            float sx = (float) ((mouseX - width / 2.0) + width / 2.0);
-            float sy = (float) ((mouseY - height / 2.0) + height / 2.0);
+            float sx = scaledMouseX(mouseX);
+            float sy = scaledMouseY(mouseY);
             if (sy >= top + 49 && sy <= top + 76 && sx >= left + 18 && sx < left + 18 + 4 * 149) {
                 int selected = (int) ((sx - (left + 18)) / 149);
                 if (selected >= 0 && selected < 4) { switchTab(selected); return true; }
             }
         }
-        return super.mouseClicked(mouseX, mouseY, button);
+        return super.mouseClicked(scaledMouseX(mouseX), scaledMouseY(mouseY), button);
+    }
+
+    @Override public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        return super.mouseReleased(scaledMouseX(mouseX), scaledMouseY(mouseY), button);
+    }
+
+    @Override public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
+        float s = guiScale();
+        return super.mouseDragged(scaledMouseX(mouseX), scaledMouseY(mouseY), button, deltaX / s, deltaY / s);
+    }
+
+    @Override public void mouseMoved(double mouseX, double mouseY) {
+        super.mouseMoved(scaledMouseX(mouseX), scaledMouseY(mouseY));
     }
 
     @Override public boolean shouldPause() { return false; }
@@ -315,6 +356,9 @@ public class TardisMonitorScreen extends Screen {
         double x = buf.readDouble(), y = buf.readDouble(), z = buf.readDouble();
         boolean flight = buf.readBoolean();
         boolean locked = buf.readBoolean();
+        boolean antigrav = buf.readBoolean();
+        boolean powered = buf.readBoolean();
+        int selfDestructTicks = buf.readInt();
 
         MinecraftClient client = MinecraftClient.getInstance();
         client.execute(() -> {
@@ -336,6 +380,9 @@ public class TardisMonitorScreen extends Screen {
             screen.exteriorZ = z;
             screen.flightPending = flight;
             screen.locked = locked;
+            screen.antigravity = antigrav;
+            screen.powered = powered;
+            screen.selfDestructTicks = selfDestructTicks;
             if (screen.dimension != null && !screen.dimension.isFocused()) screen.dimension.setText(dim);
             if (screen.x != null && !screen.x.isFocused()) screen.x.setText(screen.fmt(x));
             if (screen.y != null && !screen.y.isFocused()) screen.y.setText(screen.fmt(y));

@@ -7,8 +7,13 @@ import com.timelordmod.gallifrey.tardis.TardisRegistryState;
 import com.timelordmod.gallifrey.tardis.TardisExteriorCatalog;
 import com.timelordmod.gallifrey.block.entity.TardisInteriorDoorBlockEntity;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.LightBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
@@ -30,6 +35,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     private UUID tardisId;
     private UUID owner;
     private boolean locked;
+    private boolean antigravity = true;
     private int fuel = 100;
     private BlockPos interiorOrigin = new BlockPos(0, 64, 0);
     private boolean interiorGenerated;
@@ -45,6 +51,9 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     private BlockPos flightPos;
     private int flightRotation;
     private int materializationTicks;
+    private int realWorldFlightTicks;
+    private int selfDestructTicks;
+    private boolean lastPoweredState = true;
 
     public TardisExteriorBlockEntity(BlockPos pos, BlockState state) {
         super(GallifreyModBlockEntities.TARDIS_EXTERIOR, pos, state);
@@ -74,7 +83,36 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     public UUID getTardisId() { return tardisId; }
     public UUID getOwner() { return owner; }
     public boolean isLocked() { return locked; }
+    public boolean isAntigravityEnabled() { return antigravity; }
     public int getFuel() { return fuel; }
+    public boolean isPowered() { return fuel > 0; }
+
+    /** Updates console power and the soft interior ceiling lights when artron power changes. */
+    public void syncInteriorPower(ServerWorld interior) {
+        if (interior == null) return;
+        boolean powered = isPowered();
+        if (powered == lastPoweredState && interiorGenerated) return;
+        lastPoweredState = powered;
+        if (consolePos != null && interior.getBlockEntity(consolePos) instanceof TardisConsoleBlockEntity console) {
+            console.setPowered(powered);
+        }
+        if (interiorDoorPos != null && interior.getBlockEntity(interiorDoorPos) instanceof TardisInteriorDoorBlockEntity door) {
+            door.setPowered(powered);
+        }
+        int[][] points = {{-5,-5},{5,-5},{-5,5},{5,5},{0,0}};
+        for (int[] point : points) {
+            BlockPos lightPos = interiorOrigin.add(point[0], 6, point[1]);
+            if (powered) {
+                if (interior.getBlockState(lightPos).isAir()) {
+                    interior.setBlockState(lightPos, Blocks.LIGHT.getDefaultState().with(LightBlock.LEVEL_15, 12), 3);
+                }
+            } else if (interior.getBlockState(lightPos).isOf(Blocks.LIGHT)) {
+                interior.setBlockState(lightPos, Blocks.AIR.getDefaultState(), 3);
+            }
+        }
+    }
+    public int getSelfDestructTicks() { return selfDestructTicks; }
+    public boolean isSelfDestructArmed() { return selfDestructTicks > 0; }
     public BlockPos getInteriorOrigin() { return interiorOrigin; }
     public String getInteriorStructure() { return interiorStructure; }
     public String getExteriorStyle() { return TardisExteriorCatalog.get(exteriorStyle).id(); }
@@ -119,6 +157,37 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         return owner != null && owner.equals(player);
     }
 
+    public void setAntigravityEnabled(boolean enabled) {
+        this.antigravity = enabled;
+        markDirty();
+    }
+
+    public void armSelfDestruct() {
+        selfDestructTicks = 200;
+        markDirty();
+    }
+
+    public void cancelSelfDestruct() {
+        selfDestructTicks = 0;
+        markDirty();
+    }
+
+    public boolean tickSelfDestruct() {
+        if (selfDestructTicks <= 0) return false;
+        selfDestructTicks--;
+        markDirty();
+        return selfDestructTicks <= 0;
+    }
+
+    public boolean tickRealWorldFlight() {
+        if (realWorldFlightTicks <= 0) return false;
+        realWorldFlightTicks--;
+        markDirty();
+        return true;
+    }
+
+    public int getRealWorldFlightTicks() { return realWorldFlightTicks; }
+
     public void setLocked(boolean locked) {
         this.locked = locked;
         if (world != null && world.getServer() != null && tardisId != null) {
@@ -131,6 +200,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         int old = fuel;
         fuel = Math.min(MAX_FUEL, fuel + Math.max(0, amount));
         markDirty();
+        syncClient();
         return fuel - old;
     }
 
@@ -138,7 +208,14 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         if (fuel < amount) return false;
         fuel -= amount;
         markDirty();
+        syncClient();
         return true;
+    }
+
+    private void syncClient() {
+        if (world != null && !world.isClient) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), net.minecraft.block.Block.NOTIFY_ALL);
+        }
     }
 
     public boolean generateInterior(ServerWorld world) {
@@ -162,6 +239,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         installConsole(world);
         installInteriorDoor(world);
         interiorGenerated = true;
+        lastPoweredState = !isPowered();
+        syncInteriorPower(world);
         markDirty();
         return true;
     }
@@ -195,6 +274,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         installConsole(world);
         installInteriorDoor(world);
         interiorGenerated = true;
+        lastPoweredState = !isPowered();
+        syncInteriorPower(world);
         markDirty();
         return true;
     }
@@ -257,6 +338,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         flightWorld = targetWorld;
         flightPos = targetPos.toImmutable();
         flightRotation = rotation;
+        realWorldFlightTicks = 20;
         materializationTicks = 0;
         markDirty();
     }
@@ -275,6 +357,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         flightTicks = 0;
         flightWorld = null;
         flightPos = null;
+        realWorldFlightTicks = 0;
         markDirty();
     }
 
@@ -283,6 +366,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         flightTicks = 0;
         flightWorld = null;
         flightPos = null;
+        realWorldFlightTicks = 0;
         materializationTicks = MATERIALIZATION_TIME;
         markDirty();
     }
@@ -303,11 +387,24 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     public int getMaterializationTime() { return MATERIALIZATION_TIME; }
 
     @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        NbtCompound nbt = new NbtCompound();
+        writeNbt(nbt);
+        return nbt;
+    }
+
+    @Override
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         if (tardisId != null) nbt.putUuid("TardisId", tardisId);
         if (owner != null) nbt.putUuid("Owner", owner);
         nbt.putBoolean("Locked", locked);
+        nbt.putBoolean("Antigravity", antigravity);
         nbt.putInt("Fuel", fuel);
         nbt.putLong("InteriorOrigin", interiorOrigin.asLong());
         nbt.putBoolean("InteriorGenerated", interiorGenerated);
@@ -324,6 +421,9 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         if (flightPos != null) nbt.putLong("FlightPos", flightPos.asLong());
         nbt.putInt("FlightRotation", flightRotation);
         nbt.putInt("MaterializationTicks", materializationTicks);
+        nbt.putInt("RealWorldFlightTicks", realWorldFlightTicks);
+        nbt.putInt("SelfDestructTicks", selfDestructTicks);
+        nbt.putBoolean("LastPoweredState", lastPoweredState);
     }
 
     @Override
@@ -332,6 +432,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         if (nbt.containsUuid("TardisId")) tardisId = nbt.getUuid("TardisId");
         if (nbt.containsUuid("Owner")) owner = nbt.getUuid("Owner");
         locked = nbt.getBoolean("Locked");
+        antigravity = !nbt.contains("Antigravity") || nbt.getBoolean("Antigravity");
         fuel = Math.max(0, Math.min(MAX_FUEL, nbt.getInt("Fuel")));
         if (nbt.contains("InteriorOrigin")) interiorOrigin = BlockPos.fromLong(nbt.getLong("InteriorOrigin"));
         interiorGenerated = nbt.getBoolean("InteriorGenerated");
@@ -352,5 +453,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         if (nbt.contains("FlightPos")) flightPos = BlockPos.fromLong(nbt.getLong("FlightPos"));
         flightRotation = nbt.getInt("FlightRotation");
         materializationTicks = nbt.getInt("MaterializationTicks");
+        realWorldFlightTicks = nbt.getInt("RealWorldFlightTicks");
+        selfDestructTicks = nbt.getInt("SelfDestructTicks");
+        lastPoweredState = nbt.contains("LastPoweredState") ? nbt.getBoolean("LastPoweredState") : isPowered();
     }
 }

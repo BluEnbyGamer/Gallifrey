@@ -44,6 +44,11 @@ public class TardisModel extends Model {
 		this.phone = this.rightdoor.getChild("phone");
 		this.leftdoor = this.doors.getChild("leftdoor");
 	}
+	public void setDoorsOpen(boolean open) {
+		rightdoor.yaw = open ? -0.92F : 0.0F;
+		leftdoor.yaw = open ? 0.92F : 0.0F;
+	}
+
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();

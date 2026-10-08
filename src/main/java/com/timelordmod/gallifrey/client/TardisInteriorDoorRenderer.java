@@ -40,8 +40,10 @@ public class TardisInteriorDoorRenderer implements BlockEntityRenderer<TardisInt
 
         model.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(texture)),
                 light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
-        model.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(emission)),
-                light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
+        if (blockEntity.isPowered()) {
+            model.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(emission)),
+                    light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
+        }
 
         matrices.pop();
     }

@@ -214,6 +214,9 @@ public final class TardisDimensionManager {
         }
 
         registry.clearActive(player);
+        if (world.getBlockState(pos).contains(TardisExteriorBlock.OPEN)) {
+            world.setBlockState(pos, world.getBlockState(pos).with(TardisExteriorBlock.OPEN, false), 3);
+        }
         world.playSound(null, pos, GallifreySounds.POLICE_BOX_DOOR_CLOSE, SoundCategory.BLOCKS, 0.65F, 1.0F);
         FabricDimensions.teleport(player, world,
                 new TeleportTarget(Vec3d.ofCenter(pos).add(0, 0.15, 0),
@@ -302,6 +305,10 @@ public final class TardisDimensionManager {
             pilot.sendMessage(Text.literal("The TARDIS controls are locked to its pilot."), true);
             return false;
         }
+        if (!tardis.isAntigravityEnabled()) {
+            pilot.sendMessage(Text.literal("Antigravity is disabled. The TARDIS cannot enter real-world flight."), true);
+            return false;
+        }
         if (tardis.getFuel() < TardisExteriorBlockEntity.FLIGHT_COST) {
             pilot.sendMessage(Text.literal("Insufficient artron energy. Refuel the TARDIS first."), true);
             return false;
@@ -315,9 +322,13 @@ public final class TardisDimensionManager {
         }
 
         targetWorld.getChunk(targetPos.getX() >> 4, targetPos.getZ() >> 4);
-        if (!isSafeLandingSpace(targetWorld, targetPos, currentWorld == targetWorld && currentPos.equals(targetPos))) {
-            pilot.sendMessage(Text.literal("The TARDIS cannot materialise there: the landing block is occupied."), true);
+        BlockPos landingPos = findLandingSpot(targetWorld, targetPos, currentWorld == targetWorld && currentPos.equals(targetPos));
+        if (landingPos == null) {
+            pilot.sendMessage(Text.literal("The TARDIS could not find a free surface at that location."), true);
             return false;
+        }
+        if (!landingPos.equals(targetPos)) {
+            pilot.sendMessage(Text.literal("Landing site occupied. TARDIS will materialise at " + landingPos.toShortString() + "."), true);
         }
 
         tardis.consumeFuel(TardisExteriorBlockEntity.FLIGHT_COST);
@@ -334,7 +345,7 @@ public final class TardisDimensionManager {
 
         // Store the target on the TARDIS. A server tick performs the actual
         // rematerialisation while players remain safely inside the TARDIS dimension.
-        tardis.beginFlight(targetWorld.getRegistryKey().getValue(), targetPos, rotationFromYaw(yaw));
+        tardis.beginFlight(targetWorld.getRegistryKey().getValue(), landingPos, rotationFromYaw(yaw));
         return true;
     }
 
@@ -348,12 +359,38 @@ public final class TardisDimensionManager {
             world.getChunk(pos.getX() >> 4, pos.getZ() >> 4);
             BlockEntity be = world.getBlockEntity(pos);
             if (be instanceof TardisExteriorBlockEntity tardis) {
+                TardisRegistryState.Record currentRecord = registry.get(tardis.getTardisId());
+                if (currentRecord != null) {
+                    ServerWorld interior = getInterior(server, currentRecord);
+                    if (interior != null) tardis.syncInteriorPower(interior);
+                }
+                if (tardis.isSelfDestructArmed()) {
+                    int countdownBefore = tardis.getSelfDestructTicks();
+                    if (countdownBefore % 20 == 0) {
+                        for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
+                            if (registry.isInside(player, tardis.getTardisId())) TardisMonitorNetworking.sendState(player);
+                        }
+                    }
+                    if (tardis.tickSelfDestruct()) {
+                        selfDestruct(server, registry, world, pos, tardis);
+                        continue;
+                    }
+                }
                 if (tardis.isFlightPending()) {
                     int before = tardis.getFlightTicks();
                     if (before % 3 == 0) {
                         spawnPhaseParticles(world, pos, before);
                     }
-                    if (tardis.tickFlight()) {
+                    boolean stillFlying = tardis.tickFlight();
+                    boolean realFlight = tardis.getRealWorldFlightTicks() > 0;
+                    if (realFlight) tardis.tickRealWorldFlight();
+                    if (realFlight && before % 4 == 0) {
+                        BlockPos lifted = moveTardisVertically(server, registry, world, pos, tardis, 1);
+                        if (lifted != null) {
+                            continue;
+                        }
+                    }
+                    if (stillFlying && tardis.getFlightTicks() <= 0) {
                         materialize(server, registry, world, pos, tardis);
                     }
                 } else if (tardis.getMaterializationTicks() > 0) {
@@ -361,6 +398,8 @@ public final class TardisDimensionManager {
                         spawnMaterializationParticles(world, pos);
                     }
                     tardis.tickMaterialization();
+                } else if (!tardis.isAntigravityEnabled() && !isSupported(world, pos)) {
+                    moveTardisVertically(server, registry, world, pos, tardis, -1);
                 }
             }
         }
@@ -495,12 +534,13 @@ public final class TardisDimensionManager {
         }
 
         BlockPos targetPos = tardis.getFlightPos();
-        if (!isSafeLandingSpace(targetWorld, targetPos, sourceWorld == targetWorld && sourcePos.equals(targetPos))) {
+        targetPos = findLandingSpot(targetWorld, targetPos, sourceWorld == targetWorld && sourcePos.equals(targetPos));
+        if (targetPos == null) {
             tardis.cancelFlight();
             return;
         }
 
-        BlockState state = tardis.getCachedState().with(TardisExteriorBlock.ROTATION, tardis.getFlightRotation());
+        BlockState state = tardis.getCachedState().with(TardisExteriorBlock.ROTATION, tardis.getFlightRotation()).with(TardisExteriorBlock.OPEN, false);
         NbtCompound nbt = tardis.createNbt();
 
         sourceWorld.setBlockState(sourcePos, net.minecraft.block.Blocks.AIR.getDefaultState(), 3);
@@ -554,7 +594,55 @@ public final class TardisDimensionManager {
 
     private static boolean isSafeLandingSpace(ServerWorld world, BlockPos pos, boolean allowCurrent) {
         if (allowCurrent) return true;
-        return world.getBlockState(pos).isAir() && world.getBlockState(pos.up()).isAir();
+        return world.getBlockState(pos).isAir()
+                && world.getBlockState(pos.up()).isAir()
+                && world.getBlockState(pos.down()).isSolidBlock(world, pos.down());
+    }
+
+    /** Finds the highest free two-block landing space at the requested X/Z. */
+    private static BlockPos findLandingSpot(ServerWorld world, BlockPos requested, boolean allowCurrent) {
+        int min = Math.max(world.getBottomY() + 1, requested.getY());
+        int max = Math.min(world.getTopY() - 3, requested.getY() + 128);
+        for (int y = max; y >= min; y--) {
+            BlockPos candidate = new BlockPos(requested.getX(), y, requested.getZ());
+            if (isSafeLandingSpace(world, candidate, allowCurrent && candidate.equals(requested))) return candidate;
+        }
+        // If the requested height is above the terrain, allow a downward search for a surface.
+        for (int y = Math.min(requested.getY() - 1, world.getTopY() - 3); y >= world.getBottomY() + 1; y--) {
+            BlockPos candidate = new BlockPos(requested.getX(), y, requested.getZ());
+            if (isSafeLandingSpace(world, candidate, allowCurrent && candidate.equals(requested))) return candidate;
+        }
+        return null;
+    }
+
+    private static boolean isSupported(ServerWorld world, BlockPos pos) {
+        return world.getBlockState(pos.down()).isSolidBlock(world, pos.down());
+    }
+
+    /** Moves the physical TARDIS while preserving its block entity state and registry location. */
+    private static BlockPos moveTardisVertically(MinecraftServer server, TardisRegistryState registry, ServerWorld world, BlockPos pos, TardisExteriorBlockEntity tardis, int deltaY) {
+        BlockPos target = pos.add(0, deltaY, 0);
+        if (target.getY() <= world.getBottomY() || target.getY() >= world.getTopY() - 2) return null;
+        if (!world.getBlockState(target).isAir() || !world.getBlockState(target.up()).isAir()) return null;
+        NbtCompound nbt = tardis.createNbt();
+        BlockState state = tardis.getCachedState();
+        world.setBlockState(pos, net.minecraft.block.Blocks.AIR.getDefaultState(), 3);
+        world.setBlockState(target, state, 3);
+        if (world.getBlockEntity(target) instanceof TardisExteriorBlockEntity moved) {
+            nbt.remove("x"); nbt.remove("y"); nbt.remove("z"); nbt.remove("id");
+            moved.readNbt(nbt);
+            moved.markDirty();
+            registry.updateLocation(moved.getTardisId(), world, target.asLong());
+            return target;
+        }
+        return null;
+    }
+
+    private static void selfDestruct(MinecraftServer server, TardisRegistryState registry, ServerWorld world, BlockPos pos, TardisExteriorBlockEntity tardis) {
+        UUID id = tardis.getTardisId();
+        world.playSound(null, pos, GallifreySounds.TYPE70DEMAT, SoundCategory.BLOCKS, 1.5F, 0.65F);
+        world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.8, pos.getZ() + 0.5, 4.0F, false, World.ExplosionSourceType.TNT);
+        if (id != null) deleteTardis(server, id);
     }
 
     public static int rotationFromYaw(float yaw) {

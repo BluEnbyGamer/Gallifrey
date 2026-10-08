@@ -12,6 +12,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -41,6 +42,37 @@ public class TardisInteriorDoorBlock extends Block implements BlockEntityProvide
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
+    }
+
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, net.minecraft.item.ItemStack stack) {
+        super.onPlaced(world, pos, state, placer, stack);
+        if (world.isClient || !(placer instanceof ServerPlayerEntity player) || !(world.getBlockEntity(pos) instanceof TardisInteriorDoorBlockEntity door)) return;
+        TardisRegistryState registry = TardisRegistryState.get(player.getServer());
+        java.util.UUID id = registry.getActiveTardis(player.getUuid());
+        TardisRegistryState.Record record = id == null ? null : registry.get(id);
+        if (record == null || record.owner() == null || !record.owner().equals(player.getUuid()) || !TardisDimensionManager.isInteriorWorld(world)) return;
+        door.setTardisId(id);
+        door.setExteriorStyle(record.id() != null ? exteriorStyleFor(player) : "policebox");
+        door.setPowered(findPower(player));
+    }
+
+    private String exteriorStyleFor(ServerPlayerEntity player) {
+        TardisRegistryState.Record record = TardisRegistryState.get(player.getServer()).get(TardisRegistryState.get(player.getServer()).getActiveTardis(player.getUuid()));
+        if (record == null) return "policebox";
+        net.minecraft.server.world.ServerWorld world = player.getServer().getWorld(net.minecraft.registry.RegistryKey.of(net.minecraft.registry.RegistryKeys.WORLD, new net.minecraft.util.Identifier(record.world())));
+        net.minecraft.util.math.BlockPos pos = record == null ? net.minecraft.util.math.BlockPos.ORIGIN : net.minecraft.util.math.BlockPos.fromLong(record.pos());
+        if (world != null && world.getBlockEntity(pos) instanceof com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity tardis) return tardis.getExteriorStyle();
+        return "policebox";
+    }
+
+    private boolean findPower(ServerPlayerEntity player) {
+        TardisRegistryState.Record record = TardisRegistryState.get(player.getServer()).get(TardisRegistryState.get(player.getServer()).getActiveTardis(player.getUuid()));
+        if (record == null) return false;
+        net.minecraft.server.world.ServerWorld world = player.getServer().getWorld(net.minecraft.registry.RegistryKey.of(net.minecraft.registry.RegistryKeys.WORLD, new net.minecraft.util.Identifier(record.world())));
+        net.minecraft.util.math.BlockPos pos = net.minecraft.util.math.BlockPos.fromLong(record.pos());
+        return world != null && world.getBlockEntity(pos) instanceof com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity tardis && tardis.isPowered();
     }
 
     @Override

@@ -78,6 +78,9 @@ public final class TardisMonitorNetworking {
                 }
                 case "LOCK" -> { setLock(player, true); sendState(player); }
                 case "UNLOCK" -> { setLock(player, false); sendState(player); }
+                case "ANTIGRAV" -> { toggleAntigrav(player); sendState(player); }
+                case "SELF_DESTRUCT" -> { selfDestruct(player, false); sendState(player); }
+                case "CANCEL_SELF_DESTRUCT" -> { selfDestruct(player, true); sendState(player); }
                 case "PLAY_DRWHO_VALE" -> playDrWhoVale(player);
                 default -> player.sendMessage(Text.literal("Unknown TARDIS console action."), true);
             }
@@ -124,6 +127,27 @@ public final class TardisMonitorNetworking {
         return true;
     }
 
+    private static boolean toggleAntigrav(ServerPlayerEntity player) {
+        TardisExteriorBlockEntity tardis = findActive(player);
+        if (tardis == null) return false;
+        tardis.setAntigravityEnabled(!tardis.isAntigravityEnabled());
+        player.sendMessage(Text.literal("Antigravity " + (tardis.isAntigravityEnabled() ? "enabled" : "disabled") + "."), true);
+        return true;
+    }
+
+    private static boolean selfDestruct(ServerPlayerEntity player, boolean cancel) {
+        TardisExteriorBlockEntity tardis = findActive(player);
+        if (tardis == null) return false;
+        if (cancel) {
+            tardis.cancelSelfDestruct();
+            player.sendMessage(Text.literal("TARDIS self-destruct cancelled."), true);
+        } else {
+            tardis.armSelfDestruct();
+            player.sendMessage(Text.literal("TARDIS self-destruct armed. 10 seconds."), true);
+        }
+        return true;
+    }
+
     public static boolean sendState(ServerPlayerEntity player) {
         TardisExteriorBlockEntity tardis = findActive(player);
         if (tardis == null) return false;
@@ -160,6 +184,9 @@ public final class TardisMonitorNetworking {
         out.writeDouble(pos.getZ());
         out.writeBoolean(tardis.isFlightPending());
         out.writeBoolean(tardis.isLocked());
+        out.writeBoolean(tardis.isAntigravityEnabled());
+        out.writeBoolean(tardis.isPowered());
+        out.writeInt(tardis.getSelfDestructTicks());
 
         ServerPlayNetworking.send(player, ModPackets.TARDIS_MONITOR_STATE, out);
         return true;
@@ -178,7 +205,8 @@ public final class TardisMonitorNetworking {
         BlockPos pos = BlockPos.fromLong(record.pos());
         world.getChunk(pos.getX() >> 4, pos.getZ() >> 4);
         if (world.getBlockEntity(pos) instanceof TardisExteriorBlockEntity tardis
-                && id.equals(tardis.getTardisId())) return tardis;
+                && id.equals(tardis.getTardisId())
+                && tardis.canPilot(player.getUuid())) return tardis;
         return null;
     }
 }

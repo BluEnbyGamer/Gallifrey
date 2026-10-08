@@ -37,6 +37,19 @@ public final class TardisCommands {
                                                                 DoubleArgumentType.getDouble(ctx, "x"),
                                                                 DoubleArgumentType.getDouble(ctx, "y"),
                                                                 DoubleArgumentType.getDouble(ctx, "z"))))))))
+                .then(CommandManager.literal("idfinder")
+                        .executes(ctx -> idFinder(ctx.getSource())))
+                .then(CommandManager.literal("IdFinder")
+                        .executes(ctx -> idFinder(ctx.getSource())))
+                .then(CommandManager.literal("exterior")
+                        .then(CommandManager.argument("name", StringArgumentType.word())
+                                .executes(ctx -> exterior(ctx.getSource(), StringArgumentType.getString(ctx, "name")))))
+                .then(CommandManager.literal("antigrav")
+                        .executes(ctx -> antigrav(ctx.getSource())))
+                .then(CommandManager.literal("selfdestruct")
+                        .executes(ctx -> selfDestruct(ctx.getSource(), false))
+                        .then(CommandManager.literal("cancel")
+                                .executes(ctx -> selfDestruct(ctx.getSource(), true))))
                 .then(CommandManager.literal("lock")
                         .executes(ctx -> setLock(ctx.getSource(), true)))
                 .then(CommandManager.literal("unlock")
@@ -67,6 +80,7 @@ public final class TardisCommands {
     private static int travel(ServerCommandSource source, String dimension, double x, double y, double z) {
         try {
             ServerPlayerEntity player = source.getPlayerOrThrow();
+            if (!requireOwner(source, player)) return 0;
             Identifier id = new Identifier(dimension);
             ServerWorld world = player.getServer().getWorld(
                     net.minecraft.registry.RegistryKey.of(net.minecraft.registry.RegistryKeys.WORLD, id));
@@ -212,6 +226,7 @@ public final class TardisCommands {
     private static int info(ServerCommandSource source) {
         try {
             ServerPlayerEntity player = source.getPlayerOrThrow();
+            if (!requireOwner(source, player)) return 0;
             TardisRegistryState state = TardisRegistryState.get(player.getServer());
             java.util.UUID id = state.getActiveTardis(player.getUuid());
             if (id == null || state.get(id) == null) {
@@ -240,4 +255,96 @@ public final class TardisCommands {
             return 0;
         }
     }
+    private static boolean requireOwner(ServerCommandSource source, ServerPlayerEntity player) {
+        TardisRegistryState state = TardisRegistryState.get(player.getServer());
+        java.util.UUID id = state.getActiveTardis(player.getUuid());
+        TardisRegistryState.Record record = id == null ? null : state.get(id);
+        if (record == null || record.owner() == null || !record.owner().equals(player.getUuid())) {
+            source.sendError(Text.literal("Only the owner of this TARDIS can use that command."));
+            return false;
+        }
+        return true;
+    }
+
+    private static int idFinder(ServerCommandSource source) {
+        if (source.getServer() == null) return 0;
+        TardisRegistryState state = TardisRegistryState.get(source.getServer());
+        if (state.records().isEmpty()) {
+            source.sendFeedback(() -> Text.literal("No TARDISes are registered."), false);
+            return 1;
+        }
+        for (TardisRegistryState.Record record : state.records()) {
+            String owner = record.owner() == null ? "unowned" : record.owner().toString();
+            source.sendFeedback(() -> Text.literal(record.id() + " | owner=" + owner + " | " + record.world() + " @ " + BlockPos.fromLong(record.pos()).toShortString()), false);
+        }
+        return state.records().size();
+    }
+
+    private static int exterior(ServerCommandSource source, String name) {
+        try {
+            ServerPlayerEntity player = source.getPlayerOrThrow();
+            if (!requireOwner(source, player)) return 0;
+            if (!TardisExteriorCatalog.contains(name)) {
+                source.sendError(Text.literal("Unknown exterior. Available: " + String.join(", ", TardisExteriorCatalog.names())));
+                return 0;
+            }
+            TardisRegistryState state = TardisRegistryState.get(player.getServer());
+            java.util.UUID id = state.getActiveTardis(player.getUuid());
+            TardisRegistryState.Record record = state.get(id);
+            ServerWorld world = player.getServer().getWorld(net.minecraft.registry.RegistryKey.of(net.minecraft.registry.RegistryKeys.WORLD, new Identifier(record.world())));
+            BlockPos pos = BlockPos.fromLong(record.pos());
+            if (world == null || !(world.getBlockEntity(pos) instanceof com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity tardis)) {
+                source.sendError(Text.literal("TARDIS exterior is unavailable."));
+                return 0;
+            }
+            if (tardis.isFlightPending()) {
+                source.sendError(Text.literal("You cannot change the exterior during flight."));
+                return 0;
+            }
+            tardis.setExteriorStyle(name);
+            source.sendFeedback(() -> Text.literal("TARDIS exterior changed to " + tardis.getExteriorStyleName() + "."), true);
+            return 1;
+        } catch (Exception e) {
+            source.sendError(Text.literal("Only a TARDIS owner can change the exterior."));
+            return 0;
+        }
+    }
+
+    private static int antigrav(ServerCommandSource source) {
+        try {
+            ServerPlayerEntity player = source.getPlayerOrThrow();
+            if (!requireOwner(source, player)) return 0;
+            TardisRegistryState state = TardisRegistryState.get(player.getServer());
+            java.util.UUID id = state.getActiveTardis(player.getUuid());
+            TardisRegistryState.Record record = state.get(id);
+            ServerWorld world = player.getServer().getWorld(net.minecraft.registry.RegistryKey.of(net.minecraft.registry.RegistryKeys.WORLD, new Identifier(record.world())));
+            BlockPos pos = BlockPos.fromLong(record.pos());
+            if (world == null || !(world.getBlockEntity(pos) instanceof com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity tardis)) return 0;
+            tardis.setAntigravityEnabled(!tardis.isAntigravityEnabled());
+            source.sendFeedback(() -> Text.literal("Antigravity " + (tardis.isAntigravityEnabled() ? "enabled" : "disabled") + "."), true);
+            return 1;
+        } catch (Exception e) { return 0; }
+    }
+
+    private static int selfDestruct(ServerCommandSource source, boolean cancel) {
+        try {
+            ServerPlayerEntity player = source.getPlayerOrThrow();
+            if (!requireOwner(source, player)) return 0;
+            TardisRegistryState state = TardisRegistryState.get(player.getServer());
+            java.util.UUID id = state.getActiveTardis(player.getUuid());
+            TardisRegistryState.Record record = state.get(id);
+            ServerWorld world = player.getServer().getWorld(net.minecraft.registry.RegistryKey.of(net.minecraft.registry.RegistryKeys.WORLD, new Identifier(record.world())));
+            BlockPos pos = BlockPos.fromLong(record.pos());
+            if (world == null || !(world.getBlockEntity(pos) instanceof com.timelordmod.gallifrey.block.entity.TardisExteriorBlockEntity tardis)) return 0;
+            if (cancel) {
+                tardis.cancelSelfDestruct();
+                source.sendFeedback(() -> Text.literal("TARDIS self-destruct cancelled."), true);
+            } else {
+                tardis.armSelfDestruct();
+                source.sendFeedback(() -> Text.literal("TARDIS self-destruct armed. 10 seconds."), true);
+            }
+            return 1;
+        } catch (Exception e) { return 0; }
+    }
+
 }

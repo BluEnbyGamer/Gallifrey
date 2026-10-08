@@ -67,8 +67,10 @@ public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExterio
 
         float phaseScale = Math.max(0.06F, phase);
         matrices.translate(0.0F, (1.0F - phaseScale) * 0.08F, 0.0F);
-        matrices.scale(-pulse * phaseScale, -pulse * phaseScale, pulse * phaseScale);
+        float baseScale = 0.94F;
+        matrices.scale(-pulse * phaseScale * baseScale, -pulse * phaseScale * baseScale, pulse * phaseScale * baseScale);
 
+        model.setDoorsOpen(blockEntity.getCachedState().get(TardisExteriorBlock.OPEN));
         String style = blockEntity.getExteriorStyle();
         Identifier texture = texture(style);
         Identifier emission = emissionTexture(style);
@@ -81,15 +83,17 @@ public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExterio
                 1.0F, 1.0F, 1.0F, 1.0F
         );
 
-        // The supplied emission maps keep lamps/signage glowing without the
-        // old hard-coded colour tint system.
-        model.render(
-                matrices,
-                vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(emission)),
-                light,
-                overlay,
-                1.0F, 1.0F, 1.0F, 1.0F
-        );
+        // Emission is deliberately a separate pass so it can be disabled when
+        // the TARDIS has no artron power.
+        if (blockEntity.isPowered()) {
+            model.render(
+                    matrices,
+                    vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(emission)),
+                    light,
+                    overlay,
+                    1.0F, 1.0F, 1.0F, 1.0F
+            );
+        }
 
         matrices.pop();
     }

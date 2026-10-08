@@ -86,6 +86,9 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
+    /** Inventory icon representing an installed TARDIS interior. */
+    public static final Item TARDIS_INTERIOR = registerItem("tardis_interior", new Item(new FabricItemSettings().maxCount(1)));
+
     public static final Item TARDIS_SIGN = registerItem("tardis_sign",
             new SignItem(new FabricItemSettings().maxCount(16), GallifreyModBlocks.STANDING_TARDIS_SIGN, GallifreyModBlocks.WALL_TARDIS_SIGN));
     public static final Item HANGING_TARDIS_SIGN = registerItem("tardis_hanging_sign",

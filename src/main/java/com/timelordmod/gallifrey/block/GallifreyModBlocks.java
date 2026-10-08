@@ -2227,7 +2227,7 @@ public class GallifreyModBlocks {
     );
 
     /** Physical exit door installed inside each generated TARDIS interior. */
-    public static final Block TARDIS_INTERIOR_DOOR = registerBlockNoItem(
+    public static final Block TARDIS_INTERIOR_DOOR = registerBlock(
             "tardis_interior_door",
             new TardisInteriorDoorBlock(
                     FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE)
