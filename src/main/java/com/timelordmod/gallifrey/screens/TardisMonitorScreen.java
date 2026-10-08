@@ -91,7 +91,7 @@ public class TardisMonitorScreen extends Screen {
         flightButton = button(left + 410, top + 157, 188, 24, "ENGAGE VORTEX", b -> sendFlight());
 
         addDrawableChild(button(left + 22, top + 205, 186, 28, "CURRENT LOCATION", b -> loadCurrentLocation()));
-        addDrawableChild(button(left + 216, top + 205, 186, 28, "VORTEX: RETURN", b -> setCurrentExteriorAsDestination()));
+        addDrawableChild(button(left + 216, top + 205, 186, 28, "VORTEX: RETURN", b -> sendFlight()));
         addDrawableChild(button(left + 410, top + 205, 188, 28, "CANCEL / CLOSE", b -> close()));
     }
 

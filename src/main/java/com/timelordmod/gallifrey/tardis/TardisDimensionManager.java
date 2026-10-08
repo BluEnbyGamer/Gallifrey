@@ -129,8 +129,15 @@ public final class TardisDimensionManager {
     }
 
     public static Vec3d interiorEntry(TardisExteriorBlockEntity tardis) {
+        // Enter directly in front of the physical interior door, not at the
+        // console.  The door is persisted by the TARDIS and recreated when
+        // an interior is generated/replaced.
+        BlockPos door = tardis.getInteriorDoorPos();
+        if (door != null) {
+            return new Vec3d(door.getX() + 0.5, door.getY() + 1.0, door.getZ() + 0.5);
+        }
         BlockPos o = tardis.getInteriorOrigin();
-        return new Vec3d(o.getX() + 0.5, o.getY() + 1.0, o.getZ() + 0.5);
+        return new Vec3d(o.getX() + 0.5, o.getY() + 1.0, o.getZ() - 4.0);
     }
 
     public static boolean enter(ServerPlayerEntity player, TardisExteriorBlockEntity tardis) {
@@ -399,6 +406,8 @@ public final class TardisDimensionManager {
                     }
                     tardis.tickMaterialization();
                 } else if (!tardis.isAntigravityEnabled() && !isSupported(world, pos)) {
+                    // Antigravity OFF means the physical shell obeys gravity.
+                    // Drop one block per server tick until its base is supported.
                     moveTardisVertically(server, registry, world, pos, tardis, -1);
                 }
             }
@@ -421,14 +430,39 @@ public final class TardisDimensionManager {
             // physical console rather than letting them reach the world void.
             if (player.getY() >= origin.getY() - 8) continue;
 
-            BlockPos console = tardisConsolePosition(interior, origin, record, server);
-            Vec3d target = console == null
-                    ? new Vec3d(origin.getX() + 0.5, origin.getY() + 2.0, origin.getZ() + 0.5)
-                    : new Vec3d(console.getX() + 0.5, console.getY() + 1.25, console.getZ() + 0.5);
+            BlockPos door = tardisInteriorDoorPosition(interior, record, server);
+            Vec3d target = door == null
+                    ? new Vec3d(origin.getX() + 0.5, origin.getY() + 1.0, origin.getZ() - 4.0)
+                    : new Vec3d(door.getX() + 0.5, door.getY() + 1.0, door.getZ() + 0.5);
             player.teleport(interior, target.x, target.y, target.z, player.getYaw(), player.getPitch());
             player.setVelocity(Vec3d.ZERO);
-            player.sendMessage(Text.literal("The TARDIS catches you and returns you to the console."), true);
+            player.sendMessage(Text.literal("The TARDIS catches you and returns you to its door."), true);
         }
+    }
+
+
+    /** Finds the registered interior door, falling back to the stored position. */
+    private static BlockPos tardisInteriorDoorPosition(ServerWorld interior, TardisRegistryState.Record record, MinecraftServer server) {
+        ServerWorld exterior = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.world())));
+        if (exterior != null) {
+            BlockPos exteriorPos = BlockPos.fromLong(record.pos());
+            if (exterior.getBlockEntity(exteriorPos) instanceof TardisExteriorBlockEntity tardis) {
+                BlockPos stored = tardis.getInteriorDoorPos();
+                if (stored != null && interior.getBlockState(stored).isOf(GallifreyModBlocks.TARDIS_INTERIOR_DOOR)) {
+                    return stored;
+                }
+            }
+        }
+        BlockPos origin = BlockPos.fromLong(record.origin());
+        for (int x = origin.getX() - 8; x <= origin.getX() + 8; x++) {
+            for (int y = origin.getY(); y <= origin.getY() + 8; y++) {
+                for (int z = origin.getZ() - 8; z <= origin.getZ() + 8; z++) {
+                    BlockPos candidate = new BlockPos(x, y, z);
+                    if (interior.getBlockState(candidate).isOf(GallifreyModBlocks.TARDIS_INTERIOR_DOOR)) return candidate;
+                }
+            }
+        }
+        return null;
     }
 
     /** Finds the registered console, falling back to a modest search only when needed. */
@@ -641,7 +675,10 @@ public final class TardisDimensionManager {
     private static void selfDestruct(MinecraftServer server, TardisRegistryState registry, ServerWorld world, BlockPos pos, TardisExteriorBlockEntity tardis) {
         UUID id = tardis.getTardisId();
         world.playSound(null, pos, GallifreySounds.TYPE70DEMAT, SoundCategory.BLOCKS, 1.5F, 0.65F);
+        // The completed countdown always produces a real world explosion at
+        // the shell, then the registry/interior are removed.
         world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.8, pos.getZ() + 0.5, 4.0F, false, World.ExplosionSourceType.TNT);
+        world.setBlockState(pos, net.minecraft.block.Blocks.AIR.getDefaultState(), 3);
         if (id != null) deleteTardis(server, id);
     }
 

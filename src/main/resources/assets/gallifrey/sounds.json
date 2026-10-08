@@ -480,7 +480,11 @@
   "drwhovale": {
     "category": "music",
     "sounds": [
-      "gallifrey:drwhovale"
+      {
+        "name": "gallifrey:drwhovale",
+        "stream": true,
+        "preload": true
+      }
     ]
   },
   "dugga_doo": {
