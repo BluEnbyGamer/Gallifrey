@@ -1,6 +1,7 @@
 package com.timelordmod.gallifrey.client;
 
 import com.timelordmod.gallifrey.block.entity.TardisInteriorDoorBlockEntity;
+import com.timelordmod.gallifrey.block.TardisInteriorDoorBlock;
 import com.timelordmod.gallifrey.model.TardisInteriorDoorModel;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -32,6 +33,9 @@ public class TardisInteriorDoorRenderer implements BlockEntityRenderer<TardisInt
     ) {
         matrices.push();
         matrices.translate(0.5F, 1.5F, 0.5F);
+        if (blockEntity.getCachedState().contains(TardisInteriorDoorBlock.FACING)) {
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(blockEntity.getCachedState().get(TardisInteriorDoorBlock.FACING).asRotation()));
+        }
         matrices.scale(-1.0F, -1.0F, 1.0F);
 
         String style = blockEntity.getExteriorStyle();

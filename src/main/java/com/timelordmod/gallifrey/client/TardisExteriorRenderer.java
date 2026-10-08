@@ -57,7 +57,7 @@ public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExterio
         float pulse = 1.0F;
         if (blockEntity.isFlightPending()) {
             float progress = 1.0F - (blockEntity.getFlightTicks() / (float) blockEntity.getFlightTime());
-            phase = progress < 0.34F ? 1.0F - progress / 0.34F : 0.035F;
+            phase = progress < 0.34F ? 1.0F - progress / 0.34F : 0.0F;
             pulse = 1.0F + (float) Math.sin(progress * Math.PI * 20.0F) * 0.035F;
         } else if (blockEntity.getMaterializationTicks() > 0) {
             float progress = 1.0F - (blockEntity.getMaterializationTicks() / (float) blockEntity.getMaterializationTime());
@@ -65,7 +65,7 @@ public class TardisExteriorRenderer implements BlockEntityRenderer<TardisExterio
             pulse = 1.0F + (float) Math.sin((1.0F - progress) * Math.PI * 12.0F) * 0.04F;
         }
 
-        float phaseScale = Math.max(0.06F, phase);
+        float phaseScale = Math.max(0.001F, phase);
         matrices.translate(0.0F, (1.0F - phaseScale) * 0.08F, 0.0F);
         float baseScale = 0.94F;
         matrices.scale(-pulse * phaseScale * baseScale, -pulse * phaseScale * baseScale, pulse * phaseScale * baseScale);
