@@ -20,6 +20,14 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.trunk.CherryTrunkPlacer;
 import net.minecraft.world.gen.trunk.GiantTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import net.minecraft.world.gen.trunk.MegaJungleTrunkPlacer;
+import net.minecraft.world.gen.foliage.JungleFoliagePlacer;
+import net.minecraft.world.gen.foliage.BushFoliagePlacer;
+import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
+import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
+import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
+import net.minecraft.registry.RegistryEntryLookup;
+import net.minecraft.block.Block;
 
 import java.util.List;
 
@@ -38,7 +46,18 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> ASH_KEY =registerKey("ash");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_KEY =registerKey("maple");
     public static final RegistryKey<ConfiguredFeature<?, ?>> MOONPINE_KEY =registerKey("moonpine");
+    // Maple Jungle: giant 2x2 maples, normal maples and low maple bushes, picked at random
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_GIANT_KEY = registerKey("maple_giant");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_BUSH_KEY = registerKey("maple_bush");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MAPLE_JUNGLE_TREES_KEY = registerKey("maple_jungle_trees");
+    // Old Growth Moonpine Forest: the giant 2x2 moonpine mixed with a smaller single-trunk moonpine
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MOONPINE_SMALL_KEY = registerKey("moonpine_small");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MOONPINE_FOREST_TREES_KEY = registerKey("moonpine_forest_trees");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_TREE_KEY = registerKey("prehistoric_tree");
+    // Prehistoric jungle: giant 2x2 prehistoric trees, normal ones and low bushes, picked at random like vanilla's jungle
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_GIANT_TREE_KEY = registerKey("prehistoric_giant_tree");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_BUSH_KEY = registerKey("prehistoric_bush");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTORIC_JUNGLE_TREES_KEY = registerKey("prehistoric_jungle_trees");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_TREE_KEY = registerKey("wasted_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_OAK_TREE_KEY = registerKey("wasted_oak_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WASTED_BIRCH_TREE_KEY = registerKey("wasted_birch_tree");
@@ -197,6 +216,47 @@ public class ModConfiguredFeatures {
                         UniformIntProvider.create(13, 17)),
                 new TwoLayersFeatureSize(1, 1, 2)).build());
 
+        // ---------------- Maple Jungle ----------------
+        // Giant maple: 2x2 trunk like vanilla's giant jungle tree, with vines on trunk and leaves.
+        register(context, MAPLE_GIANT_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.MAPLE_LOG),
+                new MegaJungleTrunkPlacer(10, 2, 19),
+                BlockStateProvider.of(GallifreyModBlocks.MAPLE_LEAVES),
+                new JungleFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 2),
+                new TwoLayersFeatureSize(1, 1, 2))
+                .decorators(List.of(TrunkVineTreeDecorator.INSTANCE, new LeavesVineTreeDecorator(0.25F)))
+                .build());
+
+        // Maple bush: one log with a mound of leaves, like vanilla's jungle bush.
+        register(context, MAPLE_BUSH_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.MAPLE_LOG),
+                new StraightTrunkPlacer(1, 0, 0),
+                BlockStateProvider.of(GallifreyModBlocks.MAPLE_LEAVES),
+                new BushFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2),
+                new TwoLayersFeatureSize(0, 0, 0)).build());
+
+        RegistryEntryLookup<ConfiguredFeature<?, ?>> configured = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
+
+        // Same odds as vanilla's jungle: 1 in 3 giant, otherwise half bushes, the rest normal maples.
+        register(context, MAPLE_JUNGLE_TREES_KEY, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(
+                new RandomFeatureEntry(checked(configured, MAPLE_GIANT_KEY, GallifreyModBlocks.MAPLE_SAPLING), 0.33333334F),
+                new RandomFeatureEntry(checked(configured, MAPLE_BUSH_KEY, GallifreyModBlocks.MAPLE_SAPLING), 0.5F)),
+                checked(configured, MAPLE_KEY, GallifreyModBlocks.MAPLE_SAPLING)));
+
+        // ---------------- Old Growth Moonpine Forest ----------------
+        // Smaller single-trunk moonpine, spruce-shaped, to fill between the giants.
+        register(context, MOONPINE_SMALL_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.MOONPINE_LOG),
+                new StraightTrunkPlacer(7, 4, 0),
+                BlockStateProvider.of(GallifreyModBlocks.MOONPINE_LEAVES),
+                new SpruceFoliagePlacer(UniformIntProvider.create(2, 3), UniformIntProvider.create(0, 2), UniformIntProvider.create(1, 2)),
+                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build());
+
+        // Roughly half giants, half smaller moonpines, like vanilla's old growth pine taiga.
+        register(context, MOONPINE_FOREST_TREES_KEY, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(
+                new RandomFeatureEntry(checked(configured, MOONPINE_KEY, GallifreyModBlocks.MOONPINE_SAPLING), 0.5F)),
+                checked(configured, MOONPINE_SMALL_KEY, GallifreyModBlocks.MOONPINE_SAPLING)));
+
         register(context, WASTED_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(GallifreyModBlocks.WASTED_LOG),
                 new StraightTrunkPlacer(4, 2, 0),
@@ -231,6 +291,36 @@ public class ModConfiguredFeatures {
                 new TwoLayersFeatureSize(1, 0, 1)
         ).build());
 
+        // ---------------- Prehistoric jungle ----------------
+        // The normal prehistoric tree above already has vanilla's jungle tree shape
+        // (straight 4-12 trunk, blob leaves). These add the rest of a jungle:
+
+        // Giant prehistoric tree: 2x2 trunk like vanilla's mega jungle tree, vines on trunk and leaves.
+        // Also what four prehistoric saplings in a square grow into.
+        register(context, PREHISTORIC_GIANT_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LOG),
+                new MegaJungleTrunkPlacer(10, 2, 19),
+                BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LEAVES),
+                new JungleFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 2),
+                new TwoLayersFeatureSize(1, 1, 2))
+                .decorators(List.of(TrunkVineTreeDecorator.INSTANCE, new LeavesVineTreeDecorator(0.25F)))
+                .build());
+
+        // Prehistoric bush: one log with a mound of leaves, like vanilla's jungle bush.
+        register(context, PREHISTORIC_BUSH_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LOG),
+                new StraightTrunkPlacer(1, 0, 0),
+                BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LEAVES),
+                new BushFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2),
+                new TwoLayersFeatureSize(0, 0, 0)).build());
+
+        // Same odds as vanilla's jungle: 1 in 3 giant, otherwise half bushes, the rest normal prehistoric trees.
+        RegistryEntryLookup<ConfiguredFeature<?, ?>> prehistoricConfigured = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
+        register(context, PREHISTORIC_JUNGLE_TREES_KEY, Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(
+                new RandomFeatureEntry(checked(prehistoricConfigured, PREHISTORIC_GIANT_TREE_KEY, GallifreyModBlocks.PREHISTORIC_SAPLING), 0.33333334F),
+                new RandomFeatureEntry(checked(prehistoricConfigured, PREHISTORIC_BUSH_KEY, GallifreyModBlocks.PREHISTORIC_SAPLING), 0.5F)),
+                checked(prehistoricConfigured, PREHISTORIC_TREE_KEY, GallifreyModBlocks.PREHISTORIC_SAPLING)));
+
         RuleTest prehistoricStoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest prehistoricDeepslateReplacables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
         register(context, PREHISTORIC_ORE_KEY, Feature.ORE, new OreFeatureConfig(List.of(
@@ -238,6 +328,12 @@ public class ModConfiguredFeatures {
                 OreFeatureConfig.createTarget(prehistoricDeepslateReplacables, GallifreyModBlocks.DEEPSLATE_PREHISTORIC_ORE.getDefaultState())
         ), 8));
     }
+    /** A tree that only grows where its sapling could survive (so never on water or bare stone). */
+    private static net.minecraft.registry.entry.RegistryEntry<PlacedFeature> checked(
+            RegistryEntryLookup<ConfiguredFeature<?, ?>> configured, RegistryKey<ConfiguredFeature<?, ?>> tree, Block sapling) {
+        return PlacedFeatures.createEntry(configured.getOrThrow(tree), PlacedFeatures.wouldSurvive(sapling));
+    }
+
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(GallifreyMod.MOD_ID, name));
     }

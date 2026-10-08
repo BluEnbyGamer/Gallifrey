@@ -212,7 +212,8 @@ public class GallifreyModBlocks {
     // Steel grates
     public static final Block GRATE_BLOCK = registerBlock(
             "grate_block",
-            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK))
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    .nonOpaque())
     );
 
     public static final Block THICK_GRATE_BLOCK = registerBlock(

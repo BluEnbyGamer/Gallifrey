@@ -12,6 +12,7 @@ import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
+import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
 import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
@@ -36,6 +37,8 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> ASH_PLACED_KEY = registerKey("ash_placed");
     public static final RegistryKey<PlacedFeature> MAPLE_PLACED_KEY = registerKey("maple_placed");
     public static final RegistryKey<PlacedFeature> MOONPINE_PLACED_KEY = registerKey("moonpine_placed");
+    public static final RegistryKey<PlacedFeature> MAPLE_JUNGLE_TREES_PLACED_KEY = registerKey("maple_jungle_trees_placed");
+    public static final RegistryKey<PlacedFeature> MOONPINE_FOREST_TREES_PLACED_KEY = registerKey("moonpine_forest_trees_placed");
     public static final RegistryKey<PlacedFeature> PREHISTORIC_PLACED_KEY = registerKey("prehistoric_placed");
     public static final RegistryKey<PlacedFeature> PREHISTORIC_ORE_PLACED_KEY = registerKey("prehistoric_ore_placed");
 
@@ -102,6 +105,16 @@ public class ModPlacedFeatures {
                         BiomePlacementModifier.of()
                 ));
 
+        // Maple Jungle: thick tree cover. Vanilla's jungle uses 50 per chunk; maples are
+        // wider than jungle trees, so 35 gives the same packed-in feel without being a wall.
+        // treeModifiers() also keeps trees off water (surface water depth filter).
+        register(context, MAPLE_JUNGLE_TREES_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MAPLE_JUNGLE_TREES_KEY),
+                VegetationPlacedFeatures.treeModifiers(PlacedFeatures.createCountExtraModifier(35, 0.1F, 1)));
+
+        // Old Growth Moonpine Forest: same density as vanilla's old growth pine taiga.
+        register(context, MOONPINE_FOREST_TREES_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MOONPINE_FOREST_TREES_KEY),
+                VegetationPlacedFeatures.treeModifiers(PlacedFeatures.createCountExtraModifier(10, 0.1F, 1)));
+
         register(context, SONIC_CRYSTAL_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SONIC_CRYSTAL_ORE_KEY),
                  ModOrePlacement.modifiersWithCount(4, // Gold-like rarity
                     HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(32))));
@@ -125,14 +138,10 @@ public class ModPlacedFeatures {
         ModOrePlacement.modifiersWithCount(5,
         HeightRangePlacementModifier.uniform(YOffset.fixed(-48), YOffset.fixed(48))));
 
-        register(context, PREHISTORIC_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PREHISTORIC_TREE_KEY),
-                List.of(
-                        CountPlacementModifier.of(12),
-                        SquarePlacementModifier.of(),
-                        HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES),
-                        PlacedFeatures.wouldSurvive(GallifreyModBlocks.PREHISTORIC_SAPLING),
-                        BiomePlacementModifier.of()
-                ));
+        // Prehistoric trees: as dense as vanilla's jungle (50 per chunk, same as trees_jungle).
+        // treeModifiers() also keeps them off water; each tree checks its sapling could survive.
+        register(context, PREHISTORIC_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PREHISTORIC_JUNGLE_TREES_KEY),
+                VegetationPlacedFeatures.treeModifiers(PlacedFeatures.createCountExtraModifier(50, 0.1F, 1)));
         register(context, PREHISTORIC_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PREHISTORIC_ORE_KEY),
                 ModOrePlacement.modifiersWithCount(10,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-48), YOffset.fixed(96))));
