@@ -3,10 +3,10 @@
   "config": {
     "decorators": [
       {
-        "type": "minecraft:trunk_vine"
+        "type": "gallifrey:prehistoric_trunk_vine"
       },
       {
-        "type": "minecraft:leave_vine",
+        "type": "gallifrey:prehistoric_leaves_vine",
         "probability": 0.25
       }
     ],

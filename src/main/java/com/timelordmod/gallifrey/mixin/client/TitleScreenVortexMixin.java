@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * Title screen background choice: the time vortex or the normal panorama.
  *
  * - Swaps the one call that draws the panorama for the vortex when it is switched on.
- * - Adds a small button in the top-right corner to flip between the two.
+ * - Adds a small button in the bottom-left corner to flip between the two.
  *   The choice is saved in config/gallifrey-client.properties.
  */
 @Mixin(TitleScreen.class)
@@ -49,7 +49,8 @@ public abstract class TitleScreenVortexMixin extends Screen {
                     GallifreyClientConfig.setVortexMenuBackground(!GallifreyClientConfig.isVortexMenuBackground());
                     button.setMessage(gallifrey$label());
                 })
-                .dimensions(this.width - buttonWidth - 4, 4, buttonWidth, 20)
+                // Bottom-left corner, just above the "Minecraft 1.20.1" version text.
+                .dimensions(4, this.height - 34, buttonWidth, 20)
                 .tooltip(Tooltip.of(Text.translatable("gui.gallifrey.menu_background.tooltip")))
                 .build());
     }

@@ -26,6 +26,8 @@ import net.minecraft.world.gen.foliage.BushFoliagePlacer;
 import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
+import com.timelordmod.gallifrey.world.tree.decorator.PrehistoricLeavesVineTreeDecorator;
+import com.timelordmod.gallifrey.world.tree.decorator.PrehistoricTrunkVineTreeDecorator;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.block.Block;
 
@@ -295,7 +297,7 @@ public class ModConfiguredFeatures {
         // The normal prehistoric tree above already has vanilla's jungle tree shape
         // (straight 4-12 trunk, blob leaves). These add the rest of a jungle:
 
-        // Giant prehistoric tree: 2x2 trunk like vanilla's mega jungle tree, vines on trunk and leaves.
+        // Giant prehistoric tree: 2x2 trunk like vanilla's mega jungle tree, Prehistoric Vines on trunk and leaves.
         // Also what four prehistoric saplings in a square grow into.
         register(context, PREHISTORIC_GIANT_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LOG),
@@ -303,7 +305,7 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.of(GallifreyModBlocks.PREHISTORIC_LEAVES),
                 new JungleFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 2),
                 new TwoLayersFeatureSize(1, 1, 2))
-                .decorators(List.of(TrunkVineTreeDecorator.INSTANCE, new LeavesVineTreeDecorator(0.25F)))
+                .decorators(List.of(PrehistoricTrunkVineTreeDecorator.INSTANCE, new PrehistoricLeavesVineTreeDecorator(0.25F)))
                 .build());
 
         // Prehistoric bush: one log with a mound of leaves, like vanilla's jungle bush.
