@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "gallifrey:prehistoric_planks"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:prehistoric_button",
+    "count": 1
+  }
+}

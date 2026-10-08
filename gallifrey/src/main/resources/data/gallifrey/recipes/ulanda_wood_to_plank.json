@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gallifrey:ulanda_wood"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:ulanda_planks",
+    "count": 4
+  }
+}

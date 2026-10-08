@@ -1,0 +1,11 @@
+{
+  "type": "gallifrey:classic_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gallifrey:classic",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gallifrey:classic"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "top": "gallifrey:block/mars/mars_stone_bricks",
+    "bottom": "gallifrey:block/mars/mars_stone_bricks",
+    "side": "gallifrey:block/mars/mars_stone_bricks"
+  }
+}

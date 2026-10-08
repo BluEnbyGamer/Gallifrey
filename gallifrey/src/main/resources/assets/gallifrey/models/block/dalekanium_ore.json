@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "gallifrey:block/dalekanium/dalekanium_ore",
+    "up": "gallifrey:block/dalekanium/dalekanium_ore",
+    "north": "gallifrey:block/dalekanium/dalekanium_ore",
+    "east": "gallifrey:block/dalekanium/dalekanium_ore",
+    "south": "gallifrey:block/dalekanium/dalekanium_ore",
+    "west": "gallifrey:block/dalekanium/dalekanium_ore",
+    "particle": "gallifrey:block/dalekanium/dalekanium_ore"
+  },
+  "render_type": "solid"
+}

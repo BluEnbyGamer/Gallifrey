@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gallifrey:dalekanium_block"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:dalekanium_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "gallifrey:block/roundel/stripped_cherry_log_roundel",
+    "down": "gallifrey:block/roundel/stripped_cherry_log_roundel",
+    "up": "gallifrey:block/roundel/stripped_cherry_log_roundel",
+    "north": "gallifrey:block/roundel/stripped_cherry_log_roundel",
+    "south": "gallifrey:block/roundel/stripped_cherry_log_roundel",
+    "east": "gallifrey:block/roundel/stripped_cherry_log_roundel_half",
+    "west": "gallifrey:block/roundel/stripped_cherry_log_roundel_half"
+  }
+}

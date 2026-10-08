@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AEA",
+    "ERE",
+    "AEA"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:atrium"
+    },
+    "E": {
+      "item": "gallifrey:energized_atrium"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "gallifrey:atrium_core",
+    "count": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ARA",
+    "RIR",
+    "ARA"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:atrium"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "gallifrey:energized_atrium",
+    "count": 1
+  }
+}

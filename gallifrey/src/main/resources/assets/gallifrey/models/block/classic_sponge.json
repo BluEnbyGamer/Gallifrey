@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gallifrey:block/classic_minecraft/classic_sponge"
+  }
+}

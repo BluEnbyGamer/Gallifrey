@@ -1,0 +1,50 @@
+{
+  "has_precipitation": false,
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "effects": {
+    "fog_color": 8011054,
+    "sky_color": 10111541,
+    "water_color": 8007717,
+    "water_fog_color": 5906456,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    }
+  },
+  "carvers": {
+    "air": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "gallifrey:mars_iron_ore_placed",
+      "gallifrey:mars_andesite_placed",
+      "gallifrey:mars_diorite_placed",
+      "gallifrey:mars_granite_placed",
+      "gallifrey:mars_piss_crystal_placed"
+    ],
+    [],
+    [],
+    [],
+    []
+  ],
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {}
+}

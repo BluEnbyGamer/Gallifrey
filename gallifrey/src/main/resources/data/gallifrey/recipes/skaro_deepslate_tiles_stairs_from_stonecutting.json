@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "gallifrey:skaro_deepslate_tiles"
+  },
+  "result": "gallifrey:skaro_deepslate_tiles_stairs",
+  "count": 1
+}

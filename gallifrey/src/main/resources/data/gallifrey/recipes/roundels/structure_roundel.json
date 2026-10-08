@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " = ",
+    "# #",
+    " = "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:obsidian"
+    },
+    "=": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "item": "gallifrey:structure_roundel",
+    "count": 4
+  }
+}

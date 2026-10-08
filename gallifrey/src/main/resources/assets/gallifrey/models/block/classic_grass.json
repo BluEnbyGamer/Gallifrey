@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/grass_block",
+  "textures": {
+    "top": "gallifrey:block/classic_minecraft/classic_grass_top",
+    "side": "gallifrey:block/classic_minecraft/classic_grass_side",
+    "bottom": "gallifrey:block/classic_minecraft/classic_dirt",
+    "overlay": "gallifrey:block/classic_minecraft/classic_grass_side"
+  }
+}

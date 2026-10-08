@@ -1,0 +1,162 @@
+plugins {
+	id 'fabric-loom' version "${loom_version}"
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	maven {
+		name = 'GeckoLib'
+		url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+		content {
+			includeGroupByRegex("software\\.bernie.*")
+			includeGroup("com.eliotlash.mclib")
+		}
+
+	}
+	maven {url = "https://maven.kyrptonaught.dev"}
+	maven {url = "https://maven.blamejared.com/"} // JEI
+
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter { includeGroup "maven.modrinth" }
+	}
+
+	maven {
+		name = 'TerraformersMC'
+		url = 'https://maven.terraformersmc.com/'
+	}
+}
+
+loom {
+	runs {
+		client {
+			programArgs '--username', 'TimelordDev'
+		}
+	}
+}
+
+fabricApi {
+	configureDataGeneration()
+}
+
+/*
+ * ---------------------------------------------------------
+ * DEPENDENCIES
+ * ---------------------------------------------------------
+ */
+
+configurations.all {
+	resolutionStrategy {
+		force("net.fabricmc:fabric-loader:$loader_version")
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	modImplementation(
+			"software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
+	)
+	modImplementation 'net.kyrptonaught:customportalapi:0.0.1-beta65-1.20'
+	include 'net.kyrptonaught:customportalapi:0.0.1-beta65-1.20'
+
+	implementation("com.eliotlash.mclib:mclib:20")
+
+	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:7.0.1"
+	include "com.terraformersmc.terraform-api:terraform-wood-api-v1:7.0.1"
+
+	modImplementation "maven.modrinth:biolith:NikAXMfS"
+	include("maven.modrinth:biolith:NikAXMfS")
+
+	//please leave this alone
+	modCompileOnly("mezz.jei:jei-1.20.1-fabric:15.62.0.217") { transitive = false }
+}
+
+/*
+ * ---------------------------------------------------------
+ * RESOURCES
+ * ---------------------------------------------------------
+ */
+
+processResources {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": inputs.properties.version
+	}
+}
+
+/*
+ * ---------------------------------------------------------
+ * JAVA
+ * ---------------------------------------------------------
+ */
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 17
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
+
+/*
+ * ----------------------------------------------------------
+ * JAR
+ * ----------------------------------------------------------
+ */
+
+jar {
+	inputs.property "archivesName", project.base.archivesName
+
+	from("LICENSE") {
+		rename {
+			"${it}_${inputs.properties.archivesName}"
+		}
+	}
+}
+
+/*
+ * ----------------------------------------------------------
+ * MAVEN
+ * ----------------------------------------------------------
+ */
+
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			artifactId = project.archives_base_name
+			from components.java
+		}
+	}
+
+	repositories {
+	}
+}
+
+// Prevent generated data from colliding with main resources when creating the sources JAR.
+tasks.named("sourcesJar") {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "minecraft:leather"
+    },
+    "O": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "gallifrey:location_circuit"
+    },
+    "#": {
+      "item": "gallifrey:interface_circuit"
+    },
+    "Q": {
+      "item": "gallifrey:white_point_star"
+    },
+    "D": {
+      "item": "gallifrey:dimension_circuit"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "LQD",
+    "O#O"
+  ],
+  "result": {
+    "item": "gallifrey:vortex_manipulator",
+    "count": 1
+  },
+  "show_notification": true
+}

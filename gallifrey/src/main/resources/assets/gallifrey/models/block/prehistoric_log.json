@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "gallifrey:block/prehistoric/prehistoric_log_top",
+    "side": "gallifrey:block/prehistoric/prehistoric_log"
+  }
+}

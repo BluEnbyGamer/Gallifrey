@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "top": "gallifrey:block/mars/polished_mars_stone",
+    "bottom": "gallifrey:block/mars/polished_mars_stone",
+    "side": "gallifrey:block/mars/polished_mars_stone"
+  }
+}

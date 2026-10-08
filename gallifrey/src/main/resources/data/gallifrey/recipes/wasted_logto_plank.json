@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gallifrey:wasted_log"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:wasted_planks",
+    "count": 4
+  }
+}

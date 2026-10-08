@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "gallifrey:block/classic_minecraft/classic_planks",
+    "side": "gallifrey:block/classic_minecraft/classic_planks",
+    "top": "gallifrey:block/classic_minecraft/classic_planks"
+  }
+}

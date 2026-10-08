@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=west": {
+      "model": "gallifrey:block/tardis_slab_vertical"
+    },
+    "facing=east": {
+      "model": "gallifrey:block/tardis_slab_vertical",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north": {
+      "model": "gallifrey:block/tardis_slab_vertical",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=south": {
+      "model": "gallifrey:block/tardis_slab_vertical",
+      "y": 270,
+      "uvlock": true
+    }
+  }
+}

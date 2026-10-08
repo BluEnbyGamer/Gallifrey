@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NGN",
+    "GBG",
+    "NGN"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:raw_iron"
+    },
+    "N": {
+      "item": "minecraft:coal"
+    },
+    "B": {
+      "item": "minecraft:blaze_powder"
+    }
+  },
+  "result": {
+    "item": "gallifrey:raw_steel",
+    "count": 4
+  }
+}

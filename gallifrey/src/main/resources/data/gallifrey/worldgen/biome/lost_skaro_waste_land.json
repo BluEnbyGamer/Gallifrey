@@ -1,0 +1,68 @@
+{
+  "has_precipitation": false,
+  "temperature": 2.0,
+  "downfall": 0.0,
+  "effects": {
+    "fog_color": 6082518,
+    "sky_color": 4103605,
+    "water_color": 5607190,
+    "water_fog_color": 2785164,
+    "grass_color": 7824977,
+    "foliage_color": 6844216,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "particle": {
+      "probability": 0.005,
+      "options": {
+        "type": "minecraft:dust",
+        "color": [
+          0.55,
+          0.64,
+          0.74
+        ],
+        "scale": 1.0
+      }
+    }
+  },
+  "carvers": {
+    "air": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "gallifrey:dalekanium_ore_upper",
+      "gallifrey:dalekanium_ore_middle",
+      "gallifrey:dalekanium_ore_lower",
+      "gallifrey:skaro_andesite_placed",
+      "gallifrey:skaro_diorite_placed",
+      "gallifrey:skaro_granite_placed"
+    ],
+    [],
+    [],
+    [],
+    [
+      "gallifrey:wasted_oak_placed",
+      "gallifrey:wasted_birch_placed"
+    ]
+  ],
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {}
+}

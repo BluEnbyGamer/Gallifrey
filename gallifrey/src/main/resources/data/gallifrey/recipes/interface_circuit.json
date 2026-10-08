@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NON",
+    "QBC",
+    "NON"
+  ],
+  "key": {
+    "N": {
+      "item": "gallifrey:steel_ingot"
+    },
+    "O": {
+      "item": "minecraft:redstone"
+    },
+    "B": {
+      "item": "gallifrey:blank_circuit"
+    },
+    "Q": {
+      "item": "minecraft:writable_book"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "item": "gallifrey:interface_circuit",
+    "count": 1
+  }
+}

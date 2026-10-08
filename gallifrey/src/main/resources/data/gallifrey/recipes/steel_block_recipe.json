@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "gallifrey:steel_ingot"
+    }
+  },
+    "result": {
+      "item": "gallifrey:steel_block",
+      "count": 1
+    }
+}
+
+
+

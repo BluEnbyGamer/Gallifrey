@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " # ",
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:hartnell_block"
+    }
+  },
+  "result": {
+    "item": "gallifrey:hartnell_roundel",
+    "count": 4
+  }
+}

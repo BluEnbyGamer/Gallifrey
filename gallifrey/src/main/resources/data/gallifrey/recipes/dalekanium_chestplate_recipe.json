@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "gallifrey:dalekanium_ingot"
+    }
+  },
+  "result": {
+    "item": "gallifrey:dalekanium_chestplate",
+    "count": 1
+  }
+}
+

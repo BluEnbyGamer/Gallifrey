@@ -1,0 +1,42 @@
+{
+  "credit": "Gallifrey vertical slab",
+  "textures": {
+    "top": "gallifrey:block/classic_minecraft/classic_planks",
+    "bottom": "gallifrey:block/classic_minecraft/classic_planks",
+    "side": "gallifrey:block/classic_minecraft/classic_planks"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        8,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#bottom"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "north": {
+          "texture": "#side"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#side"
+        },
+        "east": {
+          "texture": "#side"
+        }
+      }
+    }
+  ]
+}

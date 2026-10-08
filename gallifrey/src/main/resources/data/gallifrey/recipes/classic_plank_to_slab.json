@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:classic_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_slab",
+    "count": 6
+  }
+}

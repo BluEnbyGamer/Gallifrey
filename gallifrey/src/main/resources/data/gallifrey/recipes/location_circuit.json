@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NON",
+    "GBG",
+    "NON"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:compass"
+    },
+    "N": {
+      "item": "gallifrey:steel_ingot"
+    },
+    "O": {
+      "item": "minecraft:iron_nugget"
+    },
+    "B": {
+      "item": "gallifrey:blank_circuit"
+    }
+  },
+  "result": {
+    "item": "gallifrey:location_circuit",
+    "count": 1
+  }
+}

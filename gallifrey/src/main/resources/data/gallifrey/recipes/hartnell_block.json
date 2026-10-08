@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "=#=",
+    "#=#",
+    "=#="
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cyan_dye"
+    },
+    "=": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "item": "gallifrey:hartnell_block",
+    "count": 4
+  }
+}

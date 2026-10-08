@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ICI",
+    "SBS"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "S": {
+      "item": "gallifrey:refined_sonic_crystal"
+    },
+    "B": {
+      "item": "gallifrey:atrium_core"
+    }
+  },
+  "result": {
+    "item": "gallifrey:sonic_shades",
+    "count": 1
+  }
+}

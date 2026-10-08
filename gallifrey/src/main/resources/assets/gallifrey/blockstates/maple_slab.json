@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/maple_slab"
+    },
+    "type=double": {
+      "model": "gallifrey:block/maple_planks"
+    },
+    "type=top": {
+      "model": "gallifrey:block/maple_slab_top"
+    }
+  }
+}

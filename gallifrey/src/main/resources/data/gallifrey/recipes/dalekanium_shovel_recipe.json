@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    " b ",
+    " b "
+  ],
+  "key": {
+    "a": {
+      "item": "gallifrey:dalekanium_ingot"
+    },
+    "b": {
+      "item": "minecraft:stick"
+    }
+  },
+
+  "result": {
+    "item": "gallifrey:dalekanium_shovel",
+    "count": 1
+  }
+}

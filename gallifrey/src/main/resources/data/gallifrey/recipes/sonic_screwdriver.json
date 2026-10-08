@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "CBC",
+    "RIR"
+  ],
+  "key": {
+    "S": {
+      "item": "gallifrey:refined_sonic_crystal"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "B": {
+      "item": "gallifrey:atrium_core"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "gallifrey:sonic_screwdriver",
+    "count": 1
+  }
+}

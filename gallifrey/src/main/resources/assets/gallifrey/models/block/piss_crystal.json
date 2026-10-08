@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "gallifrey:block/mars/piss_crystal",
+    "particle": "gallifrey:block/mars/piss_crystal"
+  }
+}

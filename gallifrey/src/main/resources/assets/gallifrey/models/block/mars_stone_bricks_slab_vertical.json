@@ -1,0 +1,42 @@
+{
+  "credit": "Gallifrey vertical slab",
+  "textures": {
+    "top": "gallifrey:block/mars/mars_stone_bricks",
+    "bottom": "gallifrey:block/mars/mars_stone_bricks",
+    "side": "gallifrey:block/mars/mars_stone_bricks"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        8,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#bottom"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "north": {
+          "texture": "#side"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#side"
+        },
+        "east": {
+          "texture": "#side"
+        }
+      }
+    }
+  ]
+}

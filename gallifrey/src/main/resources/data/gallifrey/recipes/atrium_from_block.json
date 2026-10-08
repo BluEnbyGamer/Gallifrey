@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gallifrey:atrium_block"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:atrium",
+    "count": 9
+  }
+}

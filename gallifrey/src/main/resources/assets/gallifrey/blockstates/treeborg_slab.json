@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/treeborg_slab"
+    },
+    "type=double": {
+      "model": "gallifrey:block/treeborg_planks"
+    },
+    "type=top": {
+      "model": "gallifrey:block/treeborg_slab_top"
+    }
+  }
+}

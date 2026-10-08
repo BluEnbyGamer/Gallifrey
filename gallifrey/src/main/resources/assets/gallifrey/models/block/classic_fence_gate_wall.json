@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_fence_gate_wall",
+  "textures": {
+    "texture": "gallifrey:block/classic_minecraft/classic_planks"
+  }
+}

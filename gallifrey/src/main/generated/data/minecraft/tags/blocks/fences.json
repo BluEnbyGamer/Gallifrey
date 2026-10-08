@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:tardis_fence",
+    "gallifrey:treeborg_fence",
+    "gallifrey:ash_fence",
+    "gallifrey:maple_fence",
+    "gallifrey:moonpine_fence",
+    "gallifrey:ulanda_fence",
+    "gallifrey:wasted_fence",
+    "gallifrey:prehistoric_fence"
+  ]
+}

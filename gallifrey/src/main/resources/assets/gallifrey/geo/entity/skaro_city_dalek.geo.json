@@ -1,0 +1,102 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.skaro_city_dalek",
+        "texture_width": 128,
+        "texture_height": 128,
+        "visible_bounds_width": 3,
+        "visible_bounds_height": 3.5,
+        "visible_bounds_offset": [0, 1.25, 0]
+      },
+      "bones": [
+        {
+          "name": "Skaro City Dalek",
+          "pivot": [0, 0, 1],
+          "cubes": [
+            {"origin": [-7, 0, -7], "size": [14, 1, 16], "uv": [0, 0]},
+            {"origin": [-6, 0, -8], "size": [12, 1, 1], "uv": [60, 12]},
+            {"origin": [-6, 0, 9], "size": [12, 1, 1], "uv": [60, 14]},
+            {"origin": [-6, 1, -6], "size": [12, 6, 15], "uv": [0, 17]},
+            {"origin": [-5.5, 7, -5.25], "size": [11, 4, 14.25], "uv": [0, 38]},
+            {"origin": [-5.5, 11, -3.5], "size": [11, 7, 12.5], "uv": [50, 38]},
+            {"origin": [-6.5, 12, -3.5], "size": [1, 6, 12.5], "uv": [34, 68]},
+            {"origin": [5.5, 12, -3.5], "size": [1, 6, 12.5], "uv": [60, 68]},
+            {"origin": [-5.5, 12, -4.5], "size": [11, 6, 1], "uv": [54, 30]}
+          ]
+        },
+        {
+          "name": "bone4",
+          "parent": "Skaro City Dalek",
+          "pivot": [0.16589, 22.98932, 2.76953],
+          "cubes": [
+            {"origin": [-5.5, 18, -2.5], "size": [11, 1, 10.5], "uv": [42, 57]},
+            {"origin": [-4.5, 18, -1.5], "size": [9, 4, 8.5], "uv": [60, 0]},
+            {"origin": [-5.5, 20, -2.5], "size": [11, 1, 10.5], "uv": [0, 56]}
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "bone4",
+          "pivot": [0.16589, 22.98932, 2.76953],
+          "cubes": [
+            {"origin": [-5.5, 22, -2.5], "size": [11, 3, 10.5], "uv": [54, 17]},
+            {"origin": [-4.5, 25, -1.5], "size": [9, 3, 8.5], "uv": [0, 67]},
+            {"origin": [-5.25, 25.5, 2.25], "size": [1, 2, 1], "pivot": [-4.75, 26.5, 2.75], "rotation": [0, 0, -45], "uv": [86, 12]},
+            {"origin": [4.25, 25.5, 2.25], "size": [1, 2, 1], "pivot": [4.75, 26.5, 2.75], "rotation": [0, 0, 45], "uv": [30, 83]}
+          ]
+        },
+        {
+          "name": "bone6",
+          "parent": "head",
+          "pivot": [-0.00047, 26.49828, -1.05],
+          "cubes": [
+            {"origin": [-1.50234, 23.99141, -10.5], "size": [3, 3, 2], "uv": [24, 78]},
+            {"origin": [-0.5, 25, -8.75], "size": [1, 1, 8], "uv": [64, 86]},
+            {"origin": [-1, 24.5, -7.5], "size": [2, 2, 0], "uv": [78, 36]},
+            {"origin": [-1.25, 24.25, -7], "size": [2.5, 2.5, 0], "uv": [82, 36]},
+            {"origin": [-1, 24.5, -6.5], "size": [2, 2, 0], "uv": [86, 15]}
+          ]
+        },
+        {
+          "name": "bone",
+          "parent": "Skaro City Dalek",
+          "pivot": [4, 15.5, -3.5],
+          "rotation": [0, -2.5, 0],
+          "cubes": [
+            {"origin": [3, 14.5, -14], "size": [2, 0, 10.5], "uv": [84, 57]},
+            {"origin": [4, 13.5, -14], "size": [0, 2, 10.5], "uv": [24, 86]},
+            {"origin": [3.25, 13.75, -6.5], "size": [1.5, 1.5, 0], "uv": [44, 56]},
+            {"origin": [3.25, 13.75, -8.5], "size": [1.5, 1.5, 0], "uv": [42, 56]},
+            {"origin": [3.25, 13.75, -10.5], "size": [1.5, 1.5, 0], "uv": [56, 37]},
+            {"origin": [3.25, 13.75, -12.5], "size": [1.5, 1.5, 0], "uv": [54, 37]},
+            {"origin": [3.5, 14, -14.5], "size": [1, 1, 11], "uv": [0, 78]}
+          ]
+        },
+        {
+          "name": "bone2",
+          "parent": "Skaro City Dalek",
+          "pivot": [-3, 15.5, -3.5],
+          "mirror": true,
+          "cubes": [
+            {"origin": [-3.5, 14, -13], "size": [1, 1, 9.5], "uv": [44, 86], "mirror": false}
+          ]
+        },
+        {
+          "name": "bone3",
+          "parent": "bone2",
+          "pivot": [-3, 15.5, -12.35],
+          "mirror": true,
+          "cubes": [
+            {"origin": [-3, 13.5, -14], "size": [2, 2, 1], "pivot": [-2, 14.5, -13.5], "rotation": [0, 65, 0], "uv": [78, 33], "mirror": false},
+            {"origin": [-4, 13.5, -13.25], "size": [2, 2, 1], "uv": [78, 30], "mirror": false},
+            {"origin": [-4, 14.5, -14], "size": [2, 2, 1], "pivot": [-3, 15.5, -13.5], "rotation": [65, 0, 0], "uv": [84, 30], "mirror": false},
+            {"origin": [-5, 13.5, -14], "size": [2, 2, 1], "pivot": [-4, 14.5, -13.5], "rotation": [0, -65, 0], "uv": [24, 83], "mirror": false},
+            {"origin": [-4, 12.5, -14], "size": [2, 2, 1], "pivot": [-3, 13.5, -13.5], "rotation": [-65, 0, 0], "uv": [84, 33], "mirror": false}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G#N",
+    "SCN",
+    "G#N"
+  ],
+  "key": {
+    "G": {
+      "item": "gallifrey:treeborg_paste"
+    },
+    "#": {
+        "item": "gallifrey:silicone"
+      },
+    "C": {
+      "item": "minecraft:comparator"
+    },
+    "S": {
+      "item": "gallifrey:steel_ingot"
+    },
+    "N": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "gallifrey:blank_circuit",
+    "count": 1
+  }
+}

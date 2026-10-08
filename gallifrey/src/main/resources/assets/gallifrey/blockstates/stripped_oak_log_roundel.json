@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "gallifrey:block/stripped_oak_log_roundel"
+    },
+    "axis=x": {
+      "model": "gallifrey:block/stripped_oak_log_roundel",
+      "y": 90
+    }
+  }
+}

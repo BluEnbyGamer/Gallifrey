@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "gallifrey:dalekanium_ingot"
+    }
+  },
+    "result": {
+      "item": "gallifrey:dalekanium_block",
+      "count": 1
+    }
+}
+
+
+

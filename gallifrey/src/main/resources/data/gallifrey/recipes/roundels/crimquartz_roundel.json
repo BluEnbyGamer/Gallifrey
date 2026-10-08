@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " # ",
+    "#=#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:quartz_roundel"
+    },
+    "=": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": {
+    "item": "gallifrey:crimquartz_roundel",
+    "count": 4
+  }
+}

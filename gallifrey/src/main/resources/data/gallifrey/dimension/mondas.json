@@ -1,0 +1,11 @@
+{
+  "type": "gallifrey:mondas_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gallifrey:mondas",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gallifrey:mondas"
+    }
+  }
+}

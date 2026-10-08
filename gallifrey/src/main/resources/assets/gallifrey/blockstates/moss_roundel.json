@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "gallifrey:block/moss_roundel"
+    },
+    "axis=x": {
+      "model": "gallifrey:block/moss_roundel",
+      "y": 90
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:tardis_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:tardis_slab",
+    "count": 6
+  }
+}

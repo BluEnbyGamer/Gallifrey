@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gallifrey:classic_log"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:classic_planks",
+    "count": 4
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "minecraft:iron_pickaxe"
+  },
+  "addition": {
+    "item": "gallifrey:prehistoric_ingot"
+  },
+  "template": {
+    "item": "gallifrey:prehistoric_upgrade_smithing_template"
+  },
+  "result": {
+    "item": "gallifrey:prehistoric_pickaxe"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "gallifrey:steel_template"
+  },
+  "base": {
+    "item": "minecraft:iron_boots"
+  },
+  "addition": {
+    "item": "gallifrey:steel_ingot"
+  },
+  "result": {
+    "item": "gallifrey:steel_boots"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "gallifrey:unit_base",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 987234561,
+    "spacing": 60,
+    "separation": 20,
+    "spread_type": "linear"
+  }
+}

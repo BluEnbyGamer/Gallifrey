@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "bottom": "gallifrey:block/skaro/wasted_door_bottom",
+    "top": "gallifrey:block/skaro/wasted_door_top"
+  }
+}

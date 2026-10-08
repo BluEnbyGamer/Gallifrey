@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "gallifrey:metalertanium_ingot"
+    }
+  },
+    "result": {
+      "item": "gallifrey:metalertanium_block",
+      "count": 1
+    }
+}
+
+
+

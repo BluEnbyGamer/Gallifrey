@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:mars_stone",
+    "gallifrey:mars_cobblestone",
+    "gallifrey:mars_andesite",
+    "gallifrey:mars_diorite",
+    "gallifrey:mars_granite"
+  ]
+}

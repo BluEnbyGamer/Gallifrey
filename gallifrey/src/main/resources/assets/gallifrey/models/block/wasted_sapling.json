@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "gallifrey:block/skaro/wasted_sapling"
+  }
+}

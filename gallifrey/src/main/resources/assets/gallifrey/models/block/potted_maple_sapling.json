@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "gallifrey:block/maple_wood/maple_sapling"
+  }
+}

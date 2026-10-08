@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " # ",
+    "#=#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:quartz_roundel"
+    },
+    "=": {
+      "item": "minecraft:purple_dye"
+    }
+  },
+  "result": {
+    "item": "gallifrey:vioquartz_roundel",
+    "count": 4
+  }
+}

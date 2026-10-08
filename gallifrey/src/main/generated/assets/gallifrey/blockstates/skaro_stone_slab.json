@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/skaro_stone_slab"
+    },
+    "type=double": {
+      "model": "gallifrey:block/skaro_stone"
+    },
+    "type=top": {
+      "model": "gallifrey:block/skaro_stone_slab_top"
+    }
+  }
+}

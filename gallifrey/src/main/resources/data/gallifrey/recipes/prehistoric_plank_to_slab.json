@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "gallifrey:prehistoric_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:prehistoric_slab",
+    "count": 6
+  }
+}

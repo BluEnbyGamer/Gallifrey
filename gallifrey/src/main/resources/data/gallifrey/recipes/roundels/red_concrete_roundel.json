@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " # ",
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:red_concrete"
+    }
+  },
+  "result": {
+    "item": "gallifrey:red_concrete_roundel",
+    "count": 4
+  }
+}

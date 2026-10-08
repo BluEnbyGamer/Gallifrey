@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "C C",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:stripped_maple_log"
+    },
+    "C": {
+      "item": "minecraft:chain"
+    }
+  },
+  "result": {
+    "item": "gallifrey:maple_hanging_sign",
+    "count": 6
+  }
+}

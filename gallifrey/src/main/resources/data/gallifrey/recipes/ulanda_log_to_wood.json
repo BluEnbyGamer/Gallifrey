@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "gallifrey:ulanda_log"
+    }
+  },
+  "result": {
+    "item": "gallifrey:ulanda_wood",
+    "count": 3
+  }
+}

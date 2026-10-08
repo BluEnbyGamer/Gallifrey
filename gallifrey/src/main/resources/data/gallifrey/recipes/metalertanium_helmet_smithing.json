@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "gallifrey:metalertanium_ingot"
+  },
+  "base": {
+    "item": "gallifrey:dalekanium_helmet"
+  },
+  "addition": {
+    "item": "minecraft:lava_bucket"
+  },
+  "result": {
+    "item": "gallifrey:metalertanium_helmet"
+  }
+}

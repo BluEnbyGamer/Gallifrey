@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "gallifrey:skaro_andesite"
+    }
+  },
+  "result": {
+    "item": "gallifrey:skaro_andesite_wall",
+    "count": 6
+  }
+}

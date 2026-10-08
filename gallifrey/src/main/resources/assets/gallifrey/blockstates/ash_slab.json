@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "gallifrey:block/ash_slab"
+    },
+    "type=double": {
+      "model": "gallifrey:block/ash_planks"
+    },
+    "type=top": {
+      "model": "gallifrey:block/ash_slab_top"
+    }
+  }
+}

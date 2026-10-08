@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gallifrey:block/white_point/white_point_ore"
+  }
+}

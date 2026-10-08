@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "boat",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:tardis_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:tardis_boat",
+    "count": 1
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "gallifrey:block/classic_minecraft/classic_planks"
+  }
+}

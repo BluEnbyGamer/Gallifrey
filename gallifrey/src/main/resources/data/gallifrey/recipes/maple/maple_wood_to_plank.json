@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gallifrey:maple_wood"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:maple_planks",
+    "count": 4
+  }
+}
