@@ -46,6 +46,8 @@ public final class TardisCommands {
                                 .executes(ctx -> exterior(ctx.getSource(), StringArgumentType.getString(ctx, "name")))))
                 .then(CommandManager.literal("antigrav")
                         .executes(ctx -> antigrav(ctx.getSource())))
+                .then(CommandManager.literal("rwf")
+                        .executes(ctx -> rwf(ctx.getSource())))
                 .then(CommandManager.literal("selfdestruct")
                         .executes(ctx -> selfDestruct(ctx.getSource(), false))
                         .then(CommandManager.literal("cancel")
@@ -306,6 +308,15 @@ public final class TardisCommands {
             return 1;
         } catch (Exception e) {
             source.sendError(Text.literal("Only a TARDIS owner can change the exterior."));
+            return 0;
+        }
+    }
+
+    private static int rwf(ServerCommandSource source) {
+        try {
+            return TardisDimensionManager.toggleRealWorldFlight(source.getPlayerOrThrow()) ? 1 : 0;
+        } catch (Exception e) {
+            source.sendError(Text.literal("Only players can use Real World Flight."));
             return 0;
         }
     }

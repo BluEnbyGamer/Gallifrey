@@ -13,6 +13,9 @@ import net.minecraft.registry.RegistryKeys;
 
 /** Server-to-client packet receivers. Client only: call from GallifreyModClient. */
 public final class ModClientPackets {
+    private static boolean rwfActive;
+    public static boolean isRwfActive() { return rwfActive; }
+    public static void setRwfActive(boolean active) { rwfActive = active; }
     private ModClientPackets() {}
 
     public static void register() {
@@ -38,6 +41,11 @@ public final class ModClientPackets {
         ClientPlayNetworking.registerGlobalReceiver(ModPackets.TARDIS_REGISTER_DIMENSION, (client, handler, buf, responseSender) -> {
             RegistryKey<net.minecraft.world.World> key = RegistryKey.of(RegistryKeys.WORLD, buf.readIdentifier());
             client.execute(() -> client.getNetworkHandler().getWorldKeys().add(key));
+        });
+
+        ClientPlayNetworking.registerGlobalReceiver(ModPackets.TARDIS_RWF_STATE, (client, handler, buf, responseSender) -> {
+            boolean active = buf.readBoolean();
+            client.execute(() -> rwfActive = active);
         });
 
         ClientPlayNetworking.registerGlobalReceiver(ModPackets.TARDIS_CLOSE_CONSOLE, (client, handler, buf, responseSender) ->

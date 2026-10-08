@@ -312,10 +312,6 @@ public final class TardisDimensionManager {
             pilot.sendMessage(Text.literal("The TARDIS controls are locked to its pilot."), true);
             return false;
         }
-        if (!tardis.isAntigravityEnabled()) {
-            pilot.sendMessage(Text.literal("Antigravity is disabled. The TARDIS cannot enter real-world flight."), true);
-            return false;
-        }
         if (tardis.getFuel() < TardisExteriorBlockEntity.FLIGHT_COST) {
             pilot.sendMessage(Text.literal("Insufficient artron energy. Refuel the TARDIS first."), true);
             return false;
@@ -356,6 +352,93 @@ public final class TardisDimensionManager {
         return true;
     }
 
+    public static boolean toggleRealWorldFlight(ServerPlayerEntity player) {
+        MinecraftServer server = player.getServer();
+        if (server == null) return false;
+        TardisRegistryState registry = TardisRegistryState.get(server);
+        UUID id = registry.getActiveTardis(player.getUuid());
+        if (id == null) { player.sendMessage(Text.literal("Enter or link to your TARDIS first."), true); return false; }
+        TardisRegistryState.Record record = registry.get(id);
+        if (record == null || record.owner() == null || !record.owner().equals(player.getUuid())) {
+            player.sendMessage(Text.literal("Only the TARDIS owner can use Real World Flight."), true); return false;
+        }
+        ServerWorld world = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.world())));
+        if (world == null) return false;
+        BlockPos pos = BlockPos.fromLong(record.pos());
+        if (!(world.getBlockEntity(pos) instanceof TardisExteriorBlockEntity tardis)) return false;
+        if (tardis.isFlightPending()) { player.sendMessage(Text.literal("Wait for the current flight to finish."), true); return false; }
+        if (tardis.isRealWorldFlight()) {
+            endRealWorldFlight(server, registry, tardis, world, pos, "Real World Flight disengaged.");
+            player.sendMessage(Text.literal("RWF disengaged."), true);
+            sendRwfState(player, false);
+            return true;
+        }
+        if (!tardis.isPowered()) { player.sendMessage(Text.literal("The TARDIS has no power."), true); return false; }
+        if (!tardis.isAntigravityEnabled()) { player.sendMessage(Text.literal("Enable antigravity before entering Real World Flight."), true); return false; }
+        tardis.setRealWorldFlight(true);
+        world.playSound(null, pos, GallifreySounds.TYPE70FLIGHT, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        player.teleport(world, pos.getX() + 0.5, pos.getY() + 2.6, pos.getZ() + 0.5, java.util.Set.of(), player.getYaw(), 0.0f);
+        player.sendMessage(Text.literal("REAL WORLD FLIGHT engaged. WASD to fly, Space up, Shift down, scroll to change speed. /tardis rwf to exit."), true);
+        sendRwfState(player, true);
+        return true;
+    }
+
+    public static void handleRwfInput(ServerPlayerEntity player, float forward, float strafe, float vertical, float speed, float yaw, float pitch) {
+        MinecraftServer server = player.getServer();
+        if (server == null) return;
+        TardisRegistryState registry = TardisRegistryState.get(server);
+        UUID id = registry.getActiveTardis(player.getUuid());
+        if (id == null) return;
+        TardisRegistryState.Record record = registry.get(id);
+        if (record == null || record.owner() == null || !record.owner().equals(player.getUuid())) return;
+        ServerWorld world = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.world())));
+        if (world == null) return;
+        BlockPos pos = BlockPos.fromLong(record.pos());
+        if (!(world.getBlockEntity(pos) instanceof TardisExteriorBlockEntity tardis) || !tardis.isRealWorldFlight()) return;
+        if (!tardis.isPowered() || !tardis.isAntigravityEnabled()) { endRealWorldFlight(server, registry, tardis, world, pos, "RWF ended: power or antigravity unavailable."); sendRwfState(player, false); return; }
+        Vec3d look = player.getRotationVec(1.0f).normalize();
+        Vec3d flatForward = new Vec3d(look.x, 0, look.z);
+        if (flatForward.lengthSquared() < 1.0E-5) flatForward = new Vec3d(0,0,1); else flatForward = flatForward.normalize();
+        Vec3d right = new Vec3d(-flatForward.z, 0, flatForward.x);
+        Vec3d delta = look.multiply(forward * speed).add(right.multiply(strafe * speed)).add(0, vertical * speed, 0);
+        if (delta.lengthSquared() > 1.0E-5) {
+            moveTardisFree(server, registry, world, pos, tardis, delta);
+            tardis.consumeFuel(1);
+        }
+        TardisRegistryState.Record updated = registry.get(id);
+        BlockPos updatedPos = updated == null ? pos : BlockPos.fromLong(updated.pos());
+        player.teleport(world, updatedPos.getX()+0.5, updatedPos.getY()+2.6, updatedPos.getZ()+0.5, java.util.Set.of(), yaw, Math.max(-89, Math.min(89, pitch)));
+    }
+
+    private static void moveTardisFree(MinecraftServer server, TardisRegistryState registry, ServerWorld world, BlockPos pos, TardisExteriorBlockEntity tardis, Vec3d delta) {
+        int dx = (int)Math.round(delta.x); int dy = (int)Math.round(delta.y); int dz = (int)Math.round(delta.z);
+        if (dx == 0 && dy == 0 && dz == 0) return;
+        BlockPos target = pos.add(dx, dy, dz);
+        if (target.getY() <= world.getBottomY() || target.getY() >= world.getTopY()-2) return;
+        if (!world.getBlockState(target).isAir() || !world.getBlockState(target.up()).isAir()) return;
+        NbtCompound nbt = tardis.createNbt();
+        BlockState state = tardis.getCachedState();
+        world.setBlockState(pos, net.minecraft.block.Blocks.AIR.getDefaultState(), 3);
+        world.setBlockState(target, state, 3);
+        if (world.getBlockEntity(target) instanceof TardisExteriorBlockEntity moved) {
+            nbt.remove("x"); nbt.remove("y"); nbt.remove("z"); nbt.remove("id");
+            moved.readNbt(nbt); moved.markDirty(); registry.updateLocation(moved.getTardisId(), world, target.asLong());
+        }
+    }
+
+    private static void endRealWorldFlight(MinecraftServer server, TardisRegistryState registry, TardisExteriorBlockEntity tardis, ServerWorld world, BlockPos pos, String message) {
+        tardis.setRealWorldFlight(false);
+        world.playSound(null, pos, GallifreySounds.TYPE70DEMAT, SoundCategory.BLOCKS, 0.8f, 1.0f);
+        if (message != null) {
+            for (ServerPlayerEntity p : server.getPlayerManager().getPlayerList()) if (p.getUuid().equals(tardis.getOwner())) p.sendMessage(Text.literal(message), true);
+        }
+    }
+
+    public static void sendRwfState(ServerPlayerEntity player, boolean active) {
+        net.minecraft.network.PacketByteBuf buf = net.fabricmc.fabric.api.networking.v1.PacketByteBufs.create();
+        buf.writeBoolean(active); ServerPlayNetworking.send(player, ModPackets.TARDIS_RWF_STATE, buf);
+    }
+
     public static void tickFlight(MinecraftServer server) {
         TardisRegistryState registry = TardisRegistryState.get(server);
         tickInteriorSafety(server, registry);
@@ -383,20 +466,18 @@ public final class TardisDimensionManager {
                         continue;
                     }
                 }
-                if (tardis.isFlightPending()) {
+                if (tardis.isRealWorldFlight()) {
+                    if (!tardis.isPowered() || !tardis.isAntigravityEnabled()) {
+                        endRealWorldFlight(server, registry, tardis, world, pos, "RWF ended: power or antigravity unavailable.");
+                        continue;
+                    }
+                    continue;
+                } else if (tardis.isFlightPending()) {
                     int before = tardis.getFlightTicks();
                     if (before % 3 == 0) {
                         spawnPhaseParticles(world, pos, before);
                     }
                     boolean stillFlying = tardis.tickFlight();
-                    boolean realFlight = tardis.getRealWorldFlightTicks() > 0;
-                    if (realFlight) tardis.tickRealWorldFlight();
-                    if (realFlight && before % 4 == 0) {
-                        BlockPos lifted = moveTardisVertically(server, registry, world, pos, tardis, 1);
-                        if (lifted != null) {
-                            continue;
-                        }
-                    }
                     if (stillFlying && tardis.getFlightTicks() <= 0) {
                         materialize(server, registry, world, pos, tardis);
                     }

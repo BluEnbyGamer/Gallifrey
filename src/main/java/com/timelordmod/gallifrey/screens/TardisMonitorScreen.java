@@ -304,7 +304,7 @@ public class TardisMonitorScreen extends Screen {
             c.drawText(textRenderer, Text.literal(locked ? "Security is locked to the owner." : "Security is open."), left + 22, top + 250, locked ? AMBER : GREEN, false);
         }
 
-        if (flightButton != null) flightButton.active = !flightPending && powered && antigravity;
+        if (flightButton != null) flightButton.active = !flightPending && powered;
         super.render(c, scaledMouseX(mouseX), scaledMouseY(mouseY), delta);
         c.getMatrices().pop();
     }

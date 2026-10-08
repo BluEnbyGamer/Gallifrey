@@ -483,5 +483,14 @@
   "item.gallifrey.classic_water_bucket": "Classic Water Bucket",
   "item.gallifrey.classic_lava_bucket": "Classic Lava Bucket",
   "block.gallifrey.tardis_console": "TARDIS Console",
-  "block.gallifrey.tardis_interior_door": "TARDIS Interior Door"
+  "block.gallifrey.tardis_interior_door": "TARDIS Interior Door",
+  "category.gallifrey.tardis": "TARDIS Real World Flight",
+  "key.gallifrey.rwf_forward": "RWF Forward",
+  "key.gallifrey.rwf_back": "RWF Back",
+  "key.gallifrey.rwf_left": "RWF Left",
+  "key.gallifrey.rwf_right": "RWF Right",
+  "key.gallifrey.rwf_up": "RWF Up",
+  "key.gallifrey.rwf_down": "RWF Down",
+  "key.gallifrey.rwf_faster": "RWF Faster",
+  "key.gallifrey.rwf_slower": "RWF Slower"
 }

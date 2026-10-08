@@ -27,6 +27,15 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.util.InputUtil;
+import org.lwjgl.glfw.GLFW;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.network.PacketByteBuf;
+import com.timelordmod.gallifrey.networking.ModPackets;
+import com.timelordmod.gallifrey.client.ModClientPackets;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
@@ -56,6 +65,31 @@ import com.timelordmod.gallifrey.client.AlphaZombiePigmanRenderer;
 import com.timelordmod.gallifrey.entity.client.LaserRenderer;
 
 public class GallifreyModClient implements ClientModInitializer {
+    private static KeyBinding rwfForward, rwfBack, rwfLeft, rwfRight, rwfUp, rwfDown, rwfFaster, rwfSlower;
+    private static float rwfSpeed = 0.35f;
+
+    private static void registerRwfControls() {
+        rwfForward = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_forward", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_W, "category.gallifrey.tardis"));
+        rwfBack = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_back", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_S, "category.gallifrey.tardis"));
+        rwfLeft = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_left", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_A, "category.gallifrey.tardis"));
+        rwfRight = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_right", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_D, "category.gallifrey.tardis"));
+        rwfUp = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_up", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_SPACE, "category.gallifrey.tardis"));
+        rwfDown = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_down", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_LEFT_SHIFT, "category.gallifrey.tardis"));
+        rwfFaster = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_faster", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_E, "category.gallifrey.tardis"));
+        rwfSlower = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.gallifrey.rwf_slower", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_Q, "category.gallifrey.tardis"));
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (!ModClientPackets.isRwfActive() || client.player == null || client.getNetworkHandler() == null) return;
+            if (rwfFaster.isPressed()) rwfSpeed = Math.min(2.5f, rwfSpeed + 0.05f);
+            if (rwfSlower.isPressed()) rwfSpeed = Math.max(0.05f, rwfSpeed - 0.05f);
+            float f = (rwfForward.isPressed() ? 1 : 0) - (rwfBack.isPressed() ? 1 : 0);
+            float st = (rwfRight.isPressed() ? 1 : 0) - (rwfLeft.isPressed() ? 1 : 0);
+            float v = (rwfUp.isPressed() ? 1 : 0) - (rwfDown.isPressed() ? 1 : 0);
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeFloat(f); buf.writeFloat(st); buf.writeFloat(v); buf.writeFloat(rwfSpeed);
+            buf.writeFloat(client.player.getYaw()); buf.writeFloat(client.player.getPitch());
+            ClientPlayNetworking.send(ModPackets.TARDIS_RWF_INPUT, buf);
+        });
+    }
 
     @Override
     public void onInitializeClient() {
@@ -97,7 +131,8 @@ public class GallifreyModClient implements ClientModInitializer {
                         0xFFFFFF
                 ));
 
-        com.timelordmod.gallifrey.client.ModClientPackets.register();;
+        com.timelordmod.gallifrey.client.ModClientPackets.register();
+        registerRwfControls();
 
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK, SkaroCityDalekRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK_ALT, SkaroCityDalekAltRenderer::new);

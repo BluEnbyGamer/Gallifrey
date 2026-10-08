@@ -52,6 +52,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     private int flightRotation;
     private int materializationTicks;
     private int realWorldFlightTicks;
+    private boolean realWorldFlight;
     private int selfDestructTicks;
     private boolean lastPoweredState = true;
 
@@ -187,6 +188,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     }
 
     public int getRealWorldFlightTicks() { return realWorldFlightTicks; }
+    public boolean isRealWorldFlight() { return realWorldFlight; }
+    public void setRealWorldFlight(boolean enabled) { realWorldFlight = enabled; markDirty(); }
 
     public void setLocked(boolean locked) {
         this.locked = locked;
@@ -338,7 +341,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         flightWorld = targetWorld;
         flightPos = targetPos.toImmutable();
         flightRotation = rotation;
-        realWorldFlightTicks = 20;
+        realWorldFlightTicks = 0;
         materializationTicks = 0;
         markDirty();
     }
@@ -358,6 +361,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         flightWorld = null;
         flightPos = null;
         realWorldFlightTicks = 0;
+        realWorldFlight = false;
         markDirty();
     }
 
@@ -367,6 +371,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         flightWorld = null;
         flightPos = null;
         realWorldFlightTicks = 0;
+        realWorldFlight = false;
         materializationTicks = MATERIALIZATION_TIME;
         markDirty();
     }
@@ -422,6 +427,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         nbt.putInt("FlightRotation", flightRotation);
         nbt.putInt("MaterializationTicks", materializationTicks);
         nbt.putInt("RealWorldFlightTicks", realWorldFlightTicks);
+        nbt.putBoolean("RealWorldFlight", realWorldFlight);
         nbt.putInt("SelfDestructTicks", selfDestructTicks);
         nbt.putBoolean("LastPoweredState", lastPoweredState);
     }
@@ -454,6 +460,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         flightRotation = nbt.getInt("FlightRotation");
         materializationTicks = nbt.getInt("MaterializationTicks");
         realWorldFlightTicks = nbt.getInt("RealWorldFlightTicks");
+        realWorldFlight = nbt.getBoolean("RealWorldFlight");
         selfDestructTicks = nbt.getInt("SelfDestructTicks");
         lastPoweredState = nbt.contains("LastPoweredState") ? nbt.getBoolean("LastPoweredState") : isPowered();
     }

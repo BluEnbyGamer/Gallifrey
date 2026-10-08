@@ -23,6 +23,8 @@ public class ModPackets {
     public static final Identifier TARDIS_MONITOR_STATE = new Identifier(GallifreyMod.MOD_ID, "tardis_monitor_state");
     public static final Identifier TARDIS_CLOSE_CONSOLE = new Identifier(GallifreyMod.MOD_ID, "tardis_close_console");
     public static final Identifier TARDIS_REGISTER_DIMENSION = new Identifier(GallifreyMod.MOD_ID, "tardis_register_dimension");
+    public static final Identifier TARDIS_RWF_INPUT = new Identifier(GallifreyMod.MOD_ID, "tardis_rwf_input");
+    public static final Identifier TARDIS_RWF_STATE = new Identifier(GallifreyMod.MOD_ID, "tardis_rwf_state");
 
     public static void registerC2SPackets() {
         ServerPlayNetworking.registerGlobalReceiver(VM_PACKET, VMPacket::receive);

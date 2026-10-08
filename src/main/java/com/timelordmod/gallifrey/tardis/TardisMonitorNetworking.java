@@ -31,6 +31,12 @@ public final class TardisMonitorNetworking {
                     String action = copy.readString(32);
                     server.execute(() -> handle(player, action, copy));
                 });
+        ServerPlayNetworking.registerGlobalReceiver(ModPackets.TARDIS_RWF_INPUT,
+                (server, player, handler, buf, responseSender) -> {
+                    float forward = buf.readFloat(), strafe = buf.readFloat(), vertical = buf.readFloat(), speed = buf.readFloat();
+                    float yaw = buf.readFloat(), pitch = buf.readFloat();
+                    server.execute(() -> TardisDimensionManager.handleRwfInput(player, forward, strafe, vertical, speed, yaw, pitch));
+                });
     }
 
     public static boolean openFor(ServerPlayerEntity player) {
@@ -79,6 +85,7 @@ public final class TardisMonitorNetworking {
                 case "LOCK" -> { setLock(player, true); sendState(player); }
                 case "UNLOCK" -> { setLock(player, false); sendState(player); }
                 case "ANTIGRAV" -> { toggleAntigrav(player); sendState(player); }
+                case "RWF" -> { TardisDimensionManager.toggleRealWorldFlight(player); sendState(player); }
                 case "SELF_DESTRUCT" -> { selfDestruct(player, false); sendState(player); }
                 case "CANCEL_SELF_DESTRUCT" -> { selfDestruct(player, true); sendState(player); }
                 case "PLAY_DRWHO_VALE" -> playDrWhoVale(player);
