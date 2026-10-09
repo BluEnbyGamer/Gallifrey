@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "gallifrey:reinforced_steel_block"
+    },
+    "title": {
+      "translate": "advancement.gallifrey.gallroot.title"
+    },
+    "description": {
+      "translate": "advancement.gallifrey.gallroot.desc"
+    },
+    "background": "gallifrey:textures/block/steel/reinforced_steel_block_sides.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "entered_gallifrey": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "gallifrey:gallifrey"
+      }
+    }
+  }
+}

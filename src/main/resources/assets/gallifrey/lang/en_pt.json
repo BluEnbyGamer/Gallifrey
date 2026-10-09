@@ -511,5 +511,18 @@
   "biome.gallifrey.lost_skaro_lands": "Shipwrecked Skaro Lands",
   "biome.gallifrey.lost_skaro_waste_land": "Shipwrecked Skaro Barren Shores",
   "biome.gallifrey.gallifreyan_maple_jungle": "Gallifreyan Maple Jungle",
-  "biome.gallifrey.gallifreyan_moonpine_forest": "Weathered Old Growth Moonpine Woods"
+  "biome.gallifrey.gallifreyan_moonpine_forest": "Weathered Old Growth Moonpine Woods",
+
+  // ===== Advancements =====
+  "advancement.gallifrey.gallroot.title": "Gallifrey Ahoy!",
+  "advancement.gallifrey.gallroot.desc": "Set sail fer Gallifrey",
+
+  "advancement.gallifrey.sonicroot.title": "Sonic Sorcery",
+  "advancement.gallifrey.sonicroot.desc": "Dig up a Raw Sonic Gem, ye scallywag",
+
+  "advancement.gallifrey.steelroot.title": "Heart o' Steel",
+  "advancement.gallifrey.steelroot.desc": "Plunder some Unsmelted Steel",
+
+  "advancement.gallifrey.atriumroot.title": "Atrium Treasure",
+  "advancement.gallifrey.atriumroot.desc": "Find yerself some Atrium"
 }

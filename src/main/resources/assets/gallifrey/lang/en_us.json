@@ -485,7 +485,6 @@
   "gui.gallifrey.menu_background.vortex": "Menu: Vortex",
   "gui.gallifrey.menu_background.panorama": "Menu: Panorama",
   "gui.gallifrey.menu_background.tooltip": "Switch the title screen background",
-  // ===== Biomes =====
   "biome.gallifrey.gallifreyan_plains": "Gallifreyan Plains",
   "biome.gallifrey.gallifreyan_birch_forest": "Gallifreyan Birch Forest",
   "biome.gallifrey.gallifreyan_taiga": "Gallifreyan Taiga",
@@ -512,5 +511,17 @@
   "biome.gallifrey.lost_skaro_lands": "Lost Skaro Lands",
   "biome.gallifrey.lost_skaro_waste_land": "Lost Skaro Wasteland",
   "biome.gallifrey.gallifreyan_maple_jungle": "Gallifreyan Maple Forest",
-  "biome.gallifrey.gallifreyan_moonpine_forest": "Old Growth Moonpine Forest"
+  "biome.gallifrey.gallifreyan_moonpine_forest": "Old Growth Moonpine Forest",
+  // ===== Advancements =====
+  "advancement.gallifrey.gallroot.title": "Gallifrey",
+  "advancement.gallifrey.gallroot.desc": "Travel to Gallifrey",
+
+  "advancement.gallifrey.sonicroot.title": "Sonic Technology",
+  "advancement.gallifrey.sonicroot.desc": "Find a Raw Sonic Crystal",
+
+  "advancement.gallifrey.steelroot.title": "Age of Steel",
+  "advancement.gallifrey.steelroot.desc": "Obtain Raw Steel",
+
+  "advancement.gallifrey.atriumroot.title": "Atrium",
+  "advancement.gallifrey.atriumroot.desc": "Find Atrium"
 }
