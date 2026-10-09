@@ -44,7 +44,11 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
-    public static final SteelIngotItem DALEKANIUM_INGOT = new SteelIngotItem(
+    public static final DalekIngotItem DALEKANIUM_INGOT = new DalekIngotItem(
+            new FabricItemSettings()
+    );
+
+    public static final HuonParticleItem HUON_PARTICLE = new HuonParticleItem(
             new FabricItemSettings()
     );
 
@@ -243,6 +247,7 @@ public class GallifreyModItems {
 
     public static void register() {
         registerItem("white_point_star", WHITE_POINT_STAR);
+        registerItem("huon_particle", HUON_PARTICLE);
         registerItem("silicone", SILICONE);
         registerItem("vortex_manipulator", VORTEX_MANIPULATOR);
         registerItem("blank_circuit", BLANK_CIRCUIT);

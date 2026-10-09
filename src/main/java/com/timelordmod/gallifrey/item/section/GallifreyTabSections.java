@@ -217,6 +217,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.SILICONE);
                 entries.add(GallifreyModItems.TREEBORG_PASTE);
                 entries.add(GallifreyModItems.MAPLE_SYRUP);
+                entries.add(GallifreyModItems.HUON_PARTICLE);
 
                 // Sonics
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
