@@ -411,6 +411,20 @@ public final class TardisDimensionManager {
         player.teleport(world, updatedPos.getX()+0.5, updatedPos.getY()+2.6, updatedPos.getZ()+0.5, java.util.Set.of(), yaw, Math.max(-89, Math.min(89, pitch)));
     }
 
+    private static boolean isRwfFootprintClear(ServerWorld world, BlockPos anchor) {
+        // Treat the exterior as a 3x3x2 physical shell while it is in flight.
+        // This prevents the block entity from clipping into walls or ceilings.
+        for (int x = -1; x <= 1; x++) {
+            for (int z = -1; z <= 1; z++) {
+                for (int y = 0; y <= 1; y++) {
+                    BlockPos p = anchor.add(x, y, z);
+                    if (!world.getBlockState(p).getCollisionShape(world, p).isEmpty()) return false;
+                }
+            }
+        }
+        return true;
+    }
+
     private static void moveTardisFree(MinecraftServer server, TardisRegistryState registry, ServerWorld world, BlockPos pos, TardisExteriorBlockEntity tardis, Vec3d delta) {
         int dx = (int) Math.round(delta.x);
         int dy = (int) Math.round(delta.y);
@@ -425,7 +439,7 @@ public final class TardisDimensionManager {
         for (int i = 0; i < steps; i++) {
             BlockPos next = current.add(sx, sy, sz);
             if (next.getY() <= world.getBottomY() || next.getY() >= world.getTopY() - 2) return;
-            if (!world.getBlockState(next).isAir() || !world.getBlockState(next.up()).isAir()) return;
+            if (!isRwfFootprintClear(world, next)) return;
             current = next;
         }
 
