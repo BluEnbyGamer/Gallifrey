@@ -130,7 +130,7 @@ public final class TardisDimensionManager {
 
     public static Vec3d interiorEntry(TardisExteriorBlockEntity tardis) {
         // Type 70 starts at the requested fixed position, just in front of its
-        // dedicated door at (0, 65, 15).
+        // dedicated door at (0, 65, 14).
         if ("70default".equalsIgnoreCase(tardis.getInteriorStructure())) {
             return new Vec3d(0.5, 65.0, 14.6);
         }

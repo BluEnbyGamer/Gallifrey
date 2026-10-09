@@ -286,9 +286,9 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     /** Places the physical police-box interior exit door. */
     private void installInteriorDoor(ServerWorld world) {
         // Type 70's entrance is deliberately fixed at the far end of the
-        // default room. The player entry point is immediately in front of it.
+        // default room. This override applies only to Type 70.
         if ("70default".equalsIgnoreCase(interiorStructure)) {
-            BlockPos candidate = new BlockPos(0, 65, 15);
+            BlockPos candidate = new BlockPos(0, 65, 14);
             world.setBlockState(candidate, com.timelordmod.gallifrey.block.GallifreyModBlocks.TARDIS_INTERIOR_DOOR.getDefaultState()
                     .with(com.timelordmod.gallifrey.block.TardisInteriorDoorBlock.FACING, net.minecraft.util.math.Direction.SOUTH), 3);
             if (world.getBlockEntity(candidate) instanceof TardisInteriorDoorBlockEntity door) {
