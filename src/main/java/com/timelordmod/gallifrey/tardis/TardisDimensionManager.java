@@ -129,9 +129,12 @@ public final class TardisDimensionManager {
     }
 
     public static Vec3d interiorEntry(TardisExteriorBlockEntity tardis) {
-        // Enter directly in front of the physical interior door, not at the
-        // console.  The door is persisted by the TARDIS and recreated when
-        // an interior is generated/replaced.
+        // Type 70 starts at the requested fixed position, just in front of its
+        // dedicated door at (0, 65, 15).
+        if ("70default".equalsIgnoreCase(tardis.getInteriorStructure())) {
+            return new Vec3d(0.5, 65.0, 14.6);
+        }
+        // Other interiors spawn directly in front of their installed door.
         BlockPos door = tardis.getInteriorDoorPos();
         if (door != null) {
             return new Vec3d(door.getX() + 0.5, door.getY() + 1.0, door.getZ() + 0.5);
