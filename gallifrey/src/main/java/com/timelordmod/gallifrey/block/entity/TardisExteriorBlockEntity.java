@@ -39,7 +39,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     private int fuel = 100;
     private BlockPos interiorOrigin = new BlockPos(0, 64, 0);
     private boolean interiorGenerated;
-    private String interiorStructure = "tardis_platform";
+    private String interiorStructure = "70default";
     private String exteriorStyle = "policebox";
     private Vec3i interiorSize = new Vec3i(5, 5, 5);
     private BlockPos consolePos;
@@ -147,6 +147,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         ServerWorld interior = TardisDimensionManager.getInterior(world.getServer(), record);
         if (interior != null && interior.getBlockEntity(interiorDoorPos) instanceof TardisInteriorDoorBlockEntity door) {
             door.setExteriorStyle(exteriorStyle);
+            door.setTardisId(tardisId);
+            door.setPowered(isPowered());
         }
     }
 
@@ -295,6 +297,7 @@ public class TardisExteriorBlockEntity extends BlockEntity {
                     if (world.getBlockEntity(candidate) instanceof TardisInteriorDoorBlockEntity door) {
                         door.setTardisId(tardisId);
                         door.setExteriorStyle(exteriorStyle);
+                        door.setPowered(isPowered());
                     }
                     interiorDoorPos = candidate.toImmutable();
                     markDirty();

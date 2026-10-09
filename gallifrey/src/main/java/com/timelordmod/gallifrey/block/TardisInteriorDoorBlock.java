@@ -44,7 +44,8 @@ public class TardisInteriorDoorBlock extends Block implements BlockEntityProvide
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         // Like a normal Minecraft door, the front faces the player placing it.
-        return getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing());
+        // FACING is the outward/front face; use the direction toward the placer.
+        return getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
     @Override

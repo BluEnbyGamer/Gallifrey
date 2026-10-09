@@ -26,7 +26,7 @@ import net.minecraft.sound.SoundCategory;
 import com.timelordmod.gallifrey.GallifreySounds;
 
 public class TardisExteriorBlock extends Block implements BlockEntityProvider {
-    private static final VoxelShape TARDIS_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 32, 16);
+    private static final VoxelShape TARDIS_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 16, 16);
     public static final IntProperty ROTATION = IntProperty.of("rotation", 0, 7);
     public static final BooleanProperty OPEN = BooleanProperty.of("open");
 
@@ -49,11 +49,9 @@ public class TardisExteriorBlock extends Block implements BlockEntityProvider {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        // A TARDIS must never be placed inside another TARDIS pocket dimension,
-        // and its full two-block footprint must be clear.
-        return !TardisDimensionManager.isInteriorWorld(world)
-                && super.canPlaceAt(state, world, pos)
-                && world.getBlockState(pos.up()).isAir();
+        // The exterior occupies one Minecraft block; never allow it to be placed
+        // inside its own pocket dimension (which caused duplicate phantom shells).
+        return !TardisDimensionManager.isInteriorWorld(world) && super.canPlaceAt(state, world, pos);
     }
 
     @Override

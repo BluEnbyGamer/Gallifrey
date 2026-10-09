@@ -34,8 +34,8 @@ public class TardisMonitorScreen extends Screen {
     private String exteriorStyle = "policebox";
     private String exteriorStyleName = "Police Box";
     private List<String> exteriorStyles = new ArrayList<>();
-    private String interior = "tardis_platform";
-    private String selectedInterior = "tardis_platform";
+    private String interior = "70default";
+    private String selectedInterior = "70default";
     private List<String> interiors = new ArrayList<>();
     private boolean flightPending, locked, antigravity = true, powered = true;
     private int selfDestructTicks;
@@ -90,8 +90,7 @@ public class TardisMonitorScreen extends Screen {
         z = field(left + 278, top + 157, 118, "Z");
         flightButton = button(left + 410, top + 157, 188, 24, "ENGAGE VORTEX", b -> sendFlight());
 
-        addDrawableChild(button(left + 22, top + 205, 186, 28, "CURRENT LOCATION", b -> loadCurrentLocation()));
-        addDrawableChild(button(left + 216, top + 205, 186, 28, "VORTEX: RETURN", b -> sendFlight()));
+        addDrawableChild(button(left + 216, top + 205, 186, 28, "VORTEX: RETURN", b -> sendAction("VORTEX_RETURN")));
         addDrawableChild(button(left + 410, top + 205, 188, 28, "CANCEL / CLOSE", b -> close()));
     }
 
@@ -134,8 +133,7 @@ public class TardisMonitorScreen extends Screen {
     private void buildSystems() {
         addDrawableChild(button(left + 22, top + 108, 272, 30, "REFUEL ARTRON RESERVES", b -> sendAction("REFUEL")));
         addDrawableChild(button(left + 304, top + 108, 294, 30, locked ? "SECURITY: LOCKED" : "SECURITY: OPEN", b -> sendAction(locked ? "UNLOCK" : "LOCK")));
-        addDrawableChild(button(left + 22, top + 154, 272, 30, "MUSIC: PLAY DR WHO VALE", b -> sendAction("PLAY_DRWHO_VALE")));
-        addDrawableChild(button(left + 304, top + 154, 294, 30, "REQUEST SYSTEM STATUS", b -> requestState()));
+        addDrawableChild(button(left + 22, top + 154, 576, 30, "REQUEST SYSTEM STATUS", b -> requestState()));
         addDrawableChild(button(left + 22, top + 200, 272, 30, antigravity ? "ANTIGRAVITY: ON" : "ANTIGRAVITY: OFF", b -> sendAction("ANTIGRAV")));
         String destruct = selfDestructTicks > 0 ? "SELF-DESTRUCT: " + ((selfDestructTicks + 19) / 20) + "s" : "SELF-DESTRUCT: ARM (10s)";
         addDrawableChild(button(left + 304, top + 200, 294, 30, destruct, b -> sendAction(selfDestructTicks > 0 ? "CANCEL_SELF_DESTRUCT" : "SELF_DESTRUCT")));
