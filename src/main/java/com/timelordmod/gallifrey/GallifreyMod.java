@@ -202,8 +202,8 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalApiRegistry.registerPortalFrameTester(GALLIFREY_FRAME_TESTER, GallifreyPortalAreaHelper::new);
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(net.minecraft.block.Blocks.OBSIDIAN)
-						.lightWithItem(net.minecraft.item.Items.FLINT_AND_STEEL)
+				.frameBlock(GallifreyModBlocks.CLASSIC_OBSIDIAN)
+				.lightWithItem(GallifreyModItems.CLASSIC_FLINT_AND_STEEL)
 						.destDimID(ModDimensions.CLASSIC_NETHER_LEVEL_KEY.getValue())
 						.returnDim(ModDimensions.CLASSIC_LEVEL_KEY.getValue(), false)
 						.tintColor(131, 66, 184)
@@ -218,7 +218,7 @@ public class GallifreyMod implements ModInitializer {
 						.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.MARS_STONE_BRICKS)
+						.frameBlock(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mars"))
 						.tintColor(150, 55, 35)
