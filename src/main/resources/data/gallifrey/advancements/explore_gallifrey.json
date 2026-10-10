@@ -1,0 +1,215 @@
+{
+  "parent": "gallifrey:gallroot",
+  "display": {
+    "icon": {
+      "item": "gallifrey:treeborg_sapling"
+    },
+    "title": {
+      "translate": "advancement.gallifrey.explore_gallifrey.title"
+    },
+    "description": {
+      "translate": "advancement.gallifrey.explore_gallifrey.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "gallifreyan_plains": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "gallifrey:gallifreyan_plains"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "gallifreyan_birch_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "gallifrey:gallifreyan_birch_forest"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "gallifreyan_taiga": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "gallifrey:gallifreyan_taiga"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "gallifreyan_moonpine_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "gallifrey:gallifreyan_moonpine_forest"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "gallifreyan_ulanda_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "gallifrey:gallifreyan_ulanda_forest"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "gallifreyan_treeborg_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "gallifrey:gallifreyan_treeborg_forest"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "gallifreyan_ash_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "gallifrey:gallifreyan_ash_forest"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "gallifreyan_maple_jungle": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "gallifrey:gallifreyan_maple_jungle"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "gallifreyan_wasteland": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "gallifrey:gallifreyan_wasteland"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "gallifreyan_tardis_biome": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "gallifrey:gallifreyan_tardis_biome"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "gallifreyan_plains"
+    ],
+    [
+      "gallifreyan_birch_forest"
+    ],
+    [
+      "gallifreyan_taiga"
+    ],
+    [
+      "gallifreyan_moonpine_forest"
+    ],
+    [
+      "gallifreyan_ulanda_forest"
+    ],
+    [
+      "gallifreyan_treeborg_forest"
+    ],
+    [
+      "gallifreyan_ash_forest"
+    ],
+    [
+      "gallifreyan_maple_jungle"
+    ],
+    [
+      "gallifreyan_wasteland"
+    ],
+    [
+      "gallifreyan_tardis_biome"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  }
+}
