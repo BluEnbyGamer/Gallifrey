@@ -322,13 +322,6 @@ public class GallifreyModItems {
     public static final Item ENERGIZED_ATRIUM = new Item(new FabricItemSettings());
     public static final Item ATRIUM_CORE = new Item(new FabricItemSettings());
 
-    //Dice Tablet :3
-    public static final Item DICE_TABLET = new DiceTabletItem(new FabricItemSettings().maxCount(1));
-
-
-
-
-
     public static void register() {
         registerItem("white_point_star", WHITE_POINT_STAR);
         registerItem("huon_particle", HUON_PARTICLE);
@@ -409,8 +402,6 @@ public class GallifreyModItems {
         registerItem("trustable_hat", TRUSTABLE_HAT);
         registerItem("eyestalk", EYESTALK);
         registerItem("omega_helmet", OMEGA_HELMET);
-
-        registerItem("dice_tablet", DICE_TABLET);
 
         registerItem("skaro_city_dalek_spawn_egg", SKARO_CITY_DALEK_SPAWN_EGG);
 
