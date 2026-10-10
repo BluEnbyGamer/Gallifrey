@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:classic_emerald"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_emerald_block",
+    "count": 1
+  }
+}

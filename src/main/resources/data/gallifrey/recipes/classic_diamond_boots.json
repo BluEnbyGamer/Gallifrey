@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A A",
+    "A A"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:classic_diamond"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_diamond_boots",
+    "count": 1
+  }
+}

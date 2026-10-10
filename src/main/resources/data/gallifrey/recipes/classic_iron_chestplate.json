@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A A",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:classic_iron_ingot"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_iron_chestplate",
+    "count": 1
+  }
+}

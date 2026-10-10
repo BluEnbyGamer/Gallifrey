@@ -11,6 +11,7 @@ import com.timelordmod.gallifrey.item.custom.GeoHeadwearItem;
 import com.timelordmod.gallifrey.item.custom.DiceTabletItem;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.item.FlintAndSteelItem;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

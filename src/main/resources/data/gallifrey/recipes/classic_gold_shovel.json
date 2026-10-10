@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "B",
+    "B"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:classic_gold_ingot"
+    },
+    "B": {
+      "item": "gallifrey:classic_stick"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_gold_shovel",
+    "count": 1
+  }
+}

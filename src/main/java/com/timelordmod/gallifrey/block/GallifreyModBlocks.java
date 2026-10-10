@@ -68,6 +68,13 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_LEAVES = registerBlock("classic_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_SAND = registerBlock("classic_sand", new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND).sounds(CLASSIC_GRAVEL_SOUNDS)));
     public static final Block CLASSIC_GRAVEL = registerBlock("classic_gravel", new FallingBlock(FabricBlockSettings.copyOf(Blocks.GRAVEL).sounds(CLASSIC_GRAVEL_SOUNDS)));
+    // Classic textures that were present in the asset pack but had no registered block.
+    public static final Block CLASSIC_MOSSY_COBBLESTONE = registerBlock("classic_mossy_cobblestone", new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_COBBLESTONE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_BOOKSHELF = registerBlock("classic_bookshelf", new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_CRAFTING_TABLE = registerBlock("classic_crafting_table", new CraftingTableBlock(FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_FURNACE = registerBlock("classic_furnace", new FurnaceBlock(FabricBlockSettings.copyOf(Blocks.FURNACE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_WOOL_WINDOWS = registerBlock("classic_wool_windows", new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)));
+
     public static final Block CLASSIC_GOLD = registerBlock("classic_gold", new Block(FabricBlockSettings.copyOf(Blocks.GOLD_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_IRON = registerBlock("classic_iron", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_GLASS = registerBlock("classic_glass", new GlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).sounds(BlockSoundGroup.GLASS).nonOpaque()));

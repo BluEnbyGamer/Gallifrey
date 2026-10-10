@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "A A"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:classic_leather"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_leather_helmet",
+    "count": 1
+  }
+}

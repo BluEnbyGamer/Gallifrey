@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gallifrey:classic_gold"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:classic_gold_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:classic_gold_ingot"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_gold",
+    "count": 9
+  }
+}

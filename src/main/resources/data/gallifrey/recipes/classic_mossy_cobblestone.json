@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AA",
+    "AB"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:vine"
+    },
+    "B": {
+      "item": "gallifrey:classic_cobble"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_mossy_cobblestone",
+    "count": 1
+  }
+}

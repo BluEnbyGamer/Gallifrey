@@ -483,7 +483,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.CLASSIC_IRON_CHESTPLATE);
                 entries.add(GallifreyModItems.CLASSIC_IRON_LEGGINGS);
                 entries.add(GallifreyModItems.CLASSIC_IRON_BOOTS);
-
                 // Gold Gear & Armor
                 entries.add(GallifreyModItems.CLASSIC_GOLD_SWORD);
                 entries.add(GallifreyModItems.CLASSIC_GOLD_SHOVEL);
@@ -494,7 +493,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.CLASSIC_GOLD_CHESTPLATE);
                 entries.add(GallifreyModItems.CLASSIC_GOLD_LEGGINGS);
                 entries.add(GallifreyModItems.CLASSIC_GOLD_BOOTS);
-
                 // Diamond Gear & Armor
                 entries.add(GallifreyModItems.CLASSIC_DIAMOND_SWORD);
                 entries.add(GallifreyModItems.CLASSIC_DIAMOND_SHOVEL);

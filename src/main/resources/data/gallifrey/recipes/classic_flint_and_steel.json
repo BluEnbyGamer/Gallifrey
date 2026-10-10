@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gallifrey:classic_flint"
+    },
+    {
+      "item": "gallifrey:classic_iron_ingot"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:classic_flint_and_steel",
+    "count": 1
+  }
+}
