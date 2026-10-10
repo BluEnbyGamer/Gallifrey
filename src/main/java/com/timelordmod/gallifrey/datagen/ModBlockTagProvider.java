@@ -264,6 +264,25 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(GallifreyModBlocks.CLASSIC_LEAVES, GallifreyModBlocks.CLASSIC_GRASS);
 
+        // Classic blocks that copy a vanilla block which needs the right tool to drop.
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_FURNACE, GallifreyModBlocks.CLASSIC_OBSIDIAN,
+                        GallifreyModBlocks.CLASSIC_MOSSY_COBBLESTONE, GallifreyModBlocks.CLASSIC_DIAMOND_BLOCK,
+                        GallifreyModBlocks.CLASSIC_EMERALD_BLOCK, GallifreyModBlocks.CLASSIC_LAPIS_BLOCK,
+                        GallifreyModBlocks.CLASSIC_REDSTONE_BLOCK, GallifreyModBlocks.CLASSIC_EMERALD_ORE,
+                        GallifreyModBlocks.CLASSIC_NETHER_GLOWSTONE, GallifreyModBlocks.CLASSIC_NETHER_MAGMA);
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_CRAFTING_TABLE, GallifreyModBlocks.CLASSIC_BOOKSHELF);
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_NETHER_SOUL_SAND);
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(GallifreyModBlocks.CLASSIC_IRON, GallifreyModBlocks.CLASSIC_LAPIS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(GallifreyModBlocks.CLASSIC_GOLD, GallifreyModBlocks.CLASSIC_DIAMOND_BLOCK,
+                        GallifreyModBlocks.CLASSIC_EMERALD_BLOCK, GallifreyModBlocks.CLASSIC_EMERALD_ORE);
+        getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(GallifreyModBlocks.CLASSIC_OBSIDIAN);
+
         // ------------------------------------------------------------------
         // Entries that used to live in hand-written tag files under
         // src/main/resources/data/minecraft/tags/blocks/. Those files had the

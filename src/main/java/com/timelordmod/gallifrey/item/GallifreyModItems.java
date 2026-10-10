@@ -31,21 +31,21 @@ public class GallifreyModItems {
     public static final Item CLASSIC_CARROT_GOLDEN = new Item(new FabricItemSettings());
 
     // Classic Chainmail Armor
-    public static final ArmorItem CLASSIC_CHAINMAIL_BOOTS = new ArmorItem(ArmorMaterials.CHAIN, ArmorItem.Type.BOOTS, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_CHAINMAIL_CHESTPLATE = new ArmorItem(ArmorMaterials.CHAIN, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_CHAINMAIL_HELMET = new ArmorItem(ArmorMaterials.CHAIN, ArmorItem.Type.HELMET, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_CHAINMAIL_LEGGINGS = new ArmorItem(ArmorMaterials.CHAIN, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_CHAINMAIL_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.CHAINMAIL, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_CHAINMAIL_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.CHAINMAIL, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_CHAINMAIL_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.CHAINMAIL, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_CHAINMAIL_LEGGINGS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.CHAINMAIL, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
 
     public static final Item CLASSIC_COAL = new Item(new FabricItemSettings());
     public static final Item CLASSIC_DIAMOND = new Item(new FabricItemSettings());
 
     // Classic Diamond Tools & Armor
     public static final AxeItem CLASSIC_DIAMOND_AXE = new AxeItem(ModToolMaterials.CLASSIC_DIAMOND, 5.0F, -3.0F, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_DIAMOND_BOOTS = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.BOOTS, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_DIAMOND_CHESTPLATE = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_DIAMOND_HELMET = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.DIAMOND, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.DIAMOND, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.DIAMOND, ArmorItem.Type.HELMET, new FabricItemSettings());
     public static final HoeItem CLASSIC_DIAMOND_HOE = new HoeItem(ModToolMaterials.CLASSIC_DIAMOND, -1, -1.0F, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_DIAMOND_LEGGINGS = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_LEGGINGS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.DIAMOND, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final PickaxeItem CLASSIC_DIAMOND_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_DIAMOND, 1, -2.8F, new FabricItemSettings());
     public static final ShovelItem CLASSIC_DIAMOND_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_DIAMOND, 1.5F, -3.0F, new FabricItemSettings());
     public static final SwordItem CLASSIC_DIAMOND_SWORD = new SwordItem(ModToolMaterials.CLASSIC_DIAMOND, 3, -2.4F, new FabricItemSettings());
@@ -57,12 +57,12 @@ public class GallifreyModItems {
 
     // Classic Gold Tools & Armor
     public static final AxeItem CLASSIC_GOLD_AXE = new AxeItem(ModToolMaterials.CLASSIC_GOLD, 6.0F, -3.0F, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_GOLD_BOOTS = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.BOOTS, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_GOLD_CHESTPLATE = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_GOLD_HELMET = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.GOLD, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.GOLD, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.GOLD, ArmorItem.Type.HELMET, new FabricItemSettings());
     public static final HoeItem CLASSIC_GOLD_HOE = new HoeItem(ModToolMaterials.CLASSIC_GOLD, 0, -1.0F, new FabricItemSettings());
     public static final Item CLASSIC_GOLD_INGOT = new Item(new FabricItemSettings());
-    public static final ArmorItem CLASSIC_GOLD_LEGGINGS = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_LEGGINGS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.GOLD, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final Item CLASSIC_GOLD_NUGGET = new Item(new FabricItemSettings());
     public static final PickaxeItem CLASSIC_GOLD_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_GOLD, 1, -2.8F, new FabricItemSettings());
     public static final ShovelItem CLASSIC_GOLD_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_GOLD, 1.5F, -3.0F, new FabricItemSettings());
@@ -70,22 +70,22 @@ public class GallifreyModItems {
 
     // Classic Iron Tools & Armor
     public static final AxeItem CLASSIC_IRON_AXE = new AxeItem(ModToolMaterials.CLASSIC_IRON, 6.0F, -3.1F, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_IRON_BOOTS = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.BOOTS, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_IRON_CHESTPLATE = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_IRON_HELMET = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.IRON, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.IRON, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.IRON, ArmorItem.Type.HELMET, new FabricItemSettings());
     public static final HoeItem CLASSIC_IRON_HOE = new HoeItem(ModToolMaterials.CLASSIC_IRON, -2, -1.0F, new FabricItemSettings());
     public static final Item CLASSIC_IRON_INGOT = new Item(new FabricItemSettings());
-    public static final ArmorItem CLASSIC_IRON_LEGGINGS = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_LEGGINGS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.IRON, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final PickaxeItem CLASSIC_IRON_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_IRON, 1, -2.8F, new FabricItemSettings());
     public static final ShovelItem CLASSIC_IRON_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_IRON, 1.5F, -3.0F, new FabricItemSettings());
     public static final SwordItem CLASSIC_IRON_SWORD = new SwordItem(ModToolMaterials.CLASSIC_IRON, 3, -2.4F, new FabricItemSettings());
 
     // Classic Leather Armor
     public static final Item CLASSIC_LEATHER = new Item(new FabricItemSettings());
-    public static final ArmorItem CLASSIC_LEATHER_BOOTS = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_LEATHER_CHESTPLATE = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_LEATHER_HELMET = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings());
-    public static final ArmorItem CLASSIC_LEATHER_LEGGINGS = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_BOOTS = new net.minecraft.item.DyeableArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_CHESTPLATE = new net.minecraft.item.DyeableArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_HELMET = new net.minecraft.item.DyeableArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_LEGGINGS = new net.minecraft.item.DyeableArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
 
     public static final Item CLASSIC_OAK_BOAT = new Item(new FabricItemSettings());
     public static final Item CLASSIC_STICK = new Item(new FabricItemSettings());

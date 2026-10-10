@@ -1,16 +1,19 @@
 package com.timelordmod.gallifrey.mixin;
 
-import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
+import com.timelordmod.gallifrey.world.dimension.ModDimensions;
+import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NetherPortalBlock;
 import net.minecraft.entity.Entity;
-import net.minecraft.network.packet.s2c.play.PositionFlag;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockLocating;
+import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,13 +21,17 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.EnumSet;
 import java.util.Optional;
 
 /**
- * Makes ordinary vanilla Nether portals link the Classic dimension and the
- * Classic Nether instead of the vanilla Nether. The normal obsidian portal
- * block is still used, so flint and steel works exactly as usual.
+ * Nether portals inside the Classic dimension go to the Classic Nether (and back) instead of
+ * the vanilla Nether. 1:1 coordinates.
+ *
+ * On arrival it uses an existing portal nearby, otherwise it builds one with vanilla's own
+ * portal builder (which finds a safe spot and adds a platform if needed, so you never end up
+ * inside solid netherrack) and then swaps the frame to Classic Obsidian.
+ *
+ * Works for players, mobs and dropped items.
  */
 @Mixin(Entity.class)
 public abstract class ClassicNetherPortalMixin {
@@ -37,121 +44,65 @@ public abstract class ClassicNetherPortalMixin {
     @Shadow public abstract boolean hasVehicle();
     @Shadow public abstract void resetPortalCooldown();
     @Shadow public abstract int getMaxNetherPortalTime();
-    @Shadow public abstract double getX();
-    @Shadow public abstract double getY();
-    @Shadow public abstract double getZ();
-    @Shadow public abstract float getYaw();
-    @Shadow public abstract float getPitch();
+    @Shadow protected abstract void tickPortalCooldown();
 
     @Inject(method = "tickPortal", at = @At("HEAD"), cancellable = true)
     private void gallifrey$classicNetherPortal(CallbackInfo ci) {
-        if (!((Object) this instanceof ServerPlayerEntity player)) return;
         if (!(this.getWorld() instanceof ServerWorld source)) return;
-        if (!isClassicPortalDimension(source.getRegistryKey())) return;
+        if (!gallifrey$isClassic(source.getRegistryKey())) return;
+        if (!this.inNetherPortal) return; // not in a portal: let vanilla count the timer down
 
-        // Only replace the vanilla portal countdown when the player is actually
-        // inside a portal. If not, vanilla handles the normal timer decay.
-        if (!this.inNetherPortal) return;
+        ci.cancel();
+        this.inNetherPortal = false;
 
         ServerWorld target = source.getServer().getWorld(
                 source.getRegistryKey().equals(ModDimensions.CLASSIC_LEVEL_KEY)
                         ? ModDimensions.CLASSIC_NETHER_LEVEL_KEY
-                        : ModDimensions.CLASSIC_LEVEL_KEY
-        );
-        if (target == null || player.hasVehicle()) {
-            this.inNetherPortal = false;
-            ci.cancel();
-            return;
-        }
+                        : ModDimensions.CLASSIC_LEVEL_KEY);
 
-        this.netherPortalTime++;
-        int maxTime = this.getMaxNetherPortalTime();
-        if (this.netherPortalTime < maxTime) {
-            this.inNetherPortal = false;
-            ci.cancel();
-            return;
+        if (target != null && !this.hasVehicle() && this.netherPortalTime++ >= this.getMaxNetherPortalTime()) {
+            this.netherPortalTime = this.getMaxNetherPortalTime();
+            this.resetPortalCooldown();
+            gallifrey$teleport((Entity) (Object) this, source, target);
         }
-
-        this.netherPortalTime = maxTime;
-        this.resetPortalCooldown();
-        this.gallifrey$teleportThroughClassicPortal(player, source, target);
-        this.inNetherPortal = false;
-        ci.cancel();
+        this.tickPortalCooldown();
     }
 
-    private static boolean isClassicPortalDimension(net.minecraft.registry.RegistryKey<World> key) {
-        return key.equals(ModDimensions.CLASSIC_LEVEL_KEY)
-                || key.equals(ModDimensions.CLASSIC_NETHER_LEVEL_KEY);
-    }
+    private void gallifrey$teleport(Entity entity, ServerWorld source, ServerWorld target) {
+        BlockPos from = this.lastNetherPortalPosition != null ? this.lastNetherPortalPosition : entity.getBlockPos();
+        Direction.Axis axis = source.getBlockState(from).getOrEmpty(NetherPortalBlock.AXIS).orElse(Direction.Axis.X);
 
-    private void gallifrey$teleportThroughClassicPortal(
-            ServerPlayerEntity player, ServerWorld source, ServerWorld target) {
-        BlockPos sourcePos = this.lastNetherPortalPosition != null
-                ? this.lastNetherPortalPosition
-                : BlockPos.ofFloored(this.getX(), this.getY(), this.getZ());
+        // Same X/Z on both sides, clamped into the target's buildable height.
+        BlockPos dest = target.getWorldBorder().clamp(entity.getX(), entity.getY(), entity.getZ());
+        int y = Math.max(target.getBottomY() + 2, Math.min(dest.getY(), target.getBottomY() + target.getLogicalHeight() - 6));
+        dest = new BlockPos(dest.getX(), y, dest.getZ());
 
-        Direction.Axis axis = source.getBlockState(sourcePos)
-                .getOrEmpty(NetherPortalBlock.AXIS)
-                .orElse(Direction.Axis.X);
-
-        // Keep the Classic pair at a 1:1 coordinate scale, like the requested
-        // classic-era Nether. Find an existing portal first, otherwise create
-        // the normal vanilla 2x3 obsidian portal at the matching coordinates.
-        BlockPos targetPos = BlockPos.ofFloored(this.getX(), this.getY(), this.getZ());
-        Optional<BlockLocating.Rectangle> portal = target.getPortalForcer()
-                .getPortalRect(targetPos, false, target.getWorldBorder());
+        boolean toNether = target.getRegistryKey().equals(ModDimensions.CLASSIC_NETHER_LEVEL_KEY);
+        Optional<BlockLocating.Rectangle> portal = target.getPortalForcer().getPortalRect(dest, toNether, target.getWorldBorder());
         if (portal.isEmpty()) {
-            portal = gallifrey$createClassicPortal(target, targetPos, axis);
+            portal = target.getPortalForcer().createPortal(dest, axis);
+            portal.ifPresent(rect -> gallifrey$makeFrameClassic(target, rect));
         }
 
-        double x = targetPos.getX() + 0.5D;
-        double y = targetPos.getY() + 0.5D;
-        double z = targetPos.getZ() + 0.5D;
+        Vec3d pos = portal
+                .map(rect -> new Vec3d(rect.lowerLeft.getX() + 0.5D, rect.lowerLeft.getY(), rect.lowerLeft.getZ() + 0.5D))
+                .orElse(Vec3d.ofBottomCenter(dest));
 
-        if (portal.isPresent()) {
-            BlockLocating.Rectangle rect = portal.get();
-            x = rect.lowerLeft.getX() + 0.5D;
-            y = rect.lowerLeft.getY() + 0.5D;
-            z = rect.lowerLeft.getZ() + 0.5D;
-        }
-
-        player.teleport(target, x, y, z, EnumSet.noneOf(PositionFlag.class), this.getYaw(), this.getPitch());
-    }
-    private static Optional<BlockLocating.Rectangle> gallifrey$createClassicPortal(ServerWorld world, BlockPos center, Direction.Axis axis) {
-        Direction horizontal = axis == Direction.Axis.X ? Direction.EAST : Direction.SOUTH;
-        BlockPos bottomLeft = center.down(1).offset(horizontal, -1);
-        // Keep the generated portal at the requested coordinate and search a
-        // small vertical range if that location is obstructed.
-        for (int y = Math.max(world.getBottomY() + 1, center.getY() - 2); y <= Math.min(world.getTopY() - 5, center.getY() + 2); y++) {
-            BlockPos base = new BlockPos(center.getX(), y, center.getZ()).offset(horizontal, -1);
-            if (!world.getBlockState(base).isAir() && !world.getBlockState(base).isReplaceable()) continue;
-            boolean clear = true;
-            for (int yy = 0; yy < 5 && clear; yy++) {
-                for (int xx = 0; xx < 4; xx++) {
-                    BlockPos p = base.up(yy).offset(horizontal, xx);
-                    if (yy >= 1 && yy <= 3 && xx >= 1 && xx <= 2) {
-                        if (!world.getBlockState(p).isAir() && !world.getBlockState(p).isReplaceable()) { clear = false; break; }
-                    } else if (!world.getBlockState(p).isAir() && !world.getBlockState(p).isReplaceable()) { clear = false; break; }
-                }
-            }
-            if (!clear) continue;
-            for (int xx = 0; xx <= 3; xx++) {
-                world.setBlockState(base.offset(horizontal, xx), GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState(), 3);
-                world.setBlockState(base.up(4).offset(horizontal, xx), GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState(), 3);
-            }
-            for (int yy = 0; yy <= 4; yy++) {
-                world.setBlockState(base.up(yy), GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState(), 3);
-                world.setBlockState(base.up(yy).offset(horizontal, 3), GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState(), 3);
-            }
-            for (int yy = 1; yy <= 3; yy++) {
-                for (int xx = 1; xx <= 2; xx++) {
-                    world.setBlockState(base.up(yy).offset(horizontal, xx), Blocks.NETHER_PORTAL.getDefaultState().with(NetherPortalBlock.AXIS, axis), 3);
-                }
-            }
-            BlockPos ll = base.up(1).offset(horizontal, 1);
-            return Optional.of(new BlockLocating.Rectangle(ll, 2, 3));
-        }
-        return Optional.empty();
+        FabricDimensions.teleport(entity, target, new TeleportTarget(pos, Vec3d.ZERO, entity.getYaw(), entity.getPitch()));
     }
 
+    /** Swap the vanilla obsidian vanilla just built (frame + any platform) for Classic Obsidian. */
+    private static void gallifrey$makeFrameClassic(ServerWorld world, BlockLocating.Rectangle rect) {
+        BlockPos ll = rect.lowerLeft;
+        for (BlockPos p : BlockPos.iterate(ll.add(-2, -2, -2), ll.add(rect.width + 2, rect.height + 1, rect.width + 2))) {
+            if (world.getBlockState(p).isOf(Blocks.OBSIDIAN)) {
+                world.setBlockState(p, GallifreyModBlocks.CLASSIC_OBSIDIAN.getDefaultState(),
+                        Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+            }
+        }
+    }
+
+    private static boolean gallifrey$isClassic(RegistryKey<World> key) {
+        return key.equals(ModDimensions.CLASSIC_LEVEL_KEY) || key.equals(ModDimensions.CLASSIC_NETHER_LEVEL_KEY);
+    }
 }

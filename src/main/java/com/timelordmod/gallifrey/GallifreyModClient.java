@@ -57,6 +57,16 @@ public class GallifreyModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
+        // Classic leather armour: the item icons are greyscale and get the leather colour
+        // (or the dye colour) at runtime, exactly like vanilla leather armour.
+        net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.ITEM.register(
+                (stack, tintIndex) -> tintIndex > 0 ? -1
+                        : ((net.minecraft.item.DyeableItem) stack.getItem()).getColor(stack),
+                com.timelordmod.gallifrey.item.GallifreyModItems.CLASSIC_LEATHER_HELMET,
+                com.timelordmod.gallifrey.item.GallifreyModItems.CLASSIC_LEATHER_CHESTPLATE,
+                com.timelordmod.gallifrey.item.GallifreyModItems.CLASSIC_LEATHER_LEGGINGS,
+                com.timelordmod.gallifrey.item.GallifreyModItems.CLASSIC_LEATHER_BOOTS);
+
         // Register the complete supplied Classic-era asset pack as an optional built-in
         // resource pack. The integrated Classic blocks use the supplied textures directly;
         // this pack provides the remaining vanilla item/entity/sound overrides when enabled.

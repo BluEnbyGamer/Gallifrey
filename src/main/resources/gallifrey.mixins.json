@@ -7,7 +7,9 @@
     "ClassicHurtSoundMixin",
     "EatGrassGoalMixin",
     "ClassicNetherPortalMixin",
-    "ClassicNetherFlintAndSteelMixin",
+    "ClassicPortalFrameMixin",
+    "ClassicPortalLightingMixin",
+    "ClassicFurnaceBlockEntityMixin",
     "ServerWorldSleepMixin"
   ],
   "client": [

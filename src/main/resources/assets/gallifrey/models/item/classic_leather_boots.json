@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gallifrey:item/classic/leather_boots"
+    "layer0": "gallifrey:item/classic/leather_boots",
+    "layer1": "gallifrey:item/classic/leather_boots_overlay"
   }
 }

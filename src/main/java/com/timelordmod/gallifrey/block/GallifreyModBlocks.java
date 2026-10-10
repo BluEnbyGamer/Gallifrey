@@ -71,7 +71,7 @@ public class GallifreyModBlocks {
     // Classic textures that were present in the asset pack but had no registered block.
     public static final Block CLASSIC_MOSSY_COBBLESTONE = registerBlock("classic_mossy_cobblestone", new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_COBBLESTONE).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_BOOKSHELF = registerBlock("classic_bookshelf", new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF).sounds(CLASSIC_WOOD_SOUNDS)));
-    public static final Block CLASSIC_CRAFTING_TABLE = registerBlock("classic_crafting_table", new CraftingTableBlock(FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_CRAFTING_TABLE = registerBlock("classic_crafting_table", new com.timelordmod.gallifrey.block.custom.ClassicCraftingTableBlock(FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE).sounds(CLASSIC_WOOD_SOUNDS)));
     public static final Block CLASSIC_FURNACE = registerBlock("classic_furnace", new FurnaceBlock(FabricBlockSettings.copyOf(Blocks.FURNACE).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_WOOL_WINDOWS = registerBlock("classic_wool_windows", new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)));
 

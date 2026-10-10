@@ -203,11 +203,10 @@ public class GallifreyMod implements ModInitializer {
 
 		CustomPortalBuilder.beginPortal()
 				.frameBlock(GallifreyModBlocks.CLASSIC_OBSIDIAN)
-				.lightWithItem(GallifreyModItems.CLASSIC_FLINT_AND_STEEL)
-						.destDimID(ModDimensions.CLASSIC_NETHER_LEVEL_KEY.getValue())
-						.returnDim(ModDimensions.CLASSIC_LEVEL_KEY.getValue(), false)
-						.tintColor(131, 66, 184)
-						.registerPortal();
+				.destDimID(ModDimensions.CLASSIC_NETHER_LEVEL_KEY.getValue())
+				.returnDim(ModDimensions.CLASSIC_LEVEL_KEY.getValue(), true)
+				.tintColor(131, 66, 184)
+				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.REINFORCED_STEEL_BLOCK)

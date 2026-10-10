@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "minecraft:item/handheld",
   "textures": {
     "layer0": "gallifrey:item/classic/wood_pickaxe"
   }

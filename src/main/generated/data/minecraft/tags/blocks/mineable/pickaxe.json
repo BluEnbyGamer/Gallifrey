@@ -152,6 +152,16 @@
     "gallifrey:classic_sponge",
     "gallifrey:classic_bricks",
     "gallifrey:classic_tnt",
+    "gallifrey:classic_furnace",
+    "gallifrey:classic_obsidian",
+    "gallifrey:classic_mossy_cobblestone",
+    "gallifrey:classic_diamond_block",
+    "gallifrey:classic_emerald_block",
+    "gallifrey:classic_lapis_block",
+    "gallifrey:classic_redstone_block",
+    "gallifrey:classic_emerald_ore",
+    "gallifrey:classic_nether_glowstone",
+    "gallifrey:classic_nether_magma",
     {
       "id": "#gallifrey:prehistoric_ores",
       "required": false

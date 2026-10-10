@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gallifrey:item/classic/leather_helmet"
+    "layer0": "gallifrey:item/classic/leather_helmet",
+    "layer1": "gallifrey:item/classic/leather_helmet_overlay"
   }
 }

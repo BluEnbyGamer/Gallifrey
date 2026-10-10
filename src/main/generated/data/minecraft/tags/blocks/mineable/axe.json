@@ -50,6 +50,8 @@
     "gallifrey:stripped_spruce_log_roundel",
     "gallifrey:classic_planks",
     "gallifrey:classic_log",
-    "gallifrey:classic_leaves"
+    "gallifrey:classic_leaves",
+    "gallifrey:classic_crafting_table",
+    "gallifrey:classic_bookshelf"
   ]
 }
