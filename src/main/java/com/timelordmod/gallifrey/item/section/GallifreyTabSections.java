@@ -439,6 +439,8 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_CRAFTING_TABLE);
                 entries.add(GallifreyModBlocks.CLASSIC_FURNACE);
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
+                entries.add(GallifreyModItems.DIAMOND_MINECART);
+                entries.add(GallifreyModItems.CLASSIC_VILLAGER_SPAWN_EGG);
 
                 // Classic Nether
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK);

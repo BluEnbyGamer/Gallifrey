@@ -205,6 +205,11 @@ public class GallifreyModClient implements ClientModInitializer {
                 new LostRealitySkyRenderer()
         );
 
+
+        EntityRendererRegistry.register(GallifreyEntities.DIAMOND_MINECART, com.timelordmod.gallifrey.entity.client.DiamondMinecartRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.CLASSIC_VILLAGER, com.timelordmod.gallifrey.entity.client.ClassicVillagerRenderer::new);
+
+
         // =========================================================
         // MARS CRYSTAL RENDER LAYER
         // =========================================================

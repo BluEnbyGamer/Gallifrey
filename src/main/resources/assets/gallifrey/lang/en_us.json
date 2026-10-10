@@ -601,5 +601,15 @@
   "block.gallifrey.classic_crafting_table": "Classic Crafting Table",
   "block.gallifrey.classic_furnace": "Classic Furnace",
   "block.gallifrey.classic_wool_windows": "Classic Wool Windows",
-  "block.gallifrey.classic_emerald_ore": "Classic Emerald Ore"
+  "block.gallifrey.classic_emerald_ore": "Classic Emerald Ore",
+  "item.gallifrey.diamond_minecart": "Diamond Minecart",
+  "entity.gallifrey.diamond_minecart": "Diamond Minecart",
+  "entity.gallifrey.classic_villager": "Classic Villager",
+  "entity.gallifrey.classic_villager.farmer": "Classic Farmer",
+  "entity.gallifrey.classic_villager.librarian": "Classic Librarian",
+  "entity.gallifrey.classic_villager.priest": "Classic Priest",
+  "entity.gallifrey.classic_villager.blacksmith": "Classic Blacksmith",
+  "entity.gallifrey.classic_villager.butcher": "Classic Butcher",
+  "entity.gallifrey.classic_villager.nitwit": "Classic Nitwit",
+  "item.gallifrey.classic_villager_spawn_egg": "Classic Villager Spawn Egg"
 }

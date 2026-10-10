@@ -281,6 +281,13 @@ public class GallifreyModItems {
     public static final Item CLASSIC_LAVA_BUCKET = registerItem("classic_lava_bucket",
             new BucketItem(GallifreyFluids.STILL_CLASSIC_LAVA, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
 
+
+    public static final Item DIAMOND_MINECART = registerItem("diamond_minecart",
+            new com.timelordmod.gallifrey.item.custom.DiamondMinecartItem(new FabricItemSettings().maxCount(1)));
+
+
+    public static final Item CLASSIC_VILLAGER_SPAWN_EGG = registerItem("classic_villager_spawn_egg",
+            new net.minecraft.item.SpawnEggItem(com.timelordmod.gallifrey.entity.GallifreyEntities.CLASSIC_VILLAGER, 0x563C33, 0xBD8B72, new FabricItemSettings()));
     // Clothing
     public static final HeadwearItem FEZ = new HeadwearItem(new FabricItemSettings());
     public static final HeadwearItem FANCYFEZ = new HeadwearItem(new FabricItemSettings());

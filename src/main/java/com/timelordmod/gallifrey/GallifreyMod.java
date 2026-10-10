@@ -255,7 +255,8 @@ public class GallifreyMod implements ModInitializer {
 						.tintColor(40, 160, 150)
 						.registerPortal();
 
-
+		FabricDefaultAttributeRegistry.register(GallifreyEntities.CLASSIC_VILLAGER,
+				com.timelordmod.gallifrey.entity.custom.ClassicVillagerEntity.createAttributes());
 
 		MarsWorldHandler.register();
 

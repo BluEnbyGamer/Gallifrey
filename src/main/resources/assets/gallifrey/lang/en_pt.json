@@ -598,5 +598,15 @@
   "item.gallifrey.classic_chainmail_chestplate": "Olden Chain Breastplate",
   "item.gallifrey.classic_chainmail_leggings": "Olden Chain Breeches",
   "block.gallifrey.classic_redstone_lamp": "Olden Ship's Lantern",
-  "item.gallifrey.classic_chainmail_boots": "Olden Chain Sea Boots"
+  "item.gallifrey.classic_chainmail_boots": "Olden Chain Sea Boots",
+  "item.gallifrey.diamond_minecart": "Diamond Rail Galleon",
+  "entity.gallifrey.diamond_minecart": "Diamond Rail Galleon",
+  "entity.gallifrey.classic_villager": "Olden Landlubber",
+  "entity.gallifrey.classic_villager.farmer": "Olden Crop Swabbie",
+  "entity.gallifrey.classic_villager.librarian": "Olden Chart Keeper",
+  "entity.gallifrey.classic_villager.priest": "Olden Ship's Chaplain",
+  "entity.gallifrey.classic_villager.blacksmith": "Olden Anchor Smith",
+  "entity.gallifrey.classic_villager.butcher": "Olden Galley Cook",
+  "entity.gallifrey.classic_villager.nitwit": "Olden Bilge Rat",
+  "item.gallifrey.classic_villager_spawn_egg": "Olden Landlubber Egg"
 }
