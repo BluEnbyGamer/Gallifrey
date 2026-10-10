@@ -241,6 +241,9 @@ public class GallifreyModItems {
     public static final Item ENERGIZED_ATRIUM = new Item(new FabricItemSettings());
     public static final Item ATRIUM_CORE = new Item(new FabricItemSettings());
 
+    //Dice Tablet :3
+    public static final Item DICE_TABLET = new Item(new FabricItemSettings());
+
 
 
 
@@ -325,6 +328,9 @@ public class GallifreyModItems {
         registerItem("trustable_hat", TRUSTABLE_HAT);
         registerItem("eyestalk", EYESTALK);
         registerItem("omega_helmet", OMEGA_HELMET);
+
+        registerItem("dice_tablet", DICE_TABLET);
+
         registerItem("skaro_city_dalek_spawn_egg", SKARO_CITY_DALEK_SPAWN_EGG);
 
         GallifreyMod.LOGGER.debug("[Gallifrey] Items registered.");
