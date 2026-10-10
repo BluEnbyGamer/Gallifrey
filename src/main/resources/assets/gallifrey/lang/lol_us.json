@@ -514,32 +514,22 @@
   "biome.gallifrey.gallifreyan_maple_jungle": "Gallifreyun Mapul Jungul",
   "biome.gallifrey.gallifreyan_moonpine_forest": "Oldz Groef Moonpien Forist",
   "gamerule.spawnOnGallifrey": "Spawnz on Gallifreh",
-
-  // ===== Advancements =====
   "advancement.gallifrey.gallroot.title": "Gallifrey",
   "advancement.gallifrey.gallroot.desc": "I CAN HAZ GALLIFREY?",
-
   "advancement.gallifrey.sonicroot.title": "Sonik Teknolojee",
   "advancement.gallifrey.sonicroot.desc": "Find a Rawr Sonik Crystul",
-
   "advancement.gallifrey.steelroot.title": "Kitteh ov Steal",
   "advancement.gallifrey.steelroot.desc": "Get Rawr Steal",
-
   "advancement.gallifrey.atriumroot.title": "Atreum",
   "advancement.gallifrey.atriumroot.desc": "Find sum Atreum",
-
   "advancement.gallifrey.energisedatrium.title": "ZAPPY ZAPPY",
   "advancement.gallifrey.energisedatrium.desc": "Get Hyper Atreum",
-
   "advancement.gallifrey.atriumcore.title": "Hart ov Teh Mattr",
   "advancement.gallifrey.atriumcore.desc": "Get a Atreum Cor",
-
   "advancement.gallifrey.explore_gallifrey.title": "Kitteh Adventur Tiem",
   "advancement.gallifrey.explore_gallifrey.desc": "Visit ALL teh Gallifrey Bioemz",
-
   "advancement.gallifrey.sonic_screwdriver.title": "Bzzzzzt",
   "advancement.gallifrey.sonic_screwdriver.desc": "Mak a Sonik Skrewdrivr",
-
   "advancement.gallifrey.vortex_manipulator.title": "Wibbly Wobbly Wrist Thing",
   "advancement.gallifrey.vortex_manipulator.desc": "Mak a Vortexx Manipulaetr"
 }

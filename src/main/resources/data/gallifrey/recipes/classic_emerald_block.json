@@ -7,11 +7,10 @@
   ],
   "key": {
     "E": {
-      "item": "minecraft:emerald"
+      "item": "gallifrey:classic_emerald"
     }
   },
   "result": {
-    "item": "minecraft:emerald_block",
-    "count": 1
+    "item": "gallifrey:classic_emerald_block"
   }
 }

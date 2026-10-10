@@ -76,6 +76,12 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_TNT = registerBlock("classic_tnt", new TntBlock(FabricBlockSettings.copyOf(Blocks.TNT).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_RED_FLOWER = registerBlock("classic_red_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.RED_TULIP)));
     public static final Block CLASSIC_YELLOW_FLOWER = registerBlock("classic_yellow_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
+    public static final Block CLASSIC_BEDROCK = registerBlock("classic_bedrock", new Block(FabricBlockSettings.copyOf(Blocks.BEDROCK).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_DIAMOND_BLOCK = registerBlock("classic_diamond_block", new Block(FabricBlockSettings.copyOf(Blocks.DIAMOND_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_EMERALD_BLOCK = registerBlock("classic_emerald_block", new Block(FabricBlockSettings.copyOf(Blocks.EMERALD_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_LAPIS_BLOCK = registerBlock("classic_lapis_block", new Block(FabricBlockSettings.copyOf(Blocks.LAPIS_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_REDSTONE_BLOCK = registerBlock("classic_redstone_block", new Block(FabricBlockSettings.copyOf(Blocks.REDSTONE_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
+
     public static final Block CLASSIC_OBSIDIAN = registerBlock("classic_obsidian",
             new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN).sounds(CLASSIC_STONE_SOUNDS)));
 

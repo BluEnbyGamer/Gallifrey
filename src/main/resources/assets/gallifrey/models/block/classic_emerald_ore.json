@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gallifrey:block/classic/diamond_ore"
+    "all": "gallifrey:block/classic/emerald_ore"
   }
 }

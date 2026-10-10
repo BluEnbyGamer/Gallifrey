@@ -8,6 +8,7 @@ import com.timelordmod.gallifrey.entity.ModBoats;
 import com.timelordmod.gallifrey.entity.GallifreyEntities;
 import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.custom.GeoHeadwearItem;
+import com.timelordmod.gallifrey.item.custom.DiceTabletItem;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
@@ -23,6 +24,66 @@ import com.timelordmod.gallifrey.item.custom.ModArmorMaterials;
 import com.timelordmod.gallifrey.item.custom.ModToolMaterials;
 
 public class GallifreyModItems {
+    // Dedicated legacy item identities: these are real Gallifrey registry entries, not texture overrides.
+    public static final Item CLASSIC_APPLE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_APPLE_GOLDEN = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_CARROT_GOLDEN = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_CHAINMAIL_BOOTS = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_CHAINMAIL_CHESTPLATE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_CHAINMAIL_HELMET = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_CHAINMAIL_LEGGINGS = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_COAL = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND_AXE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND_BOOTS = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND_CHESTPLATE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND_HELMET = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND_HOE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND_HORSE_ARMOR = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND_LEGGINGS = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND_PICKAXE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND_SHOVEL = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND_SWORD = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DOOR_IRON = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_EMERALD = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_FLINT = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_FLINT_AND_STEEL = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_AXE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_BOOTS = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_CHESTPLATE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_HELMET = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_HOE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_HORSE_ARMOR = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_INGOT = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_LEGGINGS = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_NUGGET = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_PICKAXE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_SHOVEL = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_SWORD = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_AXE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_BOOTS = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_CHESTPLATE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_HELMET = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_HOE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_HORSE_ARMOR = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_INGOT = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_LEGGINGS = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_PICKAXE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_SHOVEL = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_IRON_SWORD = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_LEATHER = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_LEATHER_BOOTS = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_LEATHER_CHESTPLATE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_LEATHER_HELMET = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_LEATHER_LEGGINGS = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_OAK_BOAT = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_STICK = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_WOOD_AXE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_WOOD_HOE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_WOOD_PICKAXE = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_WOOD_SHOVEL = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_WOOD_SWORD = new Item(new FabricItemSettings());
+
 
     public static final WhitePointStarItem WHITE_POINT_STAR = new WhitePointStarItem(
             new FabricItemSettings()
@@ -242,7 +303,7 @@ public class GallifreyModItems {
     public static final Item ATRIUM_CORE = new Item(new FabricItemSettings());
 
     //Dice Tablet :3
-    public static final Item DICE_TABLET = new Item(new FabricItemSettings());
+    public static final Item DICE_TABLET = new DiceTabletItem(new FabricItemSettings().maxCount(1));
 
 
 
@@ -332,6 +393,66 @@ public class GallifreyModItems {
         registerItem("dice_tablet", DICE_TABLET);
 
         registerItem("skaro_city_dalek_spawn_egg", SKARO_CITY_DALEK_SPAWN_EGG);
+
+        // Classic-era items are separately registered under gallifrey:classic_* ids.
+        registerItem("classic_apple", CLASSIC_APPLE);
+        registerItem("classic_apple_golden", CLASSIC_APPLE_GOLDEN);
+        registerItem("classic_carrot_golden", CLASSIC_CARROT_GOLDEN);
+        registerItem("classic_chainmail_boots", CLASSIC_CHAINMAIL_BOOTS);
+        registerItem("classic_chainmail_chestplate", CLASSIC_CHAINMAIL_CHESTPLATE);
+        registerItem("classic_chainmail_helmet", CLASSIC_CHAINMAIL_HELMET);
+        registerItem("classic_chainmail_leggings", CLASSIC_CHAINMAIL_LEGGINGS);
+        registerItem("classic_coal", CLASSIC_COAL);
+        registerItem("classic_diamond", CLASSIC_DIAMOND);
+        registerItem("classic_diamond_axe", CLASSIC_DIAMOND_AXE);
+        registerItem("classic_diamond_boots", CLASSIC_DIAMOND_BOOTS);
+        registerItem("classic_diamond_chestplate", CLASSIC_DIAMOND_CHESTPLATE);
+        registerItem("classic_diamond_helmet", CLASSIC_DIAMOND_HELMET);
+        registerItem("classic_diamond_hoe", CLASSIC_DIAMOND_HOE);
+        registerItem("classic_diamond_horse_armor", CLASSIC_DIAMOND_HORSE_ARMOR);
+        registerItem("classic_diamond_leggings", CLASSIC_DIAMOND_LEGGINGS);
+        registerItem("classic_diamond_pickaxe", CLASSIC_DIAMOND_PICKAXE);
+        registerItem("classic_diamond_shovel", CLASSIC_DIAMOND_SHOVEL);
+        registerItem("classic_diamond_sword", CLASSIC_DIAMOND_SWORD);
+        registerItem("classic_door_iron", CLASSIC_DOOR_IRON);
+        registerItem("classic_emerald", CLASSIC_EMERALD);
+        registerItem("classic_flint", CLASSIC_FLINT);
+        registerItem("classic_flint_and_steel", CLASSIC_FLINT_AND_STEEL);
+        registerItem("classic_gold_axe", CLASSIC_GOLD_AXE);
+        registerItem("classic_gold_boots", CLASSIC_GOLD_BOOTS);
+        registerItem("classic_gold_chestplate", CLASSIC_GOLD_CHESTPLATE);
+        registerItem("classic_gold_helmet", CLASSIC_GOLD_HELMET);
+        registerItem("classic_gold_hoe", CLASSIC_GOLD_HOE);
+        registerItem("classic_gold_horse_armor", CLASSIC_GOLD_HORSE_ARMOR);
+        registerItem("classic_gold_ingot", CLASSIC_GOLD_INGOT);
+        registerItem("classic_gold_leggings", CLASSIC_GOLD_LEGGINGS);
+        registerItem("classic_gold_nugget", CLASSIC_GOLD_NUGGET);
+        registerItem("classic_gold_pickaxe", CLASSIC_GOLD_PICKAXE);
+        registerItem("classic_gold_shovel", CLASSIC_GOLD_SHOVEL);
+        registerItem("classic_gold_sword", CLASSIC_GOLD_SWORD);
+        registerItem("classic_iron_axe", CLASSIC_IRON_AXE);
+        registerItem("classic_iron_boots", CLASSIC_IRON_BOOTS);
+        registerItem("classic_iron_chestplate", CLASSIC_IRON_CHESTPLATE);
+        registerItem("classic_iron_helmet", CLASSIC_IRON_HELMET);
+        registerItem("classic_iron_hoe", CLASSIC_IRON_HOE);
+        registerItem("classic_iron_horse_armor", CLASSIC_IRON_HORSE_ARMOR);
+        registerItem("classic_iron_ingot", CLASSIC_IRON_INGOT);
+        registerItem("classic_iron_leggings", CLASSIC_IRON_LEGGINGS);
+        registerItem("classic_iron_pickaxe", CLASSIC_IRON_PICKAXE);
+        registerItem("classic_iron_shovel", CLASSIC_IRON_SHOVEL);
+        registerItem("classic_iron_sword", CLASSIC_IRON_SWORD);
+        registerItem("classic_leather", CLASSIC_LEATHER);
+        registerItem("classic_leather_boots", CLASSIC_LEATHER_BOOTS);
+        registerItem("classic_leather_chestplate", CLASSIC_LEATHER_CHESTPLATE);
+        registerItem("classic_leather_helmet", CLASSIC_LEATHER_HELMET);
+        registerItem("classic_leather_leggings", CLASSIC_LEATHER_LEGGINGS);
+        registerItem("classic_oak_boat", CLASSIC_OAK_BOAT);
+        registerItem("classic_stick", CLASSIC_STICK);
+        registerItem("classic_wood_axe", CLASSIC_WOOD_AXE);
+        registerItem("classic_wood_hoe", CLASSIC_WOOD_HOE);
+        registerItem("classic_wood_pickaxe", CLASSIC_WOOD_PICKAXE);
+        registerItem("classic_wood_shovel", CLASSIC_WOOD_SHOVEL);
+        registerItem("classic_wood_sword", CLASSIC_WOOD_SWORD);
 
         GallifreyMod.LOGGER.debug("[Gallifrey] Items registered.");
     }

@@ -514,32 +514,22 @@
   "biome.gallifrey.gallifreyan_maple_jungle": "Gallifreyan Maple Jungle",
   "biome.gallifrey.gallifreyan_moonpine_forest": "Weathered Old Growth Moonpine Woods",
   "gamerule.spawnOnGallifrey": "Make landfall on Gallifrey",
-
-  // ===== Advancements =====
   "advancement.gallifrey.gallroot.title": "Gallifrey Ahoy!",
   "advancement.gallifrey.gallroot.desc": "Set sail fer Gallifrey",
-
   "advancement.gallifrey.sonicroot.title": "Sonic Sorcery",
   "advancement.gallifrey.sonicroot.desc": "Dig up a Raw Sonic Gem, ye scallywag",
-
   "advancement.gallifrey.steelroot.title": "Heart o' Steel",
   "advancement.gallifrey.steelroot.desc": "Plunder some Unsmelted Steel",
-
   "advancement.gallifrey.atriumroot.title": "Atrium Treasure",
   "advancement.gallifrey.atriumroot.desc": "Find yerself some Atrium",
-
   "advancement.gallifrey.energisedatrium.title": "Lightnin' in a Bottle",
   "advancement.gallifrey.energisedatrium.desc": "Get yer hooks on Charged Atrium",
-
   "advancement.gallifrey.atriumcore.title": "Heart o' the Ship",
   "advancement.gallifrey.atriumcore.desc": "Claim an Atrium Heart, ye scallywag",
-
   "advancement.gallifrey.explore_gallifrey.title": "Chartin' the Seven Seas o' Gallifrey",
   "advancement.gallifrey.explore_gallifrey.desc": "Set foot on every shore an' wood o' Gallifrey",
-
   "advancement.gallifrey.sonic_screwdriver.title": "A Cap'n's Trusty Tool",
   "advancement.gallifrey.sonic_screwdriver.desc": "Forge yerself a Sonic Screwdriver",
-
   "advancement.gallifrey.vortex_manipulator.title": "Sailin' the Time Winds",
   "advancement.gallifrey.vortex_manipulator.desc": "Strap a Vortex Manipulator to yer wrist"
 }
