@@ -7,8 +7,7 @@ import net.minecraft.recipe.Ingredient;
 import java.util.function.Supplier;
 
 /**
- * Tool tiers for the mod's metals.
- *
+ * Tool tiers for the mod's metals and classic equipment.
  * STEEL is a small step above iron while remaining well below diamond.
  * DALEKANIUM copies vanilla IRON exactly.
  * METALERTANIUM copies vanilla NETHERITE exactly.
@@ -18,7 +17,14 @@ import java.util.function.Supplier;
 public enum ModToolMaterials implements ToolMaterial {
     STEEL(2, 300, 6.5F, 2.25F, 14, () -> Ingredient.ofItems(GallifreyModItems.STEEL_INGOT)),
     DALEKANIUM(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.ofItems(GallifreyModItems.DALEKANIUM_INGOT)),
-    METALERTANIUM(4, 2031, 9.0F, 4.0F, 15, () -> Ingredient.ofItems(GallifreyModItems.METALERTANIUM_INGOT));
+    METALERTANIUM(4, 2031, 9.0F, 4.0F, 15, () -> Ingredient.ofItems(GallifreyModItems.METALERTANIUM_INGOT)),
+
+    // Classic Tool Materials (matching vanilla stats)
+    CLASSIC_WOOD(0, 59, 2.0F, 0.0F, 15, () -> Ingredient.ofItems(GallifreyModItems.CLASSIC_STICK)),
+    CLASSIC_STONE(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.ofItems(GallifreyModItems.CLASSIC_FLINT)), // or cobblestone if registered
+    CLASSIC_IRON(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.ofItems(GallifreyModItems.CLASSIC_IRON_INGOT)),
+    CLASSIC_GOLD(0, 32, 12.0F, 0.0F, 22, () -> Ingredient.ofItems(GallifreyModItems.CLASSIC_GOLD_INGOT)),
+    CLASSIC_DIAMOND(3, 1561, 8.0F, 3.0F, 10, () -> Ingredient.ofItems(GallifreyModItems.CLASSIC_DIAMOND));
 
     private final int miningLevel;
     private final int durability;

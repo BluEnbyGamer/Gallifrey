@@ -387,30 +387,37 @@ public final class GallifreyTabSections {
             "classic",
             () -> new ItemStack(GallifreyModBlocks.CLASSIC_GRASS),
             entries -> {
+                // Environment & Natural Blocks
                 entries.add(GallifreyModBlocks.CLASSIC_STONE);
                 entries.add(GallifreyModBlocks.CLASSIC_GRASS);
                 entries.add(GallifreyModBlocks.CLASSIC_DIRT);
                 entries.add(GallifreyModBlocks.CLASSIC_COBBLE);
+                entries.add(GallifreyModBlocks.CLASSIC_SAND);
+                entries.add(GallifreyModBlocks.CLASSIC_GRAVEL);
+                entries.add(GallifreyModBlocks.CLASSIC_RED_FLOWER);
+                entries.add(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
+
+                // Wood & Building Blocks
+                entries.add(GallifreyModBlocks.CLASSIC_LOG);
+                entries.add(GallifreyModBlocks.CLASSIC_LEAVES);
+                entries.add(GallifreyModBlocks.CLASSIC_SAPLING);
                 entries.add(GallifreyModBlocks.CLASSIC_PLANKS);
                 entries.add(GallifreyModBlocks.CLASSIC_STAIRS);
                 entries.add(GallifreyModBlocks.CLASSIC_SLAB);
                 entries.add(GallifreyModBlocks.CLASSIC_FENCE);
                 entries.add(GallifreyModBlocks.CLASSIC_FENCE_GATE);
-                entries.add(GallifreyModBlocks.CLASSIC_LOG);
-                entries.add(GallifreyModBlocks.CLASSIC_SAPLING);
-                entries.add(GallifreyModBlocks.CLASSIC_LEAVES);
-                entries.add(GallifreyModBlocks.CLASSIC_SAND);
-                entries.add(GallifreyModBlocks.CLASSIC_GRAVEL);
-                entries.add(GallifreyModBlocks.CLASSIC_GOLD);
-                entries.add(GallifreyModBlocks.CLASSIC_IRON);
+                entries.add(GallifreyModBlocks.CLASSIC_BRICKS);
                 entries.add(GallifreyModBlocks.CLASSIC_GLASS);
                 entries.add(GallifreyModBlocks.CLASSIC_SPONGE);
-                entries.add(GallifreyModBlocks.CLASSIC_BRICKS);
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
-                entries.add(GallifreyModBlocks.CLASSIC_RED_FLOWER);
-                entries.add(GallifreyModBlocks.CLASSIC_YELLOW_FLOWER);
+                entries.add(GallifreyModBlocks.CLASSIC_GOLD);
+                entries.add(GallifreyModBlocks.CLASSIC_IRON);
+                // Added missing classic blocks:
+              //  entries.add(GallifreyModBlocks.CLASSIC_MOSSY_COBBLESTONE);
+              //  entries.add(GallifreyModBlocks.CLASSIC_BOOKSHELF);
+                entries.add(GallifreyModBlocks.CLASSIC_OBSIDIAN);
 
-                // Classic ore blocks. These drop the modern raw/gem materials, not old gear.
+                // Classic Ore Blocks (Drops modern raw/gem materials)
                 entries.add(GallifreyModBlocks.CLASSIC_COAL_ORE);
                 entries.add(GallifreyModBlocks.CLASSIC_IRON_ORE);
                 entries.add(GallifreyModBlocks.CLASSIC_GOLD_ORE);
@@ -419,75 +426,88 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_DIAMOND_ORE);
                 entries.add(GallifreyModBlocks.CLASSIC_EMERALD_ORE);
 
-                // Classic fluids/buckets.
-                entries.add(GallifreyModItems.CLASSIC_WATER_BUCKET);
-                entries.add(GallifreyModItems.CLASSIC_LAVA_BUCKET);
-                // Classic standalone tools, equipment, materials and utility items.
-                entries.add(GallifreyModItems.CLASSIC_APPLE);
-                entries.add(GallifreyModItems.CLASSIC_APPLE_GOLDEN);
-                entries.add(GallifreyModItems.CLASSIC_CARROT_GOLDEN);
-                entries.add(GallifreyModItems.CLASSIC_CHAINMAIL_BOOTS);
-                entries.add(GallifreyModItems.CLASSIC_CHAINMAIL_CHESTPLATE);
-                entries.add(GallifreyModItems.CLASSIC_CHAINMAIL_HELMET);
-                entries.add(GallifreyModItems.CLASSIC_CHAINMAIL_LEGGINGS);
-                entries.add(GallifreyModItems.CLASSIC_COAL);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_AXE);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_BOOTS);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_CHESTPLATE);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_HELMET);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_HOE);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_HORSE_ARMOR);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_LEGGINGS);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_PICKAXE);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_SHOVEL);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_SWORD);
-                entries.add(GallifreyModItems.CLASSIC_DOOR_IRON);
-                entries.add(GallifreyModItems.CLASSIC_EMERALD);
-                entries.add(GallifreyModItems.CLASSIC_FLINT);
-                entries.add(GallifreyModItems.CLASSIC_FLINT_AND_STEEL);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_AXE);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_BOOTS);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_CHESTPLATE);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_HELMET);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_HOE);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_HORSE_ARMOR);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_INGOT);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_LEGGINGS);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_NUGGET);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_PICKAXE);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_SHOVEL);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_SWORD);
-                entries.add(GallifreyModItems.CLASSIC_IRON_AXE);
-                entries.add(GallifreyModItems.CLASSIC_IRON_BOOTS);
-                entries.add(GallifreyModItems.CLASSIC_IRON_CHESTPLATE);
-                entries.add(GallifreyModItems.CLASSIC_IRON_HELMET);
-                entries.add(GallifreyModItems.CLASSIC_IRON_HOE);
-                entries.add(GallifreyModItems.CLASSIC_IRON_HORSE_ARMOR);
-                entries.add(GallifreyModItems.CLASSIC_IRON_INGOT);
-                entries.add(GallifreyModItems.CLASSIC_IRON_LEGGINGS);
-                entries.add(GallifreyModItems.CLASSIC_IRON_PICKAXE);
-                entries.add(GallifreyModItems.CLASSIC_IRON_SHOVEL);
-                entries.add(GallifreyModItems.CLASSIC_IRON_SWORD);
-                entries.add(GallifreyModItems.CLASSIC_LEATHER);
-                entries.add(GallifreyModItems.CLASSIC_LEATHER_BOOTS);
-                entries.add(GallifreyModItems.CLASSIC_LEATHER_CHESTPLATE);
-                entries.add(GallifreyModItems.CLASSIC_LEATHER_HELMET);
-                entries.add(GallifreyModItems.CLASSIC_LEATHER_LEGGINGS);
-                entries.add(GallifreyModItems.CLASSIC_OAK_BOAT);
-                entries.add(GallifreyModItems.CLASSIC_STICK);
-                entries.add(GallifreyModItems.CLASSIC_WOOD_AXE);
-                entries.add(GallifreyModItems.CLASSIC_WOOD_HOE);
-                entries.add(GallifreyModItems.CLASSIC_WOOD_PICKAXE);
-                entries.add(GallifreyModItems.CLASSIC_WOOD_SHOVEL);
-                entries.add(GallifreyModItems.CLASSIC_WOOD_SWORD);
-
-
+                // Nether Blocks
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK);
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_SOUL_SAND);
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_GLOWSTONE);
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_MAGMA);
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_QUARTZ_ORE);
+
+                // Fluids & Buckets
+                entries.add(GallifreyModItems.CLASSIC_WATER_BUCKET);
+                entries.add(GallifreyModItems.CLASSIC_LAVA_BUCKET);
+
+                // Materials, Food & Utility Items
+                entries.add(GallifreyModItems.CLASSIC_APPLE);
+                entries.add(GallifreyModItems.CLASSIC_APPLE_GOLDEN);
+                entries.add(GallifreyModItems.CLASSIC_CARROT_GOLDEN);
+                entries.add(GallifreyModItems.CLASSIC_COAL);
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND);
+                entries.add(GallifreyModItems.CLASSIC_EMERALD);
+                entries.add(GallifreyModItems.CLASSIC_FLINT);
+                entries.add(GallifreyModItems.CLASSIC_FLINT_AND_STEEL);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_INGOT);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_NUGGET);
+                entries.add(GallifreyModItems.CLASSIC_IRON_INGOT);
+                entries.add(GallifreyModItems.CLASSIC_LEATHER);
+                entries.add(GallifreyModItems.CLASSIC_STICK);
+                entries.add(GallifreyModItems.CLASSIC_DOOR_IRON);
+                entries.add(GallifreyModItems.CLASSIC_OAK_BOAT);
+
+                // Wooden Gear
+                entries.add(GallifreyModItems.CLASSIC_WOOD_SWORD);
+                entries.add(GallifreyModItems.CLASSIC_WOOD_SHOVEL);
+                entries.add(GallifreyModItems.CLASSIC_WOOD_PICKAXE);
+                entries.add(GallifreyModItems.CLASSIC_WOOD_AXE);
+                entries.add(GallifreyModItems.CLASSIC_WOOD_HOE);
+
+                // Leather Armor
+                entries.add(GallifreyModItems.CLASSIC_LEATHER_HELMET);
+                entries.add(GallifreyModItems.CLASSIC_LEATHER_CHESTPLATE);
+                entries.add(GallifreyModItems.CLASSIC_LEATHER_LEGGINGS);
+                entries.add(GallifreyModItems.CLASSIC_LEATHER_BOOTS);
+
+                // Chainmail Armor
+                entries.add(GallifreyModItems.CLASSIC_CHAINMAIL_HELMET);
+                entries.add(GallifreyModItems.CLASSIC_CHAINMAIL_CHESTPLATE);
+                entries.add(GallifreyModItems.CLASSIC_CHAINMAIL_LEGGINGS);
+                entries.add(GallifreyModItems.CLASSIC_CHAINMAIL_BOOTS);
+
+                // Iron Gear & Armor
+                entries.add(GallifreyModItems.CLASSIC_IRON_SWORD);
+                entries.add(GallifreyModItems.CLASSIC_IRON_SHOVEL);
+                entries.add(GallifreyModItems.CLASSIC_IRON_PICKAXE);
+                entries.add(GallifreyModItems.CLASSIC_IRON_AXE);
+                entries.add(GallifreyModItems.CLASSIC_IRON_HOE);
+                entries.add(GallifreyModItems.CLASSIC_IRON_HELMET);
+                entries.add(GallifreyModItems.CLASSIC_IRON_CHESTPLATE);
+                entries.add(GallifreyModItems.CLASSIC_IRON_LEGGINGS);
+                entries.add(GallifreyModItems.CLASSIC_IRON_BOOTS);
+                entries.add(GallifreyModItems.CLASSIC_IRON_HORSE_ARMOR);
+
+                // Gold Gear & Armor
+                entries.add(GallifreyModItems.CLASSIC_GOLD_SWORD);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_SHOVEL);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_PICKAXE);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_AXE);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_HOE);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_HELMET);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_CHESTPLATE);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_LEGGINGS);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_BOOTS);
+                entries.add(GallifreyModItems.CLASSIC_GOLD_HORSE_ARMOR);
+
+                // Diamond Gear & Armor
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND_SWORD);
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND_SHOVEL);
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND_PICKAXE);
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND_AXE);
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND_HOE);
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND_HELMET);
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND_CHESTPLATE);
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND_LEGGINGS);
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND_BOOTS);
+                entries.add(GallifreyModItems.CLASSIC_DIAMOND_HORSE_ARMOR);
             });
 
     public static final CreativeSection SKARO = CreativeSection.of(

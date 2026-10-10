@@ -28,61 +28,76 @@ public class GallifreyModItems {
     public static final Item CLASSIC_APPLE = new Item(new FabricItemSettings());
     public static final Item CLASSIC_APPLE_GOLDEN = new Item(new FabricItemSettings());
     public static final Item CLASSIC_CARROT_GOLDEN = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_CHAINMAIL_BOOTS = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_CHAINMAIL_CHESTPLATE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_CHAINMAIL_HELMET = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_CHAINMAIL_LEGGINGS = new Item(new FabricItemSettings());
+
+    // Classic Chainmail Armor
+    public static final ArmorItem CLASSIC_CHAINMAIL_BOOTS = new ArmorItem(ArmorMaterials.CHAIN, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_CHAINMAIL_CHESTPLATE = new ArmorItem(ArmorMaterials.CHAIN, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_CHAINMAIL_HELMET = new ArmorItem(ArmorMaterials.CHAIN, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_CHAINMAIL_LEGGINGS = new ArmorItem(ArmorMaterials.CHAIN, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+
     public static final Item CLASSIC_COAL = new Item(new FabricItemSettings());
     public static final Item CLASSIC_DIAMOND = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_DIAMOND_AXE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_DIAMOND_BOOTS = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_DIAMOND_CHESTPLATE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_DIAMOND_HELMET = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_DIAMOND_HOE = new Item(new FabricItemSettings());
+
+    // Classic Diamond Tools & Armor
+    public static final AxeItem CLASSIC_DIAMOND_AXE = new AxeItem(ModToolMaterials.CLASSIC_DIAMOND, 5.0F, -3.0F, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_BOOTS = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_CHESTPLATE = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_HELMET = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final HoeItem CLASSIC_DIAMOND_HOE = new HoeItem(ModToolMaterials.CLASSIC_DIAMOND, -1, -1.0F, new FabricItemSettings());
     public static final Item CLASSIC_DIAMOND_HORSE_ARMOR = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_DIAMOND_LEGGINGS = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_DIAMOND_PICKAXE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_DIAMOND_SHOVEL = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_DIAMOND_SWORD = new Item(new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_LEGGINGS = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final PickaxeItem CLASSIC_DIAMOND_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_DIAMOND, 1, -2.8F, new FabricItemSettings());
+    public static final ShovelItem CLASSIC_DIAMOND_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_DIAMOND, 1.5F, -3.0F, new FabricItemSettings());
+    public static final SwordItem CLASSIC_DIAMOND_SWORD = new SwordItem(ModToolMaterials.CLASSIC_DIAMOND, 3, -2.4F, new FabricItemSettings());
+
     public static final Item CLASSIC_DOOR_IRON = new Item(new FabricItemSettings());
     public static final Item CLASSIC_EMERALD = new Item(new FabricItemSettings());
     public static final Item CLASSIC_FLINT = new Item(new FabricItemSettings());
     public static final Item CLASSIC_FLINT_AND_STEEL = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_GOLD_AXE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_GOLD_BOOTS = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_GOLD_CHESTPLATE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_GOLD_HELMET = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_GOLD_HOE = new Item(new FabricItemSettings());
+
+    // Classic Gold Tools & Armor
+    public static final AxeItem CLASSIC_GOLD_AXE = new AxeItem(ModToolMaterials.CLASSIC_GOLD, 6.0F, -3.0F, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_BOOTS = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_CHESTPLATE = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_HELMET = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final HoeItem CLASSIC_GOLD_HOE = new HoeItem(ModToolMaterials.CLASSIC_GOLD, 0, -1.0F, new FabricItemSettings());
     public static final Item CLASSIC_GOLD_HORSE_ARMOR = new Item(new FabricItemSettings());
     public static final Item CLASSIC_GOLD_INGOT = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_GOLD_LEGGINGS = new Item(new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_LEGGINGS = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final Item CLASSIC_GOLD_NUGGET = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_GOLD_PICKAXE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_GOLD_SHOVEL = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_GOLD_SWORD = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_IRON_AXE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_IRON_BOOTS = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_IRON_CHESTPLATE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_IRON_HELMET = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_IRON_HOE = new Item(new FabricItemSettings());
+    public static final PickaxeItem CLASSIC_GOLD_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_GOLD, 1, -2.8F, new FabricItemSettings());
+    public static final ShovelItem CLASSIC_GOLD_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_GOLD, 1.5F, -3.0F, new FabricItemSettings());
+    public static final SwordItem CLASSIC_GOLD_SWORD = new SwordItem(ModToolMaterials.CLASSIC_GOLD, 3, -2.4F, new FabricItemSettings());
+
+    // Classic Iron Tools & Armor
+    public static final AxeItem CLASSIC_IRON_AXE = new AxeItem(ModToolMaterials.CLASSIC_IRON, 6.0F, -3.1F, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_BOOTS = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_CHESTPLATE = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_HELMET = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final HoeItem CLASSIC_IRON_HOE = new HoeItem(ModToolMaterials.CLASSIC_IRON, -2, -1.0F, new FabricItemSettings());
     public static final Item CLASSIC_IRON_HORSE_ARMOR = new Item(new FabricItemSettings());
     public static final Item CLASSIC_IRON_INGOT = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_IRON_LEGGINGS = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_IRON_PICKAXE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_IRON_SHOVEL = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_IRON_SWORD = new Item(new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_LEGGINGS = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final PickaxeItem CLASSIC_IRON_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_IRON, 1, -2.8F, new FabricItemSettings());
+    public static final ShovelItem CLASSIC_IRON_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_IRON, 1.5F, -3.0F, new FabricItemSettings());
+    public static final SwordItem CLASSIC_IRON_SWORD = new SwordItem(ModToolMaterials.CLASSIC_IRON, 3, -2.4F, new FabricItemSettings());
+
+    // Classic Leather Armor
     public static final Item CLASSIC_LEATHER = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_LEATHER_BOOTS = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_LEATHER_CHESTPLATE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_LEATHER_HELMET = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_LEATHER_LEGGINGS = new Item(new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_BOOTS = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_CHESTPLATE = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_HELMET = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_LEGGINGS = new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+
     public static final Item CLASSIC_OAK_BOAT = new Item(new FabricItemSettings());
     public static final Item CLASSIC_STICK = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_WOOD_AXE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_WOOD_HOE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_WOOD_PICKAXE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_WOOD_SHOVEL = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_WOOD_SWORD = new Item(new FabricItemSettings());
+
+    // Classic Wooden Tools
+    public static final AxeItem CLASSIC_WOOD_AXE = new AxeItem(ModToolMaterials.CLASSIC_WOOD, 6.0F, -3.2F, new FabricItemSettings());
+    public static final HoeItem CLASSIC_WOOD_HOE = new HoeItem(ModToolMaterials.CLASSIC_WOOD, 0, -1.0F, new FabricItemSettings());
+    public static final PickaxeItem CLASSIC_WOOD_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_WOOD, 1, -2.8F, new FabricItemSettings());
+    public static final ShovelItem CLASSIC_WOOD_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_WOOD, 1.5F, -3.0F, new FabricItemSettings());
+    public static final SwordItem CLASSIC_WOOD_SWORD = new SwordItem(ModToolMaterials.CLASSIC_WOOD, 3, -2.4F, new FabricItemSettings());
 
 
     public static final WhitePointStarItem WHITE_POINT_STAR = new WhitePointStarItem(
@@ -461,4 +476,3 @@ public class GallifreyModItems {
         return Registry.register(Registries.ITEM, new Identifier(GallifreyMod.MOD_ID, name), item);
     }
 }
-
