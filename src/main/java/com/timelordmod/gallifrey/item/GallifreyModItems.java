@@ -44,7 +44,6 @@ public class GallifreyModItems {
     public static final ArmorItem CLASSIC_DIAMOND_CHESTPLATE = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
     public static final ArmorItem CLASSIC_DIAMOND_HELMET = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.HELMET, new FabricItemSettings());
     public static final HoeItem CLASSIC_DIAMOND_HOE = new HoeItem(ModToolMaterials.CLASSIC_DIAMOND, -1, -1.0F, new FabricItemSettings());
-    public static final Item CLASSIC_DIAMOND_HORSE_ARMOR = new Item(new FabricItemSettings());
     public static final ArmorItem CLASSIC_DIAMOND_LEGGINGS = new ArmorItem(ArmorMaterials.DIAMOND, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final PickaxeItem CLASSIC_DIAMOND_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_DIAMOND, 1, -2.8F, new FabricItemSettings());
     public static final ShovelItem CLASSIC_DIAMOND_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_DIAMOND, 1.5F, -3.0F, new FabricItemSettings());
@@ -53,7 +52,7 @@ public class GallifreyModItems {
     public static final Item CLASSIC_DOOR_IRON = new Item(new FabricItemSettings());
     public static final Item CLASSIC_EMERALD = new Item(new FabricItemSettings());
     public static final Item CLASSIC_FLINT = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_FLINT_AND_STEEL = new Item(new FabricItemSettings());
+    public static final FlintAndSteelItem CLASSIC_FLINT_AND_STEEL = new FlintAndSteelItem(new FabricItemSettings().maxDamage(64));
 
     // Classic Gold Tools & Armor
     public static final AxeItem CLASSIC_GOLD_AXE = new AxeItem(ModToolMaterials.CLASSIC_GOLD, 6.0F, -3.0F, new FabricItemSettings());
@@ -61,7 +60,6 @@ public class GallifreyModItems {
     public static final ArmorItem CLASSIC_GOLD_CHESTPLATE = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
     public static final ArmorItem CLASSIC_GOLD_HELMET = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.HELMET, new FabricItemSettings());
     public static final HoeItem CLASSIC_GOLD_HOE = new HoeItem(ModToolMaterials.CLASSIC_GOLD, 0, -1.0F, new FabricItemSettings());
-    public static final Item CLASSIC_GOLD_HORSE_ARMOR = new Item(new FabricItemSettings());
     public static final Item CLASSIC_GOLD_INGOT = new Item(new FabricItemSettings());
     public static final ArmorItem CLASSIC_GOLD_LEGGINGS = new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final Item CLASSIC_GOLD_NUGGET = new Item(new FabricItemSettings());
@@ -75,7 +73,6 @@ public class GallifreyModItems {
     public static final ArmorItem CLASSIC_IRON_CHESTPLATE = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
     public static final ArmorItem CLASSIC_IRON_HELMET = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.HELMET, new FabricItemSettings());
     public static final HoeItem CLASSIC_IRON_HOE = new HoeItem(ModToolMaterials.CLASSIC_IRON, -2, -1.0F, new FabricItemSettings());
-    public static final Item CLASSIC_IRON_HORSE_ARMOR = new Item(new FabricItemSettings());
     public static final Item CLASSIC_IRON_INGOT = new Item(new FabricItemSettings());
     public static final ArmorItem CLASSIC_IRON_LEGGINGS = new ArmorItem(ArmorMaterials.IRON, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final PickaxeItem CLASSIC_IRON_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_IRON, 1, -2.8F, new FabricItemSettings());
@@ -424,7 +421,6 @@ public class GallifreyModItems {
         registerItem("classic_diamond_chestplate", CLASSIC_DIAMOND_CHESTPLATE);
         registerItem("classic_diamond_helmet", CLASSIC_DIAMOND_HELMET);
         registerItem("classic_diamond_hoe", CLASSIC_DIAMOND_HOE);
-        registerItem("classic_diamond_horse_armor", CLASSIC_DIAMOND_HORSE_ARMOR);
         registerItem("classic_diamond_leggings", CLASSIC_DIAMOND_LEGGINGS);
         registerItem("classic_diamond_pickaxe", CLASSIC_DIAMOND_PICKAXE);
         registerItem("classic_diamond_shovel", CLASSIC_DIAMOND_SHOVEL);
@@ -438,7 +434,6 @@ public class GallifreyModItems {
         registerItem("classic_gold_chestplate", CLASSIC_GOLD_CHESTPLATE);
         registerItem("classic_gold_helmet", CLASSIC_GOLD_HELMET);
         registerItem("classic_gold_hoe", CLASSIC_GOLD_HOE);
-        registerItem("classic_gold_horse_armor", CLASSIC_GOLD_HORSE_ARMOR);
         registerItem("classic_gold_ingot", CLASSIC_GOLD_INGOT);
         registerItem("classic_gold_leggings", CLASSIC_GOLD_LEGGINGS);
         registerItem("classic_gold_nugget", CLASSIC_GOLD_NUGGET);
@@ -450,7 +445,6 @@ public class GallifreyModItems {
         registerItem("classic_iron_chestplate", CLASSIC_IRON_CHESTPLATE);
         registerItem("classic_iron_helmet", CLASSIC_IRON_HELMET);
         registerItem("classic_iron_hoe", CLASSIC_IRON_HOE);
-        registerItem("classic_iron_horse_armor", CLASSIC_IRON_HORSE_ARMOR);
         registerItem("classic_iron_ingot", CLASSIC_IRON_INGOT);
         registerItem("classic_iron_leggings", CLASSIC_IRON_LEGGINGS);
         registerItem("classic_iron_pickaxe", CLASSIC_IRON_PICKAXE);

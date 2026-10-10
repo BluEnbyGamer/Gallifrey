@@ -483,7 +483,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.CLASSIC_IRON_CHESTPLATE);
                 entries.add(GallifreyModItems.CLASSIC_IRON_LEGGINGS);
                 entries.add(GallifreyModItems.CLASSIC_IRON_BOOTS);
-                entries.add(GallifreyModItems.CLASSIC_IRON_HORSE_ARMOR);
 
                 // Gold Gear & Armor
                 entries.add(GallifreyModItems.CLASSIC_GOLD_SWORD);
@@ -495,7 +494,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.CLASSIC_GOLD_CHESTPLATE);
                 entries.add(GallifreyModItems.CLASSIC_GOLD_LEGGINGS);
                 entries.add(GallifreyModItems.CLASSIC_GOLD_BOOTS);
-                entries.add(GallifreyModItems.CLASSIC_GOLD_HORSE_ARMOR);
 
                 // Diamond Gear & Armor
                 entries.add(GallifreyModItems.CLASSIC_DIAMOND_SWORD);
@@ -507,7 +505,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.CLASSIC_DIAMOND_CHESTPLATE);
                 entries.add(GallifreyModItems.CLASSIC_DIAMOND_LEGGINGS);
                 entries.add(GallifreyModItems.CLASSIC_DIAMOND_BOOTS);
-                entries.add(GallifreyModItems.CLASSIC_DIAMOND_HORSE_ARMOR);
             });
 
     public static final CreativeSection SKARO = CreativeSection.of(
