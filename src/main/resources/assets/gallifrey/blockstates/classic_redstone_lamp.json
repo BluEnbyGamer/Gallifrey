@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=false": { "model": "gallifrey:block/classic_redstone_lamp" },
+    "lit=true":  { "model": "gallifrey:block/classic_redstone_lamp_on" }
+  }
+}

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "pattern": [
     "AAA",
     "AAA",
@@ -11,7 +12,6 @@
     }
   },
   "result": {
-    "item": "gallifrey:classic_iron",
-    "count": 9
+    "item": "gallifrey:classic_iron"
   }
 }

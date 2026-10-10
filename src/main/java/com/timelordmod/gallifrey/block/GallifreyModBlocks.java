@@ -106,6 +106,8 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.DIAMOND_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_EMERALD_ORE = registerBlock("classic_emerald_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.EMERALD_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_REDSTONE_LAMP = registerBlock("classic_redstone_lamp",
+            new RedstoneLampBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).sounds(BlockSoundGroup.GLASS)));
 
 
     // Classic Nether block set based on the Alpha 1.2.6 assets. These are separate blocks so the

@@ -435,6 +435,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_REDSTONE_BLOCK);
 
                 // Utility blocks
+                entries.add(GallifreyModBlocks.CLASSIC_REDSTONE_LAMP);
                 entries.add(GallifreyModBlocks.CLASSIC_CRAFTING_TABLE);
                 entries.add(GallifreyModBlocks.CLASSIC_FURNACE);
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);

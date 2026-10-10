@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     {
-      "item": "gallifrey:classic_emerald_block"
+      "item": "minecraft:diamond"
     }
   ],
   "result": {
-    "item": "minecraft:emerald",
-    "count": 9
+    "item": "gallifrey:classic_diamond"
   }
 }

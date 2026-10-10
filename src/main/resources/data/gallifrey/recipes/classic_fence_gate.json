@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
-  "group": "wooden_fence_gate",
   "pattern": [
     "#W#",
     "#W#"
@@ -11,11 +10,10 @@
       "item": "gallifrey:classic_planks"
     },
     "#": {
-      "item": "minecraft:stick"
+      "item": "gallifrey:classic_stick"
     }
   },
   "result": {
-    "item": "gallifrey:classic_fence_gate",
-    "count": 1
+    "item": "gallifrey:classic_fence_gate"
   }
 }
