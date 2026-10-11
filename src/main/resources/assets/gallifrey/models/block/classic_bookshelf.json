@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "gallifrey:block/classic_minecraft/classic_planks"
+    "end": "gallifrey:block/classic_minecraft/classic_planks",
+    "side": "gallifrey:block/classic_minecraft/classic_bookshelf"
   }
 }

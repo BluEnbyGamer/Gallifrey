@@ -1,0 +1,61 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "gallifrey:classic_gravel"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "gallifrey:classic_water"
+          },
+          "output_state": {
+            "Name": "gallifrey:classic_planks"
+          }
+        },
+        {
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "gallifrey:classic_grass"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "gallifrey:classic_water"
+          },
+          "output_state": {
+            "Name": "gallifrey:classic_water"
+          }
+        },
+        {
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "gallifrey:classic_gravel"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "minecraft:water"
+          },
+          "output_state": {
+            "Name": "gallifrey:classic_planks"
+          }
+        },
+        {
+          "input_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "gallifrey:classic_grass"
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:block_match",
+            "block": "minecraft:water"
+          },
+          "output_state": {
+            "Name": "minecraft:water"
+          }
+        }
+      ]
+    }
+  ]
+}
