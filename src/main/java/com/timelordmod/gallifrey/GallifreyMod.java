@@ -48,7 +48,7 @@ public class GallifreyMod implements ModInitializer {
                 new PrehistoricVinesFeature(net.minecraft.world.gen.feature.DefaultFeatureConfig.CODEC)
         );
 
-
+		MarsSurvival.register();
 
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
 
