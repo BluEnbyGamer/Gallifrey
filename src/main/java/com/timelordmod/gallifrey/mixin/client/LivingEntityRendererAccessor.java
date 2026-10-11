@@ -14,4 +14,8 @@ public interface LivingEntityRendererAccessor<T extends LivingEntity, M extends 
 
     @Accessor("features")
     List<FeatureRenderer<T, M>> gallifrey$getFeatures();
+
+    @Accessor("model")
+    M gallifrey$getModel();
 }
+

@@ -9,7 +9,6 @@ import com.timelordmod.gallifrey.entity.GallifreyEntities;
 import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.custom.GeoHeadwearItem;
 import com.timelordmod.gallifrey.item.custom.DiamondMinecartItem;
-import com.timelordmod.gallifrey.item.custom.DiceTabletItem;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.FlintAndSteelItem;
@@ -24,14 +23,39 @@ import com.timelordmod.gallifrey.item.custom.PrehistoricArmorMaterial;
 import com.timelordmod.gallifrey.item.custom.PrehistoricToolMaterial;
 import com.timelordmod.gallifrey.item.custom.ModArmorMaterials;
 import com.timelordmod.gallifrey.item.custom.ModToolMaterials;
+import com.timelordmod.gallifrey.item.custom.SpaceSuitArmorItem;
 
 public class GallifreyModItems {
     public static final Item DIAMOND_MINECART = new DiamondMinecartItem(new FabricItemSettings().maxCount(1));
-    // Standalone space suit. Oxygen is managed by SpaceSuitOxygenHandler.
-    public static final ArmorItem SPACE_SUIT_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE, ArmorItem.Type.HELMET, new FabricItemSettings().maxDamage(220));
-    public static final ArmorItem SPACE_SUIT_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().maxDamage(320));
-    public static final ArmorItem SPACE_SUIT_LEGGINGS = new ArmorItem(com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS, new FabricItemSettings().maxDamage(300));
-    public static final ArmorItem SPACE_SUIT_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS, new FabricItemSettings().maxDamage(260));
+    // Space Suit — GeckoLib-rendered armor.
+    // Oxygen is managed by SpaceSuitOxygenHandler.
+    public static final SpaceSuitArmorItem SPACE_SUIT_HELMET =
+            new SpaceSuitArmorItem(
+                    com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE,
+                    ArmorItem.Type.HELMET,
+                    new FabricItemSettings().maxDamage(220)
+            );
+
+    public static final SpaceSuitArmorItem SPACE_SUIT_CHESTPLATE =
+            new SpaceSuitArmorItem(
+                    com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE,
+                    ArmorItem.Type.CHESTPLATE,
+                    new FabricItemSettings().maxDamage(320)
+            );
+
+    public static final SpaceSuitArmorItem SPACE_SUIT_LEGGINGS =
+            new SpaceSuitArmorItem(
+                    com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE,
+                    ArmorItem.Type.LEGGINGS,
+                    new FabricItemSettings().maxDamage(300)
+            );
+
+    public static final SpaceSuitArmorItem SPACE_SUIT_BOOTS =
+            new SpaceSuitArmorItem(
+                    com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE,
+                    ArmorItem.Type.BOOTS,
+                    new FabricItemSettings().maxDamage(260)
+            );
     // Dedicated legacy item identities: these are real Gallifrey registry entries, not texture overrides.
     public static final Item CLASSIC_APPLE = new Item(new FabricItemSettings());
     public static final Item CLASSIC_APPLE_GOLDEN = new Item(new FabricItemSettings());

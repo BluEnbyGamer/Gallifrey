@@ -263,6 +263,12 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.EXQUISITE_CAT);
                 entries.add(GallifreyModBlocks.LOST_DIRT);
 
+                //Space suit
+                entries.add(GallifreyModItems.SPACE_SUIT_HELMET);
+                entries.add(GallifreyModItems.SPACE_SUIT_CHESTPLATE);
+                entries.add(GallifreyModItems.SPACE_SUIT_LEGGINGS);
+                entries.add(GallifreyModItems.SPACE_SUIT_BOOTS);
+
                 // Clothing
                 entries.add(GallifreyModItems.FEZ);
                 entries.add(GallifreyModItems.FANCYFEZ);
@@ -387,12 +393,6 @@ public final class GallifreyTabSections {
             "classic",
             () -> new ItemStack(GallifreyModBlocks.CLASSIC_GRASS),
             entries -> {
-                // Space suit set (standalone; oxygen protection is dimension-aware).
-                entries.add(GallifreyModItems.SPACE_SUIT_HELMET);
-                entries.add(GallifreyModItems.SPACE_SUIT_CHESTPLATE);
-                entries.add(GallifreyModItems.SPACE_SUIT_LEGGINGS);
-                entries.add(GallifreyModItems.SPACE_SUIT_BOOTS);
-
                 // Natural blocks
                 entries.add(GallifreyModBlocks.CLASSIC_GRASS);
                 entries.add(GallifreyModBlocks.CLASSIC_DIRT);
