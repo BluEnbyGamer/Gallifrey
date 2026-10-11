@@ -20,37 +20,9 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 
-/**
- * Generates the blockstates and models for the Skaro stairs, slabs and walls,
- * and for the Classic buttons, pressure plates and glass pane.
- *
- * Everything else is still an ordinary hand-edited file in
- *   src/main/resources/assets/gallifrey/blockstates
- *   src/main/resources/assets/gallifrey/models
- *
- * Why only these: the stock generator helpers always write textures as
- * "gallifrey:block/<block id>", in one flat folder, but our textures are sorted
- * into sub-folders. The Skaro set below avoids that by passing the texture
- * path in by hand (see SKARO_TEXTURE_FOLDER). Any other block added here must
- * do the same, or its model will point at a texture that is not there.
- *
- * To add another Skaro stone type: register the four blocks in
- * GallifreyModBlocks, put <base id>.png in textures/block/skaro/, hand-write
- * the full block's own blockstate and model as usual, then add one StoneSet
- * line to SKARO_SETS and run runDatagen.
- *
- * Classic blocks work the same way: each line in CLASSIC_BUTTONS,
- * CLASSIC_PRESSURE_PLATES and CLASSIC_PANES names the block and the texture
- * file in textures/block/classic_minecraft/ it is made from. To add one:
- * register the block, add a line below, run runDatagen. Don't also hand-write
- * a blockstate or model for it in src/main/resources, or the two will clash.
- */
 public class ModModelProvider extends FabricModelProvider {
 
-    /** Folder (inside textures/) that holds the Skaro stone textures. */
     private static final String SKARO_TEXTURE_FOLDER = "block/skaro/";
-
-    /** A full block and the stairs, slab and wall made from it. */
     private record StoneSet(Block base, Block stairs, Block slab, Block wall) {}
 
     private static final List<StoneSet> SKARO_SETS = List.of(
@@ -68,13 +40,8 @@ public class ModModelProvider extends FabricModelProvider {
             new StoneSet(GallifreyModBlocks.SKARO_DEEPSLATE_TILES, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_WALL)
     );
 
-    /** Folder (inside textures/) that holds the Classic block textures. */
     private static final String CLASSIC_TEXTURE_FOLDER = "block/classic_minecraft/";
-
-    /** A block and the texture (file name in CLASSIC_TEXTURE_FOLDER, no .png) it is made from. */
     private record Textured(Block block, String texture) {}
-
-    /** A glass pane: its glass texture, and the thin texture for the top/edge of the pane. */
     private record Pane(Block pane, String texture, String edgeTexture) {}
 
     private static final List<Textured> CLASSIC_BUTTONS = List.of(
