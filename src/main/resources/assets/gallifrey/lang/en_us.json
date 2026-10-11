@@ -615,5 +615,10 @@
   "entity.gallifrey.classic_villager.priest": "Classic Priest",
   "entity.gallifrey.classic_villager.blacksmith": "Classic Blacksmith",
   "entity.gallifrey.classic_villager.butcher": "Classic Butcher",
-  "entity.gallifrey.classic_villager.nitwit": "Classic Nitwit"
+  "entity.gallifrey.classic_villager.nitwit": "Classic Nitwit",
+  "block.gallifrey.classic_wooden_button": "Classic Wooden Button",
+  "block.gallifrey.classic_stone_button": "Classic Stone Button",
+  "block.gallifrey.classic_wooden_pressure_plate": "Classic Wooden Pressure Plate",
+  "block.gallifrey.classic_stone_pressure_plate": "Classic Stone Pressure Plate",
+  "block.gallifrey.classic_glass_pane": "Classic Glass Pane"
 }

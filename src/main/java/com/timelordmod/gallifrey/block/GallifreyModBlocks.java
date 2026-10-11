@@ -109,6 +109,21 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_REDSTONE_LAMP = registerBlock("classic_redstone_lamp",
             new RedstoneLampBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).sounds(BlockSoundGroup.GLASS)));
 
+    // Classic buttons, pressure plates and glass pane. Their blockstates and models come from
+    // datagen (ModModelProvider), so there are no hand-written files for them in resources.
+    public static final Block CLASSIC_WOODEN_BUTTON = registerBlock("classic_wooden_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).sounds(CLASSIC_WOOD_SOUNDS), BlockSetType.OAK, 30, true));
+    public static final Block CLASSIC_STONE_BUTTON = registerBlock("classic_stone_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.STONE_BUTTON).sounds(CLASSIC_STONE_SOUNDS), BlockSetType.STONE, 20, false));
+    public static final Block CLASSIC_WOODEN_PRESSURE_PLATE = registerBlock("classic_wooden_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
+                    FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).sounds(CLASSIC_WOOD_SOUNDS), BlockSetType.OAK));
+    public static final Block CLASSIC_STONE_PRESSURE_PLATE = registerBlock("classic_stone_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.MOBS,
+                    FabricBlockSettings.copyOf(Blocks.STONE_PRESSURE_PLATE).sounds(CLASSIC_STONE_SOUNDS), BlockSetType.STONE));
+    public static final Block CLASSIC_GLASS_PANE = registerBlock("classic_glass_pane",
+            new PaneBlock(FabricBlockSettings.copyOf(Blocks.GLASS_PANE)));
+
 
     // Classic Nether block set based on the Alpha 1.2.6 assets. These are separate blocks so the
     // old terrain atlas can be imported without replacing modern Minecraft textures.

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "gallifrey:classic_stone_button",
+    "gallifrey:classic_stone_pressure_plate",
     "gallifrey:classic_stone",
     "gallifrey:classic_cobble",
     "gallifrey:classic_gold",

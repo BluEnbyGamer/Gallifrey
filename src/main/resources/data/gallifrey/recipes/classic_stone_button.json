@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "gallifrey:classic_stone"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:classic_stone_button"
+  }
+}

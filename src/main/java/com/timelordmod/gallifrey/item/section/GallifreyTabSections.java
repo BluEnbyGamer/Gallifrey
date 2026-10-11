@@ -428,6 +428,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_FENCE_GATE);
                 entries.add(GallifreyModBlocks.CLASSIC_BRICKS);
                 entries.add(GallifreyModBlocks.CLASSIC_GLASS);
+                entries.add(GallifreyModBlocks.CLASSIC_GLASS_PANE);
                 entries.add(GallifreyModBlocks.CLASSIC_BOOKSHELF);
                 entries.add(GallifreyModBlocks.CLASSIC_SPONGE);
                 entries.add(GallifreyModBlocks.CLASSIC_WOOL_WINDOWS);
@@ -442,11 +443,15 @@ public final class GallifreyTabSections {
 
                 // Utility blocks
                 entries.add(GallifreyModBlocks.CLASSIC_REDSTONE_LAMP);
+                entries.add(GallifreyModBlocks.CLASSIC_WOODEN_BUTTON);
+                entries.add(GallifreyModBlocks.CLASSIC_STONE_BUTTON);
+                entries.add(GallifreyModBlocks.CLASSIC_WOODEN_PRESSURE_PLATE);
+                entries.add(GallifreyModBlocks.CLASSIC_STONE_PRESSURE_PLATE);
                 entries.add(GallifreyModBlocks.CLASSIC_CRAFTING_TABLE);
                 entries.add(GallifreyModBlocks.CLASSIC_FURNACE);
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
                 entries.add(GallifreyModItems.DIAMOND_MINECART);
-
+                //entries.add(GallifreyModItems.CLASSIN);
 
                 // Classic Nether
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK);

@@ -16,6 +16,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
+        getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS).add(GallifreyModBlocks.CLASSIC_WOODEN_BUTTON.asItem());
+        getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES).add(GallifreyModBlocks.CLASSIC_WOODEN_PRESSURE_PLATE.asItem());
+        getOrCreateTagBuilder(ItemTags.STONE_BUTTONS).add(GallifreyModBlocks.CLASSIC_STONE_BUTTON.asItem());
+
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(GallifreyModBlocks.TARDIS_PLANKS.asItem())
                 .add(GallifreyModBlocks.TREEBORG_PLANKS.asItem())

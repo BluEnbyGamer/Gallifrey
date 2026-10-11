@@ -608,5 +608,10 @@
   "entity.gallifrey.classic_villager.priest": "Oldskool Purpl Hmmmer",
   "entity.gallifrey.classic_villager.blacksmith": "Oldskool Smiff",
   "entity.gallifrey.classic_villager.butcher": "Oldskool Meat Hmmmer",
-  "entity.gallifrey.classic_villager.nitwit": "Oldskool Derp Hmmmer"
+  "entity.gallifrey.classic_villager.nitwit": "Oldskool Derp Hmmmer",
+  "block.gallifrey.classic_wooden_button": "Oldskool Wud Butun",
+  "block.gallifrey.classic_stone_button": "Oldskool Rok Butun",
+  "block.gallifrey.classic_wooden_pressure_plate": "Oldskool Wud Stompy Plaet",
+  "block.gallifrey.classic_stone_pressure_plate": "Oldskool Rok Stompy Plaet",
+  "block.gallifrey.classic_glass_pane": "Oldskool Glas Paen"
 }

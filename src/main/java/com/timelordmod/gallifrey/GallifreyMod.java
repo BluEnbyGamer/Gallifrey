@@ -230,7 +230,6 @@ public class GallifreyMod implements ModInitializer {
 						.tintColor(150, 55, 35)
 						.registerPortal();
 
-		// AWT planet ports. These use blocks/items already present in Gallifrey.
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.DALEKANIUM_BLOCK)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
@@ -245,8 +244,6 @@ public class GallifreyMod implements ModInitializer {
 						.tintColor(130, 150, 170)
 						.registerPortal();
 
-		// Pete's World: parallel Overworld with a different seed.
-		// Crying obsidian frame, lit with a White Point Star like the others.
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(net.minecraft.block.Blocks.CRYING_OBSIDIAN)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
@@ -254,7 +251,6 @@ public class GallifreyMod implements ModInitializer {
 						.tintColor(90, 140, 230)
 						.registerPortal();
 
-		// Lost Reality: patchwork of the other dimensions. Lost Dirt frame (creative-only for now).
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.LOST_DIRT)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
