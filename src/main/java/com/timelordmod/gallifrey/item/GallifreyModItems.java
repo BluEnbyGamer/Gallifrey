@@ -8,6 +8,7 @@ import com.timelordmod.gallifrey.entity.ModBoats;
 import com.timelordmod.gallifrey.entity.GallifreyEntities;
 import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.custom.GeoHeadwearItem;
+import com.timelordmod.gallifrey.item.custom.DiamondMinecartItem;
 import com.timelordmod.gallifrey.item.custom.DiceTabletItem;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -25,6 +26,7 @@ import com.timelordmod.gallifrey.item.custom.ModArmorMaterials;
 import com.timelordmod.gallifrey.item.custom.ModToolMaterials;
 
 public class GallifreyModItems {
+    public static final Item DIAMOND_MINECART = new DiamondMinecartItem(new FabricItemSettings().maxCount(1));
     // Standalone space suit. Oxygen is managed by SpaceSuitOxygenHandler.
     public static final ArmorItem SPACE_SUIT_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE, ArmorItem.Type.HELMET, new FabricItemSettings().maxDamage(220));
     public static final ArmorItem SPACE_SUIT_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().maxDamage(320));
@@ -325,6 +327,7 @@ public class GallifreyModItems {
         registerItem("space_suit_chestplate", SPACE_SUIT_CHESTPLATE);
         registerItem("space_suit_leggings", SPACE_SUIT_LEGGINGS);
         registerItem("space_suit_boots", SPACE_SUIT_BOOTS);
+        registerItem("diamond_minecart", DIAMOND_MINECART);
         registerItem("white_point_star", WHITE_POINT_STAR);
         registerItem("huon_particle", HUON_PARTICLE);
         registerItem("silicone", SILICONE);

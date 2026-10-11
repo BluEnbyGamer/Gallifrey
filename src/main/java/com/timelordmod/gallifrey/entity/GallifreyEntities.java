@@ -2,6 +2,7 @@ package com.timelordmod.gallifrey.entity;
 
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.entity.custom.LaserEntity;
+import com.timelordmod.gallifrey.entity.custom.DiamondMinecartEntity;
 import com.timelordmod.gallifrey.entity.custom.SkaroCityDalekEntity;
 import com.timelordmod.gallifrey.entity.custom.SkaroCityDalekAltEntity;
 import com.timelordmod.gallifrey.entity.custom.SupremeCouncilDalekEntity;
@@ -16,6 +17,16 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class GallifreyEntities {
+
+    // Registered as a real entity type so the custom minecart item can spawn and sync it.
+    public static final EntityType<DiamondMinecartEntity> DIAMOND_MINECART = Registry.register(
+            Registries.ENTITY_TYPE,
+            new Identifier(GallifreyMod.MOD_ID, "diamond_minecart"),
+            FabricEntityTypeBuilder.<DiamondMinecartEntity>create(SpawnGroup.MISC, DiamondMinecartEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.98f, 0.7f))
+                    .trackRangeBlocks(8)
+                    .trackedUpdateRate(3)
+                    .build());
 
     public static final EntityType<AlphaGhastEntity> ALPHA_GHAST = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(GallifreyMod.MOD_ID, "alpha_ghast"),
