@@ -52,6 +52,8 @@ public class GallifreyMod implements ModInitializer {
 
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
 
+		com.timelordmod.gallifrey.item.custom.SpaceSuitOxygenHandler.register();
+		com.timelordmod.gallifrey.world.dimension.ClassicBedrockLayer.register();
 		GallifreySounds.register();
 		GallifreyFluids.registerModFluids();
 
@@ -255,8 +257,7 @@ public class GallifreyMod implements ModInitializer {
 						.tintColor(40, 160, 150)
 						.registerPortal();
 
-		FabricDefaultAttributeRegistry.register(GallifreyEntities.CLASSIC_VILLAGER,
-				com.timelordmod.gallifrey.entity.custom.ClassicVillagerEntity.createAttributes());
+
 
 		MarsWorldHandler.register();
 

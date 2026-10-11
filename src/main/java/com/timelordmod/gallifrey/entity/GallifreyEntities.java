@@ -25,20 +25,6 @@ public class GallifreyEntities {
                     .trackedUpdateRate(3)
                     .build());
 
-    public static final EntityType<com.timelordmod.gallifrey.entity.custom.DiamondMinecartEntity> DIAMOND_MINECART = Registry.register(Registries.ENTITY_TYPE,
-            new Identifier(GallifreyMod.MOD_ID, "diamond_minecart"),
-            FabricEntityTypeBuilder.<com.timelordmod.gallifrey.entity.custom.DiamondMinecartEntity>create(SpawnGroup.MISC, com.timelordmod.gallifrey.entity.custom.DiamondMinecartEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.98f, 0.7f))
-                    .trackRangeChunks(8)
-                    .build());
-
-    public static final EntityType<com.timelordmod.gallifrey.entity.custom.ClassicVillagerEntity> CLASSIC_VILLAGER = Registry.register(Registries.ENTITY_TYPE,
-            new Identifier(GallifreyMod.MOD_ID, "classic_villager"),
-            FabricEntityTypeBuilder.<com.timelordmod.gallifrey.entity.custom.ClassicVillagerEntity>create(SpawnGroup.MISC, com.timelordmod.gallifrey.entity.custom.ClassicVillagerEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.6f, 1.95f))
-                    .trackRangeChunks(10)
-                    .build());
-
     public static final EntityType<AlphaZombiePigmanEntity> ALPHA_ZOMBIE_PIGMAN = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(GallifreyMod.MOD_ID, "alpha_zombie_pigman"),
             FabricEntityTypeBuilder.<AlphaZombiePigmanEntity>create(SpawnGroup.MONSTER, AlphaZombiePigmanEntity::new)

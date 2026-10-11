@@ -25,6 +25,11 @@ import com.timelordmod.gallifrey.item.custom.ModArmorMaterials;
 import com.timelordmod.gallifrey.item.custom.ModToolMaterials;
 
 public class GallifreyModItems {
+    // Standalone space suit. Oxygen is managed by SpaceSuitOxygenHandler.
+    public static final ArmorItem SPACE_SUIT_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE, ArmorItem.Type.HELMET, new FabricItemSettings().maxDamage(220));
+    public static final ArmorItem SPACE_SUIT_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().maxDamage(320));
+    public static final ArmorItem SPACE_SUIT_LEGGINGS = new ArmorItem(com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS, new FabricItemSettings().maxDamage(300));
+    public static final ArmorItem SPACE_SUIT_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS, new FabricItemSettings().maxDamage(260));
     // Dedicated legacy item identities: these are real Gallifrey registry entries, not texture overrides.
     public static final Item CLASSIC_APPLE = new Item(new FabricItemSettings());
     public static final Item CLASSIC_APPLE_GOLDEN = new Item(new FabricItemSettings());
@@ -281,13 +286,6 @@ public class GallifreyModItems {
     public static final Item CLASSIC_LAVA_BUCKET = registerItem("classic_lava_bucket",
             new BucketItem(GallifreyFluids.STILL_CLASSIC_LAVA, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
 
-
-    public static final Item DIAMOND_MINECART = registerItem("diamond_minecart",
-            new com.timelordmod.gallifrey.item.custom.DiamondMinecartItem(new FabricItemSettings().maxCount(1)));
-
-
-    public static final Item CLASSIC_VILLAGER_SPAWN_EGG = registerItem("classic_villager_spawn_egg",
-            new net.minecraft.item.SpawnEggItem(com.timelordmod.gallifrey.entity.GallifreyEntities.CLASSIC_VILLAGER, 0x563C33, 0xBD8B72, new FabricItemSettings()));
     // Clothing
     public static final HeadwearItem FEZ = new HeadwearItem(new FabricItemSettings());
     public static final HeadwearItem FANCYFEZ = new HeadwearItem(new FabricItemSettings());
@@ -323,6 +321,10 @@ public class GallifreyModItems {
     public static final Item ATRIUM_CORE = new Item(new FabricItemSettings());
 
     public static void register() {
+        registerItem("space_suit_helmet", SPACE_SUIT_HELMET);
+        registerItem("space_suit_chestplate", SPACE_SUIT_CHESTPLATE);
+        registerItem("space_suit_leggings", SPACE_SUIT_LEGGINGS);
+        registerItem("space_suit_boots", SPACE_SUIT_BOOTS);
         registerItem("white_point_star", WHITE_POINT_STAR);
         registerItem("huon_particle", HUON_PARTICLE);
         registerItem("silicone", SILICONE);

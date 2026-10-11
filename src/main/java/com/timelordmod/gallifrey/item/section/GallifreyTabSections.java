@@ -387,6 +387,12 @@ public final class GallifreyTabSections {
             "classic",
             () -> new ItemStack(GallifreyModBlocks.CLASSIC_GRASS),
             entries -> {
+                // Space suit set (standalone; oxygen protection is dimension-aware).
+                entries.add(GallifreyModItems.SPACE_SUIT_HELMET);
+                entries.add(GallifreyModItems.SPACE_SUIT_CHESTPLATE);
+                entries.add(GallifreyModItems.SPACE_SUIT_LEGGINGS);
+                entries.add(GallifreyModItems.SPACE_SUIT_BOOTS);
+
                 // Natural blocks
                 entries.add(GallifreyModBlocks.CLASSIC_GRASS);
                 entries.add(GallifreyModBlocks.CLASSIC_DIRT);
@@ -439,8 +445,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_CRAFTING_TABLE);
                 entries.add(GallifreyModBlocks.CLASSIC_FURNACE);
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
-                entries.add(GallifreyModItems.DIAMOND_MINECART);
-                entries.add(GallifreyModItems.CLASSIC_VILLAGER_SPAWN_EGG);
 
                 // Classic Nether
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK);

@@ -598,15 +598,5 @@
   "item.gallifrey.classic_chainmail_chestplate": "Oldskool Chainz Chestplaet",
   "item.gallifrey.classic_chainmail_leggings": "Oldskool Chainz Leggingz",
   "block.gallifrey.classic_redstone_lamp": "Oldskool Glowy Lamp",
-  "item.gallifrey.classic_chainmail_boots": "Oldskool Chainz Bootz",
-  "item.gallifrey.diamond_minecart": "Dimund Zoomy Cart",
-  "entity.gallifrey.diamond_minecart": "Dimund Zoomy Cart",
-  "entity.gallifrey.classic_villager": "Oldskool Hmmmer",
-  "entity.gallifrey.classic_villager.farmer": "Oldskool Fermer",
-  "entity.gallifrey.classic_villager.librarian": "Oldskool Book Hmmmer",
-  "entity.gallifrey.classic_villager.priest": "Oldskool Purpl Hmmmer",
-  "entity.gallifrey.classic_villager.blacksmith": "Oldskool Smiff",
-  "entity.gallifrey.classic_villager.butcher": "Oldskool Meat Hmmmer",
-  "entity.gallifrey.classic_villager.nitwit": "Oldskool Derp Hmmmer",
-  "item.gallifrey.classic_villager_spawn_egg": "Oldskool Hmmmer Eg"
+  "item.gallifrey.classic_chainmail_boots": "Oldskool Chainz Bootz"
 }
