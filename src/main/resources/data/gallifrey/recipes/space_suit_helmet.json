@@ -1,15 +1,19 @@
+
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "III",
-    "I I"
+    "IGI",
+    " R "
   ],
   "key": {
-    "I": {
-      "item": "minecraft:iron_ingot"
-    }
+    "I": { "item": "minecraft:iron_ingot" },
+    "G": { "item": "minecraft:glass" },
+    "R": { "item": "minecraft:redstone" }
   },
   "result": {
-    "item": "gallifrey:space_suit_helmet"
+    "item": "gallifrey:space_suit_helmet",
+    "count": 1
   }
 }
+

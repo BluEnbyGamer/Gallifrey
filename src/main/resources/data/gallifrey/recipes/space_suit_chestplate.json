@@ -1,16 +1,17 @@
+
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "I I",
-    "III",
+    "IRI",
     "III"
   ],
   "key": {
-    "I": {
-      "item": "minecraft:iron_ingot"
-    }
+    "I": { "item": "minecraft:iron_ingot" },
+    "R": { "item": "minecraft:redstone" }
   },
   "result": {
-    "item": "gallifrey:space_suit_chestplate"
+    "item": "gallifrey:space_suit_chestplate",
+    "count": 1
   }
 }

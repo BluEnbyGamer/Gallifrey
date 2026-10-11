@@ -1,16 +1,18 @@
+
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "III",
-    "I I",
+    "IRI",
     "I I"
   ],
   "key": {
-    "I": {
-      "item": "minecraft:iron_ingot"
-    }
+    "I": { "item": "minecraft:iron_ingot" },
+    "R": { "item": "minecraft:redstone" }
   },
   "result": {
-    "item": "gallifrey:space_suit_leggings"
+    "item": "gallifrey:space_suit_leggings",
+    "count": 1
   }
 }
+
