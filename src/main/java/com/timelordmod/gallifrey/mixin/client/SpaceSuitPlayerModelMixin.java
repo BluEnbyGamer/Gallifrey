@@ -9,7 +9,6 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -17,13 +16,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(PlayerEntityRenderer.class)
 public abstract class SpaceSuitPlayerModelMixin {
 
-    @Shadow
-    protected abstract void setModelPose(
-            AbstractClientPlayerEntity player
-    );
-
     @Inject(method = "setModelPose", at = @At("TAIL"))
-    private void gallifrey$hideSkinLayers(
+    private void gallifrey$hideSuitCoveredParts(
             AbstractClientPlayerEntity player,
             CallbackInfo ci
     ) {
@@ -33,17 +27,30 @@ public abstract class SpaceSuitPlayerModelMixin {
                         PlayerEntityModel<AbstractClientPlayerEntity>
                         >) (Object) this).gallifrey$getModel();
 
-        ItemStack chest =
-                player.getEquippedStack(EquipmentSlot.CHEST);
+        ItemStack chest = player.getEquippedStack(EquipmentSlot.CHEST);
+        ItemStack legs = player.getEquippedStack(EquipmentSlot.LEGS);
 
-        boolean wearingSpaceSuit =
-                chest.isOf(GallifreyModItems.SPACE_SUIT_CHESTPLATE);
+        boolean suitChest = chest.isOf(
+                GallifreyModItems.SPACE_SUIT_CHESTPLATE);
+        boolean suitLegs = legs.isOf(
+                GallifreyModItems.SPACE_SUIT_LEGGINGS);
 
-        model.hat.visible = !wearingSpaceSuit;
-        model.jacket.visible = !wearingSpaceSuit;
-        model.leftSleeve.visible = !wearingSpaceSuit;
-        model.rightSleeve.visible = !wearingSpaceSuit;
-        model.leftPants.visible = !wearingSpaceSuit;
-        model.rightPants.visible = !wearingSpaceSuit;
+        // Keep the head visible.
+        model.head.visible = true;
+        model.hat.visible = true;
+
+        // Hide the skin overlays and body beneath the chestplate.
+        model.jacket.visible = !suitChest;
+        model.leftSleeve.visible = !suitChest;
+        model.rightSleeve.visible = !suitChest;
+        model.body.visible = !suitChest;
+        model.leftArm.visible = !suitChest;
+        model.rightArm.visible = !suitChest;
+
+        // Hide the skin overlays and body beneath the leggings.
+        model.leftPants.visible = !suitLegs;
+        model.rightPants.visible = !suitLegs;
+        model.leftLeg.visible = !suitLegs;
+        model.rightLeg.visible = !suitLegs;
     }
 }
