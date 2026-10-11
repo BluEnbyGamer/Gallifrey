@@ -45,7 +45,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import com.timelordmod.gallifrey.entity.GallifreyEntities;
-import com.timelordmod.gallifrey.entity.client.DiamondMinecartRenderer;
 import com.timelordmod.gallifrey.client.SkaroCityDalekRenderer;
 import com.timelordmod.gallifrey.client.SkaroCityDalekAltRenderer;
 import com.timelordmod.gallifrey.client.SupremeCouncilDalekRenderer;
@@ -107,7 +106,6 @@ public class GallifreyModClient implements ClientModInitializer {
 
         com.timelordmod.gallifrey.client.ModClientPackets.register();;
 
-        EntityRendererRegistry.register(GallifreyEntities.DIAMOND_MINECART, DiamondMinecartRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK, SkaroCityDalekRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK_ALT, SkaroCityDalekAltRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.SUPREME_COUNCIL_DALEK, SupremeCouncilDalekRenderer::new);

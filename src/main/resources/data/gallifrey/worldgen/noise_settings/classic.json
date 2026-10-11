@@ -389,6 +389,22 @@
       {
         "type": "minecraft:condition",
         "if_true": {
+          "type": "minecraft:y_block_check",
+          "anchor": {
+            "above_bottom": 1
+          },
+          "surface_depth_multiplier": 0
+        },
+        "then_run": {
+          "type": "minecraft:block",
+          "result_state": {
+            "Name": "gallifrey:classic_bedrock"
+          }
+        }
+      },
+      {
+        "type": "minecraft:condition",
+        "if_true": {
           "type": "minecraft:vertical_gradient",
           "random_name": "minecraft:bedrock_floor",
           "true_at_and_below": {
@@ -401,7 +417,7 @@
         "then_run": {
           "type": "minecraft:block",
           "result_state": {
-            "Name": "minecraft:bedrock"
+            "Name": "gallifrey:classic_bedrock"
           }
         }
       },
