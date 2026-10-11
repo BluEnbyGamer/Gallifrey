@@ -7,7 +7,6 @@
     "ClassicHurtSoundMixin",
     "EatGrassGoalMixin",
     "ClassicNetherPortalMixin",
-    "ClassicPortalFrameMixin",
     "ClassicPortalLightingMixin",
     "ClassicFurnaceBlockEntityMixin",
     "ServerWorldSleepMixin"

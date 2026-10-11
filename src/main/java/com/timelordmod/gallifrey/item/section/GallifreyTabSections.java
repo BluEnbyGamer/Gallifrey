@@ -446,7 +446,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_FURNACE);
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
                 entries.add(GallifreyModItems.DIAMOND_MINECART);
-                //entries.add(GallifreyModItems.CLASSIN);
+
 
                 // Classic Nether
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK);
@@ -479,6 +479,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.CLASSIC_FLINT_AND_STEEL);
                 entries.add(GallifreyModItems.CLASSIC_DOOR_IRON);
                 entries.add(GallifreyModItems.CLASSIC_OAK_BOAT);
+                entries.add(GallifreyModItems.CLASSIC_VILLAGER_SPAWN_EGG);
 
                 // Wood tools
                 entries.add(GallifreyModItems.CLASSIC_WOOD_SWORD);

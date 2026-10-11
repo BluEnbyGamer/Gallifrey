@@ -8,6 +8,7 @@ import com.timelordmod.gallifrey.client.PlanetWeatherClient;
 import com.timelordmod.gallifrey.client.SonicShadesClient;
 import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
 import com.timelordmod.gallifrey.entity.client.DiamondMinecartRenderer;
+import com.timelordmod.gallifrey.entity.client.ClassicVillagerRenderer;
 import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
 import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
@@ -112,6 +113,7 @@ public class GallifreyModClient implements ClientModInitializer {
         EntityRendererRegistry.register(GallifreyEntities.SUPREME_COUNCIL_DALEK, SupremeCouncilDalekRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.LASER, LaserRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.DIAMOND_MINECART, DiamondMinecartRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.CLASSIC_VILLAGER, ClassicVillagerRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.ALPHA_GHAST, AlphaGhastRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.ALPHA_ZOMBIE_PIGMAN, AlphaZombiePigmanRenderer::new);
         SonicShadesClient.register();

@@ -188,6 +188,13 @@ public class GallifreyModItems {
             new FabricItemSettings().fireproof()
     );
 
+    public static final SpawnEggItem CLASSIC_VILLAGER_SPAWN_EGG = new SpawnEggItem(
+            GallifreyEntities.CLASSIC_VILLAGER,
+            0x563C33,
+            0xBD8B72,
+            new FabricItemSettings()
+    );
+
     public static final SpawnEggItem SKARO_CITY_DALEK_SPAWN_EGG = new SpawnEggItem(
             GallifreyEntities.SKARO_CITY_DALEK,
             0x6D737A,
@@ -432,6 +439,7 @@ public class GallifreyModItems {
         registerItem("eyestalk", EYESTALK);
         registerItem("omega_helmet", OMEGA_HELMET);
 
+        registerItem("classic_villager_spawn_egg", CLASSIC_VILLAGER_SPAWN_EGG);
         registerItem("skaro_city_dalek_spawn_egg", SKARO_CITY_DALEK_SPAWN_EGG);
 
         // Classic-era items are separately registered under gallifrey:classic_* ids.

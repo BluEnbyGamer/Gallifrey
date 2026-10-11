@@ -58,6 +58,11 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyFluids.registerModFluids();
 
 		FabricDefaultAttributeRegistry.register(
+				GallifreyEntities.CLASSIC_VILLAGER,
+				com.timelordmod.gallifrey.entity.custom.ClassicVillagerEntity.createAttributes()
+		);
+
+		FabricDefaultAttributeRegistry.register(
 				GallifreyEntities.SKARO_CITY_DALEK,
 				com.timelordmod.gallifrey.entity.custom.SkaroCityDalekEntity.createAttributes()
 		);

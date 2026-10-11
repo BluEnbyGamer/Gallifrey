@@ -3,6 +3,7 @@ package com.timelordmod.gallifrey.entity;
 import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.entity.custom.LaserEntity;
 import com.timelordmod.gallifrey.entity.custom.DiamondMinecartEntity;
+import com.timelordmod.gallifrey.entity.custom.ClassicVillagerEntity;
 import com.timelordmod.gallifrey.entity.custom.SkaroCityDalekEntity;
 import com.timelordmod.gallifrey.entity.custom.SkaroCityDalekAltEntity;
 import com.timelordmod.gallifrey.entity.custom.SupremeCouncilDalekEntity;
@@ -18,12 +19,20 @@ import net.minecraft.util.Identifier;
 
 public class GallifreyEntities {
 
+    public static final EntityType<ClassicVillagerEntity> CLASSIC_VILLAGER = Registry.register(
+            Registries.ENTITY_TYPE,
+            new Identifier(GallifreyMod.MOD_ID, "classic_villager"),
+            FabricEntityTypeBuilder.<ClassicVillagerEntity>create(SpawnGroup.MISC, ClassicVillagerEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.6f, 1.95f))
+                    .trackRangeChunks(10)
+                    .build());
+
     public static final EntityType<DiamondMinecartEntity> DIAMOND_MINECART = Registry.register(
             Registries.ENTITY_TYPE,
             new Identifier(GallifreyMod.MOD_ID, "diamond_minecart"),
             FabricEntityTypeBuilder.<DiamondMinecartEntity>create(SpawnGroup.MISC, DiamondMinecartEntity::new)
                     .dimensions(EntityDimensions.fixed(0.98f, 0.7f))
-                    .trackRangeBlocks(8)
+                    .trackRangeChunks(8)   // same as vanilla minecarts (8 chunks, not 8 blocks)
                     .trackedUpdateRate(3)
                     .build());
 
