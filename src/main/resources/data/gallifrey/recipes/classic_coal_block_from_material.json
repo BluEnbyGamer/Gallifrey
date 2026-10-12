@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:classic_coal"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_coal_block",
+    "count": 1
+  }
+}

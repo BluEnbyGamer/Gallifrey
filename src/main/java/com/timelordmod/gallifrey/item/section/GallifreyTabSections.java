@@ -440,6 +440,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_EMERALD_BLOCK);
                 entries.add(GallifreyModBlocks.CLASSIC_LAPIS_BLOCK);
                 entries.add(GallifreyModBlocks.CLASSIC_REDSTONE_BLOCK);
+                entries.add(GallifreyModBlocks.CLASSIC_COAL_BLOCK);
 
                 // Utility blocks
                 entries.add(GallifreyModBlocks.CLASSIC_REDSTONE_LAMP);

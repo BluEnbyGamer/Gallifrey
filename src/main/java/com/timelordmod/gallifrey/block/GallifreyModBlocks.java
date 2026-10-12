@@ -137,7 +137,7 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.MAGMA_BLOCK)));
     public static final Block CLASSIC_NETHER_QUARTZ_ORE = registerBlock("classic_nether_quartz_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.NETHER_QUARTZ_ORE).strength(3.0F, 3.0F).requiresTool()));
-
+    public static final Block CLASSIC_COAL_BLOCK = registerBlock("classic_coal_block", new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
     // ============================================================
     // MARS BLOCKS
     // ============================================================

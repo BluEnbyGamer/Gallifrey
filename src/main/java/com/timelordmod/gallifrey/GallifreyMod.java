@@ -110,6 +110,9 @@ public class GallifreyMod implements ModInitializer {
 		// Atrium fuel burns for 3x the time of coal: 4800 ticks vs 1600.
 		FuelRegistry.INSTANCE.add(GallifreyModItems.ATRIUM_FUEL, 4800);
 
+		FuelRegistry.INSTANCE.add(GallifreyModItems.CLASSIC_COAL, 1600);
+		FuelRegistry.INSTANCE.add(GallifreyModBlocks.CLASSIC_COAL_BLOCK, 16000);
+
 		// Atrium generation is explicitly limited to vanilla Overworld biomes.
 		BiomeModifications.addFeature(
 				BiomeSelectors.foundInOverworld(),
