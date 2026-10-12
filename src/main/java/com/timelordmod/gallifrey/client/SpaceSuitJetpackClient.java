@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.util.Identifier;
+import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
 public final class SpaceSuitJetpackClient {
@@ -24,6 +25,7 @@ public final class SpaceSuitJetpackClient {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (activateJetpack.wasPressed()) {
                 if (client.player == null || client.world == null) continue;
+                client.player.sendMessage(Text.literal("§7Jetpack key detected; sending activation request..."), true);
                 ClientPlayNetworking.send(new Identifier("gallifrey", "space_suit_jetpack"), PacketByteBufs.empty());
             }
         });
