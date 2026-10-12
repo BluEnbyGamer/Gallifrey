@@ -190,11 +190,6 @@ public final class GallifreyTabSections {
             "misc",
             () -> new ItemStack(GallifreyModItems.SONIC_SCREWDRIVER),
             entries -> {
-                // Cyber entities — spawn eggs belong in Gallifrey's own Misc section.
-                entries.add(GallifreyModItems.MONDASIAN_CYBERMAN_SPAWN_EGG);
-                entries.add(GallifreyModItems.PROTO_CYBERMAN_SPAWN_EGG);
-                entries.add(GallifreyModItems.CYBERMAT_SPAWN_EGG);
-
                 // Vortex Manipulator and its parts
                 entries.add(GallifreyModItems.VORTEX_MANIPULATOR);
                 entries.add(GallifreyModBlocks.WHITE_POINT_ORE);
@@ -216,9 +211,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.DIMENSION_CIRCUIT);
                 entries.add(GallifreyModItems.DW_XIV_MUSIC_DISC);
                 entries.add(GallifreyModItems.GALLIFREY_MUSIC_DISC);
-
-                //Dice Tablet
-              //  entries.add(GallifreyModItems.DICE_TABLET);
 
                 // Tapping
                 entries.add(GallifreyModBlocks.TREE_TAPPER);
@@ -288,6 +280,11 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.TRUSTABLE_HAT);
                 entries.add(GallifreyModItems.EYESTALK);
                 entries.add(GallifreyModItems.OMEGA_HELMET);
+
+                //Misc Spawn Eggs
+                entries.add(GallifreyModItems.MONDASIAN_CYBERMAN_SPAWN_EGG);
+                entries.add(GallifreyModItems.PROTO_CYBERMAN_SPAWN_EGG);
+                entries.add(GallifreyModItems.CYBERMAT_SPAWN_EGG);
             }
     );
 
