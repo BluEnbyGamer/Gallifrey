@@ -107,7 +107,7 @@ public class GallifreyMod implements ModInitializer {
                 GallifreyEntities.TIME_LORD,
                 net.minecraft.entity.SpawnRestriction.Location.ON_GROUND,
                 net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                (type, world, reason, pos, random) -> world.getRegistryKey().equals(com.timelordmod.gallifrey.world.dimension.ModDimensions.GALL_LEVEL_KEY)
+                (type, world, reason, pos, random) -> world.toServerWorld().getRegistryKey().equals(com.timelordmod.gallifrey.world.dimension.ModDimensions.GALL_LEVEL_KEY)
                         && world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down())
         );
         BiomeModifications.addSpawn(
