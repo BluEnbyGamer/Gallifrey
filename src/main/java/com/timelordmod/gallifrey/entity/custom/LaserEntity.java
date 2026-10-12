@@ -80,6 +80,11 @@ public class LaserEntity extends ProjectileEntity {
                 (hit instanceof SkaroCityDalekEntity || hit instanceof SkaroCityDalekAltEntity || hit instanceof SupremeCouncilDalekEntity)) {
             appliedDamage *= 0.35D;
         }
+        // Dalek weapons deal double damage to Cybermen and Cybermats.
+        if ((owner instanceof SkaroCityDalekEntity || owner instanceof SkaroCityDalekAltEntity || owner instanceof SupremeCouncilDalekEntity)
+                && (hit instanceof AbstractCybermanEntity || hit instanceof CybermatEntity)) {
+            appliedDamage *= 2.0D;
+        }
 
         if (hit.damage(damageSource, (float) appliedDamage) && !this.getWorld().isClient()) {
             this.getWorld().playSound(
