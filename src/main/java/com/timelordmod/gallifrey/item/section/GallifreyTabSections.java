@@ -212,6 +212,9 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.DW_XIV_MUSIC_DISC);
                 entries.add(GallifreyModItems.GALLIFREY_MUSIC_DISC);
 
+                //Dice Tablet
+              //  entries.add(GallifreyModItems.DICE_TABLET);
+
                 // Tapping
                 entries.add(GallifreyModBlocks.TREE_TAPPER);
                 entries.add(GallifreyModItems.SILICONE);
@@ -281,7 +284,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.EYESTALK);
                 entries.add(GallifreyModItems.OMEGA_HELMET);
 
-                //Misc Spawn Eggs
+                // Cyber spawn eggs appear immediately below the clothing items.
                 entries.add(GallifreyModItems.MONDASIAN_CYBERMAN_SPAWN_EGG);
                 entries.add(GallifreyModItems.PROTO_CYBERMAN_SPAWN_EGG);
                 entries.add(GallifreyModItems.CYBERMAT_SPAWN_EGG);

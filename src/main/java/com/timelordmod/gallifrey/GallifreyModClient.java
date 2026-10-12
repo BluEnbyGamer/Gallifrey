@@ -69,6 +69,14 @@ public class GallifreyModClient implements ClientModInitializer {
                 com.timelordmod.gallifrey.item.GallifreyModItems.CLASSIC_LEATHER_LEGGINGS,
                 com.timelordmod.gallifrey.item.GallifreyModItems.CLASSIC_LEATHER_BOOTS);
 
+        // Cyber spawn eggs use complete custom PNG artwork. Force white/no tint for
+        // every model layer so Minecraft does not recolour the supplied textures.
+        net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.ITEM.register(
+                (stack, tintIndex) -> 0xFFFFFFFF,
+                GallifreyModItems.MONDASIAN_CYBERMAN_SPAWN_EGG,
+                GallifreyModItems.PROTO_CYBERMAN_SPAWN_EGG,
+                GallifreyModItems.CYBERMAT_SPAWN_EGG);
+
         // Register the complete supplied Classic-era asset pack as an optional built-in
         // resource pack. The integrated Classic blocks use the supplied textures directly;
         // this pack provides the remaining vanilla item/entity/sound overrides when enabled.

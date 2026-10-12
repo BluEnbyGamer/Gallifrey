@@ -45,7 +45,7 @@ public class DalekRenderer<T extends SkaroCityDalekEntity> extends GeoEntityRend
             // Looking up/down is done entirely by the eye stalk.
             eyeStalk.setRotY(0.0F);
             eyeStalk.setRotZ(0.0F);
-            eyeStalk.setRotX(headPitch * net.minecraft.util.math.MathHelper.RADIANS_PER_DEGREE);
+            eyeStalk.setRotX(-headPitch * net.minecraft.util.math.MathHelper.RADIANS_PER_DEGREE);
         }
     }
 }
