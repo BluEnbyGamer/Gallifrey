@@ -1,10 +1,15 @@
 package com.timelordmod.gallifrey.block.custom;
 
 import com.timelordmod.gallifrey.item.GallifreyModItems;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.TntBlock;
+import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -22,7 +27,27 @@ public class ClassicTntBlock extends TntBlock {
         ItemStack stack = player.getStackInHand(hand);
         if (stack.isOf(GallifreyModItems.CLASSIC_FLINT_AND_STEEL)) {
             if (!world.isClient) {
-                TntBlock.prime(world, pos, player);
+                if (!world.isClient) {
+                    world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
+
+                    TntEntity tnt = new TntEntity(
+                            world,
+                            pos.getX() + 0.5,
+                            pos.getY(),
+                            pos.getZ() + 0.5,
+                            player
+                    );
+
+                    world.spawnEntity(tnt);
+                    world.playSound(
+                            null,
+                            pos,
+                            SoundEvents.ENTITY_TNT_PRIMED,
+                            SoundCategory.BLOCKS,
+                            1.0F,
+                            1.0F
+                    );
+                }
                 world.removeBlock(pos, false);
                 if (!player.getAbilities().creativeMode) {
                     stack.damage(1, player, p -> p.sendToolBreakStatus(hand));

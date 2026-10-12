@@ -102,6 +102,23 @@ public class GallifreyMod implements ModInitializer {
 				(type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down())
 		);
 
+        FabricDefaultAttributeRegistry.register(GallifreyEntities.TIME_LORD, com.timelordmod.gallifrey.entity.custom.TimeLordEntity.createAttributes());
+        net.minecraft.entity.SpawnRestriction.register(
+                GallifreyEntities.TIME_LORD,
+                net.minecraft.entity.SpawnRestriction.Location.ON_GROUND,
+                net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+                (type, world, reason, pos, random) -> world.getRegistryKey().equals(com.timelordmod.gallifrey.world.dimension.ModDimensions.GALL_LEVEL_KEY)
+                        && world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down())
+        );
+        BiomeModifications.addSpawn(
+                BiomeSelectors.all(),
+                net.minecraft.entity.SpawnGroup.CREATURE,
+                GallifreyEntities.TIME_LORD,
+                2,
+                1,
+                1
+        );
+
         FabricDefaultAttributeRegistry.register(GallifreyEntities.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
         FabricDefaultAttributeRegistry.register(GallifreyEntities.PROTO_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
         FabricDefaultAttributeRegistry.register(GallifreyEntities.CYBERMAT, com.timelordmod.gallifrey.entity.custom.CybermatEntity.createCybermatAttributes());

@@ -9,6 +9,7 @@ import com.timelordmod.gallifrey.entity.custom.SkaroCityDalekAltEntity;
 import com.timelordmod.gallifrey.entity.custom.SupremeCouncilDalekEntity;
 import com.timelordmod.gallifrey.entity.custom.AlphaGhastEntity;
 import com.timelordmod.gallifrey.entity.custom.AlphaZombiePigmanEntity;
+import com.timelordmod.gallifrey.entity.custom.TimeLordEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -82,6 +83,13 @@ public class GallifreyEntities {
                     .dimensions(EntityDimensions.fixed(0.25f, 0.25f))
                     .trackRangeBlocks(64)
                     .trackedUpdateRate(1)
+                    .build());
+
+    public static final EntityType<TimeLordEntity> TIME_LORD = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(GallifreyMod.MOD_ID, "time_lord"),
+            FabricEntityTypeBuilder.<TimeLordEntity>create(SpawnGroup.CREATURE, TimeLordEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.6f, 1.8f))
+                    .trackRangeBlocks(48)
                     .build());
 
     public static final EntityType<com.timelordmod.gallifrey.entity.custom.MondasianCybermanEntity> MONDASIAN_CYBERMAN = Registry.register(Registries.ENTITY_TYPE, new Identifier(GallifreyMod.MOD_ID, "mondasian_cyberman"), FabricEntityTypeBuilder.<com.timelordmod.gallifrey.entity.custom.MondasianCybermanEntity>create(SpawnGroup.MONSTER, com.timelordmod.gallifrey.entity.custom.MondasianCybermanEntity::new).dimensions(EntityDimensions.fixed(0.7f, 2.0f)).trackRangeBlocks(64).build());
