@@ -59,9 +59,9 @@ public class GallifreyModItems {
                     new FabricItemSettings().maxDamage(260)
             );
     // Dedicated legacy item identities: these are real Gallifrey registry entries, not texture overrides.
-    public static final Item CLASSIC_APPLE = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_APPLE_GOLDEN = new Item(new FabricItemSettings());
-    public static final Item CLASSIC_CARROT_GOLDEN = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_APPLE = new Item(new FabricItemSettings().food(FoodComponents.APPLE));
+    public static final Item CLASSIC_APPLE_GOLDEN = new Item(new FabricItemSettings().food(FoodComponents.GOLDEN_APPLE));
+    public static final Item CLASSIC_CARROT_GOLDEN = new Item(new FabricItemSettings().food(FoodComponents.GOLDEN_CARROT));
 
     // Classic Chainmail Armor
     public static final ArmorItem CLASSIC_CHAINMAIL_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.CHAINMAIL, ArmorItem.Type.BOOTS, new FabricItemSettings());

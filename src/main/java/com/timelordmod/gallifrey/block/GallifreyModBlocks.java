@@ -80,7 +80,7 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_GLASS = registerBlock("classic_glass", new GlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).sounds(BlockSoundGroup.GLASS).nonOpaque()));
     public static final Block CLASSIC_SPONGE = registerBlock("classic_sponge", new Block(FabricBlockSettings.copyOf(Blocks.SPONGE).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_BRICKS = registerBlock("classic_bricks", new Block(FabricBlockSettings.copyOf(Blocks.BRICKS).sounds(CLASSIC_STONE_SOUNDS)));
-    public static final Block CLASSIC_TNT = registerBlock("classic_tnt", new TntBlock(FabricBlockSettings.copyOf(Blocks.TNT).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_TNT = registerBlock("classic_tnt", new TntBlock(FabricBlockSettings.copyOf(Blocks.TNT).sounds(BlockSoundGroup.GRASS)));
     public static final Block CLASSIC_RED_FLOWER = registerBlock("classic_red_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.RED_TULIP)));
     public static final Block CLASSIC_YELLOW_FLOWER = registerBlock("classic_yellow_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
     public static final Block CLASSIC_BEDROCK = registerBlock("classic_bedrock", new Block(FabricBlockSettings.copyOf(Blocks.BEDROCK).strength(-1.0F, 3600000.0F).dropsNothing().sounds(CLASSIC_STONE_SOUNDS)));

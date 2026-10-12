@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "pattern": [
+    "GGG",
+    "GAG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "gallifrey:classic_gold_ingot"
+    },
+    "A": {
+      "item": "gallifrey:classic_apple"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_apple_golden",
+    "count": 1
+  }
+}
