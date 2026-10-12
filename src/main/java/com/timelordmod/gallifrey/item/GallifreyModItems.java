@@ -13,6 +13,8 @@ import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.FlintAndSteelItem;
 import net.minecraft.item.*;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -188,6 +190,10 @@ public class GallifreyModItems {
             new FabricItemSettings().fireproof()
     );
 
+    public static final SpawnEggItem MONDASIAN_CYBERMAN_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.MONDASIAN_CYBERMAN, 0xB7B9B8, 0x303638, new FabricItemSettings());
+    public static final SpawnEggItem PROTO_CYBERMAN_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.PROTO_CYBERMAN, 0x777777, 0xA51D1D, new FabricItemSettings());
+    public static final SpawnEggItem CYBERMAT_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.CYBERMAT, 0x454545, 0xC5C5C5, new FabricItemSettings());
+
     public static final SpawnEggItem CLASSIC_VILLAGER_SPAWN_EGG = new SpawnEggItem(
             GallifreyEntities.CLASSIC_VILLAGER,
             0x563C33,
@@ -354,6 +360,11 @@ public class GallifreyModItems {
     public static final Item ATRIUM_CORE = new Item(new FabricItemSettings());
 
     public static void register() {
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+            entries.add(MONDASIAN_CYBERMAN_SPAWN_EGG);
+            entries.add(PROTO_CYBERMAN_SPAWN_EGG);
+            entries.add(CYBERMAT_SPAWN_EGG);
+        });
         registerItem("diamond_minecart", DIAMOND_MINECART);
         registerItem("space_suit_helmet", SPACE_SUIT_HELMET);
         registerItem("space_suit_chestplate", SPACE_SUIT_CHESTPLATE);
@@ -439,6 +450,9 @@ public class GallifreyModItems {
         registerItem("eyestalk", EYESTALK);
         registerItem("omega_helmet", OMEGA_HELMET);
 
+        registerItem("mondasian_cyberman_spawn_egg", MONDASIAN_CYBERMAN_SPAWN_EGG);
+        registerItem("proto_cyberman_spawn_egg", PROTO_CYBERMAN_SPAWN_EGG);
+        registerItem("cybermat_spawn_egg", CYBERMAT_SPAWN_EGG);
         registerItem("classic_villager_spawn_egg", CLASSIC_VILLAGER_SPAWN_EGG);
         registerItem("skaro_city_dalek_spawn_egg", SKARO_CITY_DALEK_SPAWN_EGG);
 

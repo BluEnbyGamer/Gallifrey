@@ -620,5 +620,11 @@
   "block.gallifrey.classic_stone_button": "Classic Stone Button",
   "block.gallifrey.classic_wooden_pressure_plate": "Classic Wooden Pressure Plate",
   "block.gallifrey.classic_stone_pressure_plate": "Classic Stone Pressure Plate",
-  "block.gallifrey.classic_glass_pane": "Classic Glass Pane"
+  "block.gallifrey.classic_glass_pane": "Classic Glass Pane",
+  "entity.gallifrey.mondasian_cyberman": "Mondasian Cyberman",
+  "entity.gallifrey.proto_cyberman": "Proto-Cyberman",
+  "entity.gallifrey.cybermat": "Cybermat",
+  "item.gallifrey.mondasian_cyberman_spawn_egg": "Mondasian Cyberman Spawn Egg",
+  "item.gallifrey.proto_cyberman_spawn_egg": "Proto-Cyberman Spawn Egg",
+  "item.gallifrey.cybermat_spawn_egg": "Cybermat Spawn Egg"
 }

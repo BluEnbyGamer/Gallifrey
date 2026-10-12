@@ -83,4 +83,8 @@ public class GallifreyEntities {
                     .trackRangeBlocks(64)
                     .trackedUpdateRate(1)
                     .build());
+
+    public static final EntityType<com.timelordmod.gallifrey.entity.custom.MondasianCybermanEntity> MONDASIAN_CYBERMAN = Registry.register(Registries.ENTITY_TYPE, new Identifier(GallifreyMod.MOD_ID, "mondasian_cyberman"), FabricEntityTypeBuilder.<com.timelordmod.gallifrey.entity.custom.MondasianCybermanEntity>create(SpawnGroup.MONSTER, com.timelordmod.gallifrey.entity.custom.MondasianCybermanEntity::new).dimensions(EntityDimensions.fixed(0.7f, 2.0f)).trackRangeBlocks(64).build());
+    public static final EntityType<com.timelordmod.gallifrey.entity.custom.ProtoCybermanEntity> PROTO_CYBERMAN = Registry.register(Registries.ENTITY_TYPE, new Identifier(GallifreyMod.MOD_ID, "proto_cyberman"), FabricEntityTypeBuilder.<com.timelordmod.gallifrey.entity.custom.ProtoCybermanEntity>create(SpawnGroup.MONSTER, com.timelordmod.gallifrey.entity.custom.ProtoCybermanEntity::new).dimensions(EntityDimensions.fixed(0.7f, 2.0f)).trackRangeBlocks(64).build());
+    public static final EntityType<com.timelordmod.gallifrey.entity.custom.CybermatEntity> CYBERMAT = Registry.register(Registries.ENTITY_TYPE, new Identifier(GallifreyMod.MOD_ID, "cybermat"), FabricEntityTypeBuilder.<com.timelordmod.gallifrey.entity.custom.CybermatEntity>create(SpawnGroup.MONSTER, com.timelordmod.gallifrey.entity.custom.CybermatEntity::new).dimensions(EntityDimensions.fixed(0.5f, 0.35f)).trackRangeBlocks(32).build());
 }

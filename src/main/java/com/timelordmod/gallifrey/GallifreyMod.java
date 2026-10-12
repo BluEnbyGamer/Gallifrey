@@ -101,6 +101,10 @@ public class GallifreyMod implements ModInitializer {
 				(type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down())
 		);
 
+        FabricDefaultAttributeRegistry.register(GallifreyEntities.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
+        FabricDefaultAttributeRegistry.register(GallifreyEntities.PROTO_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
+        FabricDefaultAttributeRegistry.register(GallifreyEntities.CYBERMAT, com.timelordmod.gallifrey.entity.custom.CybermatEntity.createCybermatAttributes());
+
 		GallifreyModItems.register();
 		GallifreyModBlocks.register();
 		com.timelordmod.gallifrey.world.tree.decorator.ModTreeDecorators.register();

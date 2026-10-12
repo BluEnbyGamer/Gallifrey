@@ -108,6 +108,12 @@ public class GallifreyModClient implements ClientModInitializer {
 
         com.timelordmod.gallifrey.client.ModClientPackets.register();;
 
+        EntityRendererRegistry.register(GallifreyEntities.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.client.MondasianCybermanRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.PROTO_CYBERMAN, com.timelordmod.gallifrey.entity.client.ProtoCybermanRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.CYBERMAT, com.timelordmod.gallifrey.entity.client.CybermatRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(com.timelordmod.gallifrey.entity.client.GallifreyCyberModelLayers.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.client.MondasianCybermanModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(com.timelordmod.gallifrey.entity.client.GallifreyCyberModelLayers.PROTO_CYBERMAN, com.timelordmod.gallifrey.entity.client.ProtoCybermanModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(com.timelordmod.gallifrey.entity.client.GallifreyCyberModelLayers.CYBERMAT, com.timelordmod.gallifrey.entity.client.CybermatModel::getTexturedModelData);
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK, SkaroCityDalekRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK_ALT, SkaroCityDalekAltRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.SUPREME_COUNCIL_DALEK, SupremeCouncilDalekRenderer::new);
