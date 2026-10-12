@@ -53,6 +53,7 @@ public class GallifreyMod implements ModInitializer {
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
 
 		com.timelordmod.gallifrey.item.custom.SpaceSuitOxygenHandler.register();
+        com.timelordmod.gallifrey.world.SpaceSuitJetpackHandler.register();
 		com.timelordmod.gallifrey.world.dimension.ClassicBedrockLayer.register();
 		GallifreySounds.register();
 		GallifreyFluids.registerModFluids();
@@ -173,6 +174,11 @@ public class GallifreyMod implements ModInitializer {
         ServerPlayNetworking.registerGlobalReceiver(
                 new Identifier(MOD_ID, "sonic_shades_use"),
                 SonicShadesPacket::receive
+        );
+
+        ServerPlayNetworking.registerGlobalReceiver(
+                new Identifier(MOD_ID, "space_suit_jetpack"),
+                com.timelordmod.gallifrey.networking.packets.SpaceSuitJetpackPacket::receive
         );
 
 

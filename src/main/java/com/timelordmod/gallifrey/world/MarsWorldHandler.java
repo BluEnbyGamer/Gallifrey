@@ -16,11 +16,12 @@ public final class MarsWorldHandler {
             if (!world.getRegistryKey().equals(ModDimensions.MARS_LEVEL_KEY)) return;
             for (PlayerEntity player : world.getPlayers()) {
                 if (!player.isOnGround() && !player.isClimbing() && !player.isSwimming() && !player.hasNoGravity()) {
+                    // Vanilla gravity is about 0.08 blocks/tick^2. Add back 0.05
+                    // each airborne tick, leaving roughly 0.03 (about 38% of Earth).
+                    // Apply during ascent and descent so the whole jump arc is affected.
                     var velocity = player.getVelocity();
-                    if (velocity.y < 0.0) {
-                        player.setVelocity(velocity.x, velocity.y + 0.05, velocity.z);
-                        player.velocityDirty = true;
-                    }
+                    player.setVelocity(velocity.x, velocity.y + 0.05, velocity.z);
+                    player.velocityDirty = true;
                 }
             }
         });
