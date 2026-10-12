@@ -360,11 +360,6 @@ public class GallifreyModItems {
     public static final Item ATRIUM_CORE = new Item(new FabricItemSettings());
 
     public static void register() {
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
-            entries.add(MONDASIAN_CYBERMAN_SPAWN_EGG);
-            entries.add(PROTO_CYBERMAN_SPAWN_EGG);
-            entries.add(CYBERMAT_SPAWN_EGG);
-        });
         registerItem("diamond_minecart", DIAMOND_MINECART);
         registerItem("space_suit_helmet", SPACE_SUIT_HELMET);
         registerItem("space_suit_chestplate", SPACE_SUIT_CHESTPLATE);
