@@ -9,7 +9,8 @@
     "ClassicNetherPortalMixin",
     "ClassicPortalLightingMixin",
     "ClassicFurnaceBlockEntityMixin",
-    "ServerWorldSleepMixin"
+    "ServerWorldSleepMixin",
+    "MoonGravityMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",

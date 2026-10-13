@@ -26,7 +26,10 @@
     [],
     [],
     [],
-    [],
+    [
+      "gallifrey:moon_iron_ore_placed",
+      "gallifrey:moon_gold_ore_placed"
+    ],
     [],
     []
   ],

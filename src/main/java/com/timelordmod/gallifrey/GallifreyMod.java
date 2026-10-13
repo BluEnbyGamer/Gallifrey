@@ -14,7 +14,6 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.world.gen.GenerationStep;
-import com.timelordmod.gallifrey.world.MarsWorldHandler;
 import com.timelordmod.gallifrey.world.portal.GallifreyPortalAreaHelper;
 import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 import net.fabricmc.api.ModInitializer;
@@ -293,7 +292,6 @@ public class GallifreyMod implements ModInitializer {
 
 
 
-		MarsWorldHandler.register();
 
 
 		LOGGER.info("[Gallifrey] Core systems ready.");
