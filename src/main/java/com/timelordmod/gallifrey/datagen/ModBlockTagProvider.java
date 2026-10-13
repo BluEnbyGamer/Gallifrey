@@ -31,6 +31,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(GallifreyModBlocks.CLASSIC_LOG);
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(GallifreyModBlocks.CLASSIC_LEAVES);
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(GallifreyModBlocks.GALLIFREYAN_WORKBENCH);
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(GallifreyModBlocks.CLASSIC_GRASS, GallifreyModBlocks.CLASSIC_DIRT, GallifreyModBlocks.CLASSIC_SAND, GallifreyModBlocks.CLASSIC_GRAVEL);
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)

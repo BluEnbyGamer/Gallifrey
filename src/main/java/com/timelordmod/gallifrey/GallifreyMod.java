@@ -124,6 +124,8 @@ public class GallifreyMod implements ModInitializer {
                 1
         );
 
+		com.timelordmod.gallifrey.villager.GallifreyVillagers.register();
+
         FabricDefaultAttributeRegistry.register(GallifreyEntities.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
         FabricDefaultAttributeRegistry.register(GallifreyEntities.PROTO_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
         FabricDefaultAttributeRegistry.register(GallifreyEntities.CYBERMAT, com.timelordmod.gallifrey.entity.custom.CybermatEntity.createCybermatAttributes());

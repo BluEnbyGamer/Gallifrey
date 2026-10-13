@@ -212,8 +212,8 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.DW_XIV_MUSIC_DISC);
                 entries.add(GallifreyModItems.GALLIFREY_MUSIC_DISC);
 
-                //Dice Tablet
-              //  entries.add(GallifreyModItems.DICE_TABLET);
+                //gallifreyan workbench
+                entries.add(GallifreyModBlocks.GALLIFREYAN_WORKBENCH);
 
                 // Tapping
                 entries.add(GallifreyModBlocks.TREE_TAPPER);

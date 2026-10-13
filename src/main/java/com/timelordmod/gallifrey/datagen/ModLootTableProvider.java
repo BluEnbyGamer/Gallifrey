@@ -27,6 +27,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.STRIP_TARDIS_WOOD);
         addDrop(GallifreyModBlocks.TARDIS_PLANKS);
         addDrop(GallifreyModBlocks.TARDIS_STAIRS);
+        addDrop(GallifreyModBlocks.GALLIFREYAN_WORKBENCH);
         addPottedPlantDrops(GallifreyModBlocks.POTTED_TARDIS_SAPLING);
         addDrop(GallifreyModBlocks.TARDIS_SLAB, slabDrops(GallifreyModBlocks.TARDIS_SLAB));
         addDrop(GallifreyModBlocks.TARDIS_BUTTON);

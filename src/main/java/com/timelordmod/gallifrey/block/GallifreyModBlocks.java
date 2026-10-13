@@ -49,6 +49,13 @@ public class GallifreyModBlocks {
     // CLASSIC BLOCKS
     // ============================================================
 
+    public static final Block GALLIFREYAN_WORKBENCH = registerBlock(
+            "gallifreyan_workbench",
+            new com.timelordmod.gallifrey.block.custom.GallifreyanWorkbenchBlock(
+                    FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE).nonOpaque()
+            )
+    );
+
     // Classic-era blocks and their custom 2009-era sound groups.
     private static final BlockSoundGroup CLASSIC_STONE_SOUNDS = new BlockSoundGroup(1.0F, 1.0F, GallifreySounds.CLASSIC_STONE_STEP_0, GallifreySounds.CLASSIC_STONE_STEP_1, GallifreySounds.CLASSIC_STONE_STEP_2, GallifreySounds.CLASSIC_STONE_STEP_3, GallifreySounds.CLASSIC_STONE_STEP_3);
     private static final BlockSoundGroup CLASSIC_GRASS_SOUNDS = new BlockSoundGroup(1.0F, 1.0F, GallifreySounds.CLASSIC_GRASS_STEP_0, GallifreySounds.CLASSIC_GRASS_STEP_1, GallifreySounds.CLASSIC_GRASS_STEP_2, GallifreySounds.CLASSIC_GRASS_STEP_3, GallifreySounds.CLASSIC_GRASS_STEP_3);

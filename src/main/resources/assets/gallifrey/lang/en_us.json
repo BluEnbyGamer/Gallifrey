@@ -628,5 +628,7 @@
   "item.gallifrey.proto_cyberman_spawn_egg": "Proto-Cyberman Spawn Egg",
   "item.gallifrey.cybermat_spawn_egg": "Cybermat Spawn Egg",
   "entity.gallifrey.time_lord": "Time Lord",
-  "item.gallifrey.timelord_villager_spawn_egg": "Time Lord Villager Spawn Egg"
+  "item.gallifrey.timelord_villager_spawn_egg": "Time Lord Villager Spawn Egg",
+  "block.gallifrey.gallifreyan_workbench": "Gallifreyan Workbench",
+  "entity.minecraft.villager.time_lord_trader": "Time Lord Trader"
 }
