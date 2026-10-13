@@ -195,7 +195,7 @@ public class GallifreyModItems {
     public static final SpawnEggItem CYBERMAT_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.CYBERMAT, 0x454545, 0xC5C5C5, new FabricItemSettings());
 
     public static final SpawnEggItem TIMELORD_VILLAGER_SPAWN_EGG = new SpawnEggItem(
-            GallifreyEntities.TIMELORD_VILLAGER, 0x4B3B72, 0xC7B7E8, new FabricItemSettings());
+            GallifreyEntities.TIMELORD_VILLAGER, 0x4A101B, 0xE8A623, new FabricItemSettings());
 
     public static final SpawnEggItem CLASSIC_VILLAGER_SPAWN_EGG = new SpawnEggItem(
             GallifreyEntities.CLASSIC_VILLAGER,
