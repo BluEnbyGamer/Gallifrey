@@ -4,6 +4,7 @@ import com.timelordmod.gallifrey.GallifreyMod;
 import com.timelordmod.gallifrey.entity.custom.LaserEntity;
 import com.timelordmod.gallifrey.entity.custom.DiamondMinecartEntity;
 import com.timelordmod.gallifrey.entity.custom.ClassicVillagerEntity;
+import com.timelordmod.gallifrey.entity.custom.TimeLordVillagerEntity;
 import com.timelordmod.gallifrey.entity.custom.SkaroCityDalekEntity;
 import com.timelordmod.gallifrey.entity.custom.SkaroCityDalekAltEntity;
 import com.timelordmod.gallifrey.entity.custom.SupremeCouncilDalekEntity;
@@ -25,7 +26,7 @@ public class GallifreyEntities {
     public static final EntityType<VillagerEntity> TIMELORD_VILLAGER = Registry.register(
             Registries.ENTITY_TYPE,
             new Identifier(GallifreyMod.MOD_ID, "timelord_villager"),
-            FabricEntityTypeBuilder.<VillagerEntity>create(SpawnGroup.CREATURE, VillagerEntity::new)
+            FabricEntityTypeBuilder.<VillagerEntity>create(SpawnGroup.CREATURE, TimeLordVillagerEntity::new)
                     .dimensions(EntityDimensions.fixed(0.6f, 1.95f))
                     .trackRangeChunks(10)
                     .build());
