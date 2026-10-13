@@ -628,5 +628,6 @@
   "item.gallifrey.proto_cyberman_spawn_egg": "Proto-Cyberman Spawn Egg",
   "item.gallifrey.cybermat_spawn_egg": "Cybermat Spawn Egg",
   "key.gallifrey.space_suit_jetpack": "Activate Space Suit Jetpack",
-  "entity.gallifrey.time_lord": "Time Lord"
+  "entity.gallifrey.time_lord": "Time Lord",
+  "item.gallifrey.timelord_villager_spawn_egg": "Time Lord Villager Spawn Egg"
 }
