@@ -23,6 +23,9 @@ public class VortexManipulator extends Item {
 
     private static final String IN_FLIGHT_KEY = "VMInFlight";
 
+    // 12 seconds at 20 game ticks per second. Creative mode is exempt.
+    private static final int SURVIVAL_COOLDOWN_TICKS = 12 * 20;
+
     /** Returns true when any non-empty fluid occupies the player's bounding box. */
     private static boolean isInAnyLiquid(PlayerEntity player) {
         Box box = player.getBoundingBox();
@@ -75,6 +78,12 @@ public class VortexManipulator extends Item {
                 serverPlayer.sendMessage(Text.literal("ISOMORPHIC LOCK: this Vortex Manipulator is keyed to another Time Lord."), true);
                 return TypedActionResult.fail(stack);
             }
+        }
+
+        // Apply a 12-second cooldown in non-creative play. The item cooldown
+        // manager synchronizes the cooldown to the client and prevents repeated use.
+        if (!user.getAbilities().creativeMode) {
+            user.getItemCooldownManager().set(this, SURVIVAL_COOLDOWN_TICKS);
         }
 
         // -----------------------------------------------------

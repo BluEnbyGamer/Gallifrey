@@ -221,9 +221,25 @@ public class VMPacket {
                 targetPos = new Vec3d(x, y, z);
             }
         }
+        // Safety lock: reject invalid coordinates and destinations on/over the world border.
+        // Check a one-block margin so the player's bounding box cannot straddle the border.
+        if (!Double.isFinite(targetPos.x) || !Double.isFinite(targetPos.y) || !Double.isFinite(targetPos.z)) {
+            player.sendMessage(Text.literal("VMS SAFETY LOCK: invalid destination coordinates."), true);
+            return;
+        }
+        BlockPos targetBlockPos = BlockPos.ofFloored(targetPos);
+        if (targetBlockPos.getY() < targetWorld.getBottomY()
+                || targetBlockPos.getY() >= targetWorld.getTopY()
+                || !targetWorld.getWorldBorder().contains(targetBlockPos)
+                || !targetWorld.getWorldBorder().contains(targetBlockPos.add(1, 0, 0))
+                || !targetWorld.getWorldBorder().contains(targetBlockPos.add(-1, 0, 0))
+                || !targetWorld.getWorldBorder().contains(targetBlockPos.add(0, 0, 1))
+                || !targetWorld.getWorldBorder().contains(targetBlockPos.add(0, 0, -1))) {
+            player.sendMessage(Text.literal("VMS SAFETY LOCK: destination is outside or too close to the world border, or outside the world height."), true);
+            return;
+        }
         ServerWorld sourceWorld = player.getServerWorld();
         Vec3d sourcePos = player.getPos();
-        BlockPos targetBlockPos = BlockPos.ofFloored(targetPos);
         PENDING_EFFECTS.put(player.getUuid(), new PendingTeleportEffect(sourceWorld.getRegistryKey(), sourcePos, targetWorld.getRegistryKey(), targetPos,
                 new ChunkPosKey(targetBlockPos.getX() >> 4, targetBlockPos.getZ() >> 4), TeleportPhase.SOURCE_WARMUP, 1, ItemStack.EMPTY, ItemStack.EMPTY, Map.of()));
     }
