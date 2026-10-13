@@ -50,6 +50,7 @@ public class GallifreyMod implements ModInitializer {
         );
 
 		MarsSurvival.register();
+		com.timelordmod.gallifrey.world.VacuumMobSurvivalHandler.register();
 
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
 
