@@ -284,11 +284,10 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.EYESTALK);
                 entries.add(GallifreyModItems.OMEGA_HELMET);
 
-                // spawn eggs appear immediately below the clothing items.
+                // Cyber spawn eggs appear immediately below the clothing items.
                 entries.add(GallifreyModItems.MONDASIAN_CYBERMAN_SPAWN_EGG);
                 entries.add(GallifreyModItems.PROTO_CYBERMAN_SPAWN_EGG);
                 entries.add(GallifreyModItems.CYBERMAT_SPAWN_EGG);
-                entries.add(GallifreyModItems.TIMELORD_VILLAGER_SPAWN_EGG);
             }
     );
 
@@ -649,6 +648,8 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.METALERTANIUM_LEGGINGS);
                 entries.add(GallifreyModItems.METALERTANIUM_BOOTS);
                 entries.add(GallifreyModItems.RADIATION_BUCKET);
+                // Time Lord Villager
+                entries.add(GallifreyModItems.TIMELORD_VILLAGER_SPAWN_EGG);
             }
     );
 

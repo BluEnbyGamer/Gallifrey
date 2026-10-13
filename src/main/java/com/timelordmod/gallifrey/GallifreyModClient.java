@@ -58,7 +58,6 @@ public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        com.timelordmod.gallifrey.client.SpaceSuitJetpackClient.register();
 
         // Classic leather armour: the item icons are greyscale and get the leather colour
         // (or the dye colour) at runtime, exactly like vanilla leather armour.
