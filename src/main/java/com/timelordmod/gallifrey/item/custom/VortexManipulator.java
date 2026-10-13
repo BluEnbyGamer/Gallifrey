@@ -12,6 +12,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -41,6 +42,12 @@ public class VortexManipulator extends Item {
     ) {
 
         ItemStack stack = user.getStackInHand(hand);
+
+        // The Vortex Manipulator cannot be activated while immersed in any fluid.
+        if (isInAnyLiquid(user)) {
+            user.sendMessage(Text.literal("VORTEX MANIPULATOR DISABLED: liquid interference detected."), true);
+            return TypedActionResult.fail(stack);
+        }
 
         if (!world.isClient && user instanceof net.minecraft.server.network.ServerPlayerEntity serverPlayer) {
             VortexManipulatorData.ensureOwner(stack, serverPlayer);

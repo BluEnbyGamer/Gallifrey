@@ -171,6 +171,10 @@ public class VMPacket {
     private static void teleport(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
         if (!VortexManipulatorData.isAuthorized(vm, player.getUuid())) { player.sendMessage(Text.literal("ISOMORPHIC LOCK ACTIVE."), true); return; }
         if (PENDING_EFFECTS.containsKey(player.getUuid())) { player.sendMessage(Text.literal("Vortex Manipulator sequence already active."), true); return; }
+        if (isInAnyLiquid(player)) {
+            player.sendMessage(Text.literal("VORTEX MANIPULATOR DISABLED: liquid interference detected."), true);
+            return;
+        }
         boolean targetPlayerMode = buf.readBoolean();
         String targetPlayerName = targetPlayerMode ? buf.readString(64) : "";
         Identifier dimensionId = !targetPlayerMode ? buf.readIdentifier() : null;
@@ -203,6 +207,7 @@ public class VMPacket {
             RegistryKey<World> key = RegistryKey.of(RegistryKeys.WORLD, dimensionId);
             targetWorld = server.getWorld(key);
             if (targetWorld == null) { player.sendMessage(Text.literal("Unknown dimension: " + dimensionId), true); return; }
+            if (!checkDimensionUnlock(server, player, vm, dimensionId)) return;
             if (surfaceMode) {
                 int surfaceX = (int) Math.floor(x);
                 int surfaceZ = (int) Math.floor(z);
@@ -216,22 +221,83 @@ public class VMPacket {
                 targetPos = new Vec3d(x, y, z);
             }
         }
-        // Lost Reality is a secret dimension: ordinary VM travel has a 5% chance
-        // to misfire there, regardless of the intended destination.
-        ServerWorld lostReality = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier("gallifrey", "lost_reality")));
-        if (lostReality != null && player.getServerWorld() != lostReality && server.getOverworld().getRandom().nextFloat() < 0.05F) {
-            targetWorld = lostReality;
-            int lx = (int) Math.floor(targetPos.x);
-            int lz = (int) Math.floor(targetPos.z);
-            int ly = lostReality.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, lx, lz);
-            targetPos = new Vec3d(targetPos.x, Math.max(ly, 80), targetPos.z);
-            player.sendMessage(Text.literal("§5VORTEX ANOMALY — destination coordinates corrupted."), true);
-        }
         ServerWorld sourceWorld = player.getServerWorld();
         Vec3d sourcePos = player.getPos();
         BlockPos targetBlockPos = BlockPos.ofFloored(targetPos);
         PENDING_EFFECTS.put(player.getUuid(), new PendingTeleportEffect(sourceWorld.getRegistryKey(), sourcePos, targetWorld.getRegistryKey(), targetPos,
                 new ChunkPosKey(targetBlockPos.getX() >> 4, targetBlockPos.getZ() >> 4), TeleportPhase.SOURCE_WARMUP, 1, ItemStack.EMPTY, ItemStack.EMPTY, Map.of()));
+    }
+
+    private static boolean isInAnyLiquid(ServerPlayerEntity player) {
+        if (player.isTouchingWater() || player.isInLava()) return true;
+        ServerWorld world = player.getServerWorld();
+        BlockPos feet = BlockPos.ofFloored(player.getX(), player.getY() + 0.1D, player.getZ());
+        BlockPos body = BlockPos.ofFloored(player.getX(), player.getY() + Math.max(0.5D, player.getHeight() * 0.5D), player.getZ());
+        BlockPos head = BlockPos.ofFloored(player.getX(), player.getEyeY(), player.getZ());
+        return !world.getFluidState(feet).isEmpty() || !world.getFluidState(body).isEmpty()
+                || !world.getFluidState(head).isEmpty();
+    }
+
+    private static boolean checkDimensionUnlock(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, Identifier dimensionId) {
+        NbtCompound nbt = vm.getOrCreateNbt();
+        String path = dimensionId.getPath();
+        String unlockKey = "DimensionUnlocked_" + path;
+        if (nbt.getBoolean(unlockKey)) return true;
+
+        if (dimensionId.equals(World.END.getValue())) {
+            boolean dragonKilled = server.getAdvancementLoader().get(new Identifier("minecraft", "end/kill_dragon")) != null
+                    && player.getAdvancementTracker().getProgress(server.getAdvancementLoader().get(new Identifier("minecraft", "end/kill_dragon"))).isDone();
+            if (dragonKilled) { nbt.putBoolean(unlockKey, true); return true; }
+            if (consumeItem(player, net.minecraft.item.Items.CHORUS_FRUIT)) {
+                nbt.putBoolean(unlockKey, true);
+                player.sendMessage(Text.literal("The End unlocked in this Vortex Manipulator."), true);
+                return true;
+            }
+            player.sendMessage(Text.literal("The End is locked. Use a Chorus Fruit or defeat the Ender Dragon first."), true);
+            return false;
+        }
+
+        if (dimensionId.equals(World.NETHER.getValue()) || dimensionId.equals(new Identifier("gallifrey", "classic_nether"))) {
+            if (consumeItem(player, net.minecraft.item.Items.BLAZE_ROD)) {
+                nbt.putBoolean(unlockKey, true);
+                player.sendMessage(Text.literal("Dimension unlocked in this Vortex Manipulator."), true);
+                return true;
+            }
+            player.sendMessage(Text.literal("This dimension is locked. A Blaze Rod is required to unlock it."), true);
+            return false;
+        }
+
+        if (dimensionId.equals(new Identifier("gallifrey", "skaro"))) {
+            if (consumeItem(player, GallifreyModItems.DALEKANIUM_INGOT)) {
+                nbt.putBoolean(unlockKey, true);
+                player.sendMessage(Text.literal("Skaro unlocked in this Vortex Manipulator."), true);
+                return true;
+            }
+            player.sendMessage(Text.literal("Skaro is locked. A Dalekanium Ingot is required."), true);
+            return false;
+        }
+
+        if (dimensionId.equals(new Identifier("gallifrey", "mondas"))) {
+            if (consumeItem(player, GallifreyModItems.STEEL_INGOT)) {
+                nbt.putBoolean(unlockKey, true);
+                player.sendMessage(Text.literal("Mondas unlocked in this Vortex Manipulator."), true);
+                return true;
+            }
+            player.sendMessage(Text.literal("Mondas is locked. A Steel Ingot is required."), true);
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean consumeItem(ServerPlayerEntity player, net.minecraft.item.Item item) {
+        for (int i = 0; i < player.getInventory().size(); i++) {
+            ItemStack stack = player.getInventory().getStack(i);
+            if (stack.isOf(item)) {
+                stack.decrement(1);
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

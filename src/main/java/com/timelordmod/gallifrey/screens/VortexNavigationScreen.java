@@ -72,7 +72,6 @@ public class VortexNavigationScreen extends VortexManipulatorSubScreen {
         // Ignores spaces, apostrophes, underscores and hyphens: "Pete's World", "petes world", "petes_world" all work.
         String squashed = n.replace("'", "").replace("\u2019", "").replace(" ", "").replace("_", "").replace("-", "");
         if (squashed.equals("petesworld")) return new Identifier("gallifrey", "petes_world");
-        if (squashed.equals("lostreality")) return new Identifier("gallifrey", "lost_reality");
         return switch (n) {
             case "overworld" -> new Identifier("minecraft", "overworld");
             case "nether" -> new Identifier("minecraft", "the_nether");
