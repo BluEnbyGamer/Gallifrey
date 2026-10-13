@@ -170,6 +170,12 @@ public class VMPacket {
 
     private static void teleport(MinecraftServer server, ServerPlayerEntity player, ItemStack vm, PacketByteBuf buf) {
         if (!VortexManipulatorData.isAuthorized(vm, player.getUuid())) { player.sendMessage(Text.literal("ISOMORPHIC LOCK ACTIVE."), true); return; }
+        // Enforce cooldown on the server-side teleport handler. The VM uses a custom
+        // networking action, so an item-use cooldown alone does not block repeat teleports.
+        if (!player.getAbilities().creativeMode && player.getItemCooldownManager().isCoolingDown(vm.getItem())) {
+            player.sendMessage(Text.literal("VORTEX MANIPULATOR RECHARGING: please wait 15 seconds between teleports."), true);
+            return;
+        }
         if (PENDING_EFFECTS.containsKey(player.getUuid())) { player.sendMessage(Text.literal("Vortex Manipulator sequence already active."), true); return; }
         if (isInAnyLiquid(player)) {
             player.sendMessage(Text.literal("VORTEX MANIPULATOR DISABLED: liquid interference detected."), true);
@@ -237,6 +243,11 @@ public class VMPacket {
                 || !targetWorld.getWorldBorder().contains(targetBlockPos.add(0, 0, -1))) {
             player.sendMessage(Text.literal("VMS SAFETY LOCK: destination is outside or too close to the world border, or outside the world height."), true);
             return;
+        }
+        // Start the 15-second cooldown only after all destination checks pass.
+        // Creative players are exempt. This is checked again for every packet request.
+        if (!player.getAbilities().creativeMode) {
+            player.getItemCooldownManager().set(vm.getItem(), 15 * 20);
         }
         ServerWorld sourceWorld = player.getServerWorld();
         Vec3d sourcePos = player.getPos();
