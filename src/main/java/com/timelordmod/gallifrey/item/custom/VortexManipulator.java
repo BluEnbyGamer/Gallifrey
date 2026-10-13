@@ -218,7 +218,7 @@ public class VortexManipulator extends Item {
 
         int uses = stack.getOrCreateNbt().contains("VMUsesRemaining") ? stack.getOrCreateNbt().getInt("VMUsesRemaining") : 10;
         tooltip.add(Text.literal("Power: " + uses + "/10 uses"));
-        tooltip.add(Text.literal("Refuel using Atri-coal or an Atrium Core in your other hand."));
+        tooltip.add(Text.literal("Refuel using an Atrium Core in your other hand."));
 
         super.appendTooltip(
                 stack,

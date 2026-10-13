@@ -192,7 +192,7 @@ public class VMPacket {
         NbtCompound vmNbt = vm.getOrCreateNbt();
         if (!vmNbt.contains("VMUsesRemaining")) vmNbt.putInt("VMUsesRemaining", 10);
         if (vmNbt.getInt("VMUsesRemaining") <= 0) {
-            player.sendMessage(Text.literal("VORTEX MANIPULATOR OUT OF POWER: refuel with Atri-coal or an Atrium Core."), true);
+            player.sendMessage(Text.literal("VORTEX MANIPULATOR OUT OF POWER: refuel with an Atrium Core."), true);
             return;
         }
         if (PENDING_EFFECTS.containsKey(player.getUuid())) { player.sendMessage(Text.literal("Vortex Manipulator sequence already active."), true); return; }
