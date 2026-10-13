@@ -104,7 +104,20 @@ public class VMPacket {
             if (pending.ticksRemaining() > 0) { entry.setValue(pending.tickDown()); continue; }
             targetWorld.playSound(null, pending.targetPosition().x, pending.targetPosition().y, pending.targetPosition().z, VM_LAND_SOUND, SoundCategory.PLAYERS, 1.0F, 1.0F);
             targetWorld.spawnParticles(ParticleTypes.REVERSE_PORTAL, pending.targetPosition().x, pending.targetPosition().y + 1.0, pending.targetPosition().z, 60, 0.4, 0.8, 0.4, 0.05);
+            // Restore hidden equipment first so the VM can be found, then apply
+            // fuel consumption and cooldown only after successful arrival.
             cleanup(player, pending);
+            ItemStack arrivedVm = findVortexManipulator(player);
+            if (!arrivedVm.isEmpty()) {
+                NbtCompound arrivedNbt = arrivedVm.getOrCreateNbt();
+                if (!arrivedNbt.contains("VMUsesRemaining")) arrivedNbt.putInt("VMUsesRemaining", 10);
+                int remaining = Math.max(0, arrivedNbt.getInt("VMUsesRemaining"));
+                boolean consumesPower = !player.getAbilities().creativeMode && !player.isSpectator();
+                if (consumesPower && remaining > 0) arrivedNbt.putInt("VMUsesRemaining", remaining - 1);
+                if (consumesPower) player.getItemCooldownManager().set(arrivedVm.getItem(), 15 * 20);
+                int afterUse = Math.max(0, arrivedNbt.getInt("VMUsesRemaining"));
+                player.sendMessage(Text.literal("Vortex Manipulator power: " + afterUse + "/10 uses remaining."), true);
+            }
             iterator.remove();
         }
     }
@@ -173,7 +186,13 @@ public class VMPacket {
         // Enforce cooldown on the server-side teleport handler. The VM uses a custom
         // networking action, so an item-use cooldown alone does not block repeat teleports.
         if (!player.getAbilities().creativeMode && player.getItemCooldownManager().isCoolingDown(vm.getItem())) {
-            player.sendMessage(Text.literal("VORTEX MANIPULATOR RECHARGING: please wait 15 seconds between teleports."), true);
+            player.sendMessage(Text.literal("VORTEX MANIPULATOR RECHARGING: please wait 15 seconds after arrival."), true);
+            return;
+        }
+        NbtCompound vmNbt = vm.getOrCreateNbt();
+        if (!vmNbt.contains("VMUsesRemaining")) vmNbt.putInt("VMUsesRemaining", 10);
+        if (vmNbt.getInt("VMUsesRemaining") <= 0) {
+            player.sendMessage(Text.literal("VORTEX MANIPULATOR OUT OF POWER: refuel with Atri-coal or an Atrium Core."), true);
             return;
         }
         if (PENDING_EFFECTS.containsKey(player.getUuid())) { player.sendMessage(Text.literal("Vortex Manipulator sequence already active."), true); return; }
@@ -244,11 +263,7 @@ public class VMPacket {
             player.sendMessage(Text.literal("VMS SAFETY LOCK: destination is outside or too close to the world border, or outside the world height."), true);
             return;
         }
-        // Start the 15-second cooldown only after all destination checks pass.
-        // Creative players are exempt. This is checked again for every packet request.
-        if (!player.getAbilities().creativeMode) {
-            player.getItemCooldownManager().set(vm.getItem(), 15 * 20);
-        }
+        // Cooldown begins after arrival, not when the teleport sequence starts.
         ServerWorld sourceWorld = player.getServerWorld();
         Vec3d sourcePos = player.getPos();
         PENDING_EFFECTS.put(player.getUuid(), new PendingTeleportEffect(sourceWorld.getRegistryKey(), sourcePos, targetWorld.getRegistryKey(), targetPos,

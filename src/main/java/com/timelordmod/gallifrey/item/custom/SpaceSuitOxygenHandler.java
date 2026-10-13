@@ -58,6 +58,6 @@ public final class SpaceSuitOxygenHandler {
     private static boolean isVacuumWorld(ServerWorld world) {
         Identifier id = world.getRegistryKey().getValue();
         if (!"gallifrey".equals(id.getNamespace())) return false;
-        return id.getPath().equals("mars") || id.getPath().equals("mondas");
+        return id.getPath().equals("mars") || id.getPath().equals("mondas") || id.getPath().equals("space");
     }
 }

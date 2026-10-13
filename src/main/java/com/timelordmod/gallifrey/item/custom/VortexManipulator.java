@@ -1,6 +1,7 @@
 package com.timelordmod.gallifrey.item.custom;
 
 import com.timelordmod.gallifrey.GallifreySounds;
+import com.timelordmod.gallifrey.item.GallifreyModItems;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -62,6 +63,21 @@ public class VortexManipulator extends Item {
     ) {
 
         ItemStack stack = user.getStackInHand(hand);
+
+        // Refuel by holding an Atrium Core in the other hand
+        // and using the Vortex Manipulator. One Atrium Core restores all ten uses.
+        ItemStack fuelStack = user.getStackInHand(hand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND);
+        if (!world.isClient && (!fuelStack.isEmpty()) && fuelStack.isOf(GallifreyModItems.ATRIUM_CORE)) {
+            int uses = stack.getOrCreateNbt().getInt("VMUsesRemaining");
+            if (uses >= 10) {
+                user.sendMessage(Text.literal("Vortex Manipulator power is already full (10/10)."), true);
+                return TypedActionResult.fail(stack);
+            }
+            fuelStack.decrement(1);
+            stack.getOrCreateNbt().putInt("VMUsesRemaining", 10);
+            user.sendMessage(Text.literal("Vortex Manipulator refuelled: 10/10 uses."), true);
+            return TypedActionResult.success(stack, false);
+        }
 
         // The Vortex Manipulator cannot be activated while immersed in any fluid.
         if (isInAnyLiquid(user)) {
@@ -199,6 +215,10 @@ public class VortexManipulator extends Item {
                         "Blame UNIT!"
                 ).formatted(Formatting.DARK_RED)
         );
+
+        int uses = stack.getOrCreateNbt().contains("VMUsesRemaining") ? stack.getOrCreateNbt().getInt("VMUsesRemaining") : 10;
+        tooltip.add(Text.literal("Power: " + uses + "/10 uses"));
+        tooltip.add(Text.literal("Refuel using Atri-coal or an Atrium Core in your other hand."));
 
         super.appendTooltip(
                 stack,

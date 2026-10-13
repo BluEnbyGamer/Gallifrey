@@ -1,0 +1,11 @@
+{
+  "type": "gallifrey:space_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gallifrey:mars",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gallifrey:space"
+    }
+  }
+}
