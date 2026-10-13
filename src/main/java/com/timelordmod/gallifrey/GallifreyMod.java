@@ -23,6 +23,7 @@ import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.world.biome.BiomeKeys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,6 +63,11 @@ public class GallifreyMod implements ModInitializer {
 				GallifreyEntities.CLASSIC_VILLAGER,
 				com.timelordmod.gallifrey.entity.custom.ClassicVillagerEntity.createAttributes()
 		);
+
+        FabricDefaultAttributeRegistry.register(
+                GallifreyEntities.TIMELORD_VILLAGER,
+                VillagerEntity.createVillagerAttributes().build()
+        );
 
 		FabricDefaultAttributeRegistry.register(
 				GallifreyEntities.SKARO_CITY_DALEK,

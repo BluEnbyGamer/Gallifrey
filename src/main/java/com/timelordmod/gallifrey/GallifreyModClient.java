@@ -130,6 +130,7 @@ public class GallifreyModClient implements ClientModInitializer {
         EntityRendererRegistry.register(GallifreyEntities.LASER, LaserRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.DIAMOND_MINECART, DiamondMinecartRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.CLASSIC_VILLAGER, ClassicVillagerRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.TIMELORD_VILLAGER, com.timelordmod.gallifrey.entity.client.TimeLordVillagerRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.ALPHA_GHAST, AlphaGhastRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.ALPHA_ZOMBIE_PIGMAN, AlphaZombiePigmanRenderer::new);
         SonicShadesClient.register();

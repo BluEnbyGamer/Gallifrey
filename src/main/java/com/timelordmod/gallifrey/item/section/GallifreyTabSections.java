@@ -491,6 +491,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.CLASSIC_DOOR_IRON);
                 entries.add(GallifreyModItems.CLASSIC_OAK_BOAT);
                 entries.add(GallifreyModItems.CLASSIC_VILLAGER_SPAWN_EGG);
+                entries.add(GallifreyModItems.TIMELORD_VILLAGER_SPAWN_EGG);
 
                 // Wood tools
                 entries.add(GallifreyModItems.CLASSIC_WOOD_SWORD);

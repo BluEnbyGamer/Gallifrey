@@ -196,6 +196,10 @@ public class VMPacket {
             targetWorld = targetPlayer.getServerWorld();
             targetPos = targetPlayer.getPos();
         } else {
+            if (new Identifier("gallifrey", "lost_reality").equals(dimensionId)) {
+                player.sendMessage(Text.literal("§5Destination unavailable: dimensional coordinates are corrupted."), true);
+                return;
+            }
             RegistryKey<World> key = RegistryKey.of(RegistryKeys.WORLD, dimensionId);
             targetWorld = server.getWorld(key);
             if (targetWorld == null) { player.sendMessage(Text.literal("Unknown dimension: " + dimensionId), true); return; }
@@ -211,6 +215,17 @@ public class VMPacket {
             } else {
                 targetPos = new Vec3d(x, y, z);
             }
+        }
+        // Lost Reality is a secret dimension: ordinary VM travel has a 5% chance
+        // to misfire there, regardless of the intended destination.
+        ServerWorld lostReality = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier("gallifrey", "lost_reality")));
+        if (lostReality != null && player.getServerWorld() != lostReality && server.getOverworld().getRandom().nextFloat() < 0.05F) {
+            targetWorld = lostReality;
+            int lx = (int) Math.floor(targetPos.x);
+            int lz = (int) Math.floor(targetPos.z);
+            int ly = lostReality.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, lx, lz);
+            targetPos = new Vec3d(targetPos.x, Math.max(ly, 80), targetPos.z);
+            player.sendMessage(Text.literal("§5VORTEX ANOMALY — destination coordinates corrupted."), true);
         }
         ServerWorld sourceWorld = player.getServerWorld();
         Vec3d sourcePos = player.getPos();

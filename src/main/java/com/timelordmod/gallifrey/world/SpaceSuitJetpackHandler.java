@@ -11,12 +11,13 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-/** Five-second space-suit jetpack with a thirty-second recharge. */
+/** Thirty-second space-suit jetpack with a 120-second recharge, followed by controlled gliding. */
 public final class SpaceSuitJetpackHandler {
-    private static final int FLIGHT_TICKS = 5 * 20;
-    private static final int COOLDOWN_TICKS = 30 * 20;
+    private static final int FLIGHT_TICKS = 30 * 20;
+    private static final int COOLDOWN_TICKS = 120 * 20;
     private static final Map<UUID, Integer> ACTIVE = new ConcurrentHashMap<>();
     private static final Map<UUID, Integer> COOLDOWN = new ConcurrentHashMap<>();
+    private static final Map<UUID, Integer> GLIDE_TICKS = new ConcurrentHashMap<>();
 
     private SpaceSuitJetpackHandler() {}
 
@@ -37,6 +38,7 @@ public final class SpaceSuitJetpackHandler {
             return;
         }
         ACTIVE.put(id, FLIGHT_TICKS);
+        GLIDE_TICKS.remove(id);
         COOLDOWN.put(id, COOLDOWN_TICKS);
         player.sendMessage(Text.literal("§bJetpack activated!"), true);
     }
@@ -49,7 +51,23 @@ public final class SpaceSuitJetpackHandler {
             else COOLDOWN.remove(id);
 
             Integer active = ACTIVE.get(id);
-            if (active == null) continue;
+            if (active == null) {
+                Integer glide = GLIDE_TICKS.get(id);
+                if (glide != null) {
+                    if (!hasFullSuit(player) || player.isOnGround() || player.isSpectator()) {
+                        GLIDE_TICKS.remove(id);
+                    } else {
+                        var v = player.getVelocity();
+                        double yaw = Math.toRadians(player.getYaw());
+                        player.setVelocity(v.x * 0.98 - Math.sin(yaw) * 0.025,
+                                Math.max(v.y, -0.10), v.z * 0.98 + Math.cos(yaw) * 0.025);
+                        player.velocityDirty = true;
+                        if (glide <= 1) GLIDE_TICKS.remove(id);
+                        else GLIDE_TICKS.put(id, glide - 1);
+                    }
+                }
+                continue;
+            }
             if (!hasFullSuit(player) || player.isSpectator() || player.isCreative()) {
                 ACTIVE.remove(id);
                 continue;
@@ -61,7 +79,8 @@ public final class SpaceSuitJetpackHandler {
             player.velocityDirty = true;
             if (active <= 1) {
                 ACTIVE.remove(id);
-                player.sendMessage(Text.literal("§eJetpack depleted. Recharging for 30 seconds."), true);
+                GLIDE_TICKS.put(id, 20 * 60);
+                player.sendMessage(Text.literal("§eJetpack depleted. Gliding enabled; recharge takes 120 seconds."), true);
             } else {
                 ACTIVE.put(id, active - 1);
             }

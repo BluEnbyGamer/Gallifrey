@@ -194,6 +194,9 @@ public class GallifreyModItems {
     public static final SpawnEggItem PROTO_CYBERMAN_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.PROTO_CYBERMAN, 0x777777, 0xA51D1D, new FabricItemSettings());
     public static final SpawnEggItem CYBERMAT_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.CYBERMAT, 0x454545, 0xC5C5C5, new FabricItemSettings());
 
+    public static final SpawnEggItem TIMELORD_VILLAGER_SPAWN_EGG = new SpawnEggItem(
+            GallifreyEntities.TIMELORD_VILLAGER, 0x4B3B72, 0xC7B7E8, new FabricItemSettings());
+
     public static final SpawnEggItem CLASSIC_VILLAGER_SPAWN_EGG = new SpawnEggItem(
             GallifreyEntities.CLASSIC_VILLAGER,
             0x563C33,
@@ -449,6 +452,7 @@ public class GallifreyModItems {
         registerItem("proto_cyberman_spawn_egg", PROTO_CYBERMAN_SPAWN_EGG);
         registerItem("cybermat_spawn_egg", CYBERMAT_SPAWN_EGG);
         registerItem("classic_villager_spawn_egg", CLASSIC_VILLAGER_SPAWN_EGG);
+        registerItem("timelord_villager_spawn_egg", TIMELORD_VILLAGER_SPAWN_EGG);
         registerItem("skaro_city_dalek_spawn_egg", SKARO_CITY_DALEK_SPAWN_EGG);
 
         // Classic-era items are separately registered under gallifrey:classic_* ids.

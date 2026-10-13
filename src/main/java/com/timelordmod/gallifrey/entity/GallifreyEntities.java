@@ -14,11 +14,21 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class GallifreyEntities {
+
+    /** Separate modern-model Time Lord villager; does not replace or alter vanilla villagers. */
+    public static final EntityType<VillagerEntity> TIMELORD_VILLAGER = Registry.register(
+            Registries.ENTITY_TYPE,
+            new Identifier(GallifreyMod.MOD_ID, "timelord_villager"),
+            FabricEntityTypeBuilder.<VillagerEntity>create(SpawnGroup.CREATURE, VillagerEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.6f, 1.95f))
+                    .trackRangeChunks(10)
+                    .build());
 
     public static final EntityType<ClassicVillagerEntity> CLASSIC_VILLAGER = Registry.register(
             Registries.ENTITY_TYPE,
