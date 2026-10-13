@@ -38,6 +38,7 @@ import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class VMPacket {
@@ -233,6 +234,26 @@ public class VMPacket {
             targetWorld = server.getWorld(key);
             if (targetWorld == null) { player.sendMessage(Text.literal("Unknown dimension: " + dimensionId), true); return; }
             if (!checkDimensionUnlock(server, player, vm, dimensionId)) return;
+
+            // Rare dimensional drift: the Vortex Manipulator can lose its lock
+            // while crossing between dimensions and dump the traveller in Lost Reality.
+            // Directly selecting Lost Reality remains blocked above; this only occurs
+            // when the player requested a different dimension.
+            if (!player.getServerWorld().getRegistryKey().getValue().equals(dimensionId)
+                    && ThreadLocalRandom.current().nextInt(40) == 0) {
+                ServerWorld lostReality = server.getWorld(RegistryKey.of(
+                        RegistryKeys.WORLD, new Identifier("gallifrey", "lost_reality")));
+                if (lostReality != null) {
+                    Vec3d driftPosition = findLostRealityArrival(lostReality);
+                    if (driftPosition != null) {
+                        targetWorld = lostReality;
+                        targetPos = driftPosition;
+                        surfaceMode = false;
+                        player.sendMessage(Text.literal("§5DIMENSIONAL DRIFT! The Vortex Manipulator lost its lock and dumped you in Lost Reality."), false);
+                    }
+                }
+            }
+
             if (surfaceMode) {
                 int surfaceX = (int) Math.floor(x);
                 int surfaceZ = (int) Math.floor(z);
@@ -348,6 +369,26 @@ public class VMPacket {
      * rejected rather than allowing the VM to drop the player into underground
      * terrain or a void dimension.
      */
+
+    /**
+     * Chooses a reasonably safe surface arrival for a rare accidental Lost Reality
+     * transfer. Search outward from the origin rather than relying on a possibly
+     * unset dimension spawn point.
+     */
+    private static Vec3d findLostRealityArrival(ServerWorld world) {
+        for (int radius = 0; radius <= 256; radius += 16) {
+            int checks = radius == 0 ? 1 : 8;
+            for (int i = 0; i < checks; i++) {
+                double angle = (Math.PI * 2.0 * i) / checks;
+                int x = radius == 0 ? 0 : (int) Math.round(Math.cos(angle) * radius);
+                int z = radius == 0 ? 0 : (int) Math.round(Math.sin(angle) * radius);
+                Double y = findSafeSurfaceY(world, x, z);
+                if (y != null) return new Vec3d(x + 0.5, y, z + 0.5);
+            }
+        }
+        return null;
+    }
+
     private static Double findSafeSurfaceY(ServerWorld world, int x, int z) {
         world.getChunk(x >> 4, z >> 4);
         int surfaceY = world.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z);
