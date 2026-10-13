@@ -13,6 +13,8 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -20,6 +22,24 @@ import java.util.List;
 public class VortexManipulator extends Item {
 
     private static final String IN_FLIGHT_KEY = "VMInFlight";
+
+    /** Returns true when any non-empty fluid occupies the player's bounding box. */
+    private static boolean isInAnyLiquid(PlayerEntity player) {
+        Box box = player.getBoundingBox();
+        int minX = MathHelper.floor(box.minX);
+        int minY = MathHelper.floor(box.minY);
+        int minZ = MathHelper.floor(box.minZ);
+        int maxX = MathHelper.floor(box.maxX);
+        int maxY = MathHelper.floor(box.maxY);
+        int maxZ = MathHelper.floor(box.maxZ);
+
+        for (BlockPos pos : BlockPos.iterate(minX, minY, minZ, maxX, maxY, maxZ)) {
+            if (!player.getWorld().getFluidState(pos).isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public VortexManipulator(Settings settings) {
         super(settings
