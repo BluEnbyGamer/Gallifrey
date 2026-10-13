@@ -206,6 +206,11 @@ public class GallifreyModClient implements ClientModInitializer {
         // =========================================================
 
         DimensionRenderingRegistry.registerSkyRenderer(
+                ModDimensions.MOON_LEVEL_KEY,
+                new MoonSkyRenderer()
+        );
+
+        DimensionRenderingRegistry.registerSkyRenderer(
                 ModDimensions.GALL_LEVEL_KEY,
                 new TwinSunSkyRenderer()
         );

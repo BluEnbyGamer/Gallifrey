@@ -17,8 +17,8 @@ public final class ModDimensions {
     public static final RegistryKey<World> MARS_LEVEL_KEY = RegistryKey.of(
             RegistryKeys.WORLD, GallifreyMod.id("mars"));
 
-    public static final RegistryKey<World> SPACE_LEVEL_KEY = RegistryKey.of(
-            RegistryKeys.WORLD, GallifreyMod.id("space"));
+    public static final RegistryKey<World> MOON_LEVEL_KEY = RegistryKey.of(
+            RegistryKeys.WORLD, GallifreyMod.id("moon"));
 
     public static final RegistryKey<World> GALL_LEVEL_KEY = RegistryKey.of(
             RegistryKeys.WORLD, GallifreyMod.id("gallifrey"));

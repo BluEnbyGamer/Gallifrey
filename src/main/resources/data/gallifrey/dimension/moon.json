@@ -1,0 +1,11 @@
+{
+  "type": "gallifrey:moon_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "gallifrey:moon",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "gallifrey:moon"
+    }
+  }
+}

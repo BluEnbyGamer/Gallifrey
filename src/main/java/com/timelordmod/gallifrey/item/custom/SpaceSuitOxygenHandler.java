@@ -25,6 +25,12 @@ public final class SpaceSuitOxygenHandler {
 
     private static void tickWorld(ServerWorld world) {
         for (PlayerEntity player : world.getPlayers()) {
+            if (isMoonWorld(world) && !hasFullSuit(player)) {
+                if (world.getTime() % 20L == 0L) {
+                    player.damage(world.getDamageSources().drown(), 4.0F);
+                }
+                continue;
+            }
             if (!hasFullSuit(player)) continue;
             ItemStack chest = player.getEquippedStack(EquipmentSlot.CHEST);
             var nbt = chest.getOrCreateNbt();
@@ -55,9 +61,14 @@ public final class SpaceSuitOxygenHandler {
                 && p.getEquippedStack(EquipmentSlot.FEET).isOf(GallifreyModItems.SPACE_SUIT_BOOTS);
     }
 
+    private static boolean isMoonWorld(ServerWorld world) {
+        Identifier id = world.getRegistryKey().getValue();
+        return "gallifrey".equals(id.getNamespace()) && id.getPath().equals("moon");
+    }
+
     private static boolean isVacuumWorld(ServerWorld world) {
         Identifier id = world.getRegistryKey().getValue();
         if (!"gallifrey".equals(id.getNamespace())) return false;
-        return id.getPath().equals("mars") || id.getPath().equals("mondas") || id.getPath().equals("space");
+        return id.getPath().equals("mars") || id.getPath().equals("mondas") || id.getPath().equals("moon");
     }
 }
