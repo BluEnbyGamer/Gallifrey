@@ -1,6 +1,7 @@
 package com.timelordmod.gallifrey.entity.custom;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
@@ -13,6 +14,28 @@ import net.minecraft.world.World;
 
 /** A peaceful, wandering Time Lord found on Gallifrey. */
 public class TimeLordEntity extends PathAwareEntity {
+    /** Number of regenerations already used by this Time Lord (maximum 12). */
+    private int regenerationsUsed = 0;
+
+    public int getRegenerationsUsed() {
+        return regenerationsUsed;
+    }
+
+    public void setRegenerationsUsed(int count) {
+        this.regenerationsUsed = Math.max(0, Math.min(12, count));
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putInt("RegenerationsUsed", regenerationsUsed);
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        regenerationsUsed = Math.max(0, Math.min(12, nbt.getInt("RegenerationsUsed")));
+    }
     public TimeLordEntity(EntityType<? extends TimeLordEntity> type, World world) {
         super(type, world);
     }

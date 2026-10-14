@@ -19,6 +19,15 @@ import com.timelordmod.gallifrey.world.dimension.ModDimensions;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import com.timelordmod.gallifrey.entity.custom.TimeLordEntity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.particle.ParticleTypes;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;
@@ -50,6 +59,30 @@ public class GallifreyMod implements ModInitializer {
 
 		MarsSurvival.register();
 		com.timelordmod.gallifrey.world.VacuumMobSurvivalHandler.register();
+
+		// A Time Lord can regenerate twelve times. The thirteenth death is permanent.
+		ServerLivingEntityEvents.AFTER_DEATH.register((entity, damageSource) -> {
+			if (!(entity instanceof TimeLordEntity timeLord) || !(entity.getWorld() instanceof ServerWorld world)) {
+				return;
+			}
+			if (timeLord.getRegenerationsUsed() >= 12) {
+				return;
+			}
+
+			TimeLordEntity regenerated = GallifreyEntities.TIME_LORD.create(world);
+			if (regenerated == null) return;
+			regenerated.refreshPositionAndAngles(timeLord.getX(), timeLord.getY(), timeLord.getZ(),
+					timeLord.getYaw(), timeLord.getPitch());
+			regenerated.setRegenerationsUsed(timeLord.getRegenerationsUsed() + 1);
+			if (timeLord.hasCustomName()) regenerated.setCustomName(timeLord.getCustomName());
+			regenerated.setCustomNameVisible(timeLord.isCustomNameVisible());
+			regenerated.setPersistent();
+			if (world.spawnEntity(regenerated)) {
+				world.spawnParticles(ParticleTypes.FLAME, timeLord.getX(), timeLord.getY() + 1.0, timeLord.getZ(), 45, 0.45, 0.7, 0.45, 0.03);
+				world.spawnParticles(ParticleTypes.END_ROD, timeLord.getX(), timeLord.getY() + 1.0, timeLord.getZ(), 35, 0.4, 0.6, 0.4, 0.08);
+				world.playSound(null, timeLord.getBlockPos(), SoundEvents.ITEM_TOTEM_USE, SoundCategory.HOSTILE, 1.0F, 0.7F);
+			}
+		});
 
 		LOGGER.info("[Gallifrey] Initialising core systems...!");
 
