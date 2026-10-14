@@ -23,6 +23,7 @@
     "client.HeldItemFeatureRendererMixin",
     "client.TitleScreenVortexMixin",
     "client.SpaceSuitInventoryPreviewMixin",
+    "client.DrawContextHeadwearMixin",
     "client.ItemRendererHeadwearMixin"
   ],
   "injectors": {
