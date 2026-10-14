@@ -32,25 +32,9 @@ public final class MarsSurvival {
             }
 
             for (ServerPlayerEntity player : world.getPlayers()) {
-                boolean hasHelmet =
-                        player.getEquippedStack(EquipmentSlot.HEAD)
-                                .isOf(GallifreyModItems.SPACE_SUIT_HELMET);
-
-                boolean hasChestplate =
-                        player.getEquippedStack(EquipmentSlot.CHEST)
-                                .isOf(GallifreyModItems.SPACE_SUIT_CHESTPLATE);
-
-                boolean hasLeggings =
-                        player.getEquippedStack(EquipmentSlot.LEGS)
-                                .isOf(GallifreyModItems.SPACE_SUIT_LEGGINGS);
-
-                boolean hasBoots =
-                        player.getEquippedStack(EquipmentSlot.FEET)
-                                .isOf(GallifreyModItems.SPACE_SUIT_BOOTS);
-
+                // The Gallifrey suit, or any Ad Astra suit (see SpaceSuits).
                 boolean fullSuit =
-                        hasHelmet && hasChestplate
-                                && hasLeggings && hasBoots;
+                        com.timelordmod.gallifrey.item.custom.SpaceSuits.hasFullSuit(player);
 
                 if (!fullSuit && !player.isCreative()
                         && !player.isSpectator()) {

@@ -8,6 +8,8 @@
     "EatGrassGoalMixin",
     "ClassicNetherPortalMixin",
     "ClassicPortalLightingMixin",
+    "NetherPortalReturnMixin",
+    "CustomPortalReturnMixin",
     "ClassicFurnaceBlockEntityMixin",
     "ServerWorldSleepMixin",
     "MoonGravityMixin"

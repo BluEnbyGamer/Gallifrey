@@ -94,9 +94,22 @@ public class VMPacket {
                 ServerWorld targetWorld = server.getWorld(pending.targetWorldKey());
                 if (targetWorld == null) { cleanup(player, pending); iterator.remove(); continue; }
                 if (pending.ticksRemaining() > 0) { entry.setValue(pending.tickDown()); continue; }
+                // Safety checks before jumping. Moving a player between dimensions while they're dead,
+                // or after something else (a portal, a respawn) has already moved them since the jump
+                // started, can leave Minecraft's chunk tracking out of step and crash the server.
+                if (!player.isAlive() || player.getServerWorld().getRegistryKey() != pending.sourceWorldKey()) {
+                    cleanup(player, pending);
+                    if (player.isAlive()) player.sendMessage(Text.literal("Vortex Manipulator jump interrupted."), true);
+                    iterator.remove();
+                    continue;
+                }
+                if (player.isSleeping()) player.wakeUp();
                 ChunkPos chunkPos = new ChunkPos(pending.targetChunkPos().x(), pending.targetChunkPos().z());
                 targetWorld.getChunkManager().addTicket(ChunkTicketType.POST_TELEPORT, chunkPos, 1, player.getId());
-                FabricDimensions.teleport(player, targetWorld, new TeleportTarget(pending.targetPosition(), player.getVelocity(), player.getYaw(), player.getPitch()));
+                // Vanilla's own /tp path: gets off any boat, horse or minecart first, then moves the
+                // player in the same tested order /tp does, whether or not the dimension changes.
+                Vec3d target = pending.targetPosition();
+                player.teleport(targetWorld, target.x, target.y, target.z, player.getYaw(), player.getPitch());
                 entry.setValue(pending.nextPhase(TeleportPhase.TARGET_ARRIVAL, 10));
                 continue;
             }

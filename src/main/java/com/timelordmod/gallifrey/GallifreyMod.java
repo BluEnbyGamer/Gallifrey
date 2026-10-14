@@ -167,6 +167,7 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyModBlocks.register();
 		com.timelordmod.gallifrey.world.tree.decorator.ModTreeDecorators.register();
 		com.timelordmod.gallifrey.world.GallifreySpawnRule.register();
+		com.timelordmod.gallifrey.world.PetesWorldPortals.register();
 		GallifreyModBlockEntities.register();
 
 		// Atrium fuel burns for 3x the time of coal: 4800 ticks vs 1600.

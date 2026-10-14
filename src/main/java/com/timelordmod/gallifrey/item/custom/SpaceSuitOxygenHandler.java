@@ -11,7 +11,8 @@ import net.minecraft.world.World;
 
 /**
  * Lightweight standalone oxygen system for the Gallifrey mod's airless worlds.
- * A full suit stores 10 minutes of oxygen in the chestplate's NBT. Oxygen refills
+ * A full suit (Gallifrey's own, or Ad Astra's when installed) stores 10 minutes of oxygen
+ * in the chestplate's NBT. Oxygen refills
  * in the Overworld and the breathable Gallifrey/Skaro/prehistoric worlds.
  */
 public final class SpaceSuitOxygenHandler {
@@ -55,10 +56,8 @@ public final class SpaceSuitOxygenHandler {
     }
 
     private static boolean hasFullSuit(PlayerEntity p) {
-        return p.getEquippedStack(EquipmentSlot.HEAD).isOf(GallifreyModItems.SPACE_SUIT_HELMET)
-                && p.getEquippedStack(EquipmentSlot.CHEST).isOf(GallifreyModItems.SPACE_SUIT_CHESTPLATE)
-                && p.getEquippedStack(EquipmentSlot.LEGS).isOf(GallifreyModItems.SPACE_SUIT_LEGGINGS)
-                && p.getEquippedStack(EquipmentSlot.FEET).isOf(GallifreyModItems.SPACE_SUIT_BOOTS);
+        // The Gallifrey suit, or any Ad Astra suit (see SpaceSuits).
+        return SpaceSuits.hasFullSuit(p);
     }
 
     private static boolean isMoonWorld(ServerWorld world) {

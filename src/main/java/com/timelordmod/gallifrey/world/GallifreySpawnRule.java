@@ -6,13 +6,21 @@ import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.block.BlockState;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.UUID;
 
 
 public final class GallifreySpawnRule {
@@ -22,59 +30,91 @@ public final class GallifreySpawnRule {
             GameRuleRegistry.register("spawnOnGallifrey", GameRules.Category.SPAWNING,
                     GameRuleFactory.createBooleanRule(false));
 
+    public static final GameRules.Key<GameRules.BooleanRule> SPAWN_ON_PETES_WORLD =
+            GameRuleRegistry.register("spawnOnPetesWorld", GameRules.Category.SPAWNING,
+                    GameRuleFactory.createBooleanRule(false));
+
     private static final int SEARCH_RADIUS = 256;
     private static final int SEARCH_STEP = 8;
-    private static BlockPos cachedSpawn = null;
+    private static final Map<RegistryKey<World>, BlockPos> cachedSpawns = new HashMap<>();
+    private static final Map<UUID, Integer> pendingMoves = new HashMap<>();
+    private static final int JOIN_DELAY_TICKS = 20;     // 1 second
+    private static final int RESPAWN_DELAY_TICKS = 10;  // half a second
 
     public static void register() {
         net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents.SERVER_STARTED
-                .register(server -> cachedSpawn = null);
+                .register(server -> {
+                    cachedSpawns.clear();
+                    pendingMoves.clear();
+                });
+
+        net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK
+                .register(GallifreySpawnRule::tickPendingMoves);
 
         // First join
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             ServerPlayerEntity player = handler.getPlayer();
-            if (!isEnabled(player)) return;
+            RegistryKey<World> target = spawnDimension(server);
+            if (target == null) return;
 
             int playTime = player.getStatHandler().getStat(Stats.CUSTOM.getOrCreateStat(Stats.PLAY_TIME));
             boolean firstJoin = playTime == 0 && player.getSpawnPointPosition() == null;
             if (!firstJoin) return;
 
-            // Run next tick so the player is fully added to the world before moving dimension
-            server.execute(() -> sendToGallifrey(player, true));
+            pendingMoves.put(player.getUuid(), JOIN_DELAY_TICKS);
         });
 
         // Respawn after death with no bed
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
             if (alive) return; // returning from the End, not a death
-            if (!isEnabled(newPlayer)) return;
+            if (newPlayer.getServer() == null) return;
+            RegistryKey<World> target = spawnDimension(newPlayer.getServer());
+            if (target == null) return;
             if (newPlayer.getSpawnPointPosition() != null) return; // has a working bed/anchor/spawn
 
-            sendToGallifrey(newPlayer, true);
+            pendingMoves.put(newPlayer.getUuid(), RESPAWN_DELAY_TICKS);
         });
     }
 
-    private static boolean isEnabled(ServerPlayerEntity player) {
-        return player.getServer() != null
-                && player.getServer().getGameRules().getBoolean(SPAWN_ON_GALLIFREY);
+    private static void tickPendingMoves(MinecraftServer server) {
+        if (pendingMoves.isEmpty()) return;
+        Iterator<Map.Entry<UUID, Integer>> it = pendingMoves.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<UUID, Integer> entry = it.next();
+            ServerPlayerEntity player = server.getPlayerManager().getPlayer(entry.getKey());
+            if (player == null) { it.remove(); continue; } // left the game
+            if (entry.getValue() > 0) { entry.setValue(entry.getValue() - 1); continue; }
+            it.remove();
+            RegistryKey<World> target = spawnDimension(server);
+            if (target != null && player.isAlive()) sendTo(player, target, true);
+        }
     }
 
-    private static void sendToGallifrey(ServerPlayerEntity player, boolean setSpawn) {
-        if (player.getServer() == null) return;
-        ServerWorld gallifrey = player.getServer().getWorld(ModDimensions.GALL_LEVEL_KEY);
-        if (gallifrey == null) return;
+    private static RegistryKey<World> spawnDimension(MinecraftServer server) {
+        GameRules rules = server.getGameRules();
+        if (rules.getBoolean(SPAWN_ON_GALLIFREY)) return ModDimensions.GALL_LEVEL_KEY;
+        if (rules.getBoolean(SPAWN_ON_PETES_WORLD)) return ModDimensions.PETES_WORLD_LEVEL_KEY;
+        return null;
+    }
 
-        BlockPos pos = getSpawnPos(gallifrey);
+    private static void sendTo(ServerPlayerEntity player, RegistryKey<World> dimension, boolean setSpawn) {
+        if (player.getServer() == null) return;
+        ServerWorld world = player.getServer().getWorld(dimension);
+        if (world == null) return;
+
+        BlockPos pos = getSpawnPos(world);
 
         if (setSpawn) {
             // forced = true so it works without a bed; sendMessage = false
-            player.setSpawnPoint(ModDimensions.GALL_LEVEL_KEY, pos, 0.0F, true, false);
+            player.setSpawnPoint(dimension, pos, 0.0F, true, false);
         }
-        player.teleport(gallifrey, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
+        player.teleport(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
         player.fallDistance = 0;
     }
 
     private static BlockPos getSpawnPos(ServerWorld world) {
-        if (cachedSpawn != null) return cachedSpawn;
+        BlockPos cached = cachedSpawns.get(world.getRegistryKey());
+        if (cached != null) return cached;
 
         // Spiral outward from 0,0 looking for dry, solid ground
         for (int r = 0; r <= SEARCH_RADIUS; r += SEARCH_STEP) {
@@ -83,7 +123,7 @@ public final class GallifreySpawnRule {
                     if (Math.abs(dx) != r && Math.abs(dz) != r) continue; // only the ring edge
                     BlockPos found = safeSurface(world, dx, dz);
                     if (found != null) {
-                        cachedSpawn = found;
+                        cachedSpawns.put(world.getRegistryKey(), found);
                         return found;
                     }
                 }
@@ -92,8 +132,9 @@ public final class GallifreySpawnRule {
 
         // Fallback: top block at 0,0 even if it's wet
         int y = surfaceY(world, Heightmap.Type.MOTION_BLOCKING, 0, 0);
-        cachedSpawn = new BlockPos(0, y, 0);
-        return cachedSpawn;
+        BlockPos fallback = new BlockPos(0, y, 0);
+        cachedSpawns.put(world.getRegistryKey(), fallback);
+        return fallback;
     }
 
     private static int surfaceY(ServerWorld world, Heightmap.Type type, int x, int z) {

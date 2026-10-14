@@ -613,5 +613,6 @@
   "block.gallifrey.classic_stone_button": "Olden Stone Knob",
   "block.gallifrey.classic_wooden_pressure_plate": "Olden Deck Plank Trigger",
   "block.gallifrey.classic_stone_pressure_plate": "Olden Stone Trigger",
+  "gamerule.spawnOnPetesWorld": "Make landfall on Pete's World",
   "block.gallifrey.classic_glass_pane": "Olden Porthole Pane"
 }
