@@ -630,5 +630,9 @@
   "entity.gallifrey.time_lord": "Time Lord",
   "item.gallifrey.timelord_villager_spawn_egg": "Time Lord Villager Spawn Egg",
   "block.gallifrey.gallifreyan_workbench": "Gallifreyan Workbench",
+  "advancement.gallifrey.every_sonic.title": "Same software, different case",
+  "advancement.gallifrey.every_sonic.desc": "Select every sonic casing",
+  "advancement.gallifrey.radio_demon.title": "Never Fully Dressed Without a Smile",
+  "advancement.gallifrey.radio_demon.desc": "Wear the Trustable Hat while holding Alastor's Staff",
   "entity.minecraft.villager.time_lord_trader": "Time Lord Trader"
 }

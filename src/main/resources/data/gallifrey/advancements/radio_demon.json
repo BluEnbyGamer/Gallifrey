@@ -1,0 +1,46 @@
+{
+  "parent": "gallifrey:sonic_screwdriver",
+  "display": {
+    "icon": {
+      "item": "gallifrey:trustable_hat"
+    },
+    "title": {
+      "translate": "advancement.gallifrey.radio_demon.title"
+    },
+    "description": {
+      "translate": "advancement.gallifrey.radio_demon.desc"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "dressed_as_alastor": {
+      "trigger": "minecraft:tick",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "equipment": {
+                "head": {
+                  "items": [
+                    "gallifrey:trustable_hat"
+                  ]
+                },
+                "mainhand": {
+                  "items": [
+                    "gallifrey:sonic_screwdriver"
+                  ],
+                  "nbt": "{SonicCasing:\"alastor_staff\"}"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
