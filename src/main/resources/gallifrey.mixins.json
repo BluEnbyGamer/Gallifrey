@@ -22,7 +22,8 @@
     "client.HandledScreenAccessor",
     "client.HeldItemFeatureRendererMixin",
     "client.TitleScreenVortexMixin",
-    "client.SpaceSuitInventoryPreviewMixin"
+    "client.SpaceSuitInventoryPreviewMixin",
+    "client.ItemRendererHeadwearMixin"
   ],
   "injectors": {
     "defaultRequire": 1

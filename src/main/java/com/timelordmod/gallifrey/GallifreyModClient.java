@@ -32,6 +32,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
+import net.minecraft.client.util.ModelIdentifier;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 
 import net.minecraft.client.MinecraftClient;
@@ -58,6 +60,18 @@ public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        // Explicitly bake the extra flat inventory models. They are separate from the
+        // registered 3D item models, so Minecraft otherwise may return the missing model.
+        ModelLoadingRegistry.INSTANCE.registerModelProvider((resourceManager, modelConsumer) -> {
+            String[] flatHeadwearModels = {
+                    "bluefez_2d", "darkbluefez_2d", "fancyfez_2d", "fez_2d",
+                    "greenfez_2d", "greyfez_2d", "orangefez_2d", "pinkfez_2d",
+                    "purplefez_2d", "yellowfez_2d", "eyestalk_2d"
+            };
+            for (String model : flatHeadwearModels) {
+                modelConsumer.accept(new ModelIdentifier(new Identifier("gallifrey", "item/" + model), "inventory"));
+            }
+        });
 
         // Classic leather armour: the item icons are greyscale and get the leather colour
         // (or the dye colour) at runtime, exactly like vanilla leather armour.

@@ -58,9 +58,14 @@ public abstract class ItemRendererHeadwearMixin {
                 "inventory"
         );
 
-        return MinecraftClient.getInstance()
+        BakedModel flatModel = MinecraftClient.getInstance()
                 .getBakedModelManager()
                 .getModel(flatModelId);
+        // Defensive fallback: never replace a valid 3D model with Minecraft's missing model.
+        if (flatModel == MinecraftClient.getInstance().getBakedModelManager().getMissingModel()) {
+            return originalModel;
+        }
+        return flatModel;
     }
 
     private static boolean gallifrey$isHeadwear(ItemStack stack) {
