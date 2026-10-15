@@ -51,11 +51,10 @@ public final class SonicShadesFeatureRenderer
         // Follow the player's actual head rotation/pitch.
         this.getContextModel().head.rotate(matrices);
 
-        // The model's HEAD display transform is tuned to sit at eye level.
-        // Keep the face-facing orientation supplied by the model; extra 180-degree
-        // rotations put the glasses on top/back of the head.
-        matrices.translate(0.0D, 0.0D, -0.08D);
-        matrices.scale(0.9F, 0.9F, 0.9F);
+        // Match the original helmet-slot rendering exactly: use the item's
+        // native HEAD display transform with no additional scale, translation,
+        // or rotation. Extra transforms caused the shades to become a broad bar
+        // and drift away from the eye line.
 
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         itemRenderer.renderItem(
