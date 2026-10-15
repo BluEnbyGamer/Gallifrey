@@ -51,10 +51,8 @@ public final class SonicShadesFeatureRenderer
         // Follow the player's actual head rotation/pitch.
         this.getContextModel().head.rotate(matrices);
 
-        // Match the original helmet-slot rendering exactly: use the item's
-        // native HEAD display transform with no additional scale, translation,
-        // or rotation. Extra transforms caused the shades to become a broad bar
-        // and drift away from the eye line.
+        // Same rendering path as Gallifrey's HatFeatureRenderer. The model's
+        // own HEAD display transform controls orientation, scale and placement.
 
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         itemRenderer.renderItem(

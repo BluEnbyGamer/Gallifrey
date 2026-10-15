@@ -29,7 +29,8 @@
     "client.SpaceSuitInventoryPreviewMixin",
     "client.DrawContextHeadwearMixin",
     "client.ItemRendererHeadwearMixin",
-    "client.PlayerEntityRendererMixin"
+    "client.PlayerEntityRendererMixin",
+    "client.InventoryScreenGlassesSlotMixin"
   ],
   "injectors": {
     "defaultRequire": 1
