@@ -186,12 +186,6 @@ public final class GallifreyTabSections {
             }
     );
 
-    public static final CreativeSection SONIC_SHADES_WEARABLE = CreativeSection.of(
-            "sonic_shades_wearable",
-            () -> new ItemStack(GallifreyModItems.SONIC_SHADES),
-            entries -> entries.add(GallifreyModItems.SONIC_SHADES)
-    );
-
     public static final CreativeSection MISC = CreativeSection.of(
             "misc",
             () -> new ItemStack(GallifreyModItems.SONIC_SCREWDRIVER),
@@ -230,6 +224,7 @@ public final class GallifreyTabSections {
 
                 // Sonics
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
+                entries.add(GallifreyModItems.SONIC_SHADES);
                 entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
                 entries.add(GallifreyModItems.RAW_SONIC_CRYSTAL);
                 entries.add(GallifreyModItems.REFINED_SONIC_CRYSTAL);
@@ -661,7 +656,6 @@ public final class GallifreyTabSections {
     public static final List<CreativeSection> ALL = List.of(
             WOOD_TYPES,
             PREHISTORIC,
-            SONIC_SHADES_WEARABLE,
             MISC,
             ROUNDELS,
             MARS,
