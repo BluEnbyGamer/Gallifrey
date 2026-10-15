@@ -11,7 +11,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.entity.EquipmentSlot;
+import com.timelordmod.gallifrey.item.custom.SonicShadesSlotAccess;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
@@ -63,7 +63,7 @@ public final class SonicShadesClient {
             return;
         }
 
-        if (!client.player.getEquippedStack(EquipmentSlot.HEAD).isOf(GallifreyModItems.SONIC_SHADES)) {
+        if (!((SonicShadesSlotAccess) client.player).gallifrey$getSonicShades().isOf(GallifreyModItems.SONIC_SHADES)) {
             return;
         }
 

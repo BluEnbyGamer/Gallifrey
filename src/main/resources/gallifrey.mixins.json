@@ -12,7 +12,8 @@
     "CustomPortalReturnMixin",
     "ClassicFurnaceBlockEntityMixin",
     "ServerWorldSleepMixin",
-    "MoonGravityMixin"
+    "MoonGravityMixin",
+    "SonicShadesSlotMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",

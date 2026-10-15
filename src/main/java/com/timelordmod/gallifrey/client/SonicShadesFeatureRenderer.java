@@ -11,7 +11,7 @@ import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.EquipmentSlot;
+import com.timelordmod.gallifrey.item.custom.SonicShadesSlotAccess;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -41,7 +41,7 @@ public final class SonicShadesFeatureRenderer
             float headYaw,
             float headPitch) {
 
-        ItemStack stack = player.getEquippedStack(EquipmentSlot.HEAD);
+        ItemStack stack = ((SonicShadesSlotAccess) player).gallifrey$getSonicShades();
         if (!stack.isOf(GallifreyModItems.SONIC_SHADES)) {
             return;
         }
