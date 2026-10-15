@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Draws a vanilla-style slot background behind Gallifrey's additional glasses slot. */
+/** Renders a vanilla slot plus a glasses silhouette when the custom slot is empty. */
 @Mixin(InventoryScreen.class)
 public abstract class InventoryScreenGlassesSlotMixin {
     @Shadow protected int x;
@@ -17,11 +17,17 @@ public abstract class InventoryScreenGlassesSlotMixin {
 
     private static final Identifier GALLIFREY$INVENTORY_TEXTURE =
             new Identifier("minecraft", "textures/gui/container/inventory.png");
+    private static final Identifier GALLIFREY$GLASSES_ICON =
+            new Identifier("gallifrey", "textures/gui/empty_glasses_slot.png");
 
     @Inject(method = "drawBackground", at = @At("TAIL"))
     private void gallifrey$drawGlassesSlot(DrawContext context, float delta, int mouseX, int mouseY, CallbackInfo ci) {
-        // PlayerScreenHandlerMixin adds the custom slot at (77, 8).
-        context.drawTexture(GALLIFREY$INVENTORY_TEXTURE, this.x + 76, this.y + 7,
+        // Must match PlayerScreenHandlerMixin's slot at (77, 8).
+        int slotX = this.x + 76;
+        int slotY = this.y + 7;
+        context.drawTexture(GALLIFREY$INVENTORY_TEXTURE, slotX, slotY,
                 7.0F, 83.0F, 18, 18, 256, 256);
+        context.drawTexture(GALLIFREY$GLASSES_ICON, slotX + 1, slotY + 1,
+                0, 0, 16, 16, 16, 16);
     }
 }
