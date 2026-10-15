@@ -13,6 +13,7 @@ import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import com.timelordmod.gallifrey.item.custom.SonicShadesSlotAccess;
 import net.minecraft.item.ItemStack;
+import net.minecraft.entity.EquipmentSlot;
 
 /**
  * Renders the supplied Blockbench Sonic Shades model on the player's face.
@@ -42,6 +43,11 @@ public final class SonicShadesFeatureRenderer
             float headPitch) {
 
         ItemStack stack = ((SonicShadesSlotAccess) player).gallifrey$getSonicShades();
+        // Support both the dedicated Gallifrey wearable slot and the vanilla head slot.
+        // The latter is how shades were equipped in existing worlds/screens.
+        if (!stack.isOf(GallifreyModItems.SONIC_SHADES)) {
+            stack = player.getEquippedStack(EquipmentSlot.HEAD);
+        }
         if (!stack.isOf(GallifreyModItems.SONIC_SHADES)) {
             return;
         }

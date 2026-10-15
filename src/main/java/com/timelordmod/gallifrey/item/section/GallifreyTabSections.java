@@ -186,12 +186,6 @@ public final class GallifreyTabSections {
             }
     );
 
-    public static final CreativeSection SONIC_GEAR = CreativeSection.of(
-            "sonic_gear",
-            () -> new ItemStack(GallifreyModItems.SONIC_SHADES),
-            entries -> entries.add(GallifreyModItems.SONIC_SHADES)
-    );
-
     public static final CreativeSection SONIC_SHADES_WEARABLE = CreativeSection.of(
             "sonic_shades_wearable",
             () -> new ItemStack(GallifreyModItems.SONIC_SHADES),
@@ -667,7 +661,6 @@ public final class GallifreyTabSections {
     public static final List<CreativeSection> ALL = List.of(
             WOOD_TYPES,
             PREHISTORIC,
-            SONIC_GEAR,
             SONIC_SHADES_WEARABLE,
             MISC,
             ROUNDELS,
