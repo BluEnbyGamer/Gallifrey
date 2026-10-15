@@ -8,15 +8,12 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerScreenHandler.class)
 public abstract class PlayerScreenHandlerMixin {
-    @Shadow public abstract Slot addSlot(Slot slot);
-
     @Inject(method = "<init>", at = @At("TAIL"))
     private void gallifrey$addSonicShadesSlot(PlayerInventory playerInventory, boolean onServer, PlayerEntity owner, CallbackInfo ci) {
         Inventory glasses = new Inventory() {
@@ -42,7 +39,7 @@ public abstract class PlayerScreenHandlerMixin {
             @Override public boolean canPlayerUse(PlayerEntity player) { return player == owner; }
             @Override public void clear() { ((SonicShadesSlotAccess) owner).gallifrey$setSonicShades(ItemStack.EMPTY); }
         };
-        this.addSlot(new Slot(glasses, 0, 77, 8) {
+        ((PlayerScreenHandler) (Object) this).addSlot(new Slot(glasses, 0, 77, 8) {
             @Override public boolean canInsert(ItemStack stack) {
                 return stack.getItem() instanceof com.timelordmod.gallifrey.item.custom.SonicShadesItem;
             }

@@ -28,7 +28,8 @@
     "client.TitleScreenVortexMixin",
     "client.SpaceSuitInventoryPreviewMixin",
     "client.DrawContextHeadwearMixin",
-    "client.ItemRendererHeadwearMixin"
+    "client.ItemRendererHeadwearMixin",
+    "client.PlayerEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
