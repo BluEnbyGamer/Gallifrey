@@ -1,7 +1,6 @@
 package com.timelordmod.gallifrey.client;
 
 import com.timelordmod.gallifrey.item.custom.HeadwearItem;
-import com.timelordmod.gallifrey.item.custom.SonicShadesSlotAccess;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
@@ -29,18 +28,13 @@ public class HatFeatureRenderer extends FeatureRenderer<AbstractClientPlayerEnti
                        AbstractClientPlayerEntity player, float limbAngle, float limbDistance,
                        float tickDelta, float animationProgress, float headYaw, float headPitch) {
         ItemStack hat = player.getEquippedStack(EquipmentSlot.HEAD);
-        ItemStack shades = ((SonicShadesSlotAccess) player).gallifrey$getSonicShades();
-        if (!(hat.getItem() instanceof HeadwearItem) && shades.isEmpty()) return;
+        if (!(hat.getItem() instanceof HeadwearItem)) return;
 
         matrices.push();
         this.getContextModel().head.rotate(matrices);
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         if (hat.getItem() instanceof HeadwearItem) {
             itemRenderer.renderItem(player, hat, ModelTransformationMode.HEAD, false, matrices,
-                    vertexConsumers, player.getWorld(), light, OverlayTexture.DEFAULT_UV, 0);
-        }
-        if (!shades.isEmpty()) {
-            itemRenderer.renderItem(player, shades, ModelTransformationMode.HEAD, false, matrices,
                     vertexConsumers, player.getWorld(), light, OverlayTexture.DEFAULT_UV, 0);
         }
         matrices.pop();

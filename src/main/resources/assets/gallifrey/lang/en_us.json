@@ -635,5 +635,6 @@
   "advancement.gallifrey.radio_demon.title": "Never Fully Dressed Without a Smile",
   "advancement.gallifrey.radio_demon.desc": "Wear the Trustable Hat while holding Alastor's Staff",
   "gamerule.spawnOnPetesWorld": "Spawn on Pete's World",
-  "entity.minecraft.villager.time_lord_trader": "Time Lord Trader"
+  "entity.minecraft.villager.time_lord_trader": "Time Lord Trader",
+  "creative_section.gallifrey.sonic_gear": "Sonic Gear"
 }

@@ -51,10 +51,11 @@ public final class SonicShadesFeatureRenderer
         // Follow the player's actual head rotation/pitch.
         this.getContextModel().head.rotate(matrices);
 
-        // The item HEAD transform appears oversized and inverted as a feature.
-        // Correct its orientation and scale while keeping it attached to the head.
-        matrices.scale(0.55F, 0.55F, 0.55F);
-        matrices.multiply(net.minecraft.util.math.RotationAxis.POSITIVE_Z.rotationDegrees(180.0F));
+        // This model is already authored in the correct orientation. The prior
+        // extra 180-degree rotation flipped it upside down. Keep it small and
+        // move it forward to the eyes after applying the player's head pose.
+        matrices.translate(0.0D, 0.035D, -0.105D);
+        matrices.scale(0.32F, 0.32F, 0.32F);
 
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         itemRenderer.renderItem(
