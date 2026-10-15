@@ -4,6 +4,8 @@ import com.timelordmod.gallifrey.item.custom.SonicShadesSlotAccess;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.PlayerScreenHandler;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
@@ -13,7 +15,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerScreenHandler.class)
-public abstract class PlayerScreenHandlerMixin {
+public abstract class PlayerScreenHandlerMixin extends ScreenHandler {
+    protected PlayerScreenHandlerMixin(ScreenHandlerType<?> type, int syncId) {
+        super(type, syncId);
+    }
     @Inject(method = "<init>", at = @At("TAIL"))
     private void gallifrey$addSonicShadesSlot(PlayerInventory playerInventory, boolean onServer, PlayerEntity owner, CallbackInfo ci) {
         Inventory glasses = new Inventory() {
@@ -39,7 +44,7 @@ public abstract class PlayerScreenHandlerMixin {
             @Override public boolean canPlayerUse(PlayerEntity player) { return player == owner; }
             @Override public void clear() { ((SonicShadesSlotAccess) owner).gallifrey$setSonicShades(ItemStack.EMPTY); }
         };
-        ((PlayerScreenHandler) (Object) this).addSlot(new Slot(glasses, 0, 77, 8) {
+        this.addSlot(new Slot(glasses, 0, 77, 8) {
             @Override public boolean canInsert(ItemStack stack) {
                 return stack.getItem() instanceof com.timelordmod.gallifrey.item.custom.SonicShadesItem;
             }
