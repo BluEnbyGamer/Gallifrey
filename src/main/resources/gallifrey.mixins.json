@@ -13,7 +13,8 @@
     "ClassicFurnaceBlockEntityMixin",
     "ServerWorldSleepMixin",
     "MoonGravityMixin",
-    "SonicShadesSlotMixin"
+    "SonicShadesSlotMixin",
+    "PlayerScreenHandlerMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",
