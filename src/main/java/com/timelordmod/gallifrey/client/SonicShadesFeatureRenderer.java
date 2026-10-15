@@ -51,18 +51,11 @@ public final class SonicShadesFeatureRenderer
         // Follow the player's actual head rotation/pitch.
         this.getContextModel().head.rotate(matrices);
 
-        // Position the shades across the eyes. The item HEAD transform is
-        // applied by Minecraft, so use a modest local rotation and scale here
-        // rather than rotating the whole player head or using the oversized
-        // original display scale.
-        // Nudge forward to the face plane and slightly down to align with the eyes.
-        matrices.translate(0.0D, 0.005D, -0.22D);
-        // The source item geometry is inverted for a head-mounted render; correct
-        // that without changing the player's head orientation.
-        matrices.multiply(net.minecraft.util.math.RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));
-        matrices.multiply(net.minecraft.util.math.RotationAxis.POSITIVE_Z.rotationDegrees(180.0F));
-        // Larger than the previous pass, but still scaled down from the item model.
-        matrices.scale(0.68F, 0.68F, 0.68F);
+        // The model's HEAD display transform is tuned to sit at eye level.
+        // Keep the face-facing orientation supplied by the model; extra 180-degree
+        // rotations put the glasses on top/back of the head.
+        matrices.translate(0.0D, 0.0D, -0.08D);
+        matrices.scale(0.9F, 0.9F, 0.9F);
 
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         itemRenderer.renderItem(

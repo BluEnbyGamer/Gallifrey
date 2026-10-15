@@ -230,7 +230,6 @@ public final class GallifreyTabSections {
 
                 // Sonics
                 entries.add(GallifreyModItems.SONIC_SCREWDRIVER);
-                entries.add(GallifreyModItems.SONIC_SHADES);
                 entries.add(GallifreyModBlocks.SONIC_WORKSHOP);
                 entries.add(GallifreyModItems.RAW_SONIC_CRYSTAL);
                 entries.add(GallifreyModItems.REFINED_SONIC_CRYSTAL);
