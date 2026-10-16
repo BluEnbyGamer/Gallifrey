@@ -13,7 +13,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.time.LocalDate;
 import java.time.Month;
 
-@Mixin(value = LogoDrawer.class, priority = 10001)
+/*
+ * Priority 100: with several mods replacing the title logo the same way (RegenCraft does too),
+ * the one with the LOWEST priority number runs first, draws its logo and cancels the rest.
+ * 10001 made Gallifrey run last, so RegenCraft's logo always won.
+ */
+@Mixin(value = LogoDrawer.class, priority = 100)
 public class LogoDrawerMixin {
 
     @Unique

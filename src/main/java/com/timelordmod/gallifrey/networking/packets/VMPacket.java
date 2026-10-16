@@ -508,6 +508,16 @@ public class VMPacket {
             targetWorld = targetPlayer.getServerWorld();
             targetPos = targetPlayer.getPos();
 
+            // Following a player into Lost Reality would be a way in that isn't the drift.
+            if (LOST_REALITY.equals(targetWorld.getRegistryKey().getValue())
+                    && !LOST_REALITY.equals(player.getServerWorld().getRegistryKey().getValue())) {
+                player.sendMessage(
+                        Text.literal("§5Cannot lock on: that player's dimensional coordinates are corrupted."),
+                        true
+                );
+                return;
+            }
+
         } else {
             // Direct selection of Lost Reality is always denied.
             // The random drift below is the only VM exception.

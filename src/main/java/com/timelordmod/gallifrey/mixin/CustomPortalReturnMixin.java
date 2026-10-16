@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.util.GallifreyDimensionTravelAccess;
-import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
@@ -37,8 +36,11 @@ public abstract class CustomPortalReturnMixin {
                                                               Block portalBase, BlockPos portalPos) {
         if (world instanceof ServerWorld && !world.getRegistryKey().equals(destKey)) {
             var origins = ((NetherOriginHolder) entity).gallifrey$getPortalOrigins();
-            if (world.getRegistryKey() == World.OVERWORLD) {
-                origins.remove(destKey); // the normal way back
+            if (world.getRegistryKey() == World.OVERWORLD
+                    || world.getRegistryKey().getValue().equals(GallifreyDimensionTravelAccess.LOST_REALITY)) {
+                // The normal way back. Lost Reality is never a way back: only the Lost Dirt portal
+                // and the Vortex Manipulator's drift lead there.
+                origins.remove(destKey);
             } else {
                 origins.put(destKey, world.getRegistryKey());
             }
@@ -58,9 +60,10 @@ public abstract class CustomPortalReturnMixin {
         return destKey;
     }
 
-/**
- * Authorize the player's transfer when using Gallifrey's Lost Dirt portal.
- */
+    /**
+     * The Lost Dirt portal is one of the only ways into Lost Reality (see
+     * GallifreyDimensionTravelAccess): authorize whatever goes through it, players, mobs or items.
+     */
     @Inject(
             method = "TPToDim",
             at = @At("HEAD"),
@@ -73,10 +76,8 @@ public abstract class CustomPortalReturnMixin {
             BlockPos portalPos,
             CallbackInfo ci
     ) {
-        if (world instanceof ServerWorld
-                && entity instanceof ServerPlayerEntity player
-                && portalBase == GallifreyModBlocks.LOST_DIRT) {
-            GallifreyDimensionTravelAccess.beginAuthorization(player);
+        if (world instanceof ServerWorld && entity != null && portalBase == GallifreyModBlocks.LOST_DIRT) {
+            GallifreyDimensionTravelAccess.beginAuthorization(entity);
         }
     }
 
@@ -95,10 +96,8 @@ public abstract class CustomPortalReturnMixin {
             BlockPos portalPos,
             CallbackInfo ci
     ) {
-        if (world instanceof ServerWorld
-                && entity instanceof ServerPlayerEntity player
-                && portalBase == GallifreyModBlocks.LOST_DIRT) {
-            GallifreyDimensionTravelAccess.endAuthorization(player);
+        if (world instanceof ServerWorld && entity != null && portalBase == GallifreyModBlocks.LOST_DIRT) {
+            GallifreyDimensionTravelAccess.endAuthorization(entity);
         }
     }
 }

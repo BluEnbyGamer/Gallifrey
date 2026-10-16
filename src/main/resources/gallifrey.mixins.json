@@ -17,7 +17,9 @@
     "SonicShadesSlotMixin",
     "PlayerScreenHandlerMixin",
     "compat.BetterInventoryMenuMixin",
-    "GallifreyDimensionTravelMixin"
+    "GallifreyDimensionTravelMixin",
+    "EntityDimensionTravelMixin",
+    "TeleportCommandTravelMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",
