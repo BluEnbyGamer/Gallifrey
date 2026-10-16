@@ -24,7 +24,7 @@ import org.lwjgl.glfw.GLFW;
  * V activates the worn shades; holding Shift while pressing V changes the
  * sonic mode, matching the screwdriver's sneak + right-click mode switch.
  * The complete supplied Gallifreyan symbol spins in the top-left while the shades
- * are worn.
+ * are worn, and in Scanning mode a readout of the target appears under it (SonicShadesScanHud).
  */
 public final class SonicShadesClient {
     private static final Identifier SYMBOL_TEXTURE =
@@ -45,6 +45,7 @@ public final class SonicShadesClient {
         HudRenderCallback.EVENT.register(SonicShadesClient::renderHud);
 
         net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            SonicShadesScanHud.tick(client);
             while (useShades.wasPressed()) {
                 if (client.player == null || client.world == null) {
                     continue;
@@ -90,5 +91,8 @@ public final class SonicShadesClient {
                 64
         );
         context.getMatrices().pop();
+
+        // In Scanning mode: what the shades are looking at, under the symbol.
+        SonicShadesScanHud.render(context, 10, centreY + size / 2 + 12);
     }
 }

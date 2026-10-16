@@ -421,7 +421,8 @@ public class SonicScrewdriver extends Item {
     // SONIC TARGET
     // =========================================================
 
-    private static HitResult getSonicTarget(
+    /** What the sonic is pointing at (block or entity, up to 16 blocks). Also used by the Sonic Shades scan HUD. */
+    public static HitResult getSonicTarget(
             PlayerEntity player
     ) {
 
