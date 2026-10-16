@@ -16,7 +16,8 @@
     "MoonGravityMixin",
     "SonicShadesSlotMixin",
     "PlayerScreenHandlerMixin",
-    "compat.BetterInventoryMenuMixin"
+    "compat.BetterInventoryMenuMixin",
+    "GallifreyDimensionTravelMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",
