@@ -636,5 +636,10 @@
   "advancement.gallifrey.radio_demon.desc": "Wear the Trustable Hat while holding Alastor's Staff",
   "gamerule.spawnOnPetesWorld": "Spawn on Pete's World",
   "entity.minecraft.villager.time_lord_trader": "Time Lord Trader",
-  "creative_section.gallifrey.sonic_shades_wearable": "Sonic Shades (Wearable)"
+  "creative_section.gallifrey.sonic_shades_wearable": "Sonic Shades (Wearable)",
+  "trim_material.gallifrey.steel": "Steel",
+  "trim_material.gallifrey.prehistoric": "Prehistoric Bronze",
+  "trim_material.gallifrey.dalekanium": "Dalekanium",
+  "trim_material.gallifrey.metalertanium": "Metalert"
+
 }
