@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.item.custom;
 
+import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
@@ -11,6 +12,7 @@ import java.util.function.Supplier;
  * STEEL is a small step above iron while remaining well below diamond.
  * DALEKANIUM copies vanilla IRON exactly.
  * METALERTANIUM copies vanilla NETHERITE exactly.
+ * MARS_STONE and SKARO_STONE copy vanilla STONE exactly.
  *
  * Order of the numbers: mining level, durability, mining speed, attack damage bonus, enchantability.
  */
@@ -18,6 +20,10 @@ public enum ModToolMaterials implements ToolMaterial {
     STEEL(2, 300, 6.5F, 2.25F, 14, () -> Ingredient.ofItems(GallifreyModItems.STEEL_INGOT)),
     DALEKANIUM(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.ofItems(GallifreyModItems.DALEKANIUM_INGOT)),
     METALERTANIUM(4, 2031, 9.0F, 4.0F, 15, () -> Ingredient.ofItems(GallifreyModItems.METALERTANIUM_INGOT)),
+
+    // Planet stone tools: the same stats as vanilla stone tools, repaired with their own cobblestone.
+    MARS_STONE(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.ofItems(GallifreyModBlocks.MARS_COBBLESTONE)),
+    SKARO_STONE(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.ofItems(GallifreyModBlocks.SKARO_COBBLESTONE)),
 
     // Classic Tool Materials (matching vanilla stats)
     CLASSIC_WOOD(0, 59, 2.0F, 0.0F, 15, () -> Ingredient.ofItems(GallifreyModItems.CLASSIC_STICK)),

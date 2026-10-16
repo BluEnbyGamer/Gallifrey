@@ -392,6 +392,11 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS);
                 entries.add(GallifreyModBlocks.MARS_IRON_ORE);
                 entries.add(GallifreyModBlocks.PISS_CRYSTAL);
+                entries.add(GallifreyModItems.MARS_STONE_SWORD);
+                entries.add(GallifreyModItems.MARS_STONE_PICKAXE);
+                entries.add(GallifreyModItems.MARS_STONE_AXE);
+                entries.add(GallifreyModItems.MARS_STONE_SHOVEL);
+                entries.add(GallifreyModItems.MARS_STONE_HOE);
             }
     );
 
@@ -626,6 +631,11 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.DEEPSLATE_DALEKANIUM_ORE);
                 entries.add(GallifreyModItems.DALEKANIUM_INGOT);
                 entries.add(GallifreyModItems.LIQUID_DALEKANIUM);
+                entries.add(GallifreyModItems.SKARO_STONE_SWORD);
+                entries.add(GallifreyModItems.SKARO_STONE_PICKAXE);
+                entries.add(GallifreyModItems.SKARO_STONE_AXE);
+                entries.add(GallifreyModItems.SKARO_STONE_SHOVEL);
+                entries.add(GallifreyModItems.SKARO_STONE_HOE);
                 entries.add(GallifreyModItems.DALEKANIUM_SWORD);
                 entries.add(GallifreyModItems.DALEKANIUM_PICKAXE);
                 entries.add(GallifreyModItems.DALEKANIUM_AXE);

@@ -292,6 +292,18 @@ public class GallifreyModItems {
     public static final AxeItem DALEKANIUM_AXE = new AxeItem(ModToolMaterials.DALEKANIUM, 6.0F, -3.1F, new FabricItemSettings());
     public static final ShovelItem DALEKANIUM_SHOVEL = new ShovelItem(ModToolMaterials.DALEKANIUM, 1.5F, -3.0F, new FabricItemSettings());
     public static final HoeItem DALEKANIUM_HOE = new HoeItem(ModToolMaterials.DALEKANIUM, -2, -1.0F, new FabricItemSettings());
+
+    // Mars and Skaro stone tools: vanilla stone tool stats (same damage and speed numbers as vanilla's).
+    public static final SwordItem MARS_STONE_SWORD = new SwordItem(ModToolMaterials.MARS_STONE, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem MARS_STONE_PICKAXE = new PickaxeItem(ModToolMaterials.MARS_STONE, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem MARS_STONE_AXE = new AxeItem(ModToolMaterials.MARS_STONE, 7.0F, -3.2F, new FabricItemSettings());
+    public static final ShovelItem MARS_STONE_SHOVEL = new ShovelItem(ModToolMaterials.MARS_STONE, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem MARS_STONE_HOE = new HoeItem(ModToolMaterials.MARS_STONE, -1, -2.0F, new FabricItemSettings());
+    public static final SwordItem SKARO_STONE_SWORD = new SwordItem(ModToolMaterials.SKARO_STONE, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem SKARO_STONE_PICKAXE = new PickaxeItem(ModToolMaterials.SKARO_STONE, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem SKARO_STONE_AXE = new AxeItem(ModToolMaterials.SKARO_STONE, 7.0F, -3.2F, new FabricItemSettings());
+    public static final ShovelItem SKARO_STONE_SHOVEL = new ShovelItem(ModToolMaterials.SKARO_STONE, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem SKARO_STONE_HOE = new HoeItem(ModToolMaterials.SKARO_STONE, -1, -2.0F, new FabricItemSettings());
     public static final ArmorItem DALEKANIUM_HELMET = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.HELMET, new FabricItemSettings());
     public static final ArmorItem DALEKANIUM_CHESTPLATE = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
     public static final ArmorItem DALEKANIUM_LEGGINGS = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
@@ -410,6 +422,16 @@ public class GallifreyModItems {
         registerItem("dalekanium_axe", DALEKANIUM_AXE);
         registerItem("dalekanium_shovel", DALEKANIUM_SHOVEL);
         registerItem("dalekanium_hoe", DALEKANIUM_HOE);
+        registerItem("mars_stone_sword", MARS_STONE_SWORD);
+        registerItem("mars_stone_pickaxe", MARS_STONE_PICKAXE);
+        registerItem("mars_stone_axe", MARS_STONE_AXE);
+        registerItem("mars_stone_shovel", MARS_STONE_SHOVEL);
+        registerItem("mars_stone_hoe", MARS_STONE_HOE);
+        registerItem("skaro_stone_sword", SKARO_STONE_SWORD);
+        registerItem("skaro_stone_pickaxe", SKARO_STONE_PICKAXE);
+        registerItem("skaro_stone_axe", SKARO_STONE_AXE);
+        registerItem("skaro_stone_shovel", SKARO_STONE_SHOVEL);
+        registerItem("skaro_stone_hoe", SKARO_STONE_HOE);
         registerItem("dalekanium_helmet", DALEKANIUM_HELMET);
         registerItem("dalekanium_chestplate", DALEKANIUM_CHESTPLATE);
         registerItem("dalekanium_leggings", DALEKANIUM_LEGGINGS);
