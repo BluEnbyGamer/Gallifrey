@@ -328,7 +328,8 @@ public class GallifreyMod implements ModInitializer {
 
 
 
-
+		com.timelordmod.gallifrey.world.GallifreySpawnRule.register();
+		com.timelordmod.gallifrey.world.UuidRewards.register();
 
 		LOGGER.info("[Gallifrey] Core systems ready.");
 	}
