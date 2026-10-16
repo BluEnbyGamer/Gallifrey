@@ -1,23 +1,38 @@
-
 package com.timelordmod.gallifrey.mixin.client;
 
+import com.timelordmod.gallifrey.item.custom.SonicShadesSlotAccess;
+import com.timelordmod.gallifrey.networking.ModPackets;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CreativeInventoryScreen.class)
 public abstract class CreativeInventoryGlassesSlotMixin {
 
     private static final Identifier GALLIFREY$INVENTORY_TEXTURE =
-            new Identifier("minecraft", "textures/gui/container/inventory.png");
+            new Identifier(
+                    "minecraft",
+                    "textures/gui/container/inventory.png"
+            );
 
     private static final Identifier GALLIFREY$GLASSES_ICON =
-            new Identifier("gallifrey", "textures/gui/empty_glasses_slot.png");
+            new Identifier(
+                    "gallifrey",
+                    "textures/gui/empty_glasses_slot.png"
+            );
 
+    /**
+     * Draw the custom shades slot immediately left of the offhand slot.
+     */
     @Inject(method = "drawBackground", at = @At("TAIL"))
     private void gallifrey$drawCreativeGlassesSlot(
             DrawContext context,
@@ -33,29 +48,107 @@ public abstract class CreativeInventoryGlassesSlotMixin {
             return;
         }
 
-        HandledScreenAccessor accessor = (HandledScreenAccessor) this;
+        HandledScreenAccessor accessor =
+                (HandledScreenAccessor) this;
 
         int guiX = accessor.gallifrey$getX();
         int guiY = accessor.gallifrey$getY();
 
+        // The offhand slot is at guiX + 77, guiY + 62.
         int slotX = guiX + 59;
         int slotY = guiY + 62;
 
         context.drawTexture(
                 GALLIFREY$INVENTORY_TEXTURE,
-                slotX, slotY,
-                7, 83,
-                18, 18,
-                256, 256
+                slotX,
+                slotY,
+                7,
+                83,
+                18,
+                18,
+                256,
+                256
         );
 
-        context.drawTexture(
-                GALLIFREY$GLASSES_ICON,
-                slotX + 1, slotY + 1,
-                0, 0,
-                16, 16,
-                16, 16
-        );
+        MinecraftClient client = MinecraftClient.getInstance();
+
+        if (client.player == null) {
+            return;
+        }
+
+        ItemStack shades =
+                ((SonicShadesSlotAccess) client.player)
+                        .gallifrey$getSonicShades();
+
+        if (shades.isEmpty()) {
+            context.drawTexture(
+                    GALLIFREY$GLASSES_ICON,
+                    slotX + 1,
+                    slotY + 1,
+                    0,
+                    0,
+                    16,
+                    16,
+                    16,
+                    16
+            );
+        } else {
+            context.drawItem(
+                    shades,
+                    slotX + 1,
+                    slotY + 1
+            );
+
+            context.drawItemInSlot(
+                    client.textRenderer,
+                    shades,
+                    slotX + 1,
+                    slotY + 1
+            );
+        }
+    }
+
+    /**
+     * Send a swap request when the custom slot is clicked.
+     */
+    @Inject(
+            method = "mouseClicked",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private void gallifrey$handleCreativeGlassesClick(
+            double mouseX,
+            double mouseY,
+            int button,
+            CallbackInfoReturnable<Boolean> cir
+    ) {
+        CreativeInventoryScreen screen =
+                (CreativeInventoryScreen) (Object) this;
+
+        if (!screen.isInventoryTabSelected() || button != 0) {
+            return;
+        }
+
+        HandledScreenAccessor accessor =
+                (HandledScreenAccessor) this;
+
+        int slotX = accessor.gallifrey$getX() + 59;
+        int slotY = accessor.gallifrey$getY() + 62;
+
+        if (mouseX < slotX || mouseX >= slotX + 18
+                || mouseY < slotY || mouseY >= slotY + 18) {
+            return;
+        }
+
+        MinecraftClient client = MinecraftClient.getInstance();
+
+        if (client.player != null) {
+            ClientPlayNetworking.send(
+                    ModPackets.SONIC_SHADES_SLOT_SWAP,
+                    PacketByteBufs.create()
+            );
+        }
+
+        cir.setReturnValue(true);
     }
 }
-

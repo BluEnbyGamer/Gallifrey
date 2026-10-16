@@ -33,8 +33,7 @@
     "client.InventoryScreenGlassesSlotMixin",
     "client.CreativeInventoryGlassesSlotMixin",
     "client.CreativeSlotAccessor",
-    "client.SlotAccessor",
-    "client.CreativeScreenHandlerMixin"
+    "client.SlotAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
