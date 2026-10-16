@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.world;
 
+import com.timelordmod.gallifrey.block.GallifreyModBlocks;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.item.Item;
@@ -25,12 +26,13 @@ public final class UuidRewards {
     private static final Supplier<List<Item>> SHARED = () -> List.of(
             GallifreyModItems.VORTEX_MANIPULATOR,
             GallifreyModItems.SONIC_SCREWDRIVER,
-            GallifreyModItems.SONIC_SHADES
+            GallifreyModBlocks.SONIC_WORKSHOP.asItem()
     );
 
     /** Extra items for each person. */
     private static final Map<UUID, Supplier<List<Item>>> EXTRAS = Map.of(
             BLUE, () -> List.of(
+                    GallifreyModItems.SONIC_SHADES,
                     GallifreyModItems.DARKBLUEFEZ,
                     GallifreyModItems.TRUSTABLE_HAT,
                     GallifreyModItems.DIAMOND_MINECART
@@ -42,6 +44,7 @@ public final class UuidRewards {
             ),
 
             DEO, () -> List.of(
+                    GallifreyModItems.SONIC_SHADES,
                     GallifreyModItems.FANCYFEZ,
                     GallifreyModItems.SPACE_SUIT_HELMET,
                     GallifreyModItems.SPACE_SUIT_CHESTPLATE,
