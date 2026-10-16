@@ -514,6 +514,7 @@
   "biome.gallifrey.gallifreyan_maple_jungle": "Gallifreyan Maple Forest",
   "biome.gallifrey.gallifreyan_moonpine_forest": "Old Growth Moonpine Forest",
   "gamerule.spawnOnGallifrey": "Spawn on Gallifrey",
+  "gamerule.sonicsWorkWithTardisRefined": "Gallifrey sonics work as TARDIS Refined screwdrivers",
   "advancement.gallifrey.gallroot.title": "Gallifrey",
   "advancement.gallifrey.gallroot.desc": "Travel to Gallifrey",
   "advancement.gallifrey.sonicroot.title": "Sonic Technology",

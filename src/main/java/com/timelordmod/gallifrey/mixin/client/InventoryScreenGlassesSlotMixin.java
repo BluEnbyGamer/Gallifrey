@@ -8,13 +8,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Renders a vanilla-style glasses slot and its icon on the player inventory. */
+/** Draws vanilla-style slot squares for the Sonic Shades and fez slots (the slots draw their own empty icons). */
 @Mixin(InventoryScreen.class)
 public abstract class InventoryScreenGlassesSlotMixin {
     private static final Identifier GALLIFREY$INVENTORY_TEXTURE =
             new Identifier("minecraft", "textures/gui/container/inventory.png");
-    private static final Identifier GALLIFREY$GLASSES_ICON =
-            new Identifier("gallifrey", "textures/gui/empty_glasses_slot.png");
 
     @Inject(method = "drawBackground", at = @At("TAIL"))
     private void gallifrey$drawGlassesSlot(DrawContext context, float delta, int mouseX, int mouseY, CallbackInfo ci) {
@@ -26,7 +24,8 @@ public abstract class InventoryScreenGlassesSlotMixin {
         int slotY = screen.gallifrey$getY() + 7;
         context.drawTexture(GALLIFREY$INVENTORY_TEXTURE, slotX, slotY,
                 7.0F, 83.0F, 18, 18, 256, 256);
-        context.drawTexture(GALLIFREY$GLASSES_ICON, slotX + 1, slotY + 1,
-                0, 0, 16, 16, 16, 16);
+        // The fez slot, just below.
+        context.drawTexture(GALLIFREY$INVENTORY_TEXTURE, slotX, slotY + 18,
+                7.0F, 83.0F, 18, 18, 256, 256);
     }
 }

@@ -1,7 +1,6 @@
 package com.timelordmod.gallifrey.mixin.client;
 
-import com.timelordmod.gallifrey.client.HatFeatureRenderer;
-import com.timelordmod.gallifrey.client.SonicShadesFeatureRenderer;
+import com.timelordmod.gallifrey.client.AccessoryFeatureRenderer;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,7 +14,8 @@ public abstract class PlayerEntityRendererMixin {
     private void gallifrey$addHeadwearFeature(CallbackInfo ci) {
         LivingEntityRendererAccessor accessor = (LivingEntityRendererAccessor) (Object) this;
         PlayerEntityRenderer renderer = (PlayerEntityRenderer) (Object) this;
-        accessor.gallifrey$getFeatures().add(new HatFeatureRenderer(renderer));
-        accessor.gallifrey$getFeatures().add(new SonicShadesFeatureRenderer(renderer));
+        // Helmet-slot items (fezzes, shades, hats) are already drawn by vanilla's head layer.
+        // This adds the Sonic Shades and fez slots.
+        accessor.gallifrey$getFeatures().add(new AccessoryFeatureRenderer(renderer));
     }
 }

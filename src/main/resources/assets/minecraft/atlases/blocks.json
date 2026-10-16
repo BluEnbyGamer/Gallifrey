@@ -56,6 +56,14 @@
         "gallifrey_dalekanium": "gallifrey:trims/color_palettes/dalekanium",
         "gallifrey_metalertanium": "gallifrey:trims/color_palettes/metalertanium"
       }
+    },
+    {
+      "type": "single",
+      "resource": "gallifrey:gui/empty_glasses_slot"
+    },
+    {
+      "type": "single",
+      "resource": "gallifrey:gui/empty_fez_slot"
     }
   ]
 }

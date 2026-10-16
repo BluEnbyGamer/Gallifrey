@@ -37,6 +37,8 @@ public final class SonicShadesPacket {
             } else {
                 SonicScrewdriver.activate(player, player.getWorld(), stack);
             }
+            // The stack was changed in place: store it again so every client sees the change.
+            com.timelordmod.gallifrey.item.custom.GallifreyAccessories.resyncShades(player);
         });
     }
 }

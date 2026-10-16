@@ -1,54 +1,72 @@
 package com.timelordmod.gallifrey.mixin;
 
-import com.timelordmod.gallifrey.item.custom.SonicShadesSlotAccess;
+import com.timelordmod.gallifrey.item.custom.AccessorySlotIndices;
+import com.timelordmod.gallifrey.item.custom.AccessorySlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+
+/**
+ * Adds the Sonic Shades slot and the fez slot to the player's inventory menu, in the column
+ * between the player preview and the crafting grid (above the offhand slot).
+ *
+ * Shift-clicking Sonic Shades or a fez from the inventory puts it in its slot when that slot is
+ * empty. The creative inventory places these slots itself (CreativeInventoryAccessorySlotsMixin)
+ * and the server accepts creative-mode changes to them (CreativeAccessorySlotsMixin).
+ */
 @Mixin(PlayerScreenHandler.class)
-public abstract class PlayerScreenHandlerMixin extends ScreenHandler {
+public abstract class PlayerScreenHandlerMixin extends ScreenHandler implements AccessorySlotIndices {
+
+    @Unique private int gallifrey$shadesSlot = -1;
+    @Unique private int gallifrey$fezSlot = -1;
+
     protected PlayerScreenHandlerMixin(ScreenHandlerType<?> type, int syncId) {
         super(type, syncId);
     }
+
     @Inject(method = "<init>", at = @At("TAIL"))
-    private void gallifrey$addSonicShadesSlot(PlayerInventory playerInventory, boolean onServer, PlayerEntity owner, CallbackInfo ci) {
-        Inventory glasses = new Inventory() {
-            @Override public int size() { return 1; }
-            @Override public boolean isEmpty() { return ((SonicShadesSlotAccess) owner).gallifrey$getSonicShades().isEmpty(); }
-            @Override public ItemStack getStack(int slot) { return slot == 0 ? ((SonicShadesSlotAccess) owner).gallifrey$getSonicShades() : ItemStack.EMPTY; }
-            @Override public ItemStack removeStack(int slot, int amount) {
-                if (slot != 0 || amount <= 0) return ItemStack.EMPTY;
-                ItemStack current = ((SonicShadesSlotAccess) owner).gallifrey$getSonicShades();
-                if (current.isEmpty()) return ItemStack.EMPTY;
-                ItemStack removed = current.split(amount);
-                ((SonicShadesSlotAccess) owner).gallifrey$setSonicShades(current.isEmpty() ? ItemStack.EMPTY : current);
-                return removed;
-            }
-            @Override public ItemStack removeStack(int slot) {
-                if (slot != 0) return ItemStack.EMPTY;
-                ItemStack current = ((SonicShadesSlotAccess) owner).gallifrey$getSonicShades();
-                ((SonicShadesSlotAccess) owner).gallifrey$setSonicShades(ItemStack.EMPTY);
-                return current;
-            }
-            @Override public void setStack(int slot, ItemStack stack) { if (slot == 0) ((SonicShadesSlotAccess) owner).gallifrey$setSonicShades(stack); }
-            @Override public void markDirty() { }
-            @Override public boolean canPlayerUse(PlayerEntity player) { return player == owner; }
-            @Override public void clear() { ((SonicShadesSlotAccess) owner).gallifrey$setSonicShades(ItemStack.EMPTY); }
-        };
-        this.addSlot(new Slot(glasses, 0, 77, 8) {
-            @Override public boolean canInsert(ItemStack stack) {
-                return stack.getItem() instanceof com.timelordmod.gallifrey.item.custom.SonicShadesItem;
-            }
-            @Override public int getMaxItemCount() { return 1; }
-        });
+    private void gallifrey$addAccessorySlots(PlayerInventory playerInventory, boolean onServer, PlayerEntity owner, CallbackInfo ci) {
+        gallifrey$shadesSlot = this.addSlot(AccessorySlot.shades(owner, 77, 8)).id;
+        gallifrey$fezSlot = this.addSlot(AccessorySlot.fez(owner, 77, 26)).id;
+    }
+
+    /** Shift-click from the inventory or hotbar: Sonic Shades and fezzes go to their own slot first. */
+    @Inject(method = "quickMove", at = @At("HEAD"), cancellable = true)
+    private void gallifrey$quickMoveToAccessorySlot(PlayerEntity player, int index, CallbackInfoReturnable<ItemStack> cir) {
+        if (index < 9 || index > 45) return; // only from the main inventory, hotbar and offhand
+        Slot from = this.slots.get(index);
+        if (!from.hasStack()) return;
+        ItemStack stack = from.getStack();
+        for (int target : new int[]{gallifrey$shadesSlot, gallifrey$fezSlot}) {
+            if (target < 0) continue;
+            Slot slot = this.slots.get(target);
+            if (slot.hasStack() || !slot.canInsert(stack)) continue;
+            slot.setStack(stack.split(1));
+            if (stack.isEmpty()) from.setStack(ItemStack.EMPTY);
+            else from.markDirty();
+            cir.setReturnValue(ItemStack.EMPTY);
+            return;
+        }
+    }
+
+    @Override
+    public int gallifrey$shadesSlotIndex() {
+        return gallifrey$shadesSlot;
+    }
+
+    @Override
+    public int gallifrey$fezSlotIndex() {
+        return gallifrey$fezSlot;
     }
 }

@@ -167,6 +167,8 @@ public class GallifreyMod implements ModInitializer {
 		GallifreyModBlocks.register();
 		com.timelordmod.gallifrey.world.tree.decorator.ModTreeDecorators.register();
 		com.timelordmod.gallifrey.world.GallifreySpawnRule.register();
+		com.timelordmod.gallifrey.item.custom.GallifreyAccessories.register();
+		com.timelordmod.gallifrey.compat.tardisrefined.TardisRefinedSonics.register();
 		com.timelordmod.gallifrey.world.PetesWorldPortals.register();
 		GallifreyModBlockEntities.register();
 

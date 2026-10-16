@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:fez",
+    "gallifrey:fancyfez",
+    "gallifrey:purplefez",
+    "gallifrey:greenfez",
+    "gallifrey:orangefez",
+    "gallifrey:bluefez",
+    "gallifrey:darkbluefez",
+    "gallifrey:pinkfez",
+    "gallifrey:greyfez",
+    "gallifrey:yellowfez"
+  ]
+}

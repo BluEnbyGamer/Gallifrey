@@ -8,13 +8,15 @@
     "EatGrassGoalMixin",
     "ClassicNetherPortalMixin",
     "ClassicPortalLightingMixin",
+    "CreativeAccessorySlotsMixin",
     "NetherPortalReturnMixin",
     "CustomPortalReturnMixin",
     "ClassicFurnaceBlockEntityMixin",
     "ServerWorldSleepMixin",
     "MoonGravityMixin",
     "SonicShadesSlotMixin",
-    "PlayerScreenHandlerMixin"
+    "PlayerScreenHandlerMixin",
+    "compat.BetterInventoryMenuMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",
@@ -31,9 +33,9 @@
     "client.ItemRendererHeadwearMixin",
     "client.PlayerEntityRendererMixin",
     "client.InventoryScreenGlassesSlotMixin",
-    "client.CreativeInventoryGlassesSlotMixin",
     "client.CreativeSlotAccessor",
-    "client.SlotAccessor"
+    "client.SlotAccessor",
+    "client.CreativeInventoryAccessorySlotsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
