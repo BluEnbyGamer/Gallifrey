@@ -17,8 +17,9 @@ import java.util.function.Supplier;
 public final class UuidRewards {
     private UuidRewards() {}
 
-    private static final UUID BLUE = UUID.fromString("d21bc86a-14ce-4d4b-bc15-62f6a4c58fe3");
-    private static final UUID DEO = UUID.fromString("c36e27d8-1658-4465-b8ed-29ff2bc622ec");
+    private static final UUID BLUE = UUID.fromString( "d21bc86a-14ce-4d4b-bc15-62f6a4c58fe3");
+    private static final UUID DEO = UUID.fromString(  "c36e27d8-1658-4465-b8ed-29ff2bc622ec");
+    private static final UUID STEVE = UUID.fromString("d1700a3f-b346-4edc-9aad-a6a499682982");
 
     /** Everyone on the list gets these. */
     private static final Supplier<List<Item>> SHARED = () -> List.of(
@@ -30,10 +31,16 @@ public final class UuidRewards {
     /** Extra items for each person. */
     private static final Map<UUID, Supplier<List<Item>>> EXTRAS = Map.of(
             BLUE, () -> List.of(
-                    GallifreyModItems.BLUEFEZ,
+                    GallifreyModItems.DARKBLUEFEZ,
                     GallifreyModItems.TRUSTABLE_HAT,
                     GallifreyModItems.DIAMOND_MINECART
             ),
+
+            STEVE, () -> List.of(
+                    GallifreyModItems.BLUEFEZ,
+                    GallifreyModItems.TRUSTABLE_HAT
+            ),
+
             DEO, () -> List.of(
                     GallifreyModItems.FANCYFEZ,
                     GallifreyModItems.SPACE_SUIT_HELMET,
