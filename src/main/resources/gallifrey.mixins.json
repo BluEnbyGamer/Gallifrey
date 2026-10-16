@@ -30,7 +30,11 @@
     "client.DrawContextHeadwearMixin",
     "client.ItemRendererHeadwearMixin",
     "client.PlayerEntityRendererMixin",
-    "client.InventoryScreenGlassesSlotMixin"
+    "client.InventoryScreenGlassesSlotMixin",
+    "client.CreativeInventoryGlassesSlotMixin",
+    "client.CreativeSlotAccessor",
+    "client.SlotAccessor",
+    "client.CreativeScreenHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
