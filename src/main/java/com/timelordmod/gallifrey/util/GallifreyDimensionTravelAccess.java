@@ -2,37 +2,49 @@ package com.timelordmod.gallifrey.util;
 
 import net.minecraft.server.network.ServerPlayerEntity;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public final class GallifreyDimensionTravelAccess {
+    private static final ThreadLocal<Map<UUID, Integer>> AUTHORIZED_PLAYERS =
+            ThreadLocal.withInitial(HashMap::new);
 
-    private static final ThreadLocal<UUID> AUTHORIZED_PLAYER =
-            new ThreadLocal<>();
-
-    private GallifreyDimensionTravelAccess() {
-    }
+    private GallifreyDimensionTravelAccess() {}
 
     public static boolean isAuthorized(ServerPlayerEntity player) {
-        UUID authorized = AUTHORIZED_PLAYER.get();
-        return authorized != null && authorized.equals(player.getUuid());
+        return AUTHORIZED_PLAYERS.get().containsKey(player.getUuid());
+    }
+
+    public static void beginAuthorization(ServerPlayerEntity player) {
+        AUTHORIZED_PLAYERS.get().merge(player.getUuid(), 1, Integer::sum);
+    }
+
+    public static void endAuthorization(ServerPlayerEntity player) {
+        Map<UUID, Integer> authorized = AUTHORIZED_PLAYERS.get();
+        UUID playerId = player.getUuid();
+        int depth = authorized.getOrDefault(playerId, 0);
+
+        if (depth <= 1) {
+            authorized.remove(playerId);
+        } else {
+            authorized.put(playerId, depth - 1);
+        }
+
+        if (authorized.isEmpty()) {
+            AUTHORIZED_PLAYERS.remove();
+        }
     }
 
     public static void runAuthorized(
-            ServerPlayerEntity player,
-            Runnable action
-    ) {
-        UUID previous = AUTHORIZED_PLAYER.get();
-        AUTHORIZED_PLAYER.set(player.getUuid());
-
+            ServerPlayerEntity player, Runnable action) {
+        beginAuthorization(player);
         try {
             action.run();
         } finally {
-            if (previous == null) {
-                AUTHORIZED_PLAYER.remove();
-            } else {
-                AUTHORIZED_PLAYER.set(previous);
-            }
+            endAuthorization(player);
         }
     }
 }
+
 

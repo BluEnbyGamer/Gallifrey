@@ -11,6 +11,11 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import com.timelordmod.gallifrey.block.GallifreyModBlocks;
+import com.timelordmod.gallifrey.util.GallifreyDimensionTravelAccess;
+import net.minecraft.server.network.ServerPlayerEntity;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * Custom Portal API portals (the White Point Star portals to Gallifrey, Mars, Skaro, Mondas,
@@ -51,5 +56,49 @@ public abstract class CustomPortalReturnMixin {
             return origin;
         }
         return destKey;
+    }
+
+/**
+ * Authorize the player's transfer when using Gallifrey's Lost Dirt portal.
+ */
+    @Inject(
+            method = "TPToDim",
+            at = @At("HEAD"),
+            remap = false
+    )
+    private static void gallifrey$authorizeLostRealityPortal(
+            World world,
+            Entity entity,
+            Block portalBase,
+            BlockPos portalPos,
+            CallbackInfo ci
+    ) {
+        if (world instanceof ServerWorld
+                && entity instanceof ServerPlayerEntity player
+                && portalBase == GallifreyModBlocks.LOST_DIRT) {
+            GallifreyDimensionTravelAccess.beginAuthorization(player);
+        }
+    }
+
+    /**
+     * Remove the portal authorization after Custom Portal API finishes.
+     */
+    @Inject(
+            method = "TPToDim",
+            at = @At("RETURN"),
+            remap = false
+    )
+    private static void gallifrey$endLostRealityPortalAuthorization(
+            World world,
+            Entity entity,
+            Block portalBase,
+            BlockPos portalPos,
+            CallbackInfo ci
+    ) {
+        if (world instanceof ServerWorld
+                && entity instanceof ServerPlayerEntity player
+                && portalBase == GallifreyModBlocks.LOST_DIRT) {
+            GallifreyDimensionTravelAccess.endAuthorization(player);
+        }
     }
 }
