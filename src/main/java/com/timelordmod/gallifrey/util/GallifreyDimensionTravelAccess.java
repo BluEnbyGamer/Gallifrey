@@ -73,7 +73,7 @@ public final class GallifreyDimensionTravelAccess {
             Long last = LAST_MESSAGE.get(player.getUuid());
             if (last == null || now - last > 100 || now < last) {
                 LAST_MESSAGE.put(player.getUuid(), now);
-                player.sendMessage(Text.literal("§5Lost Reality refuses you. The way in is not here."), true);
+                player.sendMessage(Text.literal("§5Unknown Data ERROR Entry Failed."), true);
             }
         }
         return true;
