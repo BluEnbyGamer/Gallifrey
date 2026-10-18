@@ -83,7 +83,6 @@ public class GallifreyModItems {
     public static final ShovelItem CLASSIC_DIAMOND_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_DIAMOND, 1.5F, -3.0F, new FabricItemSettings());
     public static final SwordItem CLASSIC_DIAMOND_SWORD = new SwordItem(ModToolMaterials.CLASSIC_DIAMOND, 3, -2.4F, new FabricItemSettings());
 
-    public static final Item CLASSIC_DOOR_IRON = new Item(new FabricItemSettings());
     public static final Item CLASSIC_EMERALD = new Item(new FabricItemSettings());
     public static final Item CLASSIC_FLINT = new Item(new FabricItemSettings());
     public static final FlintAndSteelItem CLASSIC_FLINT_AND_STEEL = new FlintAndSteelItem(new FabricItemSettings().maxDamage(64));
@@ -496,7 +495,6 @@ public class GallifreyModItems {
         registerItem("classic_diamond_pickaxe", CLASSIC_DIAMOND_PICKAXE);
         registerItem("classic_diamond_shovel", CLASSIC_DIAMOND_SHOVEL);
         registerItem("classic_diamond_sword", CLASSIC_DIAMOND_SWORD);
-        registerItem("classic_door_iron", CLASSIC_DOOR_IRON);
         registerItem("classic_emerald", CLASSIC_EMERALD);
         registerItem("classic_flint", CLASSIC_FLINT);
         registerItem("classic_flint_and_steel", CLASSIC_FLINT_AND_STEEL);

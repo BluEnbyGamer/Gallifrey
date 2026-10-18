@@ -494,7 +494,6 @@ public final class GallifreyTabSections {
 
                 // Utility items
                 entries.add(GallifreyModItems.CLASSIC_FLINT_AND_STEEL);
-                entries.add(GallifreyModItems.CLASSIC_DOOR_IRON);
                 entries.add(GallifreyModItems.CLASSIC_OAK_BOAT);
                 entries.add(GallifreyModItems.CLASSIC_VILLAGER_SPAWN_EGG);
 
