@@ -651,6 +651,8 @@
   "trim_material.gallifrey.steel": "Steel",
   "trim_material.gallifrey.prehistoric": "Prehistoric Bronze",
   "trim_material.gallifrey.dalekanium": "Dalekanium",
-  "trim_material.gallifrey.metalertanium": "Metalert"
-
+  "trim_material.gallifrey.metalertanium": "Metalert",
+  "item.gallifrey.timelord_robe_chestplate": "Timelord Robes",
+  "item.gallifrey.timelord_robe_leggings": "Timelord Robes Leggings",
+  "item.gallifrey.timelord_robe_boots": "Timelord Robes Boots"
 }

@@ -26,6 +26,8 @@ import com.timelordmod.gallifrey.item.custom.PrehistoricToolMaterial;
 import com.timelordmod.gallifrey.item.custom.ModArmorMaterials;
 import com.timelordmod.gallifrey.item.custom.ModToolMaterials;
 import com.timelordmod.gallifrey.item.custom.SpaceSuitArmorItem;
+import com.timelordmod.gallifrey.item.custom.TimelordRobeArmorItem;
+import com.timelordmod.gallifrey.item.custom.TimelordRobeArmorMaterial;
 
 public class GallifreyModItems {
     public static final Item DIAMOND_MINECART = new DiamondMinecartItem(new FabricItemSettings().maxCount(1));
@@ -58,6 +60,17 @@ public class GallifreyModItems {
                     ArmorItem.Type.BOOTS,
                     new FabricItemSettings().maxDamage(260)
             );
+    // Timelord robes: cosmetic-looking GeckoLib armour with iron-level protection, no helmet and no oxygen support.
+    public static final TimelordRobeArmorItem TIMELORD_ROBE_CHESTPLATE =
+            new TimelordRobeArmorItem(TimelordRobeArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE,
+                    new FabricItemSettings().maxDamage(240));
+    public static final TimelordRobeArmorItem TIMELORD_ROBE_LEGGINGS =
+            new TimelordRobeArmorItem(TimelordRobeArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS,
+                    new FabricItemSettings().maxDamage(225));
+    public static final TimelordRobeArmorItem TIMELORD_ROBE_BOOTS =
+            new TimelordRobeArmorItem(TimelordRobeArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS,
+                    new FabricItemSettings().maxDamage(195));
+
     // Dedicated legacy item identities: these are real Gallifrey registry entries, not texture overrides.
     public static final Item CLASSIC_APPLE = new Item(new FabricItemSettings().food(FoodComponents.APPLE));
     public static final Item CLASSIC_APPLE_GOLDEN = new Item(new FabricItemSettings().food(FoodComponents.GOLDEN_APPLE));
@@ -379,6 +392,9 @@ public class GallifreyModItems {
         registerItem("space_suit_chestplate", SPACE_SUIT_CHESTPLATE);
         registerItem("space_suit_leggings", SPACE_SUIT_LEGGINGS);
         registerItem("space_suit_boots", SPACE_SUIT_BOOTS);
+        registerItem("timelord_robe_chestplate", TIMELORD_ROBE_CHESTPLATE);
+        registerItem("timelord_robe_leggings", TIMELORD_ROBE_LEGGINGS);
+        registerItem("timelord_robe_boots", TIMELORD_ROBE_BOOTS);
         registerItem("white_point_star", WHITE_POINT_STAR);
         registerItem("huon_particle", HUON_PARTICLE);
         registerItem("silicone", SILICONE);
