@@ -35,22 +35,32 @@ public abstract class SpaceSuitPlayerModelMixin {
         boolean suitLegs = legs.isOf(
                 GallifreyModItems.SPACE_SUIT_LEGGINGS);
 
+        // Timelord robes use the same covered-skin behaviour as the spacesuit.
+        // Their GeckoLib model supplies the visible robe geometry, so don't render
+        // the player's skin/outer clothing layers underneath it.
+        boolean robeChest = chest.isOf(
+                GallifreyModItems.TIMELORD_ROBE_CHESTPLATE);
+        boolean robeLegs = legs.isOf(
+                GallifreyModItems.TIMELORD_ROBE_LEGGINGS);
+        boolean hideChestLayers = suitChest || robeChest;
+        boolean hideLegLayers = suitLegs || robeLegs;
+
         // Keep the head visible.
         model.head.visible = true;
         model.hat.visible = true;
 
         // Hide the skin overlays and body beneath the chestplate.
-        model.jacket.visible = !suitChest;
-        model.leftSleeve.visible = !suitChest;
-        model.rightSleeve.visible = !suitChest;
-        model.body.visible = !suitChest;
-        model.leftArm.visible = !suitChest;
-        model.rightArm.visible = !suitChest;
+        model.jacket.visible = !hideChestLayers;
+        model.leftSleeve.visible = !hideChestLayers;
+        model.rightSleeve.visible = !hideChestLayers;
+        model.body.visible = !hideChestLayers;
+        model.leftArm.visible = !hideChestLayers;
+        model.rightArm.visible = !hideChestLayers;
 
         // Hide the skin overlays and body beneath the leggings.
-        model.leftPants.visible = !suitLegs;
-        model.rightPants.visible = !suitLegs;
-        model.leftLeg.visible = !suitLegs;
-        model.rightLeg.visible = !suitLegs;
+        model.leftPants.visible = !hideLegLayers;
+        model.rightPants.visible = !hideLegLayers;
+        model.leftLeg.visible = !hideLegLayers;
+        model.rightLeg.visible = !hideLegLayers;
     }
 }
