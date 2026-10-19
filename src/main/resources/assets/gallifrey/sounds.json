@@ -576,5 +576,10 @@
     "sounds": [
       "gallifrey:mondas_blizzard_wind"
     ]
+  },
+  "duggao_doo": {
+    "sounds": [
+      "gallifrey:dugga_doo"
+    ]
   }
 }

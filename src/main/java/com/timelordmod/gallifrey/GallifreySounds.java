@@ -108,6 +108,7 @@ public class GallifreySounds {
     public static final SoundEvent DOCTORWHOXV = registerSound("doctorwhoxv");
     public static final SoundEvent DRWHOVALE = registerSound("drwhovale");
     public static final SoundEvent DUGGA_DOO = registerSound("dugga_doo");
+    public static final SoundEvent DUGGAO_DOO = registerSound("duggao_doo");
     public static final SoundEvent EMERGENCY_LAND = registerSound("emergency_land");
     public static final SoundEvent PARADOXMAT = registerSound("paradoxmat");
     public static final SoundEvent POLICE_BOX_DOOR_CLOSE = registerSound("police_box_door_close");

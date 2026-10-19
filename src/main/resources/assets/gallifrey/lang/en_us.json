@@ -663,5 +663,9 @@
   "item.gallifrey.emerald_helmet": "Emerald Helmet",
   "item.gallifrey.emerald_chestplate": "Emerald Chestplate",
   "item.gallifrey.emerald_leggings": "Emerald Leggings",
-  "item.gallifrey.emerald_boots": "Emerald Boots"
+  "item.gallifrey.emerald_boots": "Emerald Boots",
+  "item.gallifrey.valedecem_disc": "Valedecem Music Disc",
+  "item.gallifrey.valedecem_disc.desc": "Dr Who Vale Theme",
+  "item.gallifrey.dugga_doo_disc": "Dugga Doo Music Disc",
+  "item.gallifrey.dugga_doo_disc.desc": "Duggao Doo"
 }

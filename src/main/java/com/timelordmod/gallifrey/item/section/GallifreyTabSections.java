@@ -211,6 +211,8 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.DIMENSION_CIRCUIT);
                 entries.add(GallifreyModItems.DW_XIV_MUSIC_DISC);
                 entries.add(GallifreyModItems.GALLIFREY_MUSIC_DISC);
+                entries.add(GallifreyModItems.VALEDECEM_MUSIC_DISC);
+                entries.add(GallifreyModItems.DUGGA_DOO_MUSIC_DISC);
 
                 //gallifreyan workbench
                 entries.add(GallifreyModBlocks.GALLIFREYAN_WORKBENCH);

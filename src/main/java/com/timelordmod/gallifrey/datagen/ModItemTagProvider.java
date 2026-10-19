@@ -46,10 +46,14 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.MUSIC_DISCS)
                 .add(GallifreyModItems.DW_XIV_MUSIC_DISC)
-                .add(GallifreyModItems.GALLIFREY_MUSIC_DISC);
+                .add(GallifreyModItems.GALLIFREY_MUSIC_DISC)
+                .add(GallifreyModItems.VALEDECEM_MUSIC_DISC)
+                .add(GallifreyModItems.DUGGA_DOO_MUSIC_DISC);
 
         getOrCreateTagBuilder(ItemTags.CREEPER_DROP_MUSIC_DISCS)
                 .add(GallifreyModItems.DW_XIV_MUSIC_DISC)
-                .add(GallifreyModItems.GALLIFREY_MUSIC_DISC);
+                .add(GallifreyModItems.GALLIFREY_MUSIC_DISC)
+                .add(GallifreyModItems.VALEDECEM_MUSIC_DISC)
+                .add(GallifreyModItems.DUGGA_DOO_MUSIC_DISC);
     }
 }

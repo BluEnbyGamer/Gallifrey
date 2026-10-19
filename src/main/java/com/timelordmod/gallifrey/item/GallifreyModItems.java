@@ -354,6 +354,10 @@ public class GallifreyModItems {
             new MusicDiscItem(7, GallifreySounds.DWXIV, new FabricItemSettings().maxCount(1), 151));
     public static final Item GALLIFREY_MUSIC_DISC = registerItem("music_disk_b",
             new MusicDiscItem(7, GallifreySounds.GALLIFREY, new FabricItemSettings().maxCount(1), 198));
+    public static final Item VALEDECEM_MUSIC_DISC = registerItem("valedecem_disc",
+            new MusicDiscItem(7, GallifreySounds.DRWHOVALE, new FabricItemSettings().maxCount(1), 180));
+    public static final Item DUGGA_DOO_MUSIC_DISC = registerItem("dugga_doo_disc",
+            new MusicDiscItem(7, GallifreySounds.DUGGAO_DOO, new FabricItemSettings().maxCount(1), 180));
 
     public static final Item RADIATION_BUCKET = registerItem("radiation_bucket",
             new BucketItem(GallifreyFluids.STILL_RADIATION, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
