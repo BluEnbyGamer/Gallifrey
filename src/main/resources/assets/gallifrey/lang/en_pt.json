@@ -625,5 +625,8 @@
   "block.gallifrey.classic_wooden_pressure_plate": "Olden Deck Plank Trigger",
   "block.gallifrey.classic_stone_pressure_plate": "Olden Stone Trigger",
   "gamerule.spawnOnPetesWorld": "Make landfall on Pete's World",
-  "block.gallifrey.classic_glass_pane": "Olden Porthole Pane"
+  "block.gallifrey.classic_glass_pane": "Olden Porthole Pane",
+  "item.gallifrey.timelord_robe_chestplate": "Timelord's Fine Robes",
+  "item.gallifrey.timelord_robe_leggings": "Timelord's Fine Breeches",
+  "item.gallifrey.timelord_robe_boots": "Timelord's Fine Boots"
 }

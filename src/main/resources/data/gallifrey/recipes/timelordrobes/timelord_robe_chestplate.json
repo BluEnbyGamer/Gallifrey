@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "= =",
+    "#=#",
+    "#=#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:red_wool"
+    },
+    "=": [
+      { "item": "minecraft:gold_ingot" },
+      { "item": "gallifrey:classic_gold_ingot" }
+    ]
+  },
+  "result": {
+    "item": "gallifrey:timelord_robe_chestplate",
+    "count": 1
+  }
+}

@@ -625,5 +625,8 @@
   "block.gallifrey.classic_wooden_pressure_plate": "Oldskool Wud Stompy Plaet",
   "block.gallifrey.classic_stone_pressure_plate": "Oldskool Rok Stompy Plaet",
   "gamerule.spawnOnPetesWorld": "Spawnz on Petez Wurld",
-  "block.gallifrey.classic_glass_pane": "Oldskool Glas Paen"
+  "block.gallifrey.classic_glass_pane": "Oldskool Glas Paen",
+  "item.gallifrey.timelord_robe_chestplate": "Timelurd Robez",
+  "item.gallifrey.timelord_robe_leggings": "Timelurd Robe Pantz",
+  "item.gallifrey.timelord_robe_boots": "Timelurd Robe Bootz"
 }
