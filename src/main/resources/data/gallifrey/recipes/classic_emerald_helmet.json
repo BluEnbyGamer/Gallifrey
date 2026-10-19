@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EEE",
+    "E E"
+  ],
+  "key": {
+    "E": {
+      "item": "gallifrey:classic_emerald"
+    }
+  },
+  "result": {
+    "item": "gallifrey:emerald_helmet",
+    "count": 1
+  }
+}
