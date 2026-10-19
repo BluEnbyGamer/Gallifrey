@@ -18,6 +18,7 @@ import java.util.function.Supplier;
  */
 public enum ModToolMaterials implements ToolMaterial {
     STEEL(2, 300, 6.5F, 2.25F, 14, () -> Ingredient.ofItems(GallifreyModItems.STEEL_INGOT)),
+    EMERALD(3, 1561, 8.0F, 3.0F, 10, () -> Ingredient.fromTag(net.minecraft.registry.tag.TagKey.of(net.minecraft.registry.RegistryKeys.ITEM, new net.minecraft.util.Identifier("gallifrey", "emerald_crafting_materials")))),
     DALEKANIUM(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.ofItems(GallifreyModItems.DALEKANIUM_INGOT)),
     METALERTANIUM(4, 2031, 9.0F, 4.0F, 15, () -> Ingredient.ofItems(GallifreyModItems.METALERTANIUM_INGOT)),
 

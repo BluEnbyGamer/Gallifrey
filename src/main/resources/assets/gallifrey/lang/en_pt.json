@@ -625,5 +625,14 @@
   "block.gallifrey.classic_wooden_pressure_plate": "Olden Deck Plank Trigger",
   "block.gallifrey.classic_stone_pressure_plate": "Olden Stone Trigger",
   "gamerule.spawnOnPetesWorld": "Make landfall on Pete's World",
-  "block.gallifrey.classic_glass_pane": "Olden Porthole Pane"
+  "block.gallifrey.classic_glass_pane": "Olden Porthole Pane",
+  "item.gallifrey.emerald_sword": "Emerald Sword",
+  "item.gallifrey.emerald_pickaxe": "Emerald Pickaxe",
+  "item.gallifrey.emerald_axe": "Emerald Axe",
+  "item.gallifrey.emerald_shovel": "Emerald Shovel",
+  "item.gallifrey.emerald_hoe": "Emerald Hoe",
+  "item.gallifrey.emerald_helmet": "Emerald Helmet",
+  "item.gallifrey.emerald_chestplate": "Emerald Chestplate",
+  "item.gallifrey.emerald_leggings": "Emerald Leggings",
+  "item.gallifrey.emerald_boots": "Emerald Boots"
 }

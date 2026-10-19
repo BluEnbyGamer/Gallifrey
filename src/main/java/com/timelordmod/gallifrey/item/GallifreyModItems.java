@@ -287,6 +287,17 @@ public class GallifreyModItems {
 
     // STEEL GEAR
     public static final Item STEEL_TEMPLATE = new Item(new FabricItemSettings());
+    // Emerald equipment: diamond-tier durability and combat/mining stats.
+    public static final SwordItem EMERALD_SWORD = new SwordItem(ModToolMaterials.EMERALD, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem EMERALD_PICKAXE = new PickaxeItem(ModToolMaterials.EMERALD, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem EMERALD_AXE = new AxeItem(ModToolMaterials.EMERALD, 6.0F, -3.0F, new FabricItemSettings());
+    public static final ShovelItem EMERALD_SHOVEL = new ShovelItem(ModToolMaterials.EMERALD, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem EMERALD_HOE = new HoeItem(ModToolMaterials.EMERALD, -2, -1.0F, new FabricItemSettings());
+    public static final ArmorItem EMERALD_HELMET = new ArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem EMERALD_CHESTPLATE = new ArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem EMERALD_LEGGINGS = new ArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem EMERALD_BOOTS = new ArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.BOOTS, new FabricItemSettings());
+
     public static final SwordItem STEEL_SWORD = new SwordItem(ModToolMaterials.STEEL, 3, -2.4F, new FabricItemSettings());
     public static final PickaxeItem STEEL_PICKAXE = new PickaxeItem(ModToolMaterials.STEEL, 1, -2.8F, new FabricItemSettings());
     public static final AxeItem STEEL_AXE = new AxeItem(ModToolMaterials.STEEL, 6.0F, -3.1F, new FabricItemSettings());
@@ -421,7 +432,7 @@ public class GallifreyModItems {
         registerItem("prehistoric_boots", PREHISTORIC_BOOTS);
 
         registerItem("steel_template", STEEL_TEMPLATE);
-        registerItem("steel_sword", STEEL_SWORD);
+        registerItem("emerald_sword", EMERALD_SWORD);\n        registerItem("emerald_pickaxe", EMERALD_PICKAXE);\n        registerItem("emerald_axe", EMERALD_AXE);\n        registerItem("emerald_shovel", EMERALD_SHOVEL);\n        registerItem("emerald_hoe", EMERALD_HOE);\n        registerItem("emerald_helmet", EMERALD_HELMET);\n        registerItem("emerald_chestplate", EMERALD_CHESTPLATE);\n        registerItem("emerald_leggings", EMERALD_LEGGINGS);\n        registerItem("emerald_boots", EMERALD_BOOTS);\n        registerItem("steel_sword", STEEL_SWORD);
         registerItem("steel_pickaxe", STEEL_PICKAXE);
         registerItem("steel_axe", STEEL_AXE);
         registerItem("steel_shovel", STEEL_SHOVEL);

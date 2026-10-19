@@ -256,6 +256,17 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.STEEL_LEGGINGS);
                 entries.add(GallifreyModItems.STEEL_BOOTS);
 
+                // Emerald equipment (diamond-tier; accepts regular or classic emeralds)
+                entries.add(GallifreyModItems.EMERALD_SWORD);
+                entries.add(GallifreyModItems.EMERALD_PICKAXE);
+                entries.add(GallifreyModItems.EMERALD_AXE);
+                entries.add(GallifreyModItems.EMERALD_SHOVEL);
+                entries.add(GallifreyModItems.EMERALD_HOE);
+                entries.add(GallifreyModItems.EMERALD_HELMET);
+                entries.add(GallifreyModItems.EMERALD_CHESTPLATE);
+                entries.add(GallifreyModItems.EMERALD_LEGGINGS);
+                entries.add(GallifreyModItems.EMERALD_BOOTS);
+
                 //Alt Shit
                 entries.add(GallifreyModBlocks.HARTNELL_BLOCK);
                 entries.add(GallifreyModBlocks.HARTNELL_WALL);

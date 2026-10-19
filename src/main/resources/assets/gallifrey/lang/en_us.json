@@ -654,5 +654,14 @@
   "trim_material.gallifrey.metalertanium": "Metalert",
   "item.gallifrey.timelord_robe_chestplate": "Timelord Robes",
   "item.gallifrey.timelord_robe_leggings": "Timelord Robes Leggings",
-  "item.gallifrey.timelord_robe_boots": "Timelord Robes Boots"
+  "item.gallifrey.timelord_robe_boots": "Timelord Robes Boots",
+  "item.gallifrey.emerald_sword": "Emerald Sword",
+  "item.gallifrey.emerald_pickaxe": "Emerald Pickaxe",
+  "item.gallifrey.emerald_axe": "Emerald Axe",
+  "item.gallifrey.emerald_shovel": "Emerald Shovel",
+  "item.gallifrey.emerald_hoe": "Emerald Hoe",
+  "item.gallifrey.emerald_helmet": "Emerald Helmet",
+  "item.gallifrey.emerald_chestplate": "Emerald Chestplate",
+  "item.gallifrey.emerald_leggings": "Emerald Leggings",
+  "item.gallifrey.emerald_boots": "Emerald Boots"
 }

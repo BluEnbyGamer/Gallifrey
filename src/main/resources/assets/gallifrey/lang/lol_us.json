@@ -625,5 +625,14 @@
   "block.gallifrey.classic_wooden_pressure_plate": "Oldskool Wud Stompy Plaet",
   "block.gallifrey.classic_stone_pressure_plate": "Oldskool Rok Stompy Plaet",
   "gamerule.spawnOnPetesWorld": "Spawnz on Petez Wurld",
-  "block.gallifrey.classic_glass_pane": "Oldskool Glas Paen"
+  "block.gallifrey.classic_glass_pane": "Oldskool Glas Paen",
+  "item.gallifrey.emerald_sword": "Emerald Sword",
+  "item.gallifrey.emerald_pickaxe": "Emerald Pickaxe",
+  "item.gallifrey.emerald_axe": "Emerald Axe",
+  "item.gallifrey.emerald_shovel": "Emerald Shovel",
+  "item.gallifrey.emerald_hoe": "Emerald Hoe",
+  "item.gallifrey.emerald_helmet": "Emerald Helmet",
+  "item.gallifrey.emerald_chestplate": "Emerald Chestplate",
+  "item.gallifrey.emerald_leggings": "Emerald Leggings",
+  "item.gallifrey.emerald_boots": "Emerald Boots"
 }
