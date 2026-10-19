@@ -436,7 +436,16 @@ public class GallifreyModItems {
         registerItem("prehistoric_boots", PREHISTORIC_BOOTS);
 
         registerItem("steel_template", STEEL_TEMPLATE);
-        registerItem("emerald_sword", EMERALD_SWORD);\n        registerItem("emerald_pickaxe", EMERALD_PICKAXE);\n        registerItem("emerald_axe", EMERALD_AXE);\n        registerItem("emerald_shovel", EMERALD_SHOVEL);\n        registerItem("emerald_hoe", EMERALD_HOE);\n        registerItem("emerald_helmet", EMERALD_HELMET);\n        registerItem("emerald_chestplate", EMERALD_CHESTPLATE);\n        registerItem("emerald_leggings", EMERALD_LEGGINGS);\n        registerItem("emerald_boots", EMERALD_BOOTS);\n        registerItem("steel_sword", STEEL_SWORD);
+        registerItem("emerald_sword", EMERALD_SWORD);
+        registerItem("emerald_pickaxe", EMERALD_PICKAXE);
+        registerItem("emerald_axe", EMERALD_AXE);
+        registerItem("emerald_shovel", EMERALD_SHOVEL);
+        registerItem("emerald_hoe", EMERALD_HOE);
+        registerItem("emerald_helmet", EMERALD_HELMET);
+        registerItem("emerald_chestplate", EMERALD_CHESTPLATE);
+        registerItem("emerald_leggings", EMERALD_LEGGINGS);
+        registerItem("emerald_boots", EMERALD_BOOTS);
+        registerItem("steel_sword", STEEL_SWORD);
         registerItem("steel_pickaxe", STEEL_PICKAXE);
         registerItem("steel_axe", STEEL_AXE);
         registerItem("steel_shovel", STEEL_SHOVEL);
