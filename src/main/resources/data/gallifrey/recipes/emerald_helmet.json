@@ -6,10 +6,7 @@
   ],
   "key": {
     "E": {
-      "item": "minecraft:emerald"
-    },
-    "S": {
-      "item": "minecraft:stick"
+      "tag": "gallifrey:emerald_crafting_materials"
     }
   },
   "result": {
