@@ -269,6 +269,36 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.EMERALD_LEGGINGS);
                 entries.add(GallifreyModItems.EMERALD_BOOTS);
 
+                // Ruby equipment and materials
+                entries.add(GallifreyModItems.RUBY);
+                entries.add(GallifreyModBlocks.RUBY_ORE);
+                entries.add(GallifreyModBlocks.DEEPSLATE_RUBY_ORE);
+                entries.add(GallifreyModBlocks.RUBY_BLOCK);
+                entries.add(GallifreyModItems.RUBY_SWORD);
+                entries.add(GallifreyModItems.RUBY_PICKAXE);
+                entries.add(GallifreyModItems.RUBY_AXE);
+                entries.add(GallifreyModItems.RUBY_SHOVEL);
+                entries.add(GallifreyModItems.RUBY_HOE);
+                entries.add(GallifreyModItems.RUBY_HELMET);
+                entries.add(GallifreyModItems.RUBY_CHESTPLATE);
+                entries.add(GallifreyModItems.RUBY_LEGGINGS);
+                entries.add(GallifreyModItems.RUBY_BOOTS);
+
+                // Sapphire equipment follows ruby
+                entries.add(GallifreyModItems.SAPPHIRE);
+                entries.add(GallifreyModBlocks.SAPPHIRE_ORE);
+                entries.add(GallifreyModBlocks.DEEPSLATE_SAPPHIRE_ORE);
+                entries.add(GallifreyModBlocks.SAPPHIRE_BLOCK);
+                entries.add(GallifreyModItems.SAPPHIRE_SWORD);
+                entries.add(GallifreyModItems.SAPPHIRE_PICKAXE);
+                entries.add(GallifreyModItems.SAPPHIRE_AXE);
+                entries.add(GallifreyModItems.SAPPHIRE_SHOVEL);
+                entries.add(GallifreyModItems.SAPPHIRE_HOE);
+                entries.add(GallifreyModItems.SAPPHIRE_HELMET);
+                entries.add(GallifreyModItems.SAPPHIRE_CHESTPLATE);
+                entries.add(GallifreyModItems.SAPPHIRE_LEGGINGS);
+                entries.add(GallifreyModItems.SAPPHIRE_BOOTS);
+
                 //Alt Shit
                 entries.add(GallifreyModBlocks.HARTNELL_BLOCK);
                 entries.add(GallifreyModBlocks.HARTNELL_WALL);

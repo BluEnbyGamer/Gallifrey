@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "gallifrey:sapphire"
+    }
+  },
+  "result": {
+    "item": "gallifrey:sapphire_block"
+  }
+}

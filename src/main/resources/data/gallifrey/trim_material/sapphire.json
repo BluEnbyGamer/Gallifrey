@@ -1,0 +1,8 @@
+{
+  "asset_name": "sapphire",
+  "description": {
+    "translate": "trim_material.gallifrey.sapphire"
+  },
+  "ingredient": "gallifrey:sapphire",
+  "item_model_index": 0.2
+}

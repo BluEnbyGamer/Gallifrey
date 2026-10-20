@@ -1,9 +1,7 @@
 {
   "replace": false,
   "values": [
-    "gallifrey:steel_ingot",
-    "gallifrey:prehistoric_ingot",
-    "gallifrey:dalekanium_ingot",
-    "gallifrey:metalertanium_ingot"
+    "gallifrey:ruby",
+    "gallifrey:sapphire"
   ]
 }

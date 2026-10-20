@@ -298,6 +298,28 @@ public class GallifreyModItems {
     public static final ArmorItem EMERALD_LEGGINGS = new ArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
     public static final ArmorItem EMERALD_BOOTS = new ArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.BOOTS, new FabricItemSettings());
 
+    // Ruby and sapphire equipment, balanced to iron tier.
+    public static final Item RUBY = new Item(new FabricItemSettings());
+    public static final SwordItem RUBY_SWORD = new SwordItem(ModToolMaterials.RUBY, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem RUBY_PICKAXE = new PickaxeItem(ModToolMaterials.RUBY, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem RUBY_AXE = new AxeItem(ModToolMaterials.RUBY, 6.0F, -3.0F, new FabricItemSettings());
+    public static final ShovelItem RUBY_SHOVEL = new ShovelItem(ModToolMaterials.RUBY, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem RUBY_HOE = new HoeItem(ModToolMaterials.RUBY, -2, -1.0F, new FabricItemSettings());
+    public static final ArmorItem RUBY_HELMET = new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem RUBY_CHESTPLATE = new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem RUBY_LEGGINGS = new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem RUBY_BOOTS = new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final Item SAPPHIRE = new Item(new FabricItemSettings());
+    public static final SwordItem SAPPHIRE_SWORD = new SwordItem(ModToolMaterials.SAPPHIRE, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem SAPPHIRE_PICKAXE = new PickaxeItem(ModToolMaterials.SAPPHIRE, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem SAPPHIRE_AXE = new AxeItem(ModToolMaterials.SAPPHIRE, 6.0F, -3.0F, new FabricItemSettings());
+    public static final ShovelItem SAPPHIRE_SHOVEL = new ShovelItem(ModToolMaterials.SAPPHIRE, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem SAPPHIRE_HOE = new HoeItem(ModToolMaterials.SAPPHIRE, -2, -1.0F, new FabricItemSettings());
+    public static final ArmorItem SAPPHIRE_HELMET = new ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem SAPPHIRE_CHESTPLATE = new ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem SAPPHIRE_LEGGINGS = new ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem SAPPHIRE_BOOTS = new ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.BOOTS, new FabricItemSettings());
+
     public static final SwordItem STEEL_SWORD = new SwordItem(ModToolMaterials.STEEL, 3, -2.4F, new FabricItemSettings());
     public static final PickaxeItem STEEL_PICKAXE = new PickaxeItem(ModToolMaterials.STEEL, 1, -2.8F, new FabricItemSettings());
     public static final AxeItem STEEL_AXE = new AxeItem(ModToolMaterials.STEEL, 6.0F, -3.1F, new FabricItemSettings());
@@ -445,6 +467,26 @@ public class GallifreyModItems {
         registerItem("emerald_chestplate", EMERALD_CHESTPLATE);
         registerItem("emerald_leggings", EMERALD_LEGGINGS);
         registerItem("emerald_boots", EMERALD_BOOTS);
+        registerItem("ruby", RUBY);
+        registerItem("ruby_sword", RUBY_SWORD);
+        registerItem("ruby_pickaxe", RUBY_PICKAXE);
+        registerItem("ruby_axe", RUBY_AXE);
+        registerItem("ruby_shovel", RUBY_SHOVEL);
+        registerItem("ruby_hoe", RUBY_HOE);
+        registerItem("ruby_helmet", RUBY_HELMET);
+        registerItem("ruby_chestplate", RUBY_CHESTPLATE);
+        registerItem("ruby_leggings", RUBY_LEGGINGS);
+        registerItem("ruby_boots", RUBY_BOOTS);
+        registerItem("sapphire", SAPPHIRE);
+        registerItem("sapphire_sword", SAPPHIRE_SWORD);
+        registerItem("sapphire_pickaxe", SAPPHIRE_PICKAXE);
+        registerItem("sapphire_axe", SAPPHIRE_AXE);
+        registerItem("sapphire_shovel", SAPPHIRE_SHOVEL);
+        registerItem("sapphire_hoe", SAPPHIRE_HOE);
+        registerItem("sapphire_helmet", SAPPHIRE_HELMET);
+        registerItem("sapphire_chestplate", SAPPHIRE_CHESTPLATE);
+        registerItem("sapphire_leggings", SAPPHIRE_LEGGINGS);
+        registerItem("sapphire_boots", SAPPHIRE_BOOTS);
         registerItem("steel_sword", STEEL_SWORD);
         registerItem("steel_pickaxe", STEEL_PICKAXE);
         registerItem("steel_axe", STEEL_AXE);

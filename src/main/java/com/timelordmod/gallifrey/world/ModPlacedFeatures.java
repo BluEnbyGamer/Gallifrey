@@ -24,6 +24,8 @@ import java.util.List;
 
 public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> SONIC_CRYSTAL_ORE_PLACED_KEY = registerKey("sonic_crystal_ore_placed");
+    public static final RegistryKey<PlacedFeature> RUBY_ORE_PLACED_KEY = registerKey("ruby_ore");
+    public static final RegistryKey<PlacedFeature> SAPPHIRE_ORE_PLACED_KEY = registerKey("sapphire_ore");
     public static final RegistryKey<PlacedFeature> NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY = registerKey("nether_sonic_crystal_ore_placed");
     public static final RegistryKey<PlacedFeature> WHITE_POINT_ORE_PLACED_KEY = registerKey("white_point_ore_placed");
     public static final RegistryKey<PlacedFeature> NETHER_WHITE_POINT_ORE_PLACED_KEY = registerKey("nether_white_point_ore_placed");
