@@ -54,11 +54,11 @@ public class GallifreyMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-        net.minecraft.registry.Registry.register(
-                net.minecraft.registry.Registries.FEATURE,
-                id("prehistoric_vines"),
-                new PrehistoricVinesFeature(net.minecraft.world.gen.feature.DefaultFeatureConfig.CODEC)
-        );
+		net.minecraft.registry.Registry.register(
+				net.minecraft.registry.Registries.FEATURE,
+				id("prehistoric_vines"),
+				new PrehistoricVinesFeature(net.minecraft.world.gen.feature.DefaultFeatureConfig.CODEC)
+		);
 
 		MarsSurvival.register();
 		com.timelordmod.gallifrey.world.VacuumMobSurvivalHandler.register();
@@ -99,10 +99,10 @@ public class GallifreyMod implements ModInitializer {
 				com.timelordmod.gallifrey.entity.custom.ClassicVillagerEntity.createAttributes()
 		);
 
-        FabricDefaultAttributeRegistry.register(
-                GallifreyEntities.TIMELORD_VILLAGER,
-                VillagerEntity.createVillagerAttributes().build()
-        );
+		FabricDefaultAttributeRegistry.register(
+				GallifreyEntities.TIMELORD_VILLAGER,
+				VillagerEntity.createVillagerAttributes().build()
+		);
 
 		FabricDefaultAttributeRegistry.register(
 				GallifreyEntities.SKARO_CITY_DALEK,
@@ -143,36 +143,36 @@ public class GallifreyMod implements ModInitializer {
 				(type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down())
 		);
 
-        FabricDefaultAttributeRegistry.register(GallifreyEntities.TIME_LORD, com.timelordmod.gallifrey.entity.custom.TimeLordEntity.createAttributes());
-        net.minecraft.entity.SpawnRestriction.register(
-                GallifreyEntities.TIME_LORD,
-                net.minecraft.entity.SpawnRestriction.Location.ON_GROUND,
-                net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                (type, world, reason, pos, random) -> world.toServerWorld().getRegistryKey().equals(com.timelordmod.gallifrey.world.dimension.ModDimensions.GALL_LEVEL_KEY)
-                        && world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down())
-        );
-        BiomeModifications.addSpawn(
-                BiomeSelectors.all(),
-                net.minecraft.entity.SpawnGroup.CREATURE,
-                GallifreyEntities.TIME_LORD,
-                2,
-                1,
-                1
-        );
+		FabricDefaultAttributeRegistry.register(GallifreyEntities.TIME_LORD, com.timelordmod.gallifrey.entity.custom.TimeLordEntity.createAttributes());
+		net.minecraft.entity.SpawnRestriction.register(
+				GallifreyEntities.TIME_LORD,
+				net.minecraft.entity.SpawnRestriction.Location.ON_GROUND,
+				net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+				(type, world, reason, pos, random) -> world.toServerWorld().getRegistryKey().equals(com.timelordmod.gallifrey.world.dimension.ModDimensions.GALL_LEVEL_KEY)
+						&& world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down())
+		);
+		BiomeModifications.addSpawn(
+				BiomeSelectors.all(),
+				net.minecraft.entity.SpawnGroup.CREATURE,
+				GallifreyEntities.TIME_LORD,
+				2,
+				1,
+				1
+		);
 
-        FabricDefaultAttributeRegistry.register(GallifreyEntities.CAVEMAN, com.timelordmod.gallifrey.entity.custom.CavemanEntity.createAttributes());
-        net.minecraft.entity.SpawnRestriction.register(
-                GallifreyEntities.CAVEMAN,
-                net.minecraft.entity.SpawnRestriction.Location.ON_GROUND,
-                net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                (type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down()));
-        // Spawning itself is in the Prehistoric biome's JSON (worldgen/biome/prehistoric.json).
+		FabricDefaultAttributeRegistry.register(GallifreyEntities.CAVEMAN, com.timelordmod.gallifrey.entity.custom.CavemanEntity.createAttributes());
+		net.minecraft.entity.SpawnRestriction.register(
+				GallifreyEntities.CAVEMAN,
+				net.minecraft.entity.SpawnRestriction.Location.ON_GROUND,
+				net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+				(type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down()));
+		// Spawning itself is in the Prehistoric biome's JSON (worldgen/biome/prehistoric.json).
 
 		com.timelordmod.gallifrey.villager.GallifreyVillagers.register();
 
-        FabricDefaultAttributeRegistry.register(GallifreyEntities.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
-        FabricDefaultAttributeRegistry.register(GallifreyEntities.PROTO_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
-        FabricDefaultAttributeRegistry.register(GallifreyEntities.CYBERMAT, com.timelordmod.gallifrey.entity.custom.CybermatEntity.createCybermatAttributes());
+		FabricDefaultAttributeRegistry.register(GallifreyEntities.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
+		FabricDefaultAttributeRegistry.register(GallifreyEntities.PROTO_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
+		FabricDefaultAttributeRegistry.register(GallifreyEntities.CYBERMAT, com.timelordmod.gallifrey.entity.custom.CybermatEntity.createCybermatAttributes());
 
 		GallifreyModItems.register();
 		GallifreyModBlocks.register();
@@ -265,10 +265,10 @@ public class GallifreyMod implements ModInitializer {
 				SonicCasingPacket::receive
 		);
 
-        ServerPlayNetworking.registerGlobalReceiver(
-                new Identifier(MOD_ID, "sonic_shades_use"),
-                SonicShadesPacket::receive
-        );
+		ServerPlayNetworking.registerGlobalReceiver(
+				new Identifier(MOD_ID, "sonic_shades_use"),
+				SonicShadesPacket::receive
+		);
 
 
 		// Strippable blocks registry
@@ -318,57 +318,56 @@ public class GallifreyMod implements ModInitializer {
 				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.REINFORCED_STEEL_BLOCK)
-						.customFrameTester(GALLIFREY_FRAME_TESTER)
-						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
-						.destDimID(new Identifier(GallifreyMod.MOD_ID, "gallifrey"))
-						.tintColor(230, 142, 48)
-						.registerPortal();
+				.frameBlock(GallifreyModBlocks.REINFORCED_STEEL_BLOCK)
+				.customFrameTester(GALLIFREY_FRAME_TESTER)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "gallifrey"))
+				.tintColor(230, 142, 48)
+				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS)
-						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
-						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mars"))
-						.tintColor(150, 55, 35)
-						.registerPortal();
+				.frameBlock(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "mars"))
+				.tintColor(150, 55, 35)
+				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.DALEKANIUM_BLOCK)
-						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
-						.destDimID(new Identifier(GallifreyMod.MOD_ID, "skaro"))
-						.tintColor(150, 110, 45)
-						.registerPortal();
+				.frameBlock(GallifreyModBlocks.DALEKANIUM_BLOCK)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "skaro"))
+				.tintColor(150, 110, 45)
+				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.STEEL_BLOCK)
-						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
-						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mondas"))
-						.tintColor(130, 150, 170)
-						.registerPortal();
+				.frameBlock(GallifreyModBlocks.STEEL_BLOCK)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "mondas"))
+				.tintColor(130, 150, 170)
+				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(net.minecraft.block.Blocks.CRYING_OBSIDIAN)
-						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
-						.destDimID(new Identifier(GallifreyMod.MOD_ID, "petes_world"))
-						.tintColor(90, 140, 230)
-						.registerPortal();
+				.frameBlock(net.minecraft.block.Blocks.CRYING_OBSIDIAN)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "petes_world"))
+				.tintColor(90, 140, 230)
+				.registerPortal();
 
 		CustomPortalBuilder.beginPortal()
-						.frameBlock(GallifreyModBlocks.LOST_DIRT)
-						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
-						.destDimID(new Identifier(GallifreyMod.MOD_ID, "lost_reality"))
-						.tintColor(40, 160, 150)
-						.registerPortal();
+				.frameBlock(GallifreyModBlocks.LOST_DIRT)
+				.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+				.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+				.destDimID(new Identifier(GallifreyMod.MOD_ID, "lost_reality"))
+				.tintColor(40, 160, 150)
+				.registerPortal();
 
 
 
-		com.timelordmod.gallifrey.world.GallifreySpawnRule.register();
 		com.timelordmod.gallifrey.world.UuidRewards.register();
 		com.timelordmod.gallifrey.util.BannedPlayers.register();
 
@@ -379,8 +378,8 @@ public class GallifreyMod implements ModInitializer {
 
 	/** Lighting a portal with a White Point Star uses one up (Custom Portal API leaves the item alone). */
 	private static void useUpWhitePointStar(net.minecraft.entity.player.PlayerEntity player, net.minecraft.world.World world,
-											 net.minecraft.util.math.BlockPos portalPos, net.minecraft.util.math.BlockPos framePos,
-											 net.kyrptonaught.customportalapi.portal.PortalIgnitionSource source) {
+											net.minecraft.util.math.BlockPos portalPos, net.minecraft.util.math.BlockPos framePos,
+											net.kyrptonaught.customportalapi.portal.PortalIgnitionSource source) {
 		if (player == null || player.getAbilities().creativeMode) return;
 		for (net.minecraft.util.Hand hand : net.minecraft.util.Hand.values()) {
 			net.minecraft.item.ItemStack stack = player.getStackInHand(hand);
