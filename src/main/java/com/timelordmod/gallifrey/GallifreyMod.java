@@ -31,6 +31,9 @@ import net.minecraft.particle.ParticleTypes;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.world.biome.BiomeKeys;
 import org.slf4j.Logger;
@@ -207,6 +210,19 @@ public class GallifreyMod implements ModInitializer {
 				BiomeSelectors.foundInTheNether(),
 				GenerationStep.Feature.UNDERGROUND_ORES,
 				ModPlacedFeatures.NETHER_WHITE_POINT_ORE_PLACED_KEY);
+
+		// Ruby and sapphire generate like emerald ore: same vein size, count and heights (see their
+		// placed_feature JSON), in every biome that has emerald ore. That's vanilla's mountains and
+		// windswept hills, plus the matching biomes from world mods like Terralith.
+		RegistryKey<PlacedFeature> emeraldOre = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier("minecraft", "ore_emerald"));
+		BiomeModifications.addFeature(
+				context -> context.hasPlacedFeature(emeraldOre),
+				GenerationStep.Feature.UNDERGROUND_ORES,
+				ModPlacedFeatures.RUBY_ORE_PLACED_KEY);
+		BiomeModifications.addFeature(
+				context -> context.hasPlacedFeature(emeraldOre),
+				GenerationStep.Feature.UNDERGROUND_ORES,
+				ModPlacedFeatures.SAPPHIRE_ORE_PLACED_KEY);
 
 		// Sonic Crystal also belongs in the vanilla Overworld.
 		BiomeModifications.addFeature(
