@@ -378,6 +378,7 @@ public class SonicScrewdriver extends Item {
                 );
 
         Entity closestEntity = null;
+        Vec3d closestHit = null;
 
         double closestDistance =
                 SONIC_RANGE * SONIC_RANGE;
@@ -415,6 +416,9 @@ public class SonicScrewdriver extends Item {
 
                     closestEntity =
                             entity;
+
+                    closestHit =
+                            hit.get();
                 }
             }
         }
@@ -423,8 +427,11 @@ public class SonicScrewdriver extends Item {
             return null;
         }
 
+        // Keep the exact point the beam hit, so getSonicTarget can compare it with the block hit
+        // like for like (an entity's position is its feet, which is often further away).
         return new EntityHitResult(
-                closestEntity
+                closestEntity,
+                closestHit
         );
     }
 
@@ -477,7 +484,6 @@ public class SonicScrewdriver extends Item {
                             .getCameraPosVec(1.0F)
                             .squaredDistanceTo(
                                     entityHit
-                                            .getEntity()
                                             .getPos()
                             );
         }
@@ -489,7 +495,7 @@ public class SonicScrewdriver extends Item {
         if (
                 entityHit != null
                         && entityDistance
-                        < blockDistance
+                        <= blockDistance
         ) {
 
             return entityHit;

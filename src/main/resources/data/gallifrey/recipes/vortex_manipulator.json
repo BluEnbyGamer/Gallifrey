@@ -9,7 +9,7 @@
       "item": "minecraft:iron_ingot"
     },
     "L": {
-      "item": "gallifrey:location_circuit"
+      "tag": "gallifrey:location_circuits"
     },
     "#": {
       "item": "gallifrey:interface_circuit"
@@ -18,7 +18,7 @@
       "item": "gallifrey:white_point_star"
     },
     "D": {
-      "item": "gallifrey:dimension_circuit"
+      "tag": "gallifrey:dimension_circuits"
     }
   },
   "pattern": [
