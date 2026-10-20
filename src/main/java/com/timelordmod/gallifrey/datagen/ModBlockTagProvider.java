@@ -334,5 +334,27 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(GallifreyModBlocks.ATRIUM_ORE, GallifreyModBlocks.DEEPSLATE_ATRIUM_ORE,
                         GallifreyModBlocks.ATRIUM_BLOCK);
+
+        // Ruby and sapphire: pickaxe-mineable, iron pickaxe or better to get drops.
+        // (These blocks use requiresTool(), so without these tags they mine
+        // at 1/100 speed and drop nothing.)
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.RUBY_ORE, GallifreyModBlocks.DEEPSLATE_RUBY_ORE,
+                        GallifreyModBlocks.RUBY_BLOCK,
+                        GallifreyModBlocks.SAPPHIRE_ORE, GallifreyModBlocks.DEEPSLATE_SAPPHIRE_ORE,
+                        GallifreyModBlocks.SAPPHIRE_BLOCK);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(GallifreyModBlocks.RUBY_ORE, GallifreyModBlocks.DEEPSLATE_RUBY_ORE,
+                        GallifreyModBlocks.RUBY_BLOCK,
+                        GallifreyModBlocks.SAPPHIRE_ORE, GallifreyModBlocks.DEEPSLATE_SAPPHIRE_ORE,
+                        GallifreyModBlocks.SAPPHIRE_BLOCK);
+
+        // Classic ore tiers that were only in the (now deleted) hand-written tag files.
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(GallifreyModBlocks.CLASSIC_IRON_ORE, GallifreyModBlocks.CLASSIC_LAPIS_ORE,
+                        GallifreyModBlocks.CLASSIC_NETHER_QUARTZ_ORE);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(GallifreyModBlocks.CLASSIC_GOLD_ORE, GallifreyModBlocks.CLASSIC_DIAMOND_ORE,
+                        GallifreyModBlocks.CLASSIC_REDSTONE_ORE);
     }
 }

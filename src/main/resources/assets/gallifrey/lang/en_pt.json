@@ -625,5 +625,11 @@
   "block.gallifrey.classic_wooden_pressure_plate": "Olden Deck Plank Trigger",
   "block.gallifrey.classic_stone_pressure_plate": "Olden Stone Trigger",
   "gamerule.spawnOnPetesWorld": "Make landfall on Pete's World",
-  "block.gallifrey.classic_glass_pane": "Olden Porthole Pane"
+  "block.gallifrey.classic_glass_pane": "Olden Porthole Pane",
+  "trim_material.gallifrey.steel": "Steel",
+  "trim_material.gallifrey.prehistoric": "Ancient Bronze",
+  "trim_material.gallifrey.dalekanium": "Dalekanium",
+  "trim_material.gallifrey.metalertanium": "Metalert",
+  "trim_material.gallifrey.ruby": "Ruby",
+  "trim_material.gallifrey.sapphire": "Sapphire"
 }

@@ -634,5 +634,11 @@
   "item.gallifrey.emerald_helmet": "Emerald Helmet",
   "item.gallifrey.emerald_chestplate": "Emerald Chestplate",
   "item.gallifrey.emerald_leggings": "Emerald Leggings",
-  "item.gallifrey.emerald_boots": "Emerald Boots"
+  "item.gallifrey.emerald_boots": "Emerald Boots",
+  "trim_material.gallifrey.steel": "Steal",
+  "trim_material.gallifrey.prehistoric": "Old Bronz",
+  "trim_material.gallifrey.dalekanium": "Dalekanium",
+  "trim_material.gallifrey.metalertanium": "Metalert",
+  "trim_material.gallifrey.ruby": "Rubee",
+  "trim_material.gallifrey.sapphire": "Saffir"
 }

@@ -1,9 +1,9 @@
 {
-  "asset_name": "sapphire",
+  "asset_name": "gallifrey_sapphire",
   "description": {
     "color": "#0F52BA",
     "translate": "trim_material.gallifrey.sapphire"
   },
   "ingredient": "gallifrey:sapphire",
-  "item_model_index": 0.2
+  "item_model_index": 0.72
 }
