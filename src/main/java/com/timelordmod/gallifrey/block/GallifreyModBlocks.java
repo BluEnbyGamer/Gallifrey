@@ -114,12 +114,56 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.DIAMOND_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_EMERALD_ORE = registerBlock("classic_emerald_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.EMERALD_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
-    public static final Block RUBY_BLOCK = registerBlock("ruby_block", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(3.0F, 3.0F).requiresTool().sounds(BlockSoundGroup.AMETHYST_BLOCK)));
-    public static final Block RUBY_ORE = registerBlock("ruby_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.EMERALD_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS), UniformIntProvider.create(3, 7)));
-    public static final Block DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_EMERALD_ORE).strength(4.5F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS), UniformIntProvider.create(3, 7)));
-    public static final Block SAPPHIRE_BLOCK = registerBlock("sapphire_block", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(3.0F, 3.0F).requiresTool().sounds(BlockSoundGroup.AMETHYST_BLOCK)));
-    public static final Block SAPPHIRE_ORE = registerBlock("sapphire_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.EMERALD_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS), UniformIntProvider.create(3, 7)));
-    public static final Block DEEPSLATE_SAPPHIRE_ORE = registerBlock("deepslate_sapphire_ore", new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE_EMERALD_ORE).strength(4.5F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS), UniformIntProvider.create(3, 7)));
+    public static final Block RUBY_BLOCK = registerBlock(
+            "ruby_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    .strength(3.0F, 3.0F)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.AMETHYST_BLOCK)));
+
+    public static final Block RUBY_ORE = registerBlock(
+            "ruby_ore",
+            new ExperienceDroppingBlock(
+                    FabricBlockSettings.copyOf(Blocks.EMERALD_ORE)
+                            .strength(3.0F, 3.0F)
+                            .requiresTool()
+                            .sounds(CLASSIC_STONE_SOUNDS),
+                    UniformIntProvider.create(3, 7)));
+
+    public static final Block DEEPSLATE_RUBY_ORE = registerBlock(
+            "deepslate_ruby_ore",
+            new ExperienceDroppingBlock(
+                    FabricBlockSettings.copyOf(Blocks.DEEPSLATE_EMERALD_ORE)
+                            .strength(4.5F, 3.0F)
+                            .requiresTool()
+                            .sounds(CLASSIC_STONE_SOUNDS),
+                    UniformIntProvider.create(3, 7)));
+
+    public static final Block SAPPHIRE_BLOCK = registerBlock(
+            "sapphire_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    .strength(3.0F, 3.0F)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.AMETHYST_BLOCK)));
+
+    public static final Block SAPPHIRE_ORE = registerBlock(
+            "sapphire_ore",
+            new ExperienceDroppingBlock(
+                    FabricBlockSettings.copyOf(Blocks.EMERALD_ORE)
+                            .strength(3.0F, 3.0F)
+                            .requiresTool()
+                            .sounds(CLASSIC_STONE_SOUNDS),
+                    UniformIntProvider.create(3, 7)));
+
+    public static final Block DEEPSLATE_SAPPHIRE_ORE = registerBlock(
+            "deepslate_sapphire_ore",
+            new ExperienceDroppingBlock(
+                    FabricBlockSettings.copyOf(Blocks.DEEPSLATE_EMERALD_ORE)
+                            .strength(4.5F, 3.0F)
+                            .requiresTool()
+                            .sounds(CLASSIC_STONE_SOUNDS),
+                    UniformIntProvider.create(3, 7)));
+
     public static final Block CLASSIC_REDSTONE_LAMP = registerBlock("classic_redstone_lamp",
             new RedstoneLampBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).sounds(BlockSoundGroup.GLASS)));
 

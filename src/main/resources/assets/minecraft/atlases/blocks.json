@@ -1,3 +1,4 @@
+
 {
   "sources": [
     {
@@ -54,7 +55,9 @@
         "gallifrey_steel": "gallifrey:trims/color_palettes/steel",
         "gallifrey_prehistoric": "gallifrey:trims/color_palettes/prehistoric",
         "gallifrey_dalekanium": "gallifrey:trims/color_palettes/dalekanium",
-        "gallifrey_metalertanium": "gallifrey:trims/color_palettes/metalertanium"
+        "gallifrey_metalertanium": "gallifrey:trims/color_palettes/metalertanium",
+        "gallifrey_ruby": "gallifrey:trims/color_palettes/ruby",
+        "gallifrey_sapphire": "gallifrey:trims/color_palettes/sapphire"
       }
     },
     {
