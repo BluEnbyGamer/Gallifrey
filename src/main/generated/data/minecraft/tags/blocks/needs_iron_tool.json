@@ -13,6 +13,15 @@
     "gallifrey:classic_emerald_ore",
     "gallifrey:atrium_ore",
     "gallifrey:deepslate_atrium_ore",
-    "gallifrey:atrium_block"
+    "gallifrey:atrium_block",
+    "gallifrey:ruby_ore",
+    "gallifrey:deepslate_ruby_ore",
+    "gallifrey:ruby_block",
+    "gallifrey:sapphire_ore",
+    "gallifrey:deepslate_sapphire_ore",
+    "gallifrey:sapphire_block",
+    "gallifrey:classic_gold_ore",
+    "gallifrey:classic_diamond_ore",
+    "gallifrey:classic_redstone_ore"
   ]
 }

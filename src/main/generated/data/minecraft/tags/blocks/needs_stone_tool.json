@@ -63,6 +63,9 @@
     "gallifrey:skaro_stone_wall",
     "gallifrey:skaro_cobblestone_wall",
     "gallifrey:classic_iron",
-    "gallifrey:classic_lapis_block"
+    "gallifrey:classic_lapis_block",
+    "gallifrey:classic_iron_ore",
+    "gallifrey:classic_lapis_ore",
+    "gallifrey:classic_nether_quartz_ore"
   ]
 }

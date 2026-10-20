@@ -200,6 +200,12 @@
     "gallifrey:mars_stone_bricks_cracked_stairs",
     "gallifrey:mars_stone_bricks_cracked_slab",
     "gallifrey:mars_chizelled_stone_bricks_stairs",
-    "gallifrey:mars_chizelled_stone_bricks_slab"
+    "gallifrey:mars_chizelled_stone_bricks_slab",
+    "gallifrey:ruby_ore",
+    "gallifrey:deepslate_ruby_ore",
+    "gallifrey:ruby_block",
+    "gallifrey:sapphire_ore",
+    "gallifrey:deepslate_sapphire_ore",
+    "gallifrey:sapphire_block"
   ]
 }
