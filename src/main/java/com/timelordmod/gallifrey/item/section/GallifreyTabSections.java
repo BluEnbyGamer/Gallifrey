@@ -330,6 +330,9 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.TIMELORD_ROBE_CHESTPLATE);
                 entries.add(GallifreyModItems.TIMELORD_ROBE_LEGGINGS);
                 entries.add(GallifreyModItems.TIMELORD_ROBE_BOOTS);
+                entries.add(GallifreyModItems.LAB_COAT_CHESTPLATE);
+                entries.add(GallifreyModItems.LAB_COAT_LEGGINGS);
+                entries.add(GallifreyModItems.LAB_COAT_BOOTS);
 
 
                 // Cyber spawn eggs appear immediately below the clothing items.

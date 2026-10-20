@@ -704,5 +704,8 @@
   "power.gallifrey.gold_weakness.name": "Gold Iz Bad",
   "power.gallifrey.gold_weakness.description": "Gold weepins hurt u 2x.",
   "quest.gallifrey.visit": "Go 2 %s",
-  "entity.minecraft.villager.gallifrey.time_lord_trader": "Tiem Lord Tradr"
+  "entity.minecraft.villager.gallifrey.time_lord_trader": "Tiem Lord Tradr",
+  "item.gallifrey.lab_coat_chestplate": "Lab Cote",
+  "item.gallifrey.lab_coat_leggings": "Lab Pantz",
+  "item.gallifrey.lab_coat_boots": "Lab Shooz"
 }

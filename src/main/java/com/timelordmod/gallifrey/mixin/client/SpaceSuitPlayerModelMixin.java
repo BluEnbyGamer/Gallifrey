@@ -71,8 +71,10 @@ public abstract class SpaceSuitPlayerModelMixin {
 
         boolean suitChest = chest.isOf(GallifreyModItems.SPACE_SUIT_CHESTPLATE);
         boolean suitLegs = legs.isOf(GallifreyModItems.SPACE_SUIT_LEGGINGS);
-        boolean robeChest = chest.isOf(GallifreyModItems.TIMELORD_ROBE_CHESTPLATE);
-        boolean robeLegs = legs.isOf(GallifreyModItems.TIMELORD_ROBE_LEGGINGS);
+        boolean robeChest = chest.isOf(GallifreyModItems.TIMELORD_ROBE_CHESTPLATE)
+                || chest.isOf(GallifreyModItems.LAB_COAT_CHESTPLATE);
+        boolean robeLegs = legs.isOf(GallifreyModItems.TIMELORD_ROBE_LEGGINGS)
+                || legs.isOf(GallifreyModItems.LAB_COAT_LEGGINGS);
 
         if (suitChest || robeChest) {
             model.body.visible = false;

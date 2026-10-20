@@ -695,5 +695,8 @@
   "power.gallifrey.gold_weakness.name": "Weakness to Gold",
   "power.gallifrey.gold_weakness.description": "Gold blades cut ye twice as deep.",
   "quest.gallifrey.visit": "Sail to %s",
-  "entity.minecraft.villager.gallifrey.time_lord_trader": "Time Lord Trader"
+  "entity.minecraft.villager.gallifrey.time_lord_trader": "Time Lord Trader",
+  "item.gallifrey.lab_coat_chestplate": "Surgeon's Coat",
+  "item.gallifrey.lab_coat_leggings": "Surgeon's Breeches",
+  "item.gallifrey.lab_coat_boots": "Surgeon's Boots"
 }

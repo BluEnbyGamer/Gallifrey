@@ -27,6 +27,8 @@ import com.timelordmod.gallifrey.item.custom.ModArmorMaterials;
 import com.timelordmod.gallifrey.item.custom.ModToolMaterials;
 import com.timelordmod.gallifrey.item.custom.SpaceSuitArmorItem;
 import com.timelordmod.gallifrey.item.custom.TimelordRobeArmorItem;
+import com.timelordmod.gallifrey.item.custom.LabCoatArmorItem;
+import com.timelordmod.gallifrey.item.custom.LabCoatArmorMaterial;
 import com.timelordmod.gallifrey.item.custom.TimelordRobeArmorMaterial;
 
 public class GallifreyModItems {
@@ -70,6 +72,16 @@ public class GallifreyModItems {
     public static final TimelordRobeArmorItem TIMELORD_ROBE_BOOTS =
             new TimelordRobeArmorItem(TimelordRobeArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS,
                     new FabricItemSettings().maxDamage(195));
+    // Lab coat: GeckoLib clothing like the Timelord robes, with leather-level protection and no helmet.
+    public static final LabCoatArmorItem LAB_COAT_CHESTPLATE =
+            new LabCoatArmorItem(LabCoatArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE,
+                    new FabricItemSettings().maxDamage(80));
+    public static final LabCoatArmorItem LAB_COAT_LEGGINGS =
+            new LabCoatArmorItem(LabCoatArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS,
+                    new FabricItemSettings().maxDamage(75));
+    public static final LabCoatArmorItem LAB_COAT_BOOTS =
+            new LabCoatArmorItem(LabCoatArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS,
+                    new FabricItemSettings().maxDamage(65));
 
     // Dedicated legacy item identities: these are real Gallifrey registry entries, not texture overrides.
     public static final Item CLASSIC_APPLE = new Item(new FabricItemSettings().food(FoodComponents.APPLE));
@@ -433,6 +445,9 @@ public class GallifreyModItems {
         registerItem("timelord_robe_chestplate", TIMELORD_ROBE_CHESTPLATE);
         registerItem("timelord_robe_leggings", TIMELORD_ROBE_LEGGINGS);
         registerItem("timelord_robe_boots", TIMELORD_ROBE_BOOTS);
+        registerItem("lab_coat_chestplate", LAB_COAT_CHESTPLATE);
+        registerItem("lab_coat_leggings", LAB_COAT_LEGGINGS);
+        registerItem("lab_coat_boots", LAB_COAT_BOOTS);
         registerItem("white_point_star", WHITE_POINT_STAR);
         registerItem("huon_particle", HUON_PARTICLE);
         registerItem("silicone", SILICONE);

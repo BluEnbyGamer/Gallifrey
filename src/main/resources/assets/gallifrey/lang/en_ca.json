@@ -759,5 +759,8 @@
   "power.gallifrey.gold_weakness.name": "Weakness to Gold",
   "power.gallifrey.gold_weakness.description": "Gold weapons deal double damage to you.",
   "quest.gallifrey.visit": "Visit %s",
-  "entity.minecraft.villager.gallifrey.time_lord_trader": "Time Lord Trader"
+  "entity.minecraft.villager.gallifrey.time_lord_trader": "Time Lord Trader",
+  "item.gallifrey.lab_coat_chestplate": "Lab Coat",
+  "item.gallifrey.lab_coat_leggings": "Lab Coat Trousers",
+  "item.gallifrey.lab_coat_boots": "Lab Shoes"
 }
