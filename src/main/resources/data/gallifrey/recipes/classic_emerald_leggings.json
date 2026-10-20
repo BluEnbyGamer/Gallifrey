@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EEE",
+    "E E",
+    "E E"
+  ],
+  "key": {
+    "E": {
+      "item": "gallifrey:classic_emerald"
+    }
+  },
+  "result": {
+    "item": "gallifrey:emerald_leggings",
+    "count": 1
+  }
+}

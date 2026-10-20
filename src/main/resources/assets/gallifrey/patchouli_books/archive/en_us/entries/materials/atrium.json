@@ -1,0 +1,22 @@
+{
+  "name": "Atrium",
+  "icon": "gallifrey:atrium",
+  "category": "gallifrey:materials",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(item)Atrium$() is mined from atrium ore and is the power source behind most Gallifreyan devices.$(br2)Charged with redstone around an iron core it becomes $(item)Energised Atrium$(), and the two together make an $(item)Atrium Core$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:energized_atrium",
+      "recipe2": "gallifrey:atrium_core"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:atrium_fuel",
+      "text": "Atrium wrapped around coal makes $(item)Atrium Fuel$(), which burns far longer than coal in any furnace."
+    }
+  ]
+}

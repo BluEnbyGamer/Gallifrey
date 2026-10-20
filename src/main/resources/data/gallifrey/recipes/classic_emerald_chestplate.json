@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "E E",
+    "EEE",
+    "EEE"
+  ],
+  "key": {
+    "E": {
+      "item": "gallifrey:classic_emerald"
+    }
+  },
+  "result": {
+    "item": "gallifrey:emerald_chestplate",
+    "count": 1
+  }
+}

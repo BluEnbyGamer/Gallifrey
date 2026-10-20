@@ -1,0 +1,9 @@
+{
+  "asset_name": "gallifrey_prehistoric",
+  "description": {
+    "color": "#B58A43",
+    "translate": "trim_material.gallifrey.prehistoric"
+  },
+  "ingredient": "gallifrey:prehistoric_ingot",
+  "item_model_index": 0.74
+}

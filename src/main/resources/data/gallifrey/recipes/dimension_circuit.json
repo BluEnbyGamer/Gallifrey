@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "N#N",
+    "QBC",
+    "NON"
+  ],
+  "key": {
+    "N": {
+      "tag": "gallifrey:steel_ingots"
+    },
+    "O": {
+      "item": "gallifrey:atrium_fuel"
+    },
+    "B": {
+      "item": "gallifrey:blank_circuit"
+    },
+    "Q": {
+      "item": "minecraft:ender_eye"
+    },
+    "#": {
+      "item": "minecraft:nether_star"
+    },
+    "C": {
+      "item": "gallifrey:atrium_core"
+    }
+  },
+  "result": {
+    "item": "gallifrey:dimension_circuit",
+    "count": 1
+  }
+}

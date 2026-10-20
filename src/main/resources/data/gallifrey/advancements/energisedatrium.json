@@ -1,0 +1,21 @@
+{
+  "parent": "gallifrey:atriumroot",
+  "display": {
+    "icon": { "item": "gallifrey:energized_atrium" },
+    "title": { "translate": "advancement.gallifrey.energisedatrium.title" },
+    "description": { "translate": "advancement.gallifrey.energisedatrium.desc" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "has_energized_atrium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": ["gallifrey:energized_atrium"] }
+        ]
+      }
+    }
+  }
+}

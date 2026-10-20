@@ -1,0 +1,10 @@
+{
+  "color": "ffe68e30",
+  "visible": true,
+  "priority": 4,
+  "blocks": {
+    "gallifrey:gallifreyan_workbench": 1
+  },
+  "iconU": 5,
+  "iconV": 1
+}

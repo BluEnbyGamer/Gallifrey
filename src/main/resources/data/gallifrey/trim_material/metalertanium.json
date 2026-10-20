@@ -1,0 +1,9 @@
+{
+  "asset_name": "gallifrey_metalertanium",
+  "description": {
+    "color": "#17191C",
+    "translate": "trim_material.gallifrey.metalertanium"
+  },
+  "ingredient": "gallifrey:metalertanium_ingot",
+  "item_model_index": 0.76
+}

@@ -1,0 +1,42 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:steel_ingot",
+    {
+      "id": "#c:steel_ingots",
+      "required": false
+    },
+    {
+      "id": "#c:ingots/steel",
+      "required": false
+    },
+    {
+      "id": "#forge:ingots/steel",
+      "required": false
+    },
+    {
+      "id": "#ad_astra:steel_ingots",
+      "required": false
+    },
+    {
+      "id": "ad_astra:steel_ingot",
+      "required": false
+    },
+    {
+      "id": "techreborn:steel_ingot",
+      "required": false
+    },
+    {
+      "id": "modern_industrialization:steel_ingot",
+      "required": false
+    },
+    {
+      "id": "ait:steel_ingot",
+      "required": false
+    },
+    {
+      "id": "tardis_refined:steel_ingot",
+      "required": false
+    }
+  ]
+}

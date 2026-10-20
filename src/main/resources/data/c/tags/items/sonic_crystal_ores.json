@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:sonic_crystal_ore",
+    "gallifrey:deepslate_sonic_crystal_ore",
+    "gallifrey:nether_sonic_crystal_ore"
+  ]
+}

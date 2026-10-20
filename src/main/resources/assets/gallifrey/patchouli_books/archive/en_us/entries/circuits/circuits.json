@@ -1,0 +1,25 @@
+{
+  "name": "Circuits",
+  "icon": "gallifrey:blank_circuit",
+  "category": "gallifrey:circuits",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Every circuit starts as a $(item)Blank Circuit$(), built on a base of $(item)Treeborg Paste$(). Programme it into a $(item)Location$(), $(item)Interface$() or $(item)Dimension$() circuit."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:blank_circuit"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:location_circuit",
+      "recipe2": "gallifrey:interface_circuit"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:dimension_circuit"
+    }
+  ]
+}

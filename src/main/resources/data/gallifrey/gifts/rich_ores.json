@@ -1,0 +1,16 @@
+{
+  "conditions": [],
+  "items": {
+    "gallifrey:ruby": 25,
+    "gallifrey:sapphire": 25,
+    "gallifrey:steel_ingot": 15,
+    "gallifrey:dalekanium_ingot": 20,
+    "gallifrey:metalertanium_ingot": 20,
+    "gallifrey:classic_diamond": 25,
+    "gallifrey:classic_emerald": 20,
+    "gallifrey:classic_gold_ingot": 25,
+    "gallifrey:classic_iron_ingot": 15,
+    "gallifrey:refined_sonic_crystal": 20,
+    "gallifrey:white_point_star": 30
+  }
+}

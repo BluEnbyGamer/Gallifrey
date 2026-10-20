@@ -1,0 +1,21 @@
+{
+  "parent": "gallifrey:energisedatrium",
+  "display": {
+    "icon": { "item": "gallifrey:atrium_core" },
+    "title": { "translate": "advancement.gallifrey.atriumcore.title" },
+    "description": { "translate": "advancement.gallifrey.atriumcore.desc" },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_atrium_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": ["gallifrey:atrium_core"] }
+        ]
+      }
+    }
+  }
+}

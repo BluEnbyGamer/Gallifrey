@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:dimension_circuit",
+    {
+      "id": "deos-portal-gun-mod:dimension_module",
+      "required": false
+    }
+  ]
+}

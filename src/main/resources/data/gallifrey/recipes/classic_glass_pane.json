@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "decorations",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "gallifrey:classic_glass"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_glass_pane",
+    "count": 16
+  }
+}

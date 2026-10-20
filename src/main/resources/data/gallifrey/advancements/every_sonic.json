@@ -1,0 +1,277 @@
+{
+  "parent": "gallifrey:sonic_screwdriver",
+  "display": {
+    "icon": {
+      "item": "gallifrey:sonic_screwdriver"
+    },
+    "title": {
+      "translate": "advancement.gallifrey.every_sonic.title"
+    },
+    "description": {
+      "translate": "advancement.gallifrey.every_sonic.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "casing_third_doctor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"third_doctor\"}"
+          }
+        ]
+      }
+    },
+    "casing_fourth_doctor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"fourth_doctor\"}"
+          }
+        ]
+      }
+    },
+    "casing_fifth_doctor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"fifth_doctor\"}"
+          }
+        ]
+      }
+    },
+    "casing_eighth_doctor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"eighth_doctor\"}"
+          }
+        ]
+      }
+    },
+    "casing_war_doctor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"war_doctor\"}"
+          }
+        ]
+      }
+    },
+    "casing_war_master": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"war_master\"}"
+          }
+        ]
+      }
+    },
+    "casing_eleventh_cane": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"eleventh_cane\"}"
+          }
+        ]
+      }
+    },
+    "casing_blue_sonic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"blue_sonic\"}"
+          }
+        ]
+      }
+    },
+    "casing_ricks_portal_gun": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"ricks_portal_gun\"}"
+          }
+        ]
+      }
+    },
+    "casing_valvue_gun": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"valvue_gun\"}"
+          }
+        ]
+      }
+    },
+    "casing_deos_portal_gun": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"deos_portal_gun\"}"
+          }
+        ]
+      }
+    },
+    "casing_deos_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"deos_hammer\"}"
+          }
+        ]
+      }
+    },
+    "casing_missys_umbrella": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"missys_umbrella\"}"
+          }
+        ]
+      }
+    },
+    "casing_gamblers_sonic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"gamblers_sonic\"}"
+          }
+        ]
+      }
+    },
+    "casing_blunt_sonic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"blunt_sonic\"}"
+          }
+        ]
+      }
+    },
+    "casing_alastor_staff": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "gallifrey:sonic_screwdriver"
+            ],
+            "nbt": "{SonicCasing:\"alastor_staff\"}"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "casing_third_doctor"
+    ],
+    [
+      "casing_fourth_doctor"
+    ],
+    [
+      "casing_fifth_doctor"
+    ],
+    [
+      "casing_eighth_doctor"
+    ],
+    [
+      "casing_war_doctor"
+    ],
+    [
+      "casing_war_master"
+    ],
+    [
+      "casing_eleventh_cane"
+    ],
+    [
+      "casing_blue_sonic"
+    ],
+    [
+      "casing_ricks_portal_gun"
+    ],
+    [
+      "casing_valvue_gun"
+    ],
+    [
+      "casing_deos_portal_gun"
+    ],
+    [
+      "casing_deos_hammer"
+    ],
+    [
+      "casing_missys_umbrella"
+    ],
+    [
+      "casing_gamblers_sonic"
+    ],
+    [
+      "casing_blunt_sonic"
+    ],
+    [
+      "casing_alastor_staff"
+    ]
+  ]
+}

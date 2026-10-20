@@ -1,0 +1,16 @@
+{
+  "name": "Sonic Shades",
+  "icon": "gallifrey:sonic_shades",
+  "category": "gallifrey:sonics",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Sonic technology you wear. $(item)Sonic Shades$() go in their own slot next to your armour."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:sonic_shades"
+    }
+  ]
+}

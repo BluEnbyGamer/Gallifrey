@@ -1,0 +1,13 @@
+{
+  "asset_name": "diamond",
+  "description": {
+    "color": "#6EECD2",
+    "translate": "trim_material.minecraft.diamond"
+  },
+  "ingredient": "gallifrey:classic_diamond",
+  "item_model_index": 0.8,
+  "override_armor_materials": {
+    "diamond": "diamond_darker",
+    "gallifrey_classic_diamond": "diamond_darker"
+  }
+}

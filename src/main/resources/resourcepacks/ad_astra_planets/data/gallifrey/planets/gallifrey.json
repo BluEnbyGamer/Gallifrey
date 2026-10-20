@@ -1,0 +1,10 @@
+{
+  "dimension": "gallifrey:gallifrey",
+  "gravity": 9.807,
+  "orbit": "gallifrey:gallifrey_orbit",
+  "oxygen": true,
+  "solar_power": 20,
+  "solar_system": "gallifrey:kasterborous",
+  "temperature": 25,
+  "tier": 4
+}

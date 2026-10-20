@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:ruby_sword",
+    "gallifrey:sapphire_sword",
+    "gallifrey:steel_sword",
+    "gallifrey:dalekanium_sword",
+    "gallifrey:metalertanium_sword",
+    "gallifrey:prehistoric_sword",
+    "gallifrey:emerald_sword",
+    "gallifrey:mars_stone_sword",
+    "gallifrey:skaro_stone_sword",
+    "gallifrey:classic_wood_sword",
+    "gallifrey:classic_iron_sword",
+    "gallifrey:classic_gold_sword",
+    "gallifrey:classic_diamond_sword"
+  ]
+}

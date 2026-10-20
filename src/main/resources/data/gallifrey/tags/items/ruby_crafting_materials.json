@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:ruby",
+    {
+      "id": "#c:rubies",
+      "required": false
+    }
+  ]
+}

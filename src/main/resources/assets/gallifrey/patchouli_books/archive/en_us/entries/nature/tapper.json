@@ -1,0 +1,16 @@
+{
+  "name": "Tree Tapper",
+  "icon": "gallifrey:tapper",
+  "category": "gallifrey:nature",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Hang a $(item)Tree Tapper$() on a living tree and it slowly fills. Collect it when it's full.$(br2)$(li)Treeborg: $(item)Treeborg Paste$(), the base of every circuit$(li)Oak: $(item)Silicone$()$(li)Maple: $(item)Maple Syrup$()$(li)Prehistoric and Classic: $(item)Huon Particles$()"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:tapper"
+    }
+  ]
+}

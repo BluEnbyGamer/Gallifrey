@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "gallifrey:item/saphhire_stuff/sapphire_pickaxe"
+  }
+}

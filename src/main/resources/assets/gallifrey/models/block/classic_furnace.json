@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "gallifrey:block/classic_minecraft/classic_furnace_side",
+    "down": "gallifrey:block/classic_minecraft/classic_furnace_top",
+    "up": "gallifrey:block/classic_minecraft/classic_furnace_top",
+    "north": "gallifrey:block/classic_minecraft/classic_furnace_front_off",
+    "south": "gallifrey:block/classic_minecraft/classic_furnace_side",
+    "east": "gallifrey:block/classic_minecraft/classic_furnace_side",
+    "west": "gallifrey:block/classic_minecraft/classic_furnace_side"
+  }
+}

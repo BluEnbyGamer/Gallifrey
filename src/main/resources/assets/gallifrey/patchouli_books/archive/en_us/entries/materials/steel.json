@@ -1,0 +1,21 @@
+{
+  "name": "Steel",
+  "icon": "gallifrey:steel_ingot",
+  "category": "gallifrey:materials",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Steel starts as $(item)Raw Steel$(): raw iron and coal bound with blaze powder. A blast furnace turns it into ingots.$(br2)A smithing template made from steel upgrades iron gear to steel at a smithing table."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:raw_steelcraft",
+      "recipe2": "gallifrey:steel_template_recipe"
+    },
+    {
+      "type": "patchouli:blasting",
+      "recipe": "gallifrey:steel_ingot"
+    }
+  ]
+}

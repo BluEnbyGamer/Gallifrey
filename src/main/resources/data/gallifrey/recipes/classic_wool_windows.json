@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_wool_windows",
+    "count": 1
+  }
+}

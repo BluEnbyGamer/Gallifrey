@@ -1,0 +1,18 @@
+{
+  "conditions": [],
+  "items": {
+    "gallifrey:dalekanium_pickaxe": 25,
+    "gallifrey:metalertanium_pickaxe": 25,
+    "gallifrey:ruby_pickaxe": 25,
+    "gallifrey:sapphire_pickaxe": 25,
+    "gallifrey:emerald_pickaxe": 24,
+    "gallifrey:steel_pickaxe": 22,
+    "gallifrey:prehistoric_pickaxe": 18,
+    "gallifrey:mars_stone_pickaxe": 10,
+    "gallifrey:skaro_stone_pickaxe": 10,
+    "gallifrey:classic_diamond_pickaxe": 25,
+    "gallifrey:classic_iron_pickaxe": 20,
+    "gallifrey:classic_gold_pickaxe": 15,
+    "gallifrey:classic_wood_pickaxe": 5
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "A A",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:classic_cobble"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_furnace",
+    "count": 1
+  }
+}

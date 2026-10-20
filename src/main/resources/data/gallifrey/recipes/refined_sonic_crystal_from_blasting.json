@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "gallifrey:raw_sonic_crystal"
+  },
+  "result": "gallifrey:refined_sonic_crystal",
+  "experience": 0.7,
+  "cookingtime": 100
+}

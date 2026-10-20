@@ -1,0 +1,21 @@
+{
+  "parent": "gallifrey:sonicroot",
+  "display": {
+    "icon": { "item": "gallifrey:sonic_screwdriver" },
+    "title": { "translate": "advancement.gallifrey.sonic_screwdriver.title" },
+    "description": { "translate": "advancement.gallifrey.sonic_screwdriver.desc" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_sonic_screwdriver": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": ["gallifrey:sonic_screwdriver"] }
+        ]
+      }
+    }
+  }
+}

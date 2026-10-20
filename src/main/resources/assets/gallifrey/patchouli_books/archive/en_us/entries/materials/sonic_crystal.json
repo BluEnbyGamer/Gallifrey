@@ -1,0 +1,16 @@
+{
+  "name": "Sonic Crystal",
+  "icon": "gallifrey:refined_sonic_crystal",
+  "category": "gallifrey:materials",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(item)Raw Sonic Crystal$() comes from sonic crystal ore. Before it's any use it has to be refined in a blast furnace."
+    },
+    {
+      "type": "patchouli:blasting",
+      "recipe": "gallifrey:refined_sonic_crystal_from_blasting"
+    }
+  ]
+}

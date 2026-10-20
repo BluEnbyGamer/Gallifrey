@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:location_circuit",
+    {
+      "id": "deos-portal-gun-mod:location_module",
+      "required": false
+    }
+  ]
+}

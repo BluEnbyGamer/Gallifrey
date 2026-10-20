@@ -1,0 +1,9 @@
+{
+  "asset_name": "gallifrey_ruby",
+  "description": {
+    "color": "#E0115F",
+    "translate": "trim_material.gallifrey.ruby"
+  },
+  "ingredient": "gallifrey:ruby",
+  "item_model_index": 0.71
+}

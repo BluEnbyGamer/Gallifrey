@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "gallifrey:block/classic_minecraft/classic_crafting_table_side",
+    "down": "gallifrey:block/classic_minecraft/classic_crafting_table_side",
+    "up": "gallifrey:block/classic_minecraft/classic_crafting_table_top",
+    "north": "gallifrey:block/classic_minecraft/classic_crafting_table_front",
+    "south": "gallifrey:block/classic_minecraft/classic_crafting_table_front",
+    "east": "gallifrey:block/classic_minecraft/classic_crafting_table_side",
+    "west": "gallifrey:block/classic_minecraft/classic_crafting_table_side"
+  }
+}

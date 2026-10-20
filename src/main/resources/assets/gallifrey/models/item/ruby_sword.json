@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "gallifrey:item/ruby_stuff/ruby_sword"
+  }
+}

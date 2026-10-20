@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gallifrey:classic_diamond_block"
+    }
+  ],
+  "result": {
+    "item": "gallifrey:classic_diamond",
+    "count": 9
+  }
+}

@@ -1,0 +1,17 @@
+
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "E E",
+    "E E"
+  ],
+  "key": {
+    "E": {
+      "tag": "gallifrey:emerald_crafting_materials"
+    }
+  },
+  "result": {
+    "item": "gallifrey:emerald_boots",
+    "count": 1
+  }
+}

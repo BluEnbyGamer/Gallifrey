@@ -1,0 +1,9 @@
+{
+  "asset_name": "gallifrey_dalekanium",
+  "description": {
+    "color": "#B56832",
+    "translate": "trim_material.gallifrey.dalekanium"
+  },
+  "ingredient": "gallifrey:dalekanium_ingot",
+  "item_model_index": 0.75
+}

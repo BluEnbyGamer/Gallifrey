@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX ",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "X": {
+      "tag": "gallifrey:ruby_crafting_materials"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "gallifrey:ruby_hoe"
+  }
+}

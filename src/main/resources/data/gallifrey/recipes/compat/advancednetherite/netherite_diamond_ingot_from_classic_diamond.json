@@ -1,0 +1,32 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "advancednetherite"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "advancednetherite:ingots/upgrade_to_netherite_diamond"
+    },
+    {
+      "item": "gallifrey:classic_diamond"
+    },
+    {
+      "item": "gallifrey:classic_diamond"
+    },
+    {
+      "item": "gallifrey:classic_diamond"
+    },
+    {
+      "item": "gallifrey:classic_diamond"
+    }
+  ],
+  "result": {
+    "item": "advancednetherite:netherite_diamond_ingot"
+  }
+}

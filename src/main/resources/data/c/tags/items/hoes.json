@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:ruby_hoe",
+    "gallifrey:sapphire_hoe",
+    "gallifrey:steel_hoe",
+    "gallifrey:dalekanium_hoe",
+    "gallifrey:metalertanium_hoe",
+    "gallifrey:prehistoric_hoe",
+    "gallifrey:emerald_hoe",
+    "gallifrey:mars_stone_hoe",
+    "gallifrey:skaro_stone_hoe",
+    "gallifrey:classic_wood_hoe",
+    "gallifrey:classic_iron_hoe",
+    "gallifrey:classic_gold_hoe",
+    "gallifrey:classic_diamond_hoe"
+  ]
+}

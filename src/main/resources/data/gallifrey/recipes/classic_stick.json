@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "A"
+  ],
+  "key": {
+    "A": {
+      "item": "gallifrey:classic_planks"
+    }
+  },
+  "result": {
+    "item": "gallifrey:classic_stick",
+    "count": 4
+  }
+}

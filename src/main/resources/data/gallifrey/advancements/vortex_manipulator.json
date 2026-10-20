@@ -1,0 +1,21 @@
+{
+  "parent": "gallifrey:gallroot",
+  "display": {
+    "icon": { "item": "gallifrey:vortex_manipulator" },
+    "title": { "translate": "advancement.gallifrey.vortex_manipulator.title" },
+    "description": { "translate": "advancement.gallifrey.vortex_manipulator.desc" },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_vortex_manipulator": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": ["gallifrey:vortex_manipulator"] }
+        ]
+      }
+    }
+  }
+}

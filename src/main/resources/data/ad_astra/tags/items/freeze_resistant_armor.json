@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:space_suit_helmet",
+    "gallifrey:space_suit_chestplate",
+    "gallifrey:space_suit_leggings",
+    "gallifrey:space_suit_boots"
+  ]
+}

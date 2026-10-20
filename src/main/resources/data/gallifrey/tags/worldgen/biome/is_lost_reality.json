@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:lost_classic",
+    "gallifrey:lost_classic_nether",
+    "gallifrey:lost_gallifreyan_plains",
+    "gallifrey:lost_gallifreyan_ulanda_forest",
+    "gallifrey:lost_mars",
+    "gallifrey:lost_mondas",
+    "gallifrey:lost_prehistoric",
+    "gallifrey:lost_skaro_lands",
+    "gallifrey:lost_skaro_waste_land"
+  ]
+}

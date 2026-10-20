@@ -1,0 +1,14 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["patchouli"]
+    }
+  ],
+  "type": "patchouli:shapeless_book_recipe",
+  "ingredients": [
+    { "item": "minecraft:book" },
+    { "item": "gallifrey:refined_sonic_crystal" }
+  ],
+  "book": "gallifrey:archive"
+}

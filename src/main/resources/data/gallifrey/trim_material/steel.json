@@ -1,0 +1,9 @@
+{
+  "asset_name": "gallifrey_steel",
+  "description": {
+    "color": "#41464B",
+    "translate": "trim_material.gallifrey.steel"
+  },
+  "ingredient": "gallifrey:steel_ingot",
+  "item_model_index": 0.73
+}
