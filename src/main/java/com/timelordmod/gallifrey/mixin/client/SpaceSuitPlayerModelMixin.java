@@ -71,10 +71,26 @@ public abstract class SpaceSuitPlayerModelMixin {
 
         boolean suitChest = chest.isOf(GallifreyModItems.SPACE_SUIT_CHESTPLATE);
         boolean suitLegs = legs.isOf(GallifreyModItems.SPACE_SUIT_LEGGINGS);
-        boolean robeChest = chest.isOf(GallifreyModItems.TIMELORD_ROBE_CHESTPLATE)
-                || chest.isOf(GallifreyModItems.LAB_COAT_CHESTPLATE);
-        boolean robeLegs = legs.isOf(GallifreyModItems.TIMELORD_ROBE_LEGGINGS)
-                || legs.isOf(GallifreyModItems.LAB_COAT_LEGGINGS);
+        boolean robeChest = chest.isOf(GallifreyModItems.TIMELORD_ROBE_CHESTPLATE);
+        boolean robeLegs = legs.isOf(GallifreyModItems.TIMELORD_ROBE_LEGGINGS);
+        // The lab coat covers the whole body, arms and legs, so both skin layers are hidden.
+        boolean labCoat = chest.isOf(GallifreyModItems.LAB_COAT_CHESTPLATE);
+        boolean labTrousers = legs.isOf(GallifreyModItems.LAB_COAT_LEGGINGS);
+
+        if (labCoat) {
+            model.body.visible = false;
+            model.jacket.visible = false;
+            model.leftArm.visible = false;
+            model.rightArm.visible = false;
+            model.leftSleeve.visible = false;
+            model.rightSleeve.visible = false;
+        }
+        if (labTrousers) {
+            model.leftLeg.visible = false;
+            model.rightLeg.visible = false;
+            model.leftPants.visible = false;
+            model.rightPants.visible = false;
+        }
 
         if (suitChest || robeChest) {
             model.body.visible = false;
