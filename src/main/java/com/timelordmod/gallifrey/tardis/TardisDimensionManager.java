@@ -59,7 +59,13 @@ public final class TardisDimensionManager {
     }
 
     public static boolean isInteriorWorld(World world) {
-        Identifier id = world.getRegistryKey().getValue();
+        return isInteriorKey(world.getRegistryKey());
+    }
+
+    /** True for any TARDIS interior: the legacy shared gallifrey:tardis or a per-TARDIS gallifrey:tardis_<id>. */
+    public static boolean isInteriorKey(RegistryKey<World> key) {
+        if (key == null) return false;
+        Identifier id = key.getValue();
         return id.getNamespace().equals(GallifreyMod.MOD_ID)
                 && (id.getPath().equals("tardis") || id.getPath().startsWith("tardis_"));
     }

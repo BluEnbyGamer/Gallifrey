@@ -33,6 +33,16 @@ public class HeadwearItem extends Item implements Equipment {
         ItemStack held = user.getStackInHand(hand);
         ItemStack head = user.getEquippedStack(EquipmentSlot.HEAD);
 
+        // Fezzes go in the fez slot first, when it's empty.
+        if (GallifreyAccessories.fitsFezSlot(held) && GallifreyAccessories.getFez(user).isEmpty()) {
+            if (!world.isClient) {
+                GallifreyAccessories.setFez(user, held.copyWithCount(1));
+                held.decrement(1);
+                user.playSound(getEquipSound(), 1.0F, 1.0F);
+            }
+            return TypedActionResult.success(held, world.isClient());
+        }
+
         if (head.isEmpty()) {
             if (!world.isClient) {
                 user.equipStack(EquipmentSlot.HEAD, held.copyWithCount(1));

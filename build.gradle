@@ -37,6 +37,9 @@ repositories {
 		name = 'TerraformersMC'
 		url = 'https://maven.terraformersmc.com/'
 	}
+	maven { url = "https://maven.shedaniel.me/" }      // REI
+	maven { url = "https://maven.architectury.dev/" }  // REI's own dependencies
+	maven { url = "https://maven.maxhenkel.de/repository/public" } // Simple Voice Chat API
 }
 
 loom {
@@ -88,6 +91,17 @@ dependencies {
 
 	//please leave this alone
 	modCompileOnly("mezz.jei:jei-1.20.1-fabric:15.62.0.217") { transitive = false }
+
+	// EMI and REI: compile against their APIs only, so neither is needed to play.
+	modCompileOnly "dev.emi:emi-fabric:1.1.2+1.20.1:api"
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:12.0.684"
+	// Mod Menu: API only, for the config button.
+	modCompileOnly "com.terraformersmc:modmenu:7.2.2"
+	// Jade: API only, for the Tree Tapper tooltip.
+	modCompileOnly "maven.modrinth:jade:11.13.1+fabric"
+	// Distant Horizons: only its event API is used (foggy dimensions). Not needed to play.
+	modCompileOnly("maven.modrinth:distanthorizons:2.3.6-b-1.20.1") { transitive = false }
+	compileOnly "de.maxhenkel.voicechat:voicechat-api:2.5.0"
 }
 
 /*

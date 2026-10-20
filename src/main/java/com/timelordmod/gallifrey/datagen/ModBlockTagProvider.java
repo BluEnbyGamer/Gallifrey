@@ -16,12 +16,22 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
+        // Classic buttons and pressure plates: the vanilla tags make them behave (and mine) like
+        // the vanilla ones. Wooden ones are axe-mineable through these tags already.
+        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(GallifreyModBlocks.CLASSIC_WOODEN_BUTTON);
+        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(GallifreyModBlocks.CLASSIC_WOODEN_PRESSURE_PLATE);
+        getOrCreateTagBuilder(BlockTags.STONE_BUTTONS).add(GallifreyModBlocks.CLASSIC_STONE_BUTTON);
+        getOrCreateTagBuilder(BlockTags.STONE_PRESSURE_PLATES).add(GallifreyModBlocks.CLASSIC_STONE_PRESSURE_PLATE);
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_STONE_BUTTON, GallifreyModBlocks.CLASSIC_STONE_PRESSURE_PLATE);
+
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(GallifreyModBlocks.CLASSIC_LOG, GallifreyModBlocks.CLASSIC_PLANKS, GallifreyModBlocks.CLASSIC_STAIRS, GallifreyModBlocks.CLASSIC_SLAB, GallifreyModBlocks.CLASSIC_FENCE, GallifreyModBlocks.CLASSIC_FENCE_GATE);
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
                 .add(GallifreyModBlocks.CLASSIC_LOG);
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(GallifreyModBlocks.CLASSIC_LEAVES);
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(GallifreyModBlocks.GALLIFREYAN_WORKBENCH);
         getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
                 .add(GallifreyModBlocks.CLASSIC_GRASS, GallifreyModBlocks.CLASSIC_DIRT, GallifreyModBlocks.CLASSIC_SAND, GallifreyModBlocks.CLASSIC_GRAVEL);
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
@@ -264,6 +274,25 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(GallifreyModBlocks.CLASSIC_LEAVES, GallifreyModBlocks.CLASSIC_GRASS);
 
+        // Classic blocks that copy a vanilla block which needs the right tool to drop.
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_FURNACE, GallifreyModBlocks.CLASSIC_OBSIDIAN,
+                        GallifreyModBlocks.CLASSIC_MOSSY_COBBLESTONE, GallifreyModBlocks.CLASSIC_DIAMOND_BLOCK,
+                        GallifreyModBlocks.CLASSIC_EMERALD_BLOCK, GallifreyModBlocks.CLASSIC_LAPIS_BLOCK,
+                        GallifreyModBlocks.CLASSIC_REDSTONE_BLOCK, GallifreyModBlocks.CLASSIC_EMERALD_ORE,
+                        GallifreyModBlocks.CLASSIC_NETHER_GLOWSTONE, GallifreyModBlocks.CLASSIC_NETHER_MAGMA);
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_CRAFTING_TABLE, GallifreyModBlocks.CLASSIC_BOOKSHELF);
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
+                .add(GallifreyModBlocks.CLASSIC_NETHER_SOUL_SAND);
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(GallifreyModBlocks.CLASSIC_IRON, GallifreyModBlocks.CLASSIC_LAPIS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(GallifreyModBlocks.CLASSIC_GOLD, GallifreyModBlocks.CLASSIC_DIAMOND_BLOCK,
+                        GallifreyModBlocks.CLASSIC_EMERALD_BLOCK, GallifreyModBlocks.CLASSIC_EMERALD_ORE);
+        getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(GallifreyModBlocks.CLASSIC_OBSIDIAN);
+
         // ------------------------------------------------------------------
         // Entries that used to live in hand-written tag files under
         // src/main/resources/data/minecraft/tags/blocks/. Those files had the
@@ -305,5 +334,27 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(GallifreyModBlocks.ATRIUM_ORE, GallifreyModBlocks.DEEPSLATE_ATRIUM_ORE,
                         GallifreyModBlocks.ATRIUM_BLOCK);
+
+        // Ruby and sapphire: pickaxe-mineable, iron pickaxe or better to get drops.
+        // (These blocks use requiresTool(), so without these tags they mine
+        // at 1/100 speed and drop nothing.)
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(GallifreyModBlocks.RUBY_ORE, GallifreyModBlocks.DEEPSLATE_RUBY_ORE,
+                        GallifreyModBlocks.RUBY_BLOCK,
+                        GallifreyModBlocks.SAPPHIRE_ORE, GallifreyModBlocks.DEEPSLATE_SAPPHIRE_ORE,
+                        GallifreyModBlocks.SAPPHIRE_BLOCK);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(GallifreyModBlocks.RUBY_ORE, GallifreyModBlocks.DEEPSLATE_RUBY_ORE,
+                        GallifreyModBlocks.RUBY_BLOCK,
+                        GallifreyModBlocks.SAPPHIRE_ORE, GallifreyModBlocks.DEEPSLATE_SAPPHIRE_ORE,
+                        GallifreyModBlocks.SAPPHIRE_BLOCK);
+
+        // Classic ore tiers that were only in the (now deleted) hand-written tag files.
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(GallifreyModBlocks.CLASSIC_IRON_ORE, GallifreyModBlocks.CLASSIC_LAPIS_ORE,
+                        GallifreyModBlocks.CLASSIC_NETHER_QUARTZ_ORE);
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(GallifreyModBlocks.CLASSIC_GOLD_ORE, GallifreyModBlocks.CLASSIC_DIAMOND_ORE,
+                        GallifreyModBlocks.CLASSIC_REDSTONE_ORE);
     }
 }

@@ -127,6 +127,11 @@ public class TardisExteriorBlock extends Block implements BlockEntityProvider {
         boolean entered = TardisDimensionManager.enter(serverPlayer, tardis);
         if (entered) {
             world.playSound(null, pos, GallifreySounds.POLICE_BOX_DOOR_OPEN, SoundCategory.BLOCKS, 0.65F, 1.0F);
+            // The player is now standing just inside this TARDIS's own interior dimension.
+            com.timelordmod.gallifrey.tardis.TardisEntryTracker.entered(serverPlayer.getUuid(),
+                    world.getRegistryKey(), pos,
+                    serverPlayer.getWorld().getRegistryKey(), serverPlayer.getPos());
+            com.timelordmod.gallifrey.compat.pehkui.PehkuiCompat.squeezeThroughDoor(serverPlayer);
         }
         return ActionResult.SUCCESS;
     }

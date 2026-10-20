@@ -24,6 +24,12 @@ public enum ModArmorMaterials implements ArmorMaterial {
     //            name            durability  boots legs chest helmet  ench  equip sound                          toughness  knockback
     STEEL(        "steel",         18,         2,    5,   7,    2,      10,   SoundEvents.ITEM_ARMOR_EQUIP_IRON,      0.5F,      0.0F,
             () -> Ingredient.ofItems(GallifreyModItems.STEEL_INGOT)),
+    EMERALD(      "emerald",        33,         3,    6,   8,    3,      10,   SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,    2.0F,      0.0F,
+            () -> Ingredient.fromTag(net.minecraft.registry.tag.TagKey.of(net.minecraft.registry.RegistryKeys.ITEM, new net.minecraft.util.Identifier("gallifrey", "emerald_crafting_materials")))),
+    RUBY(         "ruby",          15,         2,    5,   6,    2,      14,   SoundEvents.ITEM_ARMOR_EQUIP_IRON,      0.0F,      0.0F,
+            () -> Ingredient.ofItems(GallifreyModItems.RUBY)),
+    SAPPHIRE(     "sapphire",      15,         2,    5,   6,    2,      14,   SoundEvents.ITEM_ARMOR_EQUIP_IRON,      0.0F,      0.0F,
+            () -> Ingredient.ofItems(GallifreyModItems.SAPPHIRE)),
     DALEKANIUM(   "dalekanium",    15,         2,    5,   6,    2,      9,    SoundEvents.ITEM_ARMOR_EQUIP_IRON,      0.0F,      0.0F,
             () -> Ingredient.ofItems(GallifreyModItems.DALEKANIUM_INGOT)),
     METALERTANIUM("metalertanium", 37,         3,    6,   8,    3,      15,   SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F,      0.1F,

@@ -10,35 +10,19 @@ import net.minecraft.data.client.ModelIds;
 import net.minecraft.data.client.Models;
 import net.minecraft.data.client.TextureKey;
 import net.minecraft.data.client.TextureMap;
+import net.minecraft.data.client.BlockStateVariant;
+import net.minecraft.data.client.MultipartBlockStateSupplier;
+import net.minecraft.data.client.VariantSettings;
+import net.minecraft.data.client.When;
+import net.minecraft.state.property.Properties;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
 
-/**
- * Generates the blockstates and models for the Skaro stairs, slabs and walls.
- *
- * Everything else is still an ordinary hand-edited file in
- *   src/main/resources/assets/gallifrey/blockstates
- *   src/main/resources/assets/gallifrey/models
- *
- * Why only these: the stock generator helpers always write textures as
- * "gallifrey:block/<block id>", in one flat folder, but our textures are sorted
- * into sub-folders. The Skaro set below avoids that by passing the texture
- * path in by hand (see SKARO_TEXTURE_FOLDER). Any other block added here must
- * do the same, or its model will point at a texture that is not there.
- *
- * To add another Skaro stone type: register the four blocks in
- * GallifreyModBlocks, put <base id>.png in textures/block/skaro/, hand-write
- * the full block's own blockstate and model as usual, then add one StoneSet
- * line to SKARO_SETS and run runDatagen.
- */
 public class ModModelProvider extends FabricModelProvider {
 
-    /** Folder (inside textures/) that holds the Skaro stone textures. */
     private static final String SKARO_TEXTURE_FOLDER = "block/skaro/";
-
-    /** A full block and the stairs, slab and wall made from it. */
     private record StoneSet(Block base, Block stairs, Block slab, Block wall) {}
 
     private static final List<StoneSet> SKARO_SETS = List.of(
@@ -56,6 +40,28 @@ public class ModModelProvider extends FabricModelProvider {
             new StoneSet(GallifreyModBlocks.SKARO_DEEPSLATE_TILES, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_STAIRS, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_SLAB, GallifreyModBlocks.SKARO_DEEPSLATE_TILES_WALL)
     );
 
+    private static final String CLASSIC_TEXTURE_FOLDER = "block/classic_minecraft/";
+    private record Textured(Block block, String texture) {}
+    private record Pane(Block pane, String texture, String edgeTexture) {}
+
+    private static final List<Textured> CLASSIC_BUTTONS = List.of(
+            new Textured(GallifreyModBlocks.CLASSIC_WOODEN_BUTTON, "classic_planks"),
+            new Textured(GallifreyModBlocks.CLASSIC_STONE_BUTTON, "classic_stone")
+    );
+
+    private static final List<Textured> CLASSIC_PRESSURE_PLATES = List.of(
+            new Textured(GallifreyModBlocks.CLASSIC_WOODEN_PRESSURE_PLATE, "classic_planks"),
+            new Textured(GallifreyModBlocks.CLASSIC_STONE_PRESSURE_PLATE, "classic_stone")
+    );
+
+    private static final List<Pane> CLASSIC_PANES = List.of(
+            new Pane(GallifreyModBlocks.CLASSIC_GLASS_PANE, "classic_glass", "classic_glass_pane_top")
+    );
+
+    private static Identifier classic(String texture) {
+        return new Identifier("gallifrey", CLASSIC_TEXTURE_FOLDER + texture);
+    }
+
     public ModModelProvider(FabricDataOutput output) {
         super(output);
     }
@@ -71,6 +77,53 @@ public class ModModelProvider extends FabricModelProvider {
             registerSlab(generator, set.slab(), set.base(), texture);
             registerWall(generator, set.wall(), texture);
         }
+
+        for (Textured button : CLASSIC_BUTTONS) registerButton(generator, button.block(), classic(button.texture()));
+        for (Textured plate : CLASSIC_PRESSURE_PLATES) registerPressurePlate(generator, plate.block(), classic(plate.texture()));
+        for (Pane pane : CLASSIC_PANES) registerPane(generator, pane.pane(), classic(pane.texture()), classic(pane.edgeTexture()));
+    }
+
+    private static void registerButton(BlockStateModelGenerator generator, Block button, Identifier texture) {
+        TextureMap textures = TextureMap.texture(texture);
+        Identifier up = Models.BUTTON.upload(button, textures, generator.modelCollector);
+        Identifier pressed = Models.BUTTON_PRESSED.upload(button, textures, generator.modelCollector);
+        generator.blockStateCollector.accept(BlockStateModelGenerator.createButtonBlockState(button, up, pressed));
+        // A placed button looks tiny in the hand, so the item uses the special inventory model.
+        Identifier inventory = Models.BUTTON_INVENTORY.upload(button, textures, generator.modelCollector);
+        generator.registerParentedItemModel(button, inventory);
+    }
+
+    private static void registerPressurePlate(BlockStateModelGenerator generator, Block plate, Identifier texture) {
+        TextureMap textures = TextureMap.texture(texture);
+        Identifier up = Models.PRESSURE_PLATE_UP.upload(plate, textures, generator.modelCollector);
+        Identifier down = Models.PRESSURE_PLATE_DOWN.upload(plate, textures, generator.modelCollector);
+        generator.blockStateCollector.accept(BlockStateModelGenerator.createPressurePlateBlockState(plate, up, down));
+        // The item model (parent: the raised plate model) is generated automatically.
+    }
+
+    /** Same models and blockstate vanilla uses for glass panes, but with our own texture paths. */
+    private static void registerPane(BlockStateModelGenerator generator, Block pane, Identifier texture, Identifier edge) {
+        TextureMap textures = new TextureMap().put(TextureKey.PANE, texture).put(TextureKey.EDGE, edge);
+        Identifier post = Models.TEMPLATE_GLASS_PANE_POST.upload(pane, textures, generator.modelCollector);
+        Identifier side = Models.TEMPLATE_GLASS_PANE_SIDE.upload(pane, textures, generator.modelCollector);
+        Identifier sideAlt = Models.TEMPLATE_GLASS_PANE_SIDE_ALT.upload(pane, textures, generator.modelCollector);
+        Identifier noSide = Models.TEMPLATE_GLASS_PANE_NOSIDE.upload(pane, textures, generator.modelCollector);
+        Identifier noSideAlt = Models.TEMPLATE_GLASS_PANE_NOSIDE_ALT.upload(pane, textures, generator.modelCollector);
+
+        // The item is the flat glass picture, like vanilla's glass pane item.
+        Models.GENERATED.upload(ModelIds.getItemModelId(pane.asItem()),
+                new TextureMap().put(TextureKey.LAYER0, texture), generator.modelCollector);
+
+        generator.blockStateCollector.accept(MultipartBlockStateSupplier.create(pane)
+                .with(BlockStateVariant.create().put(VariantSettings.MODEL, post))
+                .with(When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, side))
+                .with(When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, side).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, sideAlt))
+                .with(When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, sideAlt).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(Properties.NORTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, noSide))
+                .with(When.create().set(Properties.EAST, false), BlockStateVariant.create().put(VariantSettings.MODEL, noSideAlt))
+                .with(When.create().set(Properties.SOUTH, false), BlockStateVariant.create().put(VariantSettings.MODEL, noSideAlt).put(VariantSettings.Y, VariantSettings.Rotation.R90))
+                .with(When.create().set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, noSide).put(VariantSettings.Y, VariantSettings.Rotation.R270)));
     }
 
     private static TextureMap sides(Identifier texture) {

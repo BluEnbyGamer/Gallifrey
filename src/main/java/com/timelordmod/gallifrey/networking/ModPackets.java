@@ -5,6 +5,7 @@ import com.timelordmod.gallifrey.networking.packets.VMPacket;
 import com.timelordmod.gallifrey.networking.packets.SonicShadesPacket;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.util.Identifier;
+import com.timelordmod.gallifrey.networking.packets.SonicShadesSlotPacket;
 
 /**
  * Packet IDs and server-side receivers.
@@ -25,9 +26,15 @@ public class ModPackets {
     public static final Identifier TARDIS_REGISTER_DIMENSION = new Identifier(GallifreyMod.MOD_ID, "tardis_register_dimension");
     public static final Identifier TARDIS_RWF_INPUT = new Identifier(GallifreyMod.MOD_ID, "tardis_rwf_input");
     public static final Identifier TARDIS_RWF_STATE = new Identifier(GallifreyMod.MOD_ID, "tardis_rwf_state");
+    public static final Identifier SONIC_SHADES_SLOT_SWAP =
+            new Identifier(GallifreyMod.MOD_ID, "sonic_shades_slot_swap");
 
     public static void registerC2SPackets() {
         ServerPlayNetworking.registerGlobalReceiver(VM_PACKET, VMPacket::receive);
         ServerPlayNetworking.registerGlobalReceiver(SONIC_SHADES_USE, SonicShadesPacket::receive);
+        ServerPlayNetworking.registerGlobalReceiver(
+                SONIC_SHADES_SLOT_SWAP,
+                SonicShadesSlotPacket::receive
+        );
     }
 }

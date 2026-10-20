@@ -23,12 +23,12 @@ public class VortexDimensionsScreen extends Screen {
             new Destination("Gallifrey", "gallifrey:gallifrey"),
             new Destination("Skaro", "gallifrey:skaro"),
             new Destination("Mars", "gallifrey:mars"),
+            new Destination("Moon", "gallifrey:moon"),
             new Destination("Mondas", "gallifrey:mondas"),
             new Destination("Prehistoric", "gallifrey:prehistoric"),
             new Destination("Classic", "gallifrey:classic"),
             new Destination("Classic Nether", "gallifrey:classic_nether"),
-            new Destination("Pete's World", "gallifrey:petes_world"),
-            new Destination("Lost Reality", "gallifrey:lost_reality")
+            new Destination("Pete's World", "gallifrey:petes_world")
     );
 
     private final VortexManipulatorScreen parent;

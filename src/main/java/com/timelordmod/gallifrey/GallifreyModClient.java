@@ -9,6 +9,8 @@ import com.timelordmod.gallifrey.client.SonicShadesClient;
 import com.timelordmod.gallifrey.client.TardisExteriorRenderer;
 import com.timelordmod.gallifrey.client.TardisConsoleBlockEntityRenderer;
 import com.timelordmod.gallifrey.client.TardisInteriorDoorRenderer;
+import com.timelordmod.gallifrey.entity.client.DiamondMinecartRenderer;
+import com.timelordmod.gallifrey.entity.client.ClassicVillagerRenderer;
 import com.timelordmod.gallifrey.client.render.SonicWorkshopBlockEntityRenderer;
 import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
@@ -42,6 +44,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
+import net.minecraft.client.util.ModelIdentifier;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 
 import net.minecraft.client.MinecraftClient;
@@ -93,6 +97,46 @@ public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        // Distant Horizons: hide its far terrain in the foggy dimensions (Mars, Lost Reality).
+        // Checked here so the compat class, which uses DH's API, is only loaded when DH is installed.
+        if (net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("distanthorizons")) {
+            try {
+                com.timelordmod.gallifrey.compat.dh.DistantHorizonsCompat.register();
+                GallifreyMod.LOGGER.info("[Gallifrey] Distant Horizons found: far terrain hidden in foggy dimensions");
+            } catch (Throwable t) {
+                GallifreyMod.LOGGER.warn("[Gallifrey] Distant Horizons API wasn't what Gallifrey expected; fog compat is off", t);
+            }
+        }
+
+        // Flat 2D inventory icons for the fezzes and the Dalek eyestalk (see HeadwearFlatModels).
+        com.timelordmod.gallifrey.client.HeadwearFlatModels.register();
+
+        // Classic leather armour: the item icons are greyscale and get the leather colour
+        // (or the dye colour) at runtime, exactly like vanilla leather armour.
+        net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.ITEM.register(
+                (stack, tintIndex) -> tintIndex > 0 ? -1
+                        : ((net.minecraft.item.DyeableItem) stack.getItem()).getColor(stack),
+                com.timelordmod.gallifrey.item.GallifreyModItems.CLASSIC_LEATHER_HELMET,
+                com.timelordmod.gallifrey.item.GallifreyModItems.CLASSIC_LEATHER_CHESTPLATE,
+                com.timelordmod.gallifrey.item.GallifreyModItems.CLASSIC_LEATHER_LEGGINGS,
+                com.timelordmod.gallifrey.item.GallifreyModItems.CLASSIC_LEATHER_BOOTS);
+
+        // Cyber spawn eggs use complete custom PNG artwork. Force white/no tint for
+        // every model layer so Minecraft does not recolour the supplied textures.
+        net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry.ITEM.register(
+                (stack, tintIndex) -> 0xFFFFFFFF,
+                GallifreyModItems.MONDASIAN_CYBERMAN_SPAWN_EGG,
+                GallifreyModItems.PROTO_CYBERMAN_SPAWN_EGG,
+                GallifreyModItems.CYBERMAT_SPAWN_EGG);
+
+        // Register the complete supplied Classic-era asset pack as an optional built-in
+        // resource pack. The integrated Classic blocks use the supplied textures directly;
+        // this pack provides the remaining vanilla item/entity/sound overrides when enabled.
+        FabricLoader.getInstance().getModContainer(GallifreyMod.MOD_ID).ifPresent(container ->
+                ResourceManagerHelper.registerBuiltinResourcePack(
+                        new Identifier(GallifreyMod.MOD_ID, "classic_assets"),
+                        container,
+                        ResourcePackActivationType.NORMAL));
 
         // Register the complete supplied Classic-era asset pack as an optional built-in
         // resource pack. The integrated Classic blocks use the supplied textures directly;
@@ -134,10 +178,21 @@ public class GallifreyModClient implements ClientModInitializer {
         com.timelordmod.gallifrey.client.ModClientPackets.register();
         registerRwfControls();
 
+        EntityRendererRegistry.register(GallifreyEntities.TIME_LORD, com.timelordmod.gallifrey.entity.client.TimeLordRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.CAVEMAN, com.timelordmod.gallifrey.entity.client.CavemanRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.client.MondasianCybermanRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.PROTO_CYBERMAN, com.timelordmod.gallifrey.entity.client.ProtoCybermanRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.CYBERMAT, com.timelordmod.gallifrey.entity.client.CybermatRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(com.timelordmod.gallifrey.entity.client.GallifreyCyberModelLayers.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.client.MondasianCybermanModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(com.timelordmod.gallifrey.entity.client.GallifreyCyberModelLayers.PROTO_CYBERMAN, com.timelordmod.gallifrey.entity.client.ProtoCybermanModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(com.timelordmod.gallifrey.entity.client.GallifreyCyberModelLayers.CYBERMAT, com.timelordmod.gallifrey.entity.client.CybermatModel::getTexturedModelData);
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK, SkaroCityDalekRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.SKARO_CITY_DALEK_ALT, SkaroCityDalekAltRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.SUPREME_COUNCIL_DALEK, SupremeCouncilDalekRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.LASER, LaserRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.DIAMOND_MINECART, DiamondMinecartRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.CLASSIC_VILLAGER, ClassicVillagerRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.TIMELORD_VILLAGER, com.timelordmod.gallifrey.entity.client.TimeLordVillagerRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.ALPHA_GHAST, AlphaGhastRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.ALPHA_ZOMBIE_PIGMAN, AlphaZombiePigmanRenderer::new);
         SonicShadesClient.register();
@@ -212,6 +267,11 @@ public class GallifreyModClient implements ClientModInitializer {
         // =========================================================
         // DIMENSION SKY
         // =========================================================
+
+        DimensionRenderingRegistry.registerSkyRenderer(
+                ModDimensions.MOON_LEVEL_KEY,
+                new MoonSkyRenderer()
+        );
 
         DimensionRenderingRegistry.registerSkyRenderer(
                 ModDimensions.GALL_LEVEL_KEY,
@@ -580,6 +640,10 @@ public class GallifreyModClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlock(
                 GallifreyModBlocks.CLASSIC_GLASS,
+                RenderLayer.getCutout()
+        );
+        BlockRenderLayerMap.INSTANCE.putBlock(
+                GallifreyModBlocks.CLASSIC_GLASS_PANE,
                 RenderLayer.getCutout()
         );
         BlockRenderLayerMap.INSTANCE.putBlock(

@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "wooden_fence",
   "pattern": [
     "W#W",
     "W#W"
@@ -11,7 +10,7 @@
       "item": "gallifrey:classic_planks"
     },
     "#": {
-      "item": "minecraft:stick"
+      "item": "gallifrey:classic_stick"
     }
   },
   "result": {

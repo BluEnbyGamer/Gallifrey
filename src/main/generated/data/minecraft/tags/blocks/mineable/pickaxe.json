@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "gallifrey:classic_stone_button",
+    "gallifrey:classic_stone_pressure_plate",
     "gallifrey:classic_stone",
     "gallifrey:classic_cobble",
     "gallifrey:classic_gold",
@@ -152,6 +154,16 @@
     "gallifrey:classic_sponge",
     "gallifrey:classic_bricks",
     "gallifrey:classic_tnt",
+    "gallifrey:classic_furnace",
+    "gallifrey:classic_obsidian",
+    "gallifrey:classic_mossy_cobblestone",
+    "gallifrey:classic_diamond_block",
+    "gallifrey:classic_emerald_block",
+    "gallifrey:classic_lapis_block",
+    "gallifrey:classic_redstone_block",
+    "gallifrey:classic_emerald_ore",
+    "gallifrey:classic_nether_glowstone",
+    "gallifrey:classic_nether_magma",
     {
       "id": "#gallifrey:prehistoric_ores",
       "required": false
@@ -188,6 +200,12 @@
     "gallifrey:mars_stone_bricks_cracked_stairs",
     "gallifrey:mars_stone_bricks_cracked_slab",
     "gallifrey:mars_chizelled_stone_bricks_stairs",
-    "gallifrey:mars_chizelled_stone_bricks_slab"
+    "gallifrey:mars_chizelled_stone_bricks_slab",
+    "gallifrey:ruby_ore",
+    "gallifrey:deepslate_ruby_ore",
+    "gallifrey:ruby_block",
+    "gallifrey:sapphire_ore",
+    "gallifrey:deepslate_sapphire_ore",
+    "gallifrey:sapphire_block"
   ]
 }

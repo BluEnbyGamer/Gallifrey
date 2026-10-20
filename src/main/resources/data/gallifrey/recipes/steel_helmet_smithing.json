@@ -7,7 +7,7 @@
     "item": "minecraft:iron_helmet"
   },
   "addition": {
-    "item": "gallifrey:steel_ingot"
+    "tag": "gallifrey:steel_ingots"
   },
   "result": {
     "item": "gallifrey:steel_helmet"

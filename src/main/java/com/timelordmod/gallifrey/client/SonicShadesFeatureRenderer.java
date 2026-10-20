@@ -11,8 +11,9 @@ import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.EquipmentSlot;
+import com.timelordmod.gallifrey.item.custom.SonicShadesSlotAccess;
 import net.minecraft.item.ItemStack;
+import net.minecraft.entity.EquipmentSlot;
 
 /**
  * Renders the supplied Blockbench Sonic Shades model on the player's face.
@@ -41,7 +42,12 @@ public final class SonicShadesFeatureRenderer
             float headYaw,
             float headPitch) {
 
-        ItemStack stack = player.getEquippedStack(EquipmentSlot.HEAD);
+        ItemStack stack = ((SonicShadesSlotAccess) player).gallifrey$getSonicShades();
+        // Support both the dedicated Gallifrey wearable slot and the vanilla head slot.
+        // The latter is how shades were equipped in existing worlds/screens.
+        if (!stack.isOf(GallifreyModItems.SONIC_SHADES)) {
+            stack = player.getEquippedStack(EquipmentSlot.HEAD);
+        }
         if (!stack.isOf(GallifreyModItems.SONIC_SHADES)) {
             return;
         }
@@ -50,6 +56,9 @@ public final class SonicShadesFeatureRenderer
 
         // Follow the player's actual head rotation/pitch.
         this.getContextModel().head.rotate(matrices);
+
+        // Same rendering path as Gallifrey's HatFeatureRenderer. The model's
+        // own HEAD display transform controls orientation, scale and placement.
 
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         itemRenderer.renderItem(

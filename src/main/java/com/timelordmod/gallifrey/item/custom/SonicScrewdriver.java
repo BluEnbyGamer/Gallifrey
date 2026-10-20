@@ -6,6 +6,7 @@ import com.timelordmod.gallifrey.sonic.SonicHandler;
 import com.timelordmod.gallifrey.sonic.SonicMode;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,6 +14,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.UseAction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -200,7 +202,7 @@ public class SonicScrewdriver extends Item {
                         .getInt(MODE_KEY);
 
         SonicMode[] modes = SonicMode.values();
-        if (mode < 0 || mode >= modes.length) {
+        if (mode < 0 || mode >= modes.length || !isModeAvailable(stack, modes[mode])) {
             return SonicMode.INTERACTION;
         }
         return modes[mode];
@@ -215,8 +217,17 @@ public class SonicScrewdriver extends Item {
 
     public static void toggleMode(ItemStack stack) {
         SonicMode[] modes = SonicMode.values();
-        SonicMode current = getMode(stack);
-        setMode(stack, modes[(current.ordinal() + 1) % modes.length]);
+        SonicMode next = getMode(stack);
+        // Skip modes this sonic can't use right now (TARDIS mode needs Adventures in Time).
+        do {
+            next = modes[(next.ordinal() + 1) % modes.length];
+        } while (!isModeAvailable(stack, next));
+        setMode(stack, next);
+    }
+
+    /** TARDIS mode is only there with Adventures in Time installed, and not on the Sonic Shades. */
+    public static boolean isModeAvailable(ItemStack stack, SonicMode mode) {
+        return mode != SonicMode.TARDIS || com.timelordmod.gallifrey.compat.ait.AitSonics.canUseTardisMode(stack);
     }
 
     // =========================================================
@@ -367,6 +378,7 @@ public class SonicScrewdriver extends Item {
                 );
 
         Entity closestEntity = null;
+        Vec3d closestHit = null;
 
         double closestDistance =
                 SONIC_RANGE * SONIC_RANGE;
@@ -404,6 +416,9 @@ public class SonicScrewdriver extends Item {
 
                     closestEntity =
                             entity;
+
+                    closestHit =
+                            hit.get();
                 }
             }
         }
@@ -412,8 +427,11 @@ public class SonicScrewdriver extends Item {
             return null;
         }
 
+        // Keep the exact point the beam hit, so getSonicTarget can compare it with the block hit
+        // like for like (an entity's position is its feet, which is often further away).
         return new EntityHitResult(
-                closestEntity
+                closestEntity,
+                closestHit
         );
     }
 
@@ -421,7 +439,8 @@ public class SonicScrewdriver extends Item {
     // SONIC TARGET
     // =========================================================
 
-    private static HitResult getSonicTarget(
+    /** What the sonic is pointing at (block or entity, up to 16 blocks). Also used by the Sonic Shades scan HUD. */
+    public static HitResult getSonicTarget(
             PlayerEntity player
     ) {
 
@@ -465,7 +484,6 @@ public class SonicScrewdriver extends Item {
                             .getCameraPosVec(1.0F)
                             .squaredDistanceTo(
                                     entityHit
-                                            .getEntity()
                                             .getPos()
                             );
         }
@@ -477,7 +495,7 @@ public class SonicScrewdriver extends Item {
         if (
                 entityHit != null
                         && entityDistance
-                        < blockDistance
+                        <= blockDistance
         ) {
 
             return entityHit;
@@ -509,6 +527,26 @@ public class SonicScrewdriver extends Item {
         SonicMode mode = getMode(stack);
         SonicCasing casing = getCasing(stack);
 
+        if (mode == SonicMode.TARDIS) {
+            // Adventures in Time: call, send off or park the linked TARDIS. AIT shows its own
+            // message for what happened, so the power readout below is skipped.
+            if (com.timelordmod.gallifrey.compat.ait.AitSonics.useTardisMode(player, world, stack)) {
+                world.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        GallifreySounds.SONIC, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                consumePower(stack);
+            }
+            return;
+        }
+
+        // Deo's Portal Gun portals and Tempad time doors: overload closes them, scan reads where they go.
+        if (com.timelordmod.gallifrey.compat.deo.DeoPortals.handleSonic(player, target, mode)
+                || com.timelordmod.gallifrey.compat.tempad.TempadDoors.handleSonic(player, target, mode)) {
+            world.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    GallifreySounds.SONIC, SoundCategory.PLAYERS, 1.0F, 1.0F);
+            consumePower(stack);
+            return;
+        }
+
         SonicHandler.use(player, world, target, mode);
 
         world.playSound(
@@ -536,6 +574,32 @@ public class SonicScrewdriver extends Item {
                 ),
                 true
         );
+    }
+
+    // =========================================================
+    // NIRVANA BLUNT: held like a joint while smoking
+    // =========================================================
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.canSmoke(stack)
+                ? com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.SMOKE_TICKS
+                : super.getMaxUseTime(stack);
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.canSmoke(stack)
+                ? UseAction.SPYGLASS
+                : super.getUseAction(stack);
+    }
+
+    @Override
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        if (com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.canSmoke(stack)) {
+            com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.smoke(stack, world, user);
+        }
+        return stack;
     }
 
     // =========================================================
@@ -588,6 +652,19 @@ public class SonicScrewdriver extends Item {
                     stack,
                     world.isClient
             );
+        }
+
+        // =====================================================
+        // NIRVANA: SMOKE THE BLUNT CASING
+        // Pointed at nothing, a Blunt sonic is smoked like a joint
+        // (see compat.nirvana.NirvanaBlunt). Pointed at something,
+        // it's still a sonic.
+        // =====================================================
+
+        if (com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.canSmoke(stack)
+                && getSonicTarget(player).getType() == HitResult.Type.MISS) {
+            player.setCurrentHand(hand);
+            return TypedActionResult.consume(stack);
         }
 
         // =====================================================

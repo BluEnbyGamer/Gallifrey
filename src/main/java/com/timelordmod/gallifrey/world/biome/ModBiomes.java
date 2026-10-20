@@ -32,6 +32,8 @@ public class ModBiomes {
     public static final RegistryKey<Biome> TREEBORG_FOREST = registerKey("treeborg_forest");
     public static final RegistryKey<Biome> GALLIFREYAN_TREEBORG_FOREST = registerKey("gallifreyan_treeborg_forest");
     public static final RegistryKey<Biome> GALLIFREYAN_ASH_FOREST = registerKey("gallifreyan_ash_forest");
+    public static final RegistryKey<Biome> GALLIFREYAN_MAPLE_JUNGLE = registerKey("gallifreyan_maple_jungle");
+    public static final RegistryKey<Biome> GALLIFREYAN_MOONPINE_FOREST = registerKey("gallifreyan_moonpine_forest");
 
     private static RegistryKey<Biome> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.BIOME, new Identifier(GallifreyMod.MOD_ID, name));
@@ -107,6 +109,29 @@ public class ModBiomes {
                     generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.ASH_PLACED_KEY);
                     DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
                     DefaultBiomeFeatures.addDefaultGrass(generationSettings);
+                }));
+
+        // Maple Jungle - Gallifrey's take on the vanilla jungle: dense giant maples, maple
+        // bushes, hanging vines, jungle grass and melons. Warm and wet.
+        context.register(GALLIFREYAN_MAPLE_JUNGLE, createBiome(true, false, 0.95F, 0.9F, 10638337, 15105551, 14641191, 15109680,
+                placedFeatures, carvers, generationSettings -> {
+                    generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.MAPLE_JUNGLE_TREES_PLACED_KEY);
+                    DefaultBiomeFeatures.addDefaultFlowers(generationSettings);
+                    DefaultBiomeFeatures.addJungleGrass(generationSettings);
+                    DefaultBiomeFeatures.addMelons(generationSettings);
+                    DefaultBiomeFeatures.addVines(generationSettings);
+                }));
+
+        // Old Growth Moonpine Forest - like vanilla's old growth pine taiga (giant 2x2 trees,
+        // mossy boulders, large ferns, berry bushes) but without the podzol: the ground stays
+        // normal grass because the surface rules only put podzol in vanilla's own biomes.
+        context.register(GALLIFREYAN_MOONPINE_FOREST, createBiome(true, false, 0.3F, 0.8F, 10638337, 15105551, 14641191, 15109680,
+                placedFeatures, carvers, generationSettings -> {
+                    DefaultBiomeFeatures.addMossyRocks(generationSettings);
+                    DefaultBiomeFeatures.addLargeFerns(generationSettings);
+                    generationSettings.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.MOONPINE_FOREST_TREES_PLACED_KEY);
+                    DefaultBiomeFeatures.addTaigaGrass(generationSettings);
+                    DefaultBiomeFeatures.addSweetBerryBushes(generationSettings);
                 }));
 
         // Overworld biome (swapped in for vanilla forest by Biolith). It must NOT add the

@@ -1,8 +1,7 @@
 package com.timelordmod.gallifrey.item.custom;
 
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.Equipment;
 import net.minecraft.item.ItemStack;
+import com.timelordmod.gallifrey.item.custom.SonicShadesSlotAccess;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
@@ -18,35 +17,30 @@ import net.minecraft.world.World;
  * While worn, the client-side "Use Sonic Shades" keybind invokes the same
  * SonicScrewdriver activation logic against the player's look target.
  */
-public class SonicShadesItem extends SonicScrewdriver implements Equipment {
+public class SonicShadesItem extends SonicScrewdriver {
 
     public SonicShadesItem(Settings settings) {
         super(settings);
     }
 
     @Override
-    public EquipmentSlot getSlotType() {
-        return EquipmentSlot.HEAD;
-    }
-
-    @Override
-    public SoundEvent getEquipSound() {
-        return SoundEvents.ITEM_ARMOR_EQUIP_LEATHER;
-    }
-
-    @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack held = user.getStackInHand(hand);
-        ItemStack head = user.getEquippedStack(EquipmentSlot.HEAD);
-
-        if (head.isEmpty()) {
-            if (!world.isClient) {
-                user.equipStack(EquipmentSlot.HEAD, held.copyWithCount(1));
-                held.decrement(1);
+        if (!world.isClient) {
+            SonicShadesSlotAccess slot = (SonicShadesSlotAccess) user;
+            ItemStack worn = slot.gallifrey$getSonicShades();
+            ItemStack replacement = held.copyWithCount(1);
+            if (!worn.isEmpty()) {
+                slot.gallifrey$setSonicShades(ItemStack.EMPTY);
+                ItemStack returned = worn.copy();
+                if (!user.getInventory().insertStack(returned)) {
+                    user.dropItem(returned, false);
+                }
             }
-            return TypedActionResult.success(held, world.isClient);
+            slot.gallifrey$setSonicShades(replacement);
+            held.decrement(1);
+            user.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 1.0F);
         }
-
-        return TypedActionResult.pass(held);
+        return TypedActionResult.success(held, world.isClient);
     }
 }

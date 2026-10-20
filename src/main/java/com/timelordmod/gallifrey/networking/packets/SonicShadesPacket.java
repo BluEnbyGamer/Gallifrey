@@ -3,7 +3,7 @@ package com.timelordmod.gallifrey.networking.packets;
 import com.timelordmod.gallifrey.item.GallifreyModItems;
 import com.timelordmod.gallifrey.item.custom.SonicScrewdriver;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
-import net.minecraft.entity.EquipmentSlot;
+import com.timelordmod.gallifrey.item.custom.SonicShadesSlotAccess;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
@@ -23,7 +23,7 @@ public final class SonicShadesPacket {
         boolean toggleMode = buf.readBoolean();
 
         server.execute(() -> {
-            var stack = player.getEquippedStack(EquipmentSlot.HEAD);
+            var stack = ((SonicShadesSlotAccess) player).gallifrey$getSonicShades();
             if (!stack.isOf(GallifreyModItems.SONIC_SHADES)) {
                 return;
             }
@@ -37,6 +37,8 @@ public final class SonicShadesPacket {
             } else {
                 SonicScrewdriver.activate(player, player.getWorld(), stack);
             }
+            // The stack was changed in place: store it again so every client sees the change.
+            com.timelordmod.gallifrey.item.custom.GallifreyAccessories.resyncShades(player);
         });
     }
 }

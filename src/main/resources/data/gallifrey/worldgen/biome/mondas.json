@@ -10,7 +10,26 @@
     "water_fog_color": 329011
   },
   "spawners": {
-    "monster": [],
+    "monster": [
+      {
+        "type": "gallifrey:mondasian_cyberman",
+        "weight": 40,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "gallifrey:proto_cyberman",
+        "weight": 32,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "gallifrey:cybermat",
+        "weight": 38,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
     "creature": [],
     "ambient": [],
     "axolotls": [],

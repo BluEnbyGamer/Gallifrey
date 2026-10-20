@@ -87,7 +87,9 @@ public class TapperBlock extends Block {
             taps = List.of(
                     new Tap(GallifreyModBlocks.TREEBORG_LOG, GallifreyModBlocks.TREEBORG_LEAVES, GallifreyModItems.TREEBORG_PASTE),
                     new Tap(Blocks.OAK_LOG, Blocks.OAK_LEAVES, GallifreyModItems.SILICONE),
-                    new Tap(GallifreyModBlocks.MAPLE_LOG, GallifreyModBlocks.MAPLE_LEAVES, GallifreyModItems.MAPLE_SYRUP)
+                    new Tap(GallifreyModBlocks.MAPLE_LOG, GallifreyModBlocks.MAPLE_LEAVES, GallifreyModItems.MAPLE_SYRUP),
+                    new Tap(GallifreyModBlocks.PREHISTORIC_LOG, GallifreyModBlocks.PREHISTORIC_LEAVES, GallifreyModItems.HUON_PARTICLE),
+                    new Tap(GallifreyModBlocks.CLASSIC_LOG, GallifreyModBlocks.CLASSIC_LEAVES, GallifreyModItems.HUON_PARTICLE)
             );
         }
         return taps;
@@ -107,6 +109,17 @@ public class TapperBlock extends Block {
             if (log.isOf(tap.log())) return tap.product();
         }
         return null;
+    }
+
+    /** What this tapper collects, or null if it isn't on a tappable log. Used by the Jade tooltip. */
+    @Nullable
+    public static Item tappedProduct(BlockView world, BlockState state, BlockPos pos) {
+        return productFor(world.getBlockState(attachedPos(state, pos)));
+    }
+
+    /** Whether this tapper is on a living tree, so it's filling. Used by the Jade tooltip. */
+    public static boolean isFilling(World world, BlockState state, BlockPos pos) {
+        return isOnLivingTree(world, state, pos);
     }
 
     // ------------------------------------------------------------------

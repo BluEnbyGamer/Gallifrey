@@ -23,10 +23,7 @@
   },
   "features": [
     [],
-    [
-      "minecraft:lake_lava_underground",
-      "minecraft:lake_lava_surface"
-    ],
+    [],
     [],
     [],
     [],
@@ -37,7 +34,8 @@
       "gallifrey:classic_ore_gold",
       "gallifrey:classic_ore_redstone",
       "gallifrey:classic_ore_diamond",
-      "gallifrey:classic_ore_lapis"
+      "gallifrey:classic_ore_lapis",
+      "gallifrey:classic_ore_emerald"
     ],
     [],
     [],

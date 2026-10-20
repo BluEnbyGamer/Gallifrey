@@ -27,6 +27,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.STRIP_TARDIS_WOOD);
         addDrop(GallifreyModBlocks.TARDIS_PLANKS);
         addDrop(GallifreyModBlocks.TARDIS_STAIRS);
+        addDrop(GallifreyModBlocks.GALLIFREYAN_WORKBENCH);
         addPottedPlantDrops(GallifreyModBlocks.POTTED_TARDIS_SAPLING);
         addDrop(GallifreyModBlocks.TARDIS_SLAB, slabDrops(GallifreyModBlocks.TARDIS_SLAB));
         addDrop(GallifreyModBlocks.TARDIS_BUTTON);
@@ -156,6 +157,11 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(GallifreyModBlocks.CLASSIC_GOLD);
         addDrop(GallifreyModBlocks.CLASSIC_IRON);
         addDrop(GallifreyModBlocks.CLASSIC_GLASS, dropsWithSilkTouch(GallifreyModBlocks.CLASSIC_GLASS));
+        addDrop(GallifreyModBlocks.CLASSIC_GLASS_PANE, dropsWithSilkTouch(GallifreyModBlocks.CLASSIC_GLASS_PANE));
+        addDrop(GallifreyModBlocks.CLASSIC_WOODEN_BUTTON);
+        addDrop(GallifreyModBlocks.CLASSIC_STONE_BUTTON);
+        addDrop(GallifreyModBlocks.CLASSIC_WOODEN_PRESSURE_PLATE);
+        addDrop(GallifreyModBlocks.CLASSIC_STONE_PRESSURE_PLATE);
         addDrop(GallifreyModBlocks.CLASSIC_SPONGE);
         addDrop(GallifreyModBlocks.CLASSIC_BRICKS);
         addDrop(GallifreyModBlocks.CLASSIC_TNT);

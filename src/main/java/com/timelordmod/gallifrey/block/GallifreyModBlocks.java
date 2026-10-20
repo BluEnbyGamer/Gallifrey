@@ -2,6 +2,7 @@ package com.timelordmod.gallifrey.block;
 
 import com.timelordmod.gallifrey.block.custom.SpreadingGrassBlock;
 import com.timelordmod.gallifrey.block.TardisConsoleBlock;
+import com.timelordmod.gallifrey.block.custom.ClassicTntBlock;
 import com.timelordmod.gallifrey.item.custom.SonicWorkshopItem;
 
 import com.timelordmod.gallifrey.GallifreyMod;
@@ -49,6 +50,13 @@ public class GallifreyModBlocks {
     // CLASSIC BLOCKS
     // ============================================================
 
+    public static final Block GALLIFREYAN_WORKBENCH = registerBlock(
+            "gallifreyan_workbench",
+            new com.timelordmod.gallifrey.block.custom.GallifreyanWorkbenchBlock(
+                    FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE).nonOpaque()
+            )
+    );
+
     // Classic-era blocks and their custom 2009-era sound groups.
     private static final BlockSoundGroup CLASSIC_STONE_SOUNDS = new BlockSoundGroup(1.0F, 1.0F, GallifreySounds.CLASSIC_STONE_STEP_0, GallifreySounds.CLASSIC_STONE_STEP_1, GallifreySounds.CLASSIC_STONE_STEP_2, GallifreySounds.CLASSIC_STONE_STEP_3, GallifreySounds.CLASSIC_STONE_STEP_3);
     private static final BlockSoundGroup CLASSIC_GRASS_SOUNDS = new BlockSoundGroup(1.0F, 1.0F, GallifreySounds.CLASSIC_GRASS_STEP_0, GallifreySounds.CLASSIC_GRASS_STEP_1, GallifreySounds.CLASSIC_GRASS_STEP_2, GallifreySounds.CLASSIC_GRASS_STEP_3, GallifreySounds.CLASSIC_GRASS_STEP_3);
@@ -69,14 +77,27 @@ public class GallifreyModBlocks {
     public static final Block CLASSIC_LEAVES = registerBlock("classic_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_SAND = registerBlock("classic_sand", new FallingBlock(FabricBlockSettings.copyOf(Blocks.SAND).sounds(CLASSIC_GRAVEL_SOUNDS)));
     public static final Block CLASSIC_GRAVEL = registerBlock("classic_gravel", new FallingBlock(FabricBlockSettings.copyOf(Blocks.GRAVEL).sounds(CLASSIC_GRAVEL_SOUNDS)));
+    // Classic textures that were present in the asset pack but had no registered block.
+    public static final Block CLASSIC_MOSSY_COBBLESTONE = registerBlock("classic_mossy_cobblestone", new Block(FabricBlockSettings.copyOf(Blocks.MOSSY_COBBLESTONE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_BOOKSHELF = registerBlock("classic_bookshelf", new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_CRAFTING_TABLE = registerBlock("classic_crafting_table", new com.timelordmod.gallifrey.block.custom.ClassicCraftingTableBlock(FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE).sounds(CLASSIC_WOOD_SOUNDS)));
+    public static final Block CLASSIC_FURNACE = registerBlock("classic_furnace", new FurnaceBlock(FabricBlockSettings.copyOf(Blocks.FURNACE).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_WOOL_WINDOWS = registerBlock("classic_wool_windows", new Block(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)));
+
     public static final Block CLASSIC_GOLD = registerBlock("classic_gold", new Block(FabricBlockSettings.copyOf(Blocks.GOLD_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_IRON = registerBlock("classic_iron", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_GLASS = registerBlock("classic_glass", new GlassBlock(FabricBlockSettings.copyOf(Blocks.GLASS).sounds(BlockSoundGroup.GLASS).nonOpaque()));
     public static final Block CLASSIC_SPONGE = registerBlock("classic_sponge", new Block(FabricBlockSettings.copyOf(Blocks.SPONGE).sounds(CLASSIC_GRASS_SOUNDS)));
     public static final Block CLASSIC_BRICKS = registerBlock("classic_bricks", new Block(FabricBlockSettings.copyOf(Blocks.BRICKS).sounds(CLASSIC_STONE_SOUNDS)));
-    public static final Block CLASSIC_TNT = registerBlock("classic_tnt", new TntBlock(FabricBlockSettings.copyOf(Blocks.TNT).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_TNT = registerBlock("classic_tnt", new ClassicTntBlock(FabricBlockSettings.copyOf(Blocks.TNT).sounds(BlockSoundGroup.GRASS)));
     public static final Block CLASSIC_RED_FLOWER = registerBlock("classic_red_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.RED_TULIP)));
     public static final Block CLASSIC_YELLOW_FLOWER = registerBlock("classic_yellow_flower", new FlowerBlock(StatusEffects.SATURATION, 1, FabricBlockSettings.copyOf(Blocks.DANDELION)));
+    public static final Block CLASSIC_BEDROCK = registerBlock("classic_bedrock", new Block(FabricBlockSettings.copyOf(Blocks.BEDROCK).strength(-1.0F, 3600000.0F).dropsNothing().sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_DIAMOND_BLOCK = registerBlock("classic_diamond_block", new Block(FabricBlockSettings.copyOf(Blocks.DIAMOND_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_EMERALD_BLOCK = registerBlock("classic_emerald_block", new Block(FabricBlockSettings.copyOf(Blocks.EMERALD_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_LAPIS_BLOCK = registerBlock("classic_lapis_block", new Block(FabricBlockSettings.copyOf(Blocks.LAPIS_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_REDSTONE_BLOCK = registerBlock("classic_redstone_block", new Block(FabricBlockSettings.copyOf(Blocks.REDSTONE_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
+
     public static final Block CLASSIC_OBSIDIAN = registerBlock("classic_obsidian",
             new Block(FabricBlockSettings.copyOf(Blocks.OBSIDIAN).sounds(CLASSIC_STONE_SOUNDS)));
 
@@ -92,6 +113,75 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.LAPIS_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
     public static final Block CLASSIC_DIAMOND_ORE = registerBlock("classic_diamond_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.DIAMOND_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block CLASSIC_EMERALD_ORE = registerBlock("classic_emerald_ore",
+            new Block(FabricBlockSettings.copyOf(Blocks.EMERALD_ORE).strength(3.0F, 3.0F).requiresTool().sounds(CLASSIC_STONE_SOUNDS)));
+    public static final Block RUBY_BLOCK = registerBlock(
+            "ruby_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    .strength(3.0F, 3.0F)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.AMETHYST_BLOCK)));
+
+    public static final Block RUBY_ORE = registerBlock(
+            "ruby_ore",
+            new ExperienceDroppingBlock(
+                    FabricBlockSettings.copyOf(Blocks.EMERALD_ORE)
+                            .strength(3.0F, 3.0F)
+                            .requiresTool()
+                            .sounds(CLASSIC_STONE_SOUNDS),
+                    UniformIntProvider.create(3, 7)));
+
+    public static final Block DEEPSLATE_RUBY_ORE = registerBlock(
+            "deepslate_ruby_ore",
+            new ExperienceDroppingBlock(
+                    FabricBlockSettings.copyOf(Blocks.DEEPSLATE_EMERALD_ORE)
+                            .strength(4.5F, 3.0F)
+                            .requiresTool()
+                            .sounds(CLASSIC_STONE_SOUNDS),
+                    UniformIntProvider.create(3, 7)));
+
+    public static final Block SAPPHIRE_BLOCK = registerBlock(
+            "sapphire_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    .strength(3.0F, 3.0F)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.AMETHYST_BLOCK)));
+
+    public static final Block SAPPHIRE_ORE = registerBlock(
+            "sapphire_ore",
+            new ExperienceDroppingBlock(
+                    FabricBlockSettings.copyOf(Blocks.EMERALD_ORE)
+                            .strength(3.0F, 3.0F)
+                            .requiresTool()
+                            .sounds(CLASSIC_STONE_SOUNDS),
+                    UniformIntProvider.create(3, 7)));
+
+    public static final Block DEEPSLATE_SAPPHIRE_ORE = registerBlock(
+            "deepslate_sapphire_ore",
+            new ExperienceDroppingBlock(
+                    FabricBlockSettings.copyOf(Blocks.DEEPSLATE_EMERALD_ORE)
+                            .strength(4.5F, 3.0F)
+                            .requiresTool()
+                            .sounds(CLASSIC_STONE_SOUNDS),
+                    UniformIntProvider.create(3, 7)));
+
+    public static final Block CLASSIC_REDSTONE_LAMP = registerBlock("classic_redstone_lamp",
+            new RedstoneLampBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_LAMP).sounds(BlockSoundGroup.GLASS)));
+
+    // Classic buttons, pressure plates and glass pane. Their blockstates and models come from
+    // datagen (ModModelProvider), so there are no hand-written files for them in resources.
+    public static final Block CLASSIC_WOODEN_BUTTON = registerBlock("classic_wooden_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).sounds(CLASSIC_WOOD_SOUNDS), BlockSetType.OAK, 30, true));
+    public static final Block CLASSIC_STONE_BUTTON = registerBlock("classic_stone_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.STONE_BUTTON).sounds(CLASSIC_STONE_SOUNDS), BlockSetType.STONE, 20, false));
+    public static final Block CLASSIC_WOODEN_PRESSURE_PLATE = registerBlock("classic_wooden_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
+                    FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).sounds(CLASSIC_WOOD_SOUNDS), BlockSetType.OAK));
+    public static final Block CLASSIC_STONE_PRESSURE_PLATE = registerBlock("classic_stone_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.MOBS,
+                    FabricBlockSettings.copyOf(Blocks.STONE_PRESSURE_PLATE).sounds(CLASSIC_STONE_SOUNDS), BlockSetType.STONE));
+    public static final Block CLASSIC_GLASS_PANE = registerBlock("classic_glass_pane",
+            new PaneBlock(FabricBlockSettings.copyOf(Blocks.GLASS_PANE)));
 
 
     // Classic Nether block set based on the Alpha 1.2.6 assets. These are separate blocks so the
@@ -106,7 +196,7 @@ public class GallifreyModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.MAGMA_BLOCK)));
     public static final Block CLASSIC_NETHER_QUARTZ_ORE = registerBlock("classic_nether_quartz_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.NETHER_QUARTZ_ORE).strength(3.0F, 3.0F).requiresTool()));
-
+    public static final Block CLASSIC_COAL_BLOCK = registerBlock("classic_coal_block", new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK).sounds(CLASSIC_STONE_SOUNDS)));
     // ============================================================
     // MARS BLOCKS
     // ============================================================
@@ -213,7 +303,8 @@ public class GallifreyModBlocks {
     // Steel grates
     public static final Block GRATE_BLOCK = registerBlock(
             "grate_block",
-            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK))
+            new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)
+                    .nonOpaque())
     );
 
     public static final Block THICK_GRATE_BLOCK = registerBlock(

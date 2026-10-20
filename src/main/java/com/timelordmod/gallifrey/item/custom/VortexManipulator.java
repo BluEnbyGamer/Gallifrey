@@ -1,6 +1,7 @@
 package com.timelordmod.gallifrey.item.custom;
 
 import com.timelordmod.gallifrey.GallifreySounds;
+import com.timelordmod.gallifrey.item.GallifreyModItems;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,6 +13,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -19,6 +23,24 @@ import java.util.List;
 public class VortexManipulator extends Item {
 
     private static final String IN_FLIGHT_KEY = "VMInFlight";
+
+    /** Returns true when any non-empty fluid occupies the player's bounding box. */
+    private static boolean isInAnyLiquid(PlayerEntity player) {
+        Box box = player.getBoundingBox();
+        int minX = MathHelper.floor(box.minX);
+        int minY = MathHelper.floor(box.minY);
+        int minZ = MathHelper.floor(box.minZ);
+        int maxX = MathHelper.floor(box.maxX);
+        int maxY = MathHelper.floor(box.maxY);
+        int maxZ = MathHelper.floor(box.maxZ);
+
+        for (BlockPos pos : BlockPos.iterate(minX, minY, minZ, maxX, maxY, maxZ)) {
+            if (!player.getWorld().getFluidState(pos).isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public VortexManipulator(Settings settings) {
         super(settings
@@ -41,6 +63,27 @@ public class VortexManipulator extends Item {
     ) {
 
         ItemStack stack = user.getStackInHand(hand);
+
+        // Refuel by holding an Atrium Core in the other hand
+        // and using the Vortex Manipulator. One Atrium Core restores all ten uses.
+        ItemStack fuelStack = user.getStackInHand(hand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND);
+        if (!world.isClient && (!fuelStack.isEmpty()) && fuelStack.isOf(GallifreyModItems.ATRIUM_CORE)) {
+            int uses = stack.getOrCreateNbt().getInt("VMUsesRemaining");
+            if (uses >= 10) {
+                user.sendMessage(Text.literal("Vortex Manipulator power is already full (10/10)."), true);
+                return TypedActionResult.fail(stack);
+            }
+            fuelStack.decrement(1);
+            stack.getOrCreateNbt().putInt("VMUsesRemaining", 10);
+            user.sendMessage(Text.literal("Vortex Manipulator refuelled: 10/10 uses."), true);
+            return TypedActionResult.success(stack, false);
+        }
+
+        // The Vortex Manipulator cannot be activated while immersed in any fluid.
+        if (isInAnyLiquid(user)) {
+            user.sendMessage(Text.literal("VORTEX MANIPULATOR DISABLED: liquid interference detected."), true);
+            return TypedActionResult.fail(stack);
+        }
 
         if (!world.isClient && user instanceof net.minecraft.server.network.ServerPlayerEntity serverPlayer) {
             VortexManipulatorData.ensureOwner(stack, serverPlayer);
@@ -172,6 +215,10 @@ public class VortexManipulator extends Item {
                         "Blame UNIT!"
                 ).formatted(Formatting.DARK_RED)
         );
+
+        int uses = stack.getOrCreateNbt().contains("VMUsesRemaining") ? stack.getOrCreateNbt().getInt("VMUsesRemaining") : 10;
+        tooltip.add(Text.literal("Power: " + uses + "/10 uses"));
+        tooltip.add(Text.literal("Refuel using an Atrium Core in your other hand."));
 
         super.appendTooltip(
                 stack,

@@ -1,8 +1,6 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "top": "gallifrey:block/classic_minecraft/classic_gold_top",
-    "bottom": "gallifrey:block/classic_minecraft/classic_gold_bottom",
-    "side": "gallifrey:block/classic_minecraft/classic_gold_side"
+    "all": "gallifrey:block/classic_minecraft/classic_gold_block"
   }
 }

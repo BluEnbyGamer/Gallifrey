@@ -1,16 +1,8 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "XX",
-    "XX"
-  ],
-  "key": {
-    "X": {
-      "item": "minecraft:brick"
-    }
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:bricks"
   },
-  "result": {
-    "item": "gallifrey:classic_bricks",
-    "count": 1
-  }
+  "result": "gallifrey:classic_bricks",
+  "count": 1
 }

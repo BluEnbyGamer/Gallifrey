@@ -1,28 +1,32 @@
 {
-  "feature": "gallifrey:prehistoric_tree",
+  "feature": "gallifrey:prehistoric_jungle_trees",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 12
+      "count": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "data": 50,
+            "weight": 9
+          },
+          {
+            "data": 51,
+            "weight": 1
+          }
+        ]
+      }
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:heightmap",
-      "heightmap": "MOTION_BLOCKING_NO_LEAVES"
+      "type": "minecraft:surface_water_depth_filter",
+      "max_water_depth": 0
     },
     {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:would_survive",
-        "state": {
-          "Name": "gallifrey:prehistoric_sapling",
-          "Properties": {
-            "stage": "0"
-          }
-        }
-      }
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR"
     },
     {
       "type": "minecraft:biome"

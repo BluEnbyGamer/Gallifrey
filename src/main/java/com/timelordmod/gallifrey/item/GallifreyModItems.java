@@ -8,9 +8,13 @@ import com.timelordmod.gallifrey.entity.ModBoats;
 import com.timelordmod.gallifrey.entity.GallifreyEntities;
 import com.timelordmod.gallifrey.fluid.GallifreyFluids;
 import com.timelordmod.gallifrey.item.custom.GeoHeadwearItem;
+import com.timelordmod.gallifrey.item.custom.DiamondMinecartItem;
 import com.timelordmod.gallifrey.item.custom.VortexManipulator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.item.FlintAndSteelItem;
 import net.minecraft.item.*;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -21,8 +25,123 @@ import com.timelordmod.gallifrey.item.custom.PrehistoricArmorMaterial;
 import com.timelordmod.gallifrey.item.custom.PrehistoricToolMaterial;
 import com.timelordmod.gallifrey.item.custom.ModArmorMaterials;
 import com.timelordmod.gallifrey.item.custom.ModToolMaterials;
+import com.timelordmod.gallifrey.item.custom.SpaceSuitArmorItem;
+import com.timelordmod.gallifrey.item.custom.TimelordRobeArmorItem;
+import com.timelordmod.gallifrey.item.custom.TimelordRobeArmorMaterial;
 
 public class GallifreyModItems {
+    public static final Item DIAMOND_MINECART = new DiamondMinecartItem(new FabricItemSettings().maxCount(1));
+    // Space Suit — GeckoLib-rendered armor.
+    // Oxygen is managed by SpaceSuitOxygenHandler.
+    public static final SpaceSuitArmorItem SPACE_SUIT_HELMET =
+            new SpaceSuitArmorItem(
+                    com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE,
+                    ArmorItem.Type.HELMET,
+                    new FabricItemSettings().maxDamage(220)
+            );
+
+    public static final SpaceSuitArmorItem SPACE_SUIT_CHESTPLATE =
+            new SpaceSuitArmorItem(
+                    com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE,
+                    ArmorItem.Type.CHESTPLATE,
+                    new FabricItemSettings().maxDamage(320)
+            );
+
+    public static final SpaceSuitArmorItem SPACE_SUIT_LEGGINGS =
+            new SpaceSuitArmorItem(
+                    com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE,
+                    ArmorItem.Type.LEGGINGS,
+                    new FabricItemSettings().maxDamage(300)
+            );
+
+    public static final SpaceSuitArmorItem SPACE_SUIT_BOOTS =
+            new SpaceSuitArmorItem(
+                    com.timelordmod.gallifrey.item.custom.SpaceSuitArmorMaterial.INSTANCE,
+                    ArmorItem.Type.BOOTS,
+                    new FabricItemSettings().maxDamage(260)
+            );
+    // Timelord robes: cosmetic-looking GeckoLib armour with iron-level protection, no helmet and no oxygen support.
+    public static final TimelordRobeArmorItem TIMELORD_ROBE_CHESTPLATE =
+            new TimelordRobeArmorItem(TimelordRobeArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE,
+                    new FabricItemSettings().maxDamage(240));
+    public static final TimelordRobeArmorItem TIMELORD_ROBE_LEGGINGS =
+            new TimelordRobeArmorItem(TimelordRobeArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS,
+                    new FabricItemSettings().maxDamage(225));
+    public static final TimelordRobeArmorItem TIMELORD_ROBE_BOOTS =
+            new TimelordRobeArmorItem(TimelordRobeArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS,
+                    new FabricItemSettings().maxDamage(195));
+
+    // Dedicated legacy item identities: these are real Gallifrey registry entries, not texture overrides.
+    public static final Item CLASSIC_APPLE = new Item(new FabricItemSettings().food(FoodComponents.APPLE));
+    public static final Item CLASSIC_APPLE_GOLDEN = new Item(new FabricItemSettings().food(FoodComponents.GOLDEN_APPLE));
+    public static final Item CLASSIC_CARROT_GOLDEN = new Item(new FabricItemSettings().food(FoodComponents.GOLDEN_CARROT));
+
+    // Classic Chainmail Armor
+    public static final ArmorItem CLASSIC_CHAINMAIL_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.CHAINMAIL, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_CHAINMAIL_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.CHAINMAIL, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_CHAINMAIL_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.CHAINMAIL, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_CHAINMAIL_LEGGINGS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.CHAINMAIL, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+
+    public static final Item CLASSIC_COAL = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_DIAMOND = new Item(new FabricItemSettings());
+
+    // Classic Diamond Tools & Armor
+    public static final AxeItem CLASSIC_DIAMOND_AXE = new AxeItem(ModToolMaterials.CLASSIC_DIAMOND, 5.0F, -3.0F, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.DIAMOND, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.DIAMOND, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.DIAMOND, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final HoeItem CLASSIC_DIAMOND_HOE = new HoeItem(ModToolMaterials.CLASSIC_DIAMOND, -1, -1.0F, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_DIAMOND_LEGGINGS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.DIAMOND, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final PickaxeItem CLASSIC_DIAMOND_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_DIAMOND, 1, -2.8F, new FabricItemSettings());
+    public static final ShovelItem CLASSIC_DIAMOND_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_DIAMOND, 1.5F, -3.0F, new FabricItemSettings());
+    public static final SwordItem CLASSIC_DIAMOND_SWORD = new SwordItem(ModToolMaterials.CLASSIC_DIAMOND, 3, -2.4F, new FabricItemSettings());
+
+    public static final Item CLASSIC_EMERALD = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_FLINT = new Item(new FabricItemSettings());
+    public static final FlintAndSteelItem CLASSIC_FLINT_AND_STEEL = new FlintAndSteelItem(new FabricItemSettings().maxDamage(64));
+
+    // Classic Gold Tools & Armor
+    public static final AxeItem CLASSIC_GOLD_AXE = new AxeItem(ModToolMaterials.CLASSIC_GOLD, 6.0F, -3.0F, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.GOLD, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.GOLD, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.GOLD, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final HoeItem CLASSIC_GOLD_HOE = new HoeItem(ModToolMaterials.CLASSIC_GOLD, 0, -1.0F, new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_INGOT = new Item(new FabricItemSettings());
+    public static final ArmorItem CLASSIC_GOLD_LEGGINGS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.GOLD, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final Item CLASSIC_GOLD_NUGGET = new Item(new FabricItemSettings());
+    public static final PickaxeItem CLASSIC_GOLD_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_GOLD, 1, -2.8F, new FabricItemSettings());
+    public static final ShovelItem CLASSIC_GOLD_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_GOLD, 1.5F, -3.0F, new FabricItemSettings());
+    public static final SwordItem CLASSIC_GOLD_SWORD = new SwordItem(ModToolMaterials.CLASSIC_GOLD, 3, -2.4F, new FabricItemSettings());
+
+    // Classic Iron Tools & Armor
+    public static final AxeItem CLASSIC_IRON_AXE = new AxeItem(ModToolMaterials.CLASSIC_IRON, 6.0F, -3.1F, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_BOOTS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.IRON, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_CHESTPLATE = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.IRON, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_HELMET = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.IRON, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final HoeItem CLASSIC_IRON_HOE = new HoeItem(ModToolMaterials.CLASSIC_IRON, -2, -1.0F, new FabricItemSettings());
+    public static final Item CLASSIC_IRON_INGOT = new Item(new FabricItemSettings());
+    public static final ArmorItem CLASSIC_IRON_LEGGINGS = new ArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.IRON, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final PickaxeItem CLASSIC_IRON_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_IRON, 1, -2.8F, new FabricItemSettings());
+    public static final ShovelItem CLASSIC_IRON_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_IRON, 1.5F, -3.0F, new FabricItemSettings());
+    public static final SwordItem CLASSIC_IRON_SWORD = new SwordItem(ModToolMaterials.CLASSIC_IRON, 3, -2.4F, new FabricItemSettings());
+
+    // Classic Leather Armor
+    public static final Item CLASSIC_LEATHER = new Item(new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_BOOTS = new net.minecraft.item.DyeableArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.LEATHER, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_CHESTPLATE = new net.minecraft.item.DyeableArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.LEATHER, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_HELMET = new net.minecraft.item.DyeableArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem CLASSIC_LEATHER_LEGGINGS = new net.minecraft.item.DyeableArmorItem(com.timelordmod.gallifrey.item.custom.ClassicArmorMaterials.LEATHER, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+
+    public static final Item CLASSIC_OAK_BOAT = new Item(new FabricItemSettings());
+    public static final Item CLASSIC_STICK = new Item(new FabricItemSettings());
+
+    // Classic Wooden Tools
+    public static final AxeItem CLASSIC_WOOD_AXE = new AxeItem(ModToolMaterials.CLASSIC_WOOD, 6.0F, -3.2F, new FabricItemSettings());
+    public static final HoeItem CLASSIC_WOOD_HOE = new HoeItem(ModToolMaterials.CLASSIC_WOOD, 0, -1.0F, new FabricItemSettings());
+    public static final PickaxeItem CLASSIC_WOOD_PICKAXE = new PickaxeItem(ModToolMaterials.CLASSIC_WOOD, 1, -2.8F, new FabricItemSettings());
+    public static final ShovelItem CLASSIC_WOOD_SHOVEL = new ShovelItem(ModToolMaterials.CLASSIC_WOOD, 1.5F, -3.0F, new FabricItemSettings());
+    public static final SwordItem CLASSIC_WOOD_SWORD = new SwordItem(ModToolMaterials.CLASSIC_WOOD, 3, -2.4F, new FabricItemSettings());
+
 
     public static final WhitePointStarItem WHITE_POINT_STAR = new WhitePointStarItem(
             new FabricItemSettings()
@@ -44,7 +163,11 @@ public class GallifreyModItems {
             new FabricItemSettings()
     );
 
-    public static final SteelIngotItem DALEKANIUM_INGOT = new SteelIngotItem(
+    public static final DalekIngotItem DALEKANIUM_INGOT = new DalekIngotItem(
+            new FabricItemSettings()
+    );
+
+    public static final HuonParticleItem HUON_PARTICLE = new HuonParticleItem(
             new FabricItemSettings()
     );
 
@@ -77,6 +200,21 @@ public class GallifreyModItems {
             1.15F,
             ArmorMaterials.NETHERITE,
             new FabricItemSettings().fireproof()
+    );
+
+    public static final SpawnEggItem MONDASIAN_CYBERMAN_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.MONDASIAN_CYBERMAN, 0xB7B9B8, 0x303638, new FabricItemSettings());
+    public static final SpawnEggItem PROTO_CYBERMAN_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.PROTO_CYBERMAN, 0x777777, 0xA51D1D, new FabricItemSettings());
+    public static final SpawnEggItem CYBERMAT_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.CYBERMAT, 0x454545, 0xC5C5C5, new FabricItemSettings());
+    public static final SpawnEggItem CAVEMAN_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.CAVEMAN, 0x6B4A2E, 0xC89B6D, new FabricItemSettings());
+
+    public static final SpawnEggItem TIMELORD_VILLAGER_SPAWN_EGG = new SpawnEggItem(
+            GallifreyEntities.TIMELORD_VILLAGER, 0x4A101B, 0xE8A623, new FabricItemSettings());
+
+    public static final SpawnEggItem CLASSIC_VILLAGER_SPAWN_EGG = new SpawnEggItem(
+            GallifreyEntities.CLASSIC_VILLAGER,
+            0x563C33,
+            0xBD8B72,
+            new FabricItemSettings()
     );
 
     public static final SpawnEggItem SKARO_CITY_DALEK_SPAWN_EGG = new SpawnEggItem(
@@ -153,6 +291,39 @@ public class GallifreyModItems {
 
     // STEEL GEAR
     public static final Item STEEL_TEMPLATE = new Item(new FabricItemSettings());
+    // Emerald equipment: diamond-tier durability and combat/mining stats.
+    public static final SwordItem EMERALD_SWORD = new SwordItem(ModToolMaterials.EMERALD, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem EMERALD_PICKAXE = new PickaxeItem(ModToolMaterials.EMERALD, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem EMERALD_AXE = new AxeItem(ModToolMaterials.EMERALD, 6.0F, -3.0F, new FabricItemSettings());
+    public static final ShovelItem EMERALD_SHOVEL = new ShovelItem(ModToolMaterials.EMERALD, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem EMERALD_HOE = new HoeItem(ModToolMaterials.EMERALD, -2, -1.0F, new FabricItemSettings());
+    public static final ArmorItem EMERALD_HELMET = new ArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem EMERALD_CHESTPLATE = new ArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem EMERALD_LEGGINGS = new ArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem EMERALD_BOOTS = new ArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.BOOTS, new FabricItemSettings());
+
+    // Ruby and sapphire equipment, balanced to iron tier.
+    public static final Item RUBY = new Item(new FabricItemSettings());
+    public static final SwordItem RUBY_SWORD = new SwordItem(ModToolMaterials.RUBY, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem RUBY_PICKAXE = new PickaxeItem(ModToolMaterials.RUBY, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem RUBY_AXE = new AxeItem(ModToolMaterials.RUBY, 6.0F, -3.0F, new FabricItemSettings());
+    public static final ShovelItem RUBY_SHOVEL = new ShovelItem(ModToolMaterials.RUBY, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem RUBY_HOE = new HoeItem(ModToolMaterials.RUBY, -2, -1.0F, new FabricItemSettings());
+    public static final ArmorItem RUBY_HELMET = new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem RUBY_CHESTPLATE = new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem RUBY_LEGGINGS = new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem RUBY_BOOTS = new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.BOOTS, new FabricItemSettings());
+    public static final Item SAPPHIRE = new Item(new FabricItemSettings());
+    public static final SwordItem SAPPHIRE_SWORD = new SwordItem(ModToolMaterials.SAPPHIRE, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem SAPPHIRE_PICKAXE = new PickaxeItem(ModToolMaterials.SAPPHIRE, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem SAPPHIRE_AXE = new AxeItem(ModToolMaterials.SAPPHIRE, 6.0F, -3.0F, new FabricItemSettings());
+    public static final ShovelItem SAPPHIRE_SHOVEL = new ShovelItem(ModToolMaterials.SAPPHIRE, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem SAPPHIRE_HOE = new HoeItem(ModToolMaterials.SAPPHIRE, -2, -1.0F, new FabricItemSettings());
+    public static final ArmorItem SAPPHIRE_HELMET = new ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.HELMET, new FabricItemSettings());
+    public static final ArmorItem SAPPHIRE_CHESTPLATE = new ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
+    public static final ArmorItem SAPPHIRE_LEGGINGS = new ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
+    public static final ArmorItem SAPPHIRE_BOOTS = new ArmorItem(ModArmorMaterials.SAPPHIRE, ArmorItem.Type.BOOTS, new FabricItemSettings());
+
     public static final SwordItem STEEL_SWORD = new SwordItem(ModToolMaterials.STEEL, 3, -2.4F, new FabricItemSettings());
     public static final PickaxeItem STEEL_PICKAXE = new PickaxeItem(ModToolMaterials.STEEL, 1, -2.8F, new FabricItemSettings());
     public static final AxeItem STEEL_AXE = new AxeItem(ModToolMaterials.STEEL, 6.0F, -3.1F, new FabricItemSettings());
@@ -170,6 +341,18 @@ public class GallifreyModItems {
     public static final AxeItem DALEKANIUM_AXE = new AxeItem(ModToolMaterials.DALEKANIUM, 6.0F, -3.1F, new FabricItemSettings());
     public static final ShovelItem DALEKANIUM_SHOVEL = new ShovelItem(ModToolMaterials.DALEKANIUM, 1.5F, -3.0F, new FabricItemSettings());
     public static final HoeItem DALEKANIUM_HOE = new HoeItem(ModToolMaterials.DALEKANIUM, -2, -1.0F, new FabricItemSettings());
+
+    // Mars and Skaro stone tools: vanilla stone tool stats (same damage and speed numbers as vanilla's).
+    public static final SwordItem MARS_STONE_SWORD = new SwordItem(ModToolMaterials.MARS_STONE, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem MARS_STONE_PICKAXE = new PickaxeItem(ModToolMaterials.MARS_STONE, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem MARS_STONE_AXE = new AxeItem(ModToolMaterials.MARS_STONE, 7.0F, -3.2F, new FabricItemSettings());
+    public static final ShovelItem MARS_STONE_SHOVEL = new ShovelItem(ModToolMaterials.MARS_STONE, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem MARS_STONE_HOE = new HoeItem(ModToolMaterials.MARS_STONE, -1, -2.0F, new FabricItemSettings());
+    public static final SwordItem SKARO_STONE_SWORD = new SwordItem(ModToolMaterials.SKARO_STONE, 3, -2.4F, new FabricItemSettings());
+    public static final PickaxeItem SKARO_STONE_PICKAXE = new PickaxeItem(ModToolMaterials.SKARO_STONE, 1, -2.8F, new FabricItemSettings());
+    public static final AxeItem SKARO_STONE_AXE = new AxeItem(ModToolMaterials.SKARO_STONE, 7.0F, -3.2F, new FabricItemSettings());
+    public static final ShovelItem SKARO_STONE_SHOVEL = new ShovelItem(ModToolMaterials.SKARO_STONE, 1.5F, -3.0F, new FabricItemSettings());
+    public static final HoeItem SKARO_STONE_HOE = new HoeItem(ModToolMaterials.SKARO_STONE, -1, -2.0F, new FabricItemSettings());
     public static final ArmorItem DALEKANIUM_HELMET = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.HELMET, new FabricItemSettings());
     public static final ArmorItem DALEKANIUM_CHESTPLATE = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.CHESTPLATE, new FabricItemSettings());
     public static final ArmorItem DALEKANIUM_LEGGINGS = new ArmorItem(ModArmorMaterials.DALEKANIUM, ArmorItem.Type.LEGGINGS, new FabricItemSettings());
@@ -197,6 +380,10 @@ public class GallifreyModItems {
             new MusicDiscItem(7, GallifreySounds.DWXIV, new FabricItemSettings().maxCount(1), 151));
     public static final Item GALLIFREY_MUSIC_DISC = registerItem("music_disk_b",
             new MusicDiscItem(7, GallifreySounds.GALLIFREY, new FabricItemSettings().maxCount(1), 198));
+    public static final Item VALEDECEM_MUSIC_DISC = registerItem("valedecem_disc",
+            new MusicDiscItem(7, GallifreySounds.DRWHOVALE, new FabricItemSettings().maxCount(1), 180));
+    public static final Item DUGGA_DOO_MUSIC_DISC = registerItem("dugga_doo_disc",
+            new MusicDiscItem(7, GallifreySounds.DUGGAO_DOO, new FabricItemSettings().maxCount(1), 180));
 
     public static final Item RADIATION_BUCKET = registerItem("radiation_bucket",
             new BucketItem(GallifreyFluids.STILL_RADIATION, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
@@ -240,12 +427,17 @@ public class GallifreyModItems {
     public static final Item ENERGIZED_ATRIUM = new Item(new FabricItemSettings());
     public static final Item ATRIUM_CORE = new Item(new FabricItemSettings());
 
-
-
-
-
     public static void register() {
+        registerItem("diamond_minecart", DIAMOND_MINECART);
+        registerItem("space_suit_helmet", SPACE_SUIT_HELMET);
+        registerItem("space_suit_chestplate", SPACE_SUIT_CHESTPLATE);
+        registerItem("space_suit_leggings", SPACE_SUIT_LEGGINGS);
+        registerItem("space_suit_boots", SPACE_SUIT_BOOTS);
+        registerItem("timelord_robe_chestplate", TIMELORD_ROBE_CHESTPLATE);
+        registerItem("timelord_robe_leggings", TIMELORD_ROBE_LEGGINGS);
+        registerItem("timelord_robe_boots", TIMELORD_ROBE_BOOTS);
         registerItem("white_point_star", WHITE_POINT_STAR);
+        registerItem("huon_particle", HUON_PARTICLE);
         registerItem("silicone", SILICONE);
         registerItem("vortex_manipulator", VORTEX_MANIPULATOR);
         registerItem("blank_circuit", BLANK_CIRCUIT);
@@ -270,6 +462,35 @@ public class GallifreyModItems {
         registerItem("prehistoric_boots", PREHISTORIC_BOOTS);
 
         registerItem("steel_template", STEEL_TEMPLATE);
+        registerItem("emerald_sword", EMERALD_SWORD);
+        registerItem("emerald_pickaxe", EMERALD_PICKAXE);
+        registerItem("emerald_axe", EMERALD_AXE);
+        registerItem("emerald_shovel", EMERALD_SHOVEL);
+        registerItem("emerald_hoe", EMERALD_HOE);
+        registerItem("emerald_helmet", EMERALD_HELMET);
+        registerItem("emerald_chestplate", EMERALD_CHESTPLATE);
+        registerItem("emerald_leggings", EMERALD_LEGGINGS);
+        registerItem("emerald_boots", EMERALD_BOOTS);
+        registerItem("ruby", RUBY);
+        registerItem("ruby_sword", RUBY_SWORD);
+        registerItem("ruby_pickaxe", RUBY_PICKAXE);
+        registerItem("ruby_axe", RUBY_AXE);
+        registerItem("ruby_shovel", RUBY_SHOVEL);
+        registerItem("ruby_hoe", RUBY_HOE);
+        registerItem("ruby_helmet", RUBY_HELMET);
+        registerItem("ruby_chestplate", RUBY_CHESTPLATE);
+        registerItem("ruby_leggings", RUBY_LEGGINGS);
+        registerItem("ruby_boots", RUBY_BOOTS);
+        registerItem("sapphire", SAPPHIRE);
+        registerItem("sapphire_sword", SAPPHIRE_SWORD);
+        registerItem("sapphire_pickaxe", SAPPHIRE_PICKAXE);
+        registerItem("sapphire_axe", SAPPHIRE_AXE);
+        registerItem("sapphire_shovel", SAPPHIRE_SHOVEL);
+        registerItem("sapphire_hoe", SAPPHIRE_HOE);
+        registerItem("sapphire_helmet", SAPPHIRE_HELMET);
+        registerItem("sapphire_chestplate", SAPPHIRE_CHESTPLATE);
+        registerItem("sapphire_leggings", SAPPHIRE_LEGGINGS);
+        registerItem("sapphire_boots", SAPPHIRE_BOOTS);
         registerItem("steel_sword", STEEL_SWORD);
         registerItem("steel_pickaxe", STEEL_PICKAXE);
         registerItem("steel_axe", STEEL_AXE);
@@ -286,6 +507,16 @@ public class GallifreyModItems {
         registerItem("dalekanium_axe", DALEKANIUM_AXE);
         registerItem("dalekanium_shovel", DALEKANIUM_SHOVEL);
         registerItem("dalekanium_hoe", DALEKANIUM_HOE);
+        registerItem("mars_stone_sword", MARS_STONE_SWORD);
+        registerItem("mars_stone_pickaxe", MARS_STONE_PICKAXE);
+        registerItem("mars_stone_axe", MARS_STONE_AXE);
+        registerItem("mars_stone_shovel", MARS_STONE_SHOVEL);
+        registerItem("mars_stone_hoe", MARS_STONE_HOE);
+        registerItem("skaro_stone_sword", SKARO_STONE_SWORD);
+        registerItem("skaro_stone_pickaxe", SKARO_STONE_PICKAXE);
+        registerItem("skaro_stone_axe", SKARO_STONE_AXE);
+        registerItem("skaro_stone_shovel", SKARO_STONE_SHOVEL);
+        registerItem("skaro_stone_hoe", SKARO_STONE_HOE);
         registerItem("dalekanium_helmet", DALEKANIUM_HELMET);
         registerItem("dalekanium_chestplate", DALEKANIUM_CHESTPLATE);
         registerItem("dalekanium_leggings", DALEKANIUM_LEGGINGS);
@@ -323,7 +554,70 @@ public class GallifreyModItems {
         registerItem("trustable_hat", TRUSTABLE_HAT);
         registerItem("eyestalk", EYESTALK);
         registerItem("omega_helmet", OMEGA_HELMET);
+
+        registerItem("mondasian_cyberman_spawn_egg", MONDASIAN_CYBERMAN_SPAWN_EGG);
+        registerItem("proto_cyberman_spawn_egg", PROTO_CYBERMAN_SPAWN_EGG);
+        registerItem("cybermat_spawn_egg", CYBERMAT_SPAWN_EGG);
+        registerItem("caveman_spawn_egg", CAVEMAN_SPAWN_EGG);
+        registerItem("classic_villager_spawn_egg", CLASSIC_VILLAGER_SPAWN_EGG);
+        registerItem("timelord_villager_spawn_egg", TIMELORD_VILLAGER_SPAWN_EGG);
         registerItem("skaro_city_dalek_spawn_egg", SKARO_CITY_DALEK_SPAWN_EGG);
+
+        // Classic-era items are separately registered under gallifrey:classic_* ids.
+        registerItem("classic_apple", CLASSIC_APPLE);
+        registerItem("classic_apple_golden", CLASSIC_APPLE_GOLDEN);
+        registerItem("classic_carrot_golden", CLASSIC_CARROT_GOLDEN);
+        registerItem("classic_chainmail_boots", CLASSIC_CHAINMAIL_BOOTS);
+        registerItem("classic_chainmail_chestplate", CLASSIC_CHAINMAIL_CHESTPLATE);
+        registerItem("classic_chainmail_helmet", CLASSIC_CHAINMAIL_HELMET);
+        registerItem("classic_chainmail_leggings", CLASSIC_CHAINMAIL_LEGGINGS);
+        registerItem("classic_coal", CLASSIC_COAL);
+        registerItem("classic_diamond", CLASSIC_DIAMOND);
+        registerItem("classic_diamond_axe", CLASSIC_DIAMOND_AXE);
+        registerItem("classic_diamond_boots", CLASSIC_DIAMOND_BOOTS);
+        registerItem("classic_diamond_chestplate", CLASSIC_DIAMOND_CHESTPLATE);
+        registerItem("classic_diamond_helmet", CLASSIC_DIAMOND_HELMET);
+        registerItem("classic_diamond_hoe", CLASSIC_DIAMOND_HOE);
+        registerItem("classic_diamond_leggings", CLASSIC_DIAMOND_LEGGINGS);
+        registerItem("classic_diamond_pickaxe", CLASSIC_DIAMOND_PICKAXE);
+        registerItem("classic_diamond_shovel", CLASSIC_DIAMOND_SHOVEL);
+        registerItem("classic_diamond_sword", CLASSIC_DIAMOND_SWORD);
+        registerItem("classic_emerald", CLASSIC_EMERALD);
+        registerItem("classic_flint", CLASSIC_FLINT);
+        registerItem("classic_flint_and_steel", CLASSIC_FLINT_AND_STEEL);
+        registerItem("classic_gold_axe", CLASSIC_GOLD_AXE);
+        registerItem("classic_gold_boots", CLASSIC_GOLD_BOOTS);
+        registerItem("classic_gold_chestplate", CLASSIC_GOLD_CHESTPLATE);
+        registerItem("classic_gold_helmet", CLASSIC_GOLD_HELMET);
+        registerItem("classic_gold_hoe", CLASSIC_GOLD_HOE);
+        registerItem("classic_gold_ingot", CLASSIC_GOLD_INGOT);
+        registerItem("classic_gold_leggings", CLASSIC_GOLD_LEGGINGS);
+        registerItem("classic_gold_nugget", CLASSIC_GOLD_NUGGET);
+        registerItem("classic_gold_pickaxe", CLASSIC_GOLD_PICKAXE);
+        registerItem("classic_gold_shovel", CLASSIC_GOLD_SHOVEL);
+        registerItem("classic_gold_sword", CLASSIC_GOLD_SWORD);
+        registerItem("classic_iron_axe", CLASSIC_IRON_AXE);
+        registerItem("classic_iron_boots", CLASSIC_IRON_BOOTS);
+        registerItem("classic_iron_chestplate", CLASSIC_IRON_CHESTPLATE);
+        registerItem("classic_iron_helmet", CLASSIC_IRON_HELMET);
+        registerItem("classic_iron_hoe", CLASSIC_IRON_HOE);
+        registerItem("classic_iron_ingot", CLASSIC_IRON_INGOT);
+        registerItem("classic_iron_leggings", CLASSIC_IRON_LEGGINGS);
+        registerItem("classic_iron_pickaxe", CLASSIC_IRON_PICKAXE);
+        registerItem("classic_iron_shovel", CLASSIC_IRON_SHOVEL);
+        registerItem("classic_iron_sword", CLASSIC_IRON_SWORD);
+        registerItem("classic_leather", CLASSIC_LEATHER);
+        registerItem("classic_leather_boots", CLASSIC_LEATHER_BOOTS);
+        registerItem("classic_leather_chestplate", CLASSIC_LEATHER_CHESTPLATE);
+        registerItem("classic_leather_helmet", CLASSIC_LEATHER_HELMET);
+        registerItem("classic_leather_leggings", CLASSIC_LEATHER_LEGGINGS);
+        registerItem("classic_oak_boat", CLASSIC_OAK_BOAT);
+        registerItem("classic_stick", CLASSIC_STICK);
+        registerItem("classic_wood_axe", CLASSIC_WOOD_AXE);
+        registerItem("classic_wood_hoe", CLASSIC_WOOD_HOE);
+        registerItem("classic_wood_pickaxe", CLASSIC_WOOD_PICKAXE);
+        registerItem("classic_wood_shovel", CLASSIC_WOOD_SHOVEL);
+        registerItem("classic_wood_sword", CLASSIC_WOOD_SWORD);
 
         GallifreyMod.LOGGER.debug("[Gallifrey] Items registered.");
     }
@@ -332,4 +626,3 @@ public class GallifreyModItems {
         return Registry.register(Registries.ITEM, new Identifier(GallifreyMod.MOD_ID, name), item);
     }
 }
-

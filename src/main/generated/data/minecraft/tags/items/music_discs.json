@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "gallifrey:music_disk_a",
-    "gallifrey:music_disk_b"
+    "gallifrey:music_disk_b",
+    "gallifrey:valedecem_disc",
+    "gallifrey:dugga_doo_disc"
   ]
 }

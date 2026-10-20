@@ -8,16 +8,39 @@
     "ClassicHurtSoundMixin",
     "EatGrassGoalMixin",
     "ClassicNetherPortalMixin",
-    "ClassicNetherFlintAndSteelMixin"
+    "ClassicPortalLightingMixin",
+    "CreativeAccessorySlotsMixin",
+    "NetherPortalReturnMixin",
+    "CustomPortalReturnMixin",
+    "ClassicFurnaceBlockEntityMixin",
+    "ServerWorldSleepMixin",
+    "MoonGravityMixin",
+    "SonicShadesSlotMixin",
+    "PlayerScreenHandlerMixin",
+    "compat.BetterInventoryMenuMixin",
+    "GallifreyDimensionTravelMixin",
+    "EntityDimensionTravelMixin",
+    "TeleportCommandTravelMixin",
+    "compat.WeepingAngelsTeleporterMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",
+    "client.SpaceSuitPlayerModelMixin",
     "client.MarsFogMixin",
     "client.LostRealityFogMixin",
     "client.LogoDrawerMixin",
     "client.CreativeInventoryScreenAccessor",
     "client.HandledScreenAccessor",
-    "client.HeldItemFeatureRendererMixin"
+    "client.HeldItemFeatureRendererMixin",
+    "client.TitleScreenVortexMixin",
+    "client.SpaceSuitInventoryPreviewMixin",
+    "client.DrawContextHeadwearMixin",
+    "client.ItemRendererHeadwearMixin",
+    "client.PlayerEntityRendererMixin",
+    "client.InventoryScreenGlassesSlotMixin",
+    "client.CreativeSlotAccessor",
+    "client.SlotAccessor",
+    "client.CreativeInventoryAccessorySlotsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
