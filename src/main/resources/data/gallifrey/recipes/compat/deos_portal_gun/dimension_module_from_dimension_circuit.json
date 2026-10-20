@@ -1,0 +1,21 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "deos-portal-gun-mod"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gallifrey:dimension_circuit"
+    }
+  ],
+  "result": {
+    "item": "deos-portal-gun-mod:dimension_module",
+    "count": 1
+  }
+}

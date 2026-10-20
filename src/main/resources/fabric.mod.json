@@ -61,6 +61,7 @@
 	"suggests": {
 		"regeneration": "*",
 		"ad_astra": "*",
-		"ait": "*"
+		"ait": "*",
+		"deos-portal-gun-mod": "*"
 	}
 }

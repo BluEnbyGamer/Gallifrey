@@ -530,6 +530,14 @@ public class SonicScrewdriver extends Item {
             return;
         }
 
+        // Deo's Portal Gun: overload closes a portal, scan reads where it goes.
+        if (com.timelordmod.gallifrey.compat.deo.DeoPortals.handleSonic(player, target, mode)) {
+            world.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    GallifreySounds.SONIC, SoundCategory.PLAYERS, 1.0F, 1.0F);
+            consumePower(stack);
+            return;
+        }
+
         SonicHandler.use(player, world, target, mode);
 
         world.playSound(
