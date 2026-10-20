@@ -39,6 +39,9 @@
 		],
 		"jade": [
 			"com.timelordmod.gallifrey.compat.jade.GallifreyJadePlugin"
+		],
+		"voicechat": [
+			"com.timelordmod.gallifrey.compat.voicechat.GallifreyVoicechatPlugin"
 		]
 	},
 	"mixins": [
@@ -66,6 +69,10 @@
 		"tempad": "*",
 		"nirvana": "*",
 		"universal-graves": "*",
-		"waystones": "*"
+		"waystones": "*",
+		"patchouli": "*",
+		"bettercombat": "*",
+		"voicechat": "*",
+		"pehkui": "*"
 	}
 }

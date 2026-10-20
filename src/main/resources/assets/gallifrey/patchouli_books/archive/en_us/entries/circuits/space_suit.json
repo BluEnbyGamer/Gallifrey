@@ -1,0 +1,22 @@
+{
+  "name": "Space Suit",
+  "icon": "gallifrey:space_suit_helmet",
+  "category": "gallifrey:circuits",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Some places have no air worth breathing. Wear the full $(item)Space Suit$() to survive them."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:space_suit_helmet",
+      "recipe2": "gallifrey:space_suit_chestplate"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:space_suit_leggings",
+      "recipe2": "gallifrey:space_suit_boots"
+    }
+  ]
+}

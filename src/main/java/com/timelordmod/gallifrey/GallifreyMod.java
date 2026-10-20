@@ -180,6 +180,7 @@ public class GallifreyMod implements ModInitializer {
 		com.timelordmod.gallifrey.compat.graves.UniversalGravesCompat.register();
 		com.timelordmod.gallifrey.compat.waystones.WaystonesCompat.register();
 		com.timelordmod.gallifrey.compat.thermoo.ThermooCompat.register();
+		com.timelordmod.gallifrey.compat.pehkui.PehkuiCompat.init();
 		com.timelordmod.gallifrey.world.PetesWorldPortals.register();
 		GallifreyModBlockEntities.register();
 

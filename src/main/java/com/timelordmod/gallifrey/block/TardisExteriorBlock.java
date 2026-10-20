@@ -123,6 +123,10 @@ public class TardisExteriorBlock extends Block implements BlockEntityProvider {
                             serverPlayer.getPitch()
                     );
 
+                    com.timelordmod.gallifrey.tardis.TardisEntryTracker.entered(
+                            serverPlayer.getUuid(), world.getRegistryKey(), pos);
+                    com.timelordmod.gallifrey.compat.pehkui.PehkuiCompat.squeezeThroughDoor(serverPlayer);
+
                     return ActionResult.SUCCESS;
                 }
 

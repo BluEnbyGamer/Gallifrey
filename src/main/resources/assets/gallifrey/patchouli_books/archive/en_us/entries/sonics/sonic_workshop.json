@@ -1,0 +1,16 @@
+{
+  "name": "Sonic Workshop",
+  "icon": "gallifrey:sonic_workshop",
+  "category": "gallifrey:sonics",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Place a sonic in the $(item)Sonic Workshop$() to slowly recharge it, or to swap it into a different casing, from the Third Doctor's to the War Master's."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:sonic_workshop"
+    }
+  ]
+}

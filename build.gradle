@@ -39,6 +39,7 @@ repositories {
 	}
 	maven { url = "https://maven.shedaniel.me/" }      // REI
 	maven { url = "https://maven.architectury.dev/" }  // REI's own dependencies
+	maven { url = "https://maven.maxhenkel.de/repository/public" } // Simple Voice Chat API
 }
 
 loom {
@@ -112,6 +113,7 @@ dependencies {
 	modCompileOnly "maven.modrinth:jade:11.13.1+fabric"
 	// Distant Horizons: only its event API is used (foggy dimensions). Not needed to play.
 	modCompileOnly("maven.modrinth:distanthorizons:2.3.6-b-1.20.1") { transitive = false }
+	compileOnly "de.maxhenkel.voicechat:voicechat-api:2.5.0"
 }
 
 /*

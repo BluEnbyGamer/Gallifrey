@@ -1,0 +1,16 @@
+{
+  "name": "Vortex Manipulator",
+  "icon": "gallifrey:vortex_manipulator",
+  "category": "gallifrey:circuits",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Cheap and nasty time travel. All three circuits and a $(item)White Point Star$() strapped to your wrist.$(br2)Use it to open its controls and choose where you're going."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:vortex_manipulator"
+    }
+  ]
+}

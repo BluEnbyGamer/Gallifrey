@@ -1,0 +1,16 @@
+{
+  "name": "Sonic Screwdriver",
+  "icon": "gallifrey:sonic_screwdriver",
+  "category": "gallifrey:sonics",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The sonic screwdriver works on whatever you point it at.$(br2)$(li)$(bold)Use$() to activate it.$(li)$(bold)Sneak + use$() to cycle modes: $(thing)Interaction$(), $(thing)Overload$() and $(thing)Scanning$().$(br)Every use costs power. When it runs dry, recharge it in a sonic workshop."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "gallifrey:sonic_screwdriver"
+    }
+  ]
+}
