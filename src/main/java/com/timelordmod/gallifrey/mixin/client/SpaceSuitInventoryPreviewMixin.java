@@ -36,9 +36,9 @@ public abstract class SpaceSuitInventoryPreviewMixin {
             return;
         }
 
-        ItemStack chest = player.getEquippedStack(EquipmentSlot.CHEST);
-        ItemStack legs = player.getEquippedStack(EquipmentSlot.LEGS);
-        ItemStack feet = player.getEquippedStack(EquipmentSlot.FEET);
+        ItemStack chest = com.timelordmod.gallifrey.client.VisibleArmor.get(player, EquipmentSlot.CHEST);
+        ItemStack legs = com.timelordmod.gallifrey.client.VisibleArmor.get(player, EquipmentSlot.LEGS);
+        ItemStack feet = com.timelordmod.gallifrey.client.VisibleArmor.get(player, EquipmentSlot.FEET);
 
         boolean suitChest = chest.isOf(
                 GallifreyModItems.SPACE_SUIT_CHESTPLATE);

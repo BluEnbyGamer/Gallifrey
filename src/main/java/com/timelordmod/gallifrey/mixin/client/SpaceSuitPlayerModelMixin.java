@@ -31,6 +31,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * Only ever HIDES parts. Anything not covered keeps whatever vanilla set it to, so the
  * player's skin-customisation settings (jacket, sleeves, trousers, hat) still work.
  *
+ * Goes by the armour that's drawn (VisibleArmor), so it also works with Cosmetic Armor.
+ *
  * Skipped while the first-person hand is being drawn: renderArm() calls setModelPose()
  * and then draws the arm directly, so hiding it there made the hand vanish.
  */
@@ -64,8 +66,8 @@ public abstract class SpaceSuitPlayerModelMixin {
                         PlayerEntityModel<AbstractClientPlayerEntity>
                         >) (Object) this).gallifrey$getModel();
 
-        ItemStack chest = player.getEquippedStack(EquipmentSlot.CHEST);
-        ItemStack legs = player.getEquippedStack(EquipmentSlot.LEGS);
+        ItemStack chest = com.timelordmod.gallifrey.client.VisibleArmor.get(player, EquipmentSlot.CHEST);
+        ItemStack legs = com.timelordmod.gallifrey.client.VisibleArmor.get(player, EquipmentSlot.LEGS);
 
         boolean suitChest = chest.isOf(GallifreyModItems.SPACE_SUIT_CHESTPLATE);
         boolean suitLegs = legs.isOf(GallifreyModItems.SPACE_SUIT_LEGGINGS);
