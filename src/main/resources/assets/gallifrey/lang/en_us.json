@@ -701,5 +701,10 @@
   "item.gallifrey.sapphire_leggings": "Sapphire Leggings",
   "item.gallifrey.sapphire_boots": "Sapphire Boots",
   "trim_material.gallifrey.ruby": "Ruby",
-  "trim_material.gallifrey.sapphire": "Sapphire"
+  "trim_material.gallifrey.sapphire": "Sapphire",
+  "planet.gallifrey.gallifrey": "Gallifrey",
+  "planet.gallifrey.skaro": "Skaro",
+  "planet.gallifrey.mondas": "Mondas",
+  "solar_system.gallifrey.kasterborous": "Kasterborous",
+  "solar_system.gallifrey.skaro": "Skaro System"
 }

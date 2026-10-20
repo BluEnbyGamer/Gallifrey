@@ -646,5 +646,10 @@
   "trim_material.gallifrey.dalekanium": "Dalekanium",
   "trim_material.gallifrey.metalertanium": "Metalert",
   "trim_material.gallifrey.ruby": "Rubee",
-  "trim_material.gallifrey.sapphire": "Saffir"
+  "trim_material.gallifrey.sapphire": "Saffir",
+  "planet.gallifrey.gallifrey": "Gallifreh",
+  "planet.gallifrey.skaro": "Skarow",
+  "planet.gallifrey.mondas": "Mondaz",
+  "solar_system.gallifrey.kasterborous": "Kasterboruz",
+  "solar_system.gallifrey.skaro": "Skarow Systum"
 }

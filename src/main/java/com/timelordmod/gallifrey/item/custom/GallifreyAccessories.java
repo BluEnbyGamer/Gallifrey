@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.world.GameRules;
 
 /**
@@ -62,7 +63,18 @@ public final class GallifreyAccessories {
             if (alive || newPlayer.getWorld().getGameRules().getBoolean(GameRules.KEEP_INVENTORY)) {
                 setShades(newPlayer, getShades(oldPlayer));
                 setFez(newPlayer, getFez(oldPlayer));
+                return;
             }
+            // Safety net: they should already have been dropped (or put in a grave) on death. If
+            // another mod skipped Minecraft's death drop, they'd otherwise vanish, so drop them
+            // where the player died.
+            for (ItemStack leftover : new ItemStack[]{getShades(oldPlayer), getFez(oldPlayer)}) {
+                if (!leftover.isEmpty()) {
+                    ItemScatterer.spawn(oldPlayer.getWorld(), oldPlayer.getX(), oldPlayer.getY(), oldPlayer.getZ(), leftover.copy());
+                }
+            }
+            setShades(oldPlayer, ItemStack.EMPTY);
+            setFez(oldPlayer, ItemStack.EMPTY);
         });
     }
 }

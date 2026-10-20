@@ -1,0 +1,9 @@
+{
+  "dimension": "gallifrey:skaro",
+  "oxygen": true,
+  "temperature": 35,
+  "gravity": 9.807,
+  "solar_power": 18,
+  "solar_system": "gallifrey:skaro",
+  "tier": 4
+}

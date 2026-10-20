@@ -637,5 +637,10 @@
   "trim_material.gallifrey.dalekanium": "Dalekanium",
   "trim_material.gallifrey.metalertanium": "Metalert",
   "trim_material.gallifrey.ruby": "Ruby",
-  "trim_material.gallifrey.sapphire": "Sapphire"
+  "trim_material.gallifrey.sapphire": "Sapphire",
+  "planet.gallifrey.gallifrey": "Gallifrey",
+  "planet.gallifrey.skaro": "Skaro, Isle o' the Daleks",
+  "planet.gallifrey.mondas": "Mondas",
+  "solar_system.gallifrey.kasterborous": "Kasterborous Waters",
+  "solar_system.gallifrey.skaro": "Skaro's Waters"
 }
