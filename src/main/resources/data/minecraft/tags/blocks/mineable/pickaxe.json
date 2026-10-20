@@ -8,6 +8,12 @@
     "gallifrey:classic_redstone_ore",
     "gallifrey:classic_diamond_ore",
     "gallifrey:classic_nether_quartz_ore",
-    "gallifrey:classic_emerald_ore"
+    "gallifrey:classic_emerald_ore",
+    "gallifrey:deepslate_ruby_ore",
+    "gallifrey:ruby_ore",
+    "gallifrey:ruby_block",
+    "gallifrey:deepslate_sapphire_ore",
+    "gallifrey:sapphire_ore",
+    "gallifrey:sapphire_block"
   ]
 }
