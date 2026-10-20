@@ -698,5 +698,6 @@
   "entity.minecraft.villager.gallifrey.time_lord_trader": "Time Lord Trader",
   "item.gallifrey.lab_coat_chestplate": "Surgeon's Coat",
   "item.gallifrey.lab_coat_leggings": "Surgeon's Breeches",
-  "item.gallifrey.lab_coat_boots": "Surgeon's Boots"
+  "item.gallifrey.lab_coat_boots": "Surgeon's Boots",
+  "config.waila.plugin_gallifrey.tapper": "Tree Tapper"
 }

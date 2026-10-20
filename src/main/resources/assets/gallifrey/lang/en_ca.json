@@ -762,5 +762,6 @@
   "entity.minecraft.villager.gallifrey.time_lord_trader": "Time Lord Trader",
   "item.gallifrey.lab_coat_chestplate": "Lab Coat",
   "item.gallifrey.lab_coat_leggings": "Lab Coat Trousers",
-  "item.gallifrey.lab_coat_boots": "Lab Shoes"
+  "item.gallifrey.lab_coat_boots": "Lab Shoes",
+  "config.waila.plugin_gallifrey.tapper": "Tree Tapper"
 }

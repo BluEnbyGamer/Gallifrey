@@ -156,7 +156,7 @@ public class GallifreyModItems {
 
 
     public static final WhitePointStarItem WHITE_POINT_STAR = new WhitePointStarItem(
-            new FabricItemSettings()
+            new FabricItemSettings().rarity(net.minecraft.util.Rarity.UNCOMMON)
     );
 
     public static final SiliconeItem SILICONE = new SiliconeItem(
@@ -168,11 +168,11 @@ public class GallifreyModItems {
     );
 
     public static final RefinedSonicCrystalItem REFINED_SONIC_CRYSTAL = new RefinedSonicCrystalItem(
-            new FabricItemSettings()
+            new FabricItemSettings().rarity(net.minecraft.util.Rarity.UNCOMMON)
     );
 
     public static final VortexManipulator VORTEX_MANIPULATOR = new VortexManipulator(
-            new FabricItemSettings()
+            new FabricItemSettings().rarity(net.minecraft.util.Rarity.EPIC)
     );
 
     public static final DalekIngotItem DALEKANIUM_INGOT = new DalekIngotItem(
@@ -180,7 +180,7 @@ public class GallifreyModItems {
     );
 
     public static final HuonParticleItem HUON_PARTICLE = new HuonParticleItem(
-            new FabricItemSettings()
+            new FabricItemSettings().rarity(net.minecraft.util.Rarity.UNCOMMON)
     );
 
     public static final SteelIngotItem STEEL_INGOT = new SteelIngotItem(
@@ -196,22 +196,22 @@ public class GallifreyModItems {
     );
 
     public static final LocationCircuitItem LOCATION_CIRCUIT = new LocationCircuitItem(
-            new FabricItemSettings()
+            new FabricItemSettings().rarity(net.minecraft.util.Rarity.UNCOMMON)
     );
 
     public static final InterfaceCircuitItem INTERFACE_CIRCUIT = new InterfaceCircuitItem(
-            new FabricItemSettings()
+            new FabricItemSettings().rarity(net.minecraft.util.Rarity.UNCOMMON)
     );
 
     public static final DimensionCircuitItem DIMENSION_CIRCUIT = new DimensionCircuitItem(
-            new FabricItemSettings()
+            new FabricItemSettings().rarity(net.minecraft.util.Rarity.RARE)
     );
 
     public static final GeoHeadwearItem OMEGA_HELMET = new GeoHeadwearItem(
             "omega_helmet",
             1.15F,
             ArmorMaterials.NETHERITE,
-            new FabricItemSettings().fireproof()
+            new FabricItemSettings().fireproof().rarity(net.minecraft.util.Rarity.EPIC)
     );
 
     public static final SpawnEggItem MONDASIAN_CYBERMAN_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.MONDASIAN_CYBERMAN, 0xB7B9B8, 0x303638, new FabricItemSettings());
@@ -386,13 +386,13 @@ public class GallifreyModItems {
 
     //music disks
     public static final Item DW_XIV_MUSIC_DISC = registerItem("music_disk_a",
-            new MusicDiscItem(7, GallifreySounds.DWXIV, new FabricItemSettings().maxCount(1), 151));
+            new MusicDiscItem(7, GallifreySounds.DWXIV, new FabricItemSettings().maxCount(1).rarity(net.minecraft.util.Rarity.RARE), 151));
     public static final Item GALLIFREY_MUSIC_DISC = registerItem("music_disk_b",
-            new MusicDiscItem(7, GallifreySounds.GALLIFREY, new FabricItemSettings().maxCount(1), 198));
+            new MusicDiscItem(7, GallifreySounds.GALLIFREY, new FabricItemSettings().maxCount(1).rarity(net.minecraft.util.Rarity.RARE), 198));
     public static final Item VALEDECEM_MUSIC_DISC = registerItem("valedecem_disc",
-            new MusicDiscItem(7, GallifreySounds.DRWHOVALE, new FabricItemSettings().maxCount(1), 180));
+            new MusicDiscItem(7, GallifreySounds.DRWHOVALE, new FabricItemSettings().maxCount(1).rarity(net.minecraft.util.Rarity.RARE), 180));
     public static final Item DUGGA_DOO_MUSIC_DISC = registerItem("dugga_doo_disc",
-            new MusicDiscItem(7, GallifreySounds.DUGGAO_DOO, new FabricItemSettings().maxCount(1), 180));
+            new MusicDiscItem(7, GallifreySounds.DUGGAO_DOO, new FabricItemSettings().maxCount(1).rarity(net.minecraft.util.Rarity.RARE), 180));
 
     public static final Item RADIATION_BUCKET = registerItem("radiation_bucket",
             new BucketItem(GallifreyFluids.STILL_RADIATION, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)));
@@ -420,6 +420,7 @@ public class GallifreyModItems {
     public static final SonicScrewdriver SONIC_SCREWDRIVER =
             new SonicScrewdriver(
                     new FabricItemSettings()
+                            .rarity(net.minecraft.util.Rarity.RARE)
                             .maxCount(1)
                             .maxDamage(100)
             );
@@ -427,14 +428,15 @@ public class GallifreyModItems {
     public static final SonicShadesItem SONIC_SHADES =
             new SonicShadesItem(
                     new FabricItemSettings()
+                            .rarity(net.minecraft.util.Rarity.RARE)
                             .maxDamage(100)
             );
 
     // Atrium materials
     public static final Item ATRIUM = new Item(new FabricItemSettings());
     public static final Item ATRIUM_FUEL = new Item(new FabricItemSettings());
-    public static final Item ENERGIZED_ATRIUM = new Item(new FabricItemSettings());
-    public static final Item ATRIUM_CORE = new Item(new FabricItemSettings());
+    public static final Item ENERGIZED_ATRIUM = new Item(new FabricItemSettings().rarity(net.minecraft.util.Rarity.UNCOMMON));
+    public static final Item ATRIUM_CORE = new Item(new FabricItemSettings().rarity(net.minecraft.util.Rarity.RARE));
 
     public static void register() {
         registerItem("diamond_minecart", DIAMOND_MINECART);
