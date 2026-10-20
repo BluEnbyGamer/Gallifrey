@@ -708,5 +708,10 @@
   "item.gallifrey.lab_coat_chestplate": "Lab Cote",
   "item.gallifrey.lab_coat_leggings": "Lab Pantz",
   "item.gallifrey.lab_coat_boots": "Lab Shooz",
-  "config.waila.plugin_gallifrey.tapper": "Tree Tappr"
+  "config.waila.plugin_gallifrey.tapper": "Tree Tappr",
+  "gui.gallifrey.menu_background.time_winds": "Menu: Tiem Windz",
+  "gui.gallifrey.menu_background.time_war": "Menu: Tiem War",
+  "gui.gallifrey.menu_background.the_void": "Menu: Teh Void",
+  "gui.gallifrey.menu_background.untempered_schism": "Menu: Untemperd Skizm",
+  "gui.gallifrey.menu_background.eye_of_harmony": "Menu: Eye ov Harmoni"
 }

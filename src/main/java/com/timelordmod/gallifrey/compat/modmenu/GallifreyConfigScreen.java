@@ -25,7 +25,7 @@ public class GallifreyConfigScreen extends Screen {
     protected void init() {
         int x = this.width / 2 - 100;
         this.addDrawableChild(ButtonWidget.builder(menuBackgroundLabel(), button -> {
-                    GallifreyClientConfig.setVortexMenuBackground(!GallifreyClientConfig.isVortexMenuBackground());
+                    GallifreyClientConfig.cycleMenuBackground();
                     button.setMessage(menuBackgroundLabel());
                 })
                 .dimensions(x, this.height / 4 + 24, 200, 20)
@@ -38,9 +38,7 @@ public class GallifreyConfigScreen extends Screen {
     }
 
     private static Text menuBackgroundLabel() {
-        return Text.translatable(GallifreyClientConfig.isVortexMenuBackground()
-                ? "gui.gallifrey.menu_background.vortex"
-                : "gui.gallifrey.menu_background.panorama");
+        return Text.translatable(GallifreyClientConfig.getMenuBackground().translationKey());
     }
 
     @Override

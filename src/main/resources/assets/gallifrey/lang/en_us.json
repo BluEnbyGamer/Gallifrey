@@ -500,7 +500,7 @@
   "item.gallifrey.huon_particle": "Huon Particle",
   "gui.gallifrey.menu_background.vortex": "Menu: Vortex",
   "gui.gallifrey.menu_background.panorama": "Menu: Panorama",
-  "gui.gallifrey.menu_background.tooltip": "Switch the title screen background",
+  "gui.gallifrey.menu_background.tooltip": "Cycle through the title screen backgrounds",
   "gui.gallifrey.config.title": "Gallifrey Settings",
   "biome.gallifrey.gallifreyan_plains": "Gallifreyan Plains",
   "biome.gallifrey.gallifreyan_birch_forest": "Gallifreyan Birch Forest",
@@ -763,5 +763,10 @@
   "item.gallifrey.lab_coat_chestplate": "Lab Coat",
   "item.gallifrey.lab_coat_leggings": "Lab Coat Trousers",
   "item.gallifrey.lab_coat_boots": "Lab Shoes",
-  "config.waila.plugin_gallifrey.tapper": "Tree Tapper"
+  "config.waila.plugin_gallifrey.tapper": "Tree Tapper",
+  "gui.gallifrey.menu_background.time_winds": "Menu: Time Winds",
+  "gui.gallifrey.menu_background.time_war": "Menu: Time War",
+  "gui.gallifrey.menu_background.the_void": "Menu: The Void",
+  "gui.gallifrey.menu_background.untempered_schism": "Menu: Untempered Schism",
+  "gui.gallifrey.menu_background.eye_of_harmony": "Menu: Eye of Harmony"
 }

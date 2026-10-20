@@ -699,5 +699,10 @@
   "item.gallifrey.lab_coat_chestplate": "Surgeon's Coat",
   "item.gallifrey.lab_coat_leggings": "Surgeon's Breeches",
   "item.gallifrey.lab_coat_boots": "Surgeon's Boots",
-  "config.waila.plugin_gallifrey.tapper": "Tree Tapper"
+  "config.waila.plugin_gallifrey.tapper": "Tree Tapper",
+  "gui.gallifrey.menu_background.time_winds": "Menu: Time Winds",
+  "gui.gallifrey.menu_background.time_war": "Menu: Time War",
+  "gui.gallifrey.menu_background.the_void": "Menu: Davy Jones' Void",
+  "gui.gallifrey.menu_background.untempered_schism": "Menu: Untempered Schism",
+  "gui.gallifrey.menu_background.eye_of_harmony": "Menu: Eye o' Harmony"
 }

@@ -16,10 +16,11 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Title screen background choice: the time vortex or the normal panorama.
+ * Title screen background choice: the normal panorama, the code-drawn time vortex, or one of the
+ * looping vortex animations (see MenuBackground).
  *
  * - Swaps the one call that draws the panorama for the vortex when it is switched on.
- * - Adds a small button in the bottom-left corner to flip between the two.
+ * - Adds a small button in the bottom-left corner that cycles through them.
  *   The choice is saved in config/gallifrey-client.properties.
  */
 @Mixin(TitleScreen.class)
@@ -35,8 +36,12 @@ public abstract class TitleScreenVortexMixin extends Screen {
     )
     private void gallifrey$drawMenuBackground(RotatingCubeMapRenderer panorama, float delta, float alpha,
                                               DrawContext context, int mouseX, int mouseY, float tickDelta) {
-        if (GallifreyClientConfig.isVortexMenuBackground()) {
+        com.timelordmod.gallifrey.client.MenuBackground background = GallifreyClientConfig.getMenuBackground();
+        if (background == com.timelordmod.gallifrey.client.MenuBackground.VORTEX) {
             VortexBackgroundRenderer.render(context, this.width, this.height, alpha);
+        } else if (background.frameFolder() != null) {
+            com.timelordmod.gallifrey.client.VideoVortexRenderer.render(context, this.width, this.height, alpha,
+                    background.frameFolder());
         } else {
             panorama.render(delta, alpha);
         }
@@ -44,9 +49,9 @@ public abstract class TitleScreenVortexMixin extends Screen {
 
     @Inject(method = "init()V", at = @At("TAIL"))
     private void gallifrey$addBackgroundButton(CallbackInfo ci) {
-        int buttonWidth = 98;
+        int buttonWidth = 150;
         this.addDrawableChild(ButtonWidget.builder(gallifrey$label(), button -> {
-                    GallifreyClientConfig.setVortexMenuBackground(!GallifreyClientConfig.isVortexMenuBackground());
+                    GallifreyClientConfig.cycleMenuBackground();
                     button.setMessage(gallifrey$label());
                 })
                 // Bottom-left corner, just above the "Minecraft 1.20.1" version text.
@@ -56,8 +61,6 @@ public abstract class TitleScreenVortexMixin extends Screen {
     }
 
     private static Text gallifrey$label() {
-        return Text.translatable(GallifreyClientConfig.isVortexMenuBackground()
-                ? "gui.gallifrey.menu_background.vortex"
-                : "gui.gallifrey.menu_background.panorama");
+        return Text.translatable(GallifreyClientConfig.getMenuBackground().translationKey());
     }
 }

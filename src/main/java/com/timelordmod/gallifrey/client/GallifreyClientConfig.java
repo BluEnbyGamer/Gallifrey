@@ -15,11 +15,12 @@ import java.util.Properties;
  */
 public final class GallifreyClientConfig {
     private static final String FILE_NAME = "gallifrey-client.properties";
-    private static final String KEY_VORTEX_MENU = "vortexMenuBackground";
+    private static final String KEY_MENU_BACKGROUND = "menuBackground";
+    /** Older versions saved only true/false (vortex or panorama); still read so the choice carries over. */
+    private static final String KEY_OLD_VORTEX_MENU = "vortexMenuBackground";
 
     private static boolean loaded = false;
-    /** true = time vortex behind the title screen, false = the normal panorama. */
-    private static boolean vortexMenuBackground = true;
+    private static MenuBackground menuBackground = MenuBackground.VORTEX;
 
     private GallifreyClientConfig() {}
 
@@ -36,8 +37,13 @@ public final class GallifreyClientConfig {
         Properties properties = new Properties();
         try (InputStream in = Files.newInputStream(path)) {
             properties.load(in);
-            vortexMenuBackground = Boolean.parseBoolean(
-                    properties.getProperty(KEY_VORTEX_MENU, Boolean.toString(vortexMenuBackground)));
+            String saved = properties.getProperty(KEY_MENU_BACKGROUND);
+            if (saved != null) {
+                menuBackground = MenuBackground.byName(saved, menuBackground);
+            } else if (properties.containsKey(KEY_OLD_VORTEX_MENU)) {
+                menuBackground = Boolean.parseBoolean(properties.getProperty(KEY_OLD_VORTEX_MENU))
+                        ? MenuBackground.VORTEX : MenuBackground.PANORAMA;
+            }
         } catch (IOException | RuntimeException ignored) {
             // A broken settings file must never stop the game from starting; keep the default.
         }
@@ -45,7 +51,7 @@ public final class GallifreyClientConfig {
 
     private static void save() {
         Properties properties = new Properties();
-        properties.setProperty(KEY_VORTEX_MENU, Boolean.toString(vortexMenuBackground));
+        properties.setProperty(KEY_MENU_BACKGROUND, menuBackground.name());
         try {
             Path path = file();
             Files.createDirectories(path.getParent());
@@ -57,18 +63,26 @@ public final class GallifreyClientConfig {
         }
     }
 
-    public static boolean isVortexMenuBackground() {
+    public static MenuBackground getMenuBackground() {
         if (!loaded) {
             load();
         }
-        return vortexMenuBackground;
+        return menuBackground;
     }
 
-    public static void setVortexMenuBackground(boolean value) {
-        if (!loaded) {
-            load();
-        }
-        vortexMenuBackground = value;
+    public static void setMenuBackground(MenuBackground value) {
+        MenuBackground previous = getMenuBackground();
+        menuBackground = value;
         save();
+        // Free the animation we just switched away from.
+        if (previous != value && previous.frameFolder() != null) {
+            VideoVortexRenderer.unload();
+        }
+    }
+
+    /** Moves on to the next background (title screen button and Mod Menu settings). */
+    public static MenuBackground cycleMenuBackground() {
+        setMenuBackground(getMenuBackground().next());
+        return menuBackground;
     }
 }
