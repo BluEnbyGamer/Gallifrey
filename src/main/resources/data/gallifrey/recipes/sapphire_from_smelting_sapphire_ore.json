@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "group": "sapphire",
+  "ingredient": {
+    "item": "gallifrey:sapphire_ore"
+  },
+  "result": "gallifrey:sapphire",
+  "experience": 1.0,
+  "cookingtime": 200
+}

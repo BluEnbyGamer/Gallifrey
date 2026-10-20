@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "group": "ruby",
+  "ingredient": {
+    "item": "gallifrey:deepslate_ruby_ore"
+  },
+  "result": "gallifrey:ruby",
+  "experience": 1.0,
+  "cookingtime": 200
+}
