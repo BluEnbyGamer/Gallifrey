@@ -42,9 +42,16 @@ public class GeoHeadwearRenderer extends GeoArmorRenderer<GeoHeadwearItem> {
         super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick,
                 packedLight, packedOverlay, red, green, blue, alpha);
 
+        GeoBone headBone = this.getHeadBone();
+        // First-person Model draws your own body in first person: hats must not cover the camera.
+        // Set every frame, so the hat comes back as soon as it's drawn normally again.
+        if (headBone != null) {
+            headBone.setHidden(com.timelordmod.gallifrey.compat.firstperson.FirstPersonCompat.hideHeadwear());
+        }
+
         // Set every frame: GeckoLib resets un-animated bones to their original scale.
         if (this.headScale != 1.0F) {
-            GeoBone head = this.getHeadBone();
+            GeoBone head = headBone;
             if (head != null) {
                 head.setScaleX(this.headScale);
                 head.setScaleY(this.headScale);

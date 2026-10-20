@@ -60,6 +60,7 @@ public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        com.timelordmod.gallifrey.compat.nea.NotEnoughAnimationsCompat.register();
         // Distant Horizons: hide its far terrain in the foggy dimensions (Mars, Lost Reality).
         // Checked here so the compat class, which uses DH's API, is only loaded when DH is installed.
         if (net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("distanthorizons")) {

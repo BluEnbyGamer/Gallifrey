@@ -77,6 +77,11 @@
 		"wthit": "*",
 		"dehydration": "*",
 		"enhancedcelestials": "*",
-		"bakery": "*"
+		"bakery": "*",
+		"presencefootsteps": "*",
+		"firstperson": "*",
+		"notenoughanimations": "*",
+		"supplementaries": "*",
+		"tooltiprareness": "*"
 	}
 }

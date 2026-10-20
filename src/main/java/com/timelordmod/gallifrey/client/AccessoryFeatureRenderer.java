@@ -37,6 +37,8 @@ public final class AccessoryFeatureRenderer
                        AbstractClientPlayerEntity player, float limbAngle, float limbDistance, float tickDelta,
                        float animationProgress, float headYaw, float headPitch) {
         if (player.isInvisible()) return;
+        // First-person Model is drawing your own body: nothing on the head, or it covers the camera.
+        if (com.timelordmod.gallifrey.compat.firstperson.FirstPersonCompat.hideHeadwear()) return;
         renderOnHead(matrices, vertexConsumers, light, player, GallifreyAccessories.getFez(player));
         renderOnHead(matrices, vertexConsumers, light, player, GallifreyAccessories.getShades(player));
     }
