@@ -6,6 +6,10 @@
     "gallifrey:dalekanium_ingot",
     "gallifrey:metalertanium_ingot",
     "gallifrey:ruby",
-    "gallifrey:sapphire"
+    "gallifrey:sapphire",
+    "gallifrey:classic_iron_ingot",
+    "gallifrey:classic_gold_ingot",
+    "gallifrey:classic_emerald",
+    "gallifrey:classic_diamond"
   ]
 }

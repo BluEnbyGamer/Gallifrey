@@ -35,7 +35,7 @@ import java.util.Set;
 public final class ThermooCompat {
     private ThermooCompat() {}
 
-    private static final Set<String> AIRLESS = Set.of("moon", "mars", "mondas", "space");
+    private static final Set<String> AIRLESS = Set.of("moon", "mars", "mondas", "gallifrey_orbit", "skaro_orbit", "mondas_orbit");
     private static final String TARDIS = "tardis";
 
     @SuppressWarnings({"unchecked", "rawtypes"})

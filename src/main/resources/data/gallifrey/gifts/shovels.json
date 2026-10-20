@@ -1,0 +1,18 @@
+{
+  "conditions": [],
+  "items": {
+    "gallifrey:dalekanium_shovel": 25,
+    "gallifrey:metalertanium_shovel": 25,
+    "gallifrey:ruby_shovel": 25,
+    "gallifrey:sapphire_shovel": 25,
+    "gallifrey:emerald_shovel": 24,
+    "gallifrey:steel_shovel": 22,
+    "gallifrey:prehistoric_shovel": 18,
+    "gallifrey:mars_stone_shovel": 10,
+    "gallifrey:skaro_stone_shovel": 10,
+    "gallifrey:classic_diamond_shovel": 25,
+    "gallifrey:classic_iron_shovel": 20,
+    "gallifrey:classic_gold_shovel": 15,
+    "gallifrey:classic_wood_shovel": 5
+  }
+}

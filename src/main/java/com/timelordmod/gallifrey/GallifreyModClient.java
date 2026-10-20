@@ -132,6 +132,7 @@ public class GallifreyModClient implements ClientModInitializer {
         com.timelordmod.gallifrey.client.ModClientPackets.register();;
 
         EntityRendererRegistry.register(GallifreyEntities.TIME_LORD, com.timelordmod.gallifrey.entity.client.TimeLordRenderer::new);
+        EntityRendererRegistry.register(GallifreyEntities.CAVEMAN, com.timelordmod.gallifrey.entity.client.CavemanRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.client.MondasianCybermanRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.PROTO_CYBERMAN, com.timelordmod.gallifrey.entity.client.ProtoCybermanRenderer::new);
         EntityRendererRegistry.register(GallifreyEntities.CYBERMAT, com.timelordmod.gallifrey.entity.client.CybermatRenderer::new);

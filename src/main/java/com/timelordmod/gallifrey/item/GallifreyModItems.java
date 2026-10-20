@@ -205,6 +205,7 @@ public class GallifreyModItems {
     public static final SpawnEggItem MONDASIAN_CYBERMAN_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.MONDASIAN_CYBERMAN, 0xB7B9B8, 0x303638, new FabricItemSettings());
     public static final SpawnEggItem PROTO_CYBERMAN_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.PROTO_CYBERMAN, 0x777777, 0xA51D1D, new FabricItemSettings());
     public static final SpawnEggItem CYBERMAT_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.CYBERMAT, 0x454545, 0xC5C5C5, new FabricItemSettings());
+    public static final SpawnEggItem CAVEMAN_SPAWN_EGG = new SpawnEggItem(GallifreyEntities.CAVEMAN, 0x6B4A2E, 0xC89B6D, new FabricItemSettings());
 
     public static final SpawnEggItem TIMELORD_VILLAGER_SPAWN_EGG = new SpawnEggItem(
             GallifreyEntities.TIMELORD_VILLAGER, 0x4A101B, 0xE8A623, new FabricItemSettings());
@@ -554,6 +555,7 @@ public class GallifreyModItems {
         registerItem("mondasian_cyberman_spawn_egg", MONDASIAN_CYBERMAN_SPAWN_EGG);
         registerItem("proto_cyberman_spawn_egg", PROTO_CYBERMAN_SPAWN_EGG);
         registerItem("cybermat_spawn_egg", CYBERMAT_SPAWN_EGG);
+        registerItem("caveman_spawn_egg", CAVEMAN_SPAWN_EGG);
         registerItem("classic_villager_spawn_egg", CLASSIC_VILLAGER_SPAWN_EGG);
         registerItem("timelord_villager_spawn_egg", TIMELORD_VILLAGER_SPAWN_EGG);
         registerItem("skaro_city_dalek_spawn_egg", SKARO_CITY_DALEK_SPAWN_EGG);

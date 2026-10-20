@@ -50,6 +50,16 @@ public final class AdAstraCompat {
 
     public static void register() {
         if (!FabricLoader.getInstance().isModLoaded("ad_astra")) return;
+
+        // Gallifrey, Skaro and Mondas as rocket destinations, each with an orbit dimension
+        // (Ad Astra only lists planets that have one). Shipped as a built-in datapack so the
+        // orbit dimensions only exist when Ad Astra is installed.
+        FabricLoader.getInstance().getModContainer(GallifreyMod.MOD_ID).ifPresent(container ->
+                net.fabricmc.fabric.api.resource.ResourceManagerHelper.registerBuiltinResourcePack(
+                        new Identifier(GallifreyMod.MOD_ID, "ad_astra_planets"), container,
+                        net.minecraft.text.Text.literal("Gallifrey planets for Ad Astra"),
+                        net.fabricmc.fabric.api.resource.ResourcePackActivationType.ALWAYS_ENABLED));
+
         try {
             Class<?> apiClass = Class.forName("earth.terrarium.adastra.api.systems.OxygenApi");
             oxygenApi = apiClass.getField("API").get(null);

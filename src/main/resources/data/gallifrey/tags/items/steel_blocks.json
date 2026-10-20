@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:steel_block",
+    {
+      "id": "#c:steel_blocks",
+      "required": false
+    },
+    {
+      "id": "#c:storage_blocks/steel",
+      "required": false
+    },
+    {
+      "id": "#forge:storage_blocks/steel",
+      "required": false
+    },
+    {
+      "id": "ad_astra:steel_block",
+      "required": false
+    }
+  ]
+}

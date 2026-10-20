@@ -1,0 +1,18 @@
+{
+  "conditions": [],
+  "items": {
+    "gallifrey:dalekanium_hoe": 25,
+    "gallifrey:metalertanium_hoe": 25,
+    "gallifrey:ruby_hoe": 25,
+    "gallifrey:sapphire_hoe": 25,
+    "gallifrey:emerald_hoe": 24,
+    "gallifrey:steel_hoe": 22,
+    "gallifrey:prehistoric_hoe": 18,
+    "gallifrey:mars_stone_hoe": 10,
+    "gallifrey:skaro_stone_hoe": 10,
+    "gallifrey:classic_diamond_hoe": 25,
+    "gallifrey:classic_iron_hoe": 20,
+    "gallifrey:classic_gold_hoe": 15,
+    "gallifrey:classic_wood_hoe": 5
+  }
+}

@@ -51,11 +51,13 @@ public final class SonicShadesScanHud {
         lines = scan(client);
     }
 
-    public static void render(DrawContext context, int x, int y) {
+    /** Draws the readout with its right edge at {@code right}, so it sits under the top-right symbol. */
+    public static void render(DrawContext context, int right, int y) {
         if (lines.isEmpty()) return;
         TextRenderer font = MinecraftClient.getInstance().textRenderer;
         int width = 0;
         for (Text line : lines) width = Math.max(width, font.getWidth(line));
+        int x = right - width;
         int height = lines.size() * 10;
         context.fill(x - 3, y - 3, x + width + 3, y + height + 1, 0x90000814); // dark blue-black panel
         context.fill(x - 3, y - 3, x + width + 3, y - 2, 0xFF2E9BE6);           // sonic-blue top edge

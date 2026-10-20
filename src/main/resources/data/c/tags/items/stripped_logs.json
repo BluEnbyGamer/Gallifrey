@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:stripped_ash_log",
+    "gallifrey:stripped_maple_log",
+    "gallifrey:stripped_moonpine_log",
+    "gallifrey:stripped_tardis_log",
+    "gallifrey:stripped_treeborg_log",
+    "gallifrey:stripped_ulanda_log"
+  ]
+}

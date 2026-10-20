@@ -160,6 +160,14 @@ public class GallifreyMod implements ModInitializer {
                 1
         );
 
+        FabricDefaultAttributeRegistry.register(GallifreyEntities.CAVEMAN, com.timelordmod.gallifrey.entity.custom.CavemanEntity.createAttributes());
+        net.minecraft.entity.SpawnRestriction.register(
+                GallifreyEntities.CAVEMAN,
+                net.minecraft.entity.SpawnRestriction.Location.ON_GROUND,
+                net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+                (type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down()));
+        // Spawning itself is in the Prehistoric biome's JSON (worldgen/biome/prehistoric.json).
+
 		com.timelordmod.gallifrey.villager.GallifreyVillagers.register();
 
         FabricDefaultAttributeRegistry.register(GallifreyEntities.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
@@ -181,6 +189,7 @@ public class GallifreyMod implements ModInitializer {
 		com.timelordmod.gallifrey.compat.waystones.WaystonesCompat.register();
 		com.timelordmod.gallifrey.compat.thermoo.ThermooCompat.register();
 		com.timelordmod.gallifrey.compat.pehkui.PehkuiCompat.init();
+		com.timelordmod.gallifrey.compat.angels.WeepingAngelsCompat.register();
 		com.timelordmod.gallifrey.world.PetesWorldPortals.register();
 		GallifreyModBlockEntities.register();
 
@@ -312,6 +321,7 @@ public class GallifreyMod implements ModInitializer {
 						.frameBlock(GallifreyModBlocks.REINFORCED_STEEL_BLOCK)
 						.customFrameTester(GALLIFREY_FRAME_TESTER)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "gallifrey"))
 						.tintColor(230, 142, 48)
 						.registerPortal();
@@ -319,6 +329,7 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mars"))
 						.tintColor(150, 55, 35)
 						.registerPortal();
@@ -326,6 +337,7 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.DALEKANIUM_BLOCK)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "skaro"))
 						.tintColor(150, 110, 45)
 						.registerPortal();
@@ -333,6 +345,7 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.STEEL_BLOCK)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mondas"))
 						.tintColor(130, 150, 170)
 						.registerPortal();
@@ -340,6 +353,7 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(net.minecraft.block.Blocks.CRYING_OBSIDIAN)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "petes_world"))
 						.tintColor(90, 140, 230)
 						.registerPortal();
@@ -347,6 +361,7 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.LOST_DIRT)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
+						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "lost_reality"))
 						.tintColor(40, 160, 150)
 						.registerPortal();
@@ -355,9 +370,24 @@ public class GallifreyMod implements ModInitializer {
 
 		com.timelordmod.gallifrey.world.GallifreySpawnRule.register();
 		com.timelordmod.gallifrey.world.UuidRewards.register();
+		com.timelordmod.gallifrey.util.BannedPlayers.register();
 
 		LOGGER.info("[Gallifrey] Core systems ready.");
 	}
 
 	public static Identifier id(String path) { return new Identifier(MOD_ID, path);}
+
+	/** Lighting a portal with a White Point Star uses one up (Custom Portal API leaves the item alone). */
+	private static void useUpWhitePointStar(net.minecraft.entity.player.PlayerEntity player, net.minecraft.world.World world,
+											 net.minecraft.util.math.BlockPos portalPos, net.minecraft.util.math.BlockPos framePos,
+											 net.kyrptonaught.customportalapi.portal.PortalIgnitionSource source) {
+		if (player == null || player.getAbilities().creativeMode) return;
+		for (net.minecraft.util.Hand hand : net.minecraft.util.Hand.values()) {
+			net.minecraft.item.ItemStack stack = player.getStackInHand(hand);
+			if (stack.isOf(GallifreyModItems.WHITE_POINT_STAR)) {
+				stack.decrement(1);
+				return;
+			}
+		}
+	}
 }

@@ -123,6 +123,12 @@
         "maxCount": 2,
         "minCount": 1,
         "weight": 1
+      },
+      {
+        "type": "gallifrey:caveman",
+        "weight": 8,
+        "minCount": 2,
+        "maxCount": 4
       }
     ],
     "misc": [],

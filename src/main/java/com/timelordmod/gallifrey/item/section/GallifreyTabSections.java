@@ -336,6 +336,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.MONDASIAN_CYBERMAN_SPAWN_EGG);
                 entries.add(GallifreyModItems.PROTO_CYBERMAN_SPAWN_EGG);
                 entries.add(GallifreyModItems.CYBERMAT_SPAWN_EGG);
+                entries.add(GallifreyModItems.CAVEMAN_SPAWN_EGG);
                 entries.add(GallifreyModItems.TIMELORD_VILLAGER_SPAWN_EGG);
             }
     );

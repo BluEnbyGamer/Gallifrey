@@ -19,7 +19,8 @@
     "compat.BetterInventoryMenuMixin",
     "GallifreyDimensionTravelMixin",
     "EntityDimensionTravelMixin",
-    "TeleportCommandTravelMixin"
+    "TeleportCommandTravelMixin",
+    "compat.WeepingAngelsTeleporterMixin"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",
