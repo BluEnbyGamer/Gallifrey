@@ -197,16 +197,14 @@ public class GallifreyMod implements ModInitializer {
 		);
 
 		// Nether ore generation: both rare ores use the Nether-specific configured targets.
+		// Every Nether biome, not just the five vanilla ones, so nether biome mods (Incendium,
+		// Amplified Nether, BetterNether...) get these ores too.
 		BiomeModifications.addFeature(
-				BiomeSelectors.includeByKey(
-						BiomeKeys.NETHER_WASTES, BiomeKeys.SOUL_SAND_VALLEY, BiomeKeys.CRIMSON_FOREST,
-						BiomeKeys.WARPED_FOREST, BiomeKeys.BASALT_DELTAS),
+				BiomeSelectors.foundInTheNether(),
 				GenerationStep.Feature.UNDERGROUND_ORES,
 				ModPlacedFeatures.NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY);
 		BiomeModifications.addFeature(
-				BiomeSelectors.includeByKey(
-						BiomeKeys.NETHER_WASTES, BiomeKeys.SOUL_SAND_VALLEY, BiomeKeys.CRIMSON_FOREST,
-						BiomeKeys.WARPED_FOREST, BiomeKeys.BASALT_DELTAS),
+				BiomeSelectors.foundInTheNether(),
 				GenerationStep.Feature.UNDERGROUND_ORES,
 				ModPlacedFeatures.NETHER_WHITE_POINT_ORE_PLACED_KEY);
 
@@ -218,6 +216,8 @@ public class GallifreyMod implements ModInitializer {
 
 		GallifreyCreativeTab.register();
 		ModBoats.registerBoats();
+		// Biolith works on whatever overworld is in use, including Terralith's (which still has
+		// vanilla forests), so the Treeborg forest generates with Terralith installed too.
 		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, ModBiomes.TREEBORG_FOREST, 0.3d);
 
 

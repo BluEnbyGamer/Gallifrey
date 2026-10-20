@@ -37,6 +37,8 @@ repositories {
 		name = 'TerraformersMC'
 		url = 'https://maven.terraformersmc.com/'
 	}
+	maven { url = "https://maven.shedaniel.me/" }      // REI
+	maven { url = "https://maven.architectury.dev/" }  // REI's own dependencies
 }
 
 loom {
@@ -100,6 +102,12 @@ dependencies {
 
 	//please leave this alone
 	modCompileOnly("mezz.jei:jei-1.20.1-fabric:15.62.0.217") { transitive = false }
+
+	// EMI and REI: compile against their APIs only, so neither is needed to play.
+	modCompileOnly "dev.emi:emi-fabric:1.1.2+1.20.1:api"
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:12.0.684"
+	// Mod Menu: API only, for the config button.
+	modCompileOnly "com.terraformersmc:modmenu:7.2.2"
 }
 
 /*

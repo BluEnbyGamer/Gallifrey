@@ -10,7 +10,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(BackgroundRenderer.class)
+/*
+ * priority = 1100: runs after other mods' applyFog hooks (default 1000). Iris records the fog
+ * density for shader packs at the start of applyFog; if this cancelled first, Iris kept a stale
+ * value (e.g. thick underwater fog after surfacing). Sodium and Iris both read the fog
+ * start/end/colour set here, so the fog itself still shows with them installed.
+ */
+@Mixin(value = BackgroundRenderer.class, priority = 1100)
 public class MondasFogMixin {
     @Inject(method = "applyFog", at = @At("HEAD"), cancellable = true)
     private static void gallifrey$mondasFog(Camera camera, BackgroundRenderer.FogType fogType,

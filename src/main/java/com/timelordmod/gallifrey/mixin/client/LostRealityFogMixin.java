@@ -17,7 +17,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
  * but it only touches normal terrain fog, so underwater, lava, powder snow,
  * Blindness and Darkness keep their vanilla fog.
  */
-@Mixin(BackgroundRenderer.class)
+/*
+ * priority = 1100: runs after other mods' applyFog hooks (default 1000). Iris records the fog
+ * density for shader packs at the start of applyFog; if this cancelled first, Iris kept a stale
+ * value (e.g. thick underwater fog after surfacing). Sodium and Iris both read the fog
+ * start/end/colour set here, so the fog itself still shows with them installed.
+ */
+@Mixin(value = BackgroundRenderer.class, priority = 1100)
 public class LostRealityFogMixin {
     /** Blocks from the camera where the fog starts. 0 = right on top of you. */
     private static final float FOG_START = 0.0F;

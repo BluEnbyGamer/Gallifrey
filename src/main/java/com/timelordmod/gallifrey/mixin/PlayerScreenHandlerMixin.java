@@ -2,6 +2,7 @@ package com.timelordmod.gallifrey.mixin;
 
 import com.timelordmod.gallifrey.item.custom.AccessorySlotIndices;
 import com.timelordmod.gallifrey.item.custom.AccessorySlot;
+import com.timelordmod.gallifrey.item.custom.AccessorySlotLayout;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -24,8 +25,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * Shift-clicking Sonic Shades or a fez from the inventory puts it in its slot when that slot is
  * empty. The creative inventory places these slots itself (CreativeInventoryAccessorySlotsMixin)
  * and the server accepts creative-mode changes to them (CreativeAccessorySlotsMixin).
+ *
+ * priority = 500 makes this run before other mods' slot-adding mixins (default priority 1000),
+ * so these two slots always come straight after the vanilla ones (slots 46 and 47). Trinkets in
+ * particular removes and re-adds its own slots whenever they change; if ours came after Trinkets',
+ * that shifted them and clicks went to the wrong slot. Where they're drawn: AccessorySlotLayout.
  */
-@Mixin(PlayerScreenHandler.class)
+@Mixin(value = PlayerScreenHandler.class, priority = 500)
 public abstract class PlayerScreenHandlerMixin extends ScreenHandler implements AccessorySlotIndices {
 
     @Unique private int gallifrey$shadesSlot = -1;
@@ -37,8 +43,8 @@ public abstract class PlayerScreenHandlerMixin extends ScreenHandler implements 
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void gallifrey$addAccessorySlots(PlayerInventory playerInventory, boolean onServer, PlayerEntity owner, CallbackInfo ci) {
-        gallifrey$shadesSlot = this.addSlot(AccessorySlot.shades(owner, 77, 8)).id;
-        gallifrey$fezSlot = this.addSlot(AccessorySlot.fez(owner, 77, 26)).id;
+        gallifrey$shadesSlot = this.addSlot(AccessorySlot.shades(owner, AccessorySlotLayout.SHADES_X, AccessorySlotLayout.SHADES_Y)).id;
+        gallifrey$fezSlot = this.addSlot(AccessorySlot.fez(owner, AccessorySlotLayout.FEZ_X, AccessorySlotLayout.FEZ_Y)).id;
     }
 
     /** Shift-click from the inventory or hotbar: Sonic Shades and fezzes go to their own slot first. */

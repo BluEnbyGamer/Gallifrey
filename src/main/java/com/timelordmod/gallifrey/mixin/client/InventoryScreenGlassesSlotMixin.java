@@ -1,5 +1,6 @@
 package com.timelordmod.gallifrey.mixin.client;
 
+import com.timelordmod.gallifrey.item.custom.AccessorySlotLayout;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.util.Identifier;
@@ -20,12 +21,14 @@ public abstract class InventoryScreenGlassesSlotMixin {
         // Read them through the existing accessor mixin rather than shadowing
         // inherited fields on InventoryScreen (which crashes mixin application).
         HandledScreenAccessor screen = (HandledScreenAccessor) this;
-        int slotX = screen.gallifrey$getX() + 76;
-        int slotY = screen.gallifrey$getY() + 7;
-        context.drawTexture(GALLIFREY$INVENTORY_TEXTURE, slotX, slotY,
+        int x = screen.gallifrey$getX() - 1;
+        int y = screen.gallifrey$getY() - 1;
+        // Slot squares are 18x18 and start one pixel up and left of the slot itself.
+        context.drawTexture(GALLIFREY$INVENTORY_TEXTURE,
+                x + AccessorySlotLayout.SHADES_X, y + AccessorySlotLayout.SHADES_Y,
                 7.0F, 83.0F, 18, 18, 256, 256);
-        // The fez slot, just below.
-        context.drawTexture(GALLIFREY$INVENTORY_TEXTURE, slotX, slotY + 18,
+        context.drawTexture(GALLIFREY$INVENTORY_TEXTURE,
+                x + AccessorySlotLayout.FEZ_X, y + AccessorySlotLayout.FEZ_Y,
                 7.0F, 83.0F, 18, 18, 256, 256);
     }
 }

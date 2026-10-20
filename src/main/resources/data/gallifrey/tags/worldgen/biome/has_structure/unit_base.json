@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:savanna",
+    { "id": "terralith:shrubland", "required": false },
+    { "id": "terralith:steppe", "required": false },
+    { "id": "terralith:valley_clearing", "required": false },
+    { "id": "terralith:blooming_valley", "required": false },
+    { "id": "terralith:lush_valley", "required": false },
+    { "id": "terralith:fractured_savanna", "required": false }
+  ]
+}
