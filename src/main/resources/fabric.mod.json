@@ -36,6 +36,9 @@
 		],
 		"modmenu": [
 			"com.timelordmod.gallifrey.compat.modmenu.GallifreyModMenu"
+		],
+		"jade": [
+			"com.timelordmod.gallifrey.compat.jade.GallifreyJadePlugin"
 		]
 	},
 	"mixins": [
@@ -57,6 +60,7 @@
 	},
 	"suggests": {
 		"regeneration": "*",
-		"ad_astra": "*"
+		"ad_astra": "*",
+		"ait": "*"
 	}
 }

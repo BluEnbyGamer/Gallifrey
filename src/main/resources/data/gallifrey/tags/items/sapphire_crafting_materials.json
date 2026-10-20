@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "gallifrey:sapphire"
+    "gallifrey:sapphire",
+    {
+      "id": "#c:sapphires",
+      "required": false
+    }
   ]
 }

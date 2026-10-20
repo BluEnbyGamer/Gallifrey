@@ -8,14 +8,11 @@
   ],
   "key": {
     "a": {
-      "item": "gallifrey:steel_ingot"
+      "tag": "gallifrey:steel_ingots"
     }
   },
-    "result": {
-      "item": "gallifrey:grate_block",
-      "count": 1
-    }
+  "result": {
+    "item": "gallifrey:grate_block",
+    "count": 1
+  }
 }
-
-
-

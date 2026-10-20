@@ -173,6 +173,7 @@ public class GallifreyMod implements ModInitializer {
 		com.timelordmod.gallifrey.item.custom.GallifreyAccessories.register();
 		com.timelordmod.gallifrey.compat.tardisrefined.TardisRefinedSonics.register();
 		com.timelordmod.gallifrey.compat.adastra.AdAstraCompat.register();
+		com.timelordmod.gallifrey.compat.ait.AitSonics.register();
 		com.timelordmod.gallifrey.world.PetesWorldPortals.register();
 		GallifreyModBlockEntities.register();
 

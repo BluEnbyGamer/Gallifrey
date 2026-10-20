@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:ruby_axe",
+    "gallifrey:sapphire_axe",
+    "gallifrey:steel_axe",
+    "gallifrey:dalekanium_axe",
+    "gallifrey:metalertanium_axe",
+    "gallifrey:prehistoric_axe",
+    "gallifrey:emerald_axe",
+    "gallifrey:mars_stone_axe",
+    "gallifrey:skaro_stone_axe",
+    "gallifrey:classic_wood_axe",
+    "gallifrey:classic_iron_axe",
+    "gallifrey:classic_gold_axe",
+    "gallifrey:classic_diamond_axe"
+  ]
+}

@@ -3,7 +3,9 @@ package com.timelordmod.gallifrey.sonic;
 public enum SonicMode {
     INTERACTION("Interaction"),
     OVERLOAD("Overload"),
-    SCAN("Scanning");
+    SCAN("Scanning"),
+    /** Only offered when Adventures in Time is installed (see compat.ait.AitSonics). */
+    TARDIS("TARDIS");
 
     private final String displayName;
 

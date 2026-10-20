@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:steel_ingot",
+    "gallifrey:dalekanium_ingot",
+    "gallifrey:prehistoric_ingot",
+    "gallifrey:metalertanium_ingot"
+  ]
+}

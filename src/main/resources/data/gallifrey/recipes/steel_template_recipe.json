@@ -10,7 +10,7 @@
       "item": "minecraft:diamond"
     },
     "I": {
-      "item": "gallifrey:steel_ingot"
+      "tag": "gallifrey:steel_ingots"
     },
     "P": {
       "item": "minecraft:paper"

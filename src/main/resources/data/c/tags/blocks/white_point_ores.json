@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:white_point_ore",
+    "gallifrey:deepslate_white_point_ore",
+    "gallifrey:nether_white_point_ore"
+  ]
+}

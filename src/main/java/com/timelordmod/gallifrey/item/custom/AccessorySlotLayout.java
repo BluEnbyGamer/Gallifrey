@@ -16,7 +16,14 @@ import net.fabricmc.loader.api.FabricLoader;
 public final class AccessorySlotLayout {
     private AccessorySlotLayout() {}
 
-    public static final boolean TRINKETS = FabricLoader.getInstance().isModLoaded("trinkets");
+    /**
+     * The real Trinkets. Accessories ships a "Trinkets compat layer" (tclayer) that also calls
+     * itself trinkets, but it adds no slots to the inventory, so it doesn't count here.
+     * Accessories' own inventory button sits inside the player preview (survival) and next to the
+     * armour (creative), clear of both layouts, so it needs nothing special.
+     */
+    public static final boolean TRINKETS = FabricLoader.getInstance().isModLoaded("trinkets")
+            && !FabricLoader.getInstance().isModLoaded("tclayer");
 
     // Survival inventory.
     public static final int SHADES_X = TRINKETS ? 134 : 77;

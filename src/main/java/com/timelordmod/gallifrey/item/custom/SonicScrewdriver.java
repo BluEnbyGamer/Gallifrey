@@ -200,7 +200,7 @@ public class SonicScrewdriver extends Item {
                         .getInt(MODE_KEY);
 
         SonicMode[] modes = SonicMode.values();
-        if (mode < 0 || mode >= modes.length) {
+        if (mode < 0 || mode >= modes.length || !isModeAvailable(stack, modes[mode])) {
             return SonicMode.INTERACTION;
         }
         return modes[mode];
@@ -215,8 +215,17 @@ public class SonicScrewdriver extends Item {
 
     public static void toggleMode(ItemStack stack) {
         SonicMode[] modes = SonicMode.values();
-        SonicMode current = getMode(stack);
-        setMode(stack, modes[(current.ordinal() + 1) % modes.length]);
+        SonicMode next = getMode(stack);
+        // Skip modes this sonic can't use right now (TARDIS mode needs Adventures in Time).
+        do {
+            next = modes[(next.ordinal() + 1) % modes.length];
+        } while (!isModeAvailable(stack, next));
+        setMode(stack, next);
+    }
+
+    /** TARDIS mode is only there with Adventures in Time installed, and not on the Sonic Shades. */
+    public static boolean isModeAvailable(ItemStack stack, SonicMode mode) {
+        return mode != SonicMode.TARDIS || com.timelordmod.gallifrey.compat.ait.AitSonics.canUseTardisMode(stack);
     }
 
     // =========================================================
@@ -509,6 +518,17 @@ public class SonicScrewdriver extends Item {
         HitResult target = getSonicTarget(player);
         SonicMode mode = getMode(stack);
         SonicCasing casing = getCasing(stack);
+
+        if (mode == SonicMode.TARDIS) {
+            // Adventures in Time: call, send off or park the linked TARDIS. AIT shows its own
+            // message for what happened, so the power readout below is skipped.
+            if (com.timelordmod.gallifrey.compat.ait.AitSonics.useTardisMode(player, world, stack)) {
+                world.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        GallifreySounds.SONIC, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                consumePower(stack);
+            }
+            return;
+        }
 
         SonicHandler.use(player, world, target, mode);
 

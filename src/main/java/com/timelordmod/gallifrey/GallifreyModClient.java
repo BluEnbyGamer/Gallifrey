@@ -60,6 +60,17 @@ public class GallifreyModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        // Distant Horizons: hide its far terrain in the foggy dimensions (Mars, Lost Reality).
+        // Checked here so the compat class, which uses DH's API, is only loaded when DH is installed.
+        if (net.fabricmc.loader.api.FabricLoader.getInstance().isModLoaded("distanthorizons")) {
+            try {
+                com.timelordmod.gallifrey.compat.dh.DistantHorizonsCompat.register();
+                GallifreyMod.LOGGER.info("[Gallifrey] Distant Horizons found: far terrain hidden in foggy dimensions");
+            } catch (Throwable t) {
+                GallifreyMod.LOGGER.warn("[Gallifrey] Distant Horizons API wasn't what Gallifrey expected; fog compat is off", t);
+            }
+        }
+
         // Flat 2D inventory icons for the fezzes and the Dalek eyestalk (see HeadwearFlatModels).
         com.timelordmod.gallifrey.client.HeadwearFlatModels.register();
 

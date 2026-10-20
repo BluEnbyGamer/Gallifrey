@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:ruby_pickaxe",
+    "gallifrey:sapphire_pickaxe",
+    "gallifrey:steel_pickaxe",
+    "gallifrey:dalekanium_pickaxe",
+    "gallifrey:metalertanium_pickaxe",
+    "gallifrey:prehistoric_pickaxe",
+    "gallifrey:emerald_pickaxe",
+    "gallifrey:mars_stone_pickaxe",
+    "gallifrey:skaro_stone_pickaxe",
+    "gallifrey:classic_wood_pickaxe",
+    "gallifrey:classic_iron_pickaxe",
+    "gallifrey:classic_gold_pickaxe",
+    "gallifrey:classic_diamond_pickaxe"
+  ]
+}

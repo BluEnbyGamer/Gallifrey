@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:steel_ingot",
+    {
+      "id": "#c:steel_ingots",
+      "required": false
+    }
+  ]
+}

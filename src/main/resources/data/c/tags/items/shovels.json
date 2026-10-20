@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "gallifrey:ruby_shovel",
+    "gallifrey:sapphire_shovel",
+    "gallifrey:steel_shovel",
+    "gallifrey:dalekanium_shovel",
+    "gallifrey:metalertanium_shovel",
+    "gallifrey:prehistoric_shovel",
+    "gallifrey:emerald_shovel",
+    "gallifrey:mars_stone_shovel",
+    "gallifrey:skaro_stone_shovel",
+    "gallifrey:classic_wood_shovel",
+    "gallifrey:classic_iron_shovel",
+    "gallifrey:classic_gold_shovel",
+    "gallifrey:classic_diamond_shovel"
+  ]
+}

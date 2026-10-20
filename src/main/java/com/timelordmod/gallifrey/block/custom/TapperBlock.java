@@ -111,6 +111,17 @@ public class TapperBlock extends Block {
         return null;
     }
 
+    /** What this tapper collects, or null if it isn't on a tappable log. Used by the Jade tooltip. */
+    @Nullable
+    public static Item tappedProduct(BlockView world, BlockState state, BlockPos pos) {
+        return productFor(world.getBlockState(attachedPos(state, pos)));
+    }
+
+    /** Whether this tapper is on a living tree, so it's filling. Used by the Jade tooltip. */
+    public static boolean isFilling(World world, BlockState state, BlockPos pos) {
+        return isOnLivingTree(world, state, pos);
+    }
+
     // ------------------------------------------------------------------
     // Placement: only on the side of a tappable log -
     // ------------------------------------------------------------------
