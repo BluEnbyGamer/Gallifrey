@@ -2317,6 +2317,18 @@ public class GallifreyModBlocks {
             )
     );
 
+    /** TARDIS monitor: opens the TARDIS screen (set the destination, exterior, interior, systems). */
+    public static final Block TARDIS_MONITOR = registerTardisControl(
+            "tardis_monitor",
+            new TardisMonitorBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).strength(1.5f).nonOpaque())
+    );
+
+    /** TARDIS throttle: pull it to take off for the destination set on the monitor (Dalek Mod style). */
+    public static final Block TARDIS_THROTTLE = registerTardisControl(
+            "tardis_throttle",
+            new TardisThrottleBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).strength(1.5f).nonOpaque())
+    );
+
     /** Physical exit door installed inside each generated TARDIS interior. */
     public static final Block TARDIS_INTERIOR_DOOR = registerBlock(
             "tardis_interior_door",
@@ -2334,6 +2346,13 @@ public class GallifreyModBlocks {
 
     private static Block registerBlock(String name, Block block) {
         return registerBlock(name, block, false);
+    }
+
+    /** TARDIS controls: the block plus a GeckoLib block item that shows the 3D model. */
+    private static Block registerTardisControl(String name, Block block) {
+        Registry.register(Registries.ITEM, new Identifier(GallifreyMod.MOD_ID, name),
+                new com.timelordmod.gallifrey.item.custom.TardisControlItem(block, name, new FabricItemSettings()));
+        return Registry.register(Registries.BLOCK, new Identifier(GallifreyMod.MOD_ID, name), block);
     }
 
     private static Block registerBlockNoItem(String name, Block block) {

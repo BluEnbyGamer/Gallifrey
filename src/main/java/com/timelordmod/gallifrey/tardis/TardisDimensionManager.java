@@ -293,6 +293,50 @@ public final class TardisDimensionManager {
         return true;
     }
 
+    /**
+     * The TARDIS whose interior this world is, or null. Used by controls placed inside the
+     * interior (the throttle), which belong to that TARDIS rather than to whoever clicks them.
+     */
+    public static TardisExteriorBlockEntity findTardisForInterior(ServerWorld interior) {
+        MinecraftServer server = interior.getServer();
+        String key = interior.getRegistryKey().getValue().toString();
+        for (TardisRegistryState.Record record : TardisRegistryState.get(server).records()) {
+            if (!key.equals(record.interiorDimension())) continue;
+            ServerWorld world = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(record.world())));
+            if (world == null) continue;
+            BlockPos pos = BlockPos.fromLong(record.pos());
+            world.getChunk(pos.getX() >> 4, pos.getZ() >> 4);
+            if (world.getBlockEntity(pos) instanceof TardisExteriorBlockEntity tardis
+                    && record.id().equals(tardis.getTardisId())) {
+                return tardis;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Throttle: take off for the destination set on the monitor. Uses the normal flight
+     * sequence (fuel, landing checks, dematerialise and rematerialise sounds).
+     */
+    public static boolean launch(ServerPlayerEntity pilot, TardisExteriorBlockEntity tardis) {
+        if (tardis.isFlightPending()) {
+            pilot.sendMessage(Text.literal("The TARDIS is already in flight."), true);
+            return false;
+        }
+        if (!tardis.hasDestination()) {
+            pilot.sendMessage(Text.literal("No destination set. Set one on the monitor first."), true);
+            return false;
+        }
+        MinecraftServer server = pilot.getServer();
+        if (server == null) return false;
+        ServerWorld target = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, tardis.getDestinationWorld()));
+        if (target == null) {
+            pilot.sendMessage(Text.literal("The destination dimension no longer exists."), true);
+            return false;
+        }
+        return travel(pilot, target, tardis.getDestinationPos(), pilot.getYaw());
+    }
+
     public static boolean travel(ServerPlayerEntity pilot, ServerWorld targetWorld, BlockPos targetPos, float yaw) {
         MinecraftServer server = pilot.getServer();
         if (server == null) return false;

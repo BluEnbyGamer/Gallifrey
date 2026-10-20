@@ -45,6 +45,10 @@ public class TardisExteriorBlockEntity extends BlockEntity {
     private BlockPos consolePos;
     private BlockPos interiorDoorPos;
 
+    /** Where the throttle will take the TARDIS (set on the monitor). Null until a destination is set. */
+    private Identifier destinationWorld;
+    private BlockPos destinationPos;
+
     private boolean flightPending;
     private int flightTicks;
     private Identifier flightWorld;
@@ -363,6 +367,18 @@ public class TardisExteriorBlockEntity extends BlockEntity {
 
     public boolean isFlightPending() { return flightPending; }
 
+    public void setDestination(Identifier world, BlockPos pos) {
+        destinationWorld = world;
+        destinationPos = pos == null ? null : pos.toImmutable();
+        markDirty();
+    }
+
+    public Identifier getDestinationWorld() { return destinationWorld; }
+
+    public BlockPos getDestinationPos() { return destinationPos; }
+
+    public boolean hasDestination() { return destinationWorld != null && destinationPos != null; }
+
     public boolean tickFlight() {
         if (!flightPending) return false;
         flightTicks--;
@@ -435,6 +451,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         nbt.putInt("InteriorSizeY", interiorSize.getY());
         nbt.putInt("InteriorSizeZ", interiorSize.getZ());
 
+        if (destinationWorld != null) nbt.putString("DestinationWorld", destinationWorld.toString());
+        if (destinationPos != null) nbt.putLong("DestinationPos", destinationPos.asLong());
         nbt.putBoolean("FlightPending", flightPending);
         nbt.putInt("FlightTicks", flightTicks);
         if (flightWorld != null) nbt.putString("FlightWorld", flightWorld.toString());
@@ -468,6 +486,8 @@ public class TardisExteriorBlockEntity extends BlockEntity {
         if (nbt.contains("InteriorDoorPos")) interiorDoorPos = BlockPos.fromLong(nbt.getLong("InteriorDoorPos"));
         interiorSize = new Vec3i(Math.max(1, nbt.getInt("InteriorSizeX")), Math.max(1, nbt.getInt("InteriorSizeY")), Math.max(1, nbt.getInt("InteriorSizeZ")));
 
+        destinationWorld = nbt.contains("DestinationWorld") ? new Identifier(nbt.getString("DestinationWorld")) : null;
+        destinationPos = nbt.contains("DestinationPos") ? BlockPos.fromLong(nbt.getLong("DestinationPos")) : null;
         flightPending = nbt.getBoolean("FlightPending");
         flightTicks = nbt.getInt("FlightTicks");
         if (nbt.contains("FlightWorld")) flightWorld = new Identifier(nbt.getString("FlightWorld"));

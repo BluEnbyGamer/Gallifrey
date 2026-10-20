@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,pulled=false": {
+      "model": "gallifrey:block/tardis_throttle"
+    },
+    "facing=north,pulled=true": {
+      "model": "gallifrey:block/tardis_throttle"
+    },
+    "facing=east,pulled=false": {
+      "model": "gallifrey:block/tardis_throttle",
+      "y": 90
+    },
+    "facing=east,pulled=true": {
+      "model": "gallifrey:block/tardis_throttle",
+      "y": 90
+    },
+    "facing=south,pulled=false": {
+      "model": "gallifrey:block/tardis_throttle",
+      "y": 180
+    },
+    "facing=south,pulled=true": {
+      "model": "gallifrey:block/tardis_throttle",
+      "y": 180
+    },
+    "facing=west,pulled=false": {
+      "model": "gallifrey:block/tardis_throttle",
+      "y": 270
+    },
+    "facing=west,pulled=true": {
+      "model": "gallifrey:block/tardis_throttle",
+      "y": 270
+    }
+  }
+}

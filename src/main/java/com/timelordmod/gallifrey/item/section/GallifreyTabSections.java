@@ -237,6 +237,8 @@ public final class GallifreyTabSections {
                 // TARDIS
                 entries.add(GallifreyModBlocks.TARDIS_EXTERIOR);
                 entries.add(GallifreyModBlocks.TARDIS_CONSOLE);
+                entries.add(GallifreyModBlocks.TARDIS_MONITOR);
+                entries.add(GallifreyModBlocks.TARDIS_THROTTLE);
                 entries.add(GallifreyModBlocks.TARDIS_INTERIOR_DOOR);
                 entries.add(GallifreyModItems.TARDIS_INTERIOR);
 

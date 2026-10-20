@@ -665,5 +665,7 @@
   "dimension.gallifrey.lost_reality": "Lost Waters o' Reality",
   "dimension.gallifrey.tardis": "TARDIS",
   "structure.gallifrey.classic_village": "Ol' Village",
-  "structure.gallifrey.unit_base": "UNIT Fort"
+  "structure.gallifrey.unit_base": "UNIT Fort",
+  "block.gallifrey.tardis_monitor": "TARDIS Spyglass Screen",
+  "block.gallifrey.tardis_throttle": "TARDIS Helm Lever"
 }

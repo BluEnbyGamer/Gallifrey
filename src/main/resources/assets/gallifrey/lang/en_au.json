@@ -729,5 +729,7 @@
   "dimension.gallifrey.lost_reality": "Lost Reality",
   "dimension.gallifrey.tardis": "TARDIS",
   "structure.gallifrey.classic_village": "Classic Village",
-  "structure.gallifrey.unit_base": "UNIT Base"
+  "structure.gallifrey.unit_base": "UNIT Base",
+  "block.gallifrey.tardis_monitor": "TARDIS Monitor",
+  "block.gallifrey.tardis_throttle": "TARDIS Throttle"
 }

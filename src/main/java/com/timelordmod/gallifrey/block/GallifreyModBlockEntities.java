@@ -37,6 +37,16 @@ public class GallifreyModBlockEntities {
                     ).build()
             );
 
+    public static final BlockEntityType<com.timelordmod.gallifrey.block.entity.TardisMonitorBlockEntity> TARDIS_MONITOR =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, GallifreyMod.id("tardis_monitor"),
+                    FabricBlockEntityTypeBuilder.create(com.timelordmod.gallifrey.block.entity.TardisMonitorBlockEntity::new,
+                            GallifreyModBlocks.TARDIS_MONITOR).build());
+
+    public static final BlockEntityType<com.timelordmod.gallifrey.block.entity.TardisThrottleBlockEntity> TARDIS_THROTTLE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, GallifreyMod.id("tardis_throttle"),
+                    FabricBlockEntityTypeBuilder.create(com.timelordmod.gallifrey.block.entity.TardisThrottleBlockEntity::new,
+                            GallifreyModBlocks.TARDIS_THROTTLE).build());
+
     public static final BlockEntityType<TardisInteriorDoorBlockEntity> TARDIS_INTERIOR_DOOR =
             Registry.register(
                     Registries.BLOCK_ENTITY_TYPE,

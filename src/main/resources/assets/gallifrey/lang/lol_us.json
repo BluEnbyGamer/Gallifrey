@@ -674,5 +674,7 @@
   "dimension.gallifrey.lost_reality": "Lozt Reelity",
   "dimension.gallifrey.tardis": "TARDIS",
   "structure.gallifrey.classic_village": "Clasik Vilij",
-  "structure.gallifrey.unit_base": "UNIT Baez"
+  "structure.gallifrey.unit_base": "UNIT Baez",
+  "block.gallifrey.tardis_monitor": "TARDIS Monitur",
+  "block.gallifrey.tardis_throttle": "TARDIS Throttel"
 }

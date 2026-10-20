@@ -383,6 +383,10 @@ public class GallifreyModClient implements ClientModInitializer {
                 GallifreyModBlockEntities.TARDIS_CONSOLE,
                 TardisConsoleBlockEntityRenderer::new
         );
+        BlockEntityRendererRegistry.register(GallifreyModBlockEntities.TARDIS_MONITOR,
+                com.timelordmod.gallifrey.client.TardisMonitorRenderer::new);
+        BlockEntityRendererRegistry.register(GallifreyModBlockEntities.TARDIS_THROTTLE,
+                com.timelordmod.gallifrey.client.TardisThrottleRenderer::new);
 
         BlockEntityRendererRegistry.register(
                 GallifreyModBlockEntities.SONIC_WORKSHOP_BLOCK_ENTITY,

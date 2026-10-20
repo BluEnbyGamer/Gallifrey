@@ -58,10 +58,18 @@ public final class TardisMonitorNetworking {
                     double z = buf.readDouble();
                     Identifier id = new Identifier(dimension);
                     ServerWorld target = player.getServer().getWorld(RegistryKey.of(RegistryKeys.WORLD, id));
+                    // Dalek Mod style: the monitor only sets the destination. Pulling the
+                    // throttle (TardisThrottleBlock) is what takes off.
+                    TardisExteriorBlockEntity tardis = findActive(player);
                     if (target == null) {
                         player.sendMessage(Text.literal("Unknown dimension: " + id), true);
+                    } else if (tardis == null) {
+                        player.sendMessage(Text.literal("Only the TARDIS owner can set its destination."), true);
                     } else {
-                        TardisDimensionManager.travel(player, target, BlockPos.ofFloored(x, y, z), player.getYaw());
+                        BlockPos destination = BlockPos.ofFloored(x, y, z);
+                        tardis.setDestination(id, destination);
+                        player.sendMessage(Text.literal("Destination set: " + id + " " + destination.toShortString()
+                                + ". Pull the throttle to take off."), true);
                     }
                     sendState(player);
                 }

@@ -740,5 +740,7 @@
   "key.gallifrey.rwf_up": "RWF Up",
   "key.gallifrey.rwf_down": "RWF Down",
   "key.gallifrey.rwf_faster": "RWF Faster",
-  "key.gallifrey.rwf_slower": "RWF Slower"
+  "key.gallifrey.rwf_slower": "RWF Slower",
+  "block.gallifrey.tardis_monitor": "TARDIS Monitor",
+  "block.gallifrey.tardis_throttle": "TARDIS Throttle"
 }
