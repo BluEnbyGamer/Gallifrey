@@ -31,9 +31,6 @@ import net.minecraft.particle.ParticleTypes;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.api.CustomPortalBuilder;
 import net.minecraft.util.Identifier;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.world.biome.BiomeKeys;
 import org.slf4j.Logger;
@@ -160,15 +157,6 @@ public class GallifreyMod implements ModInitializer {
                 1
         );
 
-        FabricDefaultAttributeRegistry.register(GallifreyEntities.CAVEMAN, com.timelordmod.gallifrey.entity.custom.CavemanEntity.createAttributes());
-        net.minecraft.entity.SpawnRestriction.register(
-                GallifreyEntities.CAVEMAN,
-                net.minecraft.entity.SpawnRestriction.Location.ON_GROUND,
-                net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                (type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down()));
-        // Spawning itself is in the Prehistoric biome's JSON (worldgen/biome/prehistoric.json).
-        com.timelordmod.gallifrey.entity.custom.CavemanEntity.registerMonsterHunting();
-
 		com.timelordmod.gallifrey.villager.GallifreyVillagers.register();
 
         FabricDefaultAttributeRegistry.register(GallifreyEntities.MONDASIAN_CYBERMAN, com.timelordmod.gallifrey.entity.custom.AbstractCybermanEntity.createCybermanAttributes());
@@ -181,18 +169,6 @@ public class GallifreyMod implements ModInitializer {
 		com.timelordmod.gallifrey.world.GallifreySpawnRule.register();
 		com.timelordmod.gallifrey.item.custom.GallifreyAccessories.register();
 		com.timelordmod.gallifrey.compat.tardisrefined.TardisRefinedSonics.register();
-		com.timelordmod.gallifrey.compat.adastra.AdAstraCompat.register();
-		com.timelordmod.gallifrey.compat.ait.AitSonics.register();
-		com.timelordmod.gallifrey.compat.deo.DeoPortals.register();
-		com.timelordmod.gallifrey.compat.tempad.TempadDoors.register();
-		com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.register();
-		com.timelordmod.gallifrey.compat.graves.UniversalGravesCompat.register();
-		com.timelordmod.gallifrey.compat.waystones.WaystonesCompat.register();
-		com.timelordmod.gallifrey.compat.thermoo.ThermooCompat.register();
-		com.timelordmod.gallifrey.compat.pehkui.PehkuiCompat.init();
-		com.timelordmod.gallifrey.compat.heracles.HeraclesQuests.install();
-		com.timelordmod.gallifrey.compat.dehydration.DehydrationCompat.register();
-		com.timelordmod.gallifrey.compat.angels.WeepingAngelsCompat.register();
 		com.timelordmod.gallifrey.world.PetesWorldPortals.register();
 		GallifreyModBlockEntities.register();
 
@@ -220,29 +196,18 @@ public class GallifreyMod implements ModInitializer {
 		);
 
 		// Nether ore generation: both rare ores use the Nether-specific configured targets.
-		// Every Nether biome, not just the five vanilla ones, so nether biome mods (Incendium,
-		// Amplified Nether, BetterNether...) get these ores too.
 		BiomeModifications.addFeature(
-				BiomeSelectors.foundInTheNether(),
+				BiomeSelectors.includeByKey(
+						BiomeKeys.NETHER_WASTES, BiomeKeys.SOUL_SAND_VALLEY, BiomeKeys.CRIMSON_FOREST,
+						BiomeKeys.WARPED_FOREST, BiomeKeys.BASALT_DELTAS),
 				GenerationStep.Feature.UNDERGROUND_ORES,
 				ModPlacedFeatures.NETHER_SONIC_CRYSTAL_ORE_PLACED_KEY);
 		BiomeModifications.addFeature(
-				BiomeSelectors.foundInTheNether(),
+				BiomeSelectors.includeByKey(
+						BiomeKeys.NETHER_WASTES, BiomeKeys.SOUL_SAND_VALLEY, BiomeKeys.CRIMSON_FOREST,
+						BiomeKeys.WARPED_FOREST, BiomeKeys.BASALT_DELTAS),
 				GenerationStep.Feature.UNDERGROUND_ORES,
 				ModPlacedFeatures.NETHER_WHITE_POINT_ORE_PLACED_KEY);
-
-		// Ruby and sapphire generate like emerald ore: same vein size, count and heights (see their
-		// placed_feature JSON), in every biome that has emerald ore. That's vanilla's mountains and
-		// windswept hills, plus the matching biomes from world mods like Terralith.
-		RegistryKey<PlacedFeature> emeraldOre = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier("minecraft", "ore_emerald"));
-		BiomeModifications.addFeature(
-				context -> context.hasPlacedFeature(emeraldOre),
-				GenerationStep.Feature.UNDERGROUND_ORES,
-				ModPlacedFeatures.RUBY_ORE_PLACED_KEY);
-		BiomeModifications.addFeature(
-				context -> context.hasPlacedFeature(emeraldOre),
-				GenerationStep.Feature.UNDERGROUND_ORES,
-				ModPlacedFeatures.SAPPHIRE_ORE_PLACED_KEY);
 
 		// Sonic Crystal also belongs in the vanilla Overworld.
 		BiomeModifications.addFeature(
@@ -252,8 +217,6 @@ public class GallifreyMod implements ModInitializer {
 
 		GallifreyCreativeTab.register();
 		ModBoats.registerBoats();
-		// Biolith works on whatever overworld is in use, including Terralith's (which still has
-		// vanilla forests), so the Treeborg forest generates with Terralith installed too.
 		BiomePlacement.replaceOverworld(BiomeKeys.FOREST, ModBiomes.TREEBORG_FOREST, 0.3d);
 
 
@@ -324,7 +287,7 @@ public class GallifreyMod implements ModInitializer {
 						.frameBlock(GallifreyModBlocks.REINFORCED_STEEL_BLOCK)
 						.customFrameTester(GALLIFREY_FRAME_TESTER)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+						.registerIgniteEvent(com.timelordmod.gallifrey.item.WhitePointStarIgnition::consume)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "gallifrey"))
 						.tintColor(230, 142, 48)
 						.registerPortal();
@@ -332,7 +295,7 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.MARS_CHISELED_STONE_BRICKS)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+						.registerIgniteEvent(com.timelordmod.gallifrey.item.WhitePointStarIgnition::consume)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mars"))
 						.tintColor(150, 55, 35)
 						.registerPortal();
@@ -340,7 +303,7 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.DALEKANIUM_BLOCK)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+						.registerIgniteEvent(com.timelordmod.gallifrey.item.WhitePointStarIgnition::consume)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "skaro"))
 						.tintColor(150, 110, 45)
 						.registerPortal();
@@ -348,7 +311,7 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.STEEL_BLOCK)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+						.registerIgniteEvent(com.timelordmod.gallifrey.item.WhitePointStarIgnition::consume)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "mondas"))
 						.tintColor(130, 150, 170)
 						.registerPortal();
@@ -356,7 +319,7 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(net.minecraft.block.Blocks.CRYING_OBSIDIAN)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+						.registerIgniteEvent(com.timelordmod.gallifrey.item.WhitePointStarIgnition::consume)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "petes_world"))
 						.tintColor(90, 140, 230)
 						.registerPortal();
@@ -364,32 +327,18 @@ public class GallifreyMod implements ModInitializer {
 		CustomPortalBuilder.beginPortal()
 						.frameBlock(GallifreyModBlocks.LOST_DIRT)
 						.lightWithItem(GallifreyModItems.WHITE_POINT_STAR)
-						.registerIgniteEvent(GallifreyMod::useUpWhitePointStar)
+						.registerIgniteEvent(com.timelordmod.gallifrey.item.WhitePointStarIgnition::consume)
 						.destDimID(new Identifier(GallifreyMod.MOD_ID, "lost_reality"))
 						.tintColor(40, 160, 150)
 						.registerPortal();
 
 
 
+		com.timelordmod.gallifrey.world.GallifreySpawnRule.register();
 		com.timelordmod.gallifrey.world.UuidRewards.register();
-		com.timelordmod.gallifrey.util.BannedPlayers.register();
 
 		LOGGER.info("[Gallifrey] Core systems ready.");
 	}
 
 	public static Identifier id(String path) { return new Identifier(MOD_ID, path);}
-
-	/** Lighting a portal with a White Point Star uses one up (Custom Portal API leaves the item alone). */
-	private static void useUpWhitePointStar(net.minecraft.entity.player.PlayerEntity player, net.minecraft.world.World world,
-											 net.minecraft.util.math.BlockPos portalPos, net.minecraft.util.math.BlockPos framePos,
-											 net.kyrptonaught.customportalapi.portal.PortalIgnitionSource source) {
-		if (player == null || player.getAbilities().creativeMode) return;
-		for (net.minecraft.util.Hand hand : net.minecraft.util.Hand.values()) {
-			net.minecraft.item.ItemStack stack = player.getStackInHand(hand);
-			if (stack.isOf(GallifreyModItems.WHITE_POINT_STAR)) {
-				stack.decrement(1);
-				return;
-			}
-		}
-	}
 }
