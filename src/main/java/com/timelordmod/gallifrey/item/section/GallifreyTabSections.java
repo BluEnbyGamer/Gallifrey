@@ -183,6 +183,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.PREHISTORIC_CHESTPLATE);
                 entries.add(GallifreyModItems.PREHISTORIC_LEGGINGS);
                 entries.add(GallifreyModItems.PREHISTORIC_BOOTS);
+                entries.add(GallifreyModItems.CAVEMAN_SPAWN_EGG);
             }
     );
 
@@ -339,8 +340,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModItems.MONDASIAN_CYBERMAN_SPAWN_EGG);
                 entries.add(GallifreyModItems.PROTO_CYBERMAN_SPAWN_EGG);
                 entries.add(GallifreyModItems.CYBERMAT_SPAWN_EGG);
-                entries.add(GallifreyModItems.CAVEMAN_SPAWN_EGG);
-                entries.add(GallifreyModItems.TIMELORD_VILLAGER_SPAWN_EGG);
             }
     );
 
@@ -515,7 +514,6 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.CLASSIC_FURNACE);
                 entries.add(GallifreyModBlocks.CLASSIC_TNT);
                 entries.add(GallifreyModItems.DIAMOND_MINECART);
-                //entries.add(GallifreyModItems.CLASSIN);
 
                 // Classic Nether
                 entries.add(GallifreyModBlocks.CLASSIC_NETHER_NETHERRACK);
