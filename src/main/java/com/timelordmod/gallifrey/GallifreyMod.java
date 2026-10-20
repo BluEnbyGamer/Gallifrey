@@ -167,6 +167,7 @@ public class GallifreyMod implements ModInitializer {
                 net.minecraft.world.Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                 (type, world, reason, pos, random) -> world.getBlockState(pos.down()).isOpaqueFullCube(world, pos.down()));
         // Spawning itself is in the Prehistoric biome's JSON (worldgen/biome/prehistoric.json).
+        com.timelordmod.gallifrey.entity.custom.CavemanEntity.registerMonsterHunting();
 
 		com.timelordmod.gallifrey.villager.GallifreyVillagers.register();
 

@@ -4,7 +4,14 @@ import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.SpawnReason;
+import com.timelordmod.gallifrey.mixin.MobEntityAccessor;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
+import net.minecraft.entity.mob.Angerable;
+import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.RevengeGoal;
@@ -27,6 +34,10 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Cavemen of the Prehistoric dimension. They wander in small groups carrying a stone tool, leave
  * you alone, and fight back together if one of them is hit (like zombified piglins).
+ *
+ * They're at war with monsters: cavemen go after any hostile mob they see (except creepers, and
+ * neutral ones like endermen), and hostile mobs hunt cavemen the way zombies hunt villagers
+ * (see {@link #registerMonsterHunting()}).
  */
 public class CavemanEntity extends PathAwareEntity {
 
@@ -56,6 +67,29 @@ public class CavemanEntity extends PathAwareEntity {
 
         // Hit one and the rest of the group nearby joins in.
         this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
+        // Go after monsters on sight.
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, HostileEntity.class, 10, true, false,
+                CavemanEntity::isFairGame));
+    }
+
+    /** Hostile mobs a caveman will pick a fight with, and that will hunt cavemen in return. */
+    public static boolean isFairGame(LivingEntity target) {
+        return target instanceof HostileEntity
+                && !(target instanceof CreeperEntity)   // clubbing a creeper ends badly for everyone
+                && !(target instanceof Angerable);      // endermen, zombified piglins: neutral until provoked
+    }
+
+    /**
+     * Makes hostile mobs target cavemen, like zombies with villagers. Goals are added whenever a
+     * mob is loaded into a world (its goals are rebuilt on every load, so this never doubles up).
+     */
+    public static void registerMonsterHunting() {
+        ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> {
+            if (entity instanceof HostileEntity monster && isFairGame(monster)) {
+                ((MobEntityAccessor) monster).gallifrey$getTargetSelector()
+                        .add(3, new ActiveTargetGoal<>(monster, CavemanEntity.class, true));
+            }
+        });
     }
 
     @Override

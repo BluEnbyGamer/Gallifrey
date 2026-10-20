@@ -20,7 +20,8 @@
     "GallifreyDimensionTravelMixin",
     "EntityDimensionTravelMixin",
     "TeleportCommandTravelMixin",
-    "compat.WeepingAngelsTeleporterMixin"
+    "compat.WeepingAngelsTeleporterMixin",
+    "MobEntityAccessor"
   ],
   "client": [
     "client.LivingEntityRendererAccessor",
