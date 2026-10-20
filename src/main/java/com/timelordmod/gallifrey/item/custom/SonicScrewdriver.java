@@ -6,6 +6,7 @@ import com.timelordmod.gallifrey.sonic.SonicHandler;
 import com.timelordmod.gallifrey.sonic.SonicMode;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,6 +14,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.UseAction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -530,8 +532,9 @@ public class SonicScrewdriver extends Item {
             return;
         }
 
-        // Deo's Portal Gun: overload closes a portal, scan reads where it goes.
-        if (com.timelordmod.gallifrey.compat.deo.DeoPortals.handleSonic(player, target, mode)) {
+        // Deo's Portal Gun portals and Tempad time doors: overload closes them, scan reads where they go.
+        if (com.timelordmod.gallifrey.compat.deo.DeoPortals.handleSonic(player, target, mode)
+                || com.timelordmod.gallifrey.compat.tempad.TempadDoors.handleSonic(player, target, mode)) {
             world.playSound(null, player.getX(), player.getY(), player.getZ(),
                     GallifreySounds.SONIC, SoundCategory.PLAYERS, 1.0F, 1.0F);
             consumePower(stack);
@@ -565,6 +568,32 @@ public class SonicScrewdriver extends Item {
                 ),
                 true
         );
+    }
+
+    // =========================================================
+    // NIRVANA BLUNT: held like a joint while smoking
+    // =========================================================
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.canSmoke(stack)
+                ? com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.SMOKE_TICKS
+                : super.getMaxUseTime(stack);
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.canSmoke(stack)
+                ? UseAction.SPYGLASS
+                : super.getUseAction(stack);
+    }
+
+    @Override
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        if (com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.canSmoke(stack)) {
+            com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.smoke(stack, world, user);
+        }
+        return stack;
     }
 
     // =========================================================
@@ -617,6 +646,19 @@ public class SonicScrewdriver extends Item {
                     stack,
                     world.isClient
             );
+        }
+
+        // =====================================================
+        // NIRVANA: SMOKE THE BLUNT CASING
+        // Pointed at nothing, a Blunt sonic is smoked like a joint
+        // (see compat.nirvana.NirvanaBlunt). Pointed at something,
+        // it's still a sonic.
+        // =====================================================
+
+        if (com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.canSmoke(stack)
+                && getSonicTarget(player).getType() == HitResult.Type.MISS) {
+            player.setCurrentHand(hand);
+            return TypedActionResult.consume(stack);
         }
 
         // =====================================================

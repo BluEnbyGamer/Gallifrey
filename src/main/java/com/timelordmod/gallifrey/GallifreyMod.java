@@ -175,6 +175,8 @@ public class GallifreyMod implements ModInitializer {
 		com.timelordmod.gallifrey.compat.adastra.AdAstraCompat.register();
 		com.timelordmod.gallifrey.compat.ait.AitSonics.register();
 		com.timelordmod.gallifrey.compat.deo.DeoPortals.register();
+		com.timelordmod.gallifrey.compat.tempad.TempadDoors.register();
+		com.timelordmod.gallifrey.compat.nirvana.NirvanaBlunt.register();
 		com.timelordmod.gallifrey.world.PetesWorldPortals.register();
 		GallifreyModBlockEntities.register();
 
