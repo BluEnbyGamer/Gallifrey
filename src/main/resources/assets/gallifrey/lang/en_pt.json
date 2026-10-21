@@ -721,5 +721,19 @@
   "upgrade.gallifrey.white_point_star_upgrade": "White Point Star Plunder",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "Lay down yer metalertanium armour, blade or tool",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "Lay down White Point Star Dregs",
-  "trim_material.gallifrey.white_point_star": "White Point"
+  "trim_material.gallifrey.white_point_star": "White Point",
+  "item.gallifrey.steel_knife": "Steel Dirk",
+  "item.gallifrey.dalekanium_knife": "Dalekanium Dirk",
+  "item.gallifrey.metalertanium_knife": "Metalertanium Dirk",
+  "item.gallifrey.white_point_star_knife": "White Point Star Dirk",
+  "key.gallifrey.worn_vortex_manipulator": "Open Yer Wrist Vortex Manipulator",
+  "wood_type.gallifrey.ash": "Ash",
+  "wood_type.gallifrey.classic": "Olden",
+  "wood_type.gallifrey.maple": "Maple",
+  "wood_type.gallifrey.moonpine": "Moonpine",
+  "wood_type.gallifrey.prehistoric": "Ancient",
+  "wood_type.gallifrey.tardis": "Tardis",
+  "wood_type.gallifrey.treeborg": "Treeborg",
+  "wood_type.gallifrey.ulanda": "Ulanda",
+  "wood_type.gallifrey.wasted": "Ruined"
 }

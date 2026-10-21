@@ -82,6 +82,13 @@
 		"firstperson": "*",
 		"notenoughanimations": "*",
 		"supplementaries": "*",
-		"tooltiprareness": "*"
+		"tooltiprareness": "*",
+		"trinkets": "*",
+		"farmersdelight": "*",
+		"everycomp": "*",
+		"lambdynlights": "*",
+		"techreborn": "*",
+		"modern_industrialization": "*",
+		"sound_physics_remastered": "*"
 	}
 }

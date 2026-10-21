@@ -723,5 +723,10 @@
   "upgrade.gallifrey.white_point_star_upgrade": "白点之星升级",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "放入梅塔勒特合金盔甲、武器或工具",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "放入白点之星残渣",
-  "trim_material.gallifrey.white_point_star": "白点"
+  "trim_material.gallifrey.white_point_star": "白点",
+  "item.gallifrey.steel_knife": "钢刀",
+  "item.gallifrey.dalekanium_knife": "戴立克合金刀",
+  "item.gallifrey.metalertanium_knife": "梅塔勒特合金刀",
+  "item.gallifrey.white_point_star_knife": "白点之星刀",
+  "key.gallifrey.worn_vortex_manipulator": "打开佩戴的漩涡操纵器"
 }

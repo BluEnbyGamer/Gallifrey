@@ -1226,7 +1226,9 @@ public class VMPacket {
             }
         }
 
-        return ItemStack.EMPTY;
+        // Worn in a Trinkets glove slot (EMPTY if Trinkets isn't installed).
+        return com.timelordmod.gallifrey.compat.trinkets.TrinketsCompat.findWorn(
+                player, GallifreyModItems.VORTEX_MANIPULATOR);
     }
 
     public static void sendState(

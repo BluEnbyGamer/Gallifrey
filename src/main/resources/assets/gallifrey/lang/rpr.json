@@ -723,5 +723,10 @@
   "upgrade.gallifrey.white_point_star_upgrade": "Улучшеніе Звезды White Point",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "Помѣстите металертаніевую броню, оружіе или инструментъ",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "Помѣстите остатокъ Звезды White Point",
-  "trim_material.gallifrey.white_point_star": "White Point"
+  "trim_material.gallifrey.white_point_star": "White Point",
+  "item.gallifrey.steel_knife": "Стальной ножъ",
+  "item.gallifrey.dalekanium_knife": "Далеканіевый ножъ",
+  "item.gallifrey.metalertanium_knife": "Металертаніевый ножъ",
+  "item.gallifrey.white_point_star_knife": "Ножъ Звезды White Point",
+  "key.gallifrey.worn_vortex_manipulator": "Открыть надѣтый манипуляторъ воронки"
 }

@@ -723,5 +723,10 @@
   "upgrade.gallifrey.white_point_star_upgrade": "Amélioration d'étoile de White Point",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "Ajoutez une armure, une arme ou un outil en métalertanium",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "Ajoutez du résidu d'étoile de White Point",
-  "trim_material.gallifrey.white_point_star": "White Point"
+  "trim_material.gallifrey.white_point_star": "White Point",
+  "item.gallifrey.steel_knife": "Couteau en acier",
+  "item.gallifrey.dalekanium_knife": "Couteau en dalekanium",
+  "item.gallifrey.metalertanium_knife": "Couteau en métalertanium",
+  "item.gallifrey.white_point_star_knife": "Couteau en étoile de White Point",
+  "key.gallifrey.worn_vortex_manipulator": "Ouvrir le manipulateur de vortex porté"
 }

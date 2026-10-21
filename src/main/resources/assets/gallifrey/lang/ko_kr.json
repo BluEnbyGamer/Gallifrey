@@ -723,5 +723,10 @@
   "upgrade.gallifrey.white_point_star_upgrade": "화이트 포인트 스타 강화",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "메탈러타늄 갑옷, 무기 또는 도구를 놓으세요",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "화이트 포인트 스타 잔여물을 놓으세요",
-  "trim_material.gallifrey.white_point_star": "화이트 포인트"
+  "trim_material.gallifrey.white_point_star": "화이트 포인트",
+  "item.gallifrey.steel_knife": "강철 칼",
+  "item.gallifrey.dalekanium_knife": "달레카늄 칼",
+  "item.gallifrey.metalertanium_knife": "메탈러타늄 칼",
+  "item.gallifrey.white_point_star_knife": "화이트 포인트 스타 칼",
+  "key.gallifrey.worn_vortex_manipulator": "착용한 소용돌이 조종기 열기"
 }

@@ -723,5 +723,10 @@
   "upgrade.gallifrey.white_point_star_upgrade": "Ulepszenie Gwiazdy White Point",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "Umieść zbroję, broń lub narzędzie z metalertanium",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "Umieść pozostałość Gwiazdy White Point",
-  "trim_material.gallifrey.white_point_star": "White Point"
+  "trim_material.gallifrey.white_point_star": "White Point",
+  "item.gallifrey.steel_knife": "Stalowy nóż",
+  "item.gallifrey.dalekanium_knife": "Nóż z dalekanium",
+  "item.gallifrey.metalertanium_knife": "Nóż z metalertanium",
+  "item.gallifrey.white_point_star_knife": "Nóż z Gwiazdy White Point",
+  "key.gallifrey.worn_vortex_manipulator": "Otwórz noszony Manipulator Wiru"
 }

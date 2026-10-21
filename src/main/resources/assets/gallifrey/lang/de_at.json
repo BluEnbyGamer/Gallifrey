@@ -723,5 +723,10 @@
   "upgrade.gallifrey.white_point_star_upgrade": "White-Point-Stern-Aufwertung",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "Metalertanium-Rüstung, -Waffe oder -Werkzeug hinzufügen",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "White-Point-Stern-Rückstand hinzufügen",
-  "trim_material.gallifrey.white_point_star": "White Point"
+  "trim_material.gallifrey.white_point_star": "White Point",
+  "item.gallifrey.steel_knife": "Stahlmesser",
+  "item.gallifrey.dalekanium_knife": "Dalekaniummesser",
+  "item.gallifrey.metalertanium_knife": "Metalertaniummesser",
+  "item.gallifrey.white_point_star_knife": "White-Point-Stern-Messer",
+  "key.gallifrey.worn_vortex_manipulator": "Getragenen Vortex-Manipulator öffnen"
 }

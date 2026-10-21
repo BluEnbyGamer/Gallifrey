@@ -723,5 +723,10 @@
   "upgrade.gallifrey.white_point_star_upgrade": "ホワイトポイント・スターへのアップグレード",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "メタラータニウムの防具、武器、道具を置いてください",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "ホワイトポイント・スターの残滓を置いてください",
-  "trim_material.gallifrey.white_point_star": "ホワイトポイント"
+  "trim_material.gallifrey.white_point_star": "ホワイトポイント",
+  "item.gallifrey.steel_knife": "鋼のナイフ",
+  "item.gallifrey.dalekanium_knife": "ダレカニウムのナイフ",
+  "item.gallifrey.metalertanium_knife": "メタラータニウムのナイフ",
+  "item.gallifrey.white_point_star_knife": "ホワイトポイント・スターのナイフ",
+  "key.gallifrey.worn_vortex_manipulator": "装着中のボルテックス・マニピュレーターを開く"
 }

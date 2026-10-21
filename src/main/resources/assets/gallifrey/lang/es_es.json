@@ -723,5 +723,10 @@
   "upgrade.gallifrey.white_point_star_upgrade": "Mejora de estrella de White Point",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "Coloca armadura, arma o herramienta de metalertanio",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "Coloca residuo de estrella de White Point",
-  "trim_material.gallifrey.white_point_star": "White Point"
+  "trim_material.gallifrey.white_point_star": "White Point",
+  "item.gallifrey.steel_knife": "Cuchillo de acero",
+  "item.gallifrey.dalekanium_knife": "Cuchillo de dalekanio",
+  "item.gallifrey.metalertanium_knife": "Cuchillo de metalertanio",
+  "item.gallifrey.white_point_star_knife": "Cuchillo de estrella de White Point",
+  "key.gallifrey.worn_vortex_manipulator": "Abrir el manipulador de vórtice equipado"
 }

@@ -730,5 +730,19 @@
   "upgrade.gallifrey.white_point_star_upgrade": "Wite Pointy Starz Upgraed",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "Put metalertanium armr, weppin or tool heer",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "Put Wite Pointy Starz Leftovrz heer",
-  "trim_material.gallifrey.white_point_star": "Wite Pointy"
+  "trim_material.gallifrey.white_point_star": "Wite Pointy",
+  "item.gallifrey.steel_knife": "Steal Nife",
+  "item.gallifrey.dalekanium_knife": "Dalekanium Nife",
+  "item.gallifrey.metalertanium_knife": "Metalertanium Nife",
+  "item.gallifrey.white_point_star_knife": "Wite Pointy Starz Nife",
+  "key.gallifrey.worn_vortex_manipulator": "Opn Wrist Vortex Manipulatr",
+  "wood_type.gallifrey.ash": "Ash",
+  "wood_type.gallifrey.classic": "Oldskool",
+  "wood_type.gallifrey.maple": "Mapul",
+  "wood_type.gallifrey.moonpine": "Moonpien",
+  "wood_type.gallifrey.prehistoric": "Reely Old",
+  "wood_type.gallifrey.tardis": "Tardiz",
+  "wood_type.gallifrey.treeborg": "Treeborg",
+  "wood_type.gallifrey.ulanda": "Ulanda",
+  "wood_type.gallifrey.wasted": "Wastd"
 }

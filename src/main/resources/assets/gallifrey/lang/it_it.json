@@ -723,5 +723,10 @@
   "upgrade.gallifrey.white_point_star_upgrade": "Potenziamento a stella di White Point",
   "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "Inserisci un'armatura, un'arma o uno strumento di metalertanio",
   "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "Inserisci residuo di stella di White Point",
-  "trim_material.gallifrey.white_point_star": "White Point"
+  "trim_material.gallifrey.white_point_star": "White Point",
+  "item.gallifrey.steel_knife": "Coltello d'acciaio",
+  "item.gallifrey.dalekanium_knife": "Coltello di dalekanio",
+  "item.gallifrey.metalertanium_knife": "Coltello di metalertanio",
+  "item.gallifrey.white_point_star_knife": "Coltello di stella di White Point",
+  "key.gallifrey.worn_vortex_manipulator": "Apri il manipolatore del vortice indossato"
 }
