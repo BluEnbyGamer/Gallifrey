@@ -197,6 +197,17 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.DEEPSLATE_WHITE_POINT_ORE);
                 entries.add(GallifreyModBlocks.NETHER_WHITE_POINT_ORE);
                 entries.add(GallifreyModItems.WHITE_POINT_STAR);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_RESIDUE);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_UPGRADE_SMITHING_TEMPLATE);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_SWORD);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_PICKAXE);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_AXE);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_SHOVEL);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_HOE);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_HELMET);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_CHESTPLATE);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_LEGGINGS);
+                entries.add(GallifreyModItems.WHITE_POINT_STAR_BOOTS);
 
                 // Atrium
                 entries.add(GallifreyModBlocks.ATRIUM_ORE);

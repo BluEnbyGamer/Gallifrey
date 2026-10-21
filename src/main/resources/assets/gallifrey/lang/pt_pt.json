@@ -706,5 +706,22 @@
   "planet.gallifrey.skaro": "Skaro",
   "planet.gallifrey.mondas": "Mondas",
   "solar_system.gallifrey.kasterborous": "Kasterborous",
-  "solar_system.gallifrey.skaro": "Sistema de Skaro"
+  "solar_system.gallifrey.skaro": "Sistema de Skaro",
+  "item.gallifrey.white_point_star_residue": "Resíduo de Estrela de White Point",
+  "item.gallifrey.white_point_star_upgrade_smithing_template": "Molde de ferraria (melhoria de Estrela de White Point)",
+  "item.gallifrey.white_point_star_sword": "Espada de Estrela de White Point",
+  "item.gallifrey.white_point_star_pickaxe": "Picareta de Estrela de White Point",
+  "item.gallifrey.white_point_star_axe": "Machado de Estrela de White Point",
+  "item.gallifrey.white_point_star_shovel": "Pá de Estrela de White Point",
+  "item.gallifrey.white_point_star_hoe": "Enxada de Estrela de White Point",
+  "item.gallifrey.white_point_star_helmet": "Capacete de Estrela de White Point",
+  "item.gallifrey.white_point_star_chestplate": "Peitoral de Estrela de White Point",
+  "item.gallifrey.white_point_star_leggings": "Calças de Estrela de White Point",
+  "item.gallifrey.white_point_star_boots": "Botas de Estrela de White Point",
+  "item.gallifrey.smithing_template.white_point_star_upgrade.applies_to": "Equipamento de metalertânio",
+  "item.gallifrey.smithing_template.white_point_star_upgrade.ingredients": "Resíduo de Estrela de White Point",
+  "upgrade.gallifrey.white_point_star_upgrade": "Melhoria de Estrela de White Point",
+  "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "Coloque armadura, arma ou ferramenta de metalertânio",
+  "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "Coloque Resíduo de Estrela de White Point",
+  "trim_material.gallifrey.white_point_star": "White Point"
 }

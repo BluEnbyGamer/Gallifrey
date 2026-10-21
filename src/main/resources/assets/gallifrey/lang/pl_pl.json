@@ -706,5 +706,22 @@
   "planet.gallifrey.skaro": "Skaro",
   "planet.gallifrey.mondas": "Mondas",
   "solar_system.gallifrey.kasterborous": "Kasterborous",
-  "solar_system.gallifrey.skaro": "Układ Skaro"
+  "solar_system.gallifrey.skaro": "Układ Skaro",
+  "item.gallifrey.white_point_star_residue": "Pozostałość Gwiazdy White Point",
+  "item.gallifrey.white_point_star_upgrade_smithing_template": "Szablon kowalski (ulepszenie Gwiazdy White Point)",
+  "item.gallifrey.white_point_star_sword": "Miecz z Gwiazdy White Point",
+  "item.gallifrey.white_point_star_pickaxe": "Kilof z Gwiazdy White Point",
+  "item.gallifrey.white_point_star_axe": "Siekiera z Gwiazdy White Point",
+  "item.gallifrey.white_point_star_shovel": "Łopata z Gwiazdy White Point",
+  "item.gallifrey.white_point_star_hoe": "Motyka z Gwiazdy White Point",
+  "item.gallifrey.white_point_star_helmet": "Hełm z Gwiazdy White Point",
+  "item.gallifrey.white_point_star_chestplate": "Napierśnik z Gwiazdy White Point",
+  "item.gallifrey.white_point_star_leggings": "Nogawice z Gwiazdy White Point",
+  "item.gallifrey.white_point_star_boots": "Buty z Gwiazdy White Point",
+  "item.gallifrey.smithing_template.white_point_star_upgrade.applies_to": "Wyposażenie z metalertanium",
+  "item.gallifrey.smithing_template.white_point_star_upgrade.ingredients": "Pozostałość Gwiazdy White Point",
+  "upgrade.gallifrey.white_point_star_upgrade": "Ulepszenie Gwiazdy White Point",
+  "item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description": "Umieść zbroję, broń lub narzędzie z metalertanium",
+  "item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description": "Umieść pozostałość Gwiazdy White Point",
+  "trim_material.gallifrey.white_point_star": "White Point"
 }

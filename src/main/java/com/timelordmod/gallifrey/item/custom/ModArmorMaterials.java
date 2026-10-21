@@ -15,6 +15,9 @@ import java.util.function.Supplier;
  * STEEL is a small step above iron while remaining well below diamond.
  * DALEKANIUM copies vanilla IRON exactly.
  * METALERTANIUM copies vanilla NETHERITE exactly.
+ * WHITE_POINT_STAR is the top tier, roughly two and a half times netherite: 2.5x durability,
+ *   20% more armour points per piece (the game caps worn armour at 30), 2.5x toughness and
+ *   2.5x knockback resistance. Its textures are white_point_star_layer_1/2.
  *
  * The name is also the texture name. In 1.20.1 the game always looks for worn armour at
  *   assets/minecraft/textures/models/armor/<name>_layer_1.png  (helmet, chestplate, boots)
@@ -33,7 +36,9 @@ public enum ModArmorMaterials implements ArmorMaterial {
     DALEKANIUM(   "dalekanium",    15,         2,    5,   6,    2,      9,    SoundEvents.ITEM_ARMOR_EQUIP_IRON,      0.0F,      0.0F,
             () -> Ingredient.ofItems(GallifreyModItems.DALEKANIUM_INGOT)),
     METALERTANIUM("metalertanium", 37,         3,    6,   8,    3,      15,   SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F,      0.1F,
-            () -> Ingredient.ofItems(GallifreyModItems.METALERTANIUM_INGOT));
+            () -> Ingredient.ofItems(GallifreyModItems.METALERTANIUM_INGOT)),
+    WHITE_POINT_STAR("white_point_star", 92,   4,    8,   10,   4,      20,   SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 7.5F,      0.25F,
+            () -> Ingredient.ofItems(GallifreyModItems.WHITE_POINT_STAR_RESIDUE));
 
     private final String name;
     private final int durabilityMultiplier;

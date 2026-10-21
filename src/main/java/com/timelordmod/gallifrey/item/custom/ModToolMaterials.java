@@ -12,6 +12,8 @@ import java.util.function.Supplier;
  * STEEL is a small step above iron while remaining well below diamond.
  * DALEKANIUM copies vanilla IRON exactly.
  * METALERTANIUM copies vanilla NETHERITE exactly.
+ * WHITE_POINT_STAR is the top tier: 2.5x netherite durability, faster mining and roughly double
+ *   netherite damage (a White Point Star sword hits for 16, netherite for 8).
  * MARS_STONE and SKARO_STONE copy vanilla STONE exactly.
  *
  * Order of the numbers: mining level, durability, mining speed, attack damage bonus, enchantability.
@@ -23,6 +25,7 @@ public enum ModToolMaterials implements ToolMaterial {
     SAPPHIRE(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.ofItems(GallifreyModItems.SAPPHIRE)),
     DALEKANIUM(2, 250, 6.0F, 2.0F, 14, () -> Ingredient.ofItems(GallifreyModItems.DALEKANIUM_INGOT)),
     METALERTANIUM(4, 2031, 9.0F, 4.0F, 15, () -> Ingredient.ofItems(GallifreyModItems.METALERTANIUM_INGOT)),
+    WHITE_POINT_STAR(5, 5078, 15.0F, 12.0F, 20, () -> Ingredient.ofItems(GallifreyModItems.WHITE_POINT_STAR_RESIDUE)),
 
     // Planet stone tools: the same stats as vanilla stone tools, repaired with their own cobblestone.
     MARS_STONE(1, 131, 4.0F, 1.0F, 5, () -> Ingredient.ofItems(GallifreyModBlocks.MARS_COBBLESTONE)),

@@ -380,6 +380,38 @@ public class GallifreyModItems {
     public static final ArmorItem METALERTANIUM_LEGGINGS = new ArmorItem(ModArmorMaterials.METALERTANIUM, ArmorItem.Type.LEGGINGS, new FabricItemSettings().fireproof());
     public static final ArmorItem METALERTANIUM_BOOTS = new ArmorItem(ModArmorMaterials.METALERTANIUM, ArmorItem.Type.BOOTS, new FabricItemSettings().fireproof());
 
+    // WHITE POINT STAR GEAR: the top tier, made by upgrading metalertanium gear in a smithing table
+    // with a White Point Star Upgrade Smithing Template and White Point Star Residue.
+    public static final Item WHITE_POINT_STAR_RESIDUE = new Item(new FabricItemSettings().fireproof()
+            .rarity(net.minecraft.util.Rarity.RARE));
+    public static final SmithingTemplateItem WHITE_POINT_STAR_UPGRADE_SMITHING_TEMPLATE = new SmithingTemplateItem(
+            net.minecraft.text.Text.translatable("item.gallifrey.smithing_template.white_point_star_upgrade.applies_to").formatted(net.minecraft.util.Formatting.BLUE),
+            net.minecraft.text.Text.translatable("item.gallifrey.smithing_template.white_point_star_upgrade.ingredients").formatted(net.minecraft.util.Formatting.BLUE),
+            net.minecraft.text.Text.translatable("upgrade.gallifrey.white_point_star_upgrade").formatted(net.minecraft.util.Formatting.GRAY),
+            net.minecraft.text.Text.translatable("item.gallifrey.smithing_template.white_point_star_upgrade.base_slot_description"),
+            net.minecraft.text.Text.translatable("item.gallifrey.smithing_template.white_point_star_upgrade.additions_slot_description"),
+            java.util.List.of(
+                    new Identifier("item/empty_armor_slot_helmet"), new Identifier("item/empty_slot_sword"),
+                    new Identifier("item/empty_armor_slot_chestplate"), new Identifier("item/empty_slot_pickaxe"),
+                    new Identifier("item/empty_armor_slot_leggings"), new Identifier("item/empty_slot_axe"),
+                    new Identifier("item/empty_armor_slot_boots"), new Identifier("item/empty_slot_hoe"),
+                    new Identifier("item/empty_slot_shovel")),
+            java.util.List.of(new Identifier("item/empty_slot_ingot")));
+    public static final SwordItem WHITE_POINT_STAR_SWORD = new SwordItem(ModToolMaterials.WHITE_POINT_STAR, 3, -2.4F, whitePointStarGear());
+    public static final PickaxeItem WHITE_POINT_STAR_PICKAXE = new PickaxeItem(ModToolMaterials.WHITE_POINT_STAR, 1, -2.8F, whitePointStarGear());
+    public static final AxeItem WHITE_POINT_STAR_AXE = new AxeItem(ModToolMaterials.WHITE_POINT_STAR, 5.0F, -3.0F, whitePointStarGear());
+    public static final ShovelItem WHITE_POINT_STAR_SHOVEL = new ShovelItem(ModToolMaterials.WHITE_POINT_STAR, 1.5F, -3.0F, whitePointStarGear());
+    // -12 keeps the hoe hitting for 1, like every vanilla hoe at the top tier.
+    public static final HoeItem WHITE_POINT_STAR_HOE = new HoeItem(ModToolMaterials.WHITE_POINT_STAR, -12, 0.0F, whitePointStarGear());
+    public static final ArmorItem WHITE_POINT_STAR_HELMET = new ArmorItem(ModArmorMaterials.WHITE_POINT_STAR, ArmorItem.Type.HELMET, whitePointStarGear());
+    public static final ArmorItem WHITE_POINT_STAR_CHESTPLATE = new ArmorItem(ModArmorMaterials.WHITE_POINT_STAR, ArmorItem.Type.CHESTPLATE, whitePointStarGear());
+    public static final ArmorItem WHITE_POINT_STAR_LEGGINGS = new ArmorItem(ModArmorMaterials.WHITE_POINT_STAR, ArmorItem.Type.LEGGINGS, whitePointStarGear());
+    public static final ArmorItem WHITE_POINT_STAR_BOOTS = new ArmorItem(ModArmorMaterials.WHITE_POINT_STAR, ArmorItem.Type.BOOTS, whitePointStarGear());
+
+    private static FabricItemSettings whitePointStarGear() {
+        return (FabricItemSettings) new FabricItemSettings().fireproof().rarity(net.minecraft.util.Rarity.EPIC);
+    }
+
     // FOOD ITEMS
     public static final Item MAPLE_SYRUP = registerItem("maple_syrup", new Item(new FabricItemSettings().food(GallifreyFoodComponents.MAPLE_SYRUP)));
     public static final Item TREEBORG_PASTE = registerItem("treeborg_paste", new Item(new FabricItemSettings().food(GallifreyFoodComponents.TREEBORG_PASTE)));
@@ -547,6 +579,18 @@ public class GallifreyModItems {
         registerItem("metalertanium_chestplate", METALERTANIUM_CHESTPLATE);
         registerItem("metalertanium_leggings", METALERTANIUM_LEGGINGS);
         registerItem("metalertanium_boots", METALERTANIUM_BOOTS);
+
+        registerItem("white_point_star_residue", WHITE_POINT_STAR_RESIDUE);
+        registerItem("white_point_star_upgrade_smithing_template", WHITE_POINT_STAR_UPGRADE_SMITHING_TEMPLATE);
+        registerItem("white_point_star_sword", WHITE_POINT_STAR_SWORD);
+        registerItem("white_point_star_pickaxe", WHITE_POINT_STAR_PICKAXE);
+        registerItem("white_point_star_axe", WHITE_POINT_STAR_AXE);
+        registerItem("white_point_star_shovel", WHITE_POINT_STAR_SHOVEL);
+        registerItem("white_point_star_hoe", WHITE_POINT_STAR_HOE);
+        registerItem("white_point_star_helmet", WHITE_POINT_STAR_HELMET);
+        registerItem("white_point_star_chestplate", WHITE_POINT_STAR_CHESTPLATE);
+        registerItem("white_point_star_leggings", WHITE_POINT_STAR_LEGGINGS);
+        registerItem("white_point_star_boots", WHITE_POINT_STAR_BOOTS);
 
         registerItem("sonic_screwdriver", SONIC_SCREWDRIVER);
         registerItem("sonic_shades", SONIC_SHADES);
