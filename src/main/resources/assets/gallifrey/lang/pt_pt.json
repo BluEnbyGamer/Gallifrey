@@ -728,5 +728,18 @@
   "item.gallifrey.dalekanium_knife": "Faca de dalekânio",
   "item.gallifrey.metalertanium_knife": "Faca de metalertânio",
   "item.gallifrey.white_point_star_knife": "Faca de Estrela de White Point",
-  "key.gallifrey.worn_vortex_manipulator": "Abrir o Manipulador de Vórtice equipado"
+  "key.gallifrey.worn_vortex_manipulator": "Abrir o Manipulador de Vórtice equipado",
+  "advancement.gallifrey.whitepointroot.title": "Luz estelar",
+  "advancement.gallifrey.whitepointroot.desc": "Obtenha uma Estrela de White Point",
+  "advancement.gallifrey.white_point_star_residue.title": "Restos estelares",
+  "advancement.gallifrey.white_point_star_residue.desc": "Crie Resíduo de Estrela de White Point",
+  "advancement.gallifrey.white_point_star_template.title": "Todos os moldes sob o sol",
+  "advancement.gallifrey.white_point_star_template.desc": "Crie um Molde de melhoria de Estrela de White Point",
+  "advancement.gallifrey.white_point_star_gear.title": "Mais brilhante que netherite",
+  "advancement.gallifrey.white_point_star_gear.desc": "Melhore equipamento de metalertânio para Estrela de White Point",
+  "advancement.gallifrey.white_point_star_full_set.title": "Supernova",
+  "advancement.gallifrey.white_point_star_full_set.desc": "Tenha um conjunto completo de armadura de Estrela de White Point",
+  "tooltip.gallifrey.hover_boots": "Queda lenta, sem dano de queda",
+  "tooltip.gallifrey.hover_boots.sneak": "Agache para cair na velocidade normal",
+  "tooltip.gallifrey.white_point_star_glow": "Brilha com uma luz branca suave quando equipada"
 }

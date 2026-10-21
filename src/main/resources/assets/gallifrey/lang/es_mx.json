@@ -728,5 +728,18 @@
   "item.gallifrey.dalekanium_knife": "Cuchillo de dalekanio",
   "item.gallifrey.metalertanium_knife": "Cuchillo de metalertanio",
   "item.gallifrey.white_point_star_knife": "Cuchillo de estrella de White Point",
-  "key.gallifrey.worn_vortex_manipulator": "Abrir el manipulador de vórtice equipado"
+  "key.gallifrey.worn_vortex_manipulator": "Abrir el manipulador de vórtice equipado",
+  "advancement.gallifrey.whitepointroot.title": "Luz estelar",
+  "advancement.gallifrey.whitepointroot.desc": "Consigue una estrella de White Point",
+  "advancement.gallifrey.white_point_star_residue.title": "Restos estelares",
+  "advancement.gallifrey.white_point_star_residue.desc": "Fabrica residuo de estrella de White Point",
+  "advancement.gallifrey.white_point_star_template.title": "Todas las plantillas bajo el sol",
+  "advancement.gallifrey.white_point_star_template.desc": "Fabrica una plantilla de mejora de estrella de White Point",
+  "advancement.gallifrey.white_point_star_gear.title": "Más brillante que la netherita",
+  "advancement.gallifrey.white_point_star_gear.desc": "Mejora equipamiento de metalertanio a estrella de White Point",
+  "advancement.gallifrey.white_point_star_full_set.title": "Supernova",
+  "advancement.gallifrey.white_point_star_full_set.desc": "Ten un conjunto completo de armadura de estrella de White Point",
+  "tooltip.gallifrey.hover_boots": "Caída lenta, sin daño por caída",
+  "tooltip.gallifrey.hover_boots.sneak": "Agáchate para caer a velocidad normal",
+  "tooltip.gallifrey.white_point_star_glow": "Brilla con una tenue luz blanca al llevarla puesta"
 }

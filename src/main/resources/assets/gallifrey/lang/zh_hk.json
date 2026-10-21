@@ -728,5 +728,18 @@
   "item.gallifrey.dalekanium_knife": "戴立克合金刀",
   "item.gallifrey.metalertanium_knife": "梅塔勒特合金刀",
   "item.gallifrey.white_point_star_knife": "白點之星刀",
-  "key.gallifrey.worn_vortex_manipulator": "打開佩戴的漩渦操縱器"
+  "key.gallifrey.worn_vortex_manipulator": "打開佩戴的漩渦操縱器",
+  "advancement.gallifrey.whitepointroot.title": "星光",
+  "advancement.gallifrey.whitepointroot.desc": "獲得白點之星",
+  "advancement.gallifrey.white_point_star_residue.title": "星之殘骸",
+  "advancement.gallifrey.white_point_star_residue.desc": "製作白點之星殘渣",
+  "advancement.gallifrey.white_point_star_template.title": "天下所有模板",
+  "advancement.gallifrey.white_point_star_template.desc": "製作白點之星升級鍛造模板",
+  "advancement.gallifrey.white_point_star_gear.title": "比獄髓更耀眼",
+  "advancement.gallifrey.white_point_star_gear.desc": "將梅塔勒特合金裝備升級為白點之星",
+  "advancement.gallifrey.white_point_star_full_set.title": "超新星",
+  "advancement.gallifrey.white_point_star_full_set.desc": "集齊一整套白點之星盔甲",
+  "tooltip.gallifrey.hover_boots": "緩慢下落，免疫摔落傷害",
+  "tooltip.gallifrey.hover_boots.sneak": "潛行以正常速度下落",
+  "tooltip.gallifrey.white_point_star_glow": "穿戴時發出微弱的白光"
 }

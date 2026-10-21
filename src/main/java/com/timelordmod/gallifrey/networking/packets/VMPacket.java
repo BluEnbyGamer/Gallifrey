@@ -637,6 +637,15 @@ public class VMPacket {
             return;
         }
 
+        // Land claims (Flan, GOML, Open Parties and Claims...): no jumping into land you aren't trusted in.
+        if (!com.timelordmod.gallifrey.compat.claims.ClaimsCompat.canUseBlock(player, targetWorld, targetBlockPos)) {
+            player.sendMessage(
+                    Text.literal("§cVMS SAFETY LOCK: destination is inside protected land."),
+                    true
+            );
+            return;
+        }
+
         ServerWorld sourceWorld = player.getServerWorld();
         Vec3d sourcePos = player.getPos();
 

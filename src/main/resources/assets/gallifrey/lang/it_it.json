@@ -728,5 +728,18 @@
   "item.gallifrey.dalekanium_knife": "Coltello di dalekanio",
   "item.gallifrey.metalertanium_knife": "Coltello di metalertanio",
   "item.gallifrey.white_point_star_knife": "Coltello di stella di White Point",
-  "key.gallifrey.worn_vortex_manipulator": "Apri il manipolatore del vortice indossato"
+  "key.gallifrey.worn_vortex_manipulator": "Apri il manipolatore del vortice indossato",
+  "advancement.gallifrey.whitepointroot.title": "Luce stellare",
+  "advancement.gallifrey.whitepointroot.desc": "Ottieni una stella di White Point",
+  "advancement.gallifrey.white_point_star_residue.title": "Resti stellari",
+  "advancement.gallifrey.white_point_star_residue.desc": "Crea residuo di stella di White Point",
+  "advancement.gallifrey.white_point_star_template.title": "Tutti i modelli sotto il sole",
+  "advancement.gallifrey.white_point_star_template.desc": "Crea un modello di potenziamento a stella di White Point",
+  "advancement.gallifrey.white_point_star_gear.title": "Più brillante della netherite",
+  "advancement.gallifrey.white_point_star_gear.desc": "Potenzia equipaggiamento di metalertanio a stella di White Point",
+  "advancement.gallifrey.white_point_star_full_set.title": "Supernova",
+  "advancement.gallifrey.white_point_star_full_set.desc": "Possiedi un'armatura completa di stella di White Point",
+  "tooltip.gallifrey.hover_boots": "Caduta lenta, nessun danno da caduta",
+  "tooltip.gallifrey.hover_boots.sneak": "Accovacciati per cadere normalmente",
+  "tooltip.gallifrey.white_point_star_glow": "Emana una debole luce bianca quando indossata"
 }

@@ -728,5 +728,18 @@
   "item.gallifrey.dalekanium_knife": "Далеканиевый нож",
   "item.gallifrey.metalertanium_knife": "Металертаниевый нож",
   "item.gallifrey.white_point_star_knife": "Нож Звезды White Point",
-  "key.gallifrey.worn_vortex_manipulator": "Открыть надетый манипулятор воронки"
+  "key.gallifrey.worn_vortex_manipulator": "Открыть надетый манипулятор воронки",
+  "advancement.gallifrey.whitepointroot.title": "Звёздный свет",
+  "advancement.gallifrey.whitepointroot.desc": "Добудьте Звезду White Point",
+  "advancement.gallifrey.white_point_star_residue.title": "Звёздные останки",
+  "advancement.gallifrey.white_point_star_residue.desc": "Создайте остаток Звезды White Point",
+  "advancement.gallifrey.white_point_star_template.title": "Все шаблоны под солнцем",
+  "advancement.gallifrey.white_point_star_template.desc": "Создайте шаблон улучшения Звезды White Point",
+  "advancement.gallifrey.white_point_star_gear.title": "Ярче незерита",
+  "advancement.gallifrey.white_point_star_gear.desc": "Улучшите металертаниевое снаряжение до Звезды White Point",
+  "advancement.gallifrey.white_point_star_full_set.title": "Сверхновая",
+  "advancement.gallifrey.white_point_star_full_set.desc": "Соберите полный комплект брони Звезды White Point",
+  "tooltip.gallifrey.hover_boots": "Медленное падение, нет урона от падения",
+  "tooltip.gallifrey.hover_boots.sneak": "Крадитесь, чтобы падать с обычной скоростью",
+  "tooltip.gallifrey.white_point_star_glow": "Слабо светится белым, когда надета"
 }

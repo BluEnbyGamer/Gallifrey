@@ -728,5 +728,18 @@
   "item.gallifrey.dalekanium_knife": "Dalekaniummesser",
   "item.gallifrey.metalertanium_knife": "Metalertaniummesser",
   "item.gallifrey.white_point_star_knife": "White-Point-Stern-Messer",
-  "key.gallifrey.worn_vortex_manipulator": "Getragenen Vortex-Manipulator öffnen"
+  "key.gallifrey.worn_vortex_manipulator": "Getragenen Vortex-Manipulator öffnen",
+  "advancement.gallifrey.whitepointroot.title": "Sternenlicht",
+  "advancement.gallifrey.whitepointroot.desc": "Erhalte einen White-Point-Stern",
+  "advancement.gallifrey.white_point_star_residue.title": "Sternenreste",
+  "advancement.gallifrey.white_point_star_residue.desc": "Stelle White-Point-Stern-Rückstand her",
+  "advancement.gallifrey.white_point_star_template.title": "Alle Vorlagen unter der Sonne",
+  "advancement.gallifrey.white_point_star_template.desc": "Stelle eine White-Point-Stern-Schmiedevorlage her",
+  "advancement.gallifrey.white_point_star_gear.title": "Heller als Netherit",
+  "advancement.gallifrey.white_point_star_gear.desc": "Werte Metalertanium-Ausrüstung zu White-Point-Stern auf",
+  "advancement.gallifrey.white_point_star_full_set.title": "Supernova",
+  "advancement.gallifrey.white_point_star_full_set.desc": "Besitze ein komplettes Set White-Point-Stern-Rüstung",
+  "tooltip.gallifrey.hover_boots": "Sanfter Fall, kein Fallschaden",
+  "tooltip.gallifrey.hover_boots.sneak": "Schleichen, um normal zu fallen",
+  "tooltip.gallifrey.white_point_star_glow": "Leuchtet getragen in schwachem weißem Licht"
 }

@@ -728,5 +728,18 @@
   "item.gallifrey.dalekanium_knife": "Couteau en dalekanium",
   "item.gallifrey.metalertanium_knife": "Couteau en métalertanium",
   "item.gallifrey.white_point_star_knife": "Couteau en étoile de White Point",
-  "key.gallifrey.worn_vortex_manipulator": "Ouvrir le manipulateur de vortex porté"
+  "key.gallifrey.worn_vortex_manipulator": "Ouvrir le manipulateur de vortex porté",
+  "advancement.gallifrey.whitepointroot.title": "Lumière stellaire",
+  "advancement.gallifrey.whitepointroot.desc": "Obtenez une étoile de White Point",
+  "advancement.gallifrey.white_point_star_residue.title": "Restes stellaires",
+  "advancement.gallifrey.white_point_star_residue.desc": "Fabriquez du résidu d'étoile de White Point",
+  "advancement.gallifrey.white_point_star_template.title": "Tous les modèles sous le soleil",
+  "advancement.gallifrey.white_point_star_template.desc": "Fabriquez un modèle d'amélioration d'étoile de White Point",
+  "advancement.gallifrey.white_point_star_gear.title": "Plus brillant que la netherite",
+  "advancement.gallifrey.white_point_star_gear.desc": "Améliorez de l'équipement en métalertanium en étoile de White Point",
+  "advancement.gallifrey.white_point_star_full_set.title": "Supernova",
+  "advancement.gallifrey.white_point_star_full_set.desc": "Possédez une armure complète en étoile de White Point",
+  "tooltip.gallifrey.hover_boots": "Chute lente, aucun dégât de chute",
+  "tooltip.gallifrey.hover_boots.sneak": "Accroupissez-vous pour tomber normalement",
+  "tooltip.gallifrey.white_point_star_glow": "Brille d'une faible lumière blanche quand elle est portée"
 }

@@ -735,5 +735,18 @@
   "wood_type.gallifrey.tardis": "Tardis",
   "wood_type.gallifrey.treeborg": "Treeborg",
   "wood_type.gallifrey.ulanda": "Ulanda",
-  "wood_type.gallifrey.wasted": "Ruined"
+  "wood_type.gallifrey.wasted": "Ruined",
+  "advancement.gallifrey.whitepointroot.title": "Starlight",
+  "advancement.gallifrey.whitepointroot.desc": "Plunder a White Point Star",
+  "advancement.gallifrey.white_point_star_residue.title": "Stellar Dregs",
+  "advancement.gallifrey.white_point_star_residue.desc": "Brew up some White Point Star Dregs",
+  "advancement.gallifrey.white_point_star_template.title": "Every Chart Under the Sun",
+  "advancement.gallifrey.white_point_star_template.desc": "Draw up a White Point Star Plunder Chart",
+  "advancement.gallifrey.white_point_star_gear.title": "Brighter Than Netherite",
+  "advancement.gallifrey.white_point_star_gear.desc": "Upgrade yer metalertanium gear to White Point Star",
+  "advancement.gallifrey.white_point_star_full_set.title": "Supernova",
+  "advancement.gallifrey.white_point_star_full_set.desc": "Haul a full set o' White Point Star armour",
+  "tooltip.gallifrey.hover_boots": "Floats like a gull, never breaks a leg",
+  "tooltip.gallifrey.hover_boots.sneak": "Duck down to drop like an anchor",
+  "tooltip.gallifrey.white_point_star_glow": "Glows like a lantern on the masthead when worn"
 }

@@ -737,5 +737,18 @@
   "wood_type.gallifrey.tardis": "SIᗡᴚ∀⟘",
   "wood_type.gallifrey.treeborg": "ᵷɹoqǝǝɹ⟘",
   "wood_type.gallifrey.ulanda": "ɐpuɐꞁ∩",
-  "wood_type.gallifrey.wasted": "pǝʇsɐM"
+  "wood_type.gallifrey.wasted": "pǝʇsɐM",
+  "advancement.gallifrey.whitepointroot.title": "ʇɥᵷᴉꞁɹɐʇS",
+  "advancement.gallifrey.whitepointroot.desc": "ɹɐʇS ʇuᴉoԀ ǝʇᴉɥM ɐ uᴉɐʇqO",
+  "advancement.gallifrey.white_point_star_residue.title": "suᴉɐɯǝᴚ ɹɐꞁꞁǝʇS",
+  "advancement.gallifrey.white_point_star_residue.desc": "ǝnpᴉsǝᴚ ɹɐʇS ʇuᴉoԀ ǝʇᴉɥM ǝʞɐW",
+  "advancement.gallifrey.white_point_star_template.title": "unS ǝɥʇ ɹǝpu∩ ǝʇɐꞁdɯǝ⟘ ʎɹǝʌƎ",
+  "advancement.gallifrey.white_point_star_template.desc": "ǝʇɐꞁdɯǝ⟘ ᵷuᴉɥʇᴉɯS ǝpɐɹᵷd∩ ɹɐʇS ʇuᴉoԀ ǝʇᴉɥM ɐ ʇɟɐɹƆ",
+  "advancement.gallifrey.white_point_star_gear.title": "ǝʇᴉɹǝɥʇǝN uɐɥ⟘ ɹǝʇɥᵷᴉɹᗺ",
+  "advancement.gallifrey.white_point_star_gear.desc": "ɹɐʇS ʇuᴉoԀ ǝʇᴉɥM oʇ ɹɐǝᵷ ɯnᴉuɐʇɹǝꞁɐʇǝɯ ǝpɐɹᵷd∩",
+  "advancement.gallifrey.white_point_star_full_set.title": "ɐʌouɹǝdnS",
+  "advancement.gallifrey.white_point_star_full_set.desc": "ɹoɯɹɐ ɹɐʇS ʇuᴉoԀ ǝʇᴉɥM ɟo ʇǝs ꞁꞁnɟ ɐ ǝʌɐH",
+  "tooltip.gallifrey.hover_boots": "ǝᵷɐɯɐp ꞁꞁɐɟ ou 'ᵷuᴉꞁꞁɐɟ ʍoꞁS",
+  "tooltip.gallifrey.hover_boots.sneak": "pǝǝds ꞁɐɯɹou ʇɐ doɹp oʇ ʞɐǝuS",
+  "tooltip.gallifrey.white_point_star_glow": "uɹoʍ uǝɥʍ ʇɥᵷᴉꞁ ǝʇᴉɥʍ ʇuᴉɐɟ ɐ ɥʇᴉʍ sʍoꞁ⅁"
 }

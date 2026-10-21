@@ -181,6 +181,7 @@ public class GallifreyMod implements ModInitializer {
 		com.timelordmod.gallifrey.world.GallifreySpawnRule.register();
 		com.timelordmod.gallifrey.item.custom.GallifreyAccessories.register();
 		com.timelordmod.gallifrey.item.custom.HoverBoots.register();
+		com.timelordmod.gallifrey.item.custom.WhitePointStarGlow.register();
 		com.timelordmod.gallifrey.compat.tardisrefined.TardisRefinedSonics.register();
 		com.timelordmod.gallifrey.compat.adastra.AdAstraCompat.register();
 		com.timelordmod.gallifrey.compat.ait.AitSonics.register();
@@ -195,6 +196,7 @@ public class GallifreyMod implements ModInitializer {
 		com.timelordmod.gallifrey.compat.dehydration.DehydrationCompat.register();
 		com.timelordmod.gallifrey.compat.angels.WeepingAngelsCompat.register();
 		com.timelordmod.gallifrey.compat.trinkets.TrinketsCompat.register();
+		com.timelordmod.gallifrey.compat.claims.ClaimsCompat.register();
 		com.timelordmod.gallifrey.compat.farmersdelight.FarmersDelightCompat.register();
 		com.timelordmod.gallifrey.world.PetesWorldPortals.register();
 		GallifreyModBlockEntities.register();

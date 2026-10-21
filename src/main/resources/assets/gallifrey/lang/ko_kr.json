@@ -728,5 +728,18 @@
   "item.gallifrey.dalekanium_knife": "달레카늄 칼",
   "item.gallifrey.metalertanium_knife": "메탈러타늄 칼",
   "item.gallifrey.white_point_star_knife": "화이트 포인트 스타 칼",
-  "key.gallifrey.worn_vortex_manipulator": "착용한 소용돌이 조종기 열기"
+  "key.gallifrey.worn_vortex_manipulator": "착용한 소용돌이 조종기 열기",
+  "advancement.gallifrey.whitepointroot.title": "별빛",
+  "advancement.gallifrey.whitepointroot.desc": "화이트 포인트 스타 얻기",
+  "advancement.gallifrey.white_point_star_residue.title": "별의 잔해",
+  "advancement.gallifrey.white_point_star_residue.desc": "화이트 포인트 스타 잔여물 만들기",
+  "advancement.gallifrey.white_point_star_template.title": "태양 아래 모든 형판",
+  "advancement.gallifrey.white_point_star_template.desc": "화이트 포인트 스타 강화 대장장이 형판 만들기",
+  "advancement.gallifrey.white_point_star_gear.title": "네더라이트보다 밝게",
+  "advancement.gallifrey.white_point_star_gear.desc": "메탈러타늄 장비를 화이트 포인트 스타(으)로 강화하기",
+  "advancement.gallifrey.white_point_star_full_set.title": "초신성",
+  "advancement.gallifrey.white_point_star_full_set.desc": "화이트 포인트 스타 갑옷 한 벌 갖추기",
+  "tooltip.gallifrey.hover_boots": "느린 낙하, 낙하 피해 없음",
+  "tooltip.gallifrey.hover_boots.sneak": "웅크리면 보통 속도로 낙하",
+  "tooltip.gallifrey.white_point_star_glow": "착용하면 희미한 흰 빛을 냄"
 }

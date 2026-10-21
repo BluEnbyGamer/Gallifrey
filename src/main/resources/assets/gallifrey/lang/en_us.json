@@ -799,5 +799,18 @@
   "wood_type.gallifrey.tardis": "TARDIS",
   "wood_type.gallifrey.treeborg": "Treeborg",
   "wood_type.gallifrey.ulanda": "Ulanda",
-  "wood_type.gallifrey.wasted": "Wasted"
+  "wood_type.gallifrey.wasted": "Wasted",
+  "advancement.gallifrey.whitepointroot.title": "Starlight",
+  "advancement.gallifrey.whitepointroot.desc": "Obtain a White Point Star",
+  "advancement.gallifrey.white_point_star_residue.title": "Stellar Remains",
+  "advancement.gallifrey.white_point_star_residue.desc": "Make White Point Star Residue",
+  "advancement.gallifrey.white_point_star_template.title": "Every Template Under the Sun",
+  "advancement.gallifrey.white_point_star_template.desc": "Craft a White Point Star Upgrade Smithing Template",
+  "advancement.gallifrey.white_point_star_gear.title": "Brighter Than Netherite",
+  "advancement.gallifrey.white_point_star_gear.desc": "Upgrade metalertanium gear to White Point Star",
+  "advancement.gallifrey.white_point_star_full_set.title": "Supernova",
+  "advancement.gallifrey.white_point_star_full_set.desc": "Have a full set of White Point Star armor",
+  "tooltip.gallifrey.hover_boots": "Slow falling, no fall damage",
+  "tooltip.gallifrey.hover_boots.sneak": "Sneak to drop at normal speed",
+  "tooltip.gallifrey.white_point_star_glow": "Glows with a faint white light when worn"
 }

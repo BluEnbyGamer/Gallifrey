@@ -728,5 +728,18 @@
   "item.gallifrey.dalekanium_knife": "Nóż z dalekanium",
   "item.gallifrey.metalertanium_knife": "Nóż z metalertanium",
   "item.gallifrey.white_point_star_knife": "Nóż z Gwiazdy White Point",
-  "key.gallifrey.worn_vortex_manipulator": "Otwórz noszony Manipulator Wiru"
+  "key.gallifrey.worn_vortex_manipulator": "Otwórz noszony Manipulator Wiru",
+  "advancement.gallifrey.whitepointroot.title": "Gwiezdne światło",
+  "advancement.gallifrey.whitepointroot.desc": "Zdobądź Gwiazdę White Point",
+  "advancement.gallifrey.white_point_star_residue.title": "Gwiezdne szczątki",
+  "advancement.gallifrey.white_point_star_residue.desc": "Wytwórz pozostałość Gwiazdy White Point",
+  "advancement.gallifrey.white_point_star_template.title": "Wszystkie szablony pod słońcem",
+  "advancement.gallifrey.white_point_star_template.desc": "Wytwórz szablon ulepszenia Gwiazdy White Point",
+  "advancement.gallifrey.white_point_star_gear.title": "Jaśniej niż netheryt",
+  "advancement.gallifrey.white_point_star_gear.desc": "Ulepsz wyposażenie z metalertanium do Gwiazdy White Point",
+  "advancement.gallifrey.white_point_star_full_set.title": "Supernowa",
+  "advancement.gallifrey.white_point_star_full_set.desc": "Zdobądź pełny zestaw zbroi z Gwiazdy White Point",
+  "tooltip.gallifrey.hover_boots": "Powolne opadanie, brak obrażeń od upadku",
+  "tooltip.gallifrey.hover_boots.sneak": "Skradaj się, aby spadać normalnie",
+  "tooltip.gallifrey.white_point_star_glow": "Świeci słabym białym światłem, gdy jest noszona"
 }

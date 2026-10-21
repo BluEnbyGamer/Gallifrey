@@ -728,5 +728,18 @@
   "item.gallifrey.dalekanium_knife": "ダレカニウムのナイフ",
   "item.gallifrey.metalertanium_knife": "メタラータニウムのナイフ",
   "item.gallifrey.white_point_star_knife": "ホワイトポイント・スターのナイフ",
-  "key.gallifrey.worn_vortex_manipulator": "装着中のボルテックス・マニピュレーターを開く"
+  "key.gallifrey.worn_vortex_manipulator": "装着中のボルテックス・マニピュレーターを開く",
+  "advancement.gallifrey.whitepointroot.title": "星の光",
+  "advancement.gallifrey.whitepointroot.desc": "ホワイトポイント・スターを手に入れる",
+  "advancement.gallifrey.white_point_star_residue.title": "星の名残",
+  "advancement.gallifrey.white_point_star_residue.desc": "ホワイトポイント・スターの残滓を作る",
+  "advancement.gallifrey.white_point_star_template.title": "太陽の下のすべての型",
+  "advancement.gallifrey.white_point_star_template.desc": "ホワイトポイント・スターへのアップグレード用の鍛冶型を作る",
+  "advancement.gallifrey.white_point_star_gear.title": "ネザライトより眩しく",
+  "advancement.gallifrey.white_point_star_gear.desc": "メタラータニウム装備をホワイトポイント・スターにアップグレードする",
+  "advancement.gallifrey.white_point_star_full_set.title": "超新星",
+  "advancement.gallifrey.white_point_star_full_set.desc": "ホワイトポイント・スターの防具一式を揃える",
+  "tooltip.gallifrey.hover_boots": "落下速度低下、落下ダメージなし",
+  "tooltip.gallifrey.hover_boots.sneak": "スニークで通常の速さで落下",
+  "tooltip.gallifrey.white_point_star_glow": "装着すると淡い白い光を放つ"
 }

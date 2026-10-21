@@ -538,6 +538,16 @@ public class SonicScrewdriver extends Item {
             return;
         }
 
+        // Land claims (Flan, GOML, Open Parties and Claims...): nothing happens to blocks or creatures
+        // in land this player isn't trusted in. No power is used.
+        if (target instanceof BlockHitResult blockHit && target.getType() == HitResult.Type.BLOCK
+                && !com.timelordmod.gallifrey.compat.claims.ClaimsCompat.canUseBlock(player, world, blockHit.getBlockPos())
+                || target instanceof EntityHitResult entityHit
+                && !com.timelordmod.gallifrey.compat.claims.ClaimsCompat.canUseOnEntity(player, entityHit.getEntity())) {
+            player.sendMessage(Text.literal("§cSONIC: That's inside protected land."), true);
+            return;
+        }
+
         // Deo's Portal Gun portals and Tempad time doors: overload closes them, scan reads where they go.
         if (com.timelordmod.gallifrey.compat.deo.DeoPortals.handleSonic(player, target, mode)
                 || com.timelordmod.gallifrey.compat.tempad.TempadDoors.handleSonic(player, target, mode)) {
