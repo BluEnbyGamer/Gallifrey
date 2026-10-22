@@ -31,6 +31,9 @@ public final class CreativeSectionSidebar {
     private static final int U_PANEL = 0, V_PANEL_TOP = 0, V_PANEL_ROW = 6, V_PANEL_BOTTOM = 114;
     private static final int U_SLOT = 32, U_SLOT_SELECTED = 52, V_SLOT = 0;
     private static int selected = -1;
+    /** Other mods' buttons hidden while the Gallifrey tab is open, so they can be shown again. */
+    private static final java.util.Set<ClickableWidget> HIDDEN =
+            java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<>());
 
     private CreativeSectionSidebar() {}
     public static void register() {
@@ -58,6 +61,7 @@ public final class CreativeSectionSidebar {
         ScreenEvents.beforeRender(screen).register((s, context, mouseX, mouseY, delta) -> {
             boolean open = isGallifreyTab();
             sidebar.visible = open;
+            hideCoveredButtons(screen, sidebar, open);
 
             if (open && selected >= 0) {
                 boolean justOpened = !wasOpen[0];
@@ -69,7 +73,33 @@ public final class CreativeSectionSidebar {
             wasOpen[0] = open;
         });
 
-        ScreenEvents.remove(screen).register(s -> selected = -1);
+        ScreenEvents.remove(screen).register(s -> {
+            selected = -1;
+            HIDDEN.clear();
+        });
+    }
+
+    /**
+     * While the Gallifrey tab is open, hides buttons other mods put where the sidebar sits
+     * (Axiom's two side buttons, for example) so they can't be seen or clicked through it.
+     * They're shown again as soon as another tab is picked. Checked every frame, so it also
+     * catches buttons a mod adds or moves later.
+     */
+    private static void hideCoveredButtons(CreativeInventoryScreen screen, SidebarWidget sidebar, boolean open) {
+        if (!open) {
+            for (ClickableWidget w : HIDDEN) w.visible = true;
+            HIDDEN.clear();
+            return;
+        }
+        for (ClickableWidget other : Screens.getButtons(screen)) {
+            if (other == sidebar || !other.visible) continue;
+            boolean overlapsX = other.getX() < sidebar.getX() + sidebar.getWidth() && other.getX() + other.getWidth() > sidebar.getX();
+            boolean overlapsY = other.getY() < sidebar.getY() + sidebar.getHeight() && other.getY() + other.getHeight() > sidebar.getY();
+            if (overlapsX && overlapsY) {
+                other.visible = false;
+                HIDDEN.add(other);
+            }
+        }
     }
 
     private static boolean isGallifreyTab() {

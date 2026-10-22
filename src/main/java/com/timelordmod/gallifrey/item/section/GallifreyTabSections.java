@@ -370,6 +370,7 @@ public final class GallifreyTabSections {
                 entries.add(GallifreyModBlocks.STRUCTURE_ROUNDEL);
                 entries.add(GallifreyModBlocks.LODESTONE_ROUNDEL);
                 entries.add(GallifreyModBlocks.VANILLA_QUATZ_ROUNDEL);
+                entries.add(GallifreyModBlocks.REACTOR_ROUNDEL);
                 entries.add(GallifreyModBlocks.QUARTZ_ROUNDEL);
                 entries.add(GallifreyModBlocks.BLUEQUARTZ_ROUNDEL);
                 entries.add(GallifreyModBlocks.CRIMQUARTZ_ROUNDEL);

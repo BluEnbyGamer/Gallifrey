@@ -419,6 +419,13 @@ public class GallifreyModBlocks {
             )
     );
 
+    public static final Block REACTOR_ROUNDEL = registerBlock(
+            "reactor_roundel",
+            new RoundelBlock(
+                    FabricBlockSettings.copyOf(Blocks.NETHERRACK)
+            )
+    );
+
     public static final Block AMBQUARTZ_ROUNDEL = registerBlock(
             "ambquartz_roundel",
             new RoundelBlock(
